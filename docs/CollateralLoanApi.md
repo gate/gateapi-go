@@ -4,23 +4,23 @@ All URIs are relative to *https://api.gateio.ws/api/v4*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**ListCollateralLoanOrders**](CollateralLoanApi.md#ListCollateralLoanOrders) | **Get** /loan/collateral/orders | List Orders.
-[**CreateCollateralLoan**](CollateralLoanApi.md#CreateCollateralLoan) | **Post** /loan/collateral/orders | Place order.
-[**GetCollateralLoanOrderDetail**](CollateralLoanApi.md#GetCollateralLoanOrderDetail) | **Get** /loan/collateral/orders/{order_id} | Get a single order.
-[**RepayCollateralLoan**](CollateralLoanApi.md#RepayCollateralLoan) | **Post** /loan/collateral/repay | Repayment.
-[**ListRepayRecords**](CollateralLoanApi.md#ListRepayRecords) | **Get** /loan/collateral/repay_records | Repayment history.
-[**ListCollateralRecords**](CollateralLoanApi.md#ListCollateralRecords) | **Get** /loan/collateral/collaterals | Query collateral adjustment records.
-[**OperateCollateral**](CollateralLoanApi.md#OperateCollateral) | **Post** /loan/collateral/collaterals | Increase or redeem collateral.
-[**GetUserTotalAmount**](CollateralLoanApi.md#GetUserTotalAmount) | **Get** /loan/collateral/total_amount | Query the total borrowing and collateral amount for the user.
-[**GetUserLtvInfo**](CollateralLoanApi.md#GetUserLtvInfo) | **Get** /loan/collateral/ltv | Query user&#39;s collateralization ratio.
-[**ListCollateralCurrencies**](CollateralLoanApi.md#ListCollateralCurrencies) | **Get** /loan/collateral/currencies | Query supported borrowing and collateral currencies.
+[**ListCollateralLoanOrders**](CollateralLoanApi.md#ListCollateralLoanOrders) | **Get** /loan/collateral/orders | Query collateral loan order list
+[**CreateCollateralLoan**](CollateralLoanApi.md#CreateCollateralLoan) | **Post** /loan/collateral/orders | Place collateral loan order
+[**GetCollateralLoanOrderDetail**](CollateralLoanApi.md#GetCollateralLoanOrderDetail) | **Get** /loan/collateral/orders/{order_id} | Query single order details
+[**RepayCollateralLoan**](CollateralLoanApi.md#RepayCollateralLoan) | **Post** /loan/collateral/repay | Collateral loan repayment
+[**ListRepayRecords**](CollateralLoanApi.md#ListRepayRecords) | **Get** /loan/collateral/repay_records | Query collateral loan repayment records
+[**ListCollateralRecords**](CollateralLoanApi.md#ListCollateralRecords) | **Get** /loan/collateral/collaterals | Query collateral adjustment records
+[**OperateCollateral**](CollateralLoanApi.md#OperateCollateral) | **Post** /loan/collateral/collaterals | Increase or redeem collateral
+[**GetUserTotalAmount**](CollateralLoanApi.md#GetUserTotalAmount) | **Get** /loan/collateral/total_amount | Query user&#39;s total borrowing and collateral amount
+[**GetUserLtvInfo**](CollateralLoanApi.md#GetUserLtvInfo) | **Get** /loan/collateral/ltv | Query user&#39;s collateralization ratio and remaining borrowable currencies
+[**ListCollateralCurrencies**](CollateralLoanApi.md#ListCollateralCurrencies) | **Get** /loan/collateral/currencies | Query supported borrowing and collateral currencies
 
 
 ## ListCollateralLoanOrders
 
 > []CollateralOrder ListCollateralLoanOrders(ctx, optional)
 
-List Orders.
+Query collateral loan order list
 
 ### Required Parameters
 
@@ -35,10 +35,10 @@ Optional parameters are passed through a pointer to a ListCollateralLoanOrdersOp
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**page** | **optional.Int32**| Page number. | [default to 1]
-**limit** | **optional.Int32**| Maximum number of records to be returned in a single list. | [default to 100]
-**collateralCurrency** | **optional.String**| Collateral. | 
-**borrowCurrency** | **optional.String**| Borrowed currency. | 
+**page** | **optional.Int32**| Page number | [default to 1]
+**limit** | **optional.Int32**| Maximum number of records returned in a single list | [default to 100]
+**collateralCurrency** | **optional.String**| Collateral currency | 
+**borrowCurrency** | **optional.String**| Borrowed currency | 
 
 ### Example
 
@@ -99,7 +99,7 @@ func main() {
 
 > OrderResp CreateCollateralLoan(ctx, createCollateralOrder)
 
-Place order.
+Place collateral loan order
 
 ### Required Parameters
 
@@ -168,14 +168,14 @@ func main() {
 
 > CollateralOrder GetCollateralLoanOrderDetail(ctx, orderId)
 
-Get a single order.
+Query single order details
 
 ### Required Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**orderId** | **int64**| Order ID returned on successful order creation. | 
+**orderId** | **int64**| Order ID returned when order is successfully created | 
 
 ### Example
 
@@ -200,7 +200,7 @@ func main() {
                                  Secret: "YOUR_API_SECRET",
                              }
                             )
-    orderId := 100001 // int64 - Order ID returned on successful order creation.
+    orderId := 100001 // int64 - Order ID returned when order is successfully created
     
     result, _, err := client.CollateralLoanApi.GetCollateralLoanOrderDetail(ctx, orderId)
     if err != nil {
@@ -237,7 +237,7 @@ func main() {
 
 > RepayResp RepayCollateralLoan(ctx, repayLoan)
 
-Repayment.
+Collateral loan repayment
 
 ### Required Parameters
 
@@ -306,14 +306,14 @@ func main() {
 
 > []RepayRecord ListRepayRecords(ctx, source, optional)
 
-Repayment history.
+Query collateral loan repayment records
 
 ### Required Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**source** | **string**| Operation type: repay - Regular repayment, liquidate - Liquidation. | 
+**source** | **string**| Operation type: repay - Regular repayment, liquidate - Liquidation | 
 **optional** | **ListRepayRecordsOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
@@ -322,12 +322,12 @@ Optional parameters are passed through a pointer to a ListRepayRecordsOpts struc
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**borrowCurrency** | **optional.String**| Borrowed currency. | 
-**collateralCurrency** | **optional.String**| Collateral. | 
-**page** | **optional.Int32**| Page number. | [default to 1]
-**limit** | **optional.Int32**| Maximum number of records to be returned in a single list. | [default to 100]
-**from** | **optional.Int64**| Start timestamp of the query. | 
-**to** | **optional.Int64**| Time range ending, default to current time. | 
+**borrowCurrency** | **optional.String**| Borrowed currency | 
+**collateralCurrency** | **optional.String**| Collateral currency | 
+**page** | **optional.Int32**| Page number | [default to 1]
+**limit** | **optional.Int32**| Maximum number of records returned in a single list | [default to 100]
+**from** | **optional.Int64**| Start timestamp for the query | 
+**to** | **optional.Int64**| End timestamp for the query, defaults to current time if not specified | 
 
 ### Example
 
@@ -352,7 +352,7 @@ func main() {
                                  Secret: "YOUR_API_SECRET",
                              }
                             )
-    source := "repay" // string - Operation type: repay - Regular repayment, liquidate - Liquidation.
+    source := "repay" // string - Operation type: repay - Regular repayment, liquidate - Liquidation
     
     result, _, err := client.CollateralLoanApi.ListRepayRecords(ctx, source, nil)
     if err != nil {
@@ -389,7 +389,7 @@ func main() {
 
 > []CollateralRecord ListCollateralRecords(ctx, optional)
 
-Query collateral adjustment records.
+Query collateral adjustment records
 
 ### Required Parameters
 
@@ -404,12 +404,12 @@ Optional parameters are passed through a pointer to a ListCollateralRecordsOpts 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**page** | **optional.Int32**| Page number. | [default to 1]
-**limit** | **optional.Int32**| Maximum number of records to be returned in a single list. | [default to 100]
-**from** | **optional.Int64**| Start timestamp of the query. | 
-**to** | **optional.Int64**| Time range ending, default to current time. | 
-**borrowCurrency** | **optional.String**| Borrowed currency. | 
-**collateralCurrency** | **optional.String**| Collateral. | 
+**page** | **optional.Int32**| Page number | [default to 1]
+**limit** | **optional.Int32**| Maximum number of records returned in a single list | [default to 100]
+**from** | **optional.Int64**| Start timestamp for the query | 
+**to** | **optional.Int64**| End timestamp for the query, defaults to current time if not specified | 
+**borrowCurrency** | **optional.String**| Borrowed currency | 
+**collateralCurrency** | **optional.String**| Collateral currency | 
 
 ### Example
 
@@ -470,7 +470,7 @@ func main() {
 
 > OperateCollateral(ctx, collateralAlign)
 
-Increase or redeem collateral.
+Increase or redeem collateral
 
 ### Required Parameters
 
@@ -539,7 +539,7 @@ func main() {
 
 > UserTotalAmount GetUserTotalAmount(ctx, )
 
-Query the total borrowing and collateral amount for the user.
+Query user's total borrowing and collateral amount
 
 ### Required Parameters
 
@@ -603,15 +603,15 @@ func main() {
 
 > UserLtvInfo GetUserLtvInfo(ctx, collateralCurrency, borrowCurrency)
 
-Query user's collateralization ratio.
+Query user's collateralization ratio and remaining borrowable currencies
 
 ### Required Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**collateralCurrency** | **string**| Collateral. | 
-**borrowCurrency** | **string**| Borrowed currency. | 
+**collateralCurrency** | **string**| Collateral currency | 
+**borrowCurrency** | **string**| Borrowed currency | 
 
 ### Example
 
@@ -636,8 +636,8 @@ func main() {
                                  Secret: "YOUR_API_SECRET",
                              }
                             )
-    collateralCurrency := "BTC" // string - Collateral.
-    borrowCurrency := "USDT" // string - Borrowed currency.
+    collateralCurrency := "BTC" // string - Collateral currency
+    borrowCurrency := "USDT" // string - Borrowed currency
     
     result, _, err := client.CollateralLoanApi.GetUserLtvInfo(ctx, collateralCurrency, borrowCurrency)
     if err != nil {
@@ -674,7 +674,7 @@ func main() {
 
 > []CollateralLoanCurrency ListCollateralCurrencies(ctx, optional)
 
-Query supported borrowing and collateral currencies.
+Query supported borrowing and collateral currencies
 
 ### Required Parameters
 
@@ -689,7 +689,7 @@ Optional parameters are passed through a pointer to a ListCollateralCurrenciesOp
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**loanCurrency** | **optional.String**| The parameter loan_currency is used to specify the borrowing currency. If loan_currency is not provided, the API will return all supported borrowing currencies. | 
+**loanCurrency** | **optional.String**| Parameter loan_currency. If omitted, returns all supported borrowing currencies; if provided, returns the array of collateral currencies supported for that borrowing currency | 
 
 ### Example
 

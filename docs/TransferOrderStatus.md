@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**TxId** | **string** | Order id. | [optional] 
-**Status** | **string** | Transfer status, PENDING - in process, SUCCESS - successful transfer, FAIL - failed transfer, PARTIAL_SUCCESS - Partially successful (this status will appear when transferring between sub-subs) | [optional] 
+**TxId** | **string** | Order ID | [optional] 
+**Status** | **string** | Transfer status: PENDING - Processing, SUCCESS - Transfer successful, FAIL - Transfer failed, PARTIAL_SUCCESS - Partially successful (this status appears when transferring between sub-accounts) | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
