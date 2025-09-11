@@ -40,7 +40,7 @@ Name | Type | Description  | Notes
 **page** | **optional.Int32**| Page number | [default to 1]
 **limit** | **optional.Int32**| Maximum number of records returned in a single list | [default to 10]
 **sort** | **optional.String**| Sort type: &#x60;time_desc&#x60; - Created time descending (default), &#x60;ltv_asc&#x60; - Collateral ratio ascending, &#x60;ltv_desc&#x60; - Collateral ratio descending. | 
-**orderType** | **optional.String**| Order type: current - Query current orders, fixed - Query fixed orders, defaults to current orders if not specifiedOrder type: current - Query current orders, fixed - Query fixed orders, defaults to current orders if not specified | 
+**orderType** | **optional.String**| Order type: current - Query current orders, fixed - Query fixed orders, defaults to current orders if not specified | 
 
 ### Example
 
@@ -51,7 +51,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v6"
+    "github.com/gateio/gateapi-go/v7"
 )
 
 func main() {
@@ -119,7 +119,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v6"
+    "github.com/gateio/gateapi-go/v7"
 )
 
 func main() {
@@ -188,7 +188,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v6"
+    "github.com/gateio/gateapi-go/v7"
 )
 
 func main() {
@@ -270,7 +270,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v6"
+    "github.com/gateio/gateapi-go/v7"
 )
 
 func main() {
@@ -339,7 +339,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v6"
+    "github.com/gateio/gateapi-go/v7"
 )
 
 func main() {
@@ -420,7 +420,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v6"
+    "github.com/gateio/gateapi-go/v7"
 )
 
 func main() {
@@ -488,7 +488,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v6"
+    "github.com/gateio/gateapi-go/v7"
 )
 
 func main() {
@@ -558,7 +558,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v6"
+    "github.com/gateio/gateapi-go/v7"
 )
 
 func main() {
@@ -624,7 +624,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v6"
+    "github.com/gateio/gateapi-go/v7"
 )
 
 func main() {
@@ -684,7 +684,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v6"
+    "github.com/gateio/gateapi-go/v7"
 )
 
 func main() {
@@ -742,7 +742,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v6"
+    "github.com/gateio/gateapi-go/v7"
 )
 
 func main() {
@@ -815,7 +815,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v6"
+    "github.com/gateio/gateapi-go/v7"
 )
 
 func main() {

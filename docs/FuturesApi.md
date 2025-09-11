@@ -88,7 +88,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v6"
+    "github.com/gateio/gateapi-go/v7"
 )
 
 func main() {
@@ -152,7 +152,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v6"
+    "github.com/gateio/gateapi-go/v7"
 )
 
 func main() {
@@ -230,7 +230,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v6"
+    "github.com/gateio/gateapi-go/v7"
 )
 
 func main() {
@@ -308,7 +308,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v6"
+    "github.com/gateio/gateapi-go/v7"
 )
 
 func main() {
@@ -377,6 +377,7 @@ Name | Type | Description  | Notes
 **to** | **optional.Int64**| Specify the end time of the K-line chart, defaults to current time if not specified, note that the time format is Unix timestamp with second precision | 
 **limit** | **optional.Int32**| Maximum number of recent data points to return. &#x60;limit&#x60; conflicts with &#x60;from&#x60; and &#x60;to&#x60;. If either &#x60;from&#x60; or &#x60;to&#x60; is specified, request will be rejected. | [default to 100]
 **interval** | **optional.String**| Interval time between data points. Note that &#x60;1w&#x60; means natural week(Mon-Sun), while &#x60;7d&#x60; means every 7d since unix 0. 30d represents a natural month, not 30 days | [default to 5m]
+**timezone** | **optional.String**| Time zone: all/utc0/utc8, default utc0 | [default to utc0]
 
 ### Example
 
@@ -387,7 +388,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v6"
+    "github.com/gateio/gateapi-go/v7"
 )
 
 func main() {
@@ -466,7 +467,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v6"
+    "github.com/gateio/gateapi-go/v7"
 )
 
 func main() {
@@ -539,7 +540,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v6"
+    "github.com/gateio/gateapi-go/v7"
 )
 
 func main() {
@@ -614,7 +615,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v6"
+    "github.com/gateio/gateapi-go/v7"
 )
 
 func main() {
@@ -687,7 +688,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v6"
+    "github.com/gateio/gateapi-go/v7"
 )
 
 func main() {
@@ -762,7 +763,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v6"
+    "github.com/gateio/gateapi-go/v7"
 )
 
 func main() {
@@ -827,7 +828,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v6"
+    "github.com/gateio/gateapi-go/v7"
 )
 
 func main() {
@@ -875,7 +876,7 @@ No authorization required
 
 Query liquidation order history
 
-The time interval between from and to is maximum 3600. Some private fields are not returned by public interfaces, refer to field descriptions for detailsThe time interval between from and to is maximum 3600. Some private fields are not returned by public interfaces, refer to field descriptions for interfaces, refer to field descriptions for details
+The time interval between from and to is maximum 3600. Some private fields are not returned by public interfaces, refer to field descriptions for details
 
 ### Required Parameters
 
@@ -905,7 +906,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v6"
+    "github.com/gateio/gateapi-go/v7"
 )
 
 func main() {
@@ -952,7 +953,7 @@ No authorization required
 
 Query risk limit tiers
 
-When the 'contract' parameter is not passed, the default is to query the risk limits for the top 100 markets.'Limit' and 'offset' correspond to pagination queries at the market level, not to the length of the returned array. This only takes effect empty.
+When the 'contract' parameter is not passed, the default is to query the risk limits for the top 100 markets. 'Limit' and 'offset' correspond to pagination queries at the market level, not to the length of the returned array. This only takes effect when the contract parameter is empty.
 
 ### Required Parameters
 
@@ -981,7 +982,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v6"
+    "github.com/gateio/gateapi-go/v7"
 )
 
 func main() {
@@ -1044,7 +1045,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v6"
+    "github.com/gateio/gateapi-go/v7"
 )
 
 func main() {
@@ -1118,7 +1119,7 @@ Name | Type | Description  | Notes
 **offset** | **optional.Int32**| List offset, starting from 0 | [default to 0]
 **from** | **optional.Int64**| Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit) | 
 **to** | **optional.Int64**| Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp | 
-**type_** | **optional.String**| Changing Type：  - dnw: Deposit &amp; Withdraw - pnl: Profit &amp; Loss by reducing position - fee: Trading fee - refr: Referrer rebate - fund: Funding - point_dnw: point_fee: POINT Trading fee - point_refr: POINT Referrer rebate - bonus_offset: bouns deduction | 
+**type_** | **optional.String**| Change types:  - dnw: Deposit and withdrawal - pnl: Profit and loss from position reduction - fee: Trading fees - refr: Referrer rebates - fund: Funding fees - point_dnw: Point card deposit and withdrawal - point_fee: Point card trading fees - point_refr: Point card referrer rebates - bonus_offset: Trial fund deduction | 
 
 ### Example
 
@@ -1129,7 +1130,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v6"
+    "github.com/gateio/gateapi-go/v7"
 )
 
 func main() {
@@ -1209,7 +1210,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v6"
+    "github.com/gateio/gateapi-go/v7"
 )
 
 func main() {
@@ -1279,7 +1280,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v6"
+    "github.com/gateio/gateapi-go/v7"
 )
 
 func main() {
@@ -1351,7 +1352,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v6"
+    "github.com/gateio/gateapi-go/v7"
 )
 
 func main() {
@@ -1423,6 +1424,7 @@ Optional parameters are passed through a pointer to a UpdatePositionLeverageOpts
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **crossLeverageLimit** | **optional.String**| Cross margin leverage (valid only when &#x60;leverage&#x60; is 0) | 
+**pid** | **optional.Int32**| Product ID | 
 
 ### Example
 
@@ -1433,7 +1435,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v6"
+    "github.com/gateio/gateapi-go/v7"
 )
 
 func main() {
@@ -1505,7 +1507,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v6"
+    "github.com/gateio/gateapi-go/v7"
 )
 
 func main() {
@@ -1576,7 +1578,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v6"
+    "github.com/gateio/gateapi-go/v7"
 )
 
 func main() {
@@ -1648,7 +1650,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v6"
+    "github.com/gateio/gateapi-go/v7"
 )
 
 func main() {
@@ -1722,7 +1724,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v6"
+    "github.com/gateio/gateapi-go/v7"
 )
 
 func main() {
@@ -1793,7 +1795,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v6"
+    "github.com/gateio/gateapi-go/v7"
 )
 
 func main() {
@@ -1866,7 +1868,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v6"
+    "github.com/gateio/gateapi-go/v7"
 )
 
 func main() {
@@ -1949,7 +1951,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v6"
+    "github.com/gateio/gateapi-go/v7"
 )
 
 func main() {
@@ -2022,7 +2024,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v6"
+    "github.com/gateio/gateapi-go/v7"
 )
 
 func main() {
@@ -2097,7 +2099,7 @@ Name | Type | Description  | Notes
 **contract** | **optional.String**| Futures contract, return related data only if specified | 
 **limit** | **optional.Int32**| Maximum number of records returned in a single list | [default to 100]
 **offset** | **optional.Int32**| List offset, starting from 0 | [default to 0]
-**lastId** | **optional.String**| Specify the currency name to query in batches, and support up to 100 pass parameters at a time | 
+**lastId** | **optional.String**| Use the ID of the last record in the previous list as the starting point for the next list  Operations based on custom IDs can only be checked when orders are pending. After orders are completed (filled/cancelled), they can be checked within 1 hour after completion. After expiration, only order IDs can be used | 
 
 ### Example
 
@@ -2108,7 +2110,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v6"
+    "github.com/gateio/gateapi-go/v7"
 )
 
 func main() {
@@ -2190,7 +2192,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v6"
+    "github.com/gateio/gateapi-go/v7"
 )
 
 func main() {
@@ -2262,7 +2264,9 @@ Optional parameters are passed through a pointer to a CancelFuturesOrdersOpts st
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **xGateExptime** | **optional.String**| Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected | 
-**side** | **optional.String**| Specify all buy orders or all sell orders, both are included if not specified. Set to bid, set to ask to cancel all sell ordersspecified. Set to bid, set to ask to cancel all sell ordersspecified. Set to bid, set to ask to cancel all sell orders | 
+**side** | **optional.String**| Specify all buy orders or all sell orders, both are included if not specified. Set to bid to cancel all buy orders, set to ask to cancel all sell orders | 
+**excludeReduceOnly** | **optional.Bool**| Whether to exclude reduce-only orders | [default to false]
+**text** | **optional.String**| Remark for order cancellation | 
 
 ### Example
 
@@ -2273,7 +2277,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v6"
+    "github.com/gateio/gateapi-go/v7"
 )
 
 func main() {
@@ -2356,7 +2360,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v6"
+    "github.com/gateio/gateapi-go/v7"
 )
 
 func main() {
@@ -2437,7 +2441,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v6"
+    "github.com/gateio/gateapi-go/v7"
 )
 
 func main() {
@@ -2510,7 +2514,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v6"
+    "github.com/gateio/gateapi-go/v7"
 )
 
 func main() {
@@ -2591,7 +2595,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v6"
+    "github.com/gateio/gateapi-go/v7"
 )
 
 func main() {
@@ -2672,7 +2676,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v6"
+    "github.com/gateio/gateapi-go/v7"
 )
 
 func main() {
@@ -2757,7 +2761,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v6"
+    "github.com/gateio/gateapi-go/v7"
 )
 
 func main() {
@@ -2840,7 +2844,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v6"
+    "github.com/gateio/gateapi-go/v7"
 )
 
 func main() {
@@ -2924,7 +2928,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v6"
+    "github.com/gateio/gateapi-go/v7"
 )
 
 func main() {
@@ -3007,7 +3011,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v6"
+    "github.com/gateio/gateapi-go/v7"
 )
 
 func main() {
@@ -3090,7 +3094,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v6"
+    "github.com/gateio/gateapi-go/v7"
 )
 
 func main() {
@@ -3162,7 +3166,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v6"
+    "github.com/gateio/gateapi-go/v7"
 )
 
 func main() {
@@ -3241,7 +3245,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v6"
+    "github.com/gateio/gateapi-go/v7"
 )
 
 func main() {
@@ -3322,7 +3326,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v6"
+    "github.com/gateio/gateapi-go/v7"
 )
 
 func main() {
@@ -3404,7 +3408,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v6"
+    "github.com/gateio/gateapi-go/v7"
 )
 
 func main() {
@@ -3477,7 +3481,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v6"
+    "github.com/gateio/gateapi-go/v7"
 )
 
 func main() {
@@ -3553,7 +3557,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v6"
+    "github.com/gateio/gateapi-go/v7"
 )
 
 func main() {
@@ -3624,7 +3628,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v6"
+    "github.com/gateio/gateapi-go/v7"
 )
 
 func main() {
@@ -3703,7 +3707,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v6"
+    "github.com/gateio/gateapi-go/v7"
 )
 
 func main() {
@@ -3773,7 +3777,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v6"
+    "github.com/gateio/gateapi-go/v7"
 )
 
 func main() {
@@ -3844,7 +3848,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v6"
+    "github.com/gateio/gateapi-go/v7"
 )
 
 func main() {

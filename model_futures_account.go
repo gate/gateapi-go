@@ -26,6 +26,8 @@ type FuturesAccount struct {
 	Currency string `json:"currency,omitempty"`
 	// Whether dual mode is enabled
 	InDualMode bool `json:"in_dual_mode,omitempty"`
+	// Position mode: single - one-way, dual - dual-side, split - sub-positions (in_dual_mode is deprecated)
+	PositionMode string `json:"position_mode,omitempty"`
 	// Whether portfolio margin account mode is enabled
 	EnableCredit bool `json:"enable_credit,omitempty"`
 	// Initial margin occupied by positions, applicable to unified account mode

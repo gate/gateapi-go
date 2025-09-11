@@ -1339,7 +1339,7 @@ func (a *UnifiedApiService) GetUnifiedEstimateRate(ctx context.Context, currenci
 }
 
 /*
-ListCurrencyDiscountTiers Query unified account tiered discount
+ListCurrencyDiscountTiers Query unified account tiered
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 
 @return []UnifiedDiscount

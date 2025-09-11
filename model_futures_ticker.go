@@ -52,4 +52,14 @@ type FuturesTicker struct {
 	HighestBid string `json:"highest_bid,omitempty"`
 	// The latest buyer's highest price order volume
 	HighestSize string `json:"highest_size,omitempty"`
+	// Percentage change at utc0. Negative values indicate a drop, e.g., -7.45%
+	ChangeUtc0 string `json:"change_utc0,omitempty"`
+	// Percentage change at utc8. Negative values indicate a drop, e.g., -7.45%
+	ChangeUtc8 string `json:"change_utc8,omitempty"`
+	// 24h change amount. Negative values indicate a drop, e.g., -7.45
+	ChangePrice string `json:"change_price,omitempty"`
+	// Change amount at utc0. Negative values indicate a drop, e.g., -7.45
+	ChangeUtc0Price string `json:"change_utc0_price,omitempty"`
+	// Change amount at utc8. Negative values indicate a drop, e.g., -7.45
+	ChangeUtc8Price string `json:"change_utc8_price,omitempty"`
 }

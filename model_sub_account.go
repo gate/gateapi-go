@@ -12,7 +12,7 @@ package gateapi
 type SubAccount struct {
 	// Remark
 	Remark string `json:"remark,omitempty"`
-	// 子账户登陆名：仅支持字母、数字、下划线，不可包含其他非法字符。
+	// Sub-account login name: Only letters, numbers and underscores are supported, cannot contain other invalid characters
 	LoginName string `json:"login_name"`
 	// The sub-account's password. (Default: the same as main account's password)
 	Password string `json:"password,omitempty"`

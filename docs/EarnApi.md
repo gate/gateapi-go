@@ -38,7 +38,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v6"
+    "github.com/gateio/gateapi-go/v7"
 )
 
 func main() {
@@ -105,7 +105,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v6"
+    "github.com/gateio/gateapi-go/v7"
 )
 
 func main() {
@@ -181,7 +181,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v6"
+    "github.com/gateio/gateapi-go/v7"
 )
 
 func main() {
@@ -254,7 +254,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v6"
+    "github.com/gateio/gateapi-go/v7"
 )
 
 func main() {
@@ -322,7 +322,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v6"
+    "github.com/gateio/gateapi-go/v7"
 )
 
 func main() {
@@ -402,7 +402,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v6"
+    "github.com/gateio/gateapi-go/v7"
 )
 
 func main() {
@@ -476,7 +476,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v6"
+    "github.com/gateio/gateapi-go/v7"
 )
 
 func main() {
@@ -544,7 +544,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v6"
+    "github.com/gateio/gateapi-go/v7"
 )
 
 func main() {
@@ -593,7 +593,7 @@ func main() {
 
 ## FindCoin
 
-> []string FindCoin(ctx, findCoin)
+> map[string]interface{} FindCoin(ctx, findCoin)
 
 Staking coins
 
@@ -613,7 +613,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v6"
+    "github.com/gateio/gateapi-go/v7"
 )
 
 func main() {
@@ -645,7 +645,7 @@ func main() {
 
 ### Return type
 
-**[]string**
+**map[string]interface{}**
 
 ### Authorization
 
@@ -682,7 +682,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v6"
+    "github.com/gateio/gateapi-go/v7"
 )
 
 func main() {

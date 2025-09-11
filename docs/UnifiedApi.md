@@ -17,7 +17,7 @@ Method | HTTP request | Description
 [**GetUnifiedMode**](UnifiedApi.md#GetUnifiedMode) | **Get** /unified/unified_mode | Query mode of the unified account
 [**SetUnifiedMode**](UnifiedApi.md#SetUnifiedMode) | **Put** /unified/unified_mode | Set unified account mode
 [**GetUnifiedEstimateRate**](UnifiedApi.md#GetUnifiedEstimateRate) | **Get** /unified/estimate_rate | Query unified account estimated interest rate
-[**ListCurrencyDiscountTiers**](UnifiedApi.md#ListCurrencyDiscountTiers) | **Get** /unified/currency_discount_tiers | Query unified account tiered discount
+[**ListCurrencyDiscountTiers**](UnifiedApi.md#ListCurrencyDiscountTiers) | **Get** /unified/currency_discount_tiers | Query unified account tiered
 [**ListLoanMarginTiers**](UnifiedApi.md#ListLoanMarginTiers) | **Get** /unified/loan_margin_tiers | Query unified account tiered loan margin
 [**CalculatePortfolioMargin**](UnifiedApi.md#CalculatePortfolioMargin) | **Post** /unified/portfolio_calculator | Portfolio margin calculator
 [**GetUserLeverageCurrencyConfig**](UnifiedApi.md#GetUserLeverageCurrencyConfig) | **Get** /unified/leverage/user_currency_config | Maximum and minimum currency leverage that can be set
@@ -61,7 +61,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v6"
+    "github.com/gateio/gateapi-go/v7"
 )
 
 func main() {
@@ -129,7 +129,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v6"
+    "github.com/gateio/gateapi-go/v7"
 )
 
 func main() {
@@ -198,7 +198,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v6"
+    "github.com/gateio/gateapi-go/v7"
 )
 
 func main() {
@@ -267,7 +267,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v6"
+    "github.com/gateio/gateapi-go/v7"
 )
 
 func main() {
@@ -336,7 +336,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v6"
+    "github.com/gateio/gateapi-go/v7"
 )
 
 func main() {
@@ -416,7 +416,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v6"
+    "github.com/gateio/gateapi-go/v7"
 )
 
 func main() {
@@ -486,7 +486,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v6"
+    "github.com/gateio/gateapi-go/v7"
 )
 
 func main() {
@@ -566,7 +566,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v6"
+    "github.com/gateio/gateapi-go/v7"
 )
 
 func main() {
@@ -647,7 +647,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v6"
+    "github.com/gateio/gateapi-go/v7"
 )
 
 func main() {
@@ -713,7 +713,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v6"
+    "github.com/gateio/gateapi-go/v7"
 )
 
 func main() {
@@ -779,7 +779,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v6"
+    "github.com/gateio/gateapi-go/v7"
 )
 
 func main() {
@@ -849,7 +849,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v6"
+    "github.com/gateio/gateapi-go/v7"
 )
 
 func main() {
@@ -920,7 +920,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v6"
+    "github.com/gateio/gateapi-go/v7"
 )
 
 func main() {
@@ -971,7 +971,7 @@ func main() {
 
 > []UnifiedDiscount ListCurrencyDiscountTiers(ctx, )
 
-Query unified account tiered discount
+Query unified account tiered
 
 ### Required Parameters
 
@@ -985,7 +985,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v6"
+    "github.com/gateio/gateapi-go/v7"
 )
 
 func main() {
@@ -1043,7 +1043,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v6"
+    "github.com/gateio/gateapi-go/v7"
 )
 
 func main() {
@@ -1107,7 +1107,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v6"
+    "github.com/gateio/gateapi-go/v7"
 )
 
 func main() {
@@ -1170,7 +1170,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v6"
+    "github.com/gateio/gateapi-go/v7"
 )
 
 func main() {
@@ -1249,7 +1249,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v6"
+    "github.com/gateio/gateapi-go/v7"
 )
 
 func main() {
@@ -1317,7 +1317,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v6"
+    "github.com/gateio/gateapi-go/v7"
 )
 
 func main() {
@@ -1394,7 +1394,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v6"
+    "github.com/gateio/gateapi-go/v7"
 )
 
 func main() {
@@ -1467,7 +1467,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v6"
+    "github.com/gateio/gateapi-go/v7"
 )
 
 func main() {
@@ -1530,7 +1530,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v6"
+    "github.com/gateio/gateapi-go/v7"
 )
 
 func main() {

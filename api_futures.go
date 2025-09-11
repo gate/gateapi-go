@@ -453,6 +453,7 @@ type ListFuturesCandlesticksOpts struct {
 	To       optional.Int64
 	Limit    optional.Int32
 	Interval optional.String
+	Timezone optional.String
 }
 
 /*
@@ -466,6 +467,7 @@ Return specified contract candlesticks. If prefix &#x60;contract&#x60; with &#x6
   - @param "To" (optional.Int64) -  Specify the end time of the K-line chart, defaults to current time if not specified, note that the time format is Unix timestamp with second precision
   - @param "Limit" (optional.Int32) -  Maximum number of recent data points to return. `limit` conflicts with `from` and `to`. If either `from` or `to` is specified, request will be rejected.
   - @param "Interval" (optional.String) -  Interval time between data points. Note that `1w` means natural week(Mon-Sun), while `7d` means every 7d since unix 0. 30d represents a natural month, not 30 days
+  - @param "Timezone" (optional.String) -  Time zone: all/utc0/utc8, default utc0
 
 @return []FuturesCandlestick
 */
@@ -499,6 +501,9 @@ func (a *FuturesApiService) ListFuturesCandlesticks(ctx context.Context, settle 
 	}
 	if localVarOptionals != nil && localVarOptionals.Interval.IsSet() {
 		localVarQueryParams.Add("interval", parameterToString(localVarOptionals.Interval.Value(), ""))
+	}
+	if localVarOptionals != nil && localVarOptionals.Timezone.IsSet() {
+		localVarQueryParams.Add("timezone", parameterToString(localVarOptionals.Timezone.Value(), ""))
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1189,7 +1194,7 @@ type ListLiquidatedOrdersOpts struct {
 
 /*
 ListLiquidatedOrders Query liquidation order history
-The time interval between from and to is maximum 3600. Some private fields are not returned by public interfaces, refer to field descriptions for detailsThe time interval between from and to is maximum 3600. Some private fields are not returned by public interfaces, refer to field descriptions for interfaces, refer to field descriptions for details
+The time interval between from and to is maximum 3600. Some private fields are not returned by public interfaces, refer to field descriptions for details
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param settle Settle currency
   - @param optional nil or *ListLiquidatedOrdersOpts - Optional Parameters:
@@ -1301,7 +1306,7 @@ type ListFuturesRiskLimitTiersOpts struct {
 
 /*
 ListFuturesRiskLimitTiers Query risk limit tiers
-When the &#39;contract&#39; parameter is not passed, the default is to query the risk limits for the top 100 markets.&#39;Limit&#39; and &#39;offset&#39; correspond to pagination queries at the market level, not to the length of the returned array. This only takes effect empty.
+When the &#39;contract&#39; parameter is not passed, the default is to query the risk limits for the top 100 markets. &#39;Limit&#39; and &#39;offset&#39; correspond to pagination queries at the market level, not to the length of the returned array. This only takes effect when the contract parameter is empty.
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param settle Settle currency
   - @param optional nil or *ListFuturesRiskLimitTiersOpts - Optional Parameters:
@@ -1514,7 +1519,7 @@ If the contract field is passed, only records containing this field after 2023-1
   - @param "Offset" (optional.Int32) -  List offset, starting from 0
   - @param "From" (optional.Int64) -  Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit)
   - @param "To" (optional.Int64) -  Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp
-  - @param "Type_" (optional.String) -  Changing Type：  - dnw: Deposit & Withdraw - pnl: Profit & Loss by reducing position - fee: Trading fee - refr: Referrer rebate - fund: Funding - point_dnw: point_fee: POINT Trading fee - point_refr: POINT Referrer rebate - bonus_offset: bouns deduction
+  - @param "Type_" (optional.String) -  Change types:  - dnw: Deposit and withdrawal - pnl: Profit and loss from position reduction - fee: Trading fees - refr: Referrer rebates - fund: Funding fees - point_dnw: Point card deposit and withdrawal - point_fee: Point card trading fees - point_refr: Point card referrer rebates - bonus_offset: Trial fund deduction
 
 @return []FuturesAccountBook
 */
@@ -1932,6 +1937,7 @@ func (a *FuturesApiService) UpdatePositionMargin(ctx context.Context, settle str
 // UpdatePositionLeverageOpts Optional parameters for the method 'UpdatePositionLeverage'
 type UpdatePositionLeverageOpts struct {
 	CrossLeverageLimit optional.String
+	Pid                optional.Int32
 }
 
 /*
@@ -1942,6 +1948,7 @@ UpdatePositionLeverage Update position leverage
   - @param leverage New position leverage
   - @param optional nil or *UpdatePositionLeverageOpts - Optional Parameters:
   - @param "CrossLeverageLimit" (optional.String) -  Cross margin leverage (valid only when `leverage` is 0)
+  - @param "Pid" (optional.Int32) -  Product ID
 
 @return Position
 */
@@ -1968,6 +1975,9 @@ func (a *FuturesApiService) UpdatePositionLeverage(ctx context.Context, settle s
 	localVarQueryParams.Add("leverage", parameterToString(leverage, ""))
 	if localVarOptionals != nil && localVarOptionals.CrossLeverageLimit.IsSet() {
 		localVarQueryParams.Add("cross_leverage_limit", parameterToString(localVarOptionals.CrossLeverageLimit.Value(), ""))
+	}
+	if localVarOptionals != nil && localVarOptionals.Pid.IsSet() {
+		localVarQueryParams.Add("pid", parameterToString(localVarOptionals.Pid.Value(), ""))
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -2843,7 +2853,7 @@ ListFuturesOrders Query futures order list
   - @param "Contract" (optional.String) -  Futures contract, return related data only if specified
   - @param "Limit" (optional.Int32) -  Maximum number of records returned in a single list
   - @param "Offset" (optional.Int32) -  List offset, starting from 0
-  - @param "LastId" (optional.String) -  Specify the currency name to query in batches, and support up to 100 pass parameters at a time
+  - @param "LastId" (optional.String) -  Use the ID of the last record in the previous list as the starting point for the next list  Operations based on custom IDs can only be checked when orders are pending. After orders are completed (filled/cancelled), they can be checked within 1 hour after completion. After expiration, only order IDs can be used
 
 @return []FuturesOrder
 */
@@ -3055,8 +3065,10 @@ func (a *FuturesApiService) CreateFuturesOrder(ctx context.Context, settle strin
 
 // CancelFuturesOrdersOpts Optional parameters for the method 'CancelFuturesOrders'
 type CancelFuturesOrdersOpts struct {
-	XGateExptime optional.String
-	Side         optional.String
+	XGateExptime      optional.String
+	Side              optional.String
+	ExcludeReduceOnly optional.Bool
+	Text              optional.String
 }
 
 /*
@@ -3067,7 +3079,9 @@ Zero-fill orders cannot be retrieved 10 minutes after order cancellation
   - @param contract Futures contract
   - @param optional nil or *CancelFuturesOrdersOpts - Optional Parameters:
   - @param "XGateExptime" (optional.String) -  Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected
-  - @param "Side" (optional.String) -  Specify all buy orders or all sell orders, both are included if not specified. Set to bid, set to ask to cancel all sell ordersspecified. Set to bid, set to ask to cancel all sell ordersspecified. Set to bid, set to ask to cancel all sell orders
+  - @param "Side" (optional.String) -  Specify all buy orders or all sell orders, both are included if not specified. Set to bid to cancel all buy orders, set to ask to cancel all sell orders
+  - @param "ExcludeReduceOnly" (optional.Bool) -  Whether to exclude reduce-only orders
+  - @param "Text" (optional.String) -  Remark for order cancellation
 
 @return []FuturesOrder
 */
@@ -3092,6 +3106,12 @@ func (a *FuturesApiService) CancelFuturesOrders(ctx context.Context, settle stri
 	localVarQueryParams.Add("contract", parameterToString(contract, ""))
 	if localVarOptionals != nil && localVarOptionals.Side.IsSet() {
 		localVarQueryParams.Add("side", parameterToString(localVarOptionals.Side.Value(), ""))
+	}
+	if localVarOptionals != nil && localVarOptionals.ExcludeReduceOnly.IsSet() {
+		localVarQueryParams.Add("exclude_reduce_only", parameterToString(localVarOptionals.ExcludeReduceOnly.Value(), ""))
+	}
+	if localVarOptionals != nil && localVarOptionals.Text.IsSet() {
+		localVarQueryParams.Add("text", parameterToString(localVarOptionals.Text.Value(), ""))
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

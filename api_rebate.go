@@ -153,12 +153,13 @@ func (a *RebateApiService) AgencyTransactionHistory(ctx context.Context, localVa
 
 // AgencyCommissionsHistoryOpts Optional parameters for the method 'AgencyCommissionsHistory'
 type AgencyCommissionsHistoryOpts struct {
-	Currency optional.String
-	UserId   optional.Int64
-	From     optional.Int64
-	To       optional.Int64
-	Limit    optional.Int32
-	Offset   optional.Int32
+	Currency       optional.String
+	CommissionType optional.Int32
+	UserId         optional.Int64
+	From           optional.Int64
+	To             optional.Int64
+	Limit          optional.Int32
+	Offset         optional.Int32
 }
 
 /*
@@ -167,6 +168,7 @@ Record query time range cannot exceed 30 days
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param optional nil or *AgencyCommissionsHistoryOpts - Optional Parameters:
   - @param "Currency" (optional.String) -  Specify the currency. If not specified, returns all currencies
+  - @param "CommissionType" (optional.Int32) -  Rebate type: 1 - Direct rebate, 2 - Indirect rebate, 3 - Self rebate
   - @param "UserId" (optional.Int64) -  User ID. If not specified, all user records will be returned
   - @param "From" (optional.Int64) -  Start time for querying records, defaults to 7 days before current time if not specified
   - @param "To" (optional.Int64) -  End timestamp for the query, defaults to current time if not specified
@@ -193,6 +195,9 @@ func (a *RebateApiService) AgencyCommissionsHistory(ctx context.Context, localVa
 
 	if localVarOptionals != nil && localVarOptionals.Currency.IsSet() {
 		localVarQueryParams.Add("currency", parameterToString(localVarOptionals.Currency.Value(), ""))
+	}
+	if localVarOptionals != nil && localVarOptionals.CommissionType.IsSet() {
+		localVarQueryParams.Add("commission_type", parameterToString(localVarOptionals.CommissionType.Value(), ""))
 	}
 	if localVarOptionals != nil && localVarOptionals.UserId.IsSet() {
 		localVarQueryParams.Add("user_id", parameterToString(localVarOptionals.UserId.Value(), ""))

@@ -76,4 +76,6 @@ type Position struct {
 	RiskLimitTable string `json:"risk_limit_table,omitempty"`
 	// Average maintenance margin rate
 	AverageMaintenanceRate string `json:"average_maintenance_rate,omitempty"`
+	// Sub-account position ID
+	Pid int64 `json:"pid,omitempty"`
 }

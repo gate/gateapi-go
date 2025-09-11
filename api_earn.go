@@ -794,16 +794,16 @@ FindCoin Staking coins
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param findCoin
 
-@return []string
+@return map[string]interface{}
 */
-func (a *EarnApiService) FindCoin(ctx context.Context, findCoin FindCoin) ([]string, *http.Response, error) {
+func (a *EarnApiService) FindCoin(ctx context.Context, findCoin FindCoin) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  []string
+		localVarReturnValue  map[string]interface{}
 	)
 
 	// create path and map variables

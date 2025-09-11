@@ -83,8 +83,12 @@ type Contract struct {
 	CreateTime float64 `json:"create_time,omitempty"`
 	// The factor for the maximum of the funding rate. Maximum of funding rate = (1/market maximum leverage - maintenance margin rate) * funding_cap_ratio
 	FundingCapRatio string `json:"funding_cap_ratio,omitempty"`
-	// Contract status types include: prelaunch (pre-launch), trading (active), delisting (delisting), delisted (delisted)
+	// Contract status types include: prelaunch (pre-launch), trading (active), delisting (delisting), delisted (delisted), circuit_breaker (circuit breaker)
 	Status string `json:"status,omitempty"`
 	// Contract expiry timestamp
 	LaunchTime int64 `json:"launch_time,omitempty"`
+	// Timestamp when contract enters reduce-only state
+	DelistingTime int64 `json:"delisting_time,omitempty"`
+	// Contract delisting time
+	DelistedTime int64 `json:"delisted_time,omitempty"`
 }

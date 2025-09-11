@@ -25,6 +25,11 @@ Name | Type | Description | Notes
 **LowestSize** | **string** | The latest seller&#39;s lowest price order quantity | [optional] 
 **HighestBid** | **string** | Recent highest bid | [optional] 
 **HighestSize** | **string** | The latest buyer&#39;s highest price order volume | [optional] 
+**ChangeUtc0** | **string** | Percentage change at utc0. Negative values indicate a drop, e.g., -7.45% | [optional] 
+**ChangeUtc8** | **string** | Percentage change at utc8. Negative values indicate a drop, e.g., -7.45% | [optional] 
+**ChangePrice** | **string** | 24h change amount. Negative values indicate a drop, e.g., -7.45 | [optional] 
+**ChangeUtc0Price** | **string** | Change amount at utc0. Negative values indicate a drop, e.g., -7.45 | [optional] 
+**ChangeUtc8Price** | **string** | Change amount at utc8. Negative values indicate a drop, e.g., -7.45 | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

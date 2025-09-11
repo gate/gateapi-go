@@ -4,8 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Coin** | **string** | Currency | [optional] 
-**Cointype** | **string** | Token Type: swap-Voucher, lock-Locked | [optional] 
+**Cointype** | **string** | Currency type: swap - voucher; lock - locked position; debt - US Treasury bond. | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -20,7 +20,7 @@ type SwapCoinStruct struct {
 	Coin string `json:"coin,omitempty"`
 	// Type 0-Staking 1-Redemption
 	Type int32 `json:"type,omitempty"`
-	// 子类型
+	// SubType
 	Subtype string `json:"subtype,omitempty"`
 	// Amount
 	Amount string `json:"amount,omitempty"`
@@ -28,7 +28,7 @@ type SwapCoinStruct struct {
 	ExchangeRate string `json:"exchange_rate,omitempty"`
 	// Redemption Amount
 	ExchangeAmount string `json:"exchange_amount,omitempty"`
-	// 更新时间戳
+	// UpdateTimestamp
 	UpdateStamp int32 `json:"updateStamp,omitempty"`
 	// Transaction timestamp
 	CreateStamp int32 `json:"createStamp,omitempty"`

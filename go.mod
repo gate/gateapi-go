@@ -1,4 +1,4 @@
-module github.com/gateio/gateapi-go/v6
+module github.com/gateio/gateapi-go/v7
 
 go 1.12
 

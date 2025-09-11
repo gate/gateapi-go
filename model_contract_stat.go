@@ -36,4 +36,6 @@ type ContractStat struct {
 	TopLsrAccount float64 `json:"top_lsr_account,omitempty"`
 	// Top trader long/short position ratio
 	TopLsrSize float64 `json:"top_lsr_size,omitempty"`
+	// Mark price
+	MarkPrice float64 `json:"mark_price,omitempty"`
 }

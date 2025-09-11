@@ -52,7 +52,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v6"
+    "github.com/gateio/gateapi-go/v7"
 )
 
 func main() {
@@ -120,6 +120,7 @@ Optional parameters are passed through a pointer to a AgencyCommissionsHistoryOp
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **currency** | **optional.String**| Specify the currency. If not specified, returns all currencies | 
+**commissionType** | **optional.Int32**| Rebate type: 1 - Direct rebate, 2 - Indirect rebate, 3 - Self rebate | 
 **userId** | **optional.Int64**| User ID. If not specified, all user records will be returned | 
 **from** | **optional.Int64**| Start time for querying records, defaults to 7 days before current time if not specified | 
 **to** | **optional.Int64**| End timestamp for the query, defaults to current time if not specified | 
@@ -135,7 +136,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v6"
+    "github.com/gateio/gateapi-go/v7"
 )
 
 func main() {
@@ -218,7 +219,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v6"
+    "github.com/gateio/gateapi-go/v7"
 )
 
 func main() {
@@ -301,7 +302,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v6"
+    "github.com/gateio/gateapi-go/v7"
 )
 
 func main() {
@@ -381,7 +382,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v6"
+    "github.com/gateio/gateapi-go/v7"
 )
 
 func main() {
@@ -463,7 +464,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v6"
+    "github.com/gateio/gateapi-go/v7"
 )
 
 func main() {
@@ -545,7 +546,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v6"
+    "github.com/gateio/gateapi-go/v7"
 )
 
 func main() {
@@ -609,7 +610,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v6"
+    "github.com/gateio/gateapi-go/v7"
 )
 
 func main() {
@@ -679,7 +680,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v6"
+    "github.com/gateio/gateapi-go/v7"
 )
 
 func main() {

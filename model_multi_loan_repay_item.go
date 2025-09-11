@@ -15,5 +15,5 @@ type MultiLoanRepayItem struct {
 	// Size
 	Amount string `json:"amount,omitempty"`
 	// Repayment method, set to true for full repayment, false for partial repayment
-	RepaidAll bool `json:"repaid_all,omitempty"`
+	RepaidAll bool `json:"repaid_all"`
 }

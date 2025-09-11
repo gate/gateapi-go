@@ -328,7 +328,7 @@ ListDeliveryTrades Futures market transaction records
   - @param contract Futures contract
   - @param optional nil or *ListDeliveryTradesOpts - Optional Parameters:
   - @param "Limit" (optional.Int32) -  Maximum number of records returned in a single list
-  - @param "LastId" (optional.String) -  以上个列表的最后一条记录的 ID 作为下个列表的起点。 该字段不再继续支持，新的请求请使用 `from` 和 `to` 字段来限定时间范围
+  - @param "LastId" (optional.String) -  Use the ID of the last record in the previous list as the starting point for the next list.This field is no longer supported. For new requests, please use the fromand tofields to specify the time rang
   - @param "From" (optional.Int64) -  Specify starting time in Unix seconds. If not specified, `to` and `limit` will be used to limit response items. If items between `from` and `to` are more than `limit`, only `limit` number will be returned.
   - @param "To" (optional.Int64) -  Specify end time in Unix seconds, default to current time.
 
@@ -445,7 +445,7 @@ Return specified contract candlesticks. If prefix &#x60;contract&#x60; with &#x6
   - @param "From" (optional.Int64) -  Start time of candlesticks, formatted in Unix timestamp in seconds. Default to`to - 100 * interval` if not specified
   - @param "To" (optional.Int64) -  Specify the end time of the K-line chart, defaults to current time if not specified, note that the time format is Unix timestamp with second precision
   - @param "Limit" (optional.Int32) -  Maximum number of recent data points to return. `limit` conflicts with `from` and `to`. If either `from` or `to` is specified, request will be rejected.
-  - @param "Interval" (optional.String) -  Time interval between data points, note that 1w represents a natural week, 7d time is aligned with Unix initial timeTime interval between data points, note that 1w represents a natural week, 7d time is aligned with Unix initial timeweek, 7d time is aligned with Unix initial time
+  - @param "Interval" (optional.String) -  Time interval between data points, note that 1w represents a natural week, 7d time is aligned with Unix initial time
 
 @return []DeliveryCandlestick
 */
@@ -845,7 +845,7 @@ ListDeliveryAccountBook Query futures account change history
   - @param "Limit" (optional.Int32) -  Maximum number of records returned in a single list
   - @param "From" (optional.Int64) -  Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit)
   - @param "To" (optional.Int64) -  Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp
-  - @param "Type_" (optional.String) -  Changing Type: - dnw: Deposit & Withdraw - pnl: Profit & Loss by reducing position - fee: Trading fee - refr: Referrer rebate - fund: Funding - point_dnw: point_fee: POINT Trading fee - point_refr: POINT Referrer rebate
+  - @param "Type_" (optional.String) -  Change types: - dnw: Deposit and withdrawal - pnl: Profit and loss from position reduction - fee: Trading fees - refr: Referrer rebates - fund: Funding fees - point_dnw: Point card deposit and withdrawal - point_fee: Point card trading fees - point_refr: Point card referrer rebates
 
 @return []FuturesAccountBook
 */
@@ -1449,7 +1449,7 @@ Zero-fill orders cannot be retrieved 10 minutes after order cancellation
   - @param "Contract" (optional.String) -  Futures contract
   - @param "Limit" (optional.Int32) -  Maximum number of records returned in a single list
   - @param "Offset" (optional.Int32) -  List offset, starting from 0
-  - @param "LastId" (optional.String) -  Specify the currency name to query in batches, and support up to 100 pass parameters at a time
+  - @param "LastId" (optional.String) -  Use the ID of the last record in the previous list as the starting point for the next list  Operations based on custom IDs can only be checked when orders are pending. After orders are completed (filled/cancelled), they can be checked within 1 hour after completion. After expiration, only order IDs can be used
   - @param "CountTotal" (optional.Int32) -  Whether to return total number matched, defaults to 0 (no return)
 
 @return []FuturesOrder
@@ -1971,7 +1971,7 @@ GetMyDeliveryTrades Query personal trading records
   - @param "Order" (optional.Int64) -  Futures order ID, return related data only if specified
   - @param "Limit" (optional.Int32) -  Maximum number of records returned in a single list
   - @param "Offset" (optional.Int32) -  List offset, starting from 0
-  - @param "LastId" (optional.String) -  Specify the currency name to query in batches, and support up to 100 pass parameters at a time
+  - @param "LastId" (optional.String) -  Use the ID of the last record in the previous list as the starting point for the next list  Operations based on custom IDs can only be checked when orders are pending. After orders are completed (filled/cancelled), they can be checked within 1 hour after completion. After expiration, only order IDs can be used
   - @param "CountTotal" (optional.Int32) -  Whether to return total number matched, defaults to 0 (no return)
 
 @return []MyFuturesTrade
@@ -2423,7 +2423,7 @@ type ListDeliveryRiskLimitTiersOpts struct {
 
 /*
 ListDeliveryRiskLimitTiers Query risk limit tiers
-When the &#39;contract&#39; parameter is not passed, the default is to query the risk limits for the top 100 markets.&#39;Limit&#39; and &#39;offset&#39; correspond to pagination queries at the market level, not to the length of the returned array. This only takes effect empty.
+When the &#39;contract&#39; parameter is not passed, the default is to query the risk limits for the top 100 markets. &#39;Limit&#39; and &#39;offset&#39; correspond to pagination queries at the market level, not to the length of the returned array. This only takes effect when the contract parameter is empty.
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param settle Settle currency
   - @param optional nil or *ListDeliveryRiskLimitTiersOpts - Optional Parameters:

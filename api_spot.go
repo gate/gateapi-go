@@ -593,7 +593,7 @@ Supports querying by time range using &#x60;from&#x60; and &#x60;to&#x60; parame
   - @param currencyPair Currency pair
   - @param optional nil or *ListTradesOpts - Optional Parameters:
   - @param "Limit" (optional.Int32) -  Maximum number of items returned in list. Default: 100, minimum: 1, maximum: 1000
-  - @param "LastId" (optional.String) -  Specify the currency name to query in batches, and support up to 100 pass parameters at a time
+  - @param "LastId" (optional.String) -  Use the ID of the last record in the previous list as the starting point for the next list  Operations based on custom IDs can only be checked when orders are pending. After orders are completed (filled/cancelled), they can be checked within 1 hour after completion. After expiration, only order IDs can be used
   - @param "Reverse" (optional.Bool) -  Whether to retrieve data less than `last_id`. Default returns records greater than `last_id`.  Set to `true` to trace back market trade records, `false` to get latest trades.  No effect when `last_id` is not set.
   - @param "From" (optional.Int64) -  Start timestamp for the query
   - @param "To" (optional.Int64) -  End timestamp for the query, defaults to current time if not specified
