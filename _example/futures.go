@@ -7,7 +7,7 @@ import (
 	"time"
 
 	"github.com/antihax/optional"
-	"github.com/gate/gateapi-go/v5"
+	"github.com/gate/gateapi-go/v7"
 	"github.com/shopspring/decimal"
 )
 
