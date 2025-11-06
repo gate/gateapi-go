@@ -21,7 +21,7 @@ type CurrencyPair struct {
 	Quote string `json:"quote,omitempty"`
 	// Quote currency name
 	QuoteName string `json:"quote_name,omitempty"`
-	// Trading fee rate
+	// Trading fee rate(deprecated)
 	Fee string `json:"fee,omitempty"`
 	// Minimum amount of base currency to trade, `null` means no limit
 	MinBaseAmount string `json:"min_base_amount,omitempty"`

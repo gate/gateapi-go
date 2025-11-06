@@ -47,7 +47,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v7"
+    "github.com/gate/gateapi-go/v7"
 )
 
 func main() {
@@ -115,7 +115,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v7"
+    "github.com/gate/gateapi-go/v7"
 )
 
 func main() {
@@ -184,7 +184,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v7"
+    "github.com/gate/gateapi-go/v7"
 )
 
 func main() {
@@ -253,7 +253,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v7"
+    "github.com/gate/gateapi-go/v7"
 )
 
 func main() {
@@ -323,7 +323,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v7"
+    "github.com/gate/gateapi-go/v7"
 )
 
 func main() {
@@ -394,7 +394,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v7"
+    "github.com/gate/gateapi-go/v7"
 )
 
 func main() {
@@ -466,7 +466,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v7"
+    "github.com/gate/gateapi-go/v7"
 )
 
 func main() {
@@ -538,7 +538,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v7"
+    "github.com/gate/gateapi-go/v7"
 )
 
 func main() {
@@ -608,7 +608,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v7"
+    "github.com/gate/gateapi-go/v7"
 )
 
 func main() {
@@ -677,7 +677,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v7"
+    "github.com/gate/gateapi-go/v7"
 )
 
 func main() {
@@ -730,7 +730,7 @@ func main() {
 
 Get sub-account mode
 
-Unified account mode: - `classic`: Classic account mode - `multi_currency`: Multi-currency margin mode - `portfolio`: Portfolio margin mode
+Unified account mode: - `classic`: Classic account mode - `multi_currency`: Cross-currency margin mode - `portfolio`: Portfolio margin mode - `single_currency`: Single-currency margin mode
 
 ### Required Parameters
 
@@ -744,7 +744,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v7"
+    "github.com/gate/gateapi-go/v7"
 )
 
 func main() {

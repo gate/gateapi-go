@@ -9,9 +9,9 @@
 
 package gateapi
 
-// ETH2 Mining
+// ETH Mining
 type Eth2Swap struct {
-	// 1-Forward Swap (ETH -> ETH2), 2-Reverse Swap (ETH2 -> ETH)
+	// 1-Forward Swap (ETH -> GTETH), 2-Reverse Swap (GTETH -> ETH)
 	Side string `json:"side"`
 	// Swap Amount
 	Amount string `json:"amount"`

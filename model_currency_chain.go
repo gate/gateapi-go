@@ -26,4 +26,6 @@ type CurrencyChain struct {
 	IsWithdrawDisabled int32 `json:"is_withdraw_disabled,omitempty"`
 	// Withdrawal precision
 	Decimal string `json:"decimal,omitempty"`
+	// Whether to Include Tag
+	IsTag int32 `json:"is_tag,omitempty"`
 }

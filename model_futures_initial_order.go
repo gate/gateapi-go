@@ -16,7 +16,7 @@ type FuturesInitialOrder struct {
 	Size int64 `json:"size,omitempty"`
 	// Order price. Set to 0 to use market price
 	Price string `json:"price"`
-	// When all positions are closed in a single position mode, it must be set to true to perform the closing operation When partially closed positions in single-store mode/double-store mode, you can not set close, or close=false
+	// In One-way Mode, when closing all positions, this must be set to true to perform the closing operation When partially closing positions in One-way Mode or Hedge Mode, you can omit close or set close=false
 	Close bool `json:"close,omitempty"`
 	// Time in force strategy, default is gtc, market orders currently only support ioc mode  - gtc: GoodTillCancelled - ioc: ImmediateOrCancelled
 	Tif string `json:"tif,omitempty"`
@@ -24,7 +24,7 @@ type FuturesInitialOrder struct {
 	Text string `json:"text,omitempty"`
 	// When set to true, perform automatic position reduction operation. Set to true to ensure that the order will not open a new position, and is only used to close or reduce positions
 	ReduceOnly bool `json:"reduce_only,omitempty"`
-	// Single position mode: auto_size is not required Dual position mode full closing (size=0): auto_size must be set, close_long for closing long positions, close_short for closing short positions Dual position mode partial closing (size≠0): auto_size is not required
+	// One-way Mode: auto_size is not required Hedge Mode full closing (size=0): auto_size must be set, close_long for closing long positions, close_short for closing short positions Hedge Mode partial closing (size≠0): auto_size is not required
 	AutoSize string `json:"auto_size,omitempty"`
 	// Is the order reduce-only
 	IsReduceOnly bool `json:"is_reduce_only,omitempty"`

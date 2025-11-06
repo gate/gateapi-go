@@ -14,8 +14,6 @@ type DepositRecord struct {
 	Id string `json:"id,omitempty"`
 	// Hash record of the withdrawal
 	Txid string `json:"txid,omitempty"`
-	// Client order id, up to 32 length and can only include 0-9, A-Z, a-z, underscore(_), hyphen(-) or dot(.)
-	WithdrawOrderId string `json:"withdraw_order_id,omitempty"`
 	// Operation time
 	Timestamp string `json:"timestamp,omitempty"`
 	// Token amount
@@ -26,7 +24,7 @@ type DepositRecord struct {
 	Address string `json:"address,omitempty"`
 	// Additional remarks with regards to the withdrawal
 	Memo string `json:"memo,omitempty"`
-	// Trading Status  - REVIEW: Recharge review (compliance review) - PEND: Processing - DONE: Waiting for funds to be unlocked - INVALID: Invalid data - TRACK: Track the number of confirmations, waiting to add funds to the user (spot) - BLOCKED: Rejected Recharge - DEP_CREDITED: Recharge to account, withdrawal is not unlocked
+	// Transaction Status  - BLOCKED: Deposit Blocked - DEP_CREDITED: Deposit Credited, Withdrawal Pending Unlock - DONE: Awaiting Fund Unlock - FINAL: Funds Credited to Spot Account - INVALID: Invalid Transaction - MANUAL: Manual Review Required - PEND: Processing - REVIEW: Under Compliance Review - TRACK: Tracking Block Confirmations, Pending Spot Account Credit
 	Status string `json:"status,omitempty"`
 	// Name of the chain used in withdrawals
 	Chain string `json:"chain"`

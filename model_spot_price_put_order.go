@@ -16,7 +16,7 @@ type SpotPricePutOrder struct {
 	Side string `json:"side"`
 	// Order price
 	Price string `json:"price"`
-	// Trading quantity When `type` is `limit`, it refers to the base currency (the currency being traded), such as `BTC` in `BTC_USDT` When `type` is `market`, it refers to different currencies based on the side: - `side`: `buy` refers to quote currency, `BTC_USDT` means `USDT` - `side`: `sell` refers to base currency, `BTC_USDT` means `BTC`
+	// Trading quantity, refers to the trading quantity of the trading currency, i.e., the currency that needs to be traded, for example, the quantity of BTC in BTC_USDT.
 	Amount string `json:"amount"`
 	// Trading account type. Unified account must be set to `unified`  - normal: spot trading - margin: margin trading - unified: unified account
 	Account string `json:"account"`

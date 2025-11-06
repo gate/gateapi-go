@@ -4,8 +4,8 @@ All URIs are relative to *https://api.gateio.ws/api/v4*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**SwapETH2**](EarnApi.md#SwapETH2) | **Post** /earn/staking/eth2/swap | ETH2 swap
-[**RateListETH2**](EarnApi.md#RateListETH2) | **Get** /earn/staking/eth2/rate_records | ETH2 historical return rate query
+[**SwapETH2**](EarnApi.md#SwapETH2) | **Post** /earn/staking/eth2/swap | ETH swap
+[**RateListETH2**](EarnApi.md#RateListETH2) | **Get** /earn/staking/eth2/rate_records | GTETH historical return rate query
 [**ListDualInvestmentPlans**](EarnApi.md#ListDualInvestmentPlans) | **Get** /earn/dual/investment_plan | Dual Investment product list
 [**ListDualOrders**](EarnApi.md#ListDualOrders) | **Get** /earn/dual/orders | Dual Investment order list
 [**PlaceDualOrder**](EarnApi.md#PlaceDualOrder) | **Post** /earn/dual/orders | Place Dual Investment order
@@ -14,13 +14,16 @@ Method | HTTP request | Description
 [**PlaceStructuredOrder**](EarnApi.md#PlaceStructuredOrder) | **Post** /earn/structured/orders | Place Structured Product Order
 [**FindCoin**](EarnApi.md#FindCoin) | **Get** /earn/staking/coins | Staking coins
 [**SwapStakingCoin**](EarnApi.md#SwapStakingCoin) | **Post** /earn/staking/swap | On-chain token swap for earned coins
+[**OrderList**](EarnApi.md#OrderList) | **Get** /earn/staking/order_list | List of on-chain coin-earning orders
+[**AwardList**](EarnApi.md#AwardList) | **Get** /earn/staking/award_list | On-chain coin-earning dividend records
+[**AssetList**](EarnApi.md#AssetList) | **Get** /earn/staking/assets | On-chain coin-earning assets
 
 
 ## SwapETH2
 
 > SwapETH2(ctx, eth2Swap)
 
-ETH2 swap
+ETH swap
 
 ### Required Parameters
 
@@ -38,7 +41,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v7"
+    "github.com/gate/gateapi-go/v7"
 )
 
 func main() {
@@ -89,7 +92,7 @@ func main() {
 
 > []Eth2RateList RateListETH2(ctx, )
 
-ETH2 historical return rate query
+GTETH historical return rate query
 
 Query ETH earnings rate records for the last 31 days
 
@@ -105,7 +108,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v7"
+    "github.com/gate/gateapi-go/v7"
 )
 
 func main() {
@@ -181,7 +184,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v7"
+    "github.com/gate/gateapi-go/v7"
 )
 
 func main() {
@@ -254,7 +257,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v7"
+    "github.com/gate/gateapi-go/v7"
 )
 
 func main() {
@@ -322,7 +325,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v7"
+    "github.com/gate/gateapi-go/v7"
 )
 
 func main() {
@@ -402,7 +405,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v7"
+    "github.com/gate/gateapi-go/v7"
 )
 
 func main() {
@@ -476,7 +479,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v7"
+    "github.com/gate/gateapi-go/v7"
 )
 
 func main() {
@@ -544,7 +547,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v7"
+    "github.com/gate/gateapi-go/v7"
 )
 
 func main() {
@@ -593,7 +596,7 @@ func main() {
 
 ## FindCoin
 
-> map[string]interface{} FindCoin(ctx, findCoin)
+> []map[string]interface{} FindCoin(ctx, findCoin)
 
 Staking coins
 
@@ -613,7 +616,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v7"
+    "github.com/gate/gateapi-go/v7"
 )
 
 func main() {
@@ -645,7 +648,7 @@ func main() {
 
 ### Return type
 
-**map[string]interface{}**
+**[]map[string]interface{}**
 
 ### Authorization
 
@@ -682,7 +685,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v7"
+    "github.com/gate/gateapi-go/v7"
 )
 
 func main() {
@@ -723,6 +726,239 @@ func main() {
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+## OrderList
+
+> OrderListStruct OrderList(ctx, optional)
+
+List of on-chain coin-earning orders
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**optional** | **OrderListOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+
+Optional parameters are passed through a pointer to a OrderListOpts struct
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**pid** | **optional.Int32**| Product ID | 
+**coin** | **optional.String**| Currency name | 
+**type_** | **optional.Int32**| Type 0-staking 1-redemption | 
+**page** | **optional.Int32**| Page number | [default to 1]
+
+### Example
+
+```golang
+package main
+
+import (
+    "context"
+    "fmt"
+
+    "github.com/gate/gateapi-go/v7"
+)
+
+func main() {
+    client := gateapi.NewAPIClient(gateapi.NewConfiguration())
+    // uncomment the next line if your are testing against testnet
+    // client.ChangeBasePath("https://fx-api-testnet.gateio.ws/api/v4")
+    ctx := context.WithValue(context.Background(),
+                             gateapi.ContextGateAPIV4,
+                             gateapi.GateAPIV4{
+                                 Key:    "YOUR_API_KEY",
+                                 Secret: "YOUR_API_SECRET",
+                             }
+                            )
+    
+    result, _, err := client.EarnApi.OrderList(ctx, nil)
+    if err != nil {
+        if e, ok := err.(gateapi.GateAPIError); ok {
+            fmt.Printf("gate api error: %s\n", e.Error())
+        } else {
+            fmt.Printf("generic error: %s\n", err.Error())
+        }
+    } else {
+        fmt.Println(result)
+    }
+}
+```
+
+
+### Return type
+
+[**OrderListStruct**](OrderListStruct.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+## AwardList
+
+> AwardListStruct AwardList(ctx, optional)
+
+On-chain coin-earning dividend records
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**optional** | **AwardListOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+
+Optional parameters are passed through a pointer to a AwardListOpts struct
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**pid** | **optional.Int32**| Product ID | 
+**coin** | **optional.String**| Currency name | 
+**page** | **optional.Int32**| Page number | [default to 1]
+
+### Example
+
+```golang
+package main
+
+import (
+    "context"
+    "fmt"
+
+    "github.com/gate/gateapi-go/v7"
+)
+
+func main() {
+    client := gateapi.NewAPIClient(gateapi.NewConfiguration())
+    // uncomment the next line if your are testing against testnet
+    // client.ChangeBasePath("https://fx-api-testnet.gateio.ws/api/v4")
+    ctx := context.WithValue(context.Background(),
+                             gateapi.ContextGateAPIV4,
+                             gateapi.GateAPIV4{
+                                 Key:    "YOUR_API_KEY",
+                                 Secret: "YOUR_API_SECRET",
+                             }
+                            )
+    
+    result, _, err := client.EarnApi.AwardList(ctx, nil)
+    if err != nil {
+        if e, ok := err.(gateapi.GateAPIError); ok {
+            fmt.Printf("gate api error: %s\n", e.Error())
+        } else {
+            fmt.Printf("generic error: %s\n", err.Error())
+        }
+    } else {
+        fmt.Println(result)
+    }
+}
+```
+
+
+### Return type
+
+[**AwardListStruct**](AwardListStruct.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+## AssetList
+
+> []map[string]interface{} AssetList(ctx, optional)
+
+On-chain coin-earning assets
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**optional** | **AssetListOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+
+Optional parameters are passed through a pointer to a AssetListOpts struct
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**coin** | **optional.String**| Currency name | 
+
+### Example
+
+```golang
+package main
+
+import (
+    "context"
+    "fmt"
+
+    "github.com/gate/gateapi-go/v7"
+)
+
+func main() {
+    client := gateapi.NewAPIClient(gateapi.NewConfiguration())
+    // uncomment the next line if your are testing against testnet
+    // client.ChangeBasePath("https://fx-api-testnet.gateio.ws/api/v4")
+    ctx := context.WithValue(context.Background(),
+                             gateapi.ContextGateAPIV4,
+                             gateapi.GateAPIV4{
+                                 Key:    "YOUR_API_KEY",
+                                 Secret: "YOUR_API_SECRET",
+                             }
+                            )
+    
+    result, _, err := client.EarnApi.AssetList(ctx, nil)
+    if err != nil {
+        if e, ok := err.(gateapi.GateAPIError); ok {
+            fmt.Printf("gate api error: %s\n", e.Error())
+        } else {
+            fmt.Printf("generic error: %s\n", err.Error())
+        }
+    } else {
+        fmt.Println(result)
+    }
+}
+```
+
+
+### Return type
+
+**[]map[string]interface{}**
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

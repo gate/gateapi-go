@@ -27,10 +27,10 @@ Method | HTTP request | Description
 [**UpdateDualCompPositionCrossMode**](FuturesApi.md#UpdateDualCompPositionCrossMode) | **Post** /futures/{settle}/dual_comp/positions/cross_mode | Switch Between Cross and Isolated Margin Modes Under Hedge Mode
 [**UpdatePositionRiskLimit**](FuturesApi.md#UpdatePositionRiskLimit) | **Post** /futures/{settle}/positions/{contract}/risk_limit | Update position risk limit
 [**SetDualMode**](FuturesApi.md#SetDualMode) | **Post** /futures/{settle}/dual_mode | Set position mode
-[**GetDualModePosition**](FuturesApi.md#GetDualModePosition) | **Get** /futures/{settle}/dual_comp/positions/{contract} | Get position information in dual mode
-[**UpdateDualModePositionMargin**](FuturesApi.md#UpdateDualModePositionMargin) | **Post** /futures/{settle}/dual_comp/positions/{contract}/margin | Update position margin in dual mode
-[**UpdateDualModePositionLeverage**](FuturesApi.md#UpdateDualModePositionLeverage) | **Post** /futures/{settle}/dual_comp/positions/{contract}/leverage | Update position leverage in dual mode
-[**UpdateDualModePositionRiskLimit**](FuturesApi.md#UpdateDualModePositionRiskLimit) | **Post** /futures/{settle}/dual_comp/positions/{contract}/risk_limit | Update position risk limit in dual mode
+[**GetDualModePosition**](FuturesApi.md#GetDualModePosition) | **Get** /futures/{settle}/dual_comp/positions/{contract} | Get position information in Hedge Mode
+[**UpdateDualModePositionMargin**](FuturesApi.md#UpdateDualModePositionMargin) | **Post** /futures/{settle}/dual_comp/positions/{contract}/margin | Update position margin in Hedge Mode
+[**UpdateDualModePositionLeverage**](FuturesApi.md#UpdateDualModePositionLeverage) | **Post** /futures/{settle}/dual_comp/positions/{contract}/leverage | Update position leverage in Hedge Mode
+[**UpdateDualModePositionRiskLimit**](FuturesApi.md#UpdateDualModePositionRiskLimit) | **Post** /futures/{settle}/dual_comp/positions/{contract}/risk_limit | Update position risk limit in Hedge Mode
 [**ListFuturesOrders**](FuturesApi.md#ListFuturesOrders) | **Get** /futures/{settle}/orders | Query futures order list
 [**CreateFuturesOrder**](FuturesApi.md#CreateFuturesOrder) | **Post** /futures/{settle}/orders | Place futures order
 [**CancelFuturesOrders**](FuturesApi.md#CancelFuturesOrders) | **Delete** /futures/{settle}/orders | Cancel all orders with &#39;open&#39; status
@@ -49,10 +49,12 @@ Method | HTTP request | Description
 [**CancelBatchFutureOrders**](FuturesApi.md#CancelBatchFutureOrders) | **Post** /futures/{settle}/batch_cancel_orders | Cancel batch orders by specified ID list
 [**AmendBatchFutureOrders**](FuturesApi.md#AmendBatchFutureOrders) | **Post** /futures/{settle}/batch_amend_orders | Batch modify orders by specified IDs
 [**GetFuturesRiskLimitTable**](FuturesApi.md#GetFuturesRiskLimitTable) | **Get** /futures/{settle}/risk_limit_table | Query risk limit table by table_id
+[**CreateFuturesBBOOrder**](FuturesApi.md#CreateFuturesBBOOrder) | **Post** /futures/{settle}/bbo_orders | Level-based BBO Contract Order Placement
 [**ListPriceTriggeredOrders**](FuturesApi.md#ListPriceTriggeredOrders) | **Get** /futures/{settle}/price_orders | Query auto order list
 [**CreatePriceTriggeredOrder**](FuturesApi.md#CreatePriceTriggeredOrder) | **Post** /futures/{settle}/price_orders | Create price-triggered order
 [**CancelPriceTriggeredOrderList**](FuturesApi.md#CancelPriceTriggeredOrderList) | **Delete** /futures/{settle}/price_orders | Cancel all auto orders
 [**GetPriceTriggeredOrder**](FuturesApi.md#GetPriceTriggeredOrder) | **Get** /futures/{settle}/price_orders/{order_id} | Query single auto order details
+[**UpdatePriceTriggeredOrder**](FuturesApi.md#UpdatePriceTriggeredOrder) | **Put** /futures/{settle}/price_orders/{order_id} | Modify a Single Auto Order
 [**CancelPriceTriggeredOrder**](FuturesApi.md#CancelPriceTriggeredOrder) | **Delete** /futures/{settle}/price_orders/{order_id} | Cancel single auto order
 
 
@@ -88,7 +90,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v7"
+    "github.com/gate/gateapi-go/v7"
 )
 
 func main() {
@@ -152,7 +154,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v7"
+    "github.com/gate/gateapi-go/v7"
 )
 
 func main() {
@@ -230,7 +232,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v7"
+    "github.com/gate/gateapi-go/v7"
 )
 
 func main() {
@@ -308,7 +310,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v7"
+    "github.com/gate/gateapi-go/v7"
 )
 
 func main() {
@@ -388,7 +390,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v7"
+    "github.com/gate/gateapi-go/v7"
 )
 
 func main() {
@@ -467,7 +469,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v7"
+    "github.com/gate/gateapi-go/v7"
 )
 
 func main() {
@@ -540,7 +542,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v7"
+    "github.com/gate/gateapi-go/v7"
 )
 
 func main() {
@@ -615,7 +617,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v7"
+    "github.com/gate/gateapi-go/v7"
 )
 
 func main() {
@@ -688,7 +690,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v7"
+    "github.com/gate/gateapi-go/v7"
 )
 
 func main() {
@@ -763,7 +765,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v7"
+    "github.com/gate/gateapi-go/v7"
 )
 
 func main() {
@@ -828,7 +830,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v7"
+    "github.com/gate/gateapi-go/v7"
 )
 
 func main() {
@@ -906,7 +908,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v7"
+    "github.com/gate/gateapi-go/v7"
 )
 
 func main() {
@@ -982,7 +984,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v7"
+    "github.com/gate/gateapi-go/v7"
 )
 
 func main() {
@@ -1045,7 +1047,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v7"
+    "github.com/gate/gateapi-go/v7"
 )
 
 func main() {
@@ -1130,7 +1132,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v7"
+    "github.com/gate/gateapi-go/v7"
 )
 
 func main() {
@@ -1210,7 +1212,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v7"
+    "github.com/gate/gateapi-go/v7"
 )
 
 func main() {
@@ -1280,7 +1282,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v7"
+    "github.com/gate/gateapi-go/v7"
 )
 
 func main() {
@@ -1352,7 +1354,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v7"
+    "github.com/gate/gateapi-go/v7"
 )
 
 func main() {
@@ -1435,7 +1437,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v7"
+    "github.com/gate/gateapi-go/v7"
 )
 
 func main() {
@@ -1507,7 +1509,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v7"
+    "github.com/gate/gateapi-go/v7"
 )
 
 func main() {
@@ -1578,7 +1580,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v7"
+    "github.com/gate/gateapi-go/v7"
 )
 
 func main() {
@@ -1650,7 +1652,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v7"
+    "github.com/gate/gateapi-go/v7"
 )
 
 func main() {
@@ -1705,7 +1707,7 @@ func main() {
 
 Set position mode
 
-The prerequisite for changing mode is that all positions have no holdings and no pending orders
+The prerequisite for changing mode is that there are no open positions and no open orders
 
 ### Required Parameters
 
@@ -1713,7 +1715,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **settle** | **string**| Settle currency | 
-**dualMode** | **bool**| Whether to enable dual mode | 
+**dualMode** | **bool**| Whether to enable Hedge Mode | 
 
 ### Example
 
@@ -1724,7 +1726,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v7"
+    "github.com/gate/gateapi-go/v7"
 )
 
 func main() {
@@ -1739,7 +1741,7 @@ func main() {
                              }
                             )
     settle := "usdt" // string - Settle currency
-    dualMode := true // bool - Whether to enable dual mode
+    dualMode := true // bool - Whether to enable Hedge Mode
     
     result, _, err := client.FuturesApi.SetDualMode(ctx, settle, dualMode)
     if err != nil {
@@ -1776,7 +1778,7 @@ func main() {
 
 > []Position GetDualModePosition(ctx, settle, contract)
 
-Get position information in dual mode
+Get position information in Hedge Mode
 
 ### Required Parameters
 
@@ -1795,7 +1797,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v7"
+    "github.com/gate/gateapi-go/v7"
 )
 
 func main() {
@@ -1847,7 +1849,7 @@ func main() {
 
 > []Position UpdateDualModePositionMargin(ctx, settle, contract, change, dualSide)
 
-Update position margin in dual mode
+Update position margin in Hedge Mode
 
 ### Required Parameters
 
@@ -1868,7 +1870,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v7"
+    "github.com/gate/gateapi-go/v7"
 )
 
 func main() {
@@ -1922,7 +1924,7 @@ func main() {
 
 > []Position UpdateDualModePositionLeverage(ctx, settle, contract, leverage, optional)
 
-Update position leverage in dual mode
+Update position leverage in Hedge Mode
 
 ### Required Parameters
 
@@ -1951,7 +1953,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v7"
+    "github.com/gate/gateapi-go/v7"
 )
 
 func main() {
@@ -2004,7 +2006,7 @@ func main() {
 
 > []Position UpdateDualModePositionRiskLimit(ctx, settle, contract, riskLimit)
 
-Update position risk limit in dual mode
+Update position risk limit in Hedge Mode
 
 ### Required Parameters
 
@@ -2024,7 +2026,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v7"
+    "github.com/gate/gateapi-go/v7"
 )
 
 func main() {
@@ -2110,7 +2112,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v7"
+    "github.com/gate/gateapi-go/v7"
 )
 
 func main() {
@@ -2192,7 +2194,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v7"
+    "github.com/gate/gateapi-go/v7"
 )
 
 func main() {
@@ -2277,7 +2279,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v7"
+    "github.com/gate/gateapi-go/v7"
 )
 
 func main() {
@@ -2360,7 +2362,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v7"
+    "github.com/gate/gateapi-go/v7"
 )
 
 func main() {
@@ -2441,7 +2443,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v7"
+    "github.com/gate/gateapi-go/v7"
 )
 
 func main() {
@@ -2514,7 +2516,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v7"
+    "github.com/gate/gateapi-go/v7"
 )
 
 func main() {
@@ -2595,7 +2597,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v7"
+    "github.com/gate/gateapi-go/v7"
 )
 
 func main() {
@@ -2676,7 +2678,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v7"
+    "github.com/gate/gateapi-go/v7"
 )
 
 func main() {
@@ -2761,7 +2763,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v7"
+    "github.com/gate/gateapi-go/v7"
 )
 
 func main() {
@@ -2844,7 +2846,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v7"
+    "github.com/gate/gateapi-go/v7"
 )
 
 func main() {
@@ -2928,7 +2930,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v7"
+    "github.com/gate/gateapi-go/v7"
 )
 
 func main() {
@@ -3011,7 +3013,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v7"
+    "github.com/gate/gateapi-go/v7"
 )
 
 func main() {
@@ -3094,7 +3096,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v7"
+    "github.com/gate/gateapi-go/v7"
 )
 
 func main() {
@@ -3166,7 +3168,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v7"
+    "github.com/gate/gateapi-go/v7"
 )
 
 func main() {
@@ -3245,7 +3247,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v7"
+    "github.com/gate/gateapi-go/v7"
 )
 
 func main() {
@@ -3326,7 +3328,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v7"
+    "github.com/gate/gateapi-go/v7"
 )
 
 func main() {
@@ -3408,7 +3410,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v7"
+    "github.com/gate/gateapi-go/v7"
 )
 
 func main() {
@@ -3481,7 +3483,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v7"
+    "github.com/gate/gateapi-go/v7"
 )
 
 func main() {
@@ -3523,6 +3525,88 @@ No authorization required
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
+## CreateFuturesBBOOrder
+
+> FuturesOrder CreateFuturesBBOOrder(ctx, settle, futuresBboOrder, optional)
+
+Level-based BBO Contract Order Placement
+
+Compared to the futures trading order placement interface (futures/{settle}/orders), it adds the `level` and `direction` parameters.
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**settle** | **string**| Settle currency | 
+**futuresBboOrder** | [**FuturesBboOrder**](FuturesBboOrder.md)|  | 
+**optional** | **CreateFuturesBBOOrderOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+
+Optional parameters are passed through a pointer to a CreateFuturesBBOOrderOpts struct
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**xGateExptime** | **optional.String**| Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected | 
+
+### Example
+
+```golang
+package main
+
+import (
+    "context"
+    "fmt"
+
+    "github.com/gate/gateapi-go/v7"
+)
+
+func main() {
+    client := gateapi.NewAPIClient(gateapi.NewConfiguration())
+    // uncomment the next line if your are testing against testnet
+    // client.ChangeBasePath("https://fx-api-testnet.gateio.ws/api/v4")
+    ctx := context.WithValue(context.Background(),
+                             gateapi.ContextGateAPIV4,
+                             gateapi.GateAPIV4{
+                                 Key:    "YOUR_API_KEY",
+                                 Secret: "YOUR_API_SECRET",
+                             }
+                            )
+    settle := "usdt" // string - Settle currency
+    futuresBboOrder := gateapi.FuturesBboOrder{} // FuturesBboOrder - 
+    
+    result, _, err := client.FuturesApi.CreateFuturesBBOOrder(ctx, settle, futuresBboOrder, nil)
+    if err != nil {
+        if e, ok := err.(gateapi.GateAPIError); ok {
+            fmt.Printf("gate api error: %s\n", e.Error())
+        } else {
+            fmt.Printf("generic error: %s\n", err.Error())
+        }
+    } else {
+        fmt.Println(result)
+    }
+}
+```
+
+
+### Return type
+
+[**FuturesOrder**](FuturesOrder.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
 ## ListPriceTriggeredOrders
 
 > []FuturesPriceTriggeredOrder ListPriceTriggeredOrders(ctx, settle, status, optional)
@@ -3557,7 +3641,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v7"
+    "github.com/gate/gateapi-go/v7"
 )
 
 func main() {
@@ -3628,7 +3712,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v7"
+    "github.com/gate/gateapi-go/v7"
 )
 
 func main() {
@@ -3707,7 +3791,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v7"
+    "github.com/gate/gateapi-go/v7"
 )
 
 func main() {
@@ -3777,7 +3861,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v7"
+    "github.com/gate/gateapi-go/v7"
 )
 
 func main() {
@@ -3825,6 +3909,79 @@ func main() {
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
+## UpdatePriceTriggeredOrder
+
+> TriggerOrderResponse UpdatePriceTriggeredOrder(ctx, settle, orderId, futuresUpdatePriceTriggeredOrder)
+
+Modify a Single Auto Order
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**settle** | **string**| Settle currency | 
+**orderId** | **string**| ID returned when order is successfully created | 
+**futuresUpdatePriceTriggeredOrder** | [**FuturesUpdatePriceTriggeredOrder**](FuturesUpdatePriceTriggeredOrder.md)|  | 
+
+### Example
+
+```golang
+package main
+
+import (
+    "context"
+    "fmt"
+
+    "github.com/gate/gateapi-go/v7"
+)
+
+func main() {
+    client := gateapi.NewAPIClient(gateapi.NewConfiguration())
+    // uncomment the next line if your are testing against testnet
+    // client.ChangeBasePath("https://fx-api-testnet.gateio.ws/api/v4")
+    ctx := context.WithValue(context.Background(),
+                             gateapi.ContextGateAPIV4,
+                             gateapi.GateAPIV4{
+                                 Key:    "YOUR_API_KEY",
+                                 Secret: "YOUR_API_SECRET",
+                             }
+                            )
+    settle := "usdt" // string - Settle currency
+    orderId := "orderId_example" // string - ID returned when order is successfully created
+    futuresUpdatePriceTriggeredOrder := gateapi.FuturesUpdatePriceTriggeredOrder{} // FuturesUpdatePriceTriggeredOrder - 
+    
+    result, _, err := client.FuturesApi.UpdatePriceTriggeredOrder(ctx, settle, orderId, futuresUpdatePriceTriggeredOrder)
+    if err != nil {
+        if e, ok := err.(gateapi.GateAPIError); ok {
+            fmt.Printf("gate api error: %s\n", e.Error())
+        } else {
+            fmt.Printf("generic error: %s\n", err.Error())
+        }
+    } else {
+        fmt.Println(result)
+    }
+}
+```
+
+
+### Return type
+
+[**TriggerOrderResponse**](TriggerOrderResponse.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
 ## CancelPriceTriggeredOrder
 
 > FuturesPriceTriggeredOrder CancelPriceTriggeredOrder(ctx, settle, orderId)
@@ -3848,7 +4005,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v7"
+    "github.com/gate/gateapi-go/v7"
 )
 
 func main() {

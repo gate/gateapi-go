@@ -33,7 +33,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v7"
+    "github.com/gate/gateapi-go/v7"
 )
 
 func main() {
@@ -104,7 +104,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v7"
+    "github.com/gate/gateapi-go/v7"
 )
 
 func main() {
@@ -153,7 +153,7 @@ func main() {
 
 ## CancelWithdrawal
 
-> LedgerRecord CancelWithdrawal(ctx, withdrawalId)
+> WithdrawalsDel CancelWithdrawal(ctx, withdrawalId)
 
 Cancel withdrawal with specified ID
 
@@ -173,7 +173,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v7"
+    "github.com/gate/gateapi-go/v7"
 )
 
 func main() {
@@ -205,7 +205,7 @@ func main() {
 
 ### Return type
 
-[**LedgerRecord**](LedgerRecord.md)
+[**WithdrawalsDel**](WithdrawalsDel.md)
 
 ### Authorization
 

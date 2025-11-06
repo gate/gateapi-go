@@ -61,7 +61,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v7"
+    "github.com/gate/gateapi-go/v7"
 )
 
 func main() {
@@ -129,7 +129,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v7"
+    "github.com/gate/gateapi-go/v7"
 )
 
 func main() {
@@ -198,7 +198,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v7"
+    "github.com/gate/gateapi-go/v7"
 )
 
 func main() {
@@ -267,7 +267,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v7"
+    "github.com/gate/gateapi-go/v7"
 )
 
 func main() {
@@ -336,7 +336,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v7"
+    "github.com/gate/gateapi-go/v7"
 )
 
 func main() {
@@ -416,7 +416,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v7"
+    "github.com/gate/gateapi-go/v7"
 )
 
 func main() {
@@ -486,7 +486,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v7"
+    "github.com/gate/gateapi-go/v7"
 )
 
 func main() {
@@ -566,7 +566,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v7"
+    "github.com/gate/gateapi-go/v7"
 )
 
 func main() {
@@ -647,7 +647,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v7"
+    "github.com/gate/gateapi-go/v7"
 )
 
 func main() {
@@ -713,7 +713,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v7"
+    "github.com/gate/gateapi-go/v7"
 )
 
 func main() {
@@ -779,7 +779,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v7"
+    "github.com/gate/gateapi-go/v7"
 )
 
 func main() {
@@ -849,7 +849,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v7"
+    "github.com/gate/gateapi-go/v7"
 )
 
 func main() {
@@ -920,7 +920,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v7"
+    "github.com/gate/gateapi-go/v7"
 )
 
 func main() {
@@ -985,7 +985,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v7"
+    "github.com/gate/gateapi-go/v7"
 )
 
 func main() {
@@ -1043,7 +1043,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v7"
+    "github.com/gate/gateapi-go/v7"
 )
 
 func main() {
@@ -1107,7 +1107,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v7"
+    "github.com/gate/gateapi-go/v7"
 )
 
 func main() {
@@ -1170,7 +1170,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v7"
+    "github.com/gate/gateapi-go/v7"
 )
 
 func main() {
@@ -1249,7 +1249,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v7"
+    "github.com/gate/gateapi-go/v7"
 )
 
 func main() {
@@ -1317,7 +1317,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v7"
+    "github.com/gate/gateapi-go/v7"
 )
 
 func main() {
@@ -1394,7 +1394,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v7"
+    "github.com/gate/gateapi-go/v7"
 )
 
 func main() {
@@ -1467,7 +1467,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v7"
+    "github.com/gate/gateapi-go/v7"
 )
 
 func main() {
@@ -1530,7 +1530,7 @@ import (
     "context"
     "fmt"
 
-    "github.com/gateio/gateapi-go/v7"
+    "github.com/gate/gateapi-go/v7"
 )
 
 func main() {

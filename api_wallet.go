@@ -27,6 +27,7 @@ type WalletApiService service
 
 /*
 ListCurrencyChains Query chains supported for specified currency
+API operations are not supported for tokens with low liquidity or extremely low value. Please use the Web or App interface to query and process.
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param currency Currency name
 
@@ -976,6 +977,7 @@ type ListWithdrawStatusOpts struct {
 
 /*
 ListWithdrawStatus Query withdrawal status
+API operations are not supported for tokens with low liquidity or extremely low value. Please use the Web or App interface to query and process.
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param optional nil or *ListWithdrawStatusOpts - Optional Parameters:
   - @param "Currency" (optional.String) -  Query by specified currency name

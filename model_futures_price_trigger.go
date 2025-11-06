@@ -15,9 +15,9 @@ type FuturesPriceTrigger struct {
 	// Reference price type. 0 - Latest trade price, 1 - Mark price, 2 - Index price
 	PriceType int32 `json:"price_type,omitempty"`
 	// Price value for price trigger, or spread value for spread trigger
-	Price string `json:"price,omitempty"`
+	Price string `json:"price"`
 	// Price Condition Type  - 1: Trigger when the price calculated based on `strategy_type` and `price_type` is greater than or equal to `Trigger.Price`, while Trigger.Price must > last_price - 2: Trigger when the price calculated based on `strategy_type` and `price_type` is less than or equal to `Trigger.Price`, and Trigger.Price must < last_price
-	Rule int32 `json:"rule,omitempty"`
+	Rule int32 `json:"rule"`
 	// Maximum wait time for trigger condition (in seconds). Order will be cancelled if timeout
 	Expiration int32 `json:"expiration,omitempty"`
 }

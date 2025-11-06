@@ -4,7 +4,7 @@ import (
 	"context"
 
 	"github.com/antihax/optional"
-	"github.com/gateio/gateapi-go/v5"
+	"github.com/gate/gateapi-go/v5"
 	"github.com/shopspring/decimal"
 )
 

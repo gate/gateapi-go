@@ -2361,7 +2361,7 @@ By default query of transaction records for spot, unified account and warehouse-
   - @param "Limit" (optional.Int32) -  Maximum number of items returned in list. Default: 100, minimum: 1, maximum: 1000
   - @param "Page" (optional.Int32) -  Page number
   - @param "OrderId" (optional.String) -  Filter trades with specified order ID. `currency_pair` is also required if this field is present
-  - @param "Account" (optional.String) -  Specify query account
+  - @param "Account" (optional.String) -  The accountparameter has been deprecated. The interface supports querying all transaction records of the account.
   - @param "From" (optional.Int64) -  Start timestamp for the query
   - @param "To" (optional.Int64) -  End timestamp for the query, defaults to current time if not specified
 

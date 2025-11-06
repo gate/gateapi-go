@@ -218,16 +218,16 @@ CancelWithdrawal Cancel withdrawal with specified ID
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param withdrawalId
 
-@return LedgerRecord
+@return WithdrawalsDel
 */
-func (a *WithdrawalApiService) CancelWithdrawal(ctx context.Context, withdrawalId string) (LedgerRecord, *http.Response, error) {
+func (a *WithdrawalApiService) CancelWithdrawal(ctx context.Context, withdrawalId string) (WithdrawalsDel, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  LedgerRecord
+		localVarReturnValue  WithdrawalsDel
 	)
 
 	// create path and map variables

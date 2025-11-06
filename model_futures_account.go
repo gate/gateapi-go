@@ -18,13 +18,13 @@ type FuturesAccount struct {
 	PositionMargin string `json:"position_margin,omitempty"`
 	// Order margin of unfinished orders
 	OrderMargin string `json:"order_margin,omitempty"`
-	// Available balance for transferring or trading (including bonus. Bonus cannot be withdrawn, so transfer amount needs to deduct bonus)
+	// Refers to the available withdrawal or trading amount in per-position, specifically the per-position available balance under the unified account that includes the credit line (which incorporates trial funds; since trial funds cannot be withdrawn, the actual withdrawal amount needs to deduct the trial fund portion when processing withdrawals)
 	Available string `json:"available,omitempty"`
 	// Point card amount
 	Point string `json:"point,omitempty"`
 	// Settlement currency
 	Currency string `json:"currency,omitempty"`
-	// Whether dual mode is enabled
+	// Whether Hedge Mode is enabled
 	InDualMode bool `json:"in_dual_mode,omitempty"`
 	// Position mode: single - one-way, dual - dual-side, split - sub-positions (in_dual_mode is deprecated)
 	PositionMode string `json:"position_mode,omitempty"`

@@ -20,4 +20,6 @@ type MultiChainAddressItem struct {
 	PaymentName string `json:"payment_name,omitempty"`
 	// The obtain failed status- 0: address successfully obtained- 1: failed to obtain address
 	ObtainFailed int32 `json:"obtain_failed,omitempty"`
+	// Minimum Confirmation Count
+	MinConfirms int32 `json:"min_confirms,omitempty"`
 }

@@ -62,7 +62,7 @@ type Position struct {
 	// Current pending order quantity
 	PendingOrders int32               `json:"pending_orders,omitempty"`
 	CloseOrder    *PositionCloseOrder `json:"close_order,omitempty"`
-	// Position mode, including:  - `single`: Single position mode - `dual_long`: Long position in dual position mode - `dual_short`: Short position in dual position mode
+	// Position mode, including:  - `single`: One-way Mode - `dual_long`: Long position in Hedge Mode - `dual_short`: Short position in Hedge Mode
 	Mode string `json:"mode,omitempty"`
 	// Cross margin leverage (valid only when `leverage` is 0)
 	CrossLeverageLimit string `json:"cross_leverage_limit,omitempty"`

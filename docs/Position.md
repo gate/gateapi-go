@@ -30,7 +30,7 @@ Name | Type | Description | Notes
 **AdlRanking** | **int32** | Ranking of auto deleveraging, a total of 1-5 grades, &#x60;1&#x60; is the highest, &#x60;5&#x60; is the lowest, and &#x60;6&#x60; is the special case when there is no position held or in liquidation | [optional] [readonly] 
 **PendingOrders** | **int32** | Current pending order quantity | [optional] [readonly] 
 **CloseOrder** | Pointer to [**PositionCloseOrder**](Position_close_order.md) |  | [optional] 
-**Mode** | **string** | Position mode, including:  - &#x60;single&#x60;: Single position mode - &#x60;dual_long&#x60;: Long position in dual position mode - &#x60;dual_short&#x60;: Short position in dual position mode | [optional] 
+**Mode** | **string** | Position mode, including:  - &#x60;single&#x60;: One-way Mode - &#x60;dual_long&#x60;: Long position in Hedge Mode - &#x60;dual_short&#x60;: Short position in Hedge Mode | [optional] 
 **CrossLeverageLimit** | **string** | Cross margin leverage (valid only when &#x60;leverage&#x60; is 0) | [optional] 
 **UpdateTime** | **int64** | Last update time | [optional] [readonly] 
 **UpdateId** | **int64** | Update ID. The value increments by 1 each time the position is updated | [optional] [readonly] 
