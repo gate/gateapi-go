@@ -9,7 +9,7 @@
 
 package gateapi
 
-type KeyPerms struct {
+type AccountKeyInfoPerms struct {
 	// Permission function name (no value will be cleared) - `wallet`: wallet - `spot`: spot/margin - `futures`: perpetual contract - `delivery`: delivery contract - `earn`: earn - `custody`: custody - `options`: options - `account`: account information - `loan`: lending - `margin`: margin - `unified`: unified account - `copy`: copy trading- `pilot`: pilot - `otc`: otc - `alpha`: alpha - `crossx`: cross-exchange
 	Name string `json:"name,omitempty"`
 	// Read Only
