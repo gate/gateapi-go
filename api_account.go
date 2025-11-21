@@ -120,16 +120,16 @@ func (a *AccountApiService) GetAccountDetail(ctx context.Context) (AccountDetail
 GetAccountMainKeys Query All Main Account Key Information
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 
-@return Key
+@return AccountKeyInfo
 */
-func (a *AccountApiService) GetAccountMainKeys(ctx context.Context) (Key, *http.Response, error) {
+func (a *AccountApiService) GetAccountMainKeys(ctx context.Context) (AccountKeyInfo, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  Key
+		localVarReturnValue  AccountKeyInfo
 	)
 
 	// create path and map variables

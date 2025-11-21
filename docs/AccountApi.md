@@ -82,7 +82,7 @@ func main() {
 
 ## GetAccountMainKeys
 
-> Key GetAccountMainKeys(ctx, )
+> AccountKeyInfo GetAccountMainKeys(ctx, )
 
 Query All Main Account Key Information
 
@@ -129,7 +129,7 @@ func main() {
 
 ### Return type
 
-[**Key**](_________Key__.md)
+[**AccountKeyInfo**](AccountKeyInfo.md)
 
 ### Authorization
 
