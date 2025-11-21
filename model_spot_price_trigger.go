@@ -12,7 +12,7 @@ package gateapi
 type SpotPriceTrigger struct {
 	// Trigger price
 	Price string `json:"price"`
-	// 价格条件类型 - 大于等于: 表示市场价格大于等于 price 时触发 - 小于等于: 表示市场价格小于等于 price 时触发
+	// Price trigger condition  - `>=`: triggered when market price is greater than or equal to `price` - `<=`: triggered when market price is less than or equal to `price`
 	Rule string `json:"rule"`
 	// Maximum wait time for trigger condition (in seconds). Order will be cancelled if timeout
 	Expiration int32 `json:"expiration"`
