@@ -10,7 +10,7 @@
 package gateapi
 
 // Main Account API Key Information
-type AccountKeyInfo struct {
+type Key struct {
 	// API Key Status: 1 - Normal, 2 - Locked, 3 - Frozen (can only be modified; default is 1 upon creation)
 	State int32 `json:"state,omitempty"`
 	// User Mode: 1 - Classic, 2 - Legacy Unified (can only be specified during creation, non-modifiable afterwards)
@@ -22,9 +22,9 @@ type AccountKeyInfo struct {
 	// User ID
 	UserId int64 `json:"user_id,omitempty"`
 	// IP Whitelist
-	IpWhitelist []string              `json:"ip_whitelist,omitempty"`
-	Perms       []AccountKeyInfoPerms `json:"perms,omitempty"`
-	Key         AccountDetailKey      `json:"key,omitempty"`
+	IpWhitelist []string         `json:"ip_whitelist,omitempty"`
+	Perms       []KeyPerms       `json:"perms,omitempty"`
+	Key         AccountDetailKey `json:"key,omitempty"`
 	// Created time
 	CreatedAt string `json:"created_at,omitempty"`
 	// Last Update Time
