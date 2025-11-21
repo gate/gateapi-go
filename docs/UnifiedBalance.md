@@ -1,0 +1,30 @@
+# UnifiedBalance
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**Available** | **string** | Available balance, valid in single currency margin/cross-currency margin/combined margin mode, calculation varies by mode | [optional] 
+**Freeze** | **string** | Locked balance, valid in single currency margin/cross-currency margin/combined margin mode | [optional] 
+**Borrowed** | **string** | Borrowed amount, valid in cross-currency margin/combined margin mode, 0 in other modes such as single-currency margin mode | [optional] 
+**NegativeLiab** | **string** | Negative balance borrowing, valid in cross-currency margin/combined margin mode, 0 in other modes such as single-currency margin mode | [optional] 
+**FuturesPosLiab** | **string** | Contract opening position borrowing currency (abandoned, to be offline field) | [optional] 
+**Equity** | **string** | Equity, valid in single currency margin/cross currency margin/combined margin mode | [optional] 
+**TotalFreeze** | **string** | Total frozen (deprecated, to be removed) | [optional] 
+**TotalLiab** | **string** | Total borrowed amount, valid in cross-currency margin/combined margin mode, 0 in other modes such as single-currency margin mode | [optional] 
+**SpotInUse** | **string** | The amount of spot hedging is valid in the combined margin mode, and is 0 in other margin modes such as single currency and cross-currency margin modes | [optional] 
+**Funding** | **string** | Uniloan financial management amount, effective when turned on as a unified account margin switch | [optional] 
+**FundingVersion** | **string** | Funding version | [optional] 
+**CrossBalance** | **string** | Full margin balance is valid in single currency margin mode, and is 0 in other modes such as cross currency margin/combined margin mode | [optional] 
+**IsoBalance** | **string** | Isolated Margin Balance applies to Single-Currency Margin Mode and Cross-Currency Margin Mode, and is 0 in other modes such as Portfolio Margin Mode. | [optional] 
+**Im** | **string** | Full-position initial margin is valid in single-currency margin mode and is 0 in other modes such as cross-currency margin/combined margin mode | [optional] 
+**Mm** | **string** | Cross margin maintenance margin, valid in single-currency margin mode, 0 in other modes such as cross-currency margin/combined margin mode | [optional] 
+**Imr** | **string** | Full-position initial margin rate is valid in single-currency margin mode and is 0 in other modes such as cross-currency margin/combined margin mode | [optional] 
+**Mmr** | **string** | Full-position maintenance margin rate is valid in single-currency margin mode and is 0 in other modes such as cross-currency margin/combined margin mode | [optional] 
+**MarginBalance** | **string** | Full margin balance is valid in single currency margin mode and is 0 in other modes such as cross currency margin/combined margin mode | [optional] 
+**AvailableMargin** | **string** | Cross margin available balance, valid in single currency margin mode, 0 in other modes such as cross-currency margin/combined margin mode | [optional] 
+**EnabledCollateral** | **bool** | Currency enabled as margin: true - Enabled, false - Disabled | [optional] 
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+
