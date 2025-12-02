@@ -478,7 +478,7 @@ type ListOrderBookOpts struct {
 
 /*
 ListOrderBook Get market depth information
-Market depth buy orders are sorted by price from high to low, sell orders are sorted from low to high
+Market depth buy orders are sorted by price from high to low, sell orders are reversed
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param currencyPair Currency pair
   - @param optional nil or *ListOrderBookOpts - Optional Parameters:

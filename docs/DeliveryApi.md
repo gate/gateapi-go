@@ -165,7 +165,7 @@ No authorization required
 
 ## ListDeliveryOrderBook
 
-> FuturesOrderBook ListDeliveryOrderBook(ctx, settle, contract, optional)
+> DeliveryOrderBook ListDeliveryOrderBook(ctx, settle, contract, optional)
 
 Query futures market depth information
 
@@ -226,7 +226,7 @@ func main() {
 
 ### Return type
 
-[**FuturesOrderBook**](FuturesOrderBook.md)
+[**DeliveryOrderBook**](DeliveryOrderBook.md)
 
 ### Authorization
 
@@ -243,7 +243,7 @@ No authorization required
 
 ## ListDeliveryTrades
 
-> []FuturesTrade ListDeliveryTrades(ctx, settle, contract, optional)
+> []DeliveryTrade ListDeliveryTrades(ctx, settle, contract, optional)
 
 Futures market transaction records
 
@@ -303,7 +303,7 @@ func main() {
 
 ### Return type
 
-[**[]FuturesTrade**](FuturesTrade.md)
+[**[]DeliveryTrade**](DeliveryTrade.md)
 
 ### Authorization
 
@@ -543,7 +543,7 @@ No authorization required
 
 ## ListDeliveryAccounts
 
-> FuturesAccount ListDeliveryAccounts(ctx, settle)
+> DeliveryAccount ListDeliveryAccounts(ctx, settle)
 
 Get futures account
 
@@ -595,7 +595,7 @@ func main() {
 
 ### Return type
 
-[**FuturesAccount**](FuturesAccount.md)
+[**DeliveryAccount**](DeliveryAccount.md)
 
 ### Authorization
 
@@ -612,7 +612,7 @@ func main() {
 
 ## ListDeliveryAccountBook
 
-> []FuturesAccountBook ListDeliveryAccountBook(ctx, settle, optional)
+> []DeliveryAccountBook ListDeliveryAccountBook(ctx, settle, optional)
 
 Query futures account change history
 
@@ -676,7 +676,7 @@ func main() {
 
 ### Return type
 
-[**[]FuturesAccountBook**](FuturesAccountBook.md)
+[**[]DeliveryAccountBook**](DeliveryAccountBook.md)
 
 ### Authorization
 
@@ -693,7 +693,7 @@ func main() {
 
 ## ListDeliveryPositions
 
-> []Position ListDeliveryPositions(ctx, settle)
+> []DeliveryPosition ListDeliveryPositions(ctx, settle)
 
 Get user position list
 
@@ -745,7 +745,7 @@ func main() {
 
 ### Return type
 
-[**[]Position**](Position.md)
+[**[]DeliveryPosition**](DeliveryPosition.md)
 
 ### Authorization
 
@@ -762,7 +762,7 @@ func main() {
 
 ## GetDeliveryPosition
 
-> Position GetDeliveryPosition(ctx, settle, contract)
+> DeliveryPosition GetDeliveryPosition(ctx, settle, contract)
 
 Get single position information
 
@@ -816,7 +816,7 @@ func main() {
 
 ### Return type
 
-[**Position**](Position.md)
+[**DeliveryPosition**](DeliveryPosition.md)
 
 ### Authorization
 
@@ -833,7 +833,7 @@ func main() {
 
 ## UpdateDeliveryPositionMargin
 
-> Position UpdateDeliveryPositionMargin(ctx, settle, contract, change)
+> DeliveryPosition UpdateDeliveryPositionMargin(ctx, settle, contract, change)
 
 Update position margin
 
@@ -889,7 +889,7 @@ func main() {
 
 ### Return type
 
-[**Position**](Position.md)
+[**DeliveryPosition**](DeliveryPosition.md)
 
 ### Authorization
 
@@ -906,7 +906,7 @@ func main() {
 
 ## UpdateDeliveryPositionLeverage
 
-> Position UpdateDeliveryPositionLeverage(ctx, settle, contract, leverage)
+> DeliveryPosition UpdateDeliveryPositionLeverage(ctx, settle, contract, leverage)
 
 Update position leverage
 
@@ -962,7 +962,7 @@ func main() {
 
 ### Return type
 
-[**Position**](Position.md)
+[**DeliveryPosition**](DeliveryPosition.md)
 
 ### Authorization
 
@@ -979,7 +979,7 @@ func main() {
 
 ## UpdateDeliveryPositionRiskLimit
 
-> Position UpdateDeliveryPositionRiskLimit(ctx, settle, contract, riskLimit)
+> DeliveryPosition UpdateDeliveryPositionRiskLimit(ctx, settle, contract, riskLimit)
 
 Update position risk limit
 
@@ -1035,7 +1035,7 @@ func main() {
 
 ### Return type
 
-[**Position**](Position.md)
+[**DeliveryPosition**](DeliveryPosition.md)
 
 ### Authorization
 
@@ -1052,7 +1052,7 @@ func main() {
 
 ## ListDeliveryOrders
 
-> []FuturesOrder ListDeliveryOrders(ctx, settle, status, optional)
+> []DeliveryOrder ListDeliveryOrders(ctx, settle, status, optional)
 
 Query futures order list
 
@@ -1121,7 +1121,7 @@ func main() {
 
 ### Return type
 
-[**[]FuturesOrder**](FuturesOrder.md)
+[**[]DeliveryOrder**](DeliveryOrder.md)
 
 ### Authorization
 
@@ -1138,7 +1138,7 @@ func main() {
 
 ## CreateDeliveryOrder
 
-> FuturesOrder CreateDeliveryOrder(ctx, settle, futuresOrder)
+> DeliveryOrder CreateDeliveryOrder(ctx, settle, deliveryOrder)
 
 Place futures order
 
@@ -1150,7 +1150,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **settle** | **string**| Settle currency | 
-**futuresOrder** | [**FuturesOrder**](FuturesOrder.md)|  | 
+**deliveryOrder** | [**DeliveryOrder**](DeliveryOrder.md)|  | 
 
 ### Example
 
@@ -1176,9 +1176,9 @@ func main() {
                              }
                             )
     settle := "usdt" // string - Settle currency
-    futuresOrder := gateapi.FuturesOrder{} // FuturesOrder - 
+    deliveryOrder := gateapi.DeliveryOrder{} // DeliveryOrder - 
     
-    result, _, err := client.DeliveryApi.CreateDeliveryOrder(ctx, settle, futuresOrder)
+    result, _, err := client.DeliveryApi.CreateDeliveryOrder(ctx, settle, deliveryOrder)
     if err != nil {
         if e, ok := err.(gateapi.GateAPIError); ok {
             fmt.Printf("gate api error: %s\n", e.Error())
@@ -1194,7 +1194,7 @@ func main() {
 
 ### Return type
 
-[**FuturesOrder**](FuturesOrder.md)
+[**DeliveryOrder**](DeliveryOrder.md)
 
 ### Authorization
 
@@ -1211,7 +1211,7 @@ func main() {
 
 ## CancelDeliveryOrders
 
-> []FuturesOrder CancelDeliveryOrders(ctx, settle, contract, optional)
+> []DeliveryOrder CancelDeliveryOrders(ctx, settle, contract, optional)
 
 Cancel all orders with 'open' status
 
@@ -1276,7 +1276,7 @@ func main() {
 
 ### Return type
 
-[**[]FuturesOrder**](FuturesOrder.md)
+[**[]DeliveryOrder**](DeliveryOrder.md)
 
 ### Authorization
 
@@ -1293,7 +1293,7 @@ func main() {
 
 ## GetDeliveryOrder
 
-> FuturesOrder GetDeliveryOrder(ctx, settle, orderId)
+> DeliveryOrder GetDeliveryOrder(ctx, settle, orderId)
 
 Query single order details
 
@@ -1349,7 +1349,7 @@ func main() {
 
 ### Return type
 
-[**FuturesOrder**](FuturesOrder.md)
+[**DeliveryOrder**](DeliveryOrder.md)
 
 ### Authorization
 
@@ -1366,7 +1366,7 @@ func main() {
 
 ## CancelDeliveryOrder
 
-> FuturesOrder CancelDeliveryOrder(ctx, settle, orderId)
+> DeliveryOrder CancelDeliveryOrder(ctx, settle, orderId)
 
 Cancel single order
 
@@ -1420,7 +1420,7 @@ func main() {
 
 ### Return type
 
-[**FuturesOrder**](FuturesOrder.md)
+[**DeliveryOrder**](DeliveryOrder.md)
 
 ### Authorization
 
@@ -1437,7 +1437,7 @@ func main() {
 
 ## GetMyDeliveryTrades
 
-> []MyFuturesTrade GetMyDeliveryTrades(ctx, settle, optional)
+> []DeliveryMyTrade GetMyDeliveryTrades(ctx, settle, optional)
 
 Query personal trading records
 
@@ -1503,7 +1503,7 @@ func main() {
 
 ### Return type
 
-[**[]MyFuturesTrade**](MyFuturesTrade.md)
+[**[]DeliveryMyTrade**](DeliveryMyTrade.md)
 
 ### Authorization
 
@@ -1520,7 +1520,7 @@ func main() {
 
 ## ListDeliveryPositionClose
 
-> []PositionClose ListDeliveryPositionClose(ctx, settle, optional)
+> []DeliveryPositionClose ListDeliveryPositionClose(ctx, settle, optional)
 
 Query position close history
 
@@ -1582,7 +1582,7 @@ func main() {
 
 ### Return type
 
-[**[]PositionClose**](PositionClose.md)
+[**[]DeliveryPositionClose**](DeliveryPositionClose.md)
 
 ### Authorization
 
@@ -1599,7 +1599,7 @@ func main() {
 
 ## ListDeliveryLiquidates
 
-> []FuturesLiquidate ListDeliveryLiquidates(ctx, settle, optional)
+> []DeliveryLiquidate ListDeliveryLiquidates(ctx, settle, optional)
 
 Query liquidation history
 
@@ -1662,7 +1662,7 @@ func main() {
 
 ### Return type
 
-[**[]FuturesLiquidate**](FuturesLiquidate.md)
+[**[]DeliveryLiquidate**](DeliveryLiquidate.md)
 
 ### Authorization
 
@@ -1759,7 +1759,7 @@ func main() {
 
 ## ListDeliveryRiskLimitTiers
 
-> []FuturesLimitRiskTiers ListDeliveryRiskLimitTiers(ctx, settle, optional)
+> []DeliveryLimitRiskTiers ListDeliveryRiskLimitTiers(ctx, settle, optional)
 
 Query risk limit tiers
 
@@ -1818,7 +1818,7 @@ func main() {
 
 ### Return type
 
-[**[]FuturesLimitRiskTiers**](FuturesLimitRiskTiers.md)
+[**[]DeliveryLimitRiskTiers**](DeliveryLimitRiskTiers.md)
 
 ### Authorization
 

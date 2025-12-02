@@ -27,7 +27,7 @@ type FuturesAutoDeleverage struct {
 	// Average fill price
 	FillPrice string `json:"fill_price,omitempty"`
 	// Trading size
-	TradeSize int64 `json:"trade_size,omitempty"`
+	TradeSize string `json:"trade_size,omitempty"`
 	// Positions after auto-deleveraging
-	PositionSize int64 `json:"position_size,omitempty"`
+	PositionSize string `json:"position_size,omitempty"`
 }

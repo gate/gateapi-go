@@ -13,5 +13,5 @@ type FuturesOrderBookItem struct {
 	// Price (quote currency)
 	P string `json:"p,omitempty"`
 	// Size
-	S int64 `json:"s,omitempty"`
+	S string `json:"s,omitempty"`
 }

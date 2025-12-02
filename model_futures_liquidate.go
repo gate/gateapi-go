@@ -17,7 +17,7 @@ type FuturesLiquidate struct {
 	// Position leverage. Not returned in public endpoints
 	Leverage string `json:"leverage,omitempty"`
 	// Position size
-	Size int64 `json:"size,omitempty"`
+	Size string `json:"size,omitempty"`
 	// Position margin. Not returned in public endpoints
 	Margin string `json:"margin,omitempty"`
 	// Average entry price. Not returned in public endpoints
@@ -33,5 +33,5 @@ type FuturesLiquidate struct {
 	// Liquidation order average taker price
 	FillPrice string `json:"fill_price,omitempty"`
 	// Liquidation order maker size
-	Left int64 `json:"left,omitempty"`
+	Left string `json:"left,omitempty"`
 }

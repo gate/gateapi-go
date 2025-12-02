@@ -14,7 +14,7 @@ type FuturesCandlestick struct {
 	// Unix timestamp in seconds
 	T float64 `json:"t,omitempty"`
 	// size volume (contract size). Only returned if `contract` is not prefixed
-	V int64 `json:"v,omitempty"`
+	V string `json:"v,omitempty"`
 	// Close price (quote currency)
 	C string `json:"c,omitempty"`
 	// Highest price (quote currency)

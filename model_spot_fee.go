@@ -16,6 +16,8 @@ type SpotFee struct {
 	TakerFee string `json:"taker_fee,omitempty"`
 	// maker fee rate
 	MakerFee string `json:"maker_fee,omitempty"`
+	// RPI MM maker fee rate
+	RpiMakerFee string `json:"rpi_maker_fee,omitempty"`
 	// Whether GT deduction discount is enabled
 	GtDiscount bool `json:"gt_discount,omitempty"`
 	// Taker fee rate if using GT deduction. It will be 0 if GT deduction is disabled
@@ -30,4 +32,6 @@ type SpotFee struct {
 	CurrencyPair string `json:"currency_pair,omitempty"`
 	// Deduction types for rates, 1 - GT deduction, 2 - Point card deduction, 3 - VIP rates
 	DebitFee int32 `json:"debit_fee,omitempty"`
+	// RPI MM Level
+	RpiMm int32 `json:"rpi_mm,omitempty"`
 }

@@ -28,11 +28,11 @@ type FuturesOrder struct {
 	// Futures contract
 	Contract string `json:"contract"`
 	// Required. Trading quantity. Positive for buy, negative for sell. Set to 0 for close position orders.
-	Size int64 `json:"size"`
+	Size string `json:"size"`
 	// Display size for iceberg orders. 0 for non-iceberg orders. Note that hidden portions are charged taker fees.
-	Iceberg int64 `json:"iceberg,omitempty"`
-	// Order price. Price of 0 with `tif` set to `ioc` represents a market order.
-	Price string `json:"price,omitempty"`
+	Iceberg string `json:"iceberg,omitempty"`
+	// Required. Order Price; a price of 0 with `tif` as `ioc` represents a market order.
+	Price string `json:"price"`
 	// Set as `true` to close the position, with `size` set to 0
 	Close bool `json:"close,omitempty"`
 	// Is the order to close position
@@ -46,7 +46,7 @@ type FuturesOrder struct {
 	// Time in force  - gtc: GoodTillCancelled - ioc: ImmediateOrCancelled, taker only - poc: PendingOrCancelled, makes a post-only order that always enjoys a maker fee - fok: FillOrKill, fill either completely or none
 	Tif string `json:"tif,omitempty"`
 	// Unfilled quantity
-	Left int64 `json:"left,omitempty"`
+	Left string `json:"left,omitempty"`
 	// Fill price
 	FillPrice string `json:"fill_price,omitempty"`
 	// Custom order information. If not empty, must follow the rules below:  1. Prefixed with `t-` 2. No longer than 28 bytes without `t-` prefix 3. Can only include 0-9, A-Z, a-z, underscore(_), hyphen(-) or dot(.)  In addition to user-defined information, the following are internal reserved fields that identify the order source:  - web: Web - api: API call - app: Mobile app - auto_deleveraging: Automatic deleveraging - liquidation: Forced liquidation of positions under the old classic mode - liq-xxx: a. Forced liquidation of positions under the new classic mode, including isolated margin, one-way cross margin, and non-hedged positions under two-way cross margin. b. Forced liquidation of isolated positions under the unified account single-currency margin mode - hedge-liq-xxx: Forced liquidation of hedged positions under the new classic mode two-way cross margin, i.e., simultaneously closing long and short positions - pm_liquidate: Forced liquidation under unified account multi-currency margin mode - comb_margin_liquidate: Forced liquidation under unified account portfolio margin mode - scm_liquidate: Forced liquidation of positions under unified account single-currency margin mode - insurance: Insurance
@@ -69,4 +69,8 @@ type FuturesOrder struct {
 	LimitVip int64 `json:"limit_vip,omitempty"`
 	// Position ID
 	Pid int64 `json:"pid,omitempty"`
+	// order's value
+	OrderValue string `json:"order_value,omitempty"`
+	// trade value
+	TradeValue string `json:"trade_value,omitempty"`
 }

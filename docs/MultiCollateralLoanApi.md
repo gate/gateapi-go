@@ -39,7 +39,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **page** | **optional.Int32**| Page number | [default to 1]
 **limit** | **optional.Int32**| Maximum number of records returned in a single list | [default to 10]
-**sort** | **optional.String**| Sort type: &#x60;time_desc&#x60; - Created time descending (default), &#x60;ltv_asc&#x60; - Collateral ratio ascending, &#x60;ltv_desc&#x60; - Collateral ratio descending. | 
+**sort** | **optional.String**| Sort type: time_desc - Default descending by creation time, ltv_asc - Ascending by LTV ratio, ltv_desc - Descending by LTV ratio | 
 **orderType** | **optional.String**| Order type: current - Query current orders, fixed - Query fixed orders, defaults to current orders if not specified | 
 
 ### Example
@@ -547,7 +547,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **type_** | **string**| Currency type: collateral - Collateral currency, borrow - Borrowing currency | 
-**currency** | **string**| When it is a collateral currency, multiple currencies can be provided separated by commas; when it is a borrowing currency, only one currency can be provided. | 
+**currency** | **string**| When it is a collateral currency, multiple currencies can be passed separated by commas; when it is a borrowing currency, only one currency can be passed | 
 
 ### Example
 
@@ -573,7 +573,7 @@ func main() {
                              }
                             )
     type_ := "collateral" // string - Currency type: collateral - Collateral currency, borrow - Borrowing currency
-    currency := "BTC" // string - When it is a collateral currency, multiple currencies can be provided separated by commas; when it is a borrowing currency, only one currency can be provided.
+    currency := "BTC" // string - When it is a collateral currency, multiple currencies can be passed separated by commas; when it is a borrowing currency, only one currency can be passed
     
     result, _, err := client.MultiCollateralLoanApi.ListUserCurrencyQuota(ctx, type_, currency)
     if err != nil {
@@ -788,7 +788,7 @@ No authorization required
 
 Query currency's current interest rate
 
-Query currency's current interest rate for the previous hour, current interest rate updates hourly
+Query the current interest rate of the currency in the previous hour, the current interest rate is updated every hour
 
 ### Required Parameters
 

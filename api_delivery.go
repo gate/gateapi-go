@@ -221,16 +221,16 @@ Bids will be sorted by price from high to low, while asks sorted reversely
   - @param "Limit" (optional.Int32) -  Number of depth levels
   - @param "WithId" (optional.Bool) -  Whether to return depth update ID. This ID increments by 1 each time the depth changes
 
-@return FuturesOrderBook
+@return DeliveryOrderBook
 */
-func (a *DeliveryApiService) ListDeliveryOrderBook(ctx context.Context, settle string, contract string, localVarOptionals *ListDeliveryOrderBookOpts) (FuturesOrderBook, *http.Response, error) {
+func (a *DeliveryApiService) ListDeliveryOrderBook(ctx context.Context, settle string, contract string, localVarOptionals *ListDeliveryOrderBookOpts) (DeliveryOrderBook, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  FuturesOrderBook
+		localVarReturnValue  DeliveryOrderBook
 	)
 
 	// create path and map variables
@@ -332,16 +332,16 @@ ListDeliveryTrades Futures market transaction records
   - @param "From" (optional.Int64) -  Specify starting time in Unix seconds. If not specified, `to` and `limit` will be used to limit response items. If items between `from` and `to` are more than `limit`, only `limit` number will be returned.
   - @param "To" (optional.Int64) -  Specify end time in Unix seconds, default to current time.
 
-@return []FuturesTrade
+@return []DeliveryTrade
 */
-func (a *DeliveryApiService) ListDeliveryTrades(ctx context.Context, settle string, contract string, localVarOptionals *ListDeliveryTradesOpts) ([]FuturesTrade, *http.Response, error) {
+func (a *DeliveryApiService) ListDeliveryTrades(ctx context.Context, settle string, contract string, localVarOptionals *ListDeliveryTradesOpts) ([]DeliveryTrade, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  []FuturesTrade
+		localVarReturnValue  []DeliveryTrade
 	)
 
 	// create path and map variables
@@ -741,16 +741,16 @@ ListDeliveryAccounts Get futures account
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param settle Settle currency
 
-@return FuturesAccount
+@return DeliveryAccount
 */
-func (a *DeliveryApiService) ListDeliveryAccounts(ctx context.Context, settle string) (FuturesAccount, *http.Response, error) {
+func (a *DeliveryApiService) ListDeliveryAccounts(ctx context.Context, settle string) (DeliveryAccount, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  FuturesAccount
+		localVarReturnValue  DeliveryAccount
 	)
 
 	// create path and map variables
@@ -847,16 +847,16 @@ ListDeliveryAccountBook Query futures account change history
   - @param "To" (optional.Int64) -  Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp
   - @param "Type_" (optional.String) -  Change types: - dnw: Deposit and withdrawal - pnl: Profit and loss from position reduction - fee: Trading fees - refr: Referrer rebates - fund: Funding fees - point_dnw: Point card deposit and withdrawal - point_fee: Point card trading fees - point_refr: Point card referrer rebates
 
-@return []FuturesAccountBook
+@return []DeliveryAccountBook
 */
-func (a *DeliveryApiService) ListDeliveryAccountBook(ctx context.Context, settle string, localVarOptionals *ListDeliveryAccountBookOpts) ([]FuturesAccountBook, *http.Response, error) {
+func (a *DeliveryApiService) ListDeliveryAccountBook(ctx context.Context, settle string, localVarOptionals *ListDeliveryAccountBookOpts) ([]DeliveryAccountBook, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  []FuturesAccountBook
+		localVarReturnValue  []DeliveryAccountBook
 	)
 
 	// create path and map variables
@@ -952,16 +952,16 @@ ListDeliveryPositions Get user position list
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param settle Settle currency
 
-@return []Position
+@return []DeliveryPosition
 */
-func (a *DeliveryApiService) ListDeliveryPositions(ctx context.Context, settle string) ([]Position, *http.Response, error) {
+func (a *DeliveryApiService) ListDeliveryPositions(ctx context.Context, settle string) ([]DeliveryPosition, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  []Position
+		localVarReturnValue  []DeliveryPosition
 	)
 
 	// create path and map variables
@@ -1046,16 +1046,16 @@ GetDeliveryPosition Get single position information
   - @param settle Settle currency
   - @param contract Futures contract
 
-@return Position
+@return DeliveryPosition
 */
-func (a *DeliveryApiService) GetDeliveryPosition(ctx context.Context, settle string, contract string) (Position, *http.Response, error) {
+func (a *DeliveryApiService) GetDeliveryPosition(ctx context.Context, settle string, contract string) (DeliveryPosition, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  Position
+		localVarReturnValue  DeliveryPosition
 	)
 
 	// create path and map variables
@@ -1143,16 +1143,16 @@ UpdateDeliveryPositionMargin Update position margin
   - @param contract Futures contract
   - @param change Margin change amount, positive number increases, negative number decreases
 
-@return Position
+@return DeliveryPosition
 */
-func (a *DeliveryApiService) UpdateDeliveryPositionMargin(ctx context.Context, settle string, contract string, change string) (Position, *http.Response, error) {
+func (a *DeliveryApiService) UpdateDeliveryPositionMargin(ctx context.Context, settle string, contract string, change string) (DeliveryPosition, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  Position
+		localVarReturnValue  DeliveryPosition
 	)
 
 	// create path and map variables
@@ -1241,16 +1241,16 @@ UpdateDeliveryPositionLeverage Update position leverage
   - @param contract Futures contract
   - @param leverage New position leverage
 
-@return Position
+@return DeliveryPosition
 */
-func (a *DeliveryApiService) UpdateDeliveryPositionLeverage(ctx context.Context, settle string, contract string, leverage string) (Position, *http.Response, error) {
+func (a *DeliveryApiService) UpdateDeliveryPositionLeverage(ctx context.Context, settle string, contract string, leverage string) (DeliveryPosition, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  Position
+		localVarReturnValue  DeliveryPosition
 	)
 
 	// create path and map variables
@@ -1339,16 +1339,16 @@ UpdateDeliveryPositionRiskLimit Update position risk limit
   - @param contract Futures contract
   - @param riskLimit New position risk limit
 
-@return Position
+@return DeliveryPosition
 */
-func (a *DeliveryApiService) UpdateDeliveryPositionRiskLimit(ctx context.Context, settle string, contract string, riskLimit string) (Position, *http.Response, error) {
+func (a *DeliveryApiService) UpdateDeliveryPositionRiskLimit(ctx context.Context, settle string, contract string, riskLimit string) (DeliveryPosition, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  Position
+		localVarReturnValue  DeliveryPosition
 	)
 
 	// create path and map variables
@@ -1452,16 +1452,16 @@ Zero-fill orders cannot be retrieved 10 minutes after order cancellation
   - @param "LastId" (optional.String) -  Use the ID of the last record in the previous list as the starting point for the next list  Operations based on custom IDs can only be checked when orders are pending. After orders are completed (filled/cancelled), they can be checked within 1 hour after completion. After expiration, only order IDs can be used
   - @param "CountTotal" (optional.Int32) -  Whether to return total number matched, defaults to 0 (no return)
 
-@return []FuturesOrder
+@return []DeliveryOrder
 */
-func (a *DeliveryApiService) ListDeliveryOrders(ctx context.Context, settle string, status string, localVarOptionals *ListDeliveryOrdersOpts) ([]FuturesOrder, *http.Response, error) {
+func (a *DeliveryApiService) ListDeliveryOrders(ctx context.Context, settle string, status string, localVarOptionals *ListDeliveryOrdersOpts) ([]DeliveryOrder, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  []FuturesOrder
+		localVarReturnValue  []DeliveryOrder
 	)
 
 	// create path and map variables
@@ -1561,18 +1561,18 @@ CreateDeliveryOrder Place futures order
 Zero-fill orders cannot be retrieved 10 minutes after order cancellation
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param settle Settle currency
-  - @param futuresOrder
+  - @param deliveryOrder
 
-@return FuturesOrder
+@return DeliveryOrder
 */
-func (a *DeliveryApiService) CreateDeliveryOrder(ctx context.Context, settle string, futuresOrder FuturesOrder) (FuturesOrder, *http.Response, error) {
+func (a *DeliveryApiService) CreateDeliveryOrder(ctx context.Context, settle string, deliveryOrder DeliveryOrder) (DeliveryOrder, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  FuturesOrder
+		localVarReturnValue  DeliveryOrder
 	)
 
 	// create path and map variables
@@ -1601,7 +1601,7 @@ func (a *DeliveryApiService) CreateDeliveryOrder(ctx context.Context, settle str
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = &futuresOrder
+	localVarPostBody = &deliveryOrder
 	if ctx == nil {
 		ctx = context.Background()
 	}
@@ -1667,16 +1667,16 @@ Zero-fill orders cannot be retrieved 10 minutes after order cancellation
   - @param optional nil or *CancelDeliveryOrdersOpts - Optional Parameters:
   - @param "Side" (optional.String) -  Specify all bids or all asks, both included if not specified
 
-@return []FuturesOrder
+@return []DeliveryOrder
 */
-func (a *DeliveryApiService) CancelDeliveryOrders(ctx context.Context, settle string, contract string, localVarOptionals *CancelDeliveryOrdersOpts) ([]FuturesOrder, *http.Response, error) {
+func (a *DeliveryApiService) CancelDeliveryOrders(ctx context.Context, settle string, contract string, localVarOptionals *CancelDeliveryOrdersOpts) ([]DeliveryOrder, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  []FuturesOrder
+		localVarReturnValue  []DeliveryOrder
 	)
 
 	// create path and map variables
@@ -1766,16 +1766,16 @@ Zero-fill orders cannot be retrieved 10 minutes after order cancellation
   - @param settle Settle currency
   - @param orderId ID returned when order is successfully created
 
-@return FuturesOrder
+@return DeliveryOrder
 */
-func (a *DeliveryApiService) GetDeliveryOrder(ctx context.Context, settle string, orderId string) (FuturesOrder, *http.Response, error) {
+func (a *DeliveryApiService) GetDeliveryOrder(ctx context.Context, settle string, orderId string) (DeliveryOrder, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  FuturesOrder
+		localVarReturnValue  DeliveryOrder
 	)
 
 	// create path and map variables
@@ -1862,16 +1862,16 @@ CancelDeliveryOrder Cancel single order
   - @param settle Settle currency
   - @param orderId ID returned when order is successfully created
 
-@return FuturesOrder
+@return DeliveryOrder
 */
-func (a *DeliveryApiService) CancelDeliveryOrder(ctx context.Context, settle string, orderId string) (FuturesOrder, *http.Response, error) {
+func (a *DeliveryApiService) CancelDeliveryOrder(ctx context.Context, settle string, orderId string) (DeliveryOrder, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  FuturesOrder
+		localVarReturnValue  DeliveryOrder
 	)
 
 	// create path and map variables
@@ -1974,16 +1974,16 @@ GetMyDeliveryTrades Query personal trading records
   - @param "LastId" (optional.String) -  Use the ID of the last record in the previous list as the starting point for the next list  Operations based on custom IDs can only be checked when orders are pending. After orders are completed (filled/cancelled), they can be checked within 1 hour after completion. After expiration, only order IDs can be used
   - @param "CountTotal" (optional.Int32) -  Whether to return total number matched, defaults to 0 (no return)
 
-@return []MyFuturesTrade
+@return []DeliveryMyTrade
 */
-func (a *DeliveryApiService) GetMyDeliveryTrades(ctx context.Context, settle string, localVarOptionals *GetMyDeliveryTradesOpts) ([]MyFuturesTrade, *http.Response, error) {
+func (a *DeliveryApiService) GetMyDeliveryTrades(ctx context.Context, settle string, localVarOptionals *GetMyDeliveryTradesOpts) ([]DeliveryMyTrade, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  []MyFuturesTrade
+		localVarReturnValue  []DeliveryMyTrade
 	)
 
 	// create path and map variables
@@ -2094,16 +2094,16 @@ ListDeliveryPositionClose Query position close history
   - @param "Contract" (optional.String) -  Futures contract
   - @param "Limit" (optional.Int32) -  Maximum number of records returned in a single list
 
-@return []PositionClose
+@return []DeliveryPositionClose
 */
-func (a *DeliveryApiService) ListDeliveryPositionClose(ctx context.Context, settle string, localVarOptionals *ListDeliveryPositionCloseOpts) ([]PositionClose, *http.Response, error) {
+func (a *DeliveryApiService) ListDeliveryPositionClose(ctx context.Context, settle string, localVarOptionals *ListDeliveryPositionCloseOpts) ([]DeliveryPositionClose, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  []PositionClose
+		localVarReturnValue  []DeliveryPositionClose
 	)
 
 	// create path and map variables
@@ -2204,16 +2204,16 @@ ListDeliveryLiquidates Query liquidation history
   - @param "Limit" (optional.Int32) -  Maximum number of records returned in a single list
   - @param "At" (optional.Int32) -  Specify liquidation timestamp
 
-@return []FuturesLiquidate
+@return []DeliveryLiquidate
 */
-func (a *DeliveryApiService) ListDeliveryLiquidates(ctx context.Context, settle string, localVarOptionals *ListDeliveryLiquidatesOpts) ([]FuturesLiquidate, *http.Response, error) {
+func (a *DeliveryApiService) ListDeliveryLiquidates(ctx context.Context, settle string, localVarOptionals *ListDeliveryLiquidatesOpts) ([]DeliveryLiquidate, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  []FuturesLiquidate
+		localVarReturnValue  []DeliveryLiquidate
 	)
 
 	// create path and map variables
@@ -2431,16 +2431,16 @@ When the &#39;contract&#39; parameter is not passed, the default is to query the
   - @param "Limit" (optional.Int32) -  Maximum number of records returned in a single list
   - @param "Offset" (optional.Int32) -  List offset, starting from 0
 
-@return []FuturesLimitRiskTiers
+@return []DeliveryLimitRiskTiers
 */
-func (a *DeliveryApiService) ListDeliveryRiskLimitTiers(ctx context.Context, settle string, localVarOptionals *ListDeliveryRiskLimitTiersOpts) ([]FuturesLimitRiskTiers, *http.Response, error) {
+func (a *DeliveryApiService) ListDeliveryRiskLimitTiers(ctx context.Context, settle string, localVarOptionals *ListDeliveryRiskLimitTiersOpts) ([]DeliveryLimitRiskTiers, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  []FuturesLimitRiskTiers
+		localVarReturnValue  []DeliveryLimitRiskTiers
 	)
 
 	// create path and map variables

@@ -16,7 +16,7 @@ type Position struct {
 	// Futures contract
 	Contract string `json:"contract,omitempty"`
 	// Position size
-	Size int64 `json:"size,omitempty"`
+	Size string `json:"size,omitempty"`
 	// Position leverage. 0 means cross margin; positive number means isolated margin
 	Leverage string `json:"leverage,omitempty"`
 	// Position risk limit

@@ -493,7 +493,7 @@ func (a *AccountApiService) CreateSTPGroup(ctx context.Context, stpGroup StpGrou
 
 /*
 ListSTPGroupsUsers Query users in the STP user group
-Only the main account that created this STP group can query the account ID list in the current STP group
+Only the main account that created this STP group can query the account ID list of the current STP group
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param stpId STP Group ID
 

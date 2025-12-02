@@ -32,9 +32,9 @@ type BatchFuturesOrder struct {
 	// Futures contract
 	Contract string `json:"contract,omitempty"`
 	// Required. Trading quantity. Positive for buy, negative for sell. Set to 0 for close position orders.
-	Size int64 `json:"size,omitempty"`
+	Size string `json:"size,omitempty"`
 	// Display size for iceberg orders. 0 for non-iceberg orders. Note that hidden portions are charged taker fees.
-	Iceberg int64 `json:"iceberg,omitempty"`
+	Iceberg string `json:"iceberg,omitempty"`
 	// Order price. Price of 0 with `tif` set to `ioc` represents a market order.
 	Price string `json:"price,omitempty"`
 	// Set as `true` to close the position, with `size` set to 0
@@ -50,7 +50,7 @@ type BatchFuturesOrder struct {
 	// Time in force  - gtc: GoodTillCancelled - ioc: ImmediateOrCancelled, taker only - poc: PendingOrCancelled, makes a post-only order that always enjoys a maker fee - fok: FillOrKill, fill either completely or none
 	Tif string `json:"tif,omitempty"`
 	// Unfilled quantity
-	Left int64 `json:"left,omitempty"`
+	Left string `json:"left,omitempty"`
 	// Fill price
 	FillPrice string `json:"fill_price,omitempty"`
 	// User defined information. If not empty, must follow the rules below:  1. prefixed with `t-` 2. no longer than 28 bytes without `t-` prefix 3. can only include 0-9, A-Z, a-z, underscore(_), hyphen(-) or dot(.) Besides user defined information, reserved contents are listed below, denoting how the order is created:  - web: from web - api: from API - app: from mobile phones - auto_deleveraging: from ADL - liquidation: from liquidation - insurance: from insurance

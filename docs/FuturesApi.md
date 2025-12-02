@@ -1100,7 +1100,7 @@ func main() {
 
 Query futures account change history
 
-If the contract field is passed, only records containing this field after 2023-10-30 can be filtered.
+If the contract field is passed, only records containing this field after 2023-10-30 can be filtered。
 
 ### Required Parameters
 
@@ -1409,6 +1409,8 @@ func main() {
 
 Update position leverage
 
+⚠️ Position Mode Switching Rules:  - leverage ≠ 0: Isolated Margin Mode (Regardless of whether cross_leverage_limit is filled, this parameter will be ignored) - leverage = 0: Cross Margin Mode (Use cross_leverage_limit to set the leverage multiple)  Examples: - Set isolated margin with 10x leverage: leverage=10 - Set cross margin with 10x leverage: leverage=0&cross_leverage_limit=10 - leverage=5&cross_leverage_limit=10 → Result: Isolated margin with 5x leverage (cross_leverage_limit is ignored)  ⚠️ Warning: Incorrect settings may cause unexpected position mode switching, affecting risk management.
+
 ### Required Parameters
 
 Name | Type | Description  | Notes
@@ -1707,7 +1709,7 @@ func main() {
 
 Set position mode
 
-The prerequisite for changing mode is that there are no open positions and no open orders
+The prerequisite for changing mode is that all positions have no holdings and no pending orders
 
 ### Required Parameters
 
@@ -2244,7 +2246,7 @@ func main() {
 
 ## CancelFuturesOrders
 
-> []FuturesOrder CancelFuturesOrders(ctx, settle, contract, optional)
+> []FuturesOrder CancelFuturesOrders(ctx, settle, optional)
 
 Cancel all orders with 'open' status
 
@@ -2256,7 +2258,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **settle** | **string**| Settle currency | 
-**contract** | **string**| Futures contract | 
 **optional** | **CancelFuturesOrdersOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
@@ -2266,6 +2267,7 @@ Optional parameters are passed through a pointer to a CancelFuturesOrdersOpts st
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **xGateExptime** | **optional.String**| Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected | 
+**contract** | **optional.String**| Contract Identifier; if specified, only cancel pending orders related to this contract | 
 **side** | **optional.String**| Specify all buy orders or all sell orders, both are included if not specified. Set to bid to cancel all buy orders, set to ask to cancel all sell orders | 
 **excludeReduceOnly** | **optional.Bool**| Whether to exclude reduce-only orders | [default to false]
 **text** | **optional.String**| Remark for order cancellation | 
@@ -2294,9 +2296,8 @@ func main() {
                              }
                             )
     settle := "usdt" // string - Settle currency
-    contract := "BTC_USDT" // string - Futures contract
     
-    result, _, err := client.FuturesApi.CancelFuturesOrders(ctx, settle, contract, nil)
+    result, _, err := client.FuturesApi.CancelFuturesOrders(ctx, settle, nil)
     if err != nil {
         if e, ok := err.(gateapi.GateAPIError); ok {
             fmt.Printf("gate api error: %s\n", e.Error())
@@ -3300,7 +3301,7 @@ func main() {
 
 Cancel batch orders by specified ID list
 
-Multiple different order IDs can be specified, maximum 20 records per request
+Multiple different order IDs can be specified. A maximum of 20 records can be cancelled in one request
 
 ### Required Parameters
 
@@ -3382,7 +3383,7 @@ func main() {
 
 Batch modify orders by specified IDs
 
-Multiple different order IDs can be specified, maximum 10 orders per request
+Multiple different order IDs can be specified. A maximum of 10 orders can be modified in one request
 
 ### Required Parameters
 

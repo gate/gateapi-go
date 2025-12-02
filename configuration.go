@@ -90,7 +90,7 @@ func NewConfiguration() *Configuration {
 	cfg := &Configuration{
 		BasePath:      "https://api.gateio.ws/api/v4",
 		DefaultHeader: make(map[string]string),
-		UserAgent:     "OpenAPI-Generator/7.1.30/go",
+		UserAgent:     "OpenAPI-Generator/7.2.0/go",
 		Debug:         false,
 		Servers: []ServerConfiguration{
 			{
@@ -103,6 +103,8 @@ func NewConfiguration() *Configuration {
 			},
 		},
 	}
+	// Set default X-Gate-Size-Decimal header for futures API
+	cfg.DefaultHeader["X-Gate-Size-Decimal"] = "1"
 	return cfg
 }
 

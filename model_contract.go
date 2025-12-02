@@ -52,9 +52,9 @@ type Contract struct {
 	// Maximum risk limit allowed by the contract (deprecated). It is recommended to use /futures/{settle}/risk_limit_tiers to query risk limits
 	RiskLimitMax string `json:"risk_limit_max,omitempty"`
 	// Minimum order size allowed by the contract
-	OrderSizeMin int64 `json:"order_size_min,omitempty"`
+	OrderSizeMin string `json:"order_size_min,omitempty"`
 	// Maximum order size allowed by the contract
-	OrderSizeMax int64 `json:"order_size_max,omitempty"`
+	OrderSizeMax string `json:"order_size_max,omitempty"`
 	// Maximum allowed deviation between order price and current mark price. The order price `order_price` must satisfy the following condition:      abs(order_price - mark_price) <= mark_price * order_price_deviate
 	OrderPriceDeviate string `json:"order_price_deviate,omitempty"`
 	// Trading fee discount for referred users
@@ -66,9 +66,9 @@ type Contract struct {
 	// Current trade ID
 	TradeId int64 `json:"trade_id,omitempty"`
 	// Historical cumulative trading volume
-	TradeSize int64 `json:"trade_size,omitempty"`
+	TradeSize string `json:"trade_size,omitempty"`
 	// Current total long position size
-	PositionSize int64 `json:"position_size,omitempty"`
+	PositionSize string `json:"position_size,omitempty"`
 	// Last configuration update time
 	ConfigChangeTime float64 `json:"config_change_time,omitempty"`
 	// `in_delisting=true` and position_size>0 indicates the contract is in delisting transition period `in_delisting=true` and position_size=0 indicates the contract is delisted

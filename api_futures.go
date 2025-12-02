@@ -1510,7 +1510,7 @@ type ListFuturesAccountBookOpts struct {
 
 /*
 ListFuturesAccountBook Query futures account change history
-If the contract field is passed, only records containing this field after 2023-10-30 can be filtered.
+If the contract field is passed, only records containing this field after 2023-10-30 can be filtered。
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param settle Settle currency
   - @param optional nil or *ListFuturesAccountBookOpts - Optional Parameters:
@@ -1942,6 +1942,7 @@ type UpdatePositionLeverageOpts struct {
 
 /*
 UpdatePositionLeverage Update position leverage
+⚠️ Position Mode Switching Rules:  - leverage ≠ 0: Isolated Margin Mode (Regardless of whether cross_leverage_limit is filled, this parameter will be ignored) - leverage &#x3D; 0: Cross Margin Mode (Use cross_leverage_limit to set the leverage multiple)  Examples: - Set isolated margin with 10x leverage: leverage&#x3D;10 - Set cross margin with 10x leverage: leverage&#x3D;0&amp;cross_leverage_limit&#x3D;10 - leverage&#x3D;5&amp;cross_leverage_limit&#x3D;10 → Result: Isolated margin with 5x leverage (cross_leverage_limit is ignored)  ⚠️ Warning: Incorrect settings may cause unexpected position mode switching, affecting risk management.
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param settle Settle currency
   - @param contract Futures contract
@@ -2339,7 +2340,7 @@ func (a *FuturesApiService) UpdatePositionRiskLimit(ctx context.Context, settle 
 
 /*
 SetDualMode Set position mode
-The prerequisite for changing mode is that there are no open positions and no open orders
+The prerequisite for changing mode is that all positions have no holdings and no pending orders
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param settle Settle currency
   - @param dualMode Whether to enable Hedge Mode
@@ -3066,6 +3067,7 @@ func (a *FuturesApiService) CreateFuturesOrder(ctx context.Context, settle strin
 // CancelFuturesOrdersOpts Optional parameters for the method 'CancelFuturesOrders'
 type CancelFuturesOrdersOpts struct {
 	XGateExptime      optional.String
+	Contract          optional.String
 	Side              optional.String
 	ExcludeReduceOnly optional.Bool
 	Text              optional.String
@@ -3076,16 +3078,16 @@ CancelFuturesOrders Cancel all orders with 'open' status
 Zero-fill orders cannot be retrieved 10 minutes after order cancellation
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param settle Settle currency
-  - @param contract Futures contract
   - @param optional nil or *CancelFuturesOrdersOpts - Optional Parameters:
   - @param "XGateExptime" (optional.String) -  Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected
+  - @param "Contract" (optional.String) -  Contract Identifier; if specified, only cancel pending orders related to this contract
   - @param "Side" (optional.String) -  Specify all buy orders or all sell orders, both are included if not specified. Set to bid to cancel all buy orders, set to ask to cancel all sell orders
   - @param "ExcludeReduceOnly" (optional.Bool) -  Whether to exclude reduce-only orders
   - @param "Text" (optional.String) -  Remark for order cancellation
 
 @return []FuturesOrder
 */
-func (a *FuturesApiService) CancelFuturesOrders(ctx context.Context, settle string, contract string, localVarOptionals *CancelFuturesOrdersOpts) ([]FuturesOrder, *http.Response, error) {
+func (a *FuturesApiService) CancelFuturesOrders(ctx context.Context, settle string, localVarOptionals *CancelFuturesOrdersOpts) ([]FuturesOrder, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -3103,7 +3105,9 @@ func (a *FuturesApiService) CancelFuturesOrders(ctx context.Context, settle stri
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-	localVarQueryParams.Add("contract", parameterToString(contract, ""))
+	if localVarOptionals != nil && localVarOptionals.Contract.IsSet() {
+		localVarQueryParams.Add("contract", parameterToString(localVarOptionals.Contract.Value(), ""))
+	}
 	if localVarOptionals != nil && localVarOptionals.Side.IsSet() {
 		localVarQueryParams.Add("side", parameterToString(localVarOptionals.Side.Value(), ""))
 	}
@@ -4574,7 +4578,7 @@ type CancelBatchFutureOrdersOpts struct {
 
 /*
 CancelBatchFutureOrders Cancel batch orders by specified ID list
-Multiple different order IDs can be specified, maximum 20 records per request
+Multiple different order IDs can be specified. A maximum of 20 records can be cancelled in one request
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param settle Settle currency
   - @param requestBody
@@ -4681,7 +4685,7 @@ type AmendBatchFutureOrdersOpts struct {
 
 /*
 AmendBatchFutureOrders Batch modify orders by specified IDs
-Multiple different order IDs can be specified, maximum 10 orders per request
+Multiple different order IDs can be specified. A maximum of 10 orders can be modified in one request
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param settle Settle currency
   - @param batchAmendOrderReq
