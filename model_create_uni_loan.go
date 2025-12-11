@@ -13,7 +13,7 @@ package gateapi
 type CreateUniLoan struct {
 	// Currency
 	Currency string `json:"currency"`
-	// Type: `borrow` - borrow, `repay` - repay
+	// Loan Type margin: margin borrowing
 	Type string `json:"type"`
 	// Borrow or repayment amount
 	Amount string `json:"amount"`

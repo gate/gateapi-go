@@ -15,15 +15,15 @@ type Contract struct {
 	Name string `json:"name,omitempty"`
 	// Contract type: inverse - inverse contract, direct - direct contract
 	Type string `json:"type,omitempty"`
-	// Multiplier used in converting from invoicing to settlement currency
+	// The contract multiplier indicates how many units of the underlying asset the face value of one contract represents.
 	QuantoMultiplier string `json:"quanto_multiplier,omitempty"`
 	// Minimum leverage
 	LeverageMin string `json:"leverage_min,omitempty"`
 	// Maximum leverage
 	LeverageMax string `json:"leverage_max,omitempty"`
-	// Maintenance rate of margin
+	// The maintenance margin rate of the first tier of risk limit sheet
 	MaintenanceRate string `json:"maintenance_rate,omitempty"`
-	// Mark price type: internal - internal trading price, index - external index price
+	// Deprecated
 	MarkType string `json:"mark_type,omitempty"`
 	// Current mark price
 	MarkPrice string `json:"mark_price,omitempty"`
@@ -81,7 +81,7 @@ type Contract struct {
 	EnableCredit bool `json:"enable_credit,omitempty"`
 	// Created time of the contract
 	CreateTime float64 `json:"create_time,omitempty"`
-	// The factor for the maximum of the funding rate. Maximum of funding rate = (1/market maximum leverage - maintenance margin rate) * funding_cap_ratio
+	// Deprecated
 	FundingCapRatio string `json:"funding_cap_ratio,omitempty"`
 	// Contract status types include: prelaunch (pre-launch), trading (active), delisting (delisting), delisted (delisted), circuit_breaker (circuit breaker)
 	Status string `json:"status,omitempty"`
@@ -91,4 +91,6 @@ type Contract struct {
 	DelistingTime int64 `json:"delisting_time,omitempty"`
 	// Contract delisting time
 	DelistedTime int64 `json:"delisted_time,omitempty"`
+	// Upper and lower limits of funding rate
+	FundingRateLimit string `json:"funding_rate_limit,omitempty"`
 }

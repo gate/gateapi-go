@@ -1407,6 +1407,7 @@ func (a *FuturesApiService) ListFuturesRiskLimitTiers(ctx context.Context, settl
 
 /*
 ListFuturesAccounts Get futures account
+Query account information for classic future account and unified account
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param settle Settle currency
 
@@ -1742,6 +1743,7 @@ func (a *FuturesApiService) ListPositions(ctx context.Context, settle string, lo
 
 /*
 GetPosition Get single position information
+Get single position information from a contract. If you hold two postions in one contract market, please use this API: /futures/{settle}/dual_comp/positions/{contract}
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param settle Settle currency
   - @param contract Futures contract
@@ -1838,6 +1840,7 @@ func (a *FuturesApiService) GetPosition(ctx context.Context, settle string, cont
 
 /*
 UpdatePositionMargin Update position margin
+Under the new risk limit rules(https://www.gate.com/en/help/futures/futures-logic/22162), the position limit is related to the leverage you set; a lower leverage will result in a higher position limit. Please use the leverage adjustment api to adjust the position limit.
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param settle Settle currency
   - @param contract Futures contract
@@ -1946,9 +1949,9 @@ UpdatePositionLeverage Update position leverage
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param settle Settle currency
   - @param contract Futures contract
-  - @param leverage New position leverage
+  - @param leverage Set the leverage for isolated margin. When setting isolated margin leverage, the `cross_leverage_limit`  must be empty.
   - @param optional nil or *UpdatePositionLeverageOpts - Optional Parameters:
-  - @param "CrossLeverageLimit" (optional.String) -  Cross margin leverage (valid only when `leverage` is 0)
+  - @param "CrossLeverageLimit" (optional.String) -  Set the leverage for cross margin. When setting cross margin leverage, the `leverage` must be set to 0.
   - @param "Pid" (optional.Int32) -  Product ID
 
 @return Position
@@ -2242,6 +2245,7 @@ func (a *FuturesApiService) UpdateDualCompPositionCrossMode(ctx context.Context,
 
 /*
 UpdatePositionRiskLimit Update position risk limit
+Under the new risk limit rules(https://www.gate.com/en/help/futures/futures-logic/22162), the position limit is related to the leverage you set; a lower leverage will result in a higher position limit. Please use the leverage adjustment api to adjust the position limit.
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param settle Settle currency
   - @param contract Futures contract
@@ -2740,6 +2744,7 @@ func (a *FuturesApiService) UpdateDualModePositionLeverage(ctx context.Context, 
 
 /*
 UpdateDualModePositionRiskLimit Update position risk limit in Hedge Mode
+Under the new risk limit rules(https://www.gate.com/en/help/futures/futures-logic/22162), the position limit is related to the leverage you set; a lower leverage will result in a higher position limit. Please use the leverage adjustment api to adjust the position limit.
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param settle Settle currency
   - @param contract Futures contract

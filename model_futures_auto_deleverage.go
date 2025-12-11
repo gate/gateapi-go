@@ -18,9 +18,9 @@ type FuturesAutoDeleverage struct {
 	OrderId int64 `json:"order_id,omitempty"`
 	// Futures contract
 	Contract string `json:"contract,omitempty"`
-	// Position leverage
+	//  leverage for isolated margin. 0 means cross margin. For leverage of cross margin, please refer to `cross_leverage_limit`.
 	Leverage string `json:"leverage,omitempty"`
-	// Cross margin leverage (valid only when `leverage` is 0)
+	// leverage for cross margin
 	CrossLeverageLimit string `json:"cross_leverage_limit,omitempty"`
 	// Average entry price
 	EntryPrice string `json:"entry_price,omitempty"`

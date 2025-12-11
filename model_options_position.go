@@ -15,7 +15,7 @@ type OptionsPosition struct {
 	User int32 `json:"user,omitempty"`
 	// Underlying
 	Underlying string `json:"underlying,omitempty"`
-	// Underlying price (quote currency)
+	// The forward futures price corresponding to the delivery date
 	UnderlyingPrice string `json:"underlying_price,omitempty"`
 	// Options contract name
 	Contract string `json:"contract,omitempty"`
@@ -29,7 +29,7 @@ type OptionsPosition struct {
 	MarkIv string `json:"mark_iv,omitempty"`
 	// Realized PnL
 	RealisedPnl string `json:"realised_pnl,omitempty"`
-	// Unrealized PNL
+	// Unrealised PnL = (mark price - entry price) * position size. For long postion, size is positive; for short positon, size is negative.This value is for reference only.
 	UnrealisedPnl string `json:"unrealised_pnl,omitempty"`
 	// Current pending order quantity
 	PendingOrders int32                      `json:"pending_orders,omitempty"`

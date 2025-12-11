@@ -6,11 +6,11 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | **string** | Futures contract | [optional] 
 **Type** | **string** | Contract type: inverse - inverse contract, direct - direct contract | [optional] 
-**QuantoMultiplier** | **string** | Multiplier used in converting from invoicing to settlement currency | [optional] 
+**QuantoMultiplier** | **string** | The contract multiplier indicates how many units of the underlying asset the face value of one contract represents. | [optional] 
 **LeverageMin** | **string** | Minimum leverage | [optional] 
 **LeverageMax** | **string** | Maximum leverage | [optional] 
-**MaintenanceRate** | **string** | Maintenance rate of margin | [optional] 
-**MarkType** | **string** | Mark price type: internal - internal trading price, index - external index price | [optional] 
+**MaintenanceRate** | **string** | The maintenance margin rate of the first tier of risk limit sheet | [optional] 
+**MarkType** | **string** | Deprecated | [optional] 
 **MarkPrice** | **string** | Current mark price | [optional] 
 **IndexPrice** | **string** | Current index price | [optional] 
 **LastPrice** | **string** | Last trading price | [optional] 
@@ -39,11 +39,12 @@ Name | Type | Description | Notes
 **EnableBonus** | **bool** | Whether bonus is enabled | [optional] 
 **EnableCredit** | **bool** | Whether portfolio margin account is enabled | [optional] 
 **CreateTime** | **float64** | Created time of the contract | [optional] 
-**FundingCapRatio** | **string** | The factor for the maximum of the funding rate. Maximum of funding rate &#x3D; (1/market maximum leverage - maintenance margin rate) * funding_cap_ratio | [optional] 
+**FundingCapRatio** | **string** | Deprecated | [optional] 
 **Status** | **string** | Contract status types include: prelaunch (pre-launch), trading (active), delisting (delisting), delisted (delisted), circuit_breaker (circuit breaker) | [optional] 
 **LaunchTime** | **int64** | Contract expiry timestamp | [optional] 
 **DelistingTime** | **int64** | Timestamp when contract enters reduce-only state | [optional] 
 **DelistedTime** | **int64** | Contract delisting time | [optional] 
+**FundingRateLimit** | **string** | Upper and lower limits of funding rate | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

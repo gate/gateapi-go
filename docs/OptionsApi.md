@@ -947,6 +947,8 @@ No authorization required
 
 Query account information
 
+Query account information for classic option account and unified account
+
 ### Required Parameters
 
 

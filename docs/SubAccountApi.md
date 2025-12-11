@@ -448,6 +448,8 @@ func main() {
 
 Update sub-account API key pair
 
+Modify Sub-account API Key Pair (Note: This interface cannot modify the mode account type attribute)
+
 ### Required Parameters
 
 Name | Type | Description  | Notes

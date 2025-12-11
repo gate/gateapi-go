@@ -13,7 +13,7 @@ package gateapi
 type OptionsContract struct {
 	// Options contract name
 	Name string `json:"name,omitempty"`
-	// Tag
+	// Expiry periods include day, week, and month.
 	Tag string `json:"tag,omitempty"`
 	// Created time
 	CreateTime float64 `json:"create_time,omitempty"`
@@ -21,11 +21,11 @@ type OptionsContract struct {
 	ExpirationTime float64 `json:"expiration_time,omitempty"`
 	// `true` means call options, `false` means put options
 	IsCall bool `json:"is_call,omitempty"`
-	// Multiplier used in converting from invoicing to settlement currency
+	// The option contract multiplier indicates how many units of the underlying asset the face value of one contract represents.
 	Multiplier string `json:"multiplier,omitempty"`
 	// Underlying
 	Underlying string `json:"underlying,omitempty"`
-	// Underlying price (quote currency)
+	// The forward futures price corresponding to the delivery date
 	UnderlyingPrice string `json:"underlying_price,omitempty"`
 	// Last trading price
 	LastPrice string `json:"last_price,omitempty"`
@@ -45,7 +45,7 @@ type OptionsContract struct {
 	OrderSizeMin int64 `json:"order_size_min,omitempty"`
 	// Maximum order size allowed by the contract
 	OrderSizeMax int64 `json:"order_size_max,omitempty"`
-	// The positive and negative offset allowed between the order price and the current mark price, that `order_price` must meet the following conditions:  order_price is within the range of mark_price +/- order_price_deviate * underlying_price and does not distinguish between buy and sell orders
+	// Deprecated
 	OrderPriceDeviate string `json:"order_price_deviate,omitempty"`
 	// Trading fee discount for referred users
 	RefDiscountRate string `json:"ref_discount_rate,omitempty"`
@@ -53,12 +53,12 @@ type OptionsContract struct {
 	RefRebateRate string `json:"ref_rebate_rate,omitempty"`
 	// Orderbook update ID
 	OrderbookId int64 `json:"orderbook_id,omitempty"`
-	// Current trade ID
+	// Deprecated
 	TradeId int64 `json:"trade_id,omitempty"`
 	// Historical cumulative trading volume
 	TradeSize int64 `json:"trade_size,omitempty"`
 	// Current total long position size
 	PositionSize int64 `json:"position_size,omitempty"`
-	// Maximum number of pending orders
+	// The maximum number of open orders each user can place in this order book.
 	OrdersLimit int32 `json:"orders_limit,omitempty"`
 }

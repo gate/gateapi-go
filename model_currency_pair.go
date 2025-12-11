@@ -49,4 +49,8 @@ type CurrencyPair struct {
 	TradeUrl string `json:"trade_url,omitempty"`
 	// Whether the trading pair is in ST risk assessment, false - No, true - Yes
 	StTag bool `json:"st_tag,omitempty"`
+	// Maximum Quote Rise Percentage
+	UpRate string `json:"up_rate,omitempty"`
+	// Maximum Quote Decline Percentage
+	DownRate string `json:"down_rate,omitempty"`
 }

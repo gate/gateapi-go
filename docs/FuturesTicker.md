@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 **FundingRate** | **string** | Funding rate | [optional] 
 **FundingRateIndicative** | **string** | Indicative Funding rate in next period. (deprecated. use &#x60;funding_rate&#x60;) | [optional] 
 **IndexPrice** | **string** | Index price | [optional] 
-**QuantoBaseRate** | **string** | Exchange rate of base currency and settlement currency in Quanto contract. Does not exists in contracts of other types | [optional] 
+**QuantoBaseRate** | **string** | Deprecated | [optional] 
 **LowestAsk** | **string** | Recent lowest ask | [optional] 
 **LowestSize** | **string** | The latest seller&#39;s lowest price order quantity | [optional] 
 **HighestBid** | **string** | Recent highest bid | [optional] 

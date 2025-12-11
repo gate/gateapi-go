@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Tier** | **int32** | Tier | [optional] 
 **RiskLimit** | **string** | Position risk limit | [optional] 
 **InitialRate** | **string** | Initial margin rate | [optional] 
-**MaintenanceRate** | **string** | Maintenance margin rate | [optional] 
+**MaintenanceRate** | **string** | The maintenance margin rate of the first tier of risk limit sheet | [optional] 
 **LeverageMax** | **string** | Maximum leverage | [optional] 
 **Deduction** | **string** | Maintenance margin quick calculation deduction amount | [optional] 
 

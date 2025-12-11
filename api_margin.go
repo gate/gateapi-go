@@ -642,6 +642,7 @@ func (a *MarginApiService) GetMarginTransferable(ctx context.Context, currency s
 
 /*
 GetUserMarginTier Query user's own leverage lending tiers in current market
+Query the borrowing tier margin requirements of a specific spot market.For more details about borrowing tier margin requirements, please refer to Underlying Logic of the New Isolated Margin System（https://www.gate.com/en/help/trade/margin-trading/42357）
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param currencyPair Currency pair
 
@@ -734,6 +735,7 @@ func (a *MarginApiService) GetUserMarginTier(ctx context.Context, currencyPair s
 
 /*
 GetMarketMarginTier Query current market leverage lending tiers
+Query the borrowing tier margin requirements of a specific spot market.For more details about borrowing tier margin requirements, please refer to Underlying Logic of the New Isolated Margin System（https://www.gate.com/en/help/trade/margin-trading/42357）
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param currencyPair Currency pair
 

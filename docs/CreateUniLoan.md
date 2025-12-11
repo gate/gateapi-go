@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Currency** | **string** | Currency | 
-**Type** | **string** | Type: &#x60;borrow&#x60; - borrow, &#x60;repay&#x60; - repay | 
+**Type** | **string** | Loan Type margin: margin borrowing | 
 **Amount** | **string** | Borrow or repayment amount | 
 **RepaidAll** | **bool** | Full repayment. For repayment operations only. When &#x60;true&#x60;, overrides &#x60;amount&#x60; and repays the full amount | [optional] 
 **CurrencyPair** | **string** | Currency pair | 

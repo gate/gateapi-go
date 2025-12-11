@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **ActualRate** | **string** | Actual Rate | [optional] [readonly] 
 **Interest** | **string** | Interest | [optional] [readonly] 
 **Status** | **int32** | Status: 0 - fail, 1 - success | [optional] [readonly] 
-**Type** | **string** | Type: platform - Platform borrowing, margin - Margin borrowing | [optional] [readonly] 
+**Type** | **string** | Loan Type margin: margin borrowing | [optional] [readonly] 
 **CreateTime** | **int64** | Created time | [optional] [readonly] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -35,7 +35,7 @@ type OptionsTicker struct {
 	BidIv string `json:"bid_iv,omitempty"`
 	// Ask side implied volatility
 	AskIv string `json:"ask_iv,omitempty"`
-	// Current leverage. Formula: underlying_price / mark_price * delta
+	// Leverage = underlying_price / (mark_price * delta). This value is for reference only.
 	Leverage string `json:"leverage,omitempty"`
 	// Greek letter delta
 	Delta string `json:"delta,omitempty"`

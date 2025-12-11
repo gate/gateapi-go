@@ -1031,6 +1031,8 @@ No authorization required
 
 Get futures account
 
+Query account information for classic future account and unified account
+
 ### Required Parameters
 
 Name | Type | Description  | Notes
@@ -1265,6 +1267,8 @@ func main() {
 
 Get single position information
 
+Get single position information from a contract. If you hold two postions in one contract market, please use this API: /futures/{settle}/dual_comp/positions/{contract}
+
 ### Required Parameters
 
 Name | Type | Description  | Notes
@@ -1335,6 +1339,8 @@ func main() {
 > Position UpdatePositionMargin(ctx, settle, contract, change)
 
 Update position margin
+
+Under the new risk limit rules(https://www.gate.com/en/help/futures/futures-logic/22162), the position limit is related to the leverage you set; a lower leverage will result in a higher position limit. Please use the leverage adjustment api to adjust the position limit.
 
 ### Required Parameters
 
@@ -1418,7 +1424,7 @@ Name | Type | Description  | Notes
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **settle** | **string**| Settle currency | 
 **contract** | **string**| Futures contract | 
-**leverage** | **string**| New position leverage | 
+**leverage** | **string**| Set the leverage for isolated margin. When setting isolated margin leverage, the &#x60;cross_leverage_limit&#x60;  must be empty. | 
 **optional** | **UpdatePositionLeverageOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
@@ -1427,7 +1433,7 @@ Optional parameters are passed through a pointer to a UpdatePositionLeverageOpts
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**crossLeverageLimit** | **optional.String**| Cross margin leverage (valid only when &#x60;leverage&#x60; is 0) | 
+**crossLeverageLimit** | **optional.String**| Set the leverage for cross margin. When setting cross margin leverage, the &#x60;leverage&#x60; must be set to 0. | 
 **pid** | **optional.Int32**| Product ID | 
 
 ### Example
@@ -1455,7 +1461,7 @@ func main() {
                             )
     settle := "usdt" // string - Settle currency
     contract := "BTC_USDT" // string - Futures contract
-    leverage := "10" // string - New position leverage
+    leverage := "10" // string - Set the leverage for isolated margin. When setting isolated margin leverage, the `cross_leverage_limit`  must be empty.
     
     result, _, err := client.FuturesApi.UpdatePositionLeverage(ctx, settle, contract, leverage, nil)
     if err != nil {
@@ -1635,6 +1641,8 @@ func main() {
 > Position UpdatePositionRiskLimit(ctx, settle, contract, riskLimit)
 
 Update position risk limit
+
+Under the new risk limit rules(https://www.gate.com/en/help/futures/futures-logic/22162), the position limit is related to the leverage you set; a lower leverage will result in a higher position limit. Please use the leverage adjustment api to adjust the position limit.
 
 ### Required Parameters
 
@@ -2009,6 +2017,8 @@ func main() {
 > []Position UpdateDualModePositionRiskLimit(ctx, settle, contract, riskLimit)
 
 Update position risk limit in Hedge Mode
+
+Under the new risk limit rules(https://www.gate.com/en/help/futures/futures-logic/22162), the position limit is related to the leverage you set; a lower leverage will result in a higher position limit. Please use the leverage adjustment api to adjust the position limit.
 
 ### Required Parameters
 

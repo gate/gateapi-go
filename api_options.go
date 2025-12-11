@@ -1326,6 +1326,7 @@ func (a *OptionsApiService) ListOptionsTrades(ctx context.Context, localVarOptio
 
 /*
 ListOptionsAccount Query account information
+Query account information for classic option account and unified account
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 
 @return OptionsAccount

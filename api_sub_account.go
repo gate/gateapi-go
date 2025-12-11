@@ -599,6 +599,7 @@ func (a *SubAccountApiService) GetSubAccountKey(ctx context.Context, userId int3
 
 /*
 UpdateSubAccountKeys Update sub-account API key pair
+Modify Sub-account API Key Pair (Note: This interface cannot modify the mode account type attribute)
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param userId Sub-account user ID
   - @param key Sub-account API key

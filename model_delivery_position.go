@@ -23,7 +23,7 @@ type DeliveryPosition struct {
 	RiskLimit string `json:"risk_limit,omitempty"`
 	// Maximum leverage under current risk limit
 	LeverageMax string `json:"leverage_max,omitempty"`
-	// Maintenance rate under current risk limit
+	// The maintenance margin rate of the first tier of risk limit sheet
 	MaintenanceRate string `json:"maintenance_rate,omitempty"`
 	// Position value calculated in settlement currency
 	Value string `json:"value,omitempty"`

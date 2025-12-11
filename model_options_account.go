@@ -12,21 +12,21 @@ package gateapi
 type OptionsAccount struct {
 	// User ID
 	User int64 `json:"user,omitempty"`
-	// Account Balance
+	// Account balance, invalid for unified account
 	Total string `json:"total,omitempty"`
 	// Position value, long position value is positive, short position value is negative
 	PositionValue string `json:"position_value,omitempty"`
-	// Account equity, the sum of account balance and position value
+	// Account equity = balance + option position value, invalid for unified account
 	Equity string `json:"equity,omitempty"`
 	// If the account is allowed to short
 	ShortEnabled bool `json:"short_enabled,omitempty"`
 	// Whether to enable MMP
 	MmpEnabled bool `json:"mmp_enabled,omitempty"`
-	// Whether to trigger position liquidation
+	// Whether the account is in a liquidation state
 	LiqTriggered bool `json:"liq_triggered,omitempty"`
-	// ｜ 保证金模式： - 0：经典现货保证金模式 - 1：跨币种保证金模式 - 2：组合保证金模式
+	// 此字段表示统一账户所使用的保证金模式：  - 0：经典现货保证金模式 - 1：跨币种保证金模式 - 2：组合保证金模式 - 3: 表示为单币种保证金模式
 	MarginMode int32 `json:"margin_mode,omitempty"`
-	// Unrealized PNL
+	// Unrealised PnL = (mark price - entry price) * position size. For long postion, size is positive; for short positon, size is negative.This value is for reference only.
 	UnrealisedPnl string `json:"unrealised_pnl,omitempty"`
 	// Initial position margin
 	InitMargin string `json:"init_margin,omitempty"`

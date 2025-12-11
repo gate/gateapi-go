@@ -22,7 +22,7 @@ type OptionsMyTrade struct {
 	Size int64 `json:"size,omitempty"`
 	// Trade price (quote currency)
 	Price string `json:"price,omitempty"`
-	// Underlying price (quote currency)
+	// The forward futures price corresponding to the delivery date
 	UnderlyingPrice string `json:"underlying_price,omitempty"`
 	// Trade role. taker - taker, maker - maker
 	Role string `json:"role,omitempty"`

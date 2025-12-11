@@ -19,15 +19,15 @@ type DeliveryContract struct {
 	Cycle string `json:"cycle,omitempty"`
 	// Contract type: inverse - inverse contract, direct - direct contract
 	Type string `json:"type,omitempty"`
-	// Multiplier used in converting from invoicing to settlement currency
+	// The contract multiplier indicates how many units of the underlying asset the face value of one contract represents.
 	QuantoMultiplier string `json:"quanto_multiplier,omitempty"`
 	// Minimum leverage
 	LeverageMin string `json:"leverage_min,omitempty"`
 	// Maximum leverage
 	LeverageMax string `json:"leverage_max,omitempty"`
-	// Maintenance rate of margin
+	// The maintenance margin rate of the first tier of risk limit sheet
 	MaintenanceRate string `json:"maintenance_rate,omitempty"`
-	// Mark price type: internal - internal trading price, index - external index price
+	// Deprecated
 	MarkType string `json:"mark_type,omitempty"`
 	// Current mark price
 	MarkPrice string `json:"mark_price,omitempty"`

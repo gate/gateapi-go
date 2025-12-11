@@ -10,13 +10,13 @@
 package gateapi
 
 type DeliveryAccount struct {
-	// total is the balance after the user's accumulated deposit, withdraw, profit and loss (including realized profit and loss, fund, fee and referral rebate), excluding unrealized profit and loss.  total = SUM(history_dnw, history_pnl, history_fee, history_refr, history_fund)
+	// Balance, only applicable to classic contract account.The balance is the sum of all historical fund flows, including historical transfers in and out, closing settlements, and transaction fee expenses, but does not include upl of positions.total = SUM(history_dnw, history_pnl, history_fee, history_refr, history_fund)
 	Total string `json:"total,omitempty"`
 	// Unrealized PNL
 	UnrealisedPnl string `json:"unrealised_pnl,omitempty"`
-	// Position margin
+	// Deprecated
 	PositionMargin string `json:"position_margin,omitempty"`
-	// Order margin of unfinished orders
+	// initial margin of all open orders
 	OrderMargin string `json:"order_margin,omitempty"`
 	// Available amount for transfer or trading, which includes credit limits under the unified account (includes experience funds; experience funds cannot be transferred, so when transferring, the transfer amount must deduct experience funds)
 	Available string `json:"available,omitempty"`
@@ -34,7 +34,7 @@ type DeliveryAccount struct {
 	MaintenanceMargin string `json:"maintenance_margin,omitempty"`
 	// Bonus
 	Bonus string `json:"bonus,omitempty"`
-	// Classic account margin mode, true-new mode, false-old mode
+	// Deprecated
 	EnableEvolvedClassic bool `json:"enable_evolved_classic,omitempty"`
 	// Cross margin order margin, applicable to new classic account margin mode
 	CrossOrderMargin string `json:"cross_order_margin,omitempty"`
@@ -54,9 +54,9 @@ type DeliveryAccount struct {
 	CrossImr string `json:"cross_imr,omitempty"`
 	// Isolated position margin, applicable to new classic account margin mode
 	IsolatedPositionMargin string `json:"isolated_position_margin,omitempty"`
-	// Whether to open a new two-way position mode
+	// Deprecated
 	EnableNewDualMode bool `json:"enable_new_dual_mode,omitempty"`
-	// Margin mode, 0-classic margin mode, 1-cross-currency margin mode, 2-combined margin mode
+	// Margin mode of the account 0: classic future account or Classic Spot Margin Mode of unified account; 1:  Multi-Currency Margin Mode; 2:  Portoforlio Margin Mode; 3:  Single-Currency Margin Mode
 	MarginMode int32 `json:"margin_mode,omitempty"`
 	// Whether to enable tiered maintenance margin calculation
 	EnableTieredMm bool                  `json:"enable_tiered_mm,omitempty"`
