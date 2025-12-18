@@ -720,16 +720,16 @@ Bids will be sorted by price from high to low, while asks sorted reversely
   - @param "Limit" (optional.Int32) -  Number of depth levels
   - @param "WithId" (optional.Bool) -  Whether to return depth update ID. This ID increments by 1 each time the depth changes
 
-@return FuturesOrderBook
+@return OptionsOrderBook
 */
-func (a *OptionsApiService) ListOptionsOrderBook(ctx context.Context, contract string, localVarOptionals *ListOptionsOrderBookOpts) (FuturesOrderBook, *http.Response, error) {
+func (a *OptionsApiService) ListOptionsOrderBook(ctx context.Context, contract string, localVarOptionals *ListOptionsOrderBookOpts) (OptionsOrderBook, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  FuturesOrderBook
+		localVarReturnValue  OptionsOrderBook
 	)
 
 	// create path and map variables
@@ -1112,16 +1112,16 @@ ListOptionsUnderlyingCandlesticks Underlying index price candlestick chart
   - @param "To" (optional.Int64) -  Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp
   - @param "Interval" (optional.String) -  Time interval between data points
 
-@return []FuturesCandlestick
+@return []OptionsCandlestick
 */
-func (a *OptionsApiService) ListOptionsUnderlyingCandlesticks(ctx context.Context, underlying string, localVarOptionals *ListOptionsUnderlyingCandlesticksOpts) ([]FuturesCandlestick, *http.Response, error) {
+func (a *OptionsApiService) ListOptionsUnderlyingCandlesticks(ctx context.Context, underlying string, localVarOptionals *ListOptionsUnderlyingCandlesticksOpts) ([]OptionsCandlestick, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  []FuturesCandlestick
+		localVarReturnValue  []OptionsCandlestick
 	)
 
 	// create path and map variables
@@ -1226,16 +1226,16 @@ ListOptionsTrades Market trade records
   - @param "From" (optional.Int64) -  Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit)
   - @param "To" (optional.Int64) -  Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp
 
-@return []FuturesTrade
+@return []OptionsTrade
 */
-func (a *OptionsApiService) ListOptionsTrades(ctx context.Context, localVarOptionals *ListOptionsTradesOpts) ([]FuturesTrade, *http.Response, error) {
+func (a *OptionsApiService) ListOptionsTrades(ctx context.Context, localVarOptionals *ListOptionsTradesOpts) ([]OptionsTrade, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  []FuturesTrade
+		localVarReturnValue  []OptionsTrade
 	)
 
 	// create path and map variables

@@ -516,7 +516,7 @@ func main() {
 
 ## ListOptionsOrderBook
 
-> FuturesOrderBook ListOptionsOrderBook(ctx, contract, optional)
+> OptionsOrderBook ListOptionsOrderBook(ctx, contract, optional)
 
 Query options contract order book
 
@@ -575,7 +575,7 @@ func main() {
 
 ### Return type
 
-[**FuturesOrderBook**](FuturesOrderBook.md)
+[**OptionsOrderBook**](OptionsOrderBook.md)
 
 ### Authorization
 
@@ -793,7 +793,7 @@ No authorization required
 
 ## ListOptionsUnderlyingCandlesticks
 
-> []FuturesCandlestick ListOptionsUnderlyingCandlesticks(ctx, underlying, optional)
+> []OptionsCandlestick ListOptionsUnderlyingCandlesticks(ctx, underlying, optional)
 
 Underlying index price candlestick chart
 
@@ -851,7 +851,7 @@ func main() {
 
 ### Return type
 
-[**[]FuturesCandlestick**](FuturesCandlestick.md)
+[**[]OptionsCandlestick**](OptionsCandlestick.md)
 
 ### Authorization
 
@@ -868,7 +868,7 @@ No authorization required
 
 ## ListOptionsTrades
 
-> []FuturesTrade ListOptionsTrades(ctx, optional)
+> []OptionsTrade ListOptionsTrades(ctx, optional)
 
 Market trade records
 
@@ -926,7 +926,7 @@ func main() {
 
 ### Return type
 
-[**[]FuturesTrade**](FuturesTrade.md)
+[**[]OptionsTrade**](OptionsTrade.md)
 
 ### Authorization
 
