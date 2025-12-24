@@ -15,7 +15,6 @@ import (
 	"io/ioutil"
 	"net/http"
 	"net/url"
-	"reflect"
 	"strings"
 )
 
@@ -1140,17 +1139,7 @@ func (a *MultiCollateralLoanApiService) GetMultiCollateralCurrentRate(ctx contex
 		return localVarReturnValue, nil, reportError("currencies must have less than 100 elements")
 	}
 
-	{
-		t := currencies
-		if reflect.TypeOf(t).Kind() == reflect.Slice {
-			s := reflect.ValueOf(t)
-			for i := 0; i < s.Len(); i++ {
-				localVarQueryParams.Add("currencies", parameterToString(s.Index(i), "multi"))
-			}
-		} else {
-			localVarQueryParams.Add("currencies", parameterToString(t, "multi"))
-		}
-	}
+	localVarQueryParams.Add("currencies", parameterToString(currencies, "csv"))
 	if localVarOptionals != nil && localVarOptionals.VipLevel.IsSet() {
 		localVarQueryParams.Add("vip_level", parameterToString(localVarOptionals.VipLevel.Value(), ""))
 	}

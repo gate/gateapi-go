@@ -11,6 +11,6 @@ package gateapi
 
 type InlineResponse2001 struct {
 	Currency string `json:"currency,omitempty"`
-	// Unconverted percentage
+	// Estimated Annualized Rate, e.g., `est_rate`: `0.8014` represents an annualized rate of 80.14%
 	EstRate string `json:"est_rate,omitempty"`
 }

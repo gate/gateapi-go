@@ -15,7 +15,6 @@ import (
 	"io/ioutil"
 	"net/http"
 	"net/url"
-	"reflect"
 )
 
 // Linger please
@@ -437,17 +436,7 @@ func (a *UnifiedApiService) GetUnifiedBorrowableList(ctx context.Context, curren
 		return localVarReturnValue, nil, reportError("currencies must have less than 10 elements")
 	}
 
-	{
-		t := currencies
-		if reflect.TypeOf(t).Kind() == reflect.Slice {
-			s := reflect.ValueOf(t)
-			for i := 0; i < s.Len(); i++ {
-				localVarQueryParams.Add("currencies", parameterToString(s.Index(i), "multi"))
-			}
-		} else {
-			localVarQueryParams.Add("currencies", parameterToString(t, "multi"))
-		}
-	}
+	localVarQueryParams.Add("currencies", parameterToString(currencies, "csv"))
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -1259,17 +1248,7 @@ func (a *UnifiedApiService) GetUnifiedEstimateRate(ctx context.Context, currenci
 		return localVarReturnValue, nil, reportError("currencies must have less than 10 elements")
 	}
 
-	{
-		t := currencies
-		if reflect.TypeOf(t).Kind() == reflect.Slice {
-			s := reflect.ValueOf(t)
-			for i := 0; i < s.Len(); i++ {
-				localVarQueryParams.Add("currencies", parameterToString(s.Index(i), "multi"))
-			}
-		} else {
-			localVarQueryParams.Add("currencies", parameterToString(t, "multi"))
-		}
-	}
+	localVarQueryParams.Add("currencies", parameterToString(currencies, "csv"))
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 

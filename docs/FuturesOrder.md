@@ -34,6 +34,7 @@ Name | Type | Description | Notes
 **Pid** | **int64** | Position ID | [optional] 
 **OrderValue** | **string** | order&#39;s value | [optional] 
 **TradeValue** | **string** | trade value | [optional] 
+**MarketOrderSlipRatio** | **string** | Custom maximum slippage rate for market orders. If not provided, the default contract settings will be used | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

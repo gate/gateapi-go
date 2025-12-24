@@ -91,6 +91,10 @@ type Contract struct {
 	DelistingTime int64 `json:"delisting_time,omitempty"`
 	// Contract delisting time
 	DelistedTime int64 `json:"delisted_time,omitempty"`
+	// The maximum slippage allowed for market orders, with the slippage rate calculated based on the latest market price
+	MarketOrderSlipRatio string `json:"market_order_slip_ratio,omitempty"`
+	// The maximum number of contracts supported for market orders, with a default value of 0. When the default value is used, the maximum number of contracts is limited by the `order_size_max` field
+	MarketOrderSizeMax string `json:"market_order_size_max,omitempty"`
 	// Upper and lower limits of funding rate
 	FundingRateLimit string `json:"funding_rate_limit,omitempty"`
 }
