@@ -85,4 +85,6 @@ type BatchOrder struct {
 	StpAct string `json:"stp_act,omitempty"`
 	// How the order was finished.  - open: processing - filled: filled totally - cancelled: manually cancelled - ioc: time in force is `IOC`, finish immediately - stp: cancelled because self trade prevention
 	FinishAs string `json:"finish_as,omitempty"`
+	// Slippage, default limit range 0.0001-0.05, converted to percentage is 0.01%-5%, indicating the acceptable price difference for market order transactions
+	Slippage string `json:"slippage,omitempty"`
 }

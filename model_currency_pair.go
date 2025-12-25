@@ -53,4 +53,10 @@ type CurrencyPair struct {
 	UpRate string `json:"up_rate,omitempty"`
 	// Maximum Quote Decline Percentage
 	DownRate string `json:"down_rate,omitempty"`
+	// Currency Slippage
+	Slippage string `json:"slippage,omitempty"`
+	// Maximum Market Order Quantity
+	MarketOrderMaxStock string `json:"market_order_max_stock,omitempty"`
+	// Maximum Market Order Amount
+	MarketOrderMaxMoney string `json:"market_order_max_money,omitempty"`
 }
