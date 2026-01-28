@@ -33,7 +33,7 @@ type BatchOrder struct {
 	CreateTimeMs int64 `json:"create_time_ms,omitempty"`
 	// Last modification time of order (in milliseconds)
 	UpdateTimeMs int64 `json:"update_time_ms,omitempty"`
-	// Order status  - `open`: to be filled - `closed`: filled - `cancelled`: cancelled
+	// Order status  - `open`: to be filled - `closed`: closed order - `cancelled`: cancelled
 	Status string `json:"status,omitempty"`
 	// Currency pair
 	CurrencyPair string `json:"currency_pair,omitempty"`
@@ -85,6 +85,6 @@ type BatchOrder struct {
 	StpAct string `json:"stp_act,omitempty"`
 	// How the order was finished.  - open: processing - filled: filled totally - cancelled: manually cancelled - ioc: time in force is `IOC`, finish immediately - stp: cancelled because self trade prevention
 	FinishAs string `json:"finish_as,omitempty"`
-	// Slippage, default limit range 0.0001-0.05, converted to percentage is 0.01%-5%, indicating the acceptable price difference for market order transactions
+	// Maximum supported slippage ratio for Spot Market Order Placement, calculated based on the latest market price at the time of order placement as the benchmark (Example: 0.03 means 3%)
 	Slippage string `json:"slippage,omitempty"`
 }

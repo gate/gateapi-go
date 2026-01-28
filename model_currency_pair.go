@@ -53,7 +53,7 @@ type CurrencyPair struct {
 	UpRate string `json:"up_rate,omitempty"`
 	// Maximum Quote Decline Percentage
 	DownRate string `json:"down_rate,omitempty"`
-	// Currency Slippage
+	// Maximum supported slippage ratio for Spot Market Order Placement, calculated based on the latest market price at the time of order placement as the benchmark (Example: 0.03 means 3%)
 	Slippage string `json:"slippage,omitempty"`
 	// Maximum Market Order Quantity
 	MarketOrderMaxStock string `json:"market_order_max_stock,omitempty"`

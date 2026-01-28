@@ -78,4 +78,8 @@ type Position struct {
 	AverageMaintenanceRate string `json:"average_maintenance_rate,omitempty"`
 	// Sub-account position ID
 	Pid int64 `json:"pid,omitempty"`
+	// Position Margin Mode isolated - Isolated Margin, cross - Cross Margin
+	PosMarginMode string `json:"pos_margin_mode,omitempty"`
+	// Indicates the current leverage of the position, applicable to both isolated and cross margin, gradually replacing the current leverage and cross_leverage_limit
+	Lever string `json:"lever,omitempty"`
 }

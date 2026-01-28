@@ -13,10 +13,8 @@ package gateapi
 type FuturesUpdatePriceTriggeredOrder struct {
 	// Settlement Currency (e.g., USDT, BTC)
 	Settle string `json:"settle,omitempty"`
-	// ID of the Pending Take-Profit/Stop-Loss Trigger Order
-	OrderId int32 `json:"order_id,omitempty"`
 	// The order ID of the modified price-triggered order. This ID is returned upon successful creation of the price-triggered order. Note: This ID must be passed in both the request path and request body.
-	Contact string `json:"contact,omitempty"`
+	OrderId string `json:"order_id"`
 	// Modified Contract Quantity. Full Close: 0; Partial Close: Positive/Negative values indicate direction (consistent with the creation interface logic).
 	Size int64 `json:"size,omitempty"`
 	// Represents the modified trading price. A value of 0 indicates a market order.
@@ -27,4 +25,6 @@ type FuturesUpdatePriceTriggeredOrder struct {
 	PriceType int32 `json:"price_type,omitempty"`
 	// One-way Mode: auto_size is not required Hedge Mode partial closing (size≠0): auto_size is not required Hedge Mode full closing (size=0): auto_size must be set, close_long for closing long positions, close_short for closing short positions
 	AutoSize string `json:"auto_size,omitempty"`
+	// In One-way Mode, when closing all positions, this must be set to true to perform the closing operation When partially closing positions in One-way Mode or Hedge Mode, you can omit close or set close=false
+	Close bool `json:"close,omitempty"`
 }

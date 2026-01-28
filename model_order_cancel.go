@@ -31,7 +31,7 @@ type OrderCancel struct {
 	CreateTimeMs int64 `json:"create_time_ms,omitempty"`
 	// Last modification time of order (in milliseconds)
 	UpdateTimeMs int64 `json:"update_time_ms,omitempty"`
-	// Order status  - `open`: to be filled - `closed`: filled - `cancelled`: cancelled
+	// Order status  - `open`: to be filled - `closed`: closed order - `cancelled`: cancelled
 	Status string `json:"status,omitempty"`
 	// Currency pair
 	CurrencyPair string `json:"currency_pair"`

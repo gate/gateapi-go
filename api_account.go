@@ -208,6 +208,7 @@ func (a *AccountApiService) GetAccountMainKeys(ctx context.Context) (AccountKeyI
 
 /*
 GetAccountRateLimit Get user transaction rate limit information
+This interface is not yet open for use
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 
 @return []AccountRateLimit

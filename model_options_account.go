@@ -24,7 +24,7 @@ type OptionsAccount struct {
 	MmpEnabled bool `json:"mmp_enabled,omitempty"`
 	// Whether the account is in a liquidation state
 	LiqTriggered bool `json:"liq_triggered,omitempty"`
-	// 此字段表示统一账户所使用的保证金模式：  - 0：经典现货保证金模式 - 1：跨币种保证金模式 - 2：组合保证金模式 - 3: 表示为单币种保证金模式
+	// This field indicates the margin mode used by the unified account:  - 0: Classic Spot Margin Mode - 1: Cross-Currency Margin Mode - 2: Portfolio Margin Mode - 3: Single-Currency Margin Mode
 	MarginMode int32 `json:"margin_mode,omitempty"`
 	// Unrealised PnL = (mark price - entry price) * position size. For long postion, size is positive; for short positon, size is negative.This value is for reference only.
 	UnrealisedPnl string `json:"unrealised_pnl,omitempty"`

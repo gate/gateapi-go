@@ -150,6 +150,8 @@ func main() {
 
 Get user transaction rate limit information
 
+This interface is not yet open for use
+
 ### Required Parameters
 
 

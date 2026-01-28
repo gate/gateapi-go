@@ -21,12 +21,15 @@ Method | HTTP request | Description
 [**ListFuturesAccountBook**](FuturesApi.md#ListFuturesAccountBook) | **Get** /futures/{settle}/account_book | Query futures account change history
 [**ListPositions**](FuturesApi.md#ListPositions) | **Get** /futures/{settle}/positions | Get user position list
 [**GetPosition**](FuturesApi.md#GetPosition) | **Get** /futures/{settle}/positions/{contract} | Get single position information
+[**GetLeverage**](FuturesApi.md#GetLeverage) | **Get** /futures/{settle}/get_leverage/{contract} | Get Leverage Information for Specified Mode
 [**UpdatePositionMargin**](FuturesApi.md#UpdatePositionMargin) | **Post** /futures/{settle}/positions/{contract}/margin | Update position margin
 [**UpdatePositionLeverage**](FuturesApi.md#UpdatePositionLeverage) | **Post** /futures/{settle}/positions/{contract}/leverage | Update position leverage
+[**UpdateContractPositionLeverage**](FuturesApi.md#UpdateContractPositionLeverage) | **Post** /futures/{settle}/positions/{contract}/set_leverage | Update Leverage for Specified Mode
 [**UpdatePositionCrossMode**](FuturesApi.md#UpdatePositionCrossMode) | **Post** /futures/{settle}/positions/cross_mode | Switch Position Margin Mode
 [**UpdateDualCompPositionCrossMode**](FuturesApi.md#UpdateDualCompPositionCrossMode) | **Post** /futures/{settle}/dual_comp/positions/cross_mode | Switch Between Cross and Isolated Margin Modes Under Hedge Mode
 [**UpdatePositionRiskLimit**](FuturesApi.md#UpdatePositionRiskLimit) | **Post** /futures/{settle}/positions/{contract}/risk_limit | Update position risk limit
 [**SetDualMode**](FuturesApi.md#SetDualMode) | **Post** /futures/{settle}/dual_mode | Set position mode
+[**SetPositionMode**](FuturesApi.md#SetPositionMode) | **Post** /futures/{settle}/set_position_mode | Set Position Holding Mode, replacing the dual_mode interface
 [**GetDualModePosition**](FuturesApi.md#GetDualModePosition) | **Get** /futures/{settle}/dual_comp/positions/{contract} | Get position information in Hedge Mode
 [**UpdateDualModePositionMargin**](FuturesApi.md#UpdateDualModePositionMargin) | **Post** /futures/{settle}/dual_comp/positions/{contract}/margin | Update position margin in Hedge Mode
 [**UpdateDualModePositionLeverage**](FuturesApi.md#UpdateDualModePositionLeverage) | **Post** /futures/{settle}/dual_comp/positions/{contract}/leverage | Update position leverage in Hedge Mode
@@ -1334,6 +1337,89 @@ func main() {
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
+## GetLeverage
+
+> FuturesLeverage GetLeverage(ctx, settle, contract, optional)
+
+Get Leverage Information for Specified Mode
+
+Get Leverage Information for Specified Mode
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**settle** | **string**| Settle currency | 
+**contract** | **string**| Futures contract | 
+**optional** | **GetLeverageOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+
+Optional parameters are passed through a pointer to a GetLeverageOpts struct
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**posMarginMode** | **optional.String**| Position Margin Mode, required for split position mode, values: isolated/cross. | 
+**dualSide** | **optional.String**| dual_long - Long, dual_short - Short | 
+
+### Example
+
+```golang
+package main
+
+import (
+    "context"
+    "fmt"
+
+    "github.com/gate/gateapi-go/v7"
+)
+
+func main() {
+    client := gateapi.NewAPIClient(gateapi.NewConfiguration())
+    // uncomment the next line if your are testing against testnet
+    // client.ChangeBasePath("https://fx-api-testnet.gateio.ws/api/v4")
+    ctx := context.WithValue(context.Background(),
+                             gateapi.ContextGateAPIV4,
+                             gateapi.GateAPIV4{
+                                 Key:    "YOUR_API_KEY",
+                                 Secret: "YOUR_API_SECRET",
+                             }
+                            )
+    settle := "usdt" // string - Settle currency
+    contract := "BTC_USDT" // string - Futures contract
+    
+    result, _, err := client.FuturesApi.GetLeverage(ctx, settle, contract, nil)
+    if err != nil {
+        if e, ok := err.(gateapi.GateAPIError); ok {
+            fmt.Printf("gate api error: %s\n", e.Error())
+        } else {
+            fmt.Printf("generic error: %s\n", err.Error())
+        }
+    } else {
+        fmt.Println(result)
+    }
+}
+```
+
+
+### Return type
+
+[**FuturesLeverage**](FuturesLeverage.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
 ## UpdatePositionMargin
 
 > Position UpdatePositionMargin(ctx, settle, contract, change)
@@ -1464,6 +1550,92 @@ func main() {
     leverage := "10" // string - Set the leverage for isolated margin. When setting isolated margin leverage, the `cross_leverage_limit`  must be empty.
     
     result, _, err := client.FuturesApi.UpdatePositionLeverage(ctx, settle, contract, leverage, nil)
+    if err != nil {
+        if e, ok := err.(gateapi.GateAPIError); ok {
+            fmt.Printf("gate api error: %s\n", e.Error())
+        } else {
+            fmt.Printf("generic error: %s\n", err.Error())
+        }
+    } else {
+        fmt.Println(result)
+    }
+}
+```
+
+
+### Return type
+
+[**Position**](Position.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+## UpdateContractPositionLeverage
+
+> Position UpdateContractPositionLeverage(ctx, settle, contract, leverage, marginMode, optional)
+
+Update Leverage for Specified Mode
+
+To simplify the complex logic of the leverage interface, added a new interface for modifying leverage
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**settle** | **string**| Settle currency | 
+**contract** | **string**| Futures contract | 
+**leverage** | **string**| Position Leverage Multiple | 
+**marginMode** | **string**| Margin Mode isolated/cross | 
+**optional** | **UpdateContractPositionLeverageOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+
+Optional parameters are passed through a pointer to a UpdateContractPositionLeverageOpts struct
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**dualSide** | **optional.String**| dual_long - Long, dual_short - Short | 
+
+### Example
+
+```golang
+package main
+
+import (
+    "context"
+    "fmt"
+
+    "github.com/gate/gateapi-go/v7"
+)
+
+func main() {
+    client := gateapi.NewAPIClient(gateapi.NewConfiguration())
+    // uncomment the next line if your are testing against testnet
+    // client.ChangeBasePath("https://fx-api-testnet.gateio.ws/api/v4")
+    ctx := context.WithValue(context.Background(),
+                             gateapi.ContextGateAPIV4,
+                             gateapi.GateAPIV4{
+                                 Key:    "YOUR_API_KEY",
+                                 Secret: "YOUR_API_SECRET",
+                             }
+                            )
+    settle := "usdt" // string - Settle currency
+    contract := "BTC_USDT" // string - Futures contract
+    leverage := "10" // string - Position Leverage Multiple
+    marginMode := "cross" // string - Margin Mode isolated/cross
+    
+    result, _, err := client.FuturesApi.UpdateContractPositionLeverage(ctx, settle, contract, leverage, marginMode, nil)
     if err != nil {
         if e, ok := err.(gateapi.GateAPIError); ok {
             fmt.Printf("gate api error: %s\n", e.Error())
@@ -1754,6 +1926,79 @@ func main() {
     dualMode := true // bool - Whether to enable Hedge Mode
     
     result, _, err := client.FuturesApi.SetDualMode(ctx, settle, dualMode)
+    if err != nil {
+        if e, ok := err.(gateapi.GateAPIError); ok {
+            fmt.Printf("gate api error: %s\n", e.Error())
+        } else {
+            fmt.Printf("generic error: %s\n", err.Error())
+        }
+    } else {
+        fmt.Println(result)
+    }
+}
+```
+
+
+### Return type
+
+[**FuturesAccount**](FuturesAccount.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+## SetPositionMode
+
+> FuturesAccount SetPositionMode(ctx, settle, positionMode)
+
+Set Position Holding Mode, replacing the dual_mode interface
+
+The prerequisite for changing mode is that all positions have no holdings and no pending orders
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**settle** | **string**| Settle currency | 
+**positionMode** | **string**| Optional Values: single, dual, dual_plus, representing Single Direction, Dual Direction, Split Position respectively | 
+
+### Example
+
+```golang
+package main
+
+import (
+    "context"
+    "fmt"
+
+    "github.com/gate/gateapi-go/v7"
+)
+
+func main() {
+    client := gateapi.NewAPIClient(gateapi.NewConfiguration())
+    // uncomment the next line if your are testing against testnet
+    // client.ChangeBasePath("https://fx-api-testnet.gateio.ws/api/v4")
+    ctx := context.WithValue(context.Background(),
+                             gateapi.ContextGateAPIV4,
+                             gateapi.GateAPIV4{
+                                 Key:    "YOUR_API_KEY",
+                                 Secret: "YOUR_API_SECRET",
+                             }
+                            )
+    settle := "usdt" // string - Settle currency
+    positionMode := "dual_plus" // string - Optional Values: single, dual, dual_plus, representing Single Direction, Dual Direction, Split Position respectively
+    
+    result, _, err := client.FuturesApi.SetPositionMode(ctx, settle, positionMode)
     if err != nil {
         if e, ok := err.(gateapi.GateAPIError); ok {
             fmt.Printf("gate api error: %s\n", e.Error())

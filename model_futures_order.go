@@ -73,4 +73,6 @@ type FuturesOrder struct {
 	TradeValue string `json:"trade_value,omitempty"`
 	// Custom maximum slippage rate for market orders. If not provided, the default contract settings will be used
 	MarketOrderSlipRatio string `json:"market_order_slip_ratio,omitempty"`
+	// Position Margin Mode isolated - Isolated Margin, cross - Cross Margin, only passed in simple split position mode
+	PosMarginMode string `json:"pos_margin_mode,omitempty"`
 }

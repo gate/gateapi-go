@@ -26,8 +26,6 @@ type FuturesAccount struct {
 	Currency string `json:"currency,omitempty"`
 	// Whether Hedge Mode is enabled
 	InDualMode bool `json:"in_dual_mode,omitempty"`
-	// Position mode: single - one-way, dual - dual-side, split - sub-positions (in_dual_mode is deprecated)
-	PositionMode string `json:"position_mode,omitempty"`
 	// Whether portfolio margin account mode is enabled
 	EnableCredit bool `json:"enable_credit,omitempty"`
 	// Initial margin occupied by positions, applicable to unified account mode
@@ -61,6 +59,10 @@ type FuturesAccount struct {
 	// Margin mode of the account 0: classic future account or Classic Spot Margin Mode of unified account; 1:  Multi-Currency Margin Mode; 2:  Portoforlio Margin Mode; 3:  Single-Currency Margin Mode
 	MarginMode int32 `json:"margin_mode,omitempty"`
 	// Whether to enable tiered maintenance margin calculation
-	EnableTieredMm bool                  `json:"enable_tiered_mm,omitempty"`
-	History        FuturesAccountHistory `json:"history,omitempty"`
+	EnableTieredMm bool `json:"enable_tiered_mm,omitempty"`
+	// Whether to Support Split Position Mode
+	EnableDualPlus bool `json:"enable_dual_plus,omitempty"`
+	// Position Holding Mode single - Single Direction Position, dual - Dual Direction Position, dual_plus - Split Position
+	PositionMode string                `json:"position_mode,omitempty"`
+	History      FuturesAccountHistory `json:"history,omitempty"`
 }
