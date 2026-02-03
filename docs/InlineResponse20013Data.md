@@ -31,7 +31,7 @@ Name | Type | Description | Notes
 **NeedReplenish** | **int32** | Whether margin replenishment is needed | 
 **MerchantInfo** | [**InlineResponse20013DataMerchantInfo**](inline_response_200_13_data_merchant_info.md) |  | 
 **OnlineStatus** | **int32** | Merchant online status | 
-**WorkHours** | Pointer to [**interface{}**](.md) | Merchant online status details | 
+**WorkHours** | Pointer to [**map[string]interface{}**](.md) | Merchant online status details | 
 **TransactionsMonth** | **int32** | 30-day transaction volume | 
 **TransactionsAll** | **int32** | Total transaction volume | 
 **TradeVersatile** | **bool** | Single user or composite user | 

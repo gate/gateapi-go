@@ -64,7 +64,7 @@ type InlineResponse20013Data struct {
 	// Merchant online status
 	OnlineStatus int32 `json:"online_status"`
 	// Merchant online status details
-	WorkHours *interface{} `json:"work_hours"`
+	WorkHours *map[string]interface{} `json:"work_hours"`
 	// 30-day transaction volume
 	TransactionsMonth int32 `json:"transactions_month"`
 	// Total transaction volume
