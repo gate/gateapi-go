@@ -10,7 +10,5 @@
 package gateapi
 
 type InlineResponse2003 struct {
-	Code      int32  `json:"code"`
-	Message   string `json:"message"`
-	Timestamp int32  `json:"timestamp"`
+	ChangeLog []TrailChangeLog `json:"change_log,omitempty"`
 }

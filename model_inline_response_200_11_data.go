@@ -10,11 +10,9 @@
 package gateapi
 
 type InlineResponse20011Data struct {
-	// Payment method type
-	PayType string `json:"pay_type,omitempty"`
-	// Payment method name
-	PayName string `json:"pay_name,omitempty"`
-	// User's currently bound payment method (primary key ID)
-	Ids  []int32                   `json:"ids,omitempty"`
-	List []InlineResponse20011List `json:"list,omitempty"`
+	Total      int32                         `json:"total"`
+	PageSize   int32                         `json:"page_size"`
+	PageNumber int32                         `json:"page_number"`
+	TotalPage  int32                         `json:"total_page"`
+	List       []InlineResponse20011DataList `json:"list"`
 }

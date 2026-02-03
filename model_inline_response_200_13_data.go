@@ -10,148 +10,65 @@
 package gateapi
 
 type InlineResponse20013Data struct {
-	// Whether sell order
-	IsSell int32 `json:"is_sell"`
-	// Order ID
-	Txid int32 `json:"txid"`
-	// Order ID
-	Orderid int32 `json:"orderid"`
-	// Order creation timestamp
-	Timest int32 `json:"timest"`
-	// Payment deadline
-	LastPayTime int32 `json:"last_pay_time"`
-	// Remaining payment time
-	RemainPayTime int32 `json:"remain_pay_time"`
-	// Cryptocurrency type
-	CurrencyType string `json:"currencyType"`
-	// Fiat currency type
-	WantType string `json:"want_type"`
-	// Price
-	Rate string `json:"rate"`
-	// Size
-	Amount string `json:"amount"`
-	// Fiat amount
-	Total string `json:"total"`
-	// Order Status
-	Status string `json:"status"`
-	// Cancellation reason ID
-	ReasonId string `json:"reason_id"`
-	// Cancellation reason
-	ReasonDesc string `json:"reason_desc"`
-	// Popup ID
-	ToastId int32 `json:"toast_id"`
-	// Cancellation time
-	CancelTime string `json:"cancel_time"`
-	// Whether seller confirmed the reason
-	SellerConfirm int32 `json:"seller_confirm"`
-	// Whether in dispute
-	InAppeal int32 `json:"in_appeal"`
-	// Appeal time limit
-	DisputeTime int32 `json:"dispute_time"`
-	// Whether order cancellation is allowed
-	Cancelable int32 `json:"cancelable"`
-	// Whether to hide payment method
-	HidePayment int32 `json:"hide_payment"`
-	// Trading terms
-	TradeTips string `json:"trade_tips"`
-	// Whether to display bank
-	ShowBank string `json:"show_bank"`
-	// Bank name
-	Bankname string `json:"bankname"`
-	// Bank branch name
-	Bankbranch string `json:"bankbranch"`
-	// Bank ID
-	Bankid string `json:"bankid"`
-	// Bank cardholder name
-	BankHolderRealname string `json:"bank_holder_realname"`
-	// Whether to display Alipay
-	ShowAli string `json:"show_ali"`
-	// Alipay account name
-	Aliname string `json:"aliname"`
-	// Whether Alipay QR code exists
-	IsAlicode int32 `json:"is_alicode"`
-	// Whether to display WeChat
-	ShowWechat string `json:"show_wechat"`
-	// WeChat account name
-	Wename string `json:"wename"`
-	// Whether to display other payment methods
-	ShowOthers string `json:"show_others"`
-	// Other payment methods
-	PayOthers []string `json:"pay_others"`
-	// Payment type
-	SelPaytype string `json:"sel_paytype"`
-	// Counterparty UID
-	ItsUid string `json:"its_uid"`
-	// Whether counterparty is Blue V
-	ItsIsBlueVip int32 `json:"its_is_blue_vip"`
-	// Counterparty VIP tier
-	ItsTier int32 `json:"its_tier"`
-	// Counterparty avatar
-	ItsAvatar string `json:"its_avatar"`
-	// Counterparty nickname
-	ItsNickname string `json:"its_nickname"`
-	// Counterparty username
-	ItsRealname string `json:"its_realname"`
-	// Whether following
-	IsFollow int32 `json:"is_follow"`
+	// Whether self
+	IsSelf bool `json:"is_self"`
+	// User registration time (formatted string)
+	UserTimest string `json:"user_timest"`
+	// Number of counterparties
+	CounterpartiesNum int32 `json:"counterparties_num"`
+	// Whether email is verified
+	EmailVerified string `json:"email_verified"`
+	// Whether KYC verification is completed
+	Verified string `json:"verified"`
+	// Whether phone is bound
+	HasPhone string `json:"has_phone"`
+	// Username
+	UserName string `json:"user_name"`
+	// User note information
+	UserNote string `json:"user_note"`
+	// Total completed orders
+	CompleteTransactions string `json:"complete_transactions"`
+	// Number of completed buy orders
+	PaidTransactions string `json:"paid_transactions"`
+	// Number of completed sell orders
+	AcceptedTransactions string `json:"accepted_transactions"`
+	// Average time to confirm receipt
+	TransactionsUsedTime string `json:"transactions_used_time"`
+	// Cancellation time in last 30 days
+	CancelledUsedTimeMonth string `json:"cancelled_used_time_month"`
+	// Number of completed orders in last 30 days
+	CompleteTransactionsMonth string `json:"complete_transactions_month"`
+	// Completion rate in last 30 days
+	CompleteRateMonth int32 `json:"complete_rate_month"`
+	// Buy order ratio in last 30 days
+	OrdersBuyRateMonth int32 `json:"orders_buy_rate_month"`
 	// Whether blocked
 	IsBlack int32 `json:"is_black"`
-	// Whether traded before
+	// Whether following
+	IsFollow int32 `json:"is_follow"`
+	// Whether traded with self
 	HaveTraded int32 `json:"have_traded"`
-	// Unread appeals
-	AppealUnread int32 `json:"appeal_unread"`
-	// Whether appeal cancellation is allowed
-	AppealAllowCancel int32 `json:"appeal_allow_cancel"`
-	// Appeal result (including pending appeals)
-	AppealVerdictHasOpen string `json:"appeal_verdict_has_open"`
-	// IM unread
-	ImUnread int32 `json:"im_unread"`
-	// Review content
-	Message string `json:"message"`
-	// Rating
-	Score string `json:"score"`
-	// Payment voucher
-	PaymentVoucherUrl []string `json:"payment_voucher_url"`
-	// Counterparty transaction volume
-	CompleteNumber int32 `json:"complete_number"`
-	// Counterparty completion rate
-	CompleteRateMonth string `json:"complete_rate_month"`
-	// Whether transaction record is verified
-	CheckJournalAccount bool `json:"check_journal_account"`
-	// Whether to display transaction records
-	ShowJournalAccount bool `json:"show_journal_account"`
-	// Whether margin is frozen
-	IsFreezeGuarantee int32 `json:"is_freeze_guarantee"`
-	// Remaining USDT margin
-	UsdtLeftGuarantee string `json:"usdt_left_guarantee"`
-	// Margin currency type
-	GuaranteeCurrType string `json:"guarantee_curr_type"`
-	// Payment time
-	TimestPaid int32 `json:"timest_paid"`
-	// Order Status
-	State string `json:"state"`
-	// Coin release switch configuration
-	ReleaseCoinSwitch int32 `json:"release_coin_switch"`
-	// Username
-	OwnRealname string `json:"own_realname"`
-	// Average confirmation time in last 30 days
-	ConfirmationUseTimeMonth int32 `json:"confirmation_use_time_month"`
-	// Whether risk user
-	IsRiskUser int32 `json:"is_risk_user"`
-	// Whether XT order
-	IsXt int32 `json:"is_xt"`
-	// Order Type
-	OrderType int32 `json:"order_type"`
-	// Fiat currency symbol
-	Symbol string `json:"symbol"`
-	// Whether to show confirm receipt during appeal
-	IsShowReceive int32 `json:"is_show_receive"`
-	// Whether regular user
-	IsTaker int32 `json:"is_taker"`
+	// Encrypted UID
+	BizUid string `json:"biz_uid"`
+	// Blue V Crown Shield
+	BlueVip int32 `json:"blue_vip"`
+	// Merchant work status
+	WorkStatus int32 `json:"work_status"`
+	// Registration days
+	RegistrationDays int32 `json:"registration_days"`
+	// Days since first trade
+	FirstTradeDays int32 `json:"first_trade_days"`
+	// Whether margin replenishment is needed
+	NeedReplenish int32                               `json:"need_replenish"`
+	MerchantInfo  InlineResponse20013DataMerchantInfo `json:"merchant_info"`
 	// Merchant online status
-	IsOnline int32 `json:"is_online"`
-	// Whether to display seller contact information
-	ShowSellerContactInfo bool `json:"show_seller_contact_info"`
-	// Payment methods supported by current order
-	SupportedPayTypes []string `json:"supported_pay_types"`
+	OnlineStatus int32 `json:"online_status"`
+	// Merchant online status details
+	WorkHours *interface{} `json:"work_hours"`
+	// 30-day transaction volume
+	TransactionsMonth int32 `json:"transactions_month"`
+	// Total transaction volume
+	TransactionsAll int32 `json:"transactions_all"`
+	// Single user or composite user
+	TradeVersatile bool `json:"trade_versatile"`
 }

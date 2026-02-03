@@ -10,8 +10,6 @@
 package gateapi
 
 type InlineResponse20024 struct {
-	// Order ID
-	OrderId string `json:"order_id"`
-	// User-defined Order ID
-	Text string `json:"text"`
+	Symbol string                `json:"symbol,omitempty"`
+	Tiers  []RuleRiskLimitsTiers `json:"tiers,omitempty"`
 }

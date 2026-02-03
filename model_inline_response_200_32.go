@@ -11,45 +11,30 @@ package gateapi
 
 type InlineResponse20032 struct {
 	// User ID
-	UserId string `json:"user_id,omitempty"`
-	// Position ID
-	PositionId string `json:"position_id,omitempty"`
-	// Currency pair
-	Symbol string `json:"symbol,omitempty"`
-	// Position Direction
-	PositionSide string `json:"position_side,omitempty"`
+	UserId string `json:"user_id"`
+	// Available Margin
+	AvailableMargin string `json:"available_margin"`
+	// marginbalance
+	MarginBalance string `json:"margin_balance"`
 	// Initial Margin
-	InitialMargin string `json:"initial_margin,omitempty"`
+	InitialMargin string `json:"initial_margin"`
 	// Maintenance margin
-	MaintenanceMargin string `json:"maintenance_margin,omitempty"`
-	// Position Quantity
-	PositionQty string `json:"position_qty,omitempty"`
-	// Position Value
-	PositionValue string `json:"position_value,omitempty"`
-	// Unrealized P&L
-	Upnl string `json:"upnl,omitempty"`
-	// Unrealized P&L Ratio
-	UpnlRate string `json:"upnl_rate,omitempty"`
-	// Position Average Entry Price
-	EntryPrice string `json:"entry_price,omitempty"`
-	// Mark price
-	MarkPrice string `json:"mark_price,omitempty"`
-	// Position Leverage
-	Leverage string `json:"leverage,omitempty"`
-	// Maximum leverage
-	MaxLeverage string `json:"max_leverage,omitempty"`
-	// Position risk limit
-	RiskLimit string `json:"risk_limit,omitempty"`
-	// Position Fee
-	Fee string `json:"fee,omitempty"`
-	// Position Funding Fee
-	FundingFee string `json:"funding_fee,omitempty"`
-	// Position funding fee collection time (0 indicates it has not been collected yet)
-	FundingTime string `json:"funding_time,omitempty"`
-	// Position Creation Time
-	CreateTime string `json:"create_time,omitempty"`
-	// Position Update Time
-	UpdateTime string `json:"update_time,omitempty"`
-	// Realized PnL
-	ClosedPnl string `json:"closed_pnl,omitempty"`
+	MaintenanceMargin string `json:"maintenance_margin"`
+	// Initial margin rate
+	InitialMarginRate string `json:"initial_margin_rate"`
+	// Maintenance margin rate
+	MaintenanceMarginRate string `json:"maintenance_margin_rate"`
+	// Contract Position Mode
+	PositionMode string `json:"position_mode"`
+	// Account limit
+	AccountLimit string `json:"account_limit,omitempty"`
+	// Created time
+	CreateTime string `json:"create_time"`
+	// Update time
+	UpdateTime string `json:"update_time"`
+	// Account mode. CROSS_EXCHANGE: cross-exchange mode. ISOLATED_EXCHANGE: isolated exchange mode
+	AccountMode string `json:"account_mode,omitempty"`
+	// Exchange type. When account_mode is CROSS_EXCHANGE, this must be CROSSEX; otherwise, it represents a specific exchange
+	ExchangeType string                      `json:"exchange_type,omitempty"`
+	Assets       []InlineResponse20032Assets `json:"assets"`
 }

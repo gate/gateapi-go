@@ -12,6 +12,7 @@ Method | HTTP request | Description
 [**ListFuturesPremiumIndex**](FuturesApi.md#ListFuturesPremiumIndex) | **Get** /futures/{settle}/premium_index | Premium Index K-line chart
 [**ListFuturesTickers**](FuturesApi.md#ListFuturesTickers) | **Get** /futures/{settle}/tickers | Get all futures trading statistics
 [**ListFuturesFundingRateHistory**](FuturesApi.md#ListFuturesFundingRateHistory) | **Get** /futures/{settle}/funding_rate | Futures market historical funding rate
+[**ListBatchFuturesFundingRates**](FuturesApi.md#ListBatchFuturesFundingRates) | **Post** /futures/{settle}/funding_rates | Batch Query Historical Funding Rate Data for Perpetual Contracts
 [**ListFuturesInsuranceLedger**](FuturesApi.md#ListFuturesInsuranceLedger) | **Get** /futures/{settle}/insurance | Futures market insurance fund history
 [**ListContractStats**](FuturesApi.md#ListContractStats) | **Get** /futures/{settle}/contract_stats | Futures statistics
 [**GetIndexConstituents**](FuturesApi.md#GetIndexConstituents) | **Get** /futures/{settle}/index_constituents/{index} | Query index constituents
@@ -20,6 +21,7 @@ Method | HTTP request | Description
 [**ListFuturesAccounts**](FuturesApi.md#ListFuturesAccounts) | **Get** /futures/{settle}/accounts | Get futures account
 [**ListFuturesAccountBook**](FuturesApi.md#ListFuturesAccountBook) | **Get** /futures/{settle}/account_book | Query futures account change history
 [**ListPositions**](FuturesApi.md#ListPositions) | **Get** /futures/{settle}/positions | Get user position list
+[**ListPositionsTimerange**](FuturesApi.md#ListPositionsTimerange) | **Get** /futures/{settle}/positions_timerange | Get user&#39;s historical position information list by time
 [**GetPosition**](FuturesApi.md#GetPosition) | **Get** /futures/{settle}/positions/{contract} | Get single position information
 [**GetLeverage**](FuturesApi.md#GetLeverage) | **Get** /futures/{settle}/get_leverage/{contract} | Get Leverage Information for Specified Mode
 [**UpdatePositionMargin**](FuturesApi.md#UpdatePositionMargin) | **Post** /futures/{settle}/positions/{contract}/margin | Update position margin
@@ -53,6 +55,13 @@ Method | HTTP request | Description
 [**AmendBatchFutureOrders**](FuturesApi.md#AmendBatchFutureOrders) | **Post** /futures/{settle}/batch_amend_orders | Batch modify orders by specified IDs
 [**GetFuturesRiskLimitTable**](FuturesApi.md#GetFuturesRiskLimitTable) | **Get** /futures/{settle}/risk_limit_table | Query risk limit table by table_id
 [**CreateFuturesBBOOrder**](FuturesApi.md#CreateFuturesBBOOrder) | **Post** /futures/{settle}/bbo_orders | Level-based BBO Contract Order Placement
+[**CreateTrailOrder**](FuturesApi.md#CreateTrailOrder) | **Post** /futures/{settle}/autoorder/v1/trail/create | Create trail order
+[**StopTrailOrder**](FuturesApi.md#StopTrailOrder) | **Post** /futures/{settle}/autoorder/v1/trail/stop | Terminate trail order
+[**StopAllTrailOrders**](FuturesApi.md#StopAllTrailOrders) | **Post** /futures/{settle}/autoorder/v1/trail/stop_all | Batch terminate trail orders
+[**GetTrailOrders**](FuturesApi.md#GetTrailOrders) | **Get** /futures/{settle}/autoorder/v1/trail/list | Get trail order list
+[**GetTrailOrderDetail**](FuturesApi.md#GetTrailOrderDetail) | **Get** /futures/{settle}/autoorder/v1/trail/detail | Get trail order details
+[**UpdateTrailOrder**](FuturesApi.md#UpdateTrailOrder) | **Post** /futures/{settle}/autoorder/v1/trail/update | Update trail order
+[**GetTrailOrderChangeLog**](FuturesApi.md#GetTrailOrderChangeLog) | **Get** /futures/{settle}/autoorder/v1/trail/change_log | Get trail order user modification records
 [**ListPriceTriggeredOrders**](FuturesApi.md#ListPriceTriggeredOrders) | **Get** /futures/{settle}/price_orders | Query auto order list
 [**CreatePriceTriggeredOrder**](FuturesApi.md#CreatePriceTriggeredOrder) | **Post** /futures/{settle}/price_orders | Create price-triggered order
 [**CancelPriceTriggeredOrderList**](FuturesApi.md#CancelPriceTriggeredOrderList) | **Delete** /futures/{settle}/price_orders | Cancel all auto orders
@@ -662,6 +671,71 @@ No authorization required
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
+## ListBatchFuturesFundingRates
+
+> []BatchFundingRatesResponse ListBatchFuturesFundingRates(ctx, settle, batchFundingRatesRequest)
+
+Batch Query Historical Funding Rate Data for Perpetual Contracts
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**settle** | **string**| Settle currency | 
+**batchFundingRatesRequest** | [**BatchFundingRatesRequest**](BatchFundingRatesRequest.md)|  | 
+
+### Example
+
+```golang
+package main
+
+import (
+    "context"
+    "fmt"
+
+    "github.com/gate/gateapi-go/v7"
+)
+
+func main() {
+    client := gateapi.NewAPIClient(gateapi.NewConfiguration())
+    // uncomment the next line if your are testing against testnet
+    // client.ChangeBasePath("https://fx-api-testnet.gateio.ws/api/v4")
+    ctx := context.Background()
+    settle := "usdt" // string - Settle currency
+    batchFundingRatesRequest := gateapi.BatchFundingRatesRequest{} // BatchFundingRatesRequest - 
+    
+    result, _, err := client.FuturesApi.ListBatchFuturesFundingRates(ctx, settle, batchFundingRatesRequest)
+    if err != nil {
+        if e, ok := err.(gateapi.GateAPIError); ok {
+            fmt.Printf("gate api error: %s\n", e.Error())
+        } else {
+            fmt.Printf("generic error: %s\n", err.Error())
+        }
+    } else {
+        fmt.Println(result)
+    }
+}
+```
+
+
+### Return type
+
+[**[]BatchFundingRatesResponse**](BatchFundingRatesResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
 ## ListFuturesInsuranceLedger
 
 > []InsuranceRecord ListFuturesInsuranceLedger(ctx, settle, optional)
@@ -1250,6 +1324,89 @@ func main() {
 ### Return type
 
 [**[]Position**](Position.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+## ListPositionsTimerange
+
+> []PositionTimerange ListPositionsTimerange(ctx, settle, contract, optional)
+
+Get user's historical position information list by time
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**settle** | **string**| Settle currency | 
+**contract** | **string**| Futures contract | 
+**optional** | **ListPositionsTimerangeOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+
+Optional parameters are passed through a pointer to a ListPositionsTimerangeOpts struct
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**from** | **optional.Int64**| Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit) | 
+**to** | **optional.Int64**| Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp | 
+**limit** | **optional.Int32**| Maximum number of records returned in a single list | [default to 100]
+**offset** | **optional.Int32**| List offset, starting from 0 | [default to 0]
+
+### Example
+
+```golang
+package main
+
+import (
+    "context"
+    "fmt"
+
+    "github.com/gate/gateapi-go/v7"
+)
+
+func main() {
+    client := gateapi.NewAPIClient(gateapi.NewConfiguration())
+    // uncomment the next line if your are testing against testnet
+    // client.ChangeBasePath("https://fx-api-testnet.gateio.ws/api/v4")
+    ctx := context.WithValue(context.Background(),
+                             gateapi.ContextGateAPIV4,
+                             gateapi.GateAPIV4{
+                                 Key:    "YOUR_API_KEY",
+                                 Secret: "YOUR_API_SECRET",
+                             }
+                            )
+    settle := "usdt" // string - Settle currency
+    contract := "BTC_USDT" // string - Futures contract
+    
+    result, _, err := client.FuturesApi.ListPositionsTimerange(ctx, settle, contract, nil)
+    if err != nil {
+        if e, ok := err.(gateapi.GateAPIError); ok {
+            fmt.Printf("gate api error: %s\n", e.Error())
+        } else {
+            fmt.Printf("generic error: %s\n", err.Error())
+        }
+    } else {
+        fmt.Println(result)
+    }
+}
+```
+
+
+### Return type
+
+[**[]PositionTimerange**](PositionTimerange.md)
 
 ### Authorization
 
@@ -3857,6 +4014,531 @@ func main() {
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+## CreateTrailOrder
+
+> InlineResponse201 CreateTrailOrder(ctx, settle, createTrailOrder)
+
+Create trail order
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**settle** | **string**| Settle currency | 
+**createTrailOrder** | [**CreateTrailOrder**](CreateTrailOrder.md)|  | 
+
+### Example
+
+```golang
+package main
+
+import (
+    "context"
+    "fmt"
+
+    "github.com/gate/gateapi-go/v7"
+)
+
+func main() {
+    client := gateapi.NewAPIClient(gateapi.NewConfiguration())
+    // uncomment the next line if your are testing against testnet
+    // client.ChangeBasePath("https://fx-api-testnet.gateio.ws/api/v4")
+    ctx := context.WithValue(context.Background(),
+                             gateapi.ContextGateAPIV4,
+                             gateapi.GateAPIV4{
+                                 Key:    "YOUR_API_KEY",
+                                 Secret: "YOUR_API_SECRET",
+                             }
+                            )
+    settle := "usdt" // string - Settle currency
+    createTrailOrder := gateapi.CreateTrailOrder{} // CreateTrailOrder - 
+    
+    result, _, err := client.FuturesApi.CreateTrailOrder(ctx, settle, createTrailOrder)
+    if err != nil {
+        if e, ok := err.(gateapi.GateAPIError); ok {
+            fmt.Printf("gate api error: %s\n", e.Error())
+        } else {
+            fmt.Printf("generic error: %s\n", err.Error())
+        }
+    } else {
+        fmt.Println(result)
+    }
+}
+```
+
+
+### Return type
+
+[**InlineResponse201**](inline_response_201.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+## StopTrailOrder
+
+> InlineResponse200 StopTrailOrder(ctx, settle, stopTrailOrder)
+
+Terminate trail order
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**settle** | **string**| Settle currency | 
+**stopTrailOrder** | [**StopTrailOrder**](StopTrailOrder.md)|  | 
+
+### Example
+
+```golang
+package main
+
+import (
+    "context"
+    "fmt"
+
+    "github.com/gate/gateapi-go/v7"
+)
+
+func main() {
+    client := gateapi.NewAPIClient(gateapi.NewConfiguration())
+    // uncomment the next line if your are testing against testnet
+    // client.ChangeBasePath("https://fx-api-testnet.gateio.ws/api/v4")
+    ctx := context.WithValue(context.Background(),
+                             gateapi.ContextGateAPIV4,
+                             gateapi.GateAPIV4{
+                                 Key:    "YOUR_API_KEY",
+                                 Secret: "YOUR_API_SECRET",
+                             }
+                            )
+    settle := "usdt" // string - Settle currency
+    stopTrailOrder := gateapi.StopTrailOrder{} // StopTrailOrder - 
+    
+    result, _, err := client.FuturesApi.StopTrailOrder(ctx, settle, stopTrailOrder)
+    if err != nil {
+        if e, ok := err.(gateapi.GateAPIError); ok {
+            fmt.Printf("gate api error: %s\n", e.Error())
+        } else {
+            fmt.Printf("generic error: %s\n", err.Error())
+        }
+    } else {
+        fmt.Println(result)
+    }
+}
+```
+
+
+### Return type
+
+[**InlineResponse200**](inline_response_200.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+## StopAllTrailOrders
+
+> InlineResponse2001 StopAllTrailOrders(ctx, settle, stopAllTrailOrders)
+
+Batch terminate trail orders
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**settle** | **string**| Settle currency | 
+**stopAllTrailOrders** | [**StopAllTrailOrders**](StopAllTrailOrders.md)|  | 
+
+### Example
+
+```golang
+package main
+
+import (
+    "context"
+    "fmt"
+
+    "github.com/gate/gateapi-go/v7"
+)
+
+func main() {
+    client := gateapi.NewAPIClient(gateapi.NewConfiguration())
+    // uncomment the next line if your are testing against testnet
+    // client.ChangeBasePath("https://fx-api-testnet.gateio.ws/api/v4")
+    ctx := context.WithValue(context.Background(),
+                             gateapi.ContextGateAPIV4,
+                             gateapi.GateAPIV4{
+                                 Key:    "YOUR_API_KEY",
+                                 Secret: "YOUR_API_SECRET",
+                             }
+                            )
+    settle := "usdt" // string - Settle currency
+    stopAllTrailOrders := gateapi.StopAllTrailOrders{} // StopAllTrailOrders - 
+    
+    result, _, err := client.FuturesApi.StopAllTrailOrders(ctx, settle, stopAllTrailOrders)
+    if err != nil {
+        if e, ok := err.(gateapi.GateAPIError); ok {
+            fmt.Printf("gate api error: %s\n", e.Error())
+        } else {
+            fmt.Printf("generic error: %s\n", err.Error())
+        }
+    } else {
+        fmt.Println(result)
+    }
+}
+```
+
+
+### Return type
+
+[**InlineResponse2001**](inline_response_200_1.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+## GetTrailOrders
+
+> InlineResponse2001 GetTrailOrders(ctx, settle, optional)
+
+Get trail order list
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**settle** | **string**| Settle currency | 
+**optional** | **GetTrailOrdersOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+
+Optional parameters are passed through a pointer to a GetTrailOrdersOpts struct
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**contract** | **optional.String**| Contract name | 
+**isFinished** | **optional.Bool**| Whether historical order | 
+**startAt** | **optional.Int64**| Start time of time range | 
+**endAt** | **optional.Int64**| End time of time range | 
+**pageNum** | **optional.Int32**| Page number, starting from 1 | [default to 1]
+**pageSize** | **optional.Int32**| Number of items per page | [default to 20]
+**sortBy** | **optional.Int32**| Common sort field, 1-creation time, 2-end time | [default to 1]
+**hideCancel** | **optional.Bool**| Hide cancelled orders | [default to false]
+**relatedPosition** | **optional.Int32**| Associated position, if provided, only return orders associated with this position, 1-long, 2-short | 
+**sortByTrigger** | **optional.Bool**| Sort by trigger price and activation price, easy to trigger or activate first, only for current orders associated with positions | [default to false]
+**reduceOnly** | **optional.Int32**| Whether reduce only, 1-yes, 2-no | 
+**side** | **optional.Int32**| Direction, 1-long position, 2-short position | 
+
+### Example
+
+```golang
+package main
+
+import (
+    "context"
+    "fmt"
+
+    "github.com/gate/gateapi-go/v7"
+)
+
+func main() {
+    client := gateapi.NewAPIClient(gateapi.NewConfiguration())
+    // uncomment the next line if your are testing against testnet
+    // client.ChangeBasePath("https://fx-api-testnet.gateio.ws/api/v4")
+    ctx := context.WithValue(context.Background(),
+                             gateapi.ContextGateAPIV4,
+                             gateapi.GateAPIV4{
+                                 Key:    "YOUR_API_KEY",
+                                 Secret: "YOUR_API_SECRET",
+                             }
+                            )
+    settle := "usdt" // string - Settle currency
+    
+    result, _, err := client.FuturesApi.GetTrailOrders(ctx, settle, nil)
+    if err != nil {
+        if e, ok := err.(gateapi.GateAPIError); ok {
+            fmt.Printf("gate api error: %s\n", e.Error())
+        } else {
+            fmt.Printf("generic error: %s\n", err.Error())
+        }
+    } else {
+        fmt.Println(result)
+    }
+}
+```
+
+
+### Return type
+
+[**InlineResponse2001**](inline_response_200_1.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+## GetTrailOrderDetail
+
+> InlineResponse2002 GetTrailOrderDetail(ctx, settle, id)
+
+Get trail order details
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**settle** | **string**| Settle currency | 
+**id** | **int64**| Order ID | 
+
+### Example
+
+```golang
+package main
+
+import (
+    "context"
+    "fmt"
+
+    "github.com/gate/gateapi-go/v7"
+)
+
+func main() {
+    client := gateapi.NewAPIClient(gateapi.NewConfiguration())
+    // uncomment the next line if your are testing against testnet
+    // client.ChangeBasePath("https://fx-api-testnet.gateio.ws/api/v4")
+    ctx := context.WithValue(context.Background(),
+                             gateapi.ContextGateAPIV4,
+                             gateapi.GateAPIV4{
+                                 Key:    "YOUR_API_KEY",
+                                 Secret: "YOUR_API_SECRET",
+                             }
+                            )
+    settle := "usdt" // string - Settle currency
+    id := 56 // int64 - Order ID
+    
+    result, _, err := client.FuturesApi.GetTrailOrderDetail(ctx, settle, id)
+    if err != nil {
+        if e, ok := err.(gateapi.GateAPIError); ok {
+            fmt.Printf("gate api error: %s\n", e.Error())
+        } else {
+            fmt.Printf("generic error: %s\n", err.Error())
+        }
+    } else {
+        fmt.Println(result)
+    }
+}
+```
+
+
+### Return type
+
+[**InlineResponse2002**](inline_response_200_2.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+## UpdateTrailOrder
+
+> InlineResponse200 UpdateTrailOrder(ctx, settle, updateTrailOrder)
+
+Update trail order
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**settle** | **string**| Settle currency | 
+**updateTrailOrder** | [**UpdateTrailOrder**](UpdateTrailOrder.md)|  | 
+
+### Example
+
+```golang
+package main
+
+import (
+    "context"
+    "fmt"
+
+    "github.com/gate/gateapi-go/v7"
+)
+
+func main() {
+    client := gateapi.NewAPIClient(gateapi.NewConfiguration())
+    // uncomment the next line if your are testing against testnet
+    // client.ChangeBasePath("https://fx-api-testnet.gateio.ws/api/v4")
+    ctx := context.WithValue(context.Background(),
+                             gateapi.ContextGateAPIV4,
+                             gateapi.GateAPIV4{
+                                 Key:    "YOUR_API_KEY",
+                                 Secret: "YOUR_API_SECRET",
+                             }
+                            )
+    settle := "usdt" // string - Settle currency
+    updateTrailOrder := gateapi.UpdateTrailOrder{} // UpdateTrailOrder - 
+    
+    result, _, err := client.FuturesApi.UpdateTrailOrder(ctx, settle, updateTrailOrder)
+    if err != nil {
+        if e, ok := err.(gateapi.GateAPIError); ok {
+            fmt.Printf("gate api error: %s\n", e.Error())
+        } else {
+            fmt.Printf("generic error: %s\n", err.Error())
+        }
+    } else {
+        fmt.Println(result)
+    }
+}
+```
+
+
+### Return type
+
+[**InlineResponse200**](inline_response_200.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+## GetTrailOrderChangeLog
+
+> InlineResponse2003 GetTrailOrderChangeLog(ctx, settle, id, optional)
+
+Get trail order user modification records
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**settle** | **string**| Settle currency | 
+**id** | **int64**| Order ID | 
+**optional** | **GetTrailOrderChangeLogOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+
+Optional parameters are passed through a pointer to a GetTrailOrderChangeLogOpts struct
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**pageNum** | **optional.Int32**| Page number, starting from 1 | [default to 1]
+**pageSize** | **optional.Int32**| Number of items per page | [default to 20]
+
+### Example
+
+```golang
+package main
+
+import (
+    "context"
+    "fmt"
+
+    "github.com/gate/gateapi-go/v7"
+)
+
+func main() {
+    client := gateapi.NewAPIClient(gateapi.NewConfiguration())
+    // uncomment the next line if your are testing against testnet
+    // client.ChangeBasePath("https://fx-api-testnet.gateio.ws/api/v4")
+    ctx := context.WithValue(context.Background(),
+                             gateapi.ContextGateAPIV4,
+                             gateapi.GateAPIV4{
+                                 Key:    "YOUR_API_KEY",
+                                 Secret: "YOUR_API_SECRET",
+                             }
+                            )
+    settle := "usdt" // string - Settle currency
+    id := 56 // int64 - Order ID
+    
+    result, _, err := client.FuturesApi.GetTrailOrderChangeLog(ctx, settle, id, nil)
+    if err != nil {
+        if e, ok := err.(gateapi.GateAPIError); ok {
+            fmt.Printf("gate api error: %s\n", e.Error())
+        } else {
+            fmt.Printf("generic error: %s\n", err.Error())
+        }
+    } else {
+        fmt.Println(result)
+    }
+}
+```
+
+
+### Return type
+
+[**InlineResponse2003**](inline_response_200_3.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

@@ -10,14 +10,10 @@
 package gateapi
 
 type InlineResponse20021 struct {
-	// Currency
-	Coin string `json:"coin"`
-	// Minimum Transfer Quantity (including estimated fees)
-	MinTransAmount float32 `json:"min_trans_amount"`
-	// Estimated Fee
-	EstFee float32 `json:"est_fee"`
-	// Precision
-	Precision int32 `json:"precision"`
-	// If it is disabled. 0 means NOT being disabled
-	IsDisabled int32 `json:"is_disabled"`
+	Timestamp float32                 `json:"timestamp"`
+	Method    string                  `json:"method"`
+	Code      int32                   `json:"code"`
+	Message   string                  `json:"message"`
+	Data      InlineResponse20021Data `json:"data"`
+	Version   string                  `json:"version"`
 }

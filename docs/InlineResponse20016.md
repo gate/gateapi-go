@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **Code** | **int32** |  | 
 **Message** | **string** |  | 
 **Data** | [**InlineResponse20016Data**](inline_response_200_16_data.md) |  | 
-**Version** | **string** | Version number | 
+**Version** | **string** |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

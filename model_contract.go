@@ -53,6 +53,8 @@ type Contract struct {
 	RiskLimitMax string `json:"risk_limit_max,omitempty"`
 	// Minimum order size allowed by the contract
 	OrderSizeMin string `json:"order_size_min,omitempty"`
+	// Whether decimal string type is supported for contract lot size. When this field is set to `true`, it indicates that the contract supports decimal lot sizes (i.e., the `size` field can use a decimal string type); when set to `false`, it indicates that the contract does not support decimal lot sizes (i.e., the `size` field can only use an integer type).
+	EnableDecimal bool `json:"enable_decimal,omitempty"`
 	// Maximum order size allowed by the contract
 	OrderSizeMax string `json:"order_size_max,omitempty"`
 	// Maximum allowed deviation between order price and current mark price. The order price `order_price` must satisfy the following condition:      abs(order_price - mark_price) <= mark_price * order_price_deviate

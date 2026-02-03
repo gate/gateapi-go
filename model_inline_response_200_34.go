@@ -10,12 +10,12 @@
 package gateapi
 
 type InlineResponse20034 struct {
-	// User ID
-	UserId string `json:"user_id"`
-	// Currency pair
-	Symbol string `json:"symbol"`
-	// CROSSEX position-reduction indicator ranking (1–5, higher value ranks higher)
-	CrossexAdlRank string `json:"crossex_adl_rank"`
-	// Original exchange information (Binance: 0–4, higher value ranks higher; OKX: 0–5, higher value ranks higher; Gate: 1–5, lower value ranks higher)
-	ExchangeAdlRank string `json:"exchange_adl_rank"`
+	// Currency
+	Coin string `json:"coin"`
+	// Exchange
+	ExchangeType string `json:"exchange_type"`
+	// Hourly Interest Rate
+	HourInterestRate string `json:"hour_interest_rate"`
+	// Millisecond Timestamp
+	Time string `json:"time"`
 }

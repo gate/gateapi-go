@@ -14,7 +14,7 @@ type SwapCoin struct {
 	// Currency
 	Coin string `json:"coin"`
 	// 0 - Stake 1 - Redeem
-	Side string `json:"side"`
+	Side int32 `json:"side"`
 	// Size
 	Amount string `json:"amount"`
 	// DeFi-type Mining Protocol Identifier

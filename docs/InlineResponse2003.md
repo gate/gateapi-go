@@ -4,9 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Code** | **int32** |  | 
-**Message** | **string** |  | 
-**Timestamp** | **int32** |  | 
+**ChangeLog** | [**[]TrailChangeLog**](TrailChangeLog.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

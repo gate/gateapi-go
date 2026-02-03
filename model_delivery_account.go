@@ -59,6 +59,6 @@ type DeliveryAccount struct {
 	// Margin mode of the account 0: classic future account or Classic Spot Margin Mode of unified account; 1:  Multi-Currency Margin Mode; 2:  Portoforlio Margin Mode; 3:  Single-Currency Margin Mode
 	MarginMode int32 `json:"margin_mode,omitempty"`
 	// Whether to enable tiered maintenance margin calculation
-	EnableTieredMm bool                  `json:"enable_tiered_mm,omitempty"`
-	History        FuturesAccountHistory `json:"history,omitempty"`
+	EnableTieredMm bool                   `json:"enable_tiered_mm,omitempty"`
+	History        DeliveryAccountHistory `json:"history,omitempty"`
 }

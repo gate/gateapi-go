@@ -10,8 +10,7 @@
 package gateapi
 
 type InlineResponse2005 struct {
-	Code      int32                  `json:"code"`
-	Message   string                 `json:"message"`
-	Data      InlineResponse2005Data `json:"data"`
-	Timestamp int32                  `json:"timestamp"`
+	Currency string `json:"currency,omitempty"`
+	// Estimated Annualized Rate, e.g., `est_rate`: `0.8014` represents an annualized rate of 80.14%
+	EstRate string `json:"est_rate,omitempty"`
 }

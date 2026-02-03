@@ -10,6 +10,11 @@
 package gateapi
 
 type InlineResponse20020 struct {
-	Symbol string                `json:"symbol,omitempty"`
-	Tiers  []RuleRiskLimitsTiers `json:"tiers,omitempty"`
+	Timestamp float32                 `json:"timestamp"`
+	Method    string                  `json:"method"`
+	Code      int32                   `json:"code"`
+	Message   string                  `json:"message"`
+	Data      InlineResponse20020Data `json:"data"`
+	// Version number
+	Version string `json:"version"`
 }

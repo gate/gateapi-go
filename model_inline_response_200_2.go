@@ -10,7 +10,11 @@
 package gateapi
 
 type InlineResponse2002 struct {
-	Code    int32                  `json:"code"`
-	Message string                 `json:"message"`
-	Data    InlineResponse2002Data `json:"data"`
+	// Status code, 0 means success
+	Code int32 `json:"code,omitempty"`
+	// Response message
+	Message string            `json:"message,omitempty"`
+	Data    InlineResponse200 `json:"data,omitempty"`
+	// Response timestamp (milliseconds)
+	Timestamp int64 `json:"timestamp,omitempty"`
 }

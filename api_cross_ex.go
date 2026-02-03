@@ -125,16 +125,16 @@ ListCrossexRuleRiskLimits [Public Interface] Query Risk Limit Information
 Query risk limit information for futures/margin trading pairs
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param symbols Trading Pair List, multiple separated by commas Example values: BINANCE_FUTURE_ADA_USDT,GATE_MARGIN_ADA_USDT
-@return []InlineResponse20020
+@return []InlineResponse20024
 */
-func (a *CrossExApiService) ListCrossexRuleRiskLimits(ctx context.Context, symbols string) ([]InlineResponse20020, *http.Response, error) {
+func (a *CrossExApiService) ListCrossexRuleRiskLimits(ctx context.Context, symbols string) ([]InlineResponse20024, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  []InlineResponse20020
+		localVarReturnValue  []InlineResponse20024
 	)
 
 	// create path and map variables
@@ -217,16 +217,16 @@ Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-C
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param optional nil or *ListCrossexTransferCoinsOpts - Optional Parameters:
  * @param "Coin" (optional.String) -  Currency
-@return []InlineResponse20021
+@return []InlineResponse20025
 */
-func (a *CrossExApiService) ListCrossexTransferCoins(ctx context.Context, localVarOptionals *ListCrossexTransferCoinsOpts) ([]InlineResponse20021, *http.Response, error) {
+func (a *CrossExApiService) ListCrossexTransferCoins(ctx context.Context, localVarOptionals *ListCrossexTransferCoinsOpts) ([]InlineResponse20025, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  []InlineResponse20021
+		localVarReturnValue  []InlineResponse20025
 	)
 
 	// create path and map variables
@@ -321,16 +321,16 @@ Rate Limit: 200 requests per 10 seconds
  * @param "To" (optional.Int32) -  End timestamp for the query, defaults to current time if not specified
  * @param "Page" (optional.Int32) -  Page number
  * @param "Limit" (optional.Int32) -  Maximum number returned by list, max 1000
-@return []InlineResponse20022
+@return []InlineResponse20026
 */
-func (a *CrossExApiService) ListCrossexTransfers(ctx context.Context, localVarOptionals *ListCrossexTransfersOpts) ([]InlineResponse20022, *http.Response, error) {
+func (a *CrossExApiService) ListCrossexTransfers(ctx context.Context, localVarOptionals *ListCrossexTransfersOpts) ([]InlineResponse20026, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  []InlineResponse20022
+		localVarReturnValue  []InlineResponse20026
 	)
 
 	// create path and map variables
@@ -436,16 +436,16 @@ Rate limit: 10 requests per 10 seconds - In cross-exchange mode, when transferri
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param optional nil or *CreateCrossexTransferOpts - Optional Parameters:
  * @param "InlineObject20" (optional.Interface of InlineObject20) - 
-@return InlineResponse20023
+@return InlineResponse20027
 */
-func (a *CrossExApiService) CreateCrossexTransfer(ctx context.Context, localVarOptionals *CreateCrossexTransferOpts) (InlineResponse20023, *http.Response, error) {
+func (a *CrossExApiService) CreateCrossexTransfer(ctx context.Context, localVarOptionals *CreateCrossexTransferOpts) (InlineResponse20027, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  InlineResponse20023
+		localVarReturnValue  InlineResponse20027
 	)
 
 	// create path and map variables
@@ -542,16 +542,16 @@ Rate Limit: 100 requests per 10 seconds
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param optional nil or *CreateCrossexOrderOpts - Optional Parameters:
  * @param "InlineObject21" (optional.Interface of InlineObject21) - 
-@return InlineResponse20024
+@return InlineResponse20028
 */
-func (a *CrossExApiService) CreateCrossexOrder(ctx context.Context, localVarOptionals *CreateCrossexOrderOpts) (InlineResponse20024, *http.Response, error) {
+func (a *CrossExApiService) CreateCrossexOrder(ctx context.Context, localVarOptionals *CreateCrossexOrderOpts) (InlineResponse20028, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  InlineResponse20024
+		localVarReturnValue  InlineResponse20028
 	)
 
 	// create path and map variables
@@ -642,16 +642,16 @@ GetCrossexOrder Query order details
 Rate Limit: 200 requests per 10 seconds
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param orderId 1. Supports querying order IDs returned when creating orders 2. Supports custom IDs specified by users when creating orders (i.e., the text field)
-@return InlineResponse20025
+@return InlineResponse20029
 */
-func (a *CrossExApiService) GetCrossexOrder(ctx context.Context, orderId string) (InlineResponse20025, *http.Response, error) {
+func (a *CrossExApiService) GetCrossexOrder(ctx context.Context, orderId string) (InlineResponse20029, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  InlineResponse20025
+		localVarReturnValue  InlineResponse20029
 	)
 
 	// create path and map variables
@@ -742,16 +742,16 @@ Rate Limit: 100 requests per 10 seconds
  * @param orderId Support Order ID or Text for Modify Order
  * @param optional nil or *UpdateCrossexOrderOpts - Optional Parameters:
  * @param "InlineObject22" (optional.Interface of InlineObject22) - 
-@return InlineResponse20026
+@return InlineResponse20030
 */
-func (a *CrossExApiService) UpdateCrossexOrder(ctx context.Context, orderId string, localVarOptionals *UpdateCrossexOrderOpts) (InlineResponse20026, *http.Response, error) {
+func (a *CrossExApiService) UpdateCrossexOrder(ctx context.Context, orderId string, localVarOptionals *UpdateCrossexOrderOpts) (InlineResponse20030, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  InlineResponse20026
+		localVarReturnValue  InlineResponse20030
 	)
 
 	// create path and map variables
@@ -955,16 +955,16 @@ Rate Limit: 100 requests per day
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param optional nil or *CreateCrossexConvertQuoteOpts - Optional Parameters:
  * @param "InlineObject23" (optional.Interface of InlineObject23) - 
-@return InlineResponse20027
+@return InlineResponse20031
 */
-func (a *CrossExApiService) CreateCrossexConvertQuote(ctx context.Context, localVarOptionals *CreateCrossexConvertQuoteOpts) (InlineResponse20027, *http.Response, error) {
+func (a *CrossExApiService) CreateCrossexConvertQuote(ctx context.Context, localVarOptionals *CreateCrossexConvertQuoteOpts) (InlineResponse20031, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  InlineResponse20027
+		localVarReturnValue  InlineResponse20031
 	)
 
 	// create path and map variables
@@ -1167,16 +1167,16 @@ GetCrossexAccount Query Account Assets
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param optional nil or *GetCrossexAccountOpts - Optional Parameters:
  * @param "ExchangeType" (optional.String) -  Exchange. Not required in cross-exchange mode; required in single-exchange mode (BINANCE/OKX/GATE)
-@return InlineResponse20028
+@return InlineResponse20032
 */
-func (a *CrossExApiService) GetCrossexAccount(ctx context.Context, localVarOptionals *GetCrossexAccountOpts) (InlineResponse20028, *http.Response, error) {
+func (a *CrossExApiService) GetCrossexAccount(ctx context.Context, localVarOptionals *GetCrossexAccountOpts) (InlineResponse20032, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  InlineResponse20028
+		localVarReturnValue  InlineResponse20032
 	)
 
 	// create path and map variables
@@ -1373,16 +1373,16 @@ Rate Limit: 200 requests per 10 seconds
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param optional nil or *GetCrossexPositionsLeverageOpts - Optional Parameters:
  * @param "Symbols" (optional.String) -  Trading Pair List, multiple separated by commas
-@return []InlineResponse20029
+@return []InlineResponse20033
 */
-func (a *CrossExApiService) GetCrossexPositionsLeverage(ctx context.Context, localVarOptionals *GetCrossexPositionsLeverageOpts) ([]InlineResponse20029, *http.Response, error) {
+func (a *CrossExApiService) GetCrossexPositionsLeverage(ctx context.Context, localVarOptionals *GetCrossexPositionsLeverageOpts) ([]InlineResponse20033, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  []InlineResponse20029
+		localVarReturnValue  []InlineResponse20033
 	)
 
 	// create path and map variables
@@ -1579,16 +1579,16 @@ Rate Limit: 200 requests per 10 seconds
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param optional nil or *GetCrossexMarginPositionsLeverageOpts - Optional Parameters:
  * @param "Symbols" (optional.String) -  Trading Pair List, multiple separated by commas
-@return []InlineResponse20029
+@return []InlineResponse20033
 */
-func (a *CrossExApiService) GetCrossexMarginPositionsLeverage(ctx context.Context, localVarOptionals *GetCrossexMarginPositionsLeverageOpts) ([]InlineResponse20029, *http.Response, error) {
+func (a *CrossExApiService) GetCrossexMarginPositionsLeverage(ctx context.Context, localVarOptionals *GetCrossexMarginPositionsLeverageOpts) ([]InlineResponse20033, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  []InlineResponse20029
+		localVarReturnValue  []InlineResponse20033
 	)
 
 	// create path and map variables
@@ -1785,16 +1785,16 @@ Rate Limit: 100 requests per day. Automatic close-out rules. Supports closing FU
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param optional nil or *CloseCrossexPositionOpts - Optional Parameters:
  * @param "InlineObject28" (optional.Interface of InlineObject28) - 
-@return InlineResponse20024
+@return InlineResponse20028
 */
-func (a *CrossExApiService) CloseCrossexPosition(ctx context.Context, localVarOptionals *CloseCrossexPositionOpts) (InlineResponse20024, *http.Response, error) {
+func (a *CrossExApiService) CloseCrossexPosition(ctx context.Context, localVarOptionals *CloseCrossexPositionOpts) (InlineResponse20028, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  InlineResponse20024
+		localVarReturnValue  InlineResponse20028
 	)
 
 	// create path and map variables
@@ -1893,16 +1893,16 @@ Rate Limit: 200 requests per 10 seconds
  * @param optional nil or *GetCrossexInterestRateOpts - Optional Parameters:
  * @param "Coin" (optional.String) -  Currency
  * @param "ExchangeType" (optional.String) -  Exchange
-@return []InlineResponse20030
+@return []InlineResponse20034
 */
-func (a *CrossExApiService) GetCrossexInterestRate(ctx context.Context, localVarOptionals *GetCrossexInterestRateOpts) ([]InlineResponse20030, *http.Response, error) {
+func (a *CrossExApiService) GetCrossexInterestRate(ctx context.Context, localVarOptionals *GetCrossexInterestRateOpts) ([]InlineResponse20034, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  []InlineResponse20030
+		localVarReturnValue  []InlineResponse20034
 	)
 
 	// create path and map variables
@@ -1989,16 +1989,16 @@ func (a *CrossExApiService) GetCrossexInterestRate(ctx context.Context, localVar
 GetCrossexFee Query User Fee Rates
 Rate Limit: 200 requests per 10 seconds
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-@return InlineResponse20031
+@return InlineResponse20035
 */
-func (a *CrossExApiService) GetCrossexFee(ctx context.Context) (InlineResponse20031, *http.Response, error) {
+func (a *CrossExApiService) GetCrossexFee(ctx context.Context) (InlineResponse20035, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  InlineResponse20031
+		localVarReturnValue  InlineResponse20035
 	)
 
 	// create path and map variables
@@ -2088,16 +2088,16 @@ Rate Limit: 200 requests per 10 seconds
  * @param optional nil or *ListCrossexPositionsOpts - Optional Parameters:
  * @param "Symbol" (optional.String) -  Trading Pair
  * @param "ExchangeType" (optional.String) -  Exchange
-@return []InlineResponse20032
+@return []InlineResponse20036
 */
-func (a *CrossExApiService) ListCrossexPositions(ctx context.Context, localVarOptionals *ListCrossexPositionsOpts) ([]InlineResponse20032, *http.Response, error) {
+func (a *CrossExApiService) ListCrossexPositions(ctx context.Context, localVarOptionals *ListCrossexPositionsOpts) ([]InlineResponse20036, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  []InlineResponse20032
+		localVarReturnValue  []InlineResponse20036
 	)
 
 	// create path and map variables
@@ -2193,16 +2193,16 @@ Rate Limit: 200 requests per 10 seconds
  * @param optional nil or *ListCrossexMarginPositionsOpts - Optional Parameters:
  * @param "Symbol" (optional.String) -  Currency pair
  * @param "ExchangeType" (optional.String) -  Exchange
-@return []InlineResponse20033
+@return []InlineResponse20037
 */
-func (a *CrossExApiService) ListCrossexMarginPositions(ctx context.Context, localVarOptionals *ListCrossexMarginPositionsOpts) ([]InlineResponse20033, *http.Response, error) {
+func (a *CrossExApiService) ListCrossexMarginPositions(ctx context.Context, localVarOptionals *ListCrossexMarginPositionsOpts) ([]InlineResponse20037, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  []InlineResponse20033
+		localVarReturnValue  []InlineResponse20037
 	)
 
 	// create path and map variables
@@ -2290,16 +2290,16 @@ ListCrossexAdlRank Query ADL Position Reduction Ranking
 Rate Limit: 200 requests per 10 seconds
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param symbol Trading Pair
-@return []InlineResponse20034
+@return []InlineResponse20038
 */
-func (a *CrossExApiService) ListCrossexAdlRank(ctx context.Context, symbol string) ([]InlineResponse20034, *http.Response, error) {
+func (a *CrossExApiService) ListCrossexAdlRank(ctx context.Context, symbol string) ([]InlineResponse20038, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  []InlineResponse20034
+		localVarReturnValue  []InlineResponse20038
 	)
 
 	// create path and map variables
@@ -2392,16 +2392,16 @@ Rate Limit: 200 requests per 10 seconds
  * @param "Symbol" (optional.String) -  Trading Pair
  * @param "ExchangeType" (optional.String) -  Exchange
  * @param "BusinessType" (optional.String) -  Business Type
-@return []InlineResponse20025
+@return []InlineResponse20029
 */
-func (a *CrossExApiService) ListCrossexOpenOrders(ctx context.Context, localVarOptionals *ListCrossexOpenOrdersOpts) ([]InlineResponse20025, *http.Response, error) {
+func (a *CrossExApiService) ListCrossexOpenOrders(ctx context.Context, localVarOptionals *ListCrossexOpenOrdersOpts) ([]InlineResponse20029, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  []InlineResponse20025
+		localVarReturnValue  []InlineResponse20029
 	)
 
 	// create path and map variables
@@ -2506,16 +2506,16 @@ Rate Limit: 200 requests per 10 seconds
  * @param "Symbol" (optional.String) -  Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME <EMAIL@ADDRESS> Language: en Language-Team: en <L@li.org> Plural-Forms: nplurals=2; plural=(n !=1) MIME-Version: 1.0 Content-Type: text/plain; charset=utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0 
  * @param "From" (optional.Int32) -  Start Millisecond Timestamp
  * @param "To" (optional.Int32) -  End Millisecond Timestamp
-@return []InlineResponse20035
+@return []InlineResponse20039
 */
-func (a *CrossExApiService) ListCrossexHistoryOrders(ctx context.Context, localVarOptionals *ListCrossexHistoryOrdersOpts) ([]InlineResponse20035, *http.Response, error) {
+func (a *CrossExApiService) ListCrossexHistoryOrders(ctx context.Context, localVarOptionals *ListCrossexHistoryOrdersOpts) ([]InlineResponse20039, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  []InlineResponse20035
+		localVarReturnValue  []InlineResponse20039
 	)
 
 	// create path and map variables
@@ -2626,16 +2626,16 @@ Rate Limit: 200 requests per 10 seconds
  * @param "Symbol" (optional.String) -  Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME <EMAIL@ADDRESS> Language: en Language-Team: en <L@li.org> Plural-Forms: nplurals=2; plural=(n !=1) MIME-Version: 1.0 Content-Type: text/plain; charset=utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0 
  * @param "From" (optional.Int32) -  Start Millisecond Timestamp
  * @param "To" (optional.Int32) -  End Millisecond Timestamp
-@return []InlineResponse20036
+@return []InlineResponse20040
 */
-func (a *CrossExApiService) ListCrossexHistoryPositions(ctx context.Context, localVarOptionals *ListCrossexHistoryPositionsOpts) ([]InlineResponse20036, *http.Response, error) {
+func (a *CrossExApiService) ListCrossexHistoryPositions(ctx context.Context, localVarOptionals *ListCrossexHistoryPositionsOpts) ([]InlineResponse20040, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  []InlineResponse20036
+		localVarReturnValue  []InlineResponse20040
 	)
 
 	// create path and map variables
@@ -2746,16 +2746,16 @@ Rate Limit: 200 requests per 10 seconds
  * @param "Symbol" (optional.String) -  Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME <EMAIL@ADDRESS> Language: en Language-Team: en <L@li.org> Plural-Forms: nplurals=2; plural=(n !=1) MIME-Version: 1.0 Content-Type: text/plain; charset=utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0 
  * @param "From" (optional.Int32) -  Start Millisecond Timestamp
  * @param "To" (optional.Int32) -  End Millisecond Timestamp
-@return []InlineResponse20037
+@return []InlineResponse20041
 */
-func (a *CrossExApiService) ListCrossexHistoryMarginPositions(ctx context.Context, localVarOptionals *ListCrossexHistoryMarginPositionsOpts) ([]InlineResponse20037, *http.Response, error) {
+func (a *CrossExApiService) ListCrossexHistoryMarginPositions(ctx context.Context, localVarOptionals *ListCrossexHistoryMarginPositionsOpts) ([]InlineResponse20041, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  []InlineResponse20037
+		localVarReturnValue  []InlineResponse20041
 	)
 
 	// create path and map variables
@@ -2868,16 +2868,16 @@ Rate Limit: 200 requests per 10 seconds
  * @param "Page" (optional.Int32) -  Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME <EMAIL@ADDRESS> Language: en Language-Team: en <L@li.org> Plural-Forms: nplurals=2; plural=(n !=1) MIME-Version: 1.0 Content-Type: text/plain; charset=utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0 
  * @param "Limit" (optional.Int32) -  Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME <EMAIL@ADDRESS> Language: en Language-Team: en <L@li.org> Plural-Forms: nplurals=2; plural=(n !=1) MIME-Version: 1.0 Content-Type: text/plain; charset=utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0 
  * @param "ExchangeType" (optional.String) -  Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME <EMAIL@ADDRESS> Language: en Language-Team: en <L@li.org> Plural-Forms: nplurals=2; plural=(n !=1) MIME-Version: 1.0 Content-Type: text/plain; charset=utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0 
-@return []InlineResponse20038
+@return []InlineResponse20042
 */
-func (a *CrossExApiService) ListCrossexHistoryMarginInterests(ctx context.Context, localVarOptionals *ListCrossexHistoryMarginInterestsOpts) ([]InlineResponse20038, *http.Response, error) {
+func (a *CrossExApiService) ListCrossexHistoryMarginInterests(ctx context.Context, localVarOptionals *ListCrossexHistoryMarginInterestsOpts) ([]InlineResponse20042, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  []InlineResponse20038
+		localVarReturnValue  []InlineResponse20042
 	)
 
 	// create path and map variables
@@ -2991,16 +2991,16 @@ Rate Limit: 200 requests per 10 seconds
  * @param "Symbol" (optional.String) -  Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME <EMAIL@ADDRESS> Language: en Language-Team: en <L@li.org> Plural-Forms: nplurals=2; plural=(n !=1) MIME-Version: 1.0 Content-Type: text/plain; charset=utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0 
  * @param "From" (optional.Int32) -  Start Millisecond Timestamp
  * @param "To" (optional.Int32) -  End Millisecond Timestamp
-@return []InlineResponse20039
+@return []InlineResponse20043
 */
-func (a *CrossExApiService) ListCrossexHistoryTrades(ctx context.Context, localVarOptionals *ListCrossexHistoryTradesOpts) ([]InlineResponse20039, *http.Response, error) {
+func (a *CrossExApiService) ListCrossexHistoryTrades(ctx context.Context, localVarOptionals *ListCrossexHistoryTradesOpts) ([]InlineResponse20043, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  []InlineResponse20039
+		localVarReturnValue  []InlineResponse20043
 	)
 
 	// create path and map variables
@@ -3111,16 +3111,16 @@ Rate Limit: 200 requests per 10 seconds
  * @param "Coin" (optional.String) -  Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME <EMAIL@ADDRESS> Language: en Language-Team: en <L@li.org> Plural-Forms: nplurals=2; plural=(n !=1) MIME-Version: 1.0 Content-Type: text/plain; charset=utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0 
  * @param "From" (optional.Int32) -  Start Millisecond Timestamp
  * @param "To" (optional.Int32) -  End Millisecond Timestamp
-@return []InlineResponse20040
+@return []InlineResponse20044
 */
-func (a *CrossExApiService) ListCrossexAccountBook(ctx context.Context, localVarOptionals *ListCrossexAccountBookOpts) ([]InlineResponse20040, *http.Response, error) {
+func (a *CrossExApiService) ListCrossexAccountBook(ctx context.Context, localVarOptionals *ListCrossexAccountBookOpts) ([]InlineResponse20044, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  []InlineResponse20040
+		localVarReturnValue  []InlineResponse20044
 	)
 
 	// create path and map variables
@@ -3225,16 +3225,16 @@ Rate Limit: 200 requests per 10 seconds
  * @param optional nil or *ListCrossexCoinDiscountRateOpts - Optional Parameters:
  * @param "Coin" (optional.String) -  Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME <EMAIL@ADDRESS> Language: en Language-Team: en <L@li.org> Plural-Forms: nplurals=2; plural=(n !=1) MIME-Version: 1.0 Content-Type: text/plain; charset=utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0 
  * @param "ExchangeType" (optional.String) -  OKX/GATE/BINANCE
-@return []InlineResponse20041
+@return []InlineResponse20045
 */
-func (a *CrossExApiService) ListCrossexCoinDiscountRate(ctx context.Context, localVarOptionals *ListCrossexCoinDiscountRateOpts) ([]InlineResponse20041, *http.Response, error) {
+func (a *CrossExApiService) ListCrossexCoinDiscountRate(ctx context.Context, localVarOptionals *ListCrossexCoinDiscountRateOpts) ([]InlineResponse20045, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  []InlineResponse20041
+		localVarReturnValue  []InlineResponse20045
 	)
 
 	// create path and map variables

@@ -10,86 +10,11 @@
 package gateapi
 
 type InlineResponse20015Data struct {
-	// Price
-	Rate string `json:"rate"`
-	// Buy/Sell order
-	Type string `json:"type"`
-	// Cryptocurrency amount
-	Amount string `json:"amount"`
-	// Minimum limit
-	MinAmount string `json:"min_amount"`
-	// Maximum limit
-	MaxAmount string `json:"max_amount"`
-	// Fiat amount
-	Total string `json:"total"`
-	// Whether Alipay payment is supported
-	PayAli int32 `json:"pay_ali"`
-	// Whether bank payment is supported
-	PayBank int32 `json:"pay_bank"`
-	// Whether PayPal payment is supported
-	PayPaypal int32 `json:"pay_paypal"`
-	// Whether WeChat payment is supported
-	PayWechat int32 `json:"pay_wechat"`
-	// Payment method ID list
-	PayTypeNum string `json:"pay_type_num"`
-	// Payment method list
-	PayTypeJson string `json:"pay_type_json"`
-	// Locked amount
-	LockedAmount string `json:"locked_amount"`
-	// Order ID
-	Orderid int32 `json:"orderid"`
-	// Created time
-	Timestamp int32 `json:"timestamp"`
-	// Cryptocurrency type
-	CurrencyType string `json:"currencyType"`
-	// Fiat type
-	WantType string `json:"want_type"`
-	// Hidden price
-	HideRate string `json:"hide_rate"`
-	// Trading terms
-	TradeTips string `json:"trade_tips"`
-	// Auto reply
-	AutoReply string `json:"auto_reply"`
-	// Merchant-friendly order
-	NewHand string `json:"new_hand"`
-	// Floating price reference ID: 1=Platform reference price, 3=Spot reference price (≤0 means fixed price, >0 means floating price)
-	RateRefId int32 `json:"rate_ref_id"`
-	// Floating ratio (absolute value)
-	RateOffset float32 `json:"rate_offset"`
-	// Status
-	Status string `json:"status"`
-	// 0=Floating, 1=Fixed
-	RateFixed int32 `json:"rate_fixed"`
-	// 0=Upward float, 1=Downward float
-	FloatTrend int32 `json:"float_trend"`
-	// Timeout (minutes)
-	ExpireMin int32 `json:"expire_min"`
-	// Tier limit
-	TierLimit int32 `json:"tier_limit"`
-	// Registration time limit
-	RegTimeLimit int32 `json:"reg_time_limit"`
-	// Do not trade with advertisers, advertiser limit: 0=No limit, 1=Limit
-	AdvertisersLimit int32 `json:"advertisers_limit"`
-	// kyclimit
-	VerifiedLimit int32 `json:"verified_limit"`
-	// Minimum limit of completed orders
-	MinCompletedLimit int32 `json:"min_completed_limit"`
-	// Maximum limit of completed orders
-	MaxCompletedLimit int32 `json:"max_completed_limit"`
-	// Order count limit
-	UserOrdersLimit int32 `json:"user_orders_limit"`
-	// 30-day completion rate limit
-	CompletedRateLimit int32 `json:"completed_rate_limit"`
-	// KYC nationality restriction
-	UserCountryLimit int32 `json:"user_country_limit"`
-	// Restricted nationality (Chinese)
-	LimitCountryCn string `json:"limit_country_cn"`
-	// Restricted nationality (English)
-	LimitCountryEn string `json:"limit_country_en"`
-	// Whether auto delegation
-	IsHedge int32 `json:"is_hedge"`
-	// Whether to hide payment method
-	HidePayment int32 `json:"hide_payment"`
-	// fee
-	Fee int32 `json:"fee"`
+	// Payment method type
+	PayType string `json:"pay_type,omitempty"`
+	// Payment method name
+	PayName string `json:"pay_name,omitempty"`
+	// User's currently bound payment method (primary key ID)
+	Ids  []int32                   `json:"ids,omitempty"`
+	List []InlineResponse20015List `json:"list,omitempty"`
 }

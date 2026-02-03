@@ -10,22 +10,44 @@
 package gateapi
 
 type InlineResponse20040 struct {
-	// Account Change Record ID
-	Id string `json:"id"`
+	// Position ID
+	PositionId string `json:"position_id,omitempty"`
 	// User ID
-	UserId string `json:"user_id"`
-	// Business ID
-	BusinessId string `json:"business_id"`
-	// 变更类型| `TRANSACTION` 成交 `TRADING_FEE` 手续费 `FUNDING_FEE` 合约资金费 `LIQUIDATION_FEE` 强平费 `TRANSFER_IN` 资金转入 `TRANSFER_OUT` 资金转出 `BANKRUPT_COMPENSATION` 穿仓补贴 `AUTO_REPAY` 杠杆仓位自动还负债
-	Type string `json:"type"`
-	// Exchange
-	ExchangeType string `json:"exchange_type"`
-	// Currency
-	Coin string `json:"coin"`
-	// Change amount (positive indicates transfer in; negative indicates transfer out)
-	Change string `json:"change"`
-	// Balance after change
-	Balance string `json:"balance"`
+	UserId string `json:"user_id,omitempty"`
+	// Currency pair
+	Symbol string `json:"symbol,omitempty"`
+	// Position close type (PARTIAL_CLOSED: partially closed; COMPLETE_CLOSED: fully closed)
+	ClosedType string `json:"closed_type,omitempty"`
+	// Close Position P&L
+	ClosedPnl string `json:"closed_pnl,omitempty"`
+	// Close Position P&L Ratio
+	ClosedPnlRate string `json:"closed_pnl_rate,omitempty"`
+	// Average Opening Price
+	OpenAvgPrice string `json:"open_avg_price,omitempty"`
+	// Average Close Price
+	ClosedAvgPrice string `json:"closed_avg_price,omitempty"`
+	// Max Trade Size
+	MaxPositionQty string `json:"max_position_qty,omitempty"`
+	// Close Position Quantity
+	ClosedQty string `json:"closed_qty,omitempty"`
+	// Close Position Value
+	ClosedValue string `json:"closed_value,omitempty"`
+	// Position Accumulated Fees
+	Fee string `json:"fee,omitempty"`
+	// Liquidation Fee
+	LiqFee string `json:"liq_fee,omitempty"`
+	// Funding Fee
+	FundingFee string `json:"funding_fee,omitempty"`
+	// Position Direction Before Close
+	PositionSide string `json:"position_side,omitempty"`
+	// Position Mode at Close
+	PositionMode string `json:"position_mode,omitempty"`
+	// Leverage at Close
+	Leverage string `json:"leverage,omitempty"`
+	// Business Type
+	BusinessType string `json:"business_type"`
 	// Created time
-	CreateTime string `json:"create_time"`
+	CreateTime string `json:"create_time,omitempty"`
+	// Update time
+	UpdateTime string `json:"update_time,omitempty"`
 }

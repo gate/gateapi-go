@@ -29,7 +29,7 @@ Name | Type | Description | Notes
 **EnableNewDualMode** | **bool** | Deprecated | [optional] 
 **MarginMode** | **int32** | Margin mode of the account 0: classic future account or Classic Spot Margin Mode of unified account; 1:  Multi-Currency Margin Mode; 2:  Portoforlio Margin Mode; 3:  Single-Currency Margin Mode | [optional] 
 **EnableTieredMm** | **bool** | Whether to enable tiered maintenance margin calculation | [optional] 
-**History** | [**FuturesAccountHistory**](FuturesAccount_history.md) |  | [optional] 
+**History** | [**DeliveryAccountHistory**](DeliveryAccount_history.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

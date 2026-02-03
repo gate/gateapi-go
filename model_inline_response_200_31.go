@@ -10,13 +10,18 @@
 package gateapi
 
 type InlineResponse20031 struct {
-	// spotMakerfee rate
-	SpotMakerFee string `json:"spot_maker_fee"`
-	// spotTakerfee rate
-	SpotTakerFee string `json:"spot_taker_fee"`
-	// contractMakerfee rate
-	FutureMakerFee string `json:"future_maker_fee"`
-	// contractTakerfee rate
-	FutureTakerFee string                              `json:"future_taker_fee"`
-	SpecialFeeList []InlineResponse20031SpecialFeeList `json:"special_fee_list"`
+	// Quote ID
+	QuoteId string `json:"quote_id"`
+	// Valid time (milliseconds timestamp)
+	ValidMs string `json:"valid_ms"`
+	// Asset Sold
+	FromCoin string `json:"from_coin"`
+	// Asset Bought
+	ToCoin string `json:"to_coin"`
+	// Amount to sell
+	FromAmount string `json:"from_amount"`
+	// Amount to buy
+	ToAmount string `json:"to_amount"`
+	// Price
+	Price string `json:"price"`
 }

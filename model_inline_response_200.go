@@ -10,6 +10,5 @@
 package gateapi
 
 type InlineResponse200 struct {
-	Time  int64  `json:"time,omitempty"`
-	Value string `json:"value,omitempty"`
+	Order TrailOrder `json:"order,omitempty"`
 }

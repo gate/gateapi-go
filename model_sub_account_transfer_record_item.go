@@ -20,7 +20,7 @@ type SubAccountTransferRecordItem struct {
 	SubAccountType string `json:"sub_account_type,omitempty"`
 	// Transfer currency name
 	Currency string `json:"currency"`
-	// Transfer amount
+	// Transfer Amount
 	Amount string `json:"amount"`
 	// Transfer direction: to - transfer into sub-account, from - transfer out from sub-account
 	Direction string `json:"direction"`

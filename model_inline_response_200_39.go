@@ -11,39 +11,55 @@ package gateapi
 
 type InlineResponse20039 struct {
 	// User ID
-	UserId string `json:"user_id,omitempty"`
-	// filledrecordsID
-	TransactionId string `json:"transaction_id,omitempty"`
+	UserId string `json:"user_id"`
 	// Order ID
-	OrderId string `json:"order_id,omitempty"`
-	// User Order ID
-	Text string `json:"text,omitempty"`
+	OrderId string `json:"order_id"`
+	// Client Order ID
+	Text string `json:"text"`
+	// Order Status
+	State string `json:"state"`
 	// Currency pair
-	Symbol string `json:"symbol,omitempty"`
+	Symbol string `json:"symbol"`
+	// Attribute COMMON: Normal Order, LIQ: Liquidation Takeover Order, REDUCE: Liquidation Reduce Order, ADL: Auto-Reduce
+	Attribute string `json:"attribute"`
 	// Exchange
-	ExchangeType string `json:"exchange_type,omitempty"`
+	ExchangeType string `json:"exchange_type"`
 	// Business Type
-	BusinessType string `json:"business_type,omitempty"`
-	// Buy/Sell Direction
-	Side string `json:"side,omitempty"`
-	// Trading size
-	Qty string `json:"qty,omitempty"`
-	// Fill Price
-	Price string `json:"price,omitempty"`
-	// fee
-	Fee string `json:"fee,omitempty"`
+	BusinessType string `json:"business_type"`
+	// Base Currency Quantity
+	Qty string `json:"qty"`
+	// Quote Currency Quantity
+	QuoteQty string `json:"quote_qty"`
+	// Price
+	Price string `json:"price"`
+	// Time in Force Strategy
+	TimeInForce string `json:"time_in_force"`
+	// Filled Quantity
+	ExecutedQty string `json:"executed_qty"`
+	// Filled Amount
+	ExecutedAmount string `json:"executed_amount"`
+	// Average Filled Price
+	ExecutedAvgPrice string `json:"executed_avg_price"`
 	// Fee currency
-	FeeCoin string `json:"fee_coin,omitempty"`
-	// Fee Rate
-	FeeRate string `json:"fee_rate,omitempty"`
-	// Filled Role
-	MatchRole string `json:"match_role,omitempty"`
-	// Realized P&L
-	Rpnl string `json:"rpnl,omitempty"`
-	// Position Mode
-	PositionMode string `json:"position_mode,omitempty"`
+	FeeCoin string `json:"fee_coin"`
+	// fee
+	Fee string `json:"fee"`
+	// Reduce Position Only
+	ReduceOnly string `json:"reduce_only"`
+	// leverage
+	Leverage string `json:"leverage"`
+	// Reason
+	Reason string `json:"reason"`
+	// Latest Filled Quantity
+	LastExecutedQty string `json:"last_executed_qty"`
+	// Latest Filled Price
+	LastExecutedPrice string `json:"last_executed_price"`
+	// Latest Filled Amount
+	LastExecutedAmount string `json:"last_executed_amount"`
 	// Position Direction
-	PositionSide string `json:"position_side,omitempty"`
+	PositionSide string `json:"position_side"`
 	// Created time
-	CreateTime string `json:"create_time,omitempty"`
+	CreateTime string `json:"create_time"`
+	// Update time
+	UpdateTime string `json:"update_time"`
 }

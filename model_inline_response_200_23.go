@@ -10,8 +10,10 @@
 package gateapi
 
 type InlineResponse20023 struct {
-	// Order ID
-	TxId string `json:"tx_id"`
-	// User-defined Order ID
-	Text string `json:"text"`
+	Timestamp float32                 `json:"timestamp"`
+	Method    string                  `json:"method"`
+	Code      int32                   `json:"code"`
+	Message   string                  `json:"message"`
+	Data      InlineResponse20023Data `json:"data"`
+	Version   string                  `json:"version"`
 }

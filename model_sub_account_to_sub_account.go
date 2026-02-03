@@ -22,6 +22,6 @@ type SubAccountToSubAccount struct {
 	SubAccountTo string `json:"sub_account_to"`
 	// Target sub-account trading account: spot - spot account, futures - perpetual contract account, delivery - delivery contract account
 	SubAccountToType string `json:"sub_account_to_type"`
-	// Transfer amount
+	// Transfer Amount, supports up to 8 decimal places, must be greater than 0
 	Amount string `json:"amount"`
 }

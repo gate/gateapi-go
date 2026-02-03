@@ -10,6 +10,6 @@
 package gateapi
 
 type InlineResponse20018Data struct {
-	// Timestamp when message was successfully sent (current timestamp)
-	SRVTM int32 `json:"SRVTM"`
+	// Ad status after successful update
+	Status int32 `json:"status"`
 }

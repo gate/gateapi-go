@@ -11,25 +11,11 @@ package gateapi
 
 type InlineResponse20038 struct {
 	// User ID
-	UserId string `json:"userId"`
-	// Trading Pair
+	UserId string `json:"user_id"`
+	// Currency pair
 	Symbol string `json:"symbol"`
-	// Interest Deduction ID
-	InterestId string `json:"interest_id"`
-	// Debt Source ID, can be Order ID or Position ID
-	LiabilityId string `json:"liability_id"`
-	// Debt Quantity
-	Liability string `json:"liability"`
-	// Debt Currency
-	LiabilityCoin string `json:"liability_coin"`
-	// Interest
-	Interest string `json:"interest"`
-	// interest rate
-	InterestRate string `json:"interest_rate"`
-	// Interest deduction type (`PERIODIC_POSITION`: periodic position interest; `PERIODIC_OPEN_ORDER`: periodic open-order interest; `IMMEDIATE_OPEN_ORDER`: interest charged on order opening)
-	InterestType string `json:"interest_type"`
-	// Created time
-	CreateTime string `json:"create_time"`
-	// Exchange
-	ExchangeType string `json:"exchange_type"`
+	// CROSSEX position-reduction indicator ranking (1–5, higher value ranks higher)
+	CrossexAdlRank string `json:"crossex_adl_rank"`
+	// Original exchange information (Binance: 0–4, higher value ranks higher; OKX: 0–5, higher value ranks higher; Gate: 1–5, lower value ranks higher)
+	ExchangeAdlRank string `json:"exchange_adl_rank"`
 }

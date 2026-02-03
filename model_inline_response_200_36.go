@@ -10,44 +10,46 @@
 package gateapi
 
 type InlineResponse20036 struct {
-	// Position ID
-	PositionId string `json:"position_id,omitempty"`
 	// User ID
 	UserId string `json:"user_id,omitempty"`
+	// Position ID
+	PositionId string `json:"position_id,omitempty"`
 	// Currency pair
 	Symbol string `json:"symbol,omitempty"`
-	// Position close type (PARTIAL_CLOSED: partially closed; COMPLETE_CLOSED: fully closed)
-	ClosedType string `json:"closed_type,omitempty"`
-	// Close Position P&L
-	ClosedPnl string `json:"closed_pnl,omitempty"`
-	// Close Position P&L Ratio
-	ClosedPnlRate string `json:"closed_pnl_rate,omitempty"`
-	// Average Opening Price
-	OpenAvgPrice string `json:"open_avg_price,omitempty"`
-	// Average Close Price
-	ClosedAvgPrice string `json:"closed_avg_price,omitempty"`
-	// Max Trade Size
-	MaxPositionQty string `json:"max_position_qty,omitempty"`
-	// Close Position Quantity
-	ClosedQty string `json:"closed_qty,omitempty"`
-	// Close Position Value
-	ClosedValue string `json:"closed_value,omitempty"`
-	// Position Accumulated Fees
-	Fee string `json:"fee,omitempty"`
-	// Liquidation Fee
-	LiqFee string `json:"liq_fee,omitempty"`
-	// Funding Fee
-	FundingFee string `json:"funding_fee,omitempty"`
-	// Position Direction Before Close
+	// Position Direction
 	PositionSide string `json:"position_side,omitempty"`
-	// Position Mode at Close
-	PositionMode string `json:"position_mode,omitempty"`
-	// Leverage at Close
+	// Initial Margin
+	InitialMargin string `json:"initial_margin,omitempty"`
+	// Maintenance margin
+	MaintenanceMargin string `json:"maintenance_margin,omitempty"`
+	// Position Quantity
+	PositionQty string `json:"position_qty,omitempty"`
+	// Position Value
+	PositionValue string `json:"position_value,omitempty"`
+	// Unrealized P&L
+	Upnl string `json:"upnl,omitempty"`
+	// Unrealized P&L Ratio
+	UpnlRate string `json:"upnl_rate,omitempty"`
+	// Position Average Entry Price
+	EntryPrice string `json:"entry_price,omitempty"`
+	// Mark price
+	MarkPrice string `json:"mark_price,omitempty"`
+	// Position Leverage
 	Leverage string `json:"leverage,omitempty"`
-	// Business Type
-	BusinessType string `json:"business_type"`
-	// Created time
+	// Maximum leverage
+	MaxLeverage string `json:"max_leverage,omitempty"`
+	// Position risk limit
+	RiskLimit string `json:"risk_limit,omitempty"`
+	// Position Fee
+	Fee string `json:"fee,omitempty"`
+	// Position Funding Fee
+	FundingFee string `json:"funding_fee,omitempty"`
+	// Position funding fee collection time (0 indicates it has not been collected yet)
+	FundingTime string `json:"funding_time,omitempty"`
+	// Position Creation Time
 	CreateTime string `json:"create_time,omitempty"`
-	// Update time
+	// Position Update Time
 	UpdateTime string `json:"update_time,omitempty"`
+	// Realized PnL
+	ClosedPnl string `json:"closed_pnl,omitempty"`
 }

@@ -31,4 +31,6 @@ type FuturesAccountHistory struct {
 	BonusDnw string `json:"bonus_dnw,omitempty"`
 	// total amount of perpetual contract bonus deduction
 	BonusOffset string `json:"bonus_offset,omitempty"`
+	// Represents the value of profit settlement from the futures account to the spot account under Unified Account Mode. Negative values indicate settlement from futures to spot, while positive values indicate settlement from spot to futures. This value is cumulative.
+	CrossSettle string `json:"cross_settle,omitempty"`
 }

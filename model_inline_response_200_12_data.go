@@ -10,11 +10,35 @@
 package gateapi
 
 type InlineResponse20012Data struct {
-	List []InlineResponse20012DataList `json:"list"`
-	// Countdown time
-	TransTime []InlineResponse20012DataTransTime `json:"trans_time"`
-	// Number of orders
-	Count int32 `json:"count"`
-	// Export count
-	ExportedNum int32 `json:"exported_num"`
+	// Order ID
+	OrderId string `json:"order_id"`
+	// User ID
+	Uid string `json:"uid"`
+	// Order Type
+	Type string `json:"type"`
+	// Fiat type
+	FiatCurrency string `json:"fiat_currency"`
+	// Fiat amount
+	FiatAmount string `json:"fiat_amount"`
+	// Stablecoin
+	CryptoCurrency string `json:"crypto_currency"`
+	// Stablecoin amount
+	CryptoAmount string `json:"crypto_amount"`
+	// Exchange rate
+	Rate string `json:"rate"`
+	// Remark
+	TransferRemark string `json:"transfer_remark"`
+	// Status
+	Status   string `json:"status"`
+	DbStatus string `json:"db_status"`
+	// Created time
+	CreateTime string `json:"create_time"`
+	// Cancellation or rejection reason
+	Memo string `json:"memo"`
+	// Quote direction
+	Side string `json:"side"`
+	// Promotion code
+	PromotionCode string `json:"promotion_code"`
+	// Trade number
+	TradeNo string `json:"trade_no"`
 }

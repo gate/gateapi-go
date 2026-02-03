@@ -17,7 +17,7 @@ type Transfer struct {
 	From string `json:"from"`
 	// Account to transfer to
 	To string `json:"to"`
-	// Transfer amount
+	// Transfer Amount, supports up to 8 decimal places, must be greater than 0
 	Amount string `json:"amount"`
 	// Margin trading pair. Required when transferring to or from margin account
 	CurrencyPair string `json:"currency_pair,omitempty"`
