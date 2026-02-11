@@ -10,10 +10,7 @@
 package gateapi
 
 type InlineResponse20013 struct {
-	Timestamp float32                 `json:"timestamp"`
-	Method    string                  `json:"method"`
-	Code      int32                   `json:"code"`
-	Message   string                  `json:"message"`
-	Data      InlineResponse20013Data `json:"data"`
-	Version   string                  `json:"version"`
+	Message string                  `json:"message"`
+	Code    int32                   `json:"code"`
+	Data    InlineResponse20013Data `json:"data"`
 }

@@ -10,31 +10,18 @@
 package gateapi
 
 type InlineResponse20032 struct {
-	// User ID
-	UserId string `json:"user_id"`
-	// Available Margin
-	AvailableMargin string `json:"available_margin"`
-	// marginbalance
-	MarginBalance string `json:"margin_balance"`
-	// Initial Margin
-	InitialMargin string `json:"initial_margin"`
-	// Maintenance margin
-	MaintenanceMargin string `json:"maintenance_margin"`
-	// Initial margin rate
-	InitialMarginRate string `json:"initial_margin_rate"`
-	// Maintenance margin rate
-	MaintenanceMarginRate string `json:"maintenance_margin_rate"`
-	// Contract Position Mode
-	PositionMode string `json:"position_mode"`
-	// Account limit
-	AccountLimit string `json:"account_limit,omitempty"`
-	// Created time
-	CreateTime string `json:"create_time"`
-	// Update time
-	UpdateTime string `json:"update_time"`
-	// Account mode. CROSS_EXCHANGE: cross-exchange mode. ISOLATED_EXCHANGE: isolated exchange mode
-	AccountMode string `json:"account_mode,omitempty"`
-	// Exchange type. When account_mode is CROSS_EXCHANGE, this must be CROSSEX; otherwise, it represents a specific exchange
-	ExchangeType string                      `json:"exchange_type,omitempty"`
-	Assets       []InlineResponse20032Assets `json:"assets"`
+	// Quote ID
+	QuoteId string `json:"quote_id"`
+	// Valid time (milliseconds timestamp)
+	ValidMs string `json:"valid_ms"`
+	// Asset Sold
+	FromCoin string `json:"from_coin"`
+	// Asset Bought
+	ToCoin string `json:"to_coin"`
+	// Amount to sell
+	FromAmount string `json:"from_amount"`
+	// Amount to buy
+	ToAmount string `json:"to_amount"`
+	// Price
+	Price string `json:"price"`
 }

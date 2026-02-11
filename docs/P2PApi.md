@@ -24,7 +24,7 @@ Method | HTTP request | Description
 
 ## P2pMerchantAccountGetUserInfo
 
-> InlineResponse20013 P2pMerchantAccountGetUserInfo(ctx, )
+> InlineResponse20014 P2pMerchantAccountGetUserInfo(ctx, )
 
 Get account information
 
@@ -65,7 +65,7 @@ func main() {
 
 ### Return type
 
-[**InlineResponse20013**](inline_response_200_13.md)
+[**InlineResponse20014**](inline_response_200_14.md)
 
 ### Authorization
 
@@ -82,7 +82,7 @@ No authorization required
 
 ## P2pMerchantAccountGetCounterpartyUserInfo
 
-> InlineResponse20014 P2pMerchantAccountGetCounterpartyUserInfo(ctx, bizUid)
+> InlineResponse20015 P2pMerchantAccountGetCounterpartyUserInfo(ctx, bizUid)
 
 Get counterparty information
 
@@ -128,7 +128,7 @@ func main() {
 
 ### Return type
 
-[**InlineResponse20014**](inline_response_200_14.md)
+[**InlineResponse20015**](inline_response_200_15.md)
 
 ### Authorization
 
@@ -145,7 +145,7 @@ No authorization required
 
 ## P2pMerchantAccountGetMyselfPayment
 
-> InlineResponse20015 P2pMerchantAccountGetMyselfPayment(ctx, optional)
+> InlineResponse20016 P2pMerchantAccountGetMyselfPayment(ctx, optional)
 
 Get payment method list
 
@@ -198,7 +198,7 @@ func main() {
 
 ### Return type
 
-[**InlineResponse20015**](inline_response_200_15.md)
+[**InlineResponse20016**](inline_response_200_16.md)
 
 ### Authorization
 
@@ -215,7 +215,7 @@ No authorization required
 
 ## P2pMerchantTransactionGetPendingTransactionList
 
-> InlineResponse20016 P2pMerchantTransactionGetPendingTransactionList(ctx, cryptoCurrency, fiatCurrency, optional)
+> InlineResponse20017 P2pMerchantTransactionGetPendingTransactionList(ctx, cryptoCurrency, fiatCurrency, optional)
 
 Get pending orders
 
@@ -234,9 +234,9 @@ Optional parameters are passed through a pointer to a P2pMerchantTransactionGetP
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**orderTab** | **optional.String**| Order tab, default is pending (pending: Processing (pending: AND status in (&#39;OPEN&#39;,  &#39;PAID&#39;, &#39;LOCKED&#39;, &#39;TEMP&#39;)); dispute: In dispute (status in (&#39;ACCEPT&#39;,  &#39;BCLOSED&#39;, &#39;CANCEL&#39;, &#39;BECANCEL&#39;, &#39;SCLOSED&#39;, &#39;SCANCEL&#39;))) | 
+**orderTab** | **optional.String**| 订单标签页，默认pending（pending：处理中（pending:  AND status in (&#39;OPEN&#39;, &#39;PAID&#39;, &#39;LOCKED&#39;, &#39;TEMP&#39;)）；dispute：申诉中（status in (&#39;ACCEPT&#39;, &#39;BCLOSED&#39;, &#39;CANCEL&#39;, &#39;BECANCEL&#39;, &#39;SCLOSED&#39;, &#39;SCANCEL&#39;))) | 
 **selectType** | **optional.String**| Buy/Sell (sell&#x3D;Sell, buy&#x3D;Buy, others&#x3D;All) | 
-**status** | **optional.String**| 订单状态（dispute: 申诉订单； closed: ACCEPT、BCLOSED； cancel： CANCEL、BECANCEL、SCLOSED、SCANCEL； locked: LOCKED； open: OPEN； paid： PAID； completed： CANCEL、BECANCEL、SCLOSED、SCANCEL、ACCEPT、BCLOSED） | 
+**status** | **optional.String**| Order Status (dispute: Disputed Order; closed: ACCEPT, BCLOSED; cancel: CANCEL, BECANCEL, SCLOSED, SCANCEL; locked: LOCKED; open: OPEN; paid: PAID; completed: CANCEL, BECANCEL, SCLOSED, SCANCEL, ACCEPT, BCLOSED) | 
 **txid** | **optional.Int32**| Order ID | 
 **startTime** | **optional.Int32**| Start timestamp, default is 00:00 89 days ago | 
 **endTime** | **optional.Int32**| End timestamp, default is 23:59:59 today | 
@@ -277,7 +277,7 @@ func main() {
 
 ### Return type
 
-[**InlineResponse20016**](inline_response_200_16.md)
+[**InlineResponse20017**](inline_response_200_17.md)
 
 ### Authorization
 
@@ -294,7 +294,7 @@ No authorization required
 
 ## P2pMerchantTransactionGetCompletedTransactionList
 
-> InlineResponse20016 P2pMerchantTransactionGetCompletedTransactionList(ctx, cryptoCurrency, fiatCurrency, optional)
+> InlineResponse20017 P2pMerchantTransactionGetCompletedTransactionList(ctx, cryptoCurrency, fiatCurrency, optional)
 
 Get all/historical orders
 
@@ -314,7 +314,7 @@ Optional parameters are passed through a pointer to a P2pMerchantTransactionGetC
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **selectType** | **optional.String**| Buy/Sell (sell&#x3D;Sell, buy&#x3D;Buy, others&#x3D;All) | 
-**status** | **optional.String**| 订单状态（dispute: 申诉订单； closed: ACCEPT、BCLOSED； cancel： CANCEL、BECANCEL、SCLOSED、SCANCEL； locked: LOCKED； open: OPEN； paid： PAID； completed： CANCEL、BECANCEL、SCLOSED、SCANCEL、ACCEPT、BCLOSED） | 
+**status** | **optional.String**| Order Status (dispute: Disputed Order; closed: ACCEPT, BCLOSED; cancel: CANCEL, BECANCEL, SCLOSED, SCANCEL; locked: LOCKED; open: OPEN; paid: PAID; completed: CANCEL, BECANCEL, SCLOSED, SCANCEL, ACCEPT, BCLOSED) | 
 **txid** | **optional.Int32**| Order ID | 
 **startTime** | **optional.Int32**| Start timestamp, default is 00:00 89 days ago | 
 **endTime** | **optional.Int32**| End timestamp, default is 23:59:59 today | 
@@ -358,7 +358,7 @@ func main() {
 
 ### Return type
 
-[**InlineResponse20016**](inline_response_200_16.md)
+[**InlineResponse20017**](inline_response_200_17.md)
 
 ### Authorization
 
@@ -375,7 +375,7 @@ No authorization required
 
 ## P2pMerchantTransactionGetTransactionDetails
 
-> InlineResponse20017 P2pMerchantTransactionGetTransactionDetails(ctx, txid, optional)
+> InlineResponse20018 P2pMerchantTransactionGetTransactionDetails(ctx, txid, optional)
 
 Query order details
 
@@ -430,7 +430,7 @@ func main() {
 
 ### Return type
 
-[**InlineResponse20017**](inline_response_200_17.md)
+[**InlineResponse20018**](inline_response_200_18.md)
 
 ### Authorization
 
@@ -760,7 +760,7 @@ No authorization required
 
 ## P2pMerchantBooksAdsUpdateStatus
 
-> InlineResponse20018 P2pMerchantBooksAdsUpdateStatus(ctx, advNo, advStatus, optional)
+> InlineResponse20019 P2pMerchantBooksAdsUpdateStatus(ctx, advNo, advStatus, optional)
 
 Update ad status
 
@@ -817,7 +817,7 @@ func main() {
 
 ### Return type
 
-[**InlineResponse20018**](inline_response_200_18.md)
+[**InlineResponse20019**](inline_response_200_19.md)
 
 ### Authorization
 
@@ -834,7 +834,7 @@ No authorization required
 
 ## P2pMerchantBooksAdsDetail
 
-> InlineResponse20019 P2pMerchantBooksAdsDetail(ctx, advNo)
+> InlineResponse20020 P2pMerchantBooksAdsDetail(ctx, advNo)
 
 Query ad details
 
@@ -880,7 +880,7 @@ func main() {
 
 ### Return type
 
-[**InlineResponse20019**](inline_response_200_19.md)
+[**InlineResponse20020**](inline_response_200_20.md)
 
 ### Authorization
 
@@ -897,7 +897,7 @@ No authorization required
 
 ## P2pMerchantBooksMyAdsList
 
-> InlineResponse20020 P2pMerchantBooksMyAdsList(ctx, optional)
+> InlineResponse20021 P2pMerchantBooksMyAdsList(ctx, optional)
 
 Get my ad list
 
@@ -952,7 +952,7 @@ func main() {
 
 ### Return type
 
-[**InlineResponse20020**](inline_response_200_20.md)
+[**InlineResponse20021**](inline_response_200_21.md)
 
 ### Authorization
 
@@ -969,7 +969,7 @@ No authorization required
 
 ## P2pMerchantChatGetChatsList
 
-> InlineResponse20021 P2pMerchantChatGetChatsList(ctx, txid, optional)
+> InlineResponse20022 P2pMerchantChatGetChatsList(ctx, txid, optional)
 
 Get chat history
 
@@ -1025,7 +1025,7 @@ func main() {
 
 ### Return type
 
-[**InlineResponse20021**](inline_response_200_21.md)
+[**InlineResponse20022**](inline_response_200_22.md)
 
 ### Authorization
 
@@ -1042,7 +1042,7 @@ No authorization required
 
 ## P2pMerchantChatSendChatMessage
 
-> InlineResponse20022 P2pMerchantChatSendChatMessage(ctx, txid, message, optional)
+> InlineResponse20023 P2pMerchantChatSendChatMessage(ctx, txid, message, optional)
 
 Send text message
 
@@ -1099,7 +1099,7 @@ func main() {
 
 ### Return type
 
-[**InlineResponse20022**](inline_response_200_22.md)
+[**InlineResponse20023**](inline_response_200_23.md)
 
 ### Authorization
 
@@ -1116,7 +1116,7 @@ No authorization required
 
 ## P2pMerchantChatUploadChatFile
 
-> InlineResponse20023 P2pMerchantChatUploadChatFile(ctx, imageContentType, base64Img)
+> InlineResponse20024 P2pMerchantChatUploadChatFile(ctx, imageContentType, base64Img)
 
 Upload chat file
 
@@ -1164,7 +1164,7 @@ func main() {
 
 ### Return type
 
-[**InlineResponse20023**](inline_response_200_23.md)
+[**InlineResponse20024**](inline_response_200_24.md)
 
 ### Authorization
 

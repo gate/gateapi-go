@@ -9,7 +9,7 @@
 
 package gateapi
 
-type InlineResponse20021DataMessages struct {
+type InlineResponse20022DataMessages struct {
 	// Whether seller
 	IsSell int32 `json:"is_sell"`
 	// Message type
@@ -20,7 +20,7 @@ type InlineResponse20021DataMessages struct {
 	Username string `json:"username"`
 	// Message timestamp
 	Timest int32                         `json:"timest"`
-	MsgObj InlineResponse20021DataMsgObj `json:"msg_obj"`
+	MsgObj InlineResponse20022DataMsgObj `json:"msg_obj"`
 	// Message sender UID
 	Uid string `json:"uid"`
 	// Message type

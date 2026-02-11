@@ -231,7 +231,7 @@ Optional parameters are passed through a pointer to a ListFuturesOrderBookOpts s
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**interval** | **optional.String**| Price precision for depth aggregation, 0 means no aggregation, defaults to 0 if not specified | [default to 0]
+**interval** | **optional.String**| Price precision for merged depth. 0 means no merging. If not specified, defaults to 0 | [default to 0]
 **limit** | **optional.Int32**| Number of depth levels | [default to 10]
 **withId** | **optional.Bool**| Whether to return depth update ID. This ID increments by 1 each time the depth changes | [default to false]
 
@@ -390,7 +390,7 @@ Name | Type | Description  | Notes
 **from** | **optional.Int64**| Start time of candlesticks, formatted in Unix timestamp in seconds. Default to&#x60;to - 100 * interval&#x60; if not specified | 
 **to** | **optional.Int64**| Specify the end time of the K-line chart, defaults to current time if not specified, note that the time format is Unix timestamp with second precision | 
 **limit** | **optional.Int32**| Maximum number of recent data points to return. &#x60;limit&#x60; conflicts with &#x60;from&#x60; and &#x60;to&#x60;. If either &#x60;from&#x60; or &#x60;to&#x60; is specified, request will be rejected. | [default to 100]
-**interval** | **optional.String**| Interval time between data points. Note that &#x60;1w&#x60; means natural week(Mon-Sun), while &#x60;7d&#x60; means every 7d since unix 0. 30d represents a natural month, not 30 days | [default to 5m]
+**interval** | **optional.String**| Time interval for data points. Note: 1w represents a natural week, 7d is aligned with Unix epoch time, 30d represents a natural month | [default to 5m]
 **timezone** | **optional.String**| Time zone: all/utc0/utc8, default utc0 | [default to utc0]
 
 ### Example
@@ -450,7 +450,7 @@ No authorization required
 
 Premium Index K-line chart
 
-Maximum of 1000 points can be returned in a query. Be sure not to exceed the limit when specifying from, to and interval
+K-line chart data returns a maximum of 1000 points per request. When specifying from, to, and interval, ensure the number of points is not excessive
 
 ### Required Parameters
 
@@ -3145,7 +3145,7 @@ func main() {
 
 Query personal trading records
 
-By default, only data within the past 6 months is supported.  If you need to query data for a longer period, please use `GET /futures/{settle}/my_trades_timerange`.
+By default, only supports querying data within 6 months. For older data, use `GET /futures/{settle}/my_trades_timerange`
 
 ### Required Parameters
 

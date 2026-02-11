@@ -10,7 +10,7 @@
 package gateapi
 
 type InlineResponse20012 struct {
-	Message string                  `json:"message"`
 	Code    int32                   `json:"code"`
+	Message string                  `json:"message"`
 	Data    InlineResponse20012Data `json:"data"`
 }

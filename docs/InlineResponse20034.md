@@ -4,10 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Coin** | **string** | Currency | 
-**ExchangeType** | **string** | Exchange | 
-**HourInterestRate** | **string** | Hourly Interest Rate | 
-**Time** | **string** | Millisecond Timestamp | 
+**Symbol** | **string** | Currency pair | 
+**Leverage** | **string** | leverage | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

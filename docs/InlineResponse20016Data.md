@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**List** | [**[]InlineResponse20016DataList**](inline_response_200_16_data_list.md) |  | 
-**TransTime** | [**[]InlineResponse20016DataTransTime**](inline_response_200_16_data_trans_time.md) | Countdown time | 
-**Count** | **int32** | Number of orders | 
-**ExportedNum** | **int32** | Export count | 
+**PayType** | **string** | Payment method type | [optional] 
+**PayName** | **string** | Payment method name | [optional] 
+**Ids** | **[]int32** | User&#39;s currently bound payment method (primary key ID) | [optional] 
+**List** | [**[]InlineResponse20016List**](inline_response_200_16_list.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -306,7 +306,7 @@ func main() {
 
 ## PlaceDualOrder
 
-> PlaceDualOrder(ctx, placeDualInvestmentOrder)
+> PlaceDualInvestmentOrder PlaceDualOrder(ctx, placeDualInvestmentOrderParams)
 
 Place Dual Investment order
 
@@ -315,7 +315,7 @@ Place Dual Investment order
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**placeDualInvestmentOrder** | [**PlaceDualInvestmentOrder**](PlaceDualInvestmentOrder.md)|  | 
+**placeDualInvestmentOrderParams** | [**PlaceDualInvestmentOrderParams**](PlaceDualInvestmentOrderParams.md)|  | 
 
 ### Example
 
@@ -340,9 +340,9 @@ func main() {
                                  Secret: "YOUR_API_SECRET",
                              }
                             )
-    placeDualInvestmentOrder := gateapi.PlaceDualInvestmentOrder{} // PlaceDualInvestmentOrder - 
+    placeDualInvestmentOrderParams := gateapi.PlaceDualInvestmentOrderParams{} // PlaceDualInvestmentOrderParams - 
     
-    result, _, err := client.EarnApi.PlaceDualOrder(ctx, placeDualInvestmentOrder)
+    result, _, err := client.EarnApi.PlaceDualOrder(ctx, placeDualInvestmentOrderParams)
     if err != nil {
         if e, ok := err.(gateapi.GateAPIError); ok {
             fmt.Printf("gate api error: %s\n", e.Error())
@@ -358,7 +358,7 @@ func main() {
 
 ### Return type
 
- (empty response body)
+[**PlaceDualInvestmentOrder**](PlaceDualInvestmentOrder.md)
 
 ### Authorization
 
@@ -367,7 +367,7 @@ func main() {
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)

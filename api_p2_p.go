@@ -29,16 +29,16 @@ type P2PApiService service
 P2pMerchantAccountGetUserInfo Get account information
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 
-@return InlineResponse20013
+@return InlineResponse20014
 */
-func (a *P2PApiService) P2pMerchantAccountGetUserInfo(ctx context.Context) (InlineResponse20013, *http.Response, error) {
+func (a *P2PApiService) P2pMerchantAccountGetUserInfo(ctx context.Context) (InlineResponse20014, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  InlineResponse20013
+		localVarReturnValue  InlineResponse20014
 	)
 
 	// create path and map variables
@@ -114,16 +114,16 @@ P2pMerchantAccountGetCounterpartyUserInfo Get counterparty information
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param bizUid Counterparty UID (encrypted)
 
-@return InlineResponse20014
+@return InlineResponse20015
 */
-func (a *P2PApiService) P2pMerchantAccountGetCounterpartyUserInfo(ctx context.Context, bizUid string) (InlineResponse20014, *http.Response, error) {
+func (a *P2PApiService) P2pMerchantAccountGetCounterpartyUserInfo(ctx context.Context, bizUid string) (InlineResponse20015, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  InlineResponse20014
+		localVarReturnValue  InlineResponse20015
 	)
 
 	// create path and map variables
@@ -206,16 +206,16 @@ P2pMerchantAccountGetMyselfPayment Get payment method list
   - @param optional nil or *P2pMerchantAccountGetMyselfPaymentOpts - Optional Parameters:
   - @param "Fiat" (optional.String) -  Fiat currency
 
-@return InlineResponse20015
+@return InlineResponse20016
 */
-func (a *P2PApiService) P2pMerchantAccountGetMyselfPayment(ctx context.Context, localVarOptionals *P2pMerchantAccountGetMyselfPaymentOpts) (InlineResponse20015, *http.Response, error) {
+func (a *P2PApiService) P2pMerchantAccountGetMyselfPayment(ctx context.Context, localVarOptionals *P2pMerchantAccountGetMyselfPaymentOpts) (InlineResponse20016, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  InlineResponse20015
+		localVarReturnValue  InlineResponse20016
 	)
 
 	// create path and map variables
@@ -305,23 +305,23 @@ P2pMerchantTransactionGetPendingTransactionList Get pending orders
   - @param cryptoCurrency Cryptocurrency
   - @param fiatCurrency Fiat currency
   - @param optional nil or *P2pMerchantTransactionGetPendingTransactionListOpts - Optional Parameters:
-  - @param "OrderTab" (optional.String) -  Order tab, default is pending (pending: Processing (pending: AND status in ('OPEN',  'PAID', 'LOCKED', 'TEMP')); dispute: In dispute (status in ('ACCEPT',  'BCLOSED', 'CANCEL', 'BECANCEL', 'SCLOSED', 'SCANCEL')))
+  - @param "OrderTab" (optional.String) -  订单标签页，默认pending（pending：处理中（pending:  AND status in ('OPEN', 'PAID', 'LOCKED', 'TEMP')）；dispute：申诉中（status in ('ACCEPT', 'BCLOSED', 'CANCEL', 'BECANCEL', 'SCLOSED', 'SCANCEL')))
   - @param "SelectType" (optional.String) -  Buy/Sell (sell=Sell, buy=Buy, others=All)
-  - @param "Status" (optional.String) -  订单状态（dispute: 申诉订单； closed: ACCEPT、BCLOSED； cancel： CANCEL、BECANCEL、SCLOSED、SCANCEL； locked: LOCKED； open: OPEN； paid： PAID； completed： CANCEL、BECANCEL、SCLOSED、SCANCEL、ACCEPT、BCLOSED）
+  - @param "Status" (optional.String) -  Order Status (dispute: Disputed Order; closed: ACCEPT, BCLOSED; cancel: CANCEL, BECANCEL, SCLOSED, SCANCEL; locked: LOCKED; open: OPEN; paid: PAID; completed: CANCEL, BECANCEL, SCLOSED, SCANCEL, ACCEPT, BCLOSED)
   - @param "Txid" (optional.Int32) -  Order ID
   - @param "StartTime" (optional.Int32) -  Start timestamp, default is 00:00 89 days ago
   - @param "EndTime" (optional.Int32) -  End timestamp, default is 23:59:59 today
 
-@return InlineResponse20016
+@return InlineResponse20017
 */
-func (a *P2PApiService) P2pMerchantTransactionGetPendingTransactionList(ctx context.Context, cryptoCurrency string, fiatCurrency string, localVarOptionals *P2pMerchantTransactionGetPendingTransactionListOpts) (InlineResponse20016, *http.Response, error) {
+func (a *P2PApiService) P2pMerchantTransactionGetPendingTransactionList(ctx context.Context, cryptoCurrency string, fiatCurrency string, localVarOptionals *P2pMerchantTransactionGetPendingTransactionListOpts) (InlineResponse20017, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  InlineResponse20016
+		localVarReturnValue  InlineResponse20017
 	)
 
 	// create path and map variables
@@ -431,7 +431,7 @@ P2pMerchantTransactionGetCompletedTransactionList Get all/historical orders
   - @param fiatCurrency Fiat currency
   - @param optional nil or *P2pMerchantTransactionGetCompletedTransactionListOpts - Optional Parameters:
   - @param "SelectType" (optional.String) -  Buy/Sell (sell=Sell, buy=Buy, others=All)
-  - @param "Status" (optional.String) -  订单状态（dispute: 申诉订单； closed: ACCEPT、BCLOSED； cancel： CANCEL、BECANCEL、SCLOSED、SCANCEL； locked: LOCKED； open: OPEN； paid： PAID； completed： CANCEL、BECANCEL、SCLOSED、SCANCEL、ACCEPT、BCLOSED）
+  - @param "Status" (optional.String) -  Order Status (dispute: Disputed Order; closed: ACCEPT, BCLOSED; cancel: CANCEL, BECANCEL, SCLOSED, SCANCEL; locked: LOCKED; open: OPEN; paid: PAID; completed: CANCEL, BECANCEL, SCLOSED, SCANCEL, ACCEPT, BCLOSED)
   - @param "Txid" (optional.Int32) -  Order ID
   - @param "StartTime" (optional.Int32) -  Start timestamp, default is 00:00 89 days ago
   - @param "EndTime" (optional.Int32) -  End timestamp, default is 23:59:59 today
@@ -439,16 +439,16 @@ P2pMerchantTransactionGetCompletedTransactionList Get all/historical orders
   - @param "Page" (optional.Int32) -  page number
   - @param "PerPage" (optional.Int32) -  Number of orders per page
 
-@return InlineResponse20016
+@return InlineResponse20017
 */
-func (a *P2PApiService) P2pMerchantTransactionGetCompletedTransactionList(ctx context.Context, cryptoCurrency string, fiatCurrency string, localVarOptionals *P2pMerchantTransactionGetCompletedTransactionListOpts) (InlineResponse20016, *http.Response, error) {
+func (a *P2PApiService) P2pMerchantTransactionGetCompletedTransactionList(ctx context.Context, cryptoCurrency string, fiatCurrency string, localVarOptionals *P2pMerchantTransactionGetCompletedTransactionListOpts) (InlineResponse20017, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  InlineResponse20016
+		localVarReturnValue  InlineResponse20017
 	)
 
 	// create path and map variables
@@ -557,16 +557,16 @@ P2pMerchantTransactionGetTransactionDetails Query order details
   - @param optional nil or *P2pMerchantTransactionGetTransactionDetailsOpts - Optional Parameters:
   - @param "Channel" (optional.String) -  Empty or web3
 
-@return InlineResponse20017
+@return InlineResponse20018
 */
-func (a *P2PApiService) P2pMerchantTransactionGetTransactionDetails(ctx context.Context, txid int32, localVarOptionals *P2pMerchantTransactionGetTransactionDetailsOpts) (InlineResponse20017, *http.Response, error) {
+func (a *P2PApiService) P2pMerchantTransactionGetTransactionDetails(ctx context.Context, txid int32, localVarOptionals *P2pMerchantTransactionGetTransactionDetailsOpts) (InlineResponse20018, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  InlineResponse20017
+		localVarReturnValue  InlineResponse20018
 	)
 
 	// create path and map variables
@@ -1157,16 +1157,16 @@ P2pMerchantBooksAdsUpdateStatus Update ad status
   - @param optional nil or *P2pMerchantBooksAdsUpdateStatusOpts - Optional Parameters:
   - @param "TradeType" (optional.String) -  Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME <EMAIL@ADDRESS> Language: en Language-Team: en <L@li.org> Plural-Forms: nplurals=2; plural=(n !=1) MIME-Version: 1.0 Content-Type: text/plain; charset=utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0
 
-@return InlineResponse20018
+@return InlineResponse20019
 */
-func (a *P2PApiService) P2pMerchantBooksAdsUpdateStatus(ctx context.Context, advNo int32, advStatus int32, localVarOptionals *P2pMerchantBooksAdsUpdateStatusOpts) (InlineResponse20018, *http.Response, error) {
+func (a *P2PApiService) P2pMerchantBooksAdsUpdateStatus(ctx context.Context, advNo int32, advStatus int32, localVarOptionals *P2pMerchantBooksAdsUpdateStatusOpts) (InlineResponse20019, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  InlineResponse20018
+		localVarReturnValue  InlineResponse20019
 	)
 
 	// create path and map variables
@@ -1247,16 +1247,16 @@ P2pMerchantBooksAdsDetail Query ad details
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param advNo
 
-@return InlineResponse20019
+@return InlineResponse20020
 */
-func (a *P2PApiService) P2pMerchantBooksAdsDetail(ctx context.Context, advNo string) (InlineResponse20019, *http.Response, error) {
+func (a *P2PApiService) P2pMerchantBooksAdsDetail(ctx context.Context, advNo string) (InlineResponse20020, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  InlineResponse20019
+		localVarReturnValue  InlineResponse20020
 	)
 
 	// create path and map variables
@@ -1343,16 +1343,16 @@ P2pMerchantBooksMyAdsList Get my ad list
   - @param "FiatUnit" (optional.String) -  Fiat currency
   - @param "TradeType" (optional.String) -  Buy/Sell
 
-@return InlineResponse20020
+@return InlineResponse20021
 */
-func (a *P2PApiService) P2pMerchantBooksMyAdsList(ctx context.Context, localVarOptionals *P2pMerchantBooksMyAdsListOpts) (InlineResponse20020, *http.Response, error) {
+func (a *P2PApiService) P2pMerchantBooksMyAdsList(ctx context.Context, localVarOptionals *P2pMerchantBooksMyAdsListOpts) (InlineResponse20021, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  InlineResponse20020
+		localVarReturnValue  InlineResponse20021
 	)
 
 	// create path and map variables
@@ -1446,16 +1446,16 @@ P2pMerchantChatGetChatsList Get chat history
   - @param "Lastreceived" (optional.Int32) -  Pagination timestamp (forward)
   - @param "Firstreceived" (optional.Int32) -  Pagination timestamp (backward)
 
-@return InlineResponse20021
+@return InlineResponse20022
 */
-func (a *P2PApiService) P2pMerchantChatGetChatsList(ctx context.Context, txid int32, localVarOptionals *P2pMerchantChatGetChatsListOpts) (InlineResponse20021, *http.Response, error) {
+func (a *P2PApiService) P2pMerchantChatGetChatsList(ctx context.Context, txid int32, localVarOptionals *P2pMerchantChatGetChatsListOpts) (InlineResponse20022, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  InlineResponse20021
+		localVarReturnValue  InlineResponse20022
 	)
 
 	// create path and map variables
@@ -1546,16 +1546,16 @@ P2pMerchantChatSendChatMessage Send text message
   - @param optional nil or *P2pMerchantChatSendChatMessageOpts - Optional Parameters:
   - @param "Type_" (optional.Int32) -  0=Text, 1=File (video or image), default is 0 if not provided
 
-@return InlineResponse20022
+@return InlineResponse20023
 */
-func (a *P2PApiService) P2pMerchantChatSendChatMessage(ctx context.Context, txid int32, message string, localVarOptionals *P2pMerchantChatSendChatMessageOpts) (InlineResponse20022, *http.Response, error) {
+func (a *P2PApiService) P2pMerchantChatSendChatMessage(ctx context.Context, txid int32, message string, localVarOptionals *P2pMerchantChatSendChatMessageOpts) (InlineResponse20023, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  InlineResponse20022
+		localVarReturnValue  InlineResponse20023
 	)
 
 	// create path and map variables
@@ -1637,16 +1637,16 @@ P2pMerchantChatUploadChatFile Upload chat file
   - @param imageContentType File type, currently only images and videos are supported
   - @param base64Img File content (base64 encoded)
 
-@return InlineResponse20023
+@return InlineResponse20024
 */
-func (a *P2PApiService) P2pMerchantChatUploadChatFile(ctx context.Context, imageContentType string, base64Img string) (InlineResponse20023, *http.Response, error) {
+func (a *P2PApiService) P2pMerchantChatUploadChatFile(ctx context.Context, imageContentType string, base64Img string) (InlineResponse20024, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  InlineResponse20023
+		localVarReturnValue  InlineResponse20024
 	)
 
 	// create path and map variables

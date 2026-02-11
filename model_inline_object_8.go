@@ -16,7 +16,7 @@ type InlineObject8 struct {
 	FiatCurrency string `json:"fiat_currency"`
 	// Buy/Sell (sell=Sell, buy=Buy, others=All)
 	SelectType string `json:"select_type,omitempty"`
-	// 订单状态（dispute: 申诉订单； closed: ACCEPT、BCLOSED； cancel： CANCEL、BECANCEL、SCLOSED、SCANCEL； locked: LOCKED； open: OPEN； paid： PAID； completed： CANCEL、BECANCEL、SCLOSED、SCANCEL、ACCEPT、BCLOSED）
+	// Order Status (dispute: Disputed Order; closed: ACCEPT, BCLOSED; cancel: CANCEL, BECANCEL, SCLOSED, SCANCEL; locked: LOCKED; open: OPEN; paid: PAID; completed: CANCEL, BECANCEL, SCLOSED, SCANCEL, ACCEPT, BCLOSED)
 	Status string `json:"status,omitempty"`
 	// Order ID
 	Txid int32 `json:"txid,omitempty"`

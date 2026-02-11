@@ -225,7 +225,7 @@ Record query time range cannot exceed 30 days
   - @param "WithdrawId" (optional.String) -  Withdrawal record ID starts with 'w', such as: w1879219868. When withdraw_id is not empty, only this specific withdrawal record will be queried, and time-based querying will be disabled
   - @param "AssetClass" (optional.String) -  Currency type of withdrawal record, empty by default. Supports querying withdrawal records in main zone and innovation zone on demand. Value range: SPOT, PILOT  SPOT: Main Zone PILOT: Innovation Zone
   - @param "WithdrawOrderId" (optional.String) -  User-defined order number for withdrawal. Default is empty. When not empty, the specified user-defined order number record will be queried
-  - @param "From" (optional.Int64) -  Start time for querying records, defaults to 7 days before current time if not specified
+  - @param "From" (optional.Int64) -  Start time for querying records. If not specified, defaults to 7 days before current time
   - @param "To" (optional.Int64) -  End timestamp for the query, defaults to current time if not specified
   - @param "Limit" (optional.Int32) -  Maximum number of records returned in a single list
   - @param "Offset" (optional.Int32) -  List offset, starting from 0
@@ -355,7 +355,7 @@ Record query time range cannot exceed 30 days
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param optional nil or *ListDepositsOpts - Optional Parameters:
   - @param "Currency" (optional.String) -  Specify the currency. If not specified, returns all currencies
-  - @param "From" (optional.Int64) -  Start time for querying records, defaults to 7 days before current time if not specified
+  - @param "From" (optional.Int64) -  Start time for querying records. If not specified, defaults to 7 days before current time
   - @param "To" (optional.Int64) -  End timestamp for the query, defaults to current time if not specified
   - @param "Limit" (optional.Int32) -  Maximum number of entries returned in the list, limited to 500 transactions
   - @param "Offset" (optional.Int32) -  List offset, starting from 0
@@ -570,7 +570,7 @@ Record query time range cannot exceed 30 days  &gt; Note: Only records after 202
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param optional nil or *ListSubAccountTransfersOpts - Optional Parameters:
   - @param "SubUid" (optional.String) -  Sub-account user ID, you can query multiple records separated by `,`. If not specified, it will return records of all sub-accounts
-  - @param "From" (optional.Int64) -  Start time for querying records, defaults to 7 days before current time if not specified
+  - @param "From" (optional.Int64) -  Start time for querying records. If not specified, defaults to 7 days before current time
   - @param "To" (optional.Int64) -  End timestamp for the query, defaults to current time if not specified
   - @param "Limit" (optional.Int32) -  Maximum number of records returned in a single list
   - @param "Offset" (optional.Int32) -  List offset, starting from 0

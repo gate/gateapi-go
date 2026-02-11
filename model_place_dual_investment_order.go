@@ -9,12 +9,39 @@
 
 package gateapi
 
-// Dual Investment Order
 type PlaceDualInvestmentOrder struct {
+	// Order ID
+	Id int32 `json:"id,omitempty"`
 	// Product ID
-	PlanId string `json:"plan_id"`
-	// Subscription amount, mutually exclusive with copies field
-	Amount string `json:"amount"`
-	// Order custom information. Users can set custom ID with this field. Custom fields must meet the following conditions:  1. Must start with `t-` 2. Excluding `t-`, length cannot exceed 28 bytes 3. Can only contain numbers, letters, underscore(_), hyphen(-) or dot(.)
+	PlanId int32 `json:"plan_id,omitempty"`
+	// Units
+	Copies string `json:"copies,omitempty"`
+	// Investment Quantity
+	InvestAmount string `json:"invest_amount,omitempty"`
+	// Settlement Quantity
+	SettlementAmount string `json:"settlement_amount,omitempty"`
+	// Created time
+	CreateTime int32 `json:"create_time,omitempty"`
+	// Completed Time
+	CompleteTime int32 `json:"complete_time,omitempty"`
+	// Status:  `INIT`-Created `SETTLEMENT_SUCCESS`-Settlement Success `SETTLEMENT_PROCESSING`-Settlement Processing `CANCELED`-Canceled `FAILED`-Failed
+	Status string `json:"status,omitempty"`
+	// Investment Token
+	InvestCurrency string `json:"invest_currency,omitempty"`
+	// Strike Token
+	ExerciseCurrency string `json:"exercise_currency,omitempty"`
+	// Strike price
+	ExercisePrice string `json:"exercise_price,omitempty"`
+	// Settlement price
+	SettlementPrice string `json:"settlement_price,omitempty"`
+	// Settlement currency
+	SettlementCurrency string `json:"settlement_currency,omitempty"`
+	// Annual Yield
+	ApyDisplay string `json:"apy_display,omitempty"`
+	// Settlement Annual Yield
+	ApySettlement string `json:"apy_settlement,omitempty"`
+	// Settlement time
+	DeliveryTime int32 `json:"delivery_time,omitempty"`
+	// Custom order information
 	Text string `json:"text,omitempty"`
 }

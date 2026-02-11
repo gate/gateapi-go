@@ -186,7 +186,7 @@ Optional parameters are passed through a pointer to a ListDeliveryOrderBookOpts 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**interval** | **optional.String**| Price precision for depth aggregation, 0 means no aggregation, defaults to 0 if not specified | [default to 0]
+**interval** | **optional.String**| Price precision for merged depth. 0 means no merging. If not specified, defaults to 0 | [default to 0]
 **limit** | **optional.Int32**| Number of depth levels | [default to 10]
 **withId** | **optional.Bool**| Whether to return depth update ID. This ID increments by 1 each time the depth changes | [default to false]
 

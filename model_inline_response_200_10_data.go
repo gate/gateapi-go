@@ -10,9 +10,6 @@
 package gateapi
 
 type InlineResponse20010Data struct {
-	Pn      int32                         `json:"pn"`
-	Ps      int32                         `json:"ps"`
-	TotalPn int32                         `json:"total_pn"`
-	Count   int32                         `json:"count"`
-	List    []InlineResponse20010DataList `json:"list"`
+	// Bank card list
+	Lists []InlineResponse20010DataLists `json:"lists"`
 }

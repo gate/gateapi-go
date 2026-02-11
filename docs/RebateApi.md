@@ -38,7 +38,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **currencyPair** | **optional.String**| Specify the trading pair. If not specified, returns all trading pairs | 
 **userId** | **optional.Int64**| User ID. If not specified, all user records will be returned | 
-**from** | **optional.Int64**| Start time for querying records, defaults to 7 days before current time if not specified | 
+**from** | **optional.Int64**| Start time for querying records. If not specified, defaults to 7 days before current time | 
 **to** | **optional.Int64**| End timestamp for the query, defaults to current time if not specified | 
 **limit** | **optional.Int32**| Maximum number of records returned in a single list | [default to 100]
 **offset** | **optional.Int32**| List offset, starting from 0 | [default to 0]
@@ -122,7 +122,7 @@ Name | Type | Description  | Notes
 **currency** | **optional.String**| Specify the currency. If not specified, returns all currencies | 
 **commissionType** | **optional.Int32**| Rebate type: 1 - Direct rebate, 2 - Indirect rebate, 3 - Self rebate | 
 **userId** | **optional.Int64**| User ID. If not specified, all user records will be returned | 
-**from** | **optional.Int64**| Start time for querying records, defaults to 7 days before current time if not specified | 
+**from** | **optional.Int64**| Start time for querying records. If not specified, defaults to 7 days before current time | 
 **to** | **optional.Int64**| End timestamp for the query, defaults to current time if not specified | 
 **limit** | **optional.Int32**| Maximum number of records returned in a single list | [default to 100]
 **offset** | **optional.Int32**| List offset, starting from 0 | [default to 0]
@@ -205,7 +205,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **currencyPair** | **optional.String**| Specify the trading pair. If not specified, returns all trading pairs | 
 **userId** | **optional.Int64**| User ID. If not specified, all user records will be returned | 
-**from** | **optional.Int64**| Start time for querying records, defaults to 7 days before current time if not specified | 
+**from** | **optional.Int64**| Start time for querying records. If not specified, defaults to 7 days before current time | 
 **to** | **optional.Int64**| End timestamp for the query, defaults to current time if not specified | 
 **limit** | **optional.Int32**| Maximum number of records returned in a single list | [default to 100]
 **offset** | **optional.Int32**| List offset, starting from 0 | [default to 0]
@@ -288,7 +288,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **currency** | **optional.String**| Specify the currency. If not specified, returns all currencies | 
 **userId** | **optional.Int64**| User ID. If not specified, all user records will be returned | 
-**from** | **optional.Int64**| Start time for querying records, defaults to 7 days before current time if not specified | 
+**from** | **optional.Int64**| Start time for querying records. If not specified, defaults to 7 days before current time | 
 **to** | **optional.Int64**| End timestamp for the query, defaults to current time if not specified | 
 **limit** | **optional.Int32**| Maximum number of records returned in a single list | [default to 100]
 **offset** | **optional.Int32**| List offset, starting from 0 | [default to 0]

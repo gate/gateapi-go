@@ -377,7 +377,7 @@ Optional parameters are passed through a pointer to a ListOrderBookOpts struct
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**interval** | **optional.String**| Price precision for depth aggregation, 0 means no aggregation, defaults to 0 if not specified | [default to 0]
+**interval** | **optional.String**| Price precision for merged depth. 0 means no merging. If not specified, defaults to 0 | [default to 0]
 **limit** | **optional.Int32**| Number of depth levels | [default to 10]
 **withId** | **optional.Bool**| Return order book update ID | [default to false]
 
@@ -516,7 +516,7 @@ No authorization required
 
 Market K-line chart
 
-Maximum of 1000 points can be returned in a query. Be sure not to exceed the limit when specifying from, to and interval
+K-line chart data returns a maximum of 1000 points per request. When specifying from, to, and interval, ensure the number of points is not excessive
 
 ### Required Parameters
 

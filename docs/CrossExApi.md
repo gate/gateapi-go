@@ -111,7 +111,7 @@ No authorization required
 
 ## ListCrossexRuleRiskLimits
 
-> []InlineResponse20024 ListCrossexRuleRiskLimits(ctx, symbols)
+> []InlineResponse20025 ListCrossexRuleRiskLimits(ctx, symbols)
 
 [Public Interface] Query Risk Limit Information
 
@@ -159,7 +159,7 @@ func main() {
 
 ### Return type
 
-[**[]InlineResponse20024**](inline_response_200_24.md)
+[**[]InlineResponse20025**](inline_response_200_25.md)
 
 ### Authorization
 
@@ -176,7 +176,7 @@ No authorization required
 
 ## ListCrossexTransferCoins
 
-> []InlineResponse20025 ListCrossexTransferCoins(ctx, optional)
+> []InlineResponse20026 ListCrossexTransferCoins(ctx, optional)
 
 [Public Interface] Query Supported Transfer Currencies
 
@@ -231,7 +231,7 @@ func main() {
 
 ### Return type
 
-[**[]InlineResponse20025**](inline_response_200_25.md)
+[**[]InlineResponse20026**](inline_response_200_26.md)
 
 ### Authorization
 
@@ -248,7 +248,7 @@ No authorization required
 
 ## ListCrossexTransfers
 
-> []InlineResponse20026 ListCrossexTransfers(ctx, optional)
+> []InlineResponse20027 ListCrossexTransfers(ctx, optional)
 
 Query Fund Transfer History
 
@@ -314,7 +314,7 @@ func main() {
 
 ### Return type
 
-[**[]InlineResponse20026**](inline_response_200_26.md)
+[**[]InlineResponse20027**](inline_response_200_27.md)
 
 ### Authorization
 
@@ -331,7 +331,7 @@ func main() {
 
 ## CreateCrossexTransfer
 
-> InlineResponse20027 CreateCrossexTransfer(ctx, optional)
+> InlineResponse20028 CreateCrossexTransfer(ctx, optional)
 
 Fund Transfer
 
@@ -392,7 +392,7 @@ func main() {
 
 ### Return type
 
-[**InlineResponse20027**](inline_response_200_27.md)
+[**InlineResponse20028**](inline_response_200_28.md)
 
 ### Authorization
 
@@ -409,7 +409,7 @@ func main() {
 
 ## CreateCrossexOrder
 
-> InlineResponse20028 CreateCrossexOrder(ctx, optional)
+> InlineResponse20029 CreateCrossexOrder(ctx, optional)
 
 Create an order
 
@@ -470,7 +470,7 @@ func main() {
 
 ### Return type
 
-[**InlineResponse20028**](inline_response_200_28.md)
+[**InlineResponse20029**](inline_response_200_29.md)
 
 ### Authorization
 
@@ -487,7 +487,7 @@ func main() {
 
 ## GetCrossexOrder
 
-> InlineResponse20029 GetCrossexOrder(ctx, orderId)
+> InlineResponse20030 GetCrossexOrder(ctx, orderId)
 
 Query order details
 
@@ -541,7 +541,7 @@ func main() {
 
 ### Return type
 
-[**InlineResponse20029**](inline_response_200_29.md)
+[**InlineResponse20030**](inline_response_200_30.md)
 
 ### Authorization
 
@@ -558,7 +558,7 @@ func main() {
 
 ## UpdateCrossexOrder
 
-> InlineResponse20030 UpdateCrossexOrder(ctx, orderId, optional)
+> InlineResponse20031 UpdateCrossexOrder(ctx, orderId, optional)
 
 Modify Order
 
@@ -621,7 +621,7 @@ func main() {
 
 ### Return type
 
-[**InlineResponse20030**](inline_response_200_30.md)
+[**InlineResponse20031**](inline_response_200_31.md)
 
 ### Authorization
 
@@ -718,7 +718,7 @@ func main() {
 
 ## CreateCrossexConvertQuote
 
-> InlineResponse20031 CreateCrossexConvertQuote(ctx, optional)
+> InlineResponse20032 CreateCrossexConvertQuote(ctx, optional)
 
 Flash Swap Inquiry
 
@@ -779,7 +779,7 @@ func main() {
 
 ### Return type
 
-[**InlineResponse20031**](inline_response_200_31.md)
+[**InlineResponse20032**](inline_response_200_32.md)
 
 ### Authorization
 
@@ -874,11 +874,11 @@ func main() {
 
 ## GetCrossexAccount
 
-> InlineResponse20032 GetCrossexAccount(ctx, optional)
+> InlineResponse20033 GetCrossexAccount(ctx, optional)
 
 Query Account Assets
 
-限频：每10秒200次请求 100% <= initial_margin_rate < 110%，禁止划出保证金币种。 initial_margin_rate < 100%，系统自动撤单，只能平仓不能开仓 maintenance_margin_rate  <= 100%，系统强制平仓
+Rate Limit: 200 requests per 10 seconds If 100% ≤ initial_margin_rate < 110%, transferring out the margin currency is prohibited. If initial_margin_rate < 100%, the system will automatically cancel orders; only closing positions is allowed, not opening new ones. If maintenance_margin_rate ≤ 100%, the system will force liquidation.
 
 ### Required Parameters
 
@@ -935,7 +935,7 @@ func main() {
 
 ### Return type
 
-[**InlineResponse20032**](inline_response_200_32.md)
+[**InlineResponse20033**](inline_response_200_33.md)
 
 ### Authorization
 
@@ -1030,7 +1030,7 @@ func main() {
 
 ## GetCrossexPositionsLeverage
 
-> []InlineResponse20033 GetCrossexPositionsLeverage(ctx, optional)
+> []InlineResponse20034 GetCrossexPositionsLeverage(ctx, optional)
 
 Query Contract Trading Pair Leverage Multiplier
 
@@ -1091,7 +1091,7 @@ func main() {
 
 ### Return type
 
-[**[]InlineResponse20033**](inline_response_200_33.md)
+[**[]InlineResponse20034**](inline_response_200_34.md)
 
 ### Authorization
 
@@ -1186,7 +1186,7 @@ func main() {
 
 ## GetCrossexMarginPositionsLeverage
 
-> []InlineResponse20033 GetCrossexMarginPositionsLeverage(ctx, optional)
+> []InlineResponse20034 GetCrossexMarginPositionsLeverage(ctx, optional)
 
 Query Leveraged Trading Pair Leverage Multiplier
 
@@ -1247,7 +1247,7 @@ func main() {
 
 ### Return type
 
-[**[]InlineResponse20033**](inline_response_200_33.md)
+[**[]InlineResponse20034**](inline_response_200_34.md)
 
 ### Authorization
 
@@ -1342,7 +1342,7 @@ func main() {
 
 ## CloseCrossexPosition
 
-> InlineResponse20028 CloseCrossexPosition(ctx, optional)
+> InlineResponse20029 CloseCrossexPosition(ctx, optional)
 
 Full Close Position
 
@@ -1403,7 +1403,7 @@ func main() {
 
 ### Return type
 
-[**InlineResponse20028**](inline_response_200_28.md)
+[**InlineResponse20029**](inline_response_200_29.md)
 
 ### Authorization
 
@@ -1420,7 +1420,7 @@ func main() {
 
 ## GetCrossexInterestRate
 
-> []InlineResponse20034 GetCrossexInterestRate(ctx, optional)
+> []InlineResponse20035 GetCrossexInterestRate(ctx, optional)
 
 Query margin asset interest rates
 
@@ -1482,7 +1482,7 @@ func main() {
 
 ### Return type
 
-[**[]InlineResponse20034**](inline_response_200_34.md)
+[**[]InlineResponse20035**](inline_response_200_35.md)
 
 ### Authorization
 
@@ -1499,7 +1499,7 @@ func main() {
 
 ## GetCrossexFee
 
-> InlineResponse20035 GetCrossexFee(ctx, )
+> InlineResponse20036 GetCrossexFee(ctx, )
 
 Query User Fee Rates
 
@@ -1548,7 +1548,7 @@ func main() {
 
 ### Return type
 
-[**InlineResponse20035**](inline_response_200_35.md)
+[**InlineResponse20036**](inline_response_200_36.md)
 
 ### Authorization
 
@@ -1565,7 +1565,7 @@ func main() {
 
 ## ListCrossexPositions
 
-> []InlineResponse20036 ListCrossexPositions(ctx, optional)
+> []InlineResponse20037 ListCrossexPositions(ctx, optional)
 
 Query Contract Positions
 
@@ -1627,7 +1627,7 @@ func main() {
 
 ### Return type
 
-[**[]InlineResponse20036**](inline_response_200_36.md)
+[**[]InlineResponse20037**](inline_response_200_37.md)
 
 ### Authorization
 
@@ -1644,7 +1644,7 @@ func main() {
 
 ## ListCrossexMarginPositions
 
-> []InlineResponse20037 ListCrossexMarginPositions(ctx, optional)
+> []InlineResponse20038 ListCrossexMarginPositions(ctx, optional)
 
 Query Leveraged Positions
 
@@ -1706,7 +1706,7 @@ func main() {
 
 ### Return type
 
-[**[]InlineResponse20037**](inline_response_200_37.md)
+[**[]InlineResponse20038**](inline_response_200_38.md)
 
 ### Authorization
 
@@ -1723,7 +1723,7 @@ func main() {
 
 ## ListCrossexAdlRank
 
-> []InlineResponse20038 ListCrossexAdlRank(ctx, symbol)
+> []InlineResponse20039 ListCrossexAdlRank(ctx, symbol)
 
 Query ADL Position Reduction Ranking
 
@@ -1777,7 +1777,7 @@ func main() {
 
 ### Return type
 
-[**[]InlineResponse20038**](inline_response_200_38.md)
+[**[]InlineResponse20039**](inline_response_200_39.md)
 
 ### Authorization
 
@@ -1794,7 +1794,7 @@ func main() {
 
 ## ListCrossexOpenOrders
 
-> []InlineResponse20029 ListCrossexOpenOrders(ctx, optional)
+> []InlineResponse20030 ListCrossexOpenOrders(ctx, optional)
 
 Query All Current Open Orders
 
@@ -1857,7 +1857,7 @@ func main() {
 
 ### Return type
 
-[**[]InlineResponse20029**](inline_response_200_29.md)
+[**[]InlineResponse20030**](inline_response_200_30.md)
 
 ### Authorization
 
@@ -1874,7 +1874,7 @@ func main() {
 
 ## ListCrossexHistoryOrders
 
-> []InlineResponse20039 ListCrossexHistoryOrders(ctx, optional)
+> []InlineResponse20040 ListCrossexHistoryOrders(ctx, optional)
 
 queryorderhistory
 
@@ -1939,7 +1939,7 @@ func main() {
 
 ### Return type
 
-[**[]InlineResponse20039**](inline_response_200_39.md)
+[**[]InlineResponse20040**](inline_response_200_40.md)
 
 ### Authorization
 
@@ -1956,7 +1956,7 @@ func main() {
 
 ## ListCrossexHistoryPositions
 
-> []InlineResponse20040 ListCrossexHistoryPositions(ctx, optional)
+> []InlineResponse20041 ListCrossexHistoryPositions(ctx, optional)
 
 Query Contract Position History
 
@@ -2021,7 +2021,7 @@ func main() {
 
 ### Return type
 
-[**[]InlineResponse20040**](inline_response_200_40.md)
+[**[]InlineResponse20041**](inline_response_200_41.md)
 
 ### Authorization
 
@@ -2038,7 +2038,7 @@ func main() {
 
 ## ListCrossexHistoryMarginPositions
 
-> []InlineResponse20041 ListCrossexHistoryMarginPositions(ctx, optional)
+> []InlineResponse20042 ListCrossexHistoryMarginPositions(ctx, optional)
 
 Query Leveraged Position History
 
@@ -2103,7 +2103,7 @@ func main() {
 
 ### Return type
 
-[**[]InlineResponse20041**](inline_response_200_41.md)
+[**[]InlineResponse20042**](inline_response_200_42.md)
 
 ### Authorization
 
@@ -2120,7 +2120,7 @@ func main() {
 
 ## ListCrossexHistoryMarginInterests
 
-> []InlineResponse20042 ListCrossexHistoryMarginInterests(ctx, optional)
+> []InlineResponse20043 ListCrossexHistoryMarginInterests(ctx, optional)
 
 Query Leveraged Interest Deduction History
 
@@ -2186,7 +2186,7 @@ func main() {
 
 ### Return type
 
-[**[]InlineResponse20042**](inline_response_200_42.md)
+[**[]InlineResponse20043**](inline_response_200_43.md)
 
 ### Authorization
 
@@ -2203,7 +2203,7 @@ func main() {
 
 ## ListCrossexHistoryTrades
 
-> []InlineResponse20043 ListCrossexHistoryTrades(ctx, optional)
+> []InlineResponse20044 ListCrossexHistoryTrades(ctx, optional)
 
 queryfilledhistory
 
@@ -2268,7 +2268,7 @@ func main() {
 
 ### Return type
 
-[**[]InlineResponse20043**](inline_response_200_43.md)
+[**[]InlineResponse20044**](inline_response_200_44.md)
 
 ### Authorization
 
@@ -2285,7 +2285,7 @@ func main() {
 
 ## ListCrossexAccountBook
 
-> []InlineResponse20044 ListCrossexAccountBook(ctx, optional)
+> []InlineResponse20045 ListCrossexAccountBook(ctx, optional)
 
 Query Account Asset Change History
 
@@ -2350,7 +2350,7 @@ func main() {
 
 ### Return type
 
-[**[]InlineResponse20044**](inline_response_200_44.md)
+[**[]InlineResponse20045**](inline_response_200_45.md)
 
 ### Authorization
 
@@ -2367,7 +2367,7 @@ func main() {
 
 ## ListCrossexCoinDiscountRate
 
-> []InlineResponse20045 ListCrossexCoinDiscountRate(ctx, optional)
+> []InlineResponse20046 ListCrossexCoinDiscountRate(ctx, optional)
 
 Query currency discount rate (discount rate of margin currency in isolated exchange mode)
 
@@ -2429,7 +2429,7 @@ func main() {
 
 ### Return type
 
-[**[]InlineResponse20045**](inline_response_200_45.md)
+[**[]InlineResponse20046**](inline_response_200_46.md)
 
 ### Authorization
 

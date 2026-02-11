@@ -409,15 +409,18 @@ func (a *EarnApiService) ListDualOrders(ctx context.Context, localVarOptionals *
 /*
 PlaceDualOrder Place Dual Investment order
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param placeDualInvestmentOrder
+  - @param placeDualInvestmentOrderParams
+
+@return PlaceDualInvestmentOrder
 */
-func (a *EarnApiService) PlaceDualOrder(ctx context.Context, placeDualInvestmentOrder PlaceDualInvestmentOrder) (*http.Response, error) {
+func (a *EarnApiService) PlaceDualOrder(ctx context.Context, placeDualInvestmentOrderParams PlaceDualInvestmentOrderParams) (PlaceDualInvestmentOrder, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
+		localVarReturnValue  PlaceDualInvestmentOrder
 	)
 
 	// create path and map variables
@@ -436,7 +439,7 @@ func (a *EarnApiService) PlaceDualOrder(ctx context.Context, placeDualInvestment
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{}
+	localVarHTTPHeaderAccepts := []string{"application/json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -444,7 +447,7 @@ func (a *EarnApiService) PlaceDualOrder(ctx context.Context, placeDualInvestment
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = &placeDualInvestmentOrder
+	localVarPostBody = &placeDualInvestmentOrderParams
 	if ctx == nil {
 		ctx = context.Background()
 	}
@@ -457,18 +460,18 @@ func (a *EarnApiService) PlaceDualOrder(ctx context.Context, placeDualInvestment
 	}
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
-		return nil, err
+		return localVarReturnValue, nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(r)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	if err != nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -479,12 +482,21 @@ func (a *EarnApiService) PlaceDualOrder(ctx context.Context, placeDualInvestment
 		var gateErr GateAPIError
 		if e := a.client.decode(&gateErr, localVarBody, localVarHTTPResponse.Header.Get("Content-Type")); e == nil && gateErr.Label != "" {
 			gateErr.APIError = newErr
-			return localVarHTTPResponse, gateErr
+			return localVarReturnValue, localVarHTTPResponse, gateErr
 		}
-		return localVarHTTPResponse, newErr
+		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	return localVarHTTPResponse, nil
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
 /*

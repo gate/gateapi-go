@@ -10,11 +10,42 @@
 package gateapi
 
 type InlineResponse20015Data struct {
-	// Payment method type
-	PayType string `json:"pay_type,omitempty"`
-	// Payment method name
-	PayName string `json:"pay_name,omitempty"`
-	// User's currently bound payment method (primary key ID)
-	Ids  []int32                   `json:"ids,omitempty"`
-	List []InlineResponse20015List `json:"list,omitempty"`
+	// User registration time (formatted string)
+	UserTimest string `json:"user_timest"`
+	// Whether email is verified
+	EmailVerified string `json:"email_verified"`
+	// Whether KYC verification is completed
+	Verified string `json:"verified"`
+	// Whether phone is bound
+	HasPhone string `json:"has_phone"`
+	// Username
+	UserName string `json:"user_name"`
+	// User note information
+	UserNote string `json:"user_note"`
+	// Total completed orders
+	CompleteTransactions string `json:"complete_transactions"`
+	// Number of completed buy orders
+	PaidTransactions string `json:"paid_transactions"`
+	// Number of completed sell orders
+	AcceptedTransactions string `json:"accepted_transactions"`
+	// Average time to confirm receipt
+	TransactionsUsedTime string `json:"transactions_used_time"`
+	// Cancellation time in last 30 days
+	CancelledUsedTimeMonth string `json:"cancelled_used_time_month"`
+	// Number of completed orders in last 30 days
+	CompleteTransactionsMonth string `json:"complete_transactions_month"`
+	// Completion rate in last 30 days
+	CompleteRateMonth int32 `json:"complete_rate_month"`
+	// Whether following
+	IsFollow int32 `json:"is_follow"`
+	// Whether traded with self
+	HaveTraded int32 `json:"have_traded"`
+	// Encrypted UID
+	BizUid string `json:"biz_uid"`
+	// Registration days
+	RegistrationDays int32 `json:"registration_days"`
+	// Days since first trade
+	FirstTradeDays int32 `json:"first_trade_days"`
+	// Single user or composite user
+	TradeVersatile bool `json:"trade_versatile"`
 }

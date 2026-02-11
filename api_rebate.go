@@ -42,7 +42,7 @@ Record query time range cannot exceed 30 days
   - @param optional nil or *AgencyTransactionHistoryOpts - Optional Parameters:
   - @param "CurrencyPair" (optional.String) -  Specify the trading pair. If not specified, returns all trading pairs
   - @param "UserId" (optional.Int64) -  User ID. If not specified, all user records will be returned
-  - @param "From" (optional.Int64) -  Start time for querying records, defaults to 7 days before current time if not specified
+  - @param "From" (optional.Int64) -  Start time for querying records. If not specified, defaults to 7 days before current time
   - @param "To" (optional.Int64) -  End timestamp for the query, defaults to current time if not specified
   - @param "Limit" (optional.Int32) -  Maximum number of records returned in a single list
   - @param "Offset" (optional.Int32) -  List offset, starting from 0
@@ -170,7 +170,7 @@ Record query time range cannot exceed 30 days
   - @param "Currency" (optional.String) -  Specify the currency. If not specified, returns all currencies
   - @param "CommissionType" (optional.Int32) -  Rebate type: 1 - Direct rebate, 2 - Indirect rebate, 3 - Self rebate
   - @param "UserId" (optional.Int64) -  User ID. If not specified, all user records will be returned
-  - @param "From" (optional.Int64) -  Start time for querying records, defaults to 7 days before current time if not specified
+  - @param "From" (optional.Int64) -  Start time for querying records. If not specified, defaults to 7 days before current time
   - @param "To" (optional.Int64) -  End timestamp for the query, defaults to current time if not specified
   - @param "Limit" (optional.Int32) -  Maximum number of records returned in a single list
   - @param "Offset" (optional.Int32) -  List offset, starting from 0
@@ -299,7 +299,7 @@ Record query time range cannot exceed 30 days
   - @param optional nil or *PartnerTransactionHistoryOpts - Optional Parameters:
   - @param "CurrencyPair" (optional.String) -  Specify the trading pair. If not specified, returns all trading pairs
   - @param "UserId" (optional.Int64) -  User ID. If not specified, all user records will be returned
-  - @param "From" (optional.Int64) -  Start time for querying records, defaults to 7 days before current time if not specified
+  - @param "From" (optional.Int64) -  Start time for querying records. If not specified, defaults to 7 days before current time
   - @param "To" (optional.Int64) -  End timestamp for the query, defaults to current time if not specified
   - @param "Limit" (optional.Int32) -  Maximum number of records returned in a single list
   - @param "Offset" (optional.Int32) -  List offset, starting from 0
@@ -425,7 +425,7 @@ Record query time range cannot exceed 30 days
   - @param optional nil or *PartnerCommissionsHistoryOpts - Optional Parameters:
   - @param "Currency" (optional.String) -  Specify the currency. If not specified, returns all currencies
   - @param "UserId" (optional.Int64) -  User ID. If not specified, all user records will be returned
-  - @param "From" (optional.Int64) -  Start time for querying records, defaults to 7 days before current time if not specified
+  - @param "From" (optional.Int64) -  Start time for querying records. If not specified, defaults to 7 days before current time
   - @param "To" (optional.Int64) -  End timestamp for the query, defaults to current time if not specified
   - @param "Limit" (optional.Int32) -  Maximum number of records returned in a single list
   - @param "Offset" (optional.Int32) -  List offset, starting from 0

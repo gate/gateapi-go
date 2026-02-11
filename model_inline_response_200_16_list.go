@@ -9,7 +9,7 @@
 
 package gateapi
 
-type InlineResponse20015List struct {
+type InlineResponse20016List struct {
 	// useruID
 	Uid int32 `json:"uid,omitempty"`
 	// User's currently bound payment method (primary key ID)

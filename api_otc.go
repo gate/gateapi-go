@@ -399,6 +399,97 @@ func (a *OTCApiService) GetUserDefaultBank(ctx context.Context) (InlineResponse2
 }
 
 /*
+GetBankList Get user bank card list
+Get user bank card list for selecting bank card when placing orders
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+
+@return InlineResponse20010
+*/
+func (a *OTCApiService) GetBankList(ctx context.Context) (InlineResponse20010, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  InlineResponse20010
+	)
+
+	// create path and map variables
+	localVarPath := a.client.cfg.BasePath + "/otc/bank_list"
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if ctx == nil {
+		ctx = context.Background()
+	}
+	if ctx.Value(ContextGateAPIV4) == nil {
+		// for compatibility, set configuration key and secret to context if ContextGateAPIV4 value is not present
+		ctx = context.WithValue(ctx, ContextGateAPIV4, GateAPIV4{
+			Key:    a.client.cfg.Key,
+			Secret: a.client.cfg.Secret,
+		})
+	}
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(r)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status + ", " + string(localVarBody),
+		}
+		var gateErr GateAPIError
+		if e := a.client.decode(&gateErr, localVarBody, localVarHTTPResponse.Header.Get("Content-Type")); e == nil && gateErr.Label != "" {
+			gateErr.APIError = newErr
+			return localVarReturnValue, localVarHTTPResponse, gateErr
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+/*
 MarkOtcOrderPaid Mark fiat order as paid
 Mark fiat order as paid
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -607,20 +698,20 @@ Query the fiat order list with filters such as type, currency, time range, and s
   - @param "CryptoCurrency" (optional.String) -  Digital currency
   - @param "StartTime" (optional.String) -  starttime   for example : 2025-09-09
   - @param "EndTime" (optional.String) -  endtime  for example :2025-09-09
-  - @param "Status" (optional.String) -  DONE ：完成 CANCEL  ：取消 PROCESSING ：进行中
+  - @param "Status" (optional.String) -  DONE: Completed CANCEL: Canceled PROCESSING: In Progress
   - @param "Pn" (optional.String) -  Page number
   - @param "Ps" (optional.String) -  Number of items per page
 
-@return InlineResponse20010
+@return InlineResponse20011
 */
-func (a *OTCApiService) ListOtcOrders(ctx context.Context, localVarOptionals *ListOtcOrdersOpts) (InlineResponse20010, *http.Response, error) {
+func (a *OTCApiService) ListOtcOrders(ctx context.Context, localVarOptionals *ListOtcOrdersOpts) (InlineResponse20011, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  InlineResponse20010
+		localVarReturnValue  InlineResponse20011
 	)
 
 	// create path and map variables
@@ -743,16 +834,16 @@ Query stablecoin order list with filtering by currency, time range, status, etc.
   - @param "EndTime" (optional.String) -  End time
   - @param "Status" (optional.String) -  Status: PROCESSING: in progress / DONE：completed / FAILED: failed
 
-@return InlineResponse20011
+@return InlineResponse20012
 */
-func (a *OTCApiService) ListStableCoinOrders(ctx context.Context, localVarOptionals *ListStableCoinOrdersOpts) (InlineResponse20011, *http.Response, error) {
+func (a *OTCApiService) ListStableCoinOrders(ctx context.Context, localVarOptionals *ListStableCoinOrdersOpts) (InlineResponse20012, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  InlineResponse20011
+		localVarReturnValue  InlineResponse20012
 	)
 
 	// create path and map variables
@@ -853,16 +944,16 @@ Query fiat order details
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param orderId Order ID
 
-@return InlineResponse20012
+@return InlineResponse20013
 */
-func (a *OTCApiService) GetOtcOrderDetail(ctx context.Context, orderId string) (InlineResponse20012, *http.Response, error) {
+func (a *OTCApiService) GetOtcOrderDetail(ctx context.Context, orderId string) (InlineResponse20013, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  InlineResponse20012
+		localVarReturnValue  InlineResponse20013
 	)
 
 	// create path and map variables

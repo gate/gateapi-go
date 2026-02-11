@@ -8,6 +8,7 @@ Method | HTTP request | Description
 [**CreateOtcOrder**](OTCApi.md#CreateOtcOrder) | **Post** /otc/order/create | Create fiat order
 [**CreateStableCoinOrder**](OTCApi.md#CreateStableCoinOrder) | **Post** /otc/stable_coin/order/create | Create stablecoin order
 [**GetUserDefaultBank**](OTCApi.md#GetUserDefaultBank) | **Get** /otc/get_user_def_bank | Get user&#39;s default bank account information
+[**GetBankList**](OTCApi.md#GetBankList) | **Get** /otc/bank_list | Get user bank card list
 [**MarkOtcOrderPaid**](OTCApi.md#MarkOtcOrderPaid) | **Post** /otc/order/paid | Mark fiat order as paid
 [**CancelOtcOrder**](OTCApi.md#CancelOtcOrder) | **Post** /otc/order/cancel | Fiat order cancellation
 [**ListOtcOrders**](OTCApi.md#ListOtcOrders) | **Get** /otc/order/list | Fiat order list
@@ -294,6 +295,72 @@ func main() {
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
+## GetBankList
+
+> InlineResponse20010 GetBankList(ctx, )
+
+Get user bank card list
+
+Get user bank card list for selecting bank card when placing orders
+
+### Required Parameters
+
+
+### Example
+
+```golang
+package main
+
+import (
+    "context"
+    "fmt"
+
+    "github.com/gate/gateapi-go/v7"
+)
+
+func main() {
+    client := gateapi.NewAPIClient(gateapi.NewConfiguration())
+    // uncomment the next line if your are testing against testnet
+    // client.ChangeBasePath("https://fx-api-testnet.gateio.ws/api/v4")
+    ctx := context.WithValue(context.Background(),
+                             gateapi.ContextGateAPIV4,
+                             gateapi.GateAPIV4{
+                                 Key:    "YOUR_API_KEY",
+                                 Secret: "YOUR_API_SECRET",
+                             }
+                            )
+    
+    result, _, err := client.OTCApi.GetBankList(ctx)
+    if err != nil {
+        if e, ok := err.(gateapi.GateAPIError); ok {
+            fmt.Printf("gate api error: %s\n", e.Error())
+        } else {
+            fmt.Printf("generic error: %s\n", err.Error())
+        }
+    } else {
+        fmt.Println(result)
+    }
+}
+```
+
+
+### Return type
+
+[**InlineResponse20010**](inline_response_200_10.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
 ## MarkOtcOrderPaid
 
 > InlineResponse2007 MarkOtcOrderPaid(ctx, inlineObject4)
@@ -438,7 +505,7 @@ func main() {
 
 ## ListOtcOrders
 
-> InlineResponse20010 ListOtcOrders(ctx, optional)
+> InlineResponse20011 ListOtcOrders(ctx, optional)
 
 Fiat order list
 
@@ -462,7 +529,7 @@ Name | Type | Description  | Notes
 **cryptoCurrency** | **optional.String**| Digital currency | 
 **startTime** | **optional.String**| starttime   for example : 2025-09-09 | 
 **endTime** | **optional.String**| endtime  for example :2025-09-09 | 
-**status** | **optional.String**| DONE ：完成 CANCEL  ：取消 PROCESSING ：进行中 | 
+**status** | **optional.String**| DONE: Completed CANCEL: Canceled PROCESSING: In Progress | 
 **pn** | **optional.String**| Page number | 
 **ps** | **optional.String**| Number of items per page | 
 
@@ -506,7 +573,7 @@ func main() {
 
 ### Return type
 
-[**InlineResponse20010**](inline_response_200_10.md)
+[**InlineResponse20011**](inline_response_200_11.md)
 
 ### Authorization
 
@@ -523,7 +590,7 @@ func main() {
 
 ## ListStableCoinOrders
 
-> InlineResponse20011 ListStableCoinOrders(ctx, optional)
+> InlineResponse20012 ListStableCoinOrders(ctx, optional)
 
 Stablecoin order list
 
@@ -589,7 +656,7 @@ func main() {
 
 ### Return type
 
-[**InlineResponse20011**](inline_response_200_11.md)
+[**InlineResponse20012**](inline_response_200_12.md)
 
 ### Authorization
 
@@ -606,7 +673,7 @@ func main() {
 
 ## GetOtcOrderDetail
 
-> InlineResponse20012 GetOtcOrderDetail(ctx, orderId)
+> InlineResponse20013 GetOtcOrderDetail(ctx, orderId)
 
 Fiat order details
 
@@ -660,7 +727,7 @@ func main() {
 
 ### Return type
 
-[**InlineResponse20012**](inline_response_200_12.md)
+[**InlineResponse20013**](inline_response_200_13.md)
 
 ### Authorization
 

@@ -716,7 +716,7 @@ Bids will be sorted by price from high to low, while asks sorted reversely
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param contract Options contract name
   - @param optional nil or *ListOptionsOrderBookOpts - Optional Parameters:
-  - @param "Interval" (optional.String) -  Price precision for depth aggregation, 0 means no aggregation, defaults to 0 if not specified
+  - @param "Interval" (optional.String) -  Price precision for merged depth. 0 means no merging. If not specified, defaults to 0
   - @param "Limit" (optional.Int32) -  Number of depth levels
   - @param "WithId" (optional.Bool) -  Whether to return depth update ID. This ID increments by 1 each time the depth changes
 

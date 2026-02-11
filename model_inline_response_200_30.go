@@ -10,6 +10,60 @@
 package gateapi
 
 type InlineResponse20030 struct {
-	OrderId float32 `json:"order_id"`
-	Text    string  `json:"text"`
+	// User ID
+	UserId string `json:"user_id"`
+	// Order ID
+	OrderId string `json:"order_id"`
+	// Client Order ID
+	Text string `json:"text"`
+	// Order Status
+	State string `json:"state"`
+	// Currency pair
+	Symbol string `json:"symbol"`
+	// direction
+	Side string `json:"side"`
+	// type
+	Type string `json:"type"`
+	// Attribute COMMON: Normal Order, LIQ: Liquidation Takeover Order, REDUCE: Liquidation Reduce Order, ADL: Auto-Reduce
+	Attribute string `json:"attribute"`
+	// Exchange
+	ExchangeType string `json:"exchange_type"`
+	// Business Type
+	BusinessType string `json:"business_type"`
+	// Base Currency Quantity
+	Qty string `json:"qty"`
+	// Quote Currency Quantity
+	QuoteQty string `json:"quote_qty"`
+	// Price
+	Price string `json:"price"`
+	// Time in Force Strategy
+	TimeInForce string `json:"time_in_force"`
+	// Filled Quantity
+	ExecutedQty string `json:"executed_qty"`
+	// Filled Amount
+	ExecutedAmount string `json:"executed_amount"`
+	// Average Filled Price
+	ExecutedAvgPrice string `json:"executed_avg_price"`
+	// Fee currency
+	FeeCoin string `json:"fee_coin"`
+	// fee
+	Fee string `json:"fee"`
+	// Reduce Position Only
+	ReduceOnly string `json:"reduce_only"`
+	// leverage
+	Leverage string `json:"leverage"`
+	// Reason
+	Reason string `json:"reason"`
+	// Latest Filled Quantity
+	LastExecutedQty string `json:"last_executed_qty"`
+	// Latest Filled Price
+	LastExecutedPrice string `json:"last_executed_price"`
+	// Latest Filled Amount
+	LastExecutedAmount string `json:"last_executed_amount"`
+	// Position Direction
+	PositionSide string `json:"position_side"`
+	// Created time
+	CreateTime string `json:"create_time"`
+	// Update time
+	UpdateTime string `json:"update_time"`
 }

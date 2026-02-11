@@ -9,7 +9,7 @@
 
 package gateapi
 
-type InlineResponse20020DataLists struct {
+type InlineResponse20021DataLists struct {
 	// Ad buy/sell direction
 	Type string `json:"type,omitempty"`
 	// Price

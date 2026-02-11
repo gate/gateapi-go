@@ -9,6 +9,8 @@
 
 package gateapi
 
-type InlineResponse20016DataTransTime struct {
-	OdTime int32 `json:"od_time,omitempty"`
+// Markets where user can place orders
+type InlineResponse20014DataMerchantInfo struct {
+	Type   string `json:"type"`
+	Market string `json:"market"`
 }

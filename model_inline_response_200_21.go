@@ -15,5 +15,6 @@ type InlineResponse20021 struct {
 	Code      int32                   `json:"code"`
 	Message   string                  `json:"message"`
 	Data      InlineResponse20021Data `json:"data"`
-	Version   string                  `json:"version"`
+	// Version number
+	Version string `json:"version"`
 }

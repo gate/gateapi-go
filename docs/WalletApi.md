@@ -187,7 +187,7 @@ Name | Type | Description  | Notes
 **withdrawId** | **optional.String**| Withdrawal record ID starts with &#39;w&#39;, such as: w1879219868. When withdraw_id is not empty, only this specific withdrawal record will be queried, and time-based querying will be disabled | 
 **assetClass** | **optional.String**| Currency type of withdrawal record, empty by default. Supports querying withdrawal records in main zone and innovation zone on demand. Value range: SPOT, PILOT  SPOT: Main Zone PILOT: Innovation Zone | 
 **withdrawOrderId** | **optional.String**| User-defined order number for withdrawal. Default is empty. When not empty, the specified user-defined order number record will be queried | 
-**from** | **optional.Int64**| Start time for querying records, defaults to 7 days before current time if not specified | 
+**from** | **optional.Int64**| Start time for querying records. If not specified, defaults to 7 days before current time | 
 **to** | **optional.Int64**| End timestamp for the query, defaults to current time if not specified | 
 **limit** | **optional.Int32**| Maximum number of records returned in a single list | [default to 100]
 **offset** | **optional.Int32**| List offset, starting from 0 | [default to 0]
@@ -269,7 +269,7 @@ Optional parameters are passed through a pointer to a ListDepositsOpts struct
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **currency** | **optional.String**| Specify the currency. If not specified, returns all currencies | 
-**from** | **optional.Int64**| Start time for querying records, defaults to 7 days before current time if not specified | 
+**from** | **optional.Int64**| Start time for querying records. If not specified, defaults to 7 days before current time | 
 **to** | **optional.Int64**| End timestamp for the query, defaults to current time if not specified | 
 **limit** | **optional.Int32**| Maximum number of entries returned in the list, limited to 500 transactions | [default to 100]
 **offset** | **optional.Int32**| List offset, starting from 0 | [default to 0]
@@ -422,7 +422,7 @@ Optional parameters are passed through a pointer to a ListSubAccountTransfersOpt
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **subUid** | **optional.String**| Sub-account user ID, you can query multiple records separated by &#x60;,&#x60;. If not specified, it will return records of all sub-accounts | 
-**from** | **optional.Int64**| Start time for querying records, defaults to 7 days before current time if not specified | 
+**from** | **optional.Int64**| Start time for querying records. If not specified, defaults to 7 days before current time | 
 **to** | **optional.Int64**| End timestamp for the query, defaults to current time if not specified | 
 **limit** | **optional.Int32**| Maximum number of records returned in a single list | [default to 100]
 **offset** | **optional.Int32**| List offset, starting from 0 | [default to 0]

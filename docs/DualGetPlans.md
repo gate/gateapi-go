@@ -12,11 +12,11 @@ Name | Type | Description | Notes
 **DeliveryTime** | **int32** | Settlement time | [optional] 
 **MinCopies** | **int32** | Minimum Units | [optional] 
 **MaxCopies** | **int32** | Maximum Units | [optional] 
-**PerValue** | **string** | Value Per Unit | [optional] 
+**PerValue** | **string** | Value Per Unit (deprecated) | [optional] 
 **ApyDisplay** | **string** | Annual Yield | [optional] 
 **StartTime** | **int32** | Start Time | [optional] 
 **EndTime** | **int32** | End time | [optional] 
-**Status** | **string** | Status:   &#x60;NOTSTARTED&#x60;-Not Started  &#x60;ONGOING&#x60;-In Progress  &#x60;ENDED&#x60;-Ended | [optional] 
+**Status** | **string** | 状态:  &#x60;NOTSTARTED&#x60;-未开始 &#x60;ONGOING&#x60;-进行中 &#x60;ENDED&#x60;-已结束 | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

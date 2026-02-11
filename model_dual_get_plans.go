@@ -26,7 +26,7 @@ type DualGetPlans struct {
 	MinCopies int32 `json:"min_copies,omitempty"`
 	// Maximum Units
 	MaxCopies int32 `json:"max_copies,omitempty"`
-	// Value Per Unit
+	// Value Per Unit (deprecated)
 	PerValue string `json:"per_value,omitempty"`
 	// Annual Yield
 	ApyDisplay string `json:"apy_display,omitempty"`
@@ -34,6 +34,6 @@ type DualGetPlans struct {
 	StartTime int32 `json:"start_time,omitempty"`
 	// End time
 	EndTime int32 `json:"end_time,omitempty"`
-	// Status:   `NOTSTARTED`-Not Started  `ONGOING`-In Progress  `ENDED`-Ended
+	// 状态:  `NOTSTARTED`-未开始 `ONGOING`-进行中 `ENDED`-已结束
 	Status string `json:"status,omitempty"`
 }

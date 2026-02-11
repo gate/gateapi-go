@@ -10,8 +10,12 @@
 package gateapi
 
 type InlineResponse20014Data struct {
+	// Whether self
+	IsSelf bool `json:"is_self"`
 	// User registration time (formatted string)
 	UserTimest string `json:"user_timest"`
+	// Number of counterparties
+	CounterpartiesNum int32 `json:"counterparties_num"`
 	// Whether email is verified
 	EmailVerified string `json:"email_verified"`
 	// Whether KYC verification is completed
@@ -36,16 +40,35 @@ type InlineResponse20014Data struct {
 	CompleteTransactionsMonth string `json:"complete_transactions_month"`
 	// Completion rate in last 30 days
 	CompleteRateMonth int32 `json:"complete_rate_month"`
+	// Buy order ratio in last 30 days
+	OrdersBuyRateMonth int32 `json:"orders_buy_rate_month"`
+	// Whether blocked
+	IsBlack int32 `json:"is_black"`
 	// Whether following
 	IsFollow int32 `json:"is_follow"`
 	// Whether traded with self
 	HaveTraded int32 `json:"have_traded"`
 	// Encrypted UID
 	BizUid string `json:"biz_uid"`
+	// Blue V Crown Shield
+	BlueVip int32 `json:"blue_vip"`
+	// Merchant work status
+	WorkStatus int32 `json:"work_status"`
 	// Registration days
 	RegistrationDays int32 `json:"registration_days"`
 	// Days since first trade
 	FirstTradeDays int32 `json:"first_trade_days"`
+	// Whether margin replenishment is needed
+	NeedReplenish int32                               `json:"need_replenish"`
+	MerchantInfo  InlineResponse20014DataMerchantInfo `json:"merchant_info"`
+	// Merchant online status
+	OnlineStatus int32 `json:"online_status"`
+	// Merchant online status details
+	WorkHours *map[string]interface{} `json:"work_hours"`
+	// 30-day transaction volume
+	TransactionsMonth int32 `json:"transactions_month"`
+	// Total transaction volume
+	TransactionsAll int32 `json:"transactions_all"`
 	// Single user or composite user
 	TradeVersatile bool `json:"trade_versatile"`
 }

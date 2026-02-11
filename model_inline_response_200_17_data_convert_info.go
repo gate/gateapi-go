@@ -10,7 +10,7 @@
 package gateapi
 
 // Flash swap order information
-type InlineResponse20016DataConvertInfo struct {
+type InlineResponse20017DataConvertInfo struct {
 	// Flash swap target currency
 	ConvertType string `json:"convert_type"`
 	// Flash swap order status

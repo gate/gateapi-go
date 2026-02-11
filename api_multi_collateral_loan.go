@@ -850,7 +850,7 @@ func (a *MultiCollateralLoanApiService) ListUserCurrencyQuota(ctx context.Contex
 }
 
 /*
-ListMultiCollateralCurrencies Query supported borrowing and collateral currencies for multi-currency collateral
+ListMultiCollateralCurrencies Query borrow currencies and collateral currencies supported by multi-currency collateral
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 
 @return MultiCollateralCurrency

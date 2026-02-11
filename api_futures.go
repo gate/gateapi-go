@@ -232,7 +232,7 @@ Bids will be sorted by price from high to low, while asks sorted reversely
   - @param settle Settle currency
   - @param contract Futures contract
   - @param optional nil or *ListFuturesOrderBookOpts - Optional Parameters:
-  - @param "Interval" (optional.String) -  Price precision for depth aggregation, 0 means no aggregation, defaults to 0 if not specified
+  - @param "Interval" (optional.String) -  Price precision for merged depth. 0 means no merging. If not specified, defaults to 0
   - @param "Limit" (optional.Int32) -  Number of depth levels
   - @param "WithId" (optional.Bool) -  Whether to return depth update ID. This ID increments by 1 each time the depth changes
 
@@ -466,7 +466,7 @@ Return specified contract candlesticks. If prefix &#x60;contract&#x60; with &#x6
   - @param "From" (optional.Int64) -  Start time of candlesticks, formatted in Unix timestamp in seconds. Default to`to - 100 * interval` if not specified
   - @param "To" (optional.Int64) -  Specify the end time of the K-line chart, defaults to current time if not specified, note that the time format is Unix timestamp with second precision
   - @param "Limit" (optional.Int32) -  Maximum number of recent data points to return. `limit` conflicts with `from` and `to`. If either `from` or `to` is specified, request will be rejected.
-  - @param "Interval" (optional.String) -  Interval time between data points. Note that `1w` means natural week(Mon-Sun), while `7d` means every 7d since unix 0. 30d represents a natural month, not 30 days
+  - @param "Interval" (optional.String) -  Time interval for data points. Note: 1w represents a natural week, 7d is aligned with Unix epoch time, 30d represents a natural month
   - @param "Timezone" (optional.String) -  Time zone: all/utc0/utc8, default utc0
 
 @return []FuturesCandlestick
@@ -577,7 +577,7 @@ type ListFuturesPremiumIndexOpts struct {
 
 /*
 ListFuturesPremiumIndex Premium Index K-line chart
-Maximum of 1000 points can be returned in a query. Be sure not to exceed the limit when specifying from, to and interval
+K-line chart data returns a maximum of 1000 points per request. When specifying from, to, and interval, ensure the number of points is not excessive
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param settle Settle currency
   - @param contract Futures contract
@@ -4275,7 +4275,7 @@ type GetMyTradesOpts struct {
 
 /*
 GetMyTrades Query personal trading records
-By default, only data within the past 6 months is supported.  If you need to query data for a longer period, please use &#x60;GET /futures/{settle}/my_trades_timerange&#x60;.
+By default, only supports querying data within 6 months. For older data, use &#x60;GET /futures/{settle}/my_trades_timerange&#x60;
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param settle Settle currency
   - @param optional nil or *GetMyTradesOpts - Optional Parameters:

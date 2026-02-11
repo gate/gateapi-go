@@ -9,7 +9,7 @@
 
 package gateapi
 
-type InlineResponse20021DataMsgObj struct {
+type InlineResponse20022DataMsgObj struct {
 	// Order status when message was sent
 	Status string `json:"status,omitempty"`
 	// Message content

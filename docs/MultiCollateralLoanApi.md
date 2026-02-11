@@ -12,7 +12,7 @@ Method | HTTP request | Description
 [**ListMultiCollateralRecords**](MultiCollateralLoanApi.md#ListMultiCollateralRecords) | **Get** /loan/multi_collateral/mortgage | Query collateral adjustment records
 [**OperateMultiCollateral**](MultiCollateralLoanApi.md#OperateMultiCollateral) | **Post** /loan/multi_collateral/mortgage | Add or withdraw collateral
 [**ListUserCurrencyQuota**](MultiCollateralLoanApi.md#ListUserCurrencyQuota) | **Get** /loan/multi_collateral/currency_quota | Query user&#39;s collateral and borrowing currency quota information
-[**ListMultiCollateralCurrencies**](MultiCollateralLoanApi.md#ListMultiCollateralCurrencies) | **Get** /loan/multi_collateral/currencies | Query supported borrowing and collateral currencies for multi-currency collateral
+[**ListMultiCollateralCurrencies**](MultiCollateralLoanApi.md#ListMultiCollateralCurrencies) | **Get** /loan/multi_collateral/currencies | Query borrow currencies and collateral currencies supported by multi-currency collateral
 [**GetMultiCollateralLtv**](MultiCollateralLoanApi.md#GetMultiCollateralLtv) | **Get** /loan/multi_collateral/ltv | Query collateralization ratio information
 [**GetMultiCollateralFixRate**](MultiCollateralLoanApi.md#GetMultiCollateralFixRate) | **Get** /loan/multi_collateral/fixed_rate | Query currency&#39;s 7-day and 30-day fixed interest rates
 [**GetMultiCollateralCurrentRate**](MultiCollateralLoanApi.md#GetMultiCollateralCurrentRate) | **Get** /loan/multi_collateral/current_rate | Query currency&#39;s current interest rate
@@ -610,7 +610,7 @@ func main() {
 
 > MultiCollateralCurrency ListMultiCollateralCurrencies(ctx, )
 
-Query supported borrowing and collateral currencies for multi-currency collateral
+Query borrow currencies and collateral currencies supported by multi-currency collateral
 
 ### Required Parameters
 

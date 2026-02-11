@@ -9,8 +9,7 @@
 
 package gateapi
 
-// Markets where user can place orders
-type InlineResponse20013DataMerchantInfo struct {
-	Type   string `json:"type"`
-	Market string `json:"market"`
+type InlineResponse20011DataCryptoCurrencyInfo struct {
+	Name string `json:"name"`
+	Icon string `json:"icon"`
 }

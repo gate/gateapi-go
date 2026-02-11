@@ -482,7 +482,7 @@ Market depth buy orders are sorted by price from high to low, sell orders are re
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param currencyPair Currency pair
   - @param optional nil or *ListOrderBookOpts - Optional Parameters:
-  - @param "Interval" (optional.String) -  Price precision for depth aggregation, 0 means no aggregation, defaults to 0 if not specified
+  - @param "Interval" (optional.String) -  Price precision for merged depth. 0 means no merging. If not specified, defaults to 0
   - @param "Limit" (optional.Int32) -  Number of depth levels
   - @param "WithId" (optional.Bool) -  Return order book update ID
 
@@ -708,7 +708,7 @@ type ListCandlesticksOpts struct {
 
 /*
 ListCandlesticks Market K-line chart
-Maximum of 1000 points can be returned in a query. Be sure not to exceed the limit when specifying from, to and interval
+K-line chart data returns a maximum of 1000 points per request. When specifying from, to, and interval, ensure the number of points is not excessive
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param currencyPair Currency pair
   - @param optional nil or *ListCandlesticksOpts - Optional Parameters:

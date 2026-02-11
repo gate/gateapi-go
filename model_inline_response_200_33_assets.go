@@ -9,7 +9,7 @@
 
 package gateapi
 
-type InlineResponse20032Assets struct {
+type InlineResponse20033Assets struct {
 	// User ID
 	UserId string `json:"user_id,omitempty"`
 	// Currency

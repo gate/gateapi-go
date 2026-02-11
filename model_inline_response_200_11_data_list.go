@@ -10,26 +10,35 @@
 package gateapi
 
 type InlineResponse20011DataList struct {
-	// Order ID
-	Id int32 `json:"id,omitempty"`
-	// Transaction reference number
+	// Current time
+	Time string `json:"time,omitempty"`
+	// Current timestamp
+	Timestamp int32 `json:"timestamp,omitempty"`
+	// orderId
+	OrderId string `json:"order_id,omitempty"`
+	// Trade number
 	TradeNo string `json:"trade_no,omitempty"`
-	// Payment currency
-	PayCoin string `json:"pay_coin,omitempty"`
-	// Payment amount
-	PayAmount string `json:"pay_amount,omitempty"`
-	// Received currency
-	GetCoin string `json:"get_coin,omitempty"`
-	// Received amount
-	GetAmount string `json:"get_amount,omitempty"`
+	// Quote direction buy/sell/all
+	Type string `json:"type,omitempty"`
+	// Order Status
+	Status   string `json:"status,omitempty"`
+	DbStatus string `json:"db_status,omitempty"`
+	// Fiat type
+	FiatCurrency     string                                  `json:"fiat_currency,omitempty"`
+	FiatCurrencyInfo InlineResponse20011DataFiatCurrencyInfo `json:"fiat_currency_info,omitempty"`
+	// Fiat amount
+	FiatAmount string `json:"fiat_amount,omitempty"`
+	// Stablecoin
+	CryptoCurrency     string                                    `json:"crypto_currency,omitempty"`
+	CryptoCurrencyInfo InlineResponse20011DataCryptoCurrencyInfo `json:"crypto_currency_info,omitempty"`
+	// Stablecoin amount
+	CryptoAmount string `json:"crypto_amount,omitempty"`
 	// Exchange rate
 	Rate string `json:"rate,omitempty"`
-	// Reciprocal of the exchange rate
-	RateReci string `json:"rate_reci,omitempty"`
-	// PROCESSING: in progress / DONE: completed / FAILED: failed
-	Status string `json:"status,omitempty"`
-	// timetimestamp
-	CreateTimest int32 `json:"create_timest,omitempty"`
-	// Created time
-	CreateTime string `json:"create_time,omitempty"`
+	// Remark
+	TransferRemark string `json:"transfer_remark,omitempty"`
+	// Bank account
+	GateBankAccountIban string `json:"gate_bank_account_iban,omitempty"`
+	// Promotion code
+	PromotionCode string `json:"promotion_code,omitempty"`
 }

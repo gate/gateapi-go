@@ -10,12 +10,8 @@
 package gateapi
 
 type InlineResponse20034 struct {
-	// Currency
-	Coin string `json:"coin"`
-	// Exchange
-	ExchangeType string `json:"exchange_type"`
-	// Hourly Interest Rate
-	HourInterestRate string `json:"hour_interest_rate"`
-	// Millisecond Timestamp
-	Time string `json:"time"`
+	// Currency pair
+	Symbol string `json:"symbol"`
+	// leverage
+	Leverage string `json:"leverage"`
 }

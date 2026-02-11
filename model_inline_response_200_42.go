@@ -10,26 +10,40 @@
 package gateapi
 
 type InlineResponse20042 struct {
+	// Position ID
+	PositionId string `json:"position_id,omitempty"`
 	// User ID
-	UserId string `json:"userId"`
-	// Trading Pair
-	Symbol string `json:"symbol"`
-	// Interest Deduction ID
-	InterestId string `json:"interest_id"`
-	// Debt Source ID, can be Order ID or Position ID
-	LiabilityId string `json:"liability_id"`
-	// Debt Quantity
-	Liability string `json:"liability"`
-	// Debt Currency
-	LiabilityCoin string `json:"liability_coin"`
-	// Interest
+	UserId string `json:"user_id,omitempty"`
+	// Currency pair
+	Symbol string `json:"symbol,omitempty"`
+	// Position close type (PARTIAL_CLOSED: partially closed; COMPLETE_CLOSED: fully closed)
+	ClosedType string `json:"closed_type,omitempty"`
+	// Close Position P&L
+	ClosedPnl string `json:"closed_pnl,omitempty"`
+	// Close Position P&L Ratio
+	ClosedPnlRate string `json:"closed_pnl_rate,omitempty"`
+	// Average Opening Price
+	OpenAvgPrice string `json:"open_avg_price,omitempty"`
+	// Average Close Price
+	ClosedAvgPrice string `json:"closed_avg_price,omitempty"`
+	// Max Trade Size
+	MaxPositionQty string `json:"max_position_qty,omitempty"`
+	// Close Position Quantity
+	ClosedQty string `json:"closed_qty,omitempty"`
+	// Close Position Value
+	ClosedValue string `json:"closed_value,omitempty"`
+	// Liquidation Fee
+	LiqFee string `json:"liq_fee,omitempty"`
+	// Position Direction Before Close
+	PositionSide string `json:"position_side,omitempty"`
+	// Leverage at Close
+	Leverage string `json:"leverage,omitempty"`
+	// Total Deducted Interest
 	Interest string `json:"interest"`
-	// interest rate
-	InterestRate string `json:"interest_rate"`
-	// Interest deduction type (`PERIODIC_POSITION`: periodic position interest; `PERIODIC_OPEN_ORDER`: periodic open-order interest; `IMMEDIATE_OPEN_ORDER`: interest charged on order opening)
-	InterestType string `json:"interest_type"`
+	// Position Business Type
+	BusinessType string `json:"business_type"`
 	// Created time
-	CreateTime string `json:"create_time"`
-	// Exchange
-	ExchangeType string `json:"exchange_type"`
+	CreateTime string `json:"create_time,omitempty"`
+	// Update time
+	UpdateTime string `json:"update_time,omitempty"`
 }

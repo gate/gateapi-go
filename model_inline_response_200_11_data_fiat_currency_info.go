@@ -9,7 +9,9 @@
 
 package gateapi
 
-type InlineResponse20010DataCryptoCurrencyInfo struct {
+type InlineResponse20011DataFiatCurrencyInfo struct {
+	// Name
 	Name string `json:"name"`
+	// Image
 	Icon string `json:"icon"`
 }

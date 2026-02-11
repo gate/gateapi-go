@@ -11,39 +11,25 @@ package gateapi
 
 type InlineResponse20043 struct {
 	// User ID
-	UserId string `json:"user_id,omitempty"`
-	// filledrecordsID
-	TransactionId string `json:"transaction_id,omitempty"`
-	// Order ID
-	OrderId string `json:"order_id,omitempty"`
-	// User Order ID
-	Text string `json:"text,omitempty"`
-	// Currency pair
-	Symbol string `json:"symbol,omitempty"`
-	// Exchange
-	ExchangeType string `json:"exchange_type,omitempty"`
-	// Business Type
-	BusinessType string `json:"business_type,omitempty"`
-	// Buy/Sell Direction
-	Side string `json:"side,omitempty"`
-	// Trading size
-	Qty string `json:"qty,omitempty"`
-	// Fill Price
-	Price string `json:"price,omitempty"`
-	// fee
-	Fee string `json:"fee,omitempty"`
-	// Fee currency
-	FeeCoin string `json:"fee_coin,omitempty"`
-	// Fee Rate
-	FeeRate string `json:"fee_rate,omitempty"`
-	// Filled Role
-	MatchRole string `json:"match_role,omitempty"`
-	// Realized P&L
-	Rpnl string `json:"rpnl,omitempty"`
-	// Position Mode
-	PositionMode string `json:"position_mode,omitempty"`
-	// Position Direction
-	PositionSide string `json:"position_side,omitempty"`
+	UserId string `json:"userId"`
+	// Trading Pair
+	Symbol string `json:"symbol"`
+	// Interest Deduction ID
+	InterestId string `json:"interest_id"`
+	// Debt Source ID, can be Order ID or Position ID
+	LiabilityId string `json:"liability_id"`
+	// Debt Quantity
+	Liability string `json:"liability"`
+	// Debt Currency
+	LiabilityCoin string `json:"liability_coin"`
+	// Interest
+	Interest string `json:"interest"`
+	// interest rate
+	InterestRate string `json:"interest_rate"`
+	// Interest deduction type (`PERIODIC_POSITION`: periodic position interest; `PERIODIC_OPEN_ORDER`: periodic open-order interest; `IMMEDIATE_OPEN_ORDER`: interest charged on order opening)
+	InterestType string `json:"interest_type"`
 	// Created time
-	CreateTime string `json:"create_time,omitempty"`
+	CreateTime string `json:"create_time"`
+	// Exchange
+	ExchangeType string `json:"exchange_type"`
 }

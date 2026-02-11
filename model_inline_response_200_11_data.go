@@ -10,9 +10,9 @@
 package gateapi
 
 type InlineResponse20011Data struct {
-	Total      int32                         `json:"total"`
-	PageSize   int32                         `json:"page_size"`
-	PageNumber int32                         `json:"page_number"`
-	TotalPage  int32                         `json:"total_page"`
-	List       []InlineResponse20011DataList `json:"list"`
+	Pn      int32                         `json:"pn"`
+	Ps      int32                         `json:"ps"`
+	TotalPn int32                         `json:"total_pn"`
+	Count   int32                         `json:"count"`
+	List    []InlineResponse20011DataList `json:"list"`
 }

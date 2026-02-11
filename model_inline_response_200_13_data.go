@@ -10,65 +10,35 @@
 package gateapi
 
 type InlineResponse20013Data struct {
-	// Whether self
-	IsSelf bool `json:"is_self"`
-	// User registration time (formatted string)
-	UserTimest string `json:"user_timest"`
-	// Number of counterparties
-	CounterpartiesNum int32 `json:"counterparties_num"`
-	// Whether email is verified
-	EmailVerified string `json:"email_verified"`
-	// Whether KYC verification is completed
-	Verified string `json:"verified"`
-	// Whether phone is bound
-	HasPhone string `json:"has_phone"`
-	// Username
-	UserName string `json:"user_name"`
-	// User note information
-	UserNote string `json:"user_note"`
-	// Total completed orders
-	CompleteTransactions string `json:"complete_transactions"`
-	// Number of completed buy orders
-	PaidTransactions string `json:"paid_transactions"`
-	// Number of completed sell orders
-	AcceptedTransactions string `json:"accepted_transactions"`
-	// Average time to confirm receipt
-	TransactionsUsedTime string `json:"transactions_used_time"`
-	// Cancellation time in last 30 days
-	CancelledUsedTimeMonth string `json:"cancelled_used_time_month"`
-	// Number of completed orders in last 30 days
-	CompleteTransactionsMonth string `json:"complete_transactions_month"`
-	// Completion rate in last 30 days
-	CompleteRateMonth int32 `json:"complete_rate_month"`
-	// Buy order ratio in last 30 days
-	OrdersBuyRateMonth int32 `json:"orders_buy_rate_month"`
-	// Whether blocked
-	IsBlack int32 `json:"is_black"`
-	// Whether following
-	IsFollow int32 `json:"is_follow"`
-	// Whether traded with self
-	HaveTraded int32 `json:"have_traded"`
-	// Encrypted UID
-	BizUid string `json:"biz_uid"`
-	// Blue V Crown Shield
-	BlueVip int32 `json:"blue_vip"`
-	// Merchant work status
-	WorkStatus int32 `json:"work_status"`
-	// Registration days
-	RegistrationDays int32 `json:"registration_days"`
-	// Days since first trade
-	FirstTradeDays int32 `json:"first_trade_days"`
-	// Whether margin replenishment is needed
-	NeedReplenish int32                               `json:"need_replenish"`
-	MerchantInfo  InlineResponse20013DataMerchantInfo `json:"merchant_info"`
-	// Merchant online status
-	OnlineStatus int32 `json:"online_status"`
-	// Merchant online status details
-	WorkHours *map[string]interface{} `json:"work_hours"`
-	// 30-day transaction volume
-	TransactionsMonth int32 `json:"transactions_month"`
-	// Total transaction volume
-	TransactionsAll int32 `json:"transactions_all"`
-	// Single user or composite user
-	TradeVersatile bool `json:"trade_versatile"`
+	// Order ID
+	OrderId string `json:"order_id"`
+	// User ID
+	Uid string `json:"uid"`
+	// Order Type
+	Type string `json:"type"`
+	// Fiat type
+	FiatCurrency string `json:"fiat_currency"`
+	// Fiat amount
+	FiatAmount string `json:"fiat_amount"`
+	// Stablecoin
+	CryptoCurrency string `json:"crypto_currency"`
+	// Stablecoin amount
+	CryptoAmount string `json:"crypto_amount"`
+	// Exchange rate
+	Rate string `json:"rate"`
+	// Remark
+	TransferRemark string `json:"transfer_remark"`
+	// Status
+	Status   string `json:"status"`
+	DbStatus string `json:"db_status"`
+	// Created time
+	CreateTime string `json:"create_time"`
+	// Cancellation or rejection reason
+	Memo string `json:"memo"`
+	// Quote direction
+	Side string `json:"side"`
+	// Promotion code
+	PromotionCode string `json:"promotion_code"`
+	// Trade number
+	TradeNo string `json:"trade_no"`
 }

@@ -9,9 +9,6 @@
 
 package gateapi
 
-type InlineResponse20010DataFiatCurrencyInfo struct {
-	// Name
-	Name string `json:"name"`
-	// Image
-	Icon string `json:"icon"`
+type InlineResponse20017DataTransTime struct {
+	OdTime int32 `json:"od_time,omitempty"`
 }

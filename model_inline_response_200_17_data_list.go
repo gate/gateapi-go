@@ -9,7 +9,7 @@
 
 package gateapi
 
-type InlineResponse20016DataList struct {
+type InlineResponse20017DataList struct {
 	// 1=Buy, 0=Sell
 	TypeBuy int32 `json:"type_buy,omitempty"`
 	// Creation time of order
@@ -130,5 +130,5 @@ type InlineResponse20016DataList struct {
 	OrderType int32 `json:"order_type,omitempty"`
 	// Order tags
 	OrderTag    []string                           `json:"order_tag,omitempty"`
-	ConvertInfo InlineResponse20016DataConvertInfo `json:"convert_info,omitempty"`
+	ConvertInfo InlineResponse20017DataConvertInfo `json:"convert_info,omitempty"`
 }
