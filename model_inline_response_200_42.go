@@ -32,15 +32,19 @@ type InlineResponse20042 struct {
 	ClosedQty string `json:"closed_qty,omitempty"`
 	// Close Position Value
 	ClosedValue string `json:"closed_value,omitempty"`
+	// Position Accumulated Fees
+	Fee string `json:"fee,omitempty"`
 	// Liquidation Fee
 	LiqFee string `json:"liq_fee,omitempty"`
+	// Funding Fee
+	FundingFee string `json:"funding_fee,omitempty"`
 	// Position Direction Before Close
 	PositionSide string `json:"position_side,omitempty"`
+	// Position Mode at Close
+	PositionMode string `json:"position_mode,omitempty"`
 	// Leverage at Close
 	Leverage string `json:"leverage,omitempty"`
-	// Total Deducted Interest
-	Interest string `json:"interest"`
-	// Position Business Type
+	// Business Type
 	BusinessType string `json:"business_type"`
 	// Created time
 	CreateTime string `json:"create_time,omitempty"`

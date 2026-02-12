@@ -10,25 +10,14 @@
 package gateapi
 
 type InlineResponse20027 struct {
-	// Order ID
-	Id string `json:"id"`
-	// Client Custom ID
-	Text string `json:"text"`
-	// Source `from` account (CROSSEX_BINANCE, CROSSEX_OKX, CROSSEX_GATE, CROSSEX, SPOT)
-	FromAccountType string `json:"from_account_type"`
-	ToAccountType   string `json:"to_account_type"`
 	// Currency
 	Coin string `json:"coin"`
-	// Transfer amount, the amount requested for the transfer
-	Amount string `json:"amount"`
-	// Actual credited amount (has a value when status = SUCCESS; empty for other statuses)
-	ActualReceive string `json:"actual_receive,omitempty"`
-	// Transfer Status - `FAIL`: Failed - `SUCCESS`: Successful - `PENDING`: Transfer in Progress
-	Status string `json:"status"`
-	// Failure reason (has a value when status = FAIL; empty for other statuses)
-	FailReason string `json:"fail_reason,omitempty"`
-	// Creation time of order
-	CreateTime int32 `json:"create_time"`
-	// OrderUpdateTime
-	UpdateTime int32 `json:"update_time"`
+	// Minimum Transfer Quantity (including estimated fees)
+	MinTransAmount float32 `json:"min_trans_amount"`
+	// Estimated Fee
+	EstFee float32 `json:"est_fee"`
+	// Precision
+	Precision int32 `json:"precision"`
+	// If it is disabled. 0 means NOT being disabled
+	IsDisabled int32 `json:"is_disabled"`
 }

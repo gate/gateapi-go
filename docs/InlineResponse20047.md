@@ -1,11 +1,15 @@
-# InlineResponse20035
+# InlineResponse20047
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Symbol** | **string** | Currency pair | 
-**Leverage** | **string** | leverage | 
+**Coin** | **string** | Currency | 
+**ExchangeType** | **string** | Exchange | 
+**Tier** | **string** | Tier | 
+**MinValue** | **string** | Minimum value | 
+**MaxValue** | **string** | Maximum value | 
+**DiscountRate** | **string** | Discount rate | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

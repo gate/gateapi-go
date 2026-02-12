@@ -10,16 +10,20 @@
 package gateapi
 
 type InlineResponse20022Data struct {
-	// Message List
-	Messages []InlineResponse20022DataMessages `json:"messages"`
-	// Payment tip (displayed on homepage only)
-	Memo string `json:"memo"`
-	// Whether historical records exist
-	HasHistory bool `json:"has_history"`
-	// Order ID
-	Txid int32 `json:"txid"`
-	// Timestamp of the latest message
-	SRVTM int32 `json:"SRVTM"`
-	// Order Status
-	OrderStatus string `json:"order_status"`
+	// Serial number
+	Index int32 `json:"index"`
+	// Cryptocurrency
+	Asset string `json:"asset"`
+	// Fiat currency
+	FiatUnit string `json:"fiat_unit"`
+	// 广告id
+	AdvNo int32 `json:"adv_no"`
+	// Price
+	Price string `json:"price"`
+	// Maximum Cryptocurrency Amount
+	MaxSingleTransAmount string `json:"max_single_trans_amount"`
+	// Minimum Cryptocurrency Amount
+	MinSingleTransAmount string `json:"min_single_trans_amount"`
+	// Advertiser Nickname
+	NickName string `json:"nick_name"`
 }

@@ -9,7 +9,7 @@
 
 package gateapi
 
-type InlineResponse20036SpecialFeeList struct {
+type InlineResponse20037SpecialFeeList struct {
 	// Currency pair
 	Symbol string `json:"symbol"`
 	// Taker fee rate

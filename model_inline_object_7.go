@@ -14,7 +14,7 @@ type InlineObject7 struct {
 	CryptoCurrency string `json:"crypto_currency"`
 	// Fiat currency
 	FiatCurrency string `json:"fiat_currency"`
-	// 订单标签页，默认pending（pending：处理中（pending:  AND status in ('OPEN', 'PAID', 'LOCKED', 'TEMP')）；dispute：申诉中（status in ('ACCEPT', 'BCLOSED', 'CANCEL', 'BECANCEL', 'SCLOSED', 'SCANCEL')))
+	// Order tab, default: pending (pending: In Progress (pending: AND status in ('OPEN','PAID', 'LOCKED', 'TEMP')); dispute: In Dispute (status in ('ACCEPT','BCLOSED', 'CANCEL', 'BECANCEL', 'SCLOSED', 'SCANCEL')))
 	OrderTab string `json:"order_tab,omitempty"`
 	// Buy/Sell (sell=Sell, buy=Buy, others=All)
 	SelectType string `json:"select_type,omitempty"`

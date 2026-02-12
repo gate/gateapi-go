@@ -10,10 +10,10 @@
 package gateapi
 
 type InlineObject17 struct {
-	// Order ID
-	Txid int32 `json:"txid"`
-	// Pagination timestamp (forward)
-	Lastreceived int32 `json:"lastreceived,omitempty"`
-	// Pagination timestamp (backward)
-	Firstreceived int32 `json:"firstreceived,omitempty"`
+	// Cryptocurrency
+	Asset string `json:"asset"`
+	// Fiat currency
+	FiatUnit string `json:"fiat_unit"`
+	// Buy/Sell, sell/buy
+	TradeType string `json:"trade_type"`
 }

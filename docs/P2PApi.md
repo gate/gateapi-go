@@ -17,6 +17,7 @@ Method | HTTP request | Description
 [**P2pMerchantBooksAdsUpdateStatus**](P2PApi.md#P2pMerchantBooksAdsUpdateStatus) | **Post** /p2p/merchant/books/ads_update_status | Update ad status
 [**P2pMerchantBooksAdsDetail**](P2PApi.md#P2pMerchantBooksAdsDetail) | **Post** /p2p/merchant/books/ads_detail | Query ad details
 [**P2pMerchantBooksMyAdsList**](P2PApi.md#P2pMerchantBooksMyAdsList) | **Post** /p2p/merchant/books/my_ads_list | Get my ad list
+[**P2pMerchantBooksAdsList**](P2PApi.md#P2pMerchantBooksAdsList) | **Post** /p2p/merchant/books/ads_list | Get Advertisement List
 [**P2pMerchantChatGetChatsList**](P2PApi.md#P2pMerchantChatGetChatsList) | **Post** /p2p/merchant/chat/get_chats_list | Get chat history
 [**P2pMerchantChatSendChatMessage**](P2PApi.md#P2pMerchantChatSendChatMessage) | **Post** /p2p/merchant/chat/send_chat_message | Send text message
 [**P2pMerchantChatUploadChatFile**](P2PApi.md#P2pMerchantChatUploadChatFile) | **Post** /p2p/merchant/chat/upload_chat_file | Upload chat file
@@ -234,7 +235,7 @@ Optional parameters are passed through a pointer to a P2pMerchantTransactionGetP
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**orderTab** | **optional.String**| 订单标签页，默认pending（pending：处理中（pending:  AND status in (&#39;OPEN&#39;, &#39;PAID&#39;, &#39;LOCKED&#39;, &#39;TEMP&#39;)）；dispute：申诉中（status in (&#39;ACCEPT&#39;, &#39;BCLOSED&#39;, &#39;CANCEL&#39;, &#39;BECANCEL&#39;, &#39;SCLOSED&#39;, &#39;SCANCEL&#39;))) | 
+**orderTab** | **optional.String**| Order tab, default: pending (pending: In Progress (pending: AND status in (&#39;OPEN&#39;,&#39;PAID&#39;, &#39;LOCKED&#39;, &#39;TEMP&#39;)); dispute: In Dispute (status in (&#39;ACCEPT&#39;,&#39;BCLOSED&#39;, &#39;CANCEL&#39;, &#39;BECANCEL&#39;, &#39;SCLOSED&#39;, &#39;SCANCEL&#39;))) | 
 **selectType** | **optional.String**| Buy/Sell (sell&#x3D;Sell, buy&#x3D;Buy, others&#x3D;All) | 
 **status** | **optional.String**| Order Status (dispute: Disputed Order; closed: ACCEPT, BCLOSED; cancel: CANCEL, BECANCEL, SCLOSED, SCANCEL; locked: LOCKED; open: OPEN; paid: PAID; completed: CANCEL, BECANCEL, SCLOSED, SCANCEL, ACCEPT, BCLOSED) | 
 **txid** | **optional.Int32**| Order ID | 
@@ -967,9 +968,78 @@ No authorization required
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
+## P2pMerchantBooksAdsList
+
+> InlineResponse20022 P2pMerchantBooksAdsList(ctx, asset, fiatUnit, tradeType)
+
+Get Advertisement List
+
+Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME <EMAIL@ADDRESS> Language: en Language-Team: en <L@li.org> Plural-Forms: nplurals=2; plural=(n !=1) MIME-Version: 1.0 Content-Type: text/plain; charset=utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0 
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**asset** | **string**| Cryptocurrency | 
+**fiatUnit** | **string**| Fiat currency | 
+**tradeType** | **string**| Buy/Sell, sell/buy | 
+
+### Example
+
+```golang
+package main
+
+import (
+    "context"
+    "fmt"
+
+    "github.com/gate/gateapi-go/v7"
+)
+
+func main() {
+    client := gateapi.NewAPIClient(gateapi.NewConfiguration())
+    // uncomment the next line if your are testing against testnet
+    // client.ChangeBasePath("https://fx-api-testnet.gateio.ws/api/v4")
+    ctx := context.Background()
+    asset := "asset_example" // string - Cryptocurrency
+    fiatUnit := "fiatUnit_example" // string - Fiat currency
+    tradeType := "tradeType_example" // string - Buy/Sell, sell/buy
+    
+    result, _, err := client.P2PApi.P2pMerchantBooksAdsList(ctx, asset, fiatUnit, tradeType)
+    if err != nil {
+        if e, ok := err.(gateapi.GateAPIError); ok {
+            fmt.Printf("gate api error: %s\n", e.Error())
+        } else {
+            fmt.Printf("generic error: %s\n", err.Error())
+        }
+    } else {
+        fmt.Println(result)
+    }
+}
+```
+
+
+### Return type
+
+[**InlineResponse20022**](inline_response_200_22.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: multipart/form-data
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
 ## P2pMerchantChatGetChatsList
 
-> InlineResponse20022 P2pMerchantChatGetChatsList(ctx, txid, optional)
+> InlineResponse20023 P2pMerchantChatGetChatsList(ctx, txid, optional)
 
 Get chat history
 
@@ -1025,7 +1095,7 @@ func main() {
 
 ### Return type
 
-[**InlineResponse20022**](inline_response_200_22.md)
+[**InlineResponse20023**](inline_response_200_23.md)
 
 ### Authorization
 
@@ -1042,7 +1112,7 @@ No authorization required
 
 ## P2pMerchantChatSendChatMessage
 
-> InlineResponse20023 P2pMerchantChatSendChatMessage(ctx, txid, message, optional)
+> InlineResponse20024 P2pMerchantChatSendChatMessage(ctx, txid, message, optional)
 
 Send text message
 
@@ -1099,7 +1169,7 @@ func main() {
 
 ### Return type
 
-[**InlineResponse20023**](inline_response_200_23.md)
+[**InlineResponse20024**](inline_response_200_24.md)
 
 ### Authorization
 
@@ -1116,7 +1186,7 @@ No authorization required
 
 ## P2pMerchantChatUploadChatFile
 
-> InlineResponse20024 P2pMerchantChatUploadChatFile(ctx, imageContentType, base64Img)
+> InlineResponse20025 P2pMerchantChatUploadChatFile(ctx, imageContentType, base64Img)
 
 Upload chat file
 
@@ -1164,7 +1234,7 @@ func main() {
 
 ### Return type
 
-[**InlineResponse20024**](inline_response_200_24.md)
+[**InlineResponse20025**](inline_response_200_25.md)
 
 ### Authorization
 

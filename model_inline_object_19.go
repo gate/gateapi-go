@@ -10,8 +10,10 @@
 package gateapi
 
 type InlineObject19 struct {
-	// File type, currently only images and videos are supported
-	ImageContentType string `json:"image_content_type"`
-	// File content (base64 encoded)
-	Base64Img string `json:"base64_img"`
+	// Order ID
+	Txid int32 `json:"txid"`
+	// 0=Text, 1=File (video or image), default is 0 if not provided
+	Type int32 `json:"type,omitempty"`
+	// Message content
+	Message string `json:"message"`
 }

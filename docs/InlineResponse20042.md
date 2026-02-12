@@ -15,11 +15,13 @@ Name | Type | Description | Notes
 **MaxPositionQty** | **string** | Max Trade Size | [optional] 
 **ClosedQty** | **string** | Close Position Quantity | [optional] 
 **ClosedValue** | **string** | Close Position Value | [optional] 
+**Fee** | **string** | Position Accumulated Fees | [optional] 
 **LiqFee** | **string** | Liquidation Fee | [optional] 
+**FundingFee** | **string** | Funding Fee | [optional] 
 **PositionSide** | **string** | Position Direction Before Close | [optional] 
+**PositionMode** | **string** | Position Mode at Close | [optional] 
 **Leverage** | **string** | Leverage at Close | [optional] 
-**Interest** | **string** | Total Deducted Interest | 
-**BusinessType** | **string** | Position Business Type | 
+**BusinessType** | **string** | Business Type | 
 **CreateTime** | **string** | Created time | [optional] 
 **UpdateTime** | **string** | Update time | [optional] 
 

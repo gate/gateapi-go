@@ -10,16 +10,22 @@
 package gateapi
 
 type InlineResponse20046 struct {
-	// Currency
-	Coin string `json:"coin"`
+	// Account Change Record ID
+	Id string `json:"id"`
+	// User ID
+	UserId string `json:"user_id"`
+	// Business ID
+	BusinessId string `json:"business_id"`
+	// 变更类型| `TRANSACTION` 成交 `TRADING_FEE` 手续费 `FUNDING_FEE` 合约资金费 `LIQUIDATION_FEE` 强平费 `TRANSFER_IN` 资金转入 `TRANSFER_OUT` 资金转出 `BANKRUPT_COMPENSATION` 穿仓补贴 `AUTO_REPAY` 杠杆仓位自动还负债
+	Type string `json:"type"`
 	// Exchange
 	ExchangeType string `json:"exchange_type"`
-	// Tier
-	Tier string `json:"tier"`
-	// Minimum value
-	MinValue string `json:"min_value"`
-	// Maximum value
-	MaxValue string `json:"max_value"`
-	// Discount rate
-	DiscountRate string `json:"discount_rate"`
+	// Currency
+	Coin string `json:"coin"`
+	// Change amount (positive indicates transfer in; negative indicates transfer out)
+	Change string `json:"change"`
+	// Balance after change
+	Balance string `json:"balance"`
+	// Created time
+	CreateTime string `json:"create_time"`
 }

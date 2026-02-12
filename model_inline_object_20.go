@@ -10,14 +10,8 @@
 package gateapi
 
 type InlineObject20 struct {
-	// Currency
-	Coin string `json:"coin"`
-	// Transfer amount
-	Amount string `json:"amount"`
-	// Transfer-in account: CROSSEX_BINANCE, CROSSEX_OKX, CROSSEX_GATE, CROSSEX, SPOT
-	From string `json:"from"`
-	// Transfer-out account: CROSSEX_BINANCE, CROSSEX_OKX, CROSSEX_GATE, CROSSEX, SPOT
-	To string `json:"to"`
-	// User-defined ID
-	Text string `json:"text,omitempty"`
+	// File type, currently only images and videos are supported
+	ImageContentType string `json:"image_content_type"`
+	// File content (base64 encoded)
+	Base64Img string `json:"base64_img"`
 }

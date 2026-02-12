@@ -4,15 +4,24 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** | Account Change Record ID | 
-**UserId** | **string** | User ID | 
-**BusinessId** | **string** | Business ID | 
-**Type** | **string** | 变更类型| &#x60;TRANSACTION&#x60; 成交 &#x60;TRADING_FEE&#x60; 手续费 &#x60;FUNDING_FEE&#x60; 合约资金费 &#x60;LIQUIDATION_FEE&#x60; 强平费 &#x60;TRANSFER_IN&#x60; 资金转入 &#x60;TRANSFER_OUT&#x60; 资金转出 &#x60;BANKRUPT_COMPENSATION&#x60; 穿仓补贴 &#x60;AUTO_REPAY&#x60; 杠杆仓位自动还负债 | 
-**ExchangeType** | **string** | Exchange | 
-**Coin** | **string** | Currency | 
-**Change** | **string** | Change amount (positive indicates transfer in; negative indicates transfer out) | 
-**Balance** | **string** | Balance after change | 
-**CreateTime** | **string** | Created time | 
+**UserId** | **string** | User ID | [optional] 
+**TransactionId** | **string** | filledrecordsID | [optional] 
+**OrderId** | **string** | Order ID | [optional] 
+**Text** | **string** | User Order ID | [optional] 
+**Symbol** | **string** | Currency pair | [optional] 
+**ExchangeType** | **string** | Exchange | [optional] 
+**BusinessType** | **string** | Business Type | [optional] 
+**Side** | **string** | Buy/Sell Direction | [optional] 
+**Qty** | **string** | Trading size | [optional] 
+**Price** | **string** | Fill Price | [optional] 
+**Fee** | **string** | fee | [optional] 
+**FeeCoin** | **string** | Fee currency | [optional] 
+**FeeRate** | **string** | Fee Rate | [optional] 
+**MatchRole** | **string** | Filled Role | [optional] 
+**Rpnl** | **string** | Realized P&amp;L | [optional] 
+**PositionMode** | **string** | Position Mode | [optional] 
+**PositionSide** | **string** | Position Direction | [optional] 
+**CreateTime** | **string** | Created time | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

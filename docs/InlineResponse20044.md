@@ -4,24 +4,17 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**UserId** | **string** | User ID | [optional] 
-**TransactionId** | **string** | filledrecordsID | [optional] 
-**OrderId** | **string** | Order ID | [optional] 
-**Text** | **string** | User Order ID | [optional] 
-**Symbol** | **string** | Currency pair | [optional] 
-**ExchangeType** | **string** | Exchange | [optional] 
-**BusinessType** | **string** | Business Type | [optional] 
-**Side** | **string** | Buy/Sell Direction | [optional] 
-**Qty** | **string** | Trading size | [optional] 
-**Price** | **string** | Fill Price | [optional] 
-**Fee** | **string** | fee | [optional] 
-**FeeCoin** | **string** | Fee currency | [optional] 
-**FeeRate** | **string** | Fee Rate | [optional] 
-**MatchRole** | **string** | Filled Role | [optional] 
-**Rpnl** | **string** | Realized P&amp;L | [optional] 
-**PositionMode** | **string** | Position Mode | [optional] 
-**PositionSide** | **string** | Position Direction | [optional] 
-**CreateTime** | **string** | Created time | [optional] 
+**UserId** | **string** | User ID | 
+**Symbol** | **string** | Trading Pair | 
+**InterestId** | **string** | Interest Deduction ID | 
+**LiabilityId** | **string** | Debt Source ID, can be Order ID or Position ID | 
+**Liability** | **string** | Debt Quantity | 
+**LiabilityCoin** | **string** | Debt Currency | 
+**Interest** | **string** | Interest | 
+**InterestRate** | **string** | interest rate | 
+**InterestType** | **string** | Interest deduction type (&#x60;PERIODIC_POSITION&#x60;: periodic position interest; &#x60;PERIODIC_OPEN_ORDER&#x60;: periodic open-order interest; &#x60;IMMEDIATE_OPEN_ORDER&#x60;: interest charged on order opening) | 
+**CreateTime** | **string** | Created time | 
+**ExchangeType** | **string** | Exchange | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -4,12 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Messages** | [**[]InlineResponse20022DataMessages**](inline_response_200_22_data_messages.md) | Message List | 
-**Memo** | **string** | Payment tip (displayed on homepage only) | 
-**HasHistory** | **bool** | Whether historical records exist | 
-**Txid** | **int32** | Order ID | 
-**SRVTM** | **int32** | Timestamp of the latest message | 
-**OrderStatus** | **string** | Order Status | 
+**Index** | **int32** | Serial number | 
+**Asset** | **string** | Cryptocurrency | 
+**FiatUnit** | **string** | Fiat currency | 
+**AdvNo** | **int32** | 广告id | 
+**Price** | **string** | Price | 
+**MaxSingleTransAmount** | **string** | Maximum Cryptocurrency Amount | 
+**MinSingleTransAmount** | **string** | Minimum Cryptocurrency Amount | 
+**NickName** | **string** | Advertiser Nickname | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

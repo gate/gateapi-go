@@ -9,11 +9,17 @@
 
 package gateapi
 
-type InlineObject18 struct {
-	// Order ID
-	Txid int32 `json:"txid"`
-	// Pagination timestamp (forward)
-	Lastreceived int32 `json:"lastreceived,omitempty"`
-	// Pagination timestamp (backward)
-	Firstreceived int32 `json:"firstreceived,omitempty"`
+type InlineResponse20047 struct {
+	// Currency
+	Coin string `json:"coin"`
+	// Exchange
+	ExchangeType string `json:"exchange_type"`
+	// Tier
+	Tier string `json:"tier"`
+	// Minimum value
+	MinValue string `json:"min_value"`
+	// Maximum value
+	MaxValue string `json:"max_value"`
+	// Discount rate
+	DiscountRate string `json:"discount_rate"`
 }

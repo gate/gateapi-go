@@ -305,7 +305,7 @@ P2pMerchantTransactionGetPendingTransactionList Get pending orders
   - @param cryptoCurrency Cryptocurrency
   - @param fiatCurrency Fiat currency
   - @param optional nil or *P2pMerchantTransactionGetPendingTransactionListOpts - Optional Parameters:
-  - @param "OrderTab" (optional.String) -  订单标签页，默认pending（pending：处理中（pending:  AND status in ('OPEN', 'PAID', 'LOCKED', 'TEMP')）；dispute：申诉中（status in ('ACCEPT', 'BCLOSED', 'CANCEL', 'BECANCEL', 'SCLOSED', 'SCANCEL')))
+  - @param "OrderTab" (optional.String) -  Order tab, default: pending (pending: In Progress (pending: AND status in ('OPEN','PAID', 'LOCKED', 'TEMP')); dispute: In Dispute (status in ('ACCEPT','BCLOSED', 'CANCEL', 'BECANCEL', 'SCLOSED', 'SCANCEL')))
   - @param "SelectType" (optional.String) -  Buy/Sell (sell=Sell, buy=Buy, others=All)
   - @param "Status" (optional.String) -  Order Status (dispute: Disputed Order; closed: ACCEPT, BCLOSED; cancel: CANCEL, BECANCEL, SCLOSED, SCANCEL; locked: LOCKED; open: OPEN; paid: PAID; completed: CANCEL, BECANCEL, SCLOSED, SCANCEL, ACCEPT, BCLOSED)
   - @param "Txid" (optional.Int32) -  Order ID
@@ -1432,6 +1432,97 @@ func (a *P2PApiService) P2pMerchantBooksMyAdsList(ctx context.Context, localVarO
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+/*
+P2pMerchantBooksAdsList Get Advertisement List
+Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME &lt;EMAIL@ADDRESS&gt; Language: en Language-Team: en &lt;L@li.org&gt; Plural-Forms: nplurals&#x3D;2; plural&#x3D;(n !&#x3D;1) MIME-Version: 1.0 Content-Type: text/plain; charset&#x3D;utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param asset Cryptocurrency
+  - @param fiatUnit Fiat currency
+  - @param tradeType Buy/Sell, sell/buy
+
+@return InlineResponse20022
+*/
+func (a *P2PApiService) P2pMerchantBooksAdsList(ctx context.Context, asset string, fiatUnit string, tradeType string) (InlineResponse20022, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  InlineResponse20022
+	)
+
+	// create path and map variables
+	localVarPath := a.client.cfg.BasePath + "/p2p/merchant/books/ads_list"
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"multipart/form-data"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	localVarFormParams.Add("asset", parameterToString(asset, ""))
+	localVarFormParams.Add("fiat_unit", parameterToString(fiatUnit, ""))
+	localVarFormParams.Add("trade_type", parameterToString(tradeType, ""))
+	if ctx == nil {
+		ctx = context.Background()
+	}
+	ctx = context.WithValue(ctx, ContextPublic, true)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(r)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status + ", " + string(localVarBody),
+		}
+		var gateErr GateAPIError
+		if e := a.client.decode(&gateErr, localVarBody, localVarHTTPResponse.Header.Get("Content-Type")); e == nil && gateErr.Label != "" {
+			gateErr.APIError = newErr
+			return localVarReturnValue, localVarHTTPResponse, gateErr
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 // P2pMerchantChatGetChatsListOpts Optional parameters for the method 'P2pMerchantChatGetChatsList'
 type P2pMerchantChatGetChatsListOpts struct {
 	Lastreceived  optional.Int32
@@ -1446,16 +1537,16 @@ P2pMerchantChatGetChatsList Get chat history
   - @param "Lastreceived" (optional.Int32) -  Pagination timestamp (forward)
   - @param "Firstreceived" (optional.Int32) -  Pagination timestamp (backward)
 
-@return InlineResponse20022
+@return InlineResponse20023
 */
-func (a *P2PApiService) P2pMerchantChatGetChatsList(ctx context.Context, txid int32, localVarOptionals *P2pMerchantChatGetChatsListOpts) (InlineResponse20022, *http.Response, error) {
+func (a *P2PApiService) P2pMerchantChatGetChatsList(ctx context.Context, txid int32, localVarOptionals *P2pMerchantChatGetChatsListOpts) (InlineResponse20023, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  InlineResponse20022
+		localVarReturnValue  InlineResponse20023
 	)
 
 	// create path and map variables
@@ -1546,16 +1637,16 @@ P2pMerchantChatSendChatMessage Send text message
   - @param optional nil or *P2pMerchantChatSendChatMessageOpts - Optional Parameters:
   - @param "Type_" (optional.Int32) -  0=Text, 1=File (video or image), default is 0 if not provided
 
-@return InlineResponse20023
+@return InlineResponse20024
 */
-func (a *P2PApiService) P2pMerchantChatSendChatMessage(ctx context.Context, txid int32, message string, localVarOptionals *P2pMerchantChatSendChatMessageOpts) (InlineResponse20023, *http.Response, error) {
+func (a *P2PApiService) P2pMerchantChatSendChatMessage(ctx context.Context, txid int32, message string, localVarOptionals *P2pMerchantChatSendChatMessageOpts) (InlineResponse20024, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  InlineResponse20023
+		localVarReturnValue  InlineResponse20024
 	)
 
 	// create path and map variables
@@ -1637,16 +1728,16 @@ P2pMerchantChatUploadChatFile Upload chat file
   - @param imageContentType File type, currently only images and videos are supported
   - @param base64Img File content (base64 encoded)
 
-@return InlineResponse20024
+@return InlineResponse20025
 */
-func (a *P2PApiService) P2pMerchantChatUploadChatFile(ctx context.Context, imageContentType string, base64Img string) (InlineResponse20024, *http.Response, error) {
+func (a *P2PApiService) P2pMerchantChatUploadChatFile(ctx context.Context, imageContentType string, base64Img string) (InlineResponse20025, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  InlineResponse20024
+		localVarReturnValue  InlineResponse20025
 	)
 
 	// create path and map variables

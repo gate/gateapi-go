@@ -10,46 +10,13 @@
 package gateapi
 
 type InlineResponse20037 struct {
-	// User ID
-	UserId string `json:"user_id,omitempty"`
-	// Position ID
-	PositionId string `json:"position_id,omitempty"`
-	// Currency pair
-	Symbol string `json:"symbol,omitempty"`
-	// Position Direction
-	PositionSide string `json:"position_side,omitempty"`
-	// Initial Margin
-	InitialMargin string `json:"initial_margin,omitempty"`
-	// Maintenance margin
-	MaintenanceMargin string `json:"maintenance_margin,omitempty"`
-	// Position Quantity
-	PositionQty string `json:"position_qty,omitempty"`
-	// Position Value
-	PositionValue string `json:"position_value,omitempty"`
-	// Unrealized P&L
-	Upnl string `json:"upnl,omitempty"`
-	// Unrealized P&L Ratio
-	UpnlRate string `json:"upnl_rate,omitempty"`
-	// Position Average Entry Price
-	EntryPrice string `json:"entry_price,omitempty"`
-	// Mark price
-	MarkPrice string `json:"mark_price,omitempty"`
-	// Position Leverage
-	Leverage string `json:"leverage,omitempty"`
-	// Maximum leverage
-	MaxLeverage string `json:"max_leverage,omitempty"`
-	// Position risk limit
-	RiskLimit string `json:"risk_limit,omitempty"`
-	// Position Fee
-	Fee string `json:"fee,omitempty"`
-	// Position Funding Fee
-	FundingFee string `json:"funding_fee,omitempty"`
-	// Position funding fee collection time (0 indicates it has not been collected yet)
-	FundingTime string `json:"funding_time,omitempty"`
-	// Position Creation Time
-	CreateTime string `json:"create_time,omitempty"`
-	// Position Update Time
-	UpdateTime string `json:"update_time,omitempty"`
-	// Realized PnL
-	ClosedPnl string `json:"closed_pnl,omitempty"`
+	// spotMakerfee rate
+	SpotMakerFee string `json:"spot_maker_fee"`
+	// spotTakerfee rate
+	SpotTakerFee string `json:"spot_taker_fee"`
+	// contractMakerfee rate
+	FutureMakerFee string `json:"future_maker_fee"`
+	// contractTakerfee rate
+	FutureTakerFee string                              `json:"future_taker_fee"`
+	SpecialFeeList []InlineResponse20037SpecialFeeList `json:"special_fee_list"`
 }

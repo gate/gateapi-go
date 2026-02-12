@@ -10,6 +10,6 @@
 package gateapi
 
 type InlineResponse20024Data struct {
-	// File key
-	FileKey string `json:"file_key"`
+	// Timestamp when message was successfully sent (current timestamp)
+	SRVTM int32 `json:"SRVTM"`
 }

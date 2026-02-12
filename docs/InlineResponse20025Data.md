@@ -1,12 +1,10 @@
-# InlineResponse20036SpecialFeeList
+# InlineResponse20025Data
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Symbol** | **string** | Currency pair | 
-**TakerFeeRate** | **string** | Taker fee rate | 
-**MakerFeeRate** | **string** | Maker fee rate | 
+**FileKey** | **string** | File key | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -10,8 +10,24 @@
 package gateapi
 
 type InlineObject22 struct {
-	// modify amount
+	// Client-defined Order ID, supports letters (a-z), numbers (0-9), symbols (-, _) only
+	Text string `json:"text,omitempty"`
+	// Unique Identifier for Exchange_Business_Base_Counter Examples: - To place a spot order for ADA/USDT on Binance: Use unique identifier `BINANCE_SPOT_ADA_USDT`; - To place a USDT-margin perpetual contract order for ADA/USDT on OKX: Use unique identifier `OKX_FUTURE_ADA_USDT`; - To place a spot margin order for ADA/USDT on Gate.io: Use unique identifier `GATE_MARGIN_ADA_USDT`; Currently supports three order types: Spot Orders, USDT-margin Perpetual Contract Orders, and Spot Margin Orders
+	Symbol string `json:"symbol"`
+	// BUY, SELL
+	Side string `json:"side"`
+	// Order type (default: `LIMIT`; supported types: `LIMIT`, `MARKET`)
+	Type string `json:"type,omitempty"`
+	// Default GTC, supports enumerated types: GTC, IOC, FOK, POC GTC: GoodTillCancelled IOC: ImmediateOrCancelled FOK: FillOrKill POC: PendingOrCancelled or PostOnly
+	TimeInForce string `json:"time_in_force,omitempty"`
+	// Order quantity (required unless spot market buy)
 	Qty string `json:"qty,omitempty"`
-	// modify price
+	// Limit Order Price (Required for Limit Orders)
 	Price string `json:"price,omitempty"`
+	// Order quote quantity; required for spot and margin market buy orders
+	QuoteQty string `json:"quote_qty,omitempty"`
+	// Reduce-only: `true` or `false`
+	ReduceOnly string `json:"reduce_only,omitempty"`
+	// Position side: `NONE`, `LONG`, `SHORT` Defaults to `NONE` (single position mode) if not specified
+	PositionSide string `json:"position_side,omitempty"`
 }

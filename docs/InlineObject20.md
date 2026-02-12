@@ -4,11 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Coin** | **string** | Currency | 
-**Amount** | **string** | Transfer amount | 
-**From** | **string** | Transfer-in account: CROSSEX_BINANCE, CROSSEX_OKX, CROSSEX_GATE, CROSSEX, SPOT | 
-**To** | **string** | Transfer-out account: CROSSEX_BINANCE, CROSSEX_OKX, CROSSEX_GATE, CROSSEX, SPOT | 
-**Text** | **string** | User-defined ID | [optional] 
+**ImageContentType** | **string** | File type, currently only images and videos are supported | 
+**Base64Img** | **string** | File content (base64 encoded) | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

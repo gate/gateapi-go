@@ -12,10 +12,44 @@ package gateapi
 type InlineResponse20039 struct {
 	// User ID
 	UserId string `json:"user_id"`
-	// Currency pair
+	// Leveraged Position ID
+	PositionId string `json:"position_id"`
+	// Trading Pair
 	Symbol string `json:"symbol"`
-	// CROSSEX position-reduction indicator ranking (1–5, higher value ranks higher)
-	CrossexAdlRank string `json:"crossex_adl_rank"`
-	// Original exchange information (Binance: 0–4, higher value ranks higher; OKX: 0–5, higher value ranks higher; Gate: 1–5, lower value ranks higher)
-	ExchangeAdlRank string `json:"exchange_adl_rank"`
+	// Position Direction
+	PositionSide string `json:"position_side"`
+	// Initial position margin
+	InitialMargin string `json:"initial_margin"`
+	// Position maintenance margin
+	MaintenanceMargin string `json:"maintenance_margin"`
+	// Position Asset Quantity
+	AssetQty string `json:"asset_qty"`
+	// Position Asset Currency
+	AssetCoin string `json:"asset_coin"`
+	// Position Value
+	PositionValue string `json:"position_value"`
+	// Debt Quantity
+	Liability string `json:"liability"`
+	// Debt Currency
+	LiabilityCoin string `json:"liability_coin"`
+	// Deducted Interest
+	Interest string `json:"interest"`
+	// Max Trade Size
+	MaxPositionQty string `json:"max_position_qty"`
+	// Position Cost Price (Average Opening Price)
+	EntryPrice string `json:"entry_price"`
+	// Index price
+	IndexPrice string `json:"index_price"`
+	// Unrealized P&L
+	Upnl string `json:"upnl"`
+	// Unrealized P&L Ratio
+	UpnlRate string `json:"upnl_rate"`
+	// Opening Leverage
+	Leverage string `json:"leverage"`
+	// Maximum leverage
+	MaxLeverage string `json:"max_leverage"`
+	// Created time
+	CreateTime string `json:"create_time"`
+	// Update time
+	UpdateTime string `json:"update_time"`
 }

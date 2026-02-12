@@ -5,9 +5,26 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **UserId** | **string** | User ID | 
-**Symbol** | **string** | Currency pair | 
-**CrossexAdlRank** | **string** | CROSSEX position-reduction indicator ranking (1–5, higher value ranks higher) | 
-**ExchangeAdlRank** | **string** | Original exchange information (Binance: 0–4, higher value ranks higher; OKX: 0–5, higher value ranks higher; Gate: 1–5, lower value ranks higher) | 
+**PositionId** | **string** | Leveraged Position ID | 
+**Symbol** | **string** | Trading Pair | 
+**PositionSide** | **string** | Position Direction | 
+**InitialMargin** | **string** | Initial position margin | 
+**MaintenanceMargin** | **string** | Position maintenance margin | 
+**AssetQty** | **string** | Position Asset Quantity | 
+**AssetCoin** | **string** | Position Asset Currency | 
+**PositionValue** | **string** | Position Value | 
+**Liability** | **string** | Debt Quantity | 
+**LiabilityCoin** | **string** | Debt Currency | 
+**Interest** | **string** | Deducted Interest | 
+**MaxPositionQty** | **string** | Max Trade Size | 
+**EntryPrice** | **string** | Position Cost Price (Average Opening Price) | 
+**IndexPrice** | **string** | Index price | 
+**Upnl** | **string** | Unrealized P&amp;L | 
+**UpnlRate** | **string** | Unrealized P&amp;L Ratio | 
+**Leverage** | **string** | Opening Leverage | 
+**MaxLeverage** | **string** | Maximum leverage | 
+**CreateTime** | **string** | Created time | 
+**UpdateTime** | **string** | Update time | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

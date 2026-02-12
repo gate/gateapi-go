@@ -9,11 +9,7 @@
 
 package gateapi
 
-type InlineObject18 struct {
-	// Order ID
-	Txid int32 `json:"txid"`
-	// Pagination timestamp (forward)
-	Lastreceived int32 `json:"lastreceived,omitempty"`
-	// Pagination timestamp (backward)
-	Firstreceived int32 `json:"firstreceived,omitempty"`
+type InlineResponse20025Data struct {
+	// File key
+	FileKey string `json:"file_key"`
 }
