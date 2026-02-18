@@ -841,7 +841,7 @@ func (a *CrossExApiService) UpdateCrossexOrder(ctx context.Context, orderId stri
 
 // CancelCrossexOrderOpts Optional parameters for the method 'CancelCrossexOrder'
 type CancelCrossexOrderOpts struct {
-	Body optional.Map[string]interface{}
+	Body optional.Interface
 }
 
 /*
