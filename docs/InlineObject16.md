@@ -4,9 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Asset** | **string** | Cryptocurrency | [optional] 
-**FiatUnit** | **string** | Fiat currency | [optional] 
-**TradeType** | **string** | Buy/Sell | [optional] 
+**Symbol** | **string** | Currency pair | 
+**Leverage** | **string** | leverage | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

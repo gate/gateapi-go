@@ -99,4 +99,6 @@ type Contract struct {
 	MarketOrderSizeMax string `json:"market_order_size_max,omitempty"`
 	// Upper and lower limits of funding rate
 	FundingRateLimit string `json:"funding_rate_limit,omitempty"`
+	// Funding rate depth impact value
+	FundingImpactValue string `json:"funding_impact_value,omitempty"`
 }

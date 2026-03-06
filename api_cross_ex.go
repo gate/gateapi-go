@@ -11,11 +11,11 @@ package gateapi
 
 import (
 	"context"
+	"github.com/antihax/optional"
 	"io/ioutil"
 	"net/http"
 	"net/url"
 	"strings"
-	"github.com/antihax/optional"
 )
 
 // Linger please
@@ -34,9 +34,10 @@ type ListCrossexRuleSymbolsOpts struct {
 /*
 ListCrossexRuleSymbols [Public Interface] Query Trading Pair Information
 Query Trading Pair Information
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param optional nil or *ListCrossexRuleSymbolsOpts - Optional Parameters:
- * @param "Symbols" (optional.String) -  Trading Pair List, multiple separated by commas  Example values: BINANCE_FUTURE_ADA_USDT,OKX_FUTURE_ADA_USDT
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param optional nil or *ListCrossexRuleSymbolsOpts - Optional Parameters:
+  - @param "Symbols" (optional.String) -  Trading Pair List, multiple separated by commas  Example values: BINANCE_FUTURE_ADA_USDT,OKX_FUTURE_ADA_USDT
+
 @return []Symbol
 */
 func (a *CrossExApiService) ListCrossexRuleSymbols(ctx context.Context, localVarOptionals *ListCrossexRuleSymbolsOpts) ([]Symbol, *http.Response, error) {
@@ -50,7 +51,7 @@ func (a *CrossExApiService) ListCrossexRuleSymbols(ctx context.Context, localVar
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/rule/symbols"
+	localVarPath := a.client.cfg.BasePath + "/crossex/rule/symbols"
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
@@ -123,22 +124,23 @@ func (a *CrossExApiService) ListCrossexRuleSymbols(ctx context.Context, localVar
 /*
 ListCrossexRuleRiskLimits [Public Interface] Query Risk Limit Information
 Query risk limit information for futures/margin trading pairs
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param symbols Trading Pair List, multiple separated by commas Example values: BINANCE_FUTURE_ADA_USDT,GATE_MARGIN_ADA_USDT
-@return []InlineResponse20026
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param symbols Trading Pair List, multiple separated by commas Example values: BINANCE_FUTURE_ADA_USDT,GATE_MARGIN_ADA_USDT
+
+@return []InlineResponse20027
 */
-func (a *CrossExApiService) ListCrossexRuleRiskLimits(ctx context.Context, symbols string) ([]InlineResponse20026, *http.Response, error) {
+func (a *CrossExApiService) ListCrossexRuleRiskLimits(ctx context.Context, symbols string) ([]InlineResponse20027, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  []InlineResponse20026
+		localVarReturnValue  []InlineResponse20027
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/rule/risk_limits"
+	localVarPath := a.client.cfg.BasePath + "/crossex/rule/risk_limits"
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
@@ -213,24 +215,25 @@ type ListCrossexTransferCoinsOpts struct {
 
 /*
 ListCrossexTransferCoins [Public Interface] Query Supported Transfer Currencies
-Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME &lt;EMAIL@ADDRESS&gt; Language: en Language-Team: en &lt;L@li.org&gt; Plural-Forms: nplurals&#x3D;2; plural&#x3D;(n !&#x3D;1) MIME-Version: 1.0 Content-Type: text/plain; charset&#x3D;utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0 
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param optional nil or *ListCrossexTransferCoinsOpts - Optional Parameters:
- * @param "Coin" (optional.String) -  Currency
-@return []InlineResponse20027
+Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME &lt;EMAIL@ADDRESS&gt; Language: en Language-Team: en &lt;L@li.org&gt; Plural-Forms: nplurals&#x3D;2; plural&#x3D;(n !&#x3D;1) MIME-Version: 1.0 Content-Type: text/plain; charset&#x3D;utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param optional nil or *ListCrossexTransferCoinsOpts - Optional Parameters:
+  - @param "Coin" (optional.String) -  Currency
+
+@return []InlineResponse20028
 */
-func (a *CrossExApiService) ListCrossexTransferCoins(ctx context.Context, localVarOptionals *ListCrossexTransferCoinsOpts) ([]InlineResponse20027, *http.Response, error) {
+func (a *CrossExApiService) ListCrossexTransferCoins(ctx context.Context, localVarOptionals *ListCrossexTransferCoinsOpts) ([]InlineResponse20028, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  []InlineResponse20027
+		localVarReturnValue  []InlineResponse20028
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/transfers/coin"
+	localVarPath := a.client.cfg.BasePath + "/crossex/transfers/coin"
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
@@ -302,39 +305,40 @@ func (a *CrossExApiService) ListCrossexTransferCoins(ctx context.Context, localV
 
 // ListCrossexTransfersOpts Optional parameters for the method 'ListCrossexTransfers'
 type ListCrossexTransfersOpts struct {
-	Coin optional.String
+	Coin    optional.String
 	OrderId optional.String
-	From optional.Int32
-	To optional.Int32
-	Page optional.Int32
-	Limit optional.Int32
+	From    optional.Int32
+	To      optional.Int32
+	Page    optional.Int32
+	Limit   optional.Int32
 }
 
 /*
 ListCrossexTransfers Query Fund Transfer History
 Rate Limit: 200 requests per 10 seconds
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param optional nil or *ListCrossexTransfersOpts - Optional Parameters:
- * @param "Coin" (optional.String) -  Query by specified currency name
- * @param "OrderId" (optional.String) -  Supports querying by the order ID returned when creating an order (tx_id), as well as a user-defined custom ID specified at creation (text)
- * @param "From" (optional.Int32) -  Start timestamp for the query
- * @param "To" (optional.Int32) -  End timestamp for the query, defaults to current time if not specified
- * @param "Page" (optional.Int32) -  Page number
- * @param "Limit" (optional.Int32) -  Maximum number returned by list, max 1000
-@return []InlineResponse20028
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param optional nil or *ListCrossexTransfersOpts - Optional Parameters:
+  - @param "Coin" (optional.String) -  Query by specified currency name
+  - @param "OrderId" (optional.String) -  Supports querying by the order ID returned when creating an order (tx_id), as well as a user-defined custom ID specified at creation (text)
+  - @param "From" (optional.Int32) -  Start timestamp for the query
+  - @param "To" (optional.Int32) -  End timestamp for the query, defaults to current time if not specified
+  - @param "Page" (optional.Int32) -  Page number
+  - @param "Limit" (optional.Int32) -  Maximum number returned by list, max 1000
+
+@return []InlineResponse20029
 */
-func (a *CrossExApiService) ListCrossexTransfers(ctx context.Context, localVarOptionals *ListCrossexTransfersOpts) ([]InlineResponse20028, *http.Response, error) {
+func (a *CrossExApiService) ListCrossexTransfers(ctx context.Context, localVarOptionals *ListCrossexTransfersOpts) ([]InlineResponse20029, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  []InlineResponse20028
+		localVarReturnValue  []InlineResponse20029
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/transfers"
+	localVarPath := a.client.cfg.BasePath + "/crossex/transfers"
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
@@ -427,29 +431,30 @@ func (a *CrossExApiService) ListCrossexTransfers(ctx context.Context, localVarOp
 
 // CreateCrossexTransferOpts Optional parameters for the method 'CreateCrossexTransfer'
 type CreateCrossexTransferOpts struct {
-	InlineObject21 optional.Interface
+	InlineObject10 optional.Interface
 }
 
 /*
 CreateCrossexTransfer Fund Transfer
 Rate limit: 10 requests per 10 seconds - In cross-exchange mode, when transferring USDT, either &#x60;from&#x60; or &#x60;to&#x60; must be &#x60;SPOT&#x60;, and the other side must be &#x60;CROSSEX&#x60;.   If &#x60;CROSSEX_${exchange_type}&#x60; (e.g. &#x60;CROSSEX_GATE&#x60;) is provided, it will be automatically treated as &#x60;CROSSEX&#x60;. - In isolated exchange mode, when transferring USDT, either &#x60;from&#x60; or &#x60;to&#x60; must be &#x60;CROSSEX_${exchange_type}&#x60;, and the other side must be &#x60;SPOT&#x60; or &#x60;CROSSEX_${exchange_type}&#x60;.   If &#x60;CROSSEX&#x60; is provided, it will be automatically treated as &#x60;CROSSEX_GATE&#x60;. - When transferring non-USDT assets to or from CrossEx, neither &#x60;from&#x60; nor &#x60;to&#x60; can be &#x60;CROSSEX&#x60;; &#x60;CROSSEX_${exchange_type}&#x60; must be explicitly specified. - When transferring non-USDT assets, transfers between &#x60;CROSSEX_{exchange_type}&#x60; accounts are supported, for example: from &#x3D; &#x60;CROSSEX_BINANCE&#x60;, to &#x3D; &#x60;CROSSEX_GATE&#x60;
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param optional nil or *CreateCrossexTransferOpts - Optional Parameters:
- * @param "InlineObject21" (optional.Interface of InlineObject21) - 
-@return InlineResponse20029
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param optional nil or *CreateCrossexTransferOpts - Optional Parameters:
+  - @param "InlineObject10" (optional.Interface of InlineObject10) -
+
+@return InlineResponse20030
 */
-func (a *CrossExApiService) CreateCrossexTransfer(ctx context.Context, localVarOptionals *CreateCrossexTransferOpts) (InlineResponse20029, *http.Response, error) {
+func (a *CrossExApiService) CreateCrossexTransfer(ctx context.Context, localVarOptionals *CreateCrossexTransferOpts) (InlineResponse20030, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  InlineResponse20029
+		localVarReturnValue  InlineResponse20030
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/transfers"
+	localVarPath := a.client.cfg.BasePath + "/crossex/transfers"
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
@@ -472,12 +477,12 @@ func (a *CrossExApiService) CreateCrossexTransfer(ctx context.Context, localVarO
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	if localVarOptionals != nil && localVarOptionals.InlineObject21.IsSet() {
-		localVarOptionalInlineObject21, localVarOptionalInlineObject21ok := localVarOptionals.InlineObject21.Value().(InlineObject21)
-		if !localVarOptionalInlineObject21ok {
-			return localVarReturnValue, nil, reportError("inlineObject21 should be InlineObject21")
+	if localVarOptionals != nil && localVarOptionals.InlineObject10.IsSet() {
+		localVarOptionalInlineObject10, localVarOptionalInlineObject10ok := localVarOptionals.InlineObject10.Value().(InlineObject10)
+		if !localVarOptionalInlineObject10ok {
+			return localVarReturnValue, nil, reportError("inlineObject10 should be InlineObject10")
 		}
-		localVarPostBody = &localVarOptionalInlineObject21
+		localVarPostBody = &localVarOptionalInlineObject10
 	}
 
 	if ctx == nil {
@@ -533,29 +538,30 @@ func (a *CrossExApiService) CreateCrossexTransfer(ctx context.Context, localVarO
 
 // CreateCrossexOrderOpts Optional parameters for the method 'CreateCrossexOrder'
 type CreateCrossexOrderOpts struct {
-	InlineObject22 optional.Interface
+	InlineObject11 optional.Interface
 }
 
 /*
 CreateCrossexOrder Create an order
-Rate Limit: 100 requests per 10 seconds
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param optional nil or *CreateCrossexOrderOpts - Optional Parameters:
- * @param "InlineObject22" (optional.Interface of InlineObject22) - 
-@return InlineResponse20030
+Rate Limit: 100 requests per 10 seconds, maximum 1,000 open orders per user
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param optional nil or *CreateCrossexOrderOpts - Optional Parameters:
+  - @param "InlineObject11" (optional.Interface of InlineObject11) -
+
+@return InlineResponse20031
 */
-func (a *CrossExApiService) CreateCrossexOrder(ctx context.Context, localVarOptionals *CreateCrossexOrderOpts) (InlineResponse20030, *http.Response, error) {
+func (a *CrossExApiService) CreateCrossexOrder(ctx context.Context, localVarOptionals *CreateCrossexOrderOpts) (InlineResponse20031, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  InlineResponse20030
+		localVarReturnValue  InlineResponse20031
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/orders"
+	localVarPath := a.client.cfg.BasePath + "/crossex/orders"
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
@@ -578,12 +584,12 @@ func (a *CrossExApiService) CreateCrossexOrder(ctx context.Context, localVarOpti
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	if localVarOptionals != nil && localVarOptionals.InlineObject22.IsSet() {
-		localVarOptionalInlineObject22, localVarOptionalInlineObject22ok := localVarOptionals.InlineObject22.Value().(InlineObject22)
-		if !localVarOptionalInlineObject22ok {
-			return localVarReturnValue, nil, reportError("inlineObject22 should be InlineObject22")
+	if localVarOptionals != nil && localVarOptionals.InlineObject11.IsSet() {
+		localVarOptionalInlineObject11, localVarOptionalInlineObject11ok := localVarOptionals.InlineObject11.Value().(InlineObject11)
+		if !localVarOptionalInlineObject11ok {
+			return localVarReturnValue, nil, reportError("inlineObject11 should be InlineObject11")
 		}
-		localVarPostBody = &localVarOptionalInlineObject22
+		localVarPostBody = &localVarOptionalInlineObject11
 	}
 
 	if ctx == nil {
@@ -640,22 +646,23 @@ func (a *CrossExApiService) CreateCrossexOrder(ctx context.Context, localVarOpti
 /*
 GetCrossexOrder Query order details
 Rate Limit: 200 requests per 10 seconds
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param orderId 1. Supports querying order IDs returned when creating orders 2. Supports custom IDs specified by users when creating orders (i.e., the text field)
-@return InlineResponse20031
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param orderId 1. Supports querying order IDs returned when creating orders 2. Supports custom IDs specified by users when creating orders (i.e., the text field)
+
+@return InlineResponse20032
 */
-func (a *CrossExApiService) GetCrossexOrder(ctx context.Context, orderId string) (InlineResponse20031, *http.Response, error) {
+func (a *CrossExApiService) GetCrossexOrder(ctx context.Context, orderId string) (InlineResponse20032, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  InlineResponse20031
+		localVarReturnValue  InlineResponse20032
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/orders/{order_id}"
+	localVarPath := a.client.cfg.BasePath + "/crossex/orders/{order_id}"
 	localVarPath = strings.Replace(localVarPath, "{"+"order_id"+"}", url.QueryEscape(parameterToString(orderId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -732,30 +739,31 @@ func (a *CrossExApiService) GetCrossexOrder(ctx context.Context, orderId string)
 
 // UpdateCrossexOrderOpts Optional parameters for the method 'UpdateCrossexOrder'
 type UpdateCrossexOrderOpts struct {
-	InlineObject23 optional.Interface
+	InlineObject12 optional.Interface
 }
 
 /*
 UpdateCrossexOrder Modify Order
 Rate Limit: 100 requests per 10 seconds
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param orderId Support Order ID or Text for Modify Order
- * @param optional nil or *UpdateCrossexOrderOpts - Optional Parameters:
- * @param "InlineObject23" (optional.Interface of InlineObject23) - 
-@return InlineResponse20032
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param orderId Support Order ID or Text for Modify Order
+  - @param optional nil or *UpdateCrossexOrderOpts - Optional Parameters:
+  - @param "InlineObject12" (optional.Interface of InlineObject12) -
+
+@return InlineResponse20033
 */
-func (a *CrossExApiService) UpdateCrossexOrder(ctx context.Context, orderId string, localVarOptionals *UpdateCrossexOrderOpts) (InlineResponse20032, *http.Response, error) {
+func (a *CrossExApiService) UpdateCrossexOrder(ctx context.Context, orderId string, localVarOptionals *UpdateCrossexOrderOpts) (InlineResponse20033, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  InlineResponse20032
+		localVarReturnValue  InlineResponse20033
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/orders/{order_id}"
+	localVarPath := a.client.cfg.BasePath + "/crossex/orders/{order_id}"
 	localVarPath = strings.Replace(localVarPath, "{"+"order_id"+"}", url.QueryEscape(parameterToString(orderId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -780,12 +788,12 @@ func (a *CrossExApiService) UpdateCrossexOrder(ctx context.Context, orderId stri
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	if localVarOptionals != nil && localVarOptionals.InlineObject23.IsSet() {
-		localVarOptionalInlineObject23, localVarOptionalInlineObject23ok := localVarOptionals.InlineObject23.Value().(InlineObject23)
-		if !localVarOptionalInlineObject23ok {
-			return localVarReturnValue, nil, reportError("inlineObject23 should be InlineObject23")
+	if localVarOptionals != nil && localVarOptionals.InlineObject12.IsSet() {
+		localVarOptionalInlineObject12, localVarOptionalInlineObject12ok := localVarOptionals.InlineObject12.Value().(InlineObject12)
+		if !localVarOptionalInlineObject12ok {
+			return localVarReturnValue, nil, reportError("inlineObject12 should be InlineObject12")
 		}
-		localVarPostBody = &localVarOptionalInlineObject23
+		localVarPostBody = &localVarOptionalInlineObject12
 	}
 
 	if ctx == nil {
@@ -839,21 +847,15 @@ func (a *CrossExApiService) UpdateCrossexOrder(ctx context.Context, orderId stri
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-// CancelCrossexOrderOpts Optional parameters for the method 'CancelCrossexOrder'
-type CancelCrossexOrderOpts struct {
-	Body optional.Map[string]interface{}
-}
-
 /*
 CancelCrossexOrder Cancel Order
 Rate Limit: 100 requests per 10 seconds
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param orderId Support Order ID or Text for Cancel Order
- * @param optional nil or *CancelCrossexOrderOpts - Optional Parameters:
- * @param "Body" (optional.Map[string]interface{}) - 
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param orderId Support Order ID or Text for Cancel Order
+
 @return map[string]interface{}
 */
-func (a *CrossExApiService) CancelCrossexOrder(ctx context.Context, orderId string, localVarOptionals *CancelCrossexOrderOpts) (map[string]interface{}, *http.Response, error) {
+func (a *CrossExApiService) CancelCrossexOrder(ctx context.Context, orderId string) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -864,7 +866,7 @@ func (a *CrossExApiService) CancelCrossexOrder(ctx context.Context, orderId stri
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/orders/{order_id}"
+	localVarPath := a.client.cfg.BasePath + "/crossex/orders/{order_id}"
 	localVarPath = strings.Replace(localVarPath, "{"+"order_id"+"}", url.QueryEscape(parameterToString(orderId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -872,7 +874,7 @@ func (a *CrossExApiService) CancelCrossexOrder(ctx context.Context, orderId stri
 	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
+	localVarHTTPContentTypes := []string{}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -888,11 +890,6 @@ func (a *CrossExApiService) CancelCrossexOrder(ctx context.Context, orderId stri
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	// body params
-	if localVarOptionals != nil && localVarOptionals.Body.IsSet() {
-		localVarPostBody = localVarOptionals.Body.Value()
-	}
-
 	if ctx == nil {
 		ctx = context.Background()
 	}
@@ -946,29 +943,30 @@ func (a *CrossExApiService) CancelCrossexOrder(ctx context.Context, orderId stri
 
 // CreateCrossexConvertQuoteOpts Optional parameters for the method 'CreateCrossexConvertQuote'
 type CreateCrossexConvertQuoteOpts struct {
-	InlineObject24 optional.Interface
+	InlineObject13 optional.Interface
 }
 
 /*
 CreateCrossexConvertQuote Flash Swap Inquiry
 Rate Limit: 100 requests per day
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param optional nil or *CreateCrossexConvertQuoteOpts - Optional Parameters:
- * @param "InlineObject24" (optional.Interface of InlineObject24) - 
-@return InlineResponse20033
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param optional nil or *CreateCrossexConvertQuoteOpts - Optional Parameters:
+  - @param "InlineObject13" (optional.Interface of InlineObject13) -
+
+@return InlineResponse20034
 */
-func (a *CrossExApiService) CreateCrossexConvertQuote(ctx context.Context, localVarOptionals *CreateCrossexConvertQuoteOpts) (InlineResponse20033, *http.Response, error) {
+func (a *CrossExApiService) CreateCrossexConvertQuote(ctx context.Context, localVarOptionals *CreateCrossexConvertQuoteOpts) (InlineResponse20034, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  InlineResponse20033
+		localVarReturnValue  InlineResponse20034
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/convert/quote"
+	localVarPath := a.client.cfg.BasePath + "/crossex/convert/quote"
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
@@ -991,12 +989,12 @@ func (a *CrossExApiService) CreateCrossexConvertQuote(ctx context.Context, local
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	if localVarOptionals != nil && localVarOptionals.InlineObject24.IsSet() {
-		localVarOptionalInlineObject24, localVarOptionalInlineObject24ok := localVarOptionals.InlineObject24.Value().(InlineObject24)
-		if !localVarOptionalInlineObject24ok {
-			return localVarReturnValue, nil, reportError("inlineObject24 should be InlineObject24")
+	if localVarOptionals != nil && localVarOptionals.InlineObject13.IsSet() {
+		localVarOptionalInlineObject13, localVarOptionalInlineObject13ok := localVarOptionals.InlineObject13.Value().(InlineObject13)
+		if !localVarOptionalInlineObject13ok {
+			return localVarReturnValue, nil, reportError("inlineObject13 should be InlineObject13")
 		}
-		localVarPostBody = &localVarOptionalInlineObject24
+		localVarPostBody = &localVarOptionalInlineObject13
 	}
 
 	if ctx == nil {
@@ -1052,15 +1050,16 @@ func (a *CrossExApiService) CreateCrossexConvertQuote(ctx context.Context, local
 
 // CreateCrossexConvertOrderOpts Optional parameters for the method 'CreateCrossexConvertOrder'
 type CreateCrossexConvertOrderOpts struct {
-	InlineObject25 optional.Interface
+	InlineObject14 optional.Interface
 }
 
 /*
 CreateCrossexConvertOrder Flash Swap Transaction
 Rate limit: 10 requests per 10 seconds
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param optional nil or *CreateCrossexConvertOrderOpts - Optional Parameters:
- * @param "InlineObject25" (optional.Interface of InlineObject25) - 
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param optional nil or *CreateCrossexConvertOrderOpts - Optional Parameters:
+  - @param "InlineObject14" (optional.Interface of InlineObject14) -
+
 @return map[string]interface{}
 */
 func (a *CrossExApiService) CreateCrossexConvertOrder(ctx context.Context, localVarOptionals *CreateCrossexConvertOrderOpts) (map[string]interface{}, *http.Response, error) {
@@ -1074,7 +1073,7 @@ func (a *CrossExApiService) CreateCrossexConvertOrder(ctx context.Context, local
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/convert/orders"
+	localVarPath := a.client.cfg.BasePath + "/crossex/convert/orders"
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
@@ -1097,12 +1096,12 @@ func (a *CrossExApiService) CreateCrossexConvertOrder(ctx context.Context, local
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	if localVarOptionals != nil && localVarOptionals.InlineObject25.IsSet() {
-		localVarOptionalInlineObject25, localVarOptionalInlineObject25ok := localVarOptionals.InlineObject25.Value().(InlineObject25)
-		if !localVarOptionalInlineObject25ok {
-			return localVarReturnValue, nil, reportError("inlineObject25 should be InlineObject25")
+	if localVarOptionals != nil && localVarOptionals.InlineObject14.IsSet() {
+		localVarOptionalInlineObject14, localVarOptionalInlineObject14ok := localVarOptionals.InlineObject14.Value().(InlineObject14)
+		if !localVarOptionalInlineObject14ok {
+			return localVarReturnValue, nil, reportError("inlineObject14 should be InlineObject14")
 		}
-		localVarPostBody = &localVarOptionalInlineObject25
+		localVarPostBody = &localVarOptionalInlineObject14
 	}
 
 	if ctx == nil {
@@ -1164,23 +1163,24 @@ type GetCrossexAccountOpts struct {
 /*
 GetCrossexAccount Query Account Assets
 Rate Limit: 200 requests per 10 seconds If 100% ≤ initial_margin_rate &lt; 110%, transferring out the margin currency is prohibited. If initial_margin_rate &lt; 100%, the system will automatically cancel orders; only closing positions is allowed, not opening new ones. If maintenance_margin_rate ≤ 100%, the system will force liquidation.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param optional nil or *GetCrossexAccountOpts - Optional Parameters:
- * @param "ExchangeType" (optional.String) -  Exchange. Not required in cross-exchange mode; required in single-exchange mode (BINANCE/OKX/GATE)
-@return InlineResponse20034
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param optional nil or *GetCrossexAccountOpts - Optional Parameters:
+  - @param "ExchangeType" (optional.String) -  Exchange. Not required in cross-exchange mode; required in single-exchange mode (BINANCE/OKX/GATE)
+
+@return InlineResponse20035
 */
-func (a *CrossExApiService) GetCrossexAccount(ctx context.Context, localVarOptionals *GetCrossexAccountOpts) (InlineResponse20034, *http.Response, error) {
+func (a *CrossExApiService) GetCrossexAccount(ctx context.Context, localVarOptionals *GetCrossexAccountOpts) (InlineResponse20035, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  InlineResponse20034
+		localVarReturnValue  InlineResponse20035
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/accounts"
+	localVarPath := a.client.cfg.BasePath + "/crossex/accounts"
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
@@ -1258,15 +1258,16 @@ func (a *CrossExApiService) GetCrossexAccount(ctx context.Context, localVarOptio
 
 // UpdateCrossexAccountOpts Optional parameters for the method 'UpdateCrossexAccount'
 type UpdateCrossexAccountOpts struct {
-	InlineObject26 optional.Interface
+	InlineObject15 optional.Interface
 }
 
 /*
 UpdateCrossexAccount Modify Account Contract Position Mode and Account Mode
 Rate Limit: 100 requests per 60 seconds. position_mode+exchange_type modifies contract position mode (exchange_type is required when the user&#39;s account mode is split exchange); account_mode modifies the user&#39;s account mode.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param optional nil or *UpdateCrossexAccountOpts - Optional Parameters:
- * @param "InlineObject26" (optional.Interface of InlineObject26) - 
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param optional nil or *UpdateCrossexAccountOpts - Optional Parameters:
+  - @param "InlineObject15" (optional.Interface of InlineObject15) -
+
 @return InlineResponse202
 */
 func (a *CrossExApiService) UpdateCrossexAccount(ctx context.Context, localVarOptionals *UpdateCrossexAccountOpts) (InlineResponse202, *http.Response, error) {
@@ -1280,7 +1281,7 @@ func (a *CrossExApiService) UpdateCrossexAccount(ctx context.Context, localVarOp
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/accounts"
+	localVarPath := a.client.cfg.BasePath + "/crossex/accounts"
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
@@ -1303,12 +1304,12 @@ func (a *CrossExApiService) UpdateCrossexAccount(ctx context.Context, localVarOp
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	if localVarOptionals != nil && localVarOptionals.InlineObject26.IsSet() {
-		localVarOptionalInlineObject26, localVarOptionalInlineObject26ok := localVarOptionals.InlineObject26.Value().(InlineObject26)
-		if !localVarOptionalInlineObject26ok {
-			return localVarReturnValue, nil, reportError("inlineObject26 should be InlineObject26")
+	if localVarOptionals != nil && localVarOptionals.InlineObject15.IsSet() {
+		localVarOptionalInlineObject15, localVarOptionalInlineObject15ok := localVarOptionals.InlineObject15.Value().(InlineObject15)
+		if !localVarOptionalInlineObject15ok {
+			return localVarReturnValue, nil, reportError("inlineObject15 should be InlineObject15")
 		}
-		localVarPostBody = &localVarOptionalInlineObject26
+		localVarPostBody = &localVarOptionalInlineObject15
 	}
 
 	if ctx == nil {
@@ -1370,23 +1371,24 @@ type GetCrossexPositionsLeverageOpts struct {
 /*
 GetCrossexPositionsLeverage Query Contract Trading Pair Leverage Multiplier
 Rate Limit: 200 requests per 10 seconds
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param optional nil or *GetCrossexPositionsLeverageOpts - Optional Parameters:
- * @param "Symbols" (optional.String) -  Trading Pair List, multiple separated by commas
-@return []InlineResponse20035
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param optional nil or *GetCrossexPositionsLeverageOpts - Optional Parameters:
+  - @param "Symbols" (optional.String) -  Trading Pair List, multiple separated by commas
+
+@return map[string]string
 */
-func (a *CrossExApiService) GetCrossexPositionsLeverage(ctx context.Context, localVarOptionals *GetCrossexPositionsLeverageOpts) ([]InlineResponse20035, *http.Response, error) {
+func (a *CrossExApiService) GetCrossexPositionsLeverage(ctx context.Context, localVarOptionals *GetCrossexPositionsLeverageOpts) (map[string]string, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  []InlineResponse20035
+		localVarReturnValue  map[string]string
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/positions/leverage"
+	localVarPath := a.client.cfg.BasePath + "/crossex/positions/leverage"
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
@@ -1464,15 +1466,16 @@ func (a *CrossExApiService) GetCrossexPositionsLeverage(ctx context.Context, loc
 
 // UpdateCrossexPositionsLeverageOpts Optional parameters for the method 'UpdateCrossexPositionsLeverage'
 type UpdateCrossexPositionsLeverageOpts struct {
-	InlineObject27 optional.Interface
+	InlineObject16 optional.Interface
 }
 
 /*
 UpdateCrossexPositionsLeverage Modify Contract Trading Pair Leverage Multiplier
 Rate Limit: 100 requests per 10 seconds
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param optional nil or *UpdateCrossexPositionsLeverageOpts - Optional Parameters:
- * @param "InlineObject27" (optional.Interface of InlineObject27) - 
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param optional nil or *UpdateCrossexPositionsLeverageOpts - Optional Parameters:
+  - @param "InlineObject16" (optional.Interface of InlineObject16) -
+
 @return InlineResponse2021
 */
 func (a *CrossExApiService) UpdateCrossexPositionsLeverage(ctx context.Context, localVarOptionals *UpdateCrossexPositionsLeverageOpts) (InlineResponse2021, *http.Response, error) {
@@ -1486,7 +1489,7 @@ func (a *CrossExApiService) UpdateCrossexPositionsLeverage(ctx context.Context, 
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/positions/leverage"
+	localVarPath := a.client.cfg.BasePath + "/crossex/positions/leverage"
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
@@ -1509,12 +1512,12 @@ func (a *CrossExApiService) UpdateCrossexPositionsLeverage(ctx context.Context, 
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	if localVarOptionals != nil && localVarOptionals.InlineObject27.IsSet() {
-		localVarOptionalInlineObject27, localVarOptionalInlineObject27ok := localVarOptionals.InlineObject27.Value().(InlineObject27)
-		if !localVarOptionalInlineObject27ok {
-			return localVarReturnValue, nil, reportError("inlineObject27 should be InlineObject27")
+	if localVarOptionals != nil && localVarOptionals.InlineObject16.IsSet() {
+		localVarOptionalInlineObject16, localVarOptionalInlineObject16ok := localVarOptionals.InlineObject16.Value().(InlineObject16)
+		if !localVarOptionalInlineObject16ok {
+			return localVarReturnValue, nil, reportError("inlineObject16 should be InlineObject16")
 		}
-		localVarPostBody = &localVarOptionalInlineObject27
+		localVarPostBody = &localVarOptionalInlineObject16
 	}
 
 	if ctx == nil {
@@ -1576,23 +1579,24 @@ type GetCrossexMarginPositionsLeverageOpts struct {
 /*
 GetCrossexMarginPositionsLeverage Query Leveraged Trading Pair Leverage Multiplier
 Rate Limit: 200 requests per 10 seconds
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param optional nil or *GetCrossexMarginPositionsLeverageOpts - Optional Parameters:
- * @param "Symbols" (optional.String) -  Trading Pair List, multiple separated by commas
-@return []InlineResponse20035
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param optional nil or *GetCrossexMarginPositionsLeverageOpts - Optional Parameters:
+  - @param "Symbols" (optional.String) -  Trading Pair List, multiple separated by commas
+
+@return map[string]string
 */
-func (a *CrossExApiService) GetCrossexMarginPositionsLeverage(ctx context.Context, localVarOptionals *GetCrossexMarginPositionsLeverageOpts) ([]InlineResponse20035, *http.Response, error) {
+func (a *CrossExApiService) GetCrossexMarginPositionsLeverage(ctx context.Context, localVarOptionals *GetCrossexMarginPositionsLeverageOpts) (map[string]string, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  []InlineResponse20035
+		localVarReturnValue  map[string]string
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/margin_positions/leverage"
+	localVarPath := a.client.cfg.BasePath + "/crossex/margin_positions/leverage"
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
@@ -1670,15 +1674,16 @@ func (a *CrossExApiService) GetCrossexMarginPositionsLeverage(ctx context.Contex
 
 // UpdateCrossexMarginPositionsLeverageOpts Optional parameters for the method 'UpdateCrossexMarginPositionsLeverage'
 type UpdateCrossexMarginPositionsLeverageOpts struct {
-	InlineObject28 optional.Interface
+	InlineObject17 optional.Interface
 }
 
 /*
 UpdateCrossexMarginPositionsLeverage Modify Leveraged Trading Pair Leverage Multiplier
 Rate Limit: 100 requests per 10 seconds
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param optional nil or *UpdateCrossexMarginPositionsLeverageOpts - Optional Parameters:
- * @param "InlineObject28" (optional.Interface of InlineObject28) - 
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param optional nil or *UpdateCrossexMarginPositionsLeverageOpts - Optional Parameters:
+  - @param "InlineObject17" (optional.Interface of InlineObject17) -
+
 @return InlineResponse2021
 */
 func (a *CrossExApiService) UpdateCrossexMarginPositionsLeverage(ctx context.Context, localVarOptionals *UpdateCrossexMarginPositionsLeverageOpts) (InlineResponse2021, *http.Response, error) {
@@ -1692,7 +1697,7 @@ func (a *CrossExApiService) UpdateCrossexMarginPositionsLeverage(ctx context.Con
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/margin_positions/leverage"
+	localVarPath := a.client.cfg.BasePath + "/crossex/margin_positions/leverage"
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
@@ -1715,12 +1720,12 @@ func (a *CrossExApiService) UpdateCrossexMarginPositionsLeverage(ctx context.Con
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	if localVarOptionals != nil && localVarOptionals.InlineObject28.IsSet() {
-		localVarOptionalInlineObject28, localVarOptionalInlineObject28ok := localVarOptionals.InlineObject28.Value().(InlineObject28)
-		if !localVarOptionalInlineObject28ok {
-			return localVarReturnValue, nil, reportError("inlineObject28 should be InlineObject28")
+	if localVarOptionals != nil && localVarOptionals.InlineObject17.IsSet() {
+		localVarOptionalInlineObject17, localVarOptionalInlineObject17ok := localVarOptionals.InlineObject17.Value().(InlineObject17)
+		if !localVarOptionalInlineObject17ok {
+			return localVarReturnValue, nil, reportError("inlineObject17 should be InlineObject17")
 		}
-		localVarPostBody = &localVarOptionalInlineObject28
+		localVarPostBody = &localVarOptionalInlineObject17
 	}
 
 	if ctx == nil {
@@ -1776,29 +1781,30 @@ func (a *CrossExApiService) UpdateCrossexMarginPositionsLeverage(ctx context.Con
 
 // CloseCrossexPositionOpts Optional parameters for the method 'CloseCrossexPosition'
 type CloseCrossexPositionOpts struct {
-	InlineObject29 optional.Interface
+	InlineObject18 optional.Interface
 }
 
 /*
 CloseCrossexPosition Full Close Position
 Rate Limit: 100 requests per day. Automatic close-out rules. Supports closing FUTURE or MARGIN positions.  Prerequisites before using this interface: - No pending orders for the symbol exist in the current account. - When the system detects the position meets any of the following limits while prerequisites are met: - Less than or equal to the minimum notional amount (minNotional) - Less than or equal to the minimum order quantity (minSize)  After meeting the conditions, the system will automatically generate a close-out order and immediately fully close the position. This interface is used to avoid issues where orders are too small to be placed on the exchange, ensuring small positions can be closed smoothly when reaching the threshold.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param optional nil or *CloseCrossexPositionOpts - Optional Parameters:
- * @param "InlineObject29" (optional.Interface of InlineObject29) - 
-@return InlineResponse20030
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param optional nil or *CloseCrossexPositionOpts - Optional Parameters:
+  - @param "InlineObject18" (optional.Interface of InlineObject18) -
+
+@return InlineResponse20031
 */
-func (a *CrossExApiService) CloseCrossexPosition(ctx context.Context, localVarOptionals *CloseCrossexPositionOpts) (InlineResponse20030, *http.Response, error) {
+func (a *CrossExApiService) CloseCrossexPosition(ctx context.Context, localVarOptionals *CloseCrossexPositionOpts) (InlineResponse20031, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
+		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  InlineResponse20030
+		localVarReturnValue  InlineResponse20031
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/position"
+	localVarPath := a.client.cfg.BasePath + "/crossex/position"
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
@@ -1821,12 +1827,12 @@ func (a *CrossExApiService) CloseCrossexPosition(ctx context.Context, localVarOp
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	if localVarOptionals != nil && localVarOptionals.InlineObject29.IsSet() {
-		localVarOptionalInlineObject29, localVarOptionalInlineObject29ok := localVarOptionals.InlineObject29.Value().(InlineObject29)
-		if !localVarOptionalInlineObject29ok {
-			return localVarReturnValue, nil, reportError("inlineObject29 should be InlineObject29")
+	if localVarOptionals != nil && localVarOptionals.InlineObject18.IsSet() {
+		localVarOptionalInlineObject18, localVarOptionalInlineObject18ok := localVarOptionals.InlineObject18.Value().(InlineObject18)
+		if !localVarOptionalInlineObject18ok {
+			return localVarReturnValue, nil, reportError("inlineObject18 should be InlineObject18")
 		}
-		localVarPostBody = &localVarOptionalInlineObject29
+		localVarPostBody = &localVarOptionalInlineObject18
 	}
 
 	if ctx == nil {
@@ -1882,17 +1888,18 @@ func (a *CrossExApiService) CloseCrossexPosition(ctx context.Context, localVarOp
 
 // GetCrossexInterestRateOpts Optional parameters for the method 'GetCrossexInterestRate'
 type GetCrossexInterestRateOpts struct {
-	Coin optional.String
+	Coin         optional.String
 	ExchangeType optional.String
 }
 
 /*
 GetCrossexInterestRate Query margin asset interest rates
 Rate Limit: 200 requests per 10 seconds
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param optional nil or *GetCrossexInterestRateOpts - Optional Parameters:
- * @param "Coin" (optional.String) -  Currency
- * @param "ExchangeType" (optional.String) -  Exchange
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param optional nil or *GetCrossexInterestRateOpts - Optional Parameters:
+  - @param "Coin" (optional.String) -  Currency
+  - @param "ExchangeType" (optional.String) -  Exchange
+
 @return []InlineResponse20036
 */
 func (a *CrossExApiService) GetCrossexInterestRate(ctx context.Context, localVarOptionals *GetCrossexInterestRateOpts) ([]InlineResponse20036, *http.Response, error) {
@@ -1906,7 +1913,7 @@ func (a *CrossExApiService) GetCrossexInterestRate(ctx context.Context, localVar
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/interest_rate"
+	localVarPath := a.client.cfg.BasePath + "/crossex/interest_rate"
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
@@ -1988,7 +1995,8 @@ func (a *CrossExApiService) GetCrossexInterestRate(ctx context.Context, localVar
 /*
 GetCrossexFee Query User Fee Rates
 Rate Limit: 200 requests per 10 seconds
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+
 @return InlineResponse20037
 */
 func (a *CrossExApiService) GetCrossexFee(ctx context.Context) (InlineResponse20037, *http.Response, error) {
@@ -2002,7 +2010,7 @@ func (a *CrossExApiService) GetCrossexFee(ctx context.Context) (InlineResponse20
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/fee"
+	localVarPath := a.client.cfg.BasePath + "/crossex/fee"
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
@@ -2077,17 +2085,18 @@ func (a *CrossExApiService) GetCrossexFee(ctx context.Context) (InlineResponse20
 
 // ListCrossexPositionsOpts Optional parameters for the method 'ListCrossexPositions'
 type ListCrossexPositionsOpts struct {
-	Symbol optional.String
+	Symbol       optional.String
 	ExchangeType optional.String
 }
 
 /*
 ListCrossexPositions Query Contract Positions
 Rate Limit: 200 requests per 10 seconds
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param optional nil or *ListCrossexPositionsOpts - Optional Parameters:
- * @param "Symbol" (optional.String) -  Trading Pair
- * @param "ExchangeType" (optional.String) -  Exchange
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param optional nil or *ListCrossexPositionsOpts - Optional Parameters:
+  - @param "Symbol" (optional.String) -  Trading Pair
+  - @param "ExchangeType" (optional.String) -  Exchange
+
 @return []InlineResponse20038
 */
 func (a *CrossExApiService) ListCrossexPositions(ctx context.Context, localVarOptionals *ListCrossexPositionsOpts) ([]InlineResponse20038, *http.Response, error) {
@@ -2101,7 +2110,7 @@ func (a *CrossExApiService) ListCrossexPositions(ctx context.Context, localVarOp
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/positions"
+	localVarPath := a.client.cfg.BasePath + "/crossex/positions"
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
@@ -2182,17 +2191,18 @@ func (a *CrossExApiService) ListCrossexPositions(ctx context.Context, localVarOp
 
 // ListCrossexMarginPositionsOpts Optional parameters for the method 'ListCrossexMarginPositions'
 type ListCrossexMarginPositionsOpts struct {
-	Symbol optional.String
+	Symbol       optional.String
 	ExchangeType optional.String
 }
 
 /*
 ListCrossexMarginPositions Query Leveraged Positions
 Rate Limit: 200 requests per 10 seconds
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param optional nil or *ListCrossexMarginPositionsOpts - Optional Parameters:
- * @param "Symbol" (optional.String) -  Currency pair
- * @param "ExchangeType" (optional.String) -  Exchange
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param optional nil or *ListCrossexMarginPositionsOpts - Optional Parameters:
+  - @param "Symbol" (optional.String) -  Currency pair
+  - @param "ExchangeType" (optional.String) -  Exchange
+
 @return []InlineResponse20039
 */
 func (a *CrossExApiService) ListCrossexMarginPositions(ctx context.Context, localVarOptionals *ListCrossexMarginPositionsOpts) ([]InlineResponse20039, *http.Response, error) {
@@ -2206,7 +2216,7 @@ func (a *CrossExApiService) ListCrossexMarginPositions(ctx context.Context, loca
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/margin_positions"
+	localVarPath := a.client.cfg.BasePath + "/crossex/margin_positions"
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
@@ -2288,8 +2298,9 @@ func (a *CrossExApiService) ListCrossexMarginPositions(ctx context.Context, loca
 /*
 ListCrossexAdlRank Query ADL Position Reduction Ranking
 Rate Limit: 200 requests per 10 seconds
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param symbol Trading Pair
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param symbol Trading Pair
+
 @return []InlineResponse20040
 */
 func (a *CrossExApiService) ListCrossexAdlRank(ctx context.Context, symbol string) ([]InlineResponse20040, *http.Response, error) {
@@ -2303,7 +2314,7 @@ func (a *CrossExApiService) ListCrossexAdlRank(ctx context.Context, symbol strin
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/adl_rank"
+	localVarPath := a.client.cfg.BasePath + "/crossex/adl_rank"
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
@@ -2379,7 +2390,7 @@ func (a *CrossExApiService) ListCrossexAdlRank(ctx context.Context, symbol strin
 
 // ListCrossexOpenOrdersOpts Optional parameters for the method 'ListCrossexOpenOrders'
 type ListCrossexOpenOrdersOpts struct {
-	Symbol optional.String
+	Symbol       optional.String
 	ExchangeType optional.String
 	BusinessType optional.String
 }
@@ -2387,25 +2398,26 @@ type ListCrossexOpenOrdersOpts struct {
 /*
 ListCrossexOpenOrders Query All Current Open Orders
 Rate Limit: 200 requests per 10 seconds
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param optional nil or *ListCrossexOpenOrdersOpts - Optional Parameters:
- * @param "Symbol" (optional.String) -  Trading Pair
- * @param "ExchangeType" (optional.String) -  Exchange
- * @param "BusinessType" (optional.String) -  Business Type
-@return []InlineResponse20031
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param optional nil or *ListCrossexOpenOrdersOpts - Optional Parameters:
+  - @param "Symbol" (optional.String) -  Trading Pair
+  - @param "ExchangeType" (optional.String) -  Exchange
+  - @param "BusinessType" (optional.String) -  Business Type
+
+@return []InlineResponse20032
 */
-func (a *CrossExApiService) ListCrossexOpenOrders(ctx context.Context, localVarOptionals *ListCrossexOpenOrdersOpts) ([]InlineResponse20031, *http.Response, error) {
+func (a *CrossExApiService) ListCrossexOpenOrders(ctx context.Context, localVarOptionals *ListCrossexOpenOrdersOpts) ([]InlineResponse20032, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  []InlineResponse20031
+		localVarReturnValue  []InlineResponse20032
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/open_orders"
+	localVarPath := a.client.cfg.BasePath + "/crossex/open_orders"
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
@@ -2489,23 +2501,24 @@ func (a *CrossExApiService) ListCrossexOpenOrders(ctx context.Context, localVarO
 
 // ListCrossexHistoryOrdersOpts Optional parameters for the method 'ListCrossexHistoryOrders'
 type ListCrossexHistoryOrdersOpts struct {
-	Page optional.Int32
-	Limit optional.Int32
+	Page   optional.Int32
+	Limit  optional.Int32
 	Symbol optional.String
-	From optional.Int32
-	To optional.Int32
+	From   optional.Int32
+	To     optional.Int32
 }
 
 /*
 ListCrossexHistoryOrders queryorderhistory
 Rate Limit: 200 requests per 10 seconds
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param optional nil or *ListCrossexHistoryOrdersOpts - Optional Parameters:
- * @param "Page" (optional.Int32) -  Page number
- * @param "Limit" (optional.Int32) -  Maximum number of records returned in a single list
- * @param "Symbol" (optional.String) -  Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME <EMAIL@ADDRESS> Language: en Language-Team: en <L@li.org> Plural-Forms: nplurals=2; plural=(n !=1) MIME-Version: 1.0 Content-Type: text/plain; charset=utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0 
- * @param "From" (optional.Int32) -  Start Millisecond Timestamp
- * @param "To" (optional.Int32) -  End Millisecond Timestamp
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param optional nil or *ListCrossexHistoryOrdersOpts - Optional Parameters:
+  - @param "Page" (optional.Int32) -  Page number
+  - @param "Limit" (optional.Int32) -  Maximum number of records returned in a single list
+  - @param "Symbol" (optional.String) -  Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME <EMAIL@ADDRESS> Language: en Language-Team: en <L@li.org> Plural-Forms: nplurals=2; plural=(n !=1) MIME-Version: 1.0 Content-Type: text/plain; charset=utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0
+  - @param "From" (optional.Int32) -  Start Millisecond Timestamp
+  - @param "To" (optional.Int32) -  End Millisecond Timestamp
+
 @return []InlineResponse20041
 */
 func (a *CrossExApiService) ListCrossexHistoryOrders(ctx context.Context, localVarOptionals *ListCrossexHistoryOrdersOpts) ([]InlineResponse20041, *http.Response, error) {
@@ -2519,7 +2532,7 @@ func (a *CrossExApiService) ListCrossexHistoryOrders(ctx context.Context, localV
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/history_orders"
+	localVarPath := a.client.cfg.BasePath + "/crossex/history_orders"
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
@@ -2609,23 +2622,24 @@ func (a *CrossExApiService) ListCrossexHistoryOrders(ctx context.Context, localV
 
 // ListCrossexHistoryPositionsOpts Optional parameters for the method 'ListCrossexHistoryPositions'
 type ListCrossexHistoryPositionsOpts struct {
-	Page optional.Int32
-	Limit optional.Int32
+	Page   optional.Int32
+	Limit  optional.Int32
 	Symbol optional.String
-	From optional.Int32
-	To optional.Int32
+	From   optional.Int32
+	To     optional.Int32
 }
 
 /*
 ListCrossexHistoryPositions Query Contract Position History
 Rate Limit: 200 requests per 10 seconds
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param optional nil or *ListCrossexHistoryPositionsOpts - Optional Parameters:
- * @param "Page" (optional.Int32) -  Page number
- * @param "Limit" (optional.Int32) -  Maximum number returned by list, max 1000
- * @param "Symbol" (optional.String) -  Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME <EMAIL@ADDRESS> Language: en Language-Team: en <L@li.org> Plural-Forms: nplurals=2; plural=(n !=1) MIME-Version: 1.0 Content-Type: text/plain; charset=utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0 
- * @param "From" (optional.Int32) -  Start Millisecond Timestamp
- * @param "To" (optional.Int32) -  End Millisecond Timestamp
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param optional nil or *ListCrossexHistoryPositionsOpts - Optional Parameters:
+  - @param "Page" (optional.Int32) -  Page number
+  - @param "Limit" (optional.Int32) -  Maximum number returned by list, max 1000
+  - @param "Symbol" (optional.String) -  Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME <EMAIL@ADDRESS> Language: en Language-Team: en <L@li.org> Plural-Forms: nplurals=2; plural=(n !=1) MIME-Version: 1.0 Content-Type: text/plain; charset=utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0
+  - @param "From" (optional.Int32) -  Start Millisecond Timestamp
+  - @param "To" (optional.Int32) -  End Millisecond Timestamp
+
 @return []InlineResponse20042
 */
 func (a *CrossExApiService) ListCrossexHistoryPositions(ctx context.Context, localVarOptionals *ListCrossexHistoryPositionsOpts) ([]InlineResponse20042, *http.Response, error) {
@@ -2639,7 +2653,7 @@ func (a *CrossExApiService) ListCrossexHistoryPositions(ctx context.Context, loc
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/history_positions"
+	localVarPath := a.client.cfg.BasePath + "/crossex/history_positions"
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
@@ -2729,23 +2743,24 @@ func (a *CrossExApiService) ListCrossexHistoryPositions(ctx context.Context, loc
 
 // ListCrossexHistoryMarginPositionsOpts Optional parameters for the method 'ListCrossexHistoryMarginPositions'
 type ListCrossexHistoryMarginPositionsOpts struct {
-	Page optional.Int32
-	Limit optional.Int32
+	Page   optional.Int32
+	Limit  optional.Int32
 	Symbol optional.String
-	From optional.Int32
-	To optional.Int32
+	From   optional.Int32
+	To     optional.Int32
 }
 
 /*
 ListCrossexHistoryMarginPositions Query Leveraged Position History
 Rate Limit: 200 requests per 10 seconds
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param optional nil or *ListCrossexHistoryMarginPositionsOpts - Optional Parameters:
- * @param "Page" (optional.Int32) -  Page number
- * @param "Limit" (optional.Int32) -  Maximum number returned by list, max 1000
- * @param "Symbol" (optional.String) -  Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME <EMAIL@ADDRESS> Language: en Language-Team: en <L@li.org> Plural-Forms: nplurals=2; plural=(n !=1) MIME-Version: 1.0 Content-Type: text/plain; charset=utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0 
- * @param "From" (optional.Int32) -  Start Millisecond Timestamp
- * @param "To" (optional.Int32) -  End Millisecond Timestamp
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param optional nil or *ListCrossexHistoryMarginPositionsOpts - Optional Parameters:
+  - @param "Page" (optional.Int32) -  Page number
+  - @param "Limit" (optional.Int32) -  Maximum number returned by list, max 1000
+  - @param "Symbol" (optional.String) -  Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME <EMAIL@ADDRESS> Language: en Language-Team: en <L@li.org> Plural-Forms: nplurals=2; plural=(n !=1) MIME-Version: 1.0 Content-Type: text/plain; charset=utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0
+  - @param "From" (optional.Int32) -  Start Millisecond Timestamp
+  - @param "To" (optional.Int32) -  End Millisecond Timestamp
+
 @return []InlineResponse20043
 */
 func (a *CrossExApiService) ListCrossexHistoryMarginPositions(ctx context.Context, localVarOptionals *ListCrossexHistoryMarginPositionsOpts) ([]InlineResponse20043, *http.Response, error) {
@@ -2759,7 +2774,7 @@ func (a *CrossExApiService) ListCrossexHistoryMarginPositions(ctx context.Contex
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/history_margin_positions"
+	localVarPath := a.client.cfg.BasePath + "/crossex/history_margin_positions"
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
@@ -2849,25 +2864,26 @@ func (a *CrossExApiService) ListCrossexHistoryMarginPositions(ctx context.Contex
 
 // ListCrossexHistoryMarginInterestsOpts Optional parameters for the method 'ListCrossexHistoryMarginInterests'
 type ListCrossexHistoryMarginInterestsOpts struct {
-	Symbol optional.String
-	From optional.Int32
-	To optional.Int32
-	Page optional.Int32
-	Limit optional.Int32
+	Symbol       optional.String
+	From         optional.Int32
+	To           optional.Int32
+	Page         optional.Int32
+	Limit        optional.Int32
 	ExchangeType optional.String
 }
 
 /*
 ListCrossexHistoryMarginInterests Query Leveraged Interest Deduction History
 Rate Limit: 200 requests per 10 seconds
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param optional nil or *ListCrossexHistoryMarginInterestsOpts - Optional Parameters:
- * @param "Symbol" (optional.String) -  Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME <EMAIL@ADDRESS> Language: en Language-Team: en <L@li.org> Plural-Forms: nplurals=2; plural=(n !=1) MIME-Version: 1.0 Content-Type: text/plain; charset=utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0 
- * @param "From" (optional.Int32) -  Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME <EMAIL@ADDRESS> Language: en Language-Team: en <L@li.org> Plural-Forms: nplurals=2; plural=(n !=1) MIME-Version: 1.0 Content-Type: text/plain; charset=utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0 
- * @param "To" (optional.Int32) -  Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME <EMAIL@ADDRESS> Language: en Language-Team: en <L@li.org> Plural-Forms: nplurals=2; plural=(n !=1) MIME-Version: 1.0 Content-Type: text/plain; charset=utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0 
- * @param "Page" (optional.Int32) -  Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME <EMAIL@ADDRESS> Language: en Language-Team: en <L@li.org> Plural-Forms: nplurals=2; plural=(n !=1) MIME-Version: 1.0 Content-Type: text/plain; charset=utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0 
- * @param "Limit" (optional.Int32) -  Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME <EMAIL@ADDRESS> Language: en Language-Team: en <L@li.org> Plural-Forms: nplurals=2; plural=(n !=1) MIME-Version: 1.0 Content-Type: text/plain; charset=utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0 
- * @param "ExchangeType" (optional.String) -  Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME <EMAIL@ADDRESS> Language: en Language-Team: en <L@li.org> Plural-Forms: nplurals=2; plural=(n !=1) MIME-Version: 1.0 Content-Type: text/plain; charset=utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0 
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param optional nil or *ListCrossexHistoryMarginInterestsOpts - Optional Parameters:
+  - @param "Symbol" (optional.String) -  Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME <EMAIL@ADDRESS> Language: en Language-Team: en <L@li.org> Plural-Forms: nplurals=2; plural=(n !=1) MIME-Version: 1.0 Content-Type: text/plain; charset=utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0
+  - @param "From" (optional.Int32) -  Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME <EMAIL@ADDRESS> Language: en Language-Team: en <L@li.org> Plural-Forms: nplurals=2; plural=(n !=1) MIME-Version: 1.0 Content-Type: text/plain; charset=utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0
+  - @param "To" (optional.Int32) -  Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME <EMAIL@ADDRESS> Language: en Language-Team: en <L@li.org> Plural-Forms: nplurals=2; plural=(n !=1) MIME-Version: 1.0 Content-Type: text/plain; charset=utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0
+  - @param "Page" (optional.Int32) -  Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME <EMAIL@ADDRESS> Language: en Language-Team: en <L@li.org> Plural-Forms: nplurals=2; plural=(n !=1) MIME-Version: 1.0 Content-Type: text/plain; charset=utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0
+  - @param "Limit" (optional.Int32) -  Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME <EMAIL@ADDRESS> Language: en Language-Team: en <L@li.org> Plural-Forms: nplurals=2; plural=(n !=1) MIME-Version: 1.0 Content-Type: text/plain; charset=utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0
+  - @param "ExchangeType" (optional.String) -  Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME <EMAIL@ADDRESS> Language: en Language-Team: en <L@li.org> Plural-Forms: nplurals=2; plural=(n !=1) MIME-Version: 1.0 Content-Type: text/plain; charset=utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0
+
 @return []InlineResponse20044
 */
 func (a *CrossExApiService) ListCrossexHistoryMarginInterests(ctx context.Context, localVarOptionals *ListCrossexHistoryMarginInterestsOpts) ([]InlineResponse20044, *http.Response, error) {
@@ -2881,7 +2897,7 @@ func (a *CrossExApiService) ListCrossexHistoryMarginInterests(ctx context.Contex
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/history_margin_interests"
+	localVarPath := a.client.cfg.BasePath + "/crossex/history_margin_interests"
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
@@ -2974,23 +2990,24 @@ func (a *CrossExApiService) ListCrossexHistoryMarginInterests(ctx context.Contex
 
 // ListCrossexHistoryTradesOpts Optional parameters for the method 'ListCrossexHistoryTrades'
 type ListCrossexHistoryTradesOpts struct {
-	Page optional.Int32
-	Limit optional.Int32
+	Page   optional.Int32
+	Limit  optional.Int32
 	Symbol optional.String
-	From optional.Int32
-	To optional.Int32
+	From   optional.Int32
+	To     optional.Int32
 }
 
 /*
 ListCrossexHistoryTrades queryfilledhistory
 Rate Limit: 200 requests per 10 seconds
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param optional nil or *ListCrossexHistoryTradesOpts - Optional Parameters:
- * @param "Page" (optional.Int32) -  Page number
- * @param "Limit" (optional.Int32) -  Maximum number returned by list, max 1000
- * @param "Symbol" (optional.String) -  Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME <EMAIL@ADDRESS> Language: en Language-Team: en <L@li.org> Plural-Forms: nplurals=2; plural=(n !=1) MIME-Version: 1.0 Content-Type: text/plain; charset=utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0 
- * @param "From" (optional.Int32) -  Start Millisecond Timestamp
- * @param "To" (optional.Int32) -  End Millisecond Timestamp
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param optional nil or *ListCrossexHistoryTradesOpts - Optional Parameters:
+  - @param "Page" (optional.Int32) -  Page number
+  - @param "Limit" (optional.Int32) -  Maximum number returned by list, max 1000
+  - @param "Symbol" (optional.String) -  Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME <EMAIL@ADDRESS> Language: en Language-Team: en <L@li.org> Plural-Forms: nplurals=2; plural=(n !=1) MIME-Version: 1.0 Content-Type: text/plain; charset=utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0
+  - @param "From" (optional.Int32) -  Start Millisecond Timestamp
+  - @param "To" (optional.Int32) -  End Millisecond Timestamp
+
 @return []InlineResponse20045
 */
 func (a *CrossExApiService) ListCrossexHistoryTrades(ctx context.Context, localVarOptionals *ListCrossexHistoryTradesOpts) ([]InlineResponse20045, *http.Response, error) {
@@ -3004,7 +3021,7 @@ func (a *CrossExApiService) ListCrossexHistoryTrades(ctx context.Context, localV
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/history_trades"
+	localVarPath := a.client.cfg.BasePath + "/crossex/history_trades"
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
@@ -3094,23 +3111,24 @@ func (a *CrossExApiService) ListCrossexHistoryTrades(ctx context.Context, localV
 
 // ListCrossexAccountBookOpts Optional parameters for the method 'ListCrossexAccountBook'
 type ListCrossexAccountBookOpts struct {
-	Page optional.Int32
+	Page  optional.Int32
 	Limit optional.Int32
-	Coin optional.String
-	From optional.Int32
-	To optional.Int32
+	Coin  optional.String
+	From  optional.Int32
+	To    optional.Int32
 }
 
 /*
 ListCrossexAccountBook Query Account Asset Change History
 Rate Limit: 200 requests per 10 seconds
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param optional nil or *ListCrossexAccountBookOpts - Optional Parameters:
- * @param "Page" (optional.Int32) -  Page number
- * @param "Limit" (optional.Int32) -  Maximum number returned by list, max 1000
- * @param "Coin" (optional.String) -  Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME <EMAIL@ADDRESS> Language: en Language-Team: en <L@li.org> Plural-Forms: nplurals=2; plural=(n !=1) MIME-Version: 1.0 Content-Type: text/plain; charset=utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0 
- * @param "From" (optional.Int32) -  Start Millisecond Timestamp
- * @param "To" (optional.Int32) -  End Millisecond Timestamp
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param optional nil or *ListCrossexAccountBookOpts - Optional Parameters:
+  - @param "Page" (optional.Int32) -  Page number
+  - @param "Limit" (optional.Int32) -  Maximum number returned by list, max 1000
+  - @param "Coin" (optional.String) -  Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME <EMAIL@ADDRESS> Language: en Language-Team: en <L@li.org> Plural-Forms: nplurals=2; plural=(n !=1) MIME-Version: 1.0 Content-Type: text/plain; charset=utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0
+  - @param "From" (optional.Int32) -  Start Millisecond Timestamp
+  - @param "To" (optional.Int32) -  End Millisecond Timestamp
+
 @return []InlineResponse20046
 */
 func (a *CrossExApiService) ListCrossexAccountBook(ctx context.Context, localVarOptionals *ListCrossexAccountBookOpts) ([]InlineResponse20046, *http.Response, error) {
@@ -3124,7 +3142,7 @@ func (a *CrossExApiService) ListCrossexAccountBook(ctx context.Context, localVar
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/account_book"
+	localVarPath := a.client.cfg.BasePath + "/crossex/account_book"
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
@@ -3214,17 +3232,18 @@ func (a *CrossExApiService) ListCrossexAccountBook(ctx context.Context, localVar
 
 // ListCrossexCoinDiscountRateOpts Optional parameters for the method 'ListCrossexCoinDiscountRate'
 type ListCrossexCoinDiscountRateOpts struct {
-	Coin optional.String
+	Coin         optional.String
 	ExchangeType optional.String
 }
 
 /*
 ListCrossexCoinDiscountRate Query currency discount rate (discount rate of margin currency in isolated exchange mode)
 Rate Limit: 200 requests per 10 seconds
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param optional nil or *ListCrossexCoinDiscountRateOpts - Optional Parameters:
- * @param "Coin" (optional.String) -  Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME <EMAIL@ADDRESS> Language: en Language-Team: en <L@li.org> Plural-Forms: nplurals=2; plural=(n !=1) MIME-Version: 1.0 Content-Type: text/plain; charset=utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0 
- * @param "ExchangeType" (optional.String) -  OKX/GATE/BINANCE
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param optional nil or *ListCrossexCoinDiscountRateOpts - Optional Parameters:
+  - @param "Coin" (optional.String) -  Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME <EMAIL@ADDRESS> Language: en Language-Team: en <L@li.org> Plural-Forms: nplurals=2; plural=(n !=1) MIME-Version: 1.0 Content-Type: text/plain; charset=utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0
+  - @param "ExchangeType" (optional.String) -  OKX/GATE/BINANCE
+
 @return []InlineResponse20047
 */
 func (a *CrossExApiService) ListCrossexCoinDiscountRate(ctx context.Context, localVarOptionals *ListCrossexCoinDiscountRateOpts) ([]InlineResponse20047, *http.Response, error) {
@@ -3238,7 +3257,7 @@ func (a *CrossExApiService) ListCrossexCoinDiscountRate(ctx context.Context, loc
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/coin_discount_rate"
+	localVarPath := a.client.cfg.BasePath + "/crossex/coin_discount_rate"
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}

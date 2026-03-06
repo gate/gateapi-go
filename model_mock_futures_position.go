@@ -11,7 +11,7 @@ package gateapi
 
 // Futures positions
 type MockFuturesPosition struct {
-	// Futures name, currently only supports USDT perpetual contracts for BTC and ETH
+	// Perpetual contract name. Only USDT perpetual contracts for underlying currencies with active options trading are supported.
 	Contract string `json:"contract"`
 	// Position size, measured in contract quantity
 	Size string `json:"size"`

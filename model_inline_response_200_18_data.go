@@ -11,147 +11,147 @@ package gateapi
 
 type InlineResponse20018Data struct {
 	// Whether sell order
-	IsSell int32 `json:"is_sell"`
+	IsSell int32 `json:"is_sell,omitempty"`
 	// Order ID
-	Txid int32 `json:"txid"`
+	Txid int32 `json:"txid,omitempty"`
 	// Order ID
-	Orderid int32 `json:"orderid"`
+	Orderid int32 `json:"orderid,omitempty"`
 	// Order creation timestamp
-	Timest int32 `json:"timest"`
+	Timest int32 `json:"timest,omitempty"`
 	// Payment deadline
-	LastPayTime int32 `json:"last_pay_time"`
+	LastPayTime int32 `json:"last_pay_time,omitempty"`
 	// Remaining payment time
-	RemainPayTime int32 `json:"remain_pay_time"`
+	RemainPayTime int32 `json:"remain_pay_time,omitempty"`
 	// Cryptocurrency type
-	CurrencyType string `json:"currencyType"`
+	CurrencyType string `json:"currencyType,omitempty"`
 	// Fiat currency type
-	WantType string `json:"want_type"`
+	WantType string `json:"want_type,omitempty"`
 	// Price
-	Rate string `json:"rate"`
+	Rate string `json:"rate,omitempty"`
 	// Size
-	Amount string `json:"amount"`
+	Amount string `json:"amount,omitempty"`
 	// Fiat amount
-	Total string `json:"total"`
+	Total string `json:"total,omitempty"`
 	// Order Status
-	Status string `json:"status"`
+	Status string `json:"status,omitempty"`
 	// Cancellation reason ID
-	ReasonId string `json:"reason_id"`
+	ReasonId string `json:"reason_id,omitempty"`
 	// Cancellation reason
-	ReasonDesc string `json:"reason_desc"`
+	ReasonDesc string `json:"reason_desc,omitempty"`
 	// Popup ID
-	ToastId int32 `json:"toast_id"`
+	ToastId int32 `json:"toast_id,omitempty"`
 	// Cancellation time
-	CancelTime string `json:"cancel_time"`
+	CancelTime string `json:"cancel_time,omitempty"`
 	// Whether seller confirmed the reason
-	SellerConfirm int32 `json:"seller_confirm"`
+	SellerConfirm int32 `json:"seller_confirm,omitempty"`
 	// Whether in dispute
-	InAppeal int32 `json:"in_appeal"`
+	InAppeal int32 `json:"in_appeal,omitempty"`
 	// Appeal time limit
-	DisputeTime int32 `json:"dispute_time"`
+	DisputeTime int32 `json:"dispute_time,omitempty"`
 	// Whether order cancellation is allowed
-	Cancelable int32 `json:"cancelable"`
+	Cancelable int32 `json:"cancelable,omitempty"`
 	// Whether to hide payment method
-	HidePayment int32 `json:"hide_payment"`
+	HidePayment int32 `json:"hide_payment,omitempty"`
 	// Trading terms
-	TradeTips string `json:"trade_tips"`
+	TradeTips string `json:"trade_tips,omitempty"`
 	// Whether to display bank
-	ShowBank string `json:"show_bank"`
+	ShowBank string `json:"show_bank,omitempty"`
 	// Bank name
-	Bankname string `json:"bankname"`
+	Bankname string `json:"bankname,omitempty"`
 	// Bank branch name
-	Bankbranch string `json:"bankbranch"`
+	Bankbranch string `json:"bankbranch,omitempty"`
 	// Bank ID
-	Bankid string `json:"bankid"`
+	Bankid string `json:"bankid,omitempty"`
 	// Bank cardholder name
-	BankHolderRealname string `json:"bank_holder_realname"`
+	BankHolderRealname string `json:"bank_holder_realname,omitempty"`
 	// Whether to display Alipay
-	ShowAli string `json:"show_ali"`
+	ShowAli string `json:"show_ali,omitempty"`
 	// Alipay account name
-	Aliname string `json:"aliname"`
+	Aliname string `json:"aliname,omitempty"`
 	// Whether Alipay QR code exists
-	IsAlicode int32 `json:"is_alicode"`
+	IsAlicode int32 `json:"is_alicode,omitempty"`
 	// Whether to display WeChat
-	ShowWechat string `json:"show_wechat"`
+	ShowWechat string `json:"show_wechat,omitempty"`
 	// WeChat account name
-	Wename string `json:"wename"`
+	Wename string `json:"wename,omitempty"`
 	// Whether to display other payment methods
-	ShowOthers string `json:"show_others"`
+	ShowOthers string `json:"show_others,omitempty"`
 	// Other payment methods
-	PayOthers []string `json:"pay_others"`
+	PayOthers []string `json:"pay_others,omitempty"`
 	// Payment type
-	SelPaytype string `json:"sel_paytype"`
+	SelPaytype string `json:"sel_paytype,omitempty"`
 	// Counterparty UID
-	ItsUid string `json:"its_uid"`
+	ItsUid string `json:"its_uid,omitempty"`
 	// Whether counterparty is Blue V
-	ItsIsBlueVip int32 `json:"its_is_blue_vip"`
+	ItsIsBlueVip int32 `json:"its_is_blue_vip,omitempty"`
 	// Counterparty VIP tier
-	ItsTier int32 `json:"its_tier"`
+	ItsTier int32 `json:"its_tier,omitempty"`
 	// Counterparty avatar
-	ItsAvatar string `json:"its_avatar"`
+	ItsAvatar string `json:"its_avatar,omitempty"`
 	// Counterparty nickname
-	ItsNickname string `json:"its_nickname"`
+	ItsNickname string `json:"its_nickname,omitempty"`
 	// Counterparty username
-	ItsRealname string `json:"its_realname"`
+	ItsRealname string `json:"its_realname,omitempty"`
 	// Whether following
-	IsFollow int32 `json:"is_follow"`
+	IsFollow int32 `json:"is_follow,omitempty"`
 	// Whether blocked
-	IsBlack int32 `json:"is_black"`
+	IsBlack int32 `json:"is_black,omitempty"`
 	// Whether traded before
-	HaveTraded int32 `json:"have_traded"`
+	HaveTraded int32 `json:"have_traded,omitempty"`
 	// Unread appeals
-	AppealUnread int32 `json:"appeal_unread"`
+	AppealUnread int32 `json:"appeal_unread,omitempty"`
 	// Whether appeal cancellation is allowed
-	AppealAllowCancel int32 `json:"appeal_allow_cancel"`
+	AppealAllowCancel int32 `json:"appeal_allow_cancel,omitempty"`
 	// Appeal result (including pending appeals)
-	AppealVerdictHasOpen string `json:"appeal_verdict_has_open"`
+	AppealVerdictHasOpen string `json:"appeal_verdict_has_open,omitempty"`
 	// IM unread
-	ImUnread int32 `json:"im_unread"`
+	ImUnread int32 `json:"im_unread,omitempty"`
 	// Review content
-	Message string `json:"message"`
+	Message string `json:"message,omitempty"`
 	// Rating
-	Score string `json:"score"`
+	Score string `json:"score,omitempty"`
 	// Payment voucher
-	PaymentVoucherUrl []string `json:"payment_voucher_url"`
+	PaymentVoucherUrl []string `json:"payment_voucher_url,omitempty"`
 	// Counterparty transaction volume
-	CompleteNumber int32 `json:"complete_number"`
+	CompleteNumber int32 `json:"complete_number,omitempty"`
 	// Counterparty completion rate
-	CompleteRateMonth string `json:"complete_rate_month"`
+	CompleteRateMonth string `json:"complete_rate_month,omitempty"`
 	// Whether transaction record is verified
-	CheckJournalAccount bool `json:"check_journal_account"`
+	CheckJournalAccount bool `json:"check_journal_account,omitempty"`
 	// Whether to display transaction records
-	ShowJournalAccount bool `json:"show_journal_account"`
+	ShowJournalAccount bool `json:"show_journal_account,omitempty"`
 	// Whether margin is frozen
-	IsFreezeGuarantee int32 `json:"is_freeze_guarantee"`
+	IsFreezeGuarantee int32 `json:"is_freeze_guarantee,omitempty"`
 	// Remaining USDT margin
-	UsdtLeftGuarantee string `json:"usdt_left_guarantee"`
+	UsdtLeftGuarantee string `json:"usdt_left_guarantee,omitempty"`
 	// Margin currency type
-	GuaranteeCurrType string `json:"guarantee_curr_type"`
+	GuaranteeCurrType string `json:"guarantee_curr_type,omitempty"`
 	// Payment time
-	TimestPaid int32 `json:"timest_paid"`
+	TimestPaid int32 `json:"timest_paid,omitempty"`
 	// Order Status
-	State string `json:"state"`
+	State string `json:"state,omitempty"`
 	// Coin release switch configuration
-	ReleaseCoinSwitch int32 `json:"release_coin_switch"`
+	ReleaseCoinSwitch int32 `json:"release_coin_switch,omitempty"`
 	// Username
-	OwnRealname string `json:"own_realname"`
+	OwnRealname string `json:"own_realname,omitempty"`
 	// Average confirmation time in last 30 days
-	ConfirmationUseTimeMonth int32 `json:"confirmation_use_time_month"`
+	ConfirmationUseTimeMonth int32 `json:"confirmation_use_time_month,omitempty"`
 	// Whether risk user
-	IsRiskUser int32 `json:"is_risk_user"`
+	IsRiskUser int32 `json:"is_risk_user,omitempty"`
 	// Whether XT order
-	IsXt int32 `json:"is_xt"`
+	IsXt int32 `json:"is_xt,omitempty"`
 	// Order Type
-	OrderType int32 `json:"order_type"`
+	OrderType int32 `json:"order_type,omitempty"`
 	// Fiat currency symbol
-	Symbol string `json:"symbol"`
+	Symbol string `json:"symbol,omitempty"`
 	// Whether to show confirm receipt during appeal
-	IsShowReceive int32 `json:"is_show_receive"`
+	IsShowReceive int32 `json:"is_show_receive,omitempty"`
 	// Whether regular user
-	IsTaker int32 `json:"is_taker"`
+	IsTaker int32 `json:"is_taker,omitempty"`
 	// Merchant online status
-	IsOnline int32 `json:"is_online"`
+	IsOnline int32 `json:"is_online,omitempty"`
 	// Whether to display seller contact information
-	ShowSellerContactInfo bool `json:"show_seller_contact_info"`
+	ShowSellerContactInfo bool `json:"show_seller_contact_info,omitempty"`
 	// Payment methods supported by current order
-	SupportedPayTypes []string `json:"supported_pay_types"`
+	SupportedPayTypes []string `json:"supported_pay_types,omitempty"`
 }

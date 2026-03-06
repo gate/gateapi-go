@@ -10,20 +10,22 @@
 package gateapi
 
 type InlineObject7 struct {
-	// Cryptocurrency
+	// BUY for on-ramp, SELL for off-ramp
+	Type string `json:"type"`
+	// Quote direction returned by the quote API (used for order validation)
+	Side string `json:"side"`
+	// Cryptocurrency (supported currencies can be queried from the OTC web fiat quote page)
 	CryptoCurrency string `json:"crypto_currency"`
-	// Fiat currency
+	// Fiat currency (supported currencies can be queried from the OTC web fiat quote page)
 	FiatCurrency string `json:"fiat_currency"`
-	// Order tab, default: pending (pending: In Progress (pending: AND status in ('OPEN','PAID', 'LOCKED', 'TEMP')); dispute: In Dispute (status in ('ACCEPT','BCLOSED', 'CANCEL', 'BECANCEL', 'SCLOSED', 'SCANCEL')))
-	OrderTab string `json:"order_tab,omitempty"`
-	// Buy/Sell (sell=Sell, buy=Buy, others=All)
-	SelectType string `json:"select_type,omitempty"`
-	// Order Status (dispute: Disputed Order; closed: ACCEPT, BCLOSED; cancel: CANCEL, BECANCEL, SCLOSED, SCANCEL; locked: LOCKED; open: OPEN; paid: PAID; completed: CANCEL, BECANCEL, SCLOSED, SCANCEL, ACCEPT, BCLOSED)
-	Status string `json:"status,omitempty"`
-	// Order ID
-	Txid int32 `json:"txid,omitempty"`
-	// Start timestamp, default is 00:00 89 days ago
-	StartTime int32 `json:"start_time,omitempty"`
-	// End timestamp, default is 23:59:59 today
-	EndTime int32 `json:"end_time,omitempty"`
+	// Amount of cryptocurrency
+	CryptoAmount string `json:"crypto_amount"`
+	// Fiat amount
+	FiatAmount string `json:"fiat_amount"`
+	// Promotion code
+	PromotionCode string `json:"promotion_code,omitempty"`
+	// Parameter returned by the quote API
+	QuoteToken string `json:"quote_token"`
+	// Bank card ID used for the order (retrieved via the default bank card API)
+	BankId string `json:"bank_id"`
 }

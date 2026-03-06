@@ -53,8 +53,6 @@ type FuturesBboOrder struct {
 	StpAct string `json:"stp_act,omitempty"`
 	// The custom data that the user remarked when amending the order
 	AmendText string `json:"amend_text,omitempty"`
-	// Counterparty user's VIP level for limit order fills. Current order will only match with orders whose VIP level is less than or equal to the specified level. Only 11~16 are supported; default is 0
-	LimitVip int64 `json:"limit_vip,omitempty"`
 	// Position ID
 	Pid int64 `json:"pid,omitempty"`
 }

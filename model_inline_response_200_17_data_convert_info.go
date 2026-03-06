@@ -12,23 +12,23 @@ package gateapi
 // Flash swap order information
 type InlineResponse20017DataConvertInfo struct {
 	// Flash swap target currency
-	ConvertType string `json:"convert_type"`
+	ConvertType string `json:"convert_type,omitempty"`
 	// Flash swap order status
-	ConvertStatus string `json:"convert_status"`
+	ConvertStatus string `json:"convert_status,omitempty"`
 	// Expected price when placing order
-	PreRate string `json:"pre_rate"`
+	PreRate string `json:"pre_rate,omitempty"`
 	// Execution price
-	Rate string `json:"rate"`
+	Rate string `json:"rate,omitempty"`
 	// Expected fiat price when placing order
-	PreFiatRate string `json:"pre_fiat_rate"`
+	PreFiatRate string `json:"pre_fiat_rate,omitempty"`
 	// Fiat price at execution
-	FiatRate string `json:"fiat_rate"`
+	FiatRate string `json:"fiat_rate,omitempty"`
 	// Size
-	Amount string `json:"amount"`
+	Amount string `json:"amount,omitempty"`
 	// Swap Amount
-	ConvertAmount string `json:"convert_amount"`
+	ConvertAmount string `json:"convert_amount,omitempty"`
 	// Slippage calculation: slippage = (expected price when placing order - real-time price during auto swap) / expected price when placing order
-	Slippage string `json:"slippage"`
+	Slippage string `json:"slippage,omitempty"`
 	// Flash swap order display status
-	Status string `json:"status"`
+	Status string `json:"status,omitempty"`
 }

@@ -9,23 +9,20 @@
 
 package gateapi
 
+// Place order request parameters
 type InlineObject2 struct {
-	// BUY for on-ramp, SELL for off-ramp
-	Type string `json:"type"`
-	// Quote direction returned by the quote API (used for order validation)
-	Side string `json:"side"`
-	// Cryptocurrency (supported currencies can be queried from the OTC web fiat quote page)
-	CryptoCurrency string `json:"crypto_currency"`
-	// Fiat currency (supported currencies can be queried from the OTC web fiat quote page)
-	FiatCurrency string `json:"fiat_currency"`
-	// Amount of cryptocurrency
-	CryptoAmount string `json:"crypto_amount"`
-	// Fiat amount
-	FiatAmount string `json:"fiat_amount"`
-	// Promotion code
-	PromotionCode string `json:"promotion_code,omitempty"`
-	// Parameter returned by the quote API
-	QuoteToken string `json:"quote_token"`
-	// Bank card ID used for the order (retrieved via the default bank card API)
-	BankId string `json:"bank_id"`
+	// Order price
+	Price string `json:"price"`
+	// Price type (trigger=trigger price, market=market price)
+	PriceType string `json:"price_type"`
+	// Order side (1=sell, 2=buy)
+	Side int32 `json:"side"`
+	// Trading symbol code
+	Symbol string `json:"symbol"`
+	// Order volume
+	Volume string `json:"volume"`
+	// Take profit price (optional)
+	PriceTp string `json:"price_tp,omitempty"`
+	// Stop loss price (optional)
+	PriceSl string `json:"price_sl,omitempty"`
 }

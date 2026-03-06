@@ -10,24 +10,18 @@
 package gateapi
 
 type InlineObject8 struct {
-	// Cryptocurrency
-	CryptoCurrency string `json:"crypto_currency"`
-	// Fiat currency
-	FiatCurrency string `json:"fiat_currency"`
-	// Buy/Sell (sell=Sell, buy=Buy, others=All)
-	SelectType string `json:"select_type,omitempty"`
-	// Order Status (dispute: Disputed Order; closed: ACCEPT, BCLOSED; cancel: CANCEL, BECANCEL, SCLOSED, SCANCEL; locked: LOCKED; open: OPEN; paid: PAID; completed: CANCEL, BECANCEL, SCLOSED, SCANCEL, ACCEPT, BCLOSED)
-	Status string `json:"status,omitempty"`
-	// Order ID
-	Txid int32 `json:"txid,omitempty"`
-	// Start timestamp, default is 00:00 89 days ago
-	StartTime int32 `json:"start_time,omitempty"`
-	// End timestamp, default is 23:59:59 today
-	EndTime int32 `json:"end_time,omitempty"`
-	// 1: Include appeal status, 0: None
-	QueryDispute int32 `json:"query_dispute,omitempty"`
-	// page number
-	Page int32 `json:"page,omitempty"`
-	// Number of orders per page
-	PerPage int32 `json:"per_page,omitempty"`
+	// Currency paid by the user. Supported currencies can be queried from the OTC web stablecoin quote page.
+	PayCoin string `json:"pay_coin,omitempty"`
+	// Currency to be received by the user. Supported currencies can be queried from the OTC web stablecoin quote page.
+	GetCoin string `json:"get_coin,omitempty"`
+	// User payment currency amount
+	PayAmount string `json:"pay_amount,omitempty"`
+	// Amount of currency received by the user
+	GetAmount string `json:"get_amount,omitempty"`
+	// Quote direction returned by the quote API (used for order validation)
+	Side string `json:"side,omitempty"`
+	// promotion code
+	PromotionCode string `json:"promotion_code,omitempty"`
+	// Parameter returned by the quote API
+	QuoteToken string `json:"quote_token,omitempty"`
 }

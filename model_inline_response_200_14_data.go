@@ -11,64 +11,64 @@ package gateapi
 
 type InlineResponse20014Data struct {
 	// Whether self
-	IsSelf bool `json:"is_self"`
+	IsSelf bool `json:"is_self,omitempty"`
 	// User registration time (formatted string)
-	UserTimest string `json:"user_timest"`
+	UserTimest string `json:"user_timest,omitempty"`
 	// Number of counterparties
-	CounterpartiesNum int32 `json:"counterparties_num"`
+	CounterpartiesNum int32 `json:"counterparties_num,omitempty"`
 	// Whether email is verified
-	EmailVerified string `json:"email_verified"`
+	EmailVerified string `json:"email_verified,omitempty"`
 	// Whether KYC verification is completed
-	Verified string `json:"verified"`
+	Verified string `json:"verified,omitempty"`
 	// Whether phone is bound
-	HasPhone string `json:"has_phone"`
+	HasPhone string `json:"has_phone,omitempty"`
 	// Username
-	UserName string `json:"user_name"`
+	UserName string `json:"user_name,omitempty"`
 	// User note information
-	UserNote string `json:"user_note"`
+	UserNote string `json:"user_note,omitempty"`
 	// Total completed orders
-	CompleteTransactions string `json:"complete_transactions"`
+	CompleteTransactions string `json:"complete_transactions,omitempty"`
 	// Number of completed buy orders
-	PaidTransactions string `json:"paid_transactions"`
+	PaidTransactions string `json:"paid_transactions,omitempty"`
 	// Number of completed sell orders
-	AcceptedTransactions string `json:"accepted_transactions"`
+	AcceptedTransactions string `json:"accepted_transactions,omitempty"`
 	// Average time to confirm receipt
-	TransactionsUsedTime string `json:"transactions_used_time"`
+	TransactionsUsedTime string `json:"transactions_used_time,omitempty"`
 	// Cancellation time in last 30 days
-	CancelledUsedTimeMonth string `json:"cancelled_used_time_month"`
+	CancelledUsedTimeMonth string `json:"cancelled_used_time_month,omitempty"`
 	// Number of completed orders in last 30 days
-	CompleteTransactionsMonth string `json:"complete_transactions_month"`
+	CompleteTransactionsMonth string `json:"complete_transactions_month,omitempty"`
 	// Completion rate in last 30 days
-	CompleteRateMonth int32 `json:"complete_rate_month"`
+	CompleteRateMonth float32 `json:"complete_rate_month,omitempty"`
 	// Buy order ratio in last 30 days
-	OrdersBuyRateMonth int32 `json:"orders_buy_rate_month"`
+	OrdersBuyRateMonth float32 `json:"orders_buy_rate_month,omitempty"`
 	// Whether blocked
-	IsBlack int32 `json:"is_black"`
+	IsBlack int32 `json:"is_black,omitempty"`
 	// Whether following
-	IsFollow int32 `json:"is_follow"`
+	IsFollow int32 `json:"is_follow,omitempty"`
 	// Whether traded with self
-	HaveTraded int32 `json:"have_traded"`
+	HaveTraded int32 `json:"have_traded,omitempty"`
 	// Encrypted UID
-	BizUid string `json:"biz_uid"`
+	BizUid string `json:"biz_uid,omitempty"`
 	// Blue V Crown Shield
-	BlueVip int32 `json:"blue_vip"`
+	BlueVip int32 `json:"blue_vip,omitempty"`
 	// Merchant work status
-	WorkStatus int32 `json:"work_status"`
+	WorkStatus int32 `json:"work_status,omitempty"`
 	// Registration days
-	RegistrationDays int32 `json:"registration_days"`
+	RegistrationDays int32 `json:"registration_days,omitempty"`
 	// Days since first trade
-	FirstTradeDays int32 `json:"first_trade_days"`
+	FirstTradeDays int32 `json:"first_trade_days,omitempty"`
 	// Whether margin replenishment is needed
-	NeedReplenish int32                               `json:"need_replenish"`
-	MerchantInfo  InlineResponse20014DataMerchantInfo `json:"merchant_info"`
+	NeedReplenish int32                               `json:"need_replenish,omitempty"`
+	MerchantInfo  InlineResponse20014DataMerchantInfo `json:"merchant_info,omitempty"`
 	// Merchant online status
-	OnlineStatus int32 `json:"online_status"`
+	OnlineStatus int32 `json:"online_status,omitempty"`
 	// Merchant online status details
-	WorkHours *map[string]interface{} `json:"work_hours"`
+	WorkHours *map[string]interface{} `json:"work_hours,omitempty"`
 	// 30-day transaction volume
-	TransactionsMonth int32 `json:"transactions_month"`
+	TransactionsMonth float32 `json:"transactions_month,omitempty"`
 	// Total transaction volume
-	TransactionsAll int32 `json:"transactions_all"`
+	TransactionsAll float32 `json:"transactions_all,omitempty"`
 	// Single user or composite user
-	TradeVersatile bool `json:"trade_versatile"`
+	TradeVersatile bool `json:"trade_versatile,omitempty"`
 }

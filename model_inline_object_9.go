@@ -11,7 +11,5 @@ package gateapi
 
 type InlineObject9 struct {
 	// Order ID
-	Txid int32 `json:"txid"`
-	// Empty or web3
-	Channel string `json:"channel,omitempty"`
+	OrderId string `json:"order_id"`
 }

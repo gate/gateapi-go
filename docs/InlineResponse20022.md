@@ -4,12 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Timestamp** | **float32** |  | 
-**Method** | **string** |  | 
-**Code** | **int32** |  | 
-**Message** | **string** |  | 
-**Data** | [**[]InlineResponse20022Data**](inline_response_200_22_data.md) |  | 
-**Version** | **string** |  | 
+**Timestamp** | **float32** |  | [optional] 
+**Method** | **string** |  | [optional] 
+**Code** | **int32** |  | [optional] 
+**Message** | **string** |  | [optional] 
+**Data** | [**InlineResponse20022Data**](inline_response_200_22_data.md) |  | [optional] 
+**Version** | **string** | Version number | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

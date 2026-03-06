@@ -30,4 +30,8 @@ type Currency struct {
 	Chain string `json:"chain,omitempty"`
 	// All links corresponding to coins
 	Chains []SpotCurrencyChain `json:"chains,omitempty"`
+	// Total supply
+	TotalSupply string `json:"total_supply,omitempty"`
+	// Market cap
+	MarketCap string `json:"market_cap,omitempty"`
 }

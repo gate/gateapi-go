@@ -15,7 +15,7 @@ type MockSpotOrder struct {
 	CurrencyPairs string `json:"currency_pairs"`
 	// Price
 	OrderPrice string `json:"order_price"`
-	// Initial order quantity for spot trading pairs, not involved in actual calculation. Currently only supports BTC and ETH Currently only supports three currencies: BTC, ETH
+	// Initial order quantity for spot trading pairs, not involved in actual calculation.
 	Count string `json:"count,omitempty"`
 	// Unfilled quantity, involved in actual calculation
 	Left string `json:"left"`

@@ -10,10 +10,8 @@
 package gateapi
 
 type InlineObject17 struct {
-	// Cryptocurrency
-	Asset string `json:"asset"`
-	// Fiat currency
-	FiatUnit string `json:"fiat_unit"`
-	// Buy/Sell, sell/buy
-	TradeType string `json:"trade_type"`
+	// Currency pair
+	Symbol string `json:"symbol"`
+	// leverage
+	Leverage string `json:"leverage"`
 }

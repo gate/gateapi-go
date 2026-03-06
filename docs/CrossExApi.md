@@ -4,37 +4,37 @@ All URIs are relative to *https://api.gateio.ws/api/v4*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**ListCrossexRuleSymbols**](CrossExApi.md#ListCrossexRuleSymbols) | **Get** /rule/symbols | [Public Interface] Query Trading Pair Information
-[**ListCrossexRuleRiskLimits**](CrossExApi.md#ListCrossexRuleRiskLimits) | **Get** /rule/risk_limits | [Public Interface] Query Risk Limit Information
-[**ListCrossexTransferCoins**](CrossExApi.md#ListCrossexTransferCoins) | **Get** /transfers/coin | [Public Interface] Query Supported Transfer Currencies
-[**ListCrossexTransfers**](CrossExApi.md#ListCrossexTransfers) | **Get** /transfers | Query Fund Transfer History
-[**CreateCrossexTransfer**](CrossExApi.md#CreateCrossexTransfer) | **Post** /transfers | Fund Transfer
-[**CreateCrossexOrder**](CrossExApi.md#CreateCrossexOrder) | **Post** /orders | Create an order
-[**GetCrossexOrder**](CrossExApi.md#GetCrossexOrder) | **Get** /orders/{order_id} | Query order details
-[**UpdateCrossexOrder**](CrossExApi.md#UpdateCrossexOrder) | **Put** /orders/{order_id} | Modify Order
-[**CancelCrossexOrder**](CrossExApi.md#CancelCrossexOrder) | **Delete** /orders/{order_id} | Cancel Order
-[**CreateCrossexConvertQuote**](CrossExApi.md#CreateCrossexConvertQuote) | **Post** /convert/quote | Flash Swap Inquiry
-[**CreateCrossexConvertOrder**](CrossExApi.md#CreateCrossexConvertOrder) | **Post** /convert/orders | Flash Swap Transaction
-[**GetCrossexAccount**](CrossExApi.md#GetCrossexAccount) | **Get** /accounts | Query Account Assets
-[**UpdateCrossexAccount**](CrossExApi.md#UpdateCrossexAccount) | **Put** /accounts | Modify Account Contract Position Mode and Account Mode
-[**GetCrossexPositionsLeverage**](CrossExApi.md#GetCrossexPositionsLeverage) | **Get** /positions/leverage | Query Contract Trading Pair Leverage Multiplier
-[**UpdateCrossexPositionsLeverage**](CrossExApi.md#UpdateCrossexPositionsLeverage) | **Post** /positions/leverage | Modify Contract Trading Pair Leverage Multiplier
-[**GetCrossexMarginPositionsLeverage**](CrossExApi.md#GetCrossexMarginPositionsLeverage) | **Get** /margin_positions/leverage | Query Leveraged Trading Pair Leverage Multiplier
-[**UpdateCrossexMarginPositionsLeverage**](CrossExApi.md#UpdateCrossexMarginPositionsLeverage) | **Post** /margin_positions/leverage | Modify Leveraged Trading Pair Leverage Multiplier
-[**CloseCrossexPosition**](CrossExApi.md#CloseCrossexPosition) | **Delete** /position | Full Close Position
-[**GetCrossexInterestRate**](CrossExApi.md#GetCrossexInterestRate) | **Get** /interest_rate | Query margin asset interest rates
-[**GetCrossexFee**](CrossExApi.md#GetCrossexFee) | **Get** /fee | Query User Fee Rates
-[**ListCrossexPositions**](CrossExApi.md#ListCrossexPositions) | **Get** /positions | Query Contract Positions
-[**ListCrossexMarginPositions**](CrossExApi.md#ListCrossexMarginPositions) | **Get** /margin_positions | Query Leveraged Positions
-[**ListCrossexAdlRank**](CrossExApi.md#ListCrossexAdlRank) | **Get** /adl_rank | Query ADL Position Reduction Ranking
-[**ListCrossexOpenOrders**](CrossExApi.md#ListCrossexOpenOrders) | **Get** /open_orders | Query All Current Open Orders
-[**ListCrossexHistoryOrders**](CrossExApi.md#ListCrossexHistoryOrders) | **Get** /history_orders | queryorderhistory
-[**ListCrossexHistoryPositions**](CrossExApi.md#ListCrossexHistoryPositions) | **Get** /history_positions | Query Contract Position History
-[**ListCrossexHistoryMarginPositions**](CrossExApi.md#ListCrossexHistoryMarginPositions) | **Get** /history_margin_positions | Query Leveraged Position History
-[**ListCrossexHistoryMarginInterests**](CrossExApi.md#ListCrossexHistoryMarginInterests) | **Get** /history_margin_interests | Query Leveraged Interest Deduction History
-[**ListCrossexHistoryTrades**](CrossExApi.md#ListCrossexHistoryTrades) | **Get** /history_trades | queryfilledhistory
-[**ListCrossexAccountBook**](CrossExApi.md#ListCrossexAccountBook) | **Get** /account_book | Query Account Asset Change History
-[**ListCrossexCoinDiscountRate**](CrossExApi.md#ListCrossexCoinDiscountRate) | **Get** /coin_discount_rate | Query currency discount rate (discount rate of margin currency in isolated exchange mode)
+[**ListCrossexRuleSymbols**](CrossExApi.md#ListCrossexRuleSymbols) | **Get** /crossex/rule/symbols | [Public Interface] Query Trading Pair Information
+[**ListCrossexRuleRiskLimits**](CrossExApi.md#ListCrossexRuleRiskLimits) | **Get** /crossex/rule/risk_limits | [Public Interface] Query Risk Limit Information
+[**ListCrossexTransferCoins**](CrossExApi.md#ListCrossexTransferCoins) | **Get** /crossex/transfers/coin | [Public Interface] Query Supported Transfer Currencies
+[**ListCrossexTransfers**](CrossExApi.md#ListCrossexTransfers) | **Get** /crossex/transfers | Query Fund Transfer History
+[**CreateCrossexTransfer**](CrossExApi.md#CreateCrossexTransfer) | **Post** /crossex/transfers | Fund Transfer
+[**CreateCrossexOrder**](CrossExApi.md#CreateCrossexOrder) | **Post** /crossex/orders | Create an order
+[**GetCrossexOrder**](CrossExApi.md#GetCrossexOrder) | **Get** /crossex/orders/{order_id} | Query order details
+[**UpdateCrossexOrder**](CrossExApi.md#UpdateCrossexOrder) | **Put** /crossex/orders/{order_id} | Modify Order
+[**CancelCrossexOrder**](CrossExApi.md#CancelCrossexOrder) | **Delete** /crossex/orders/{order_id} | Cancel Order
+[**CreateCrossexConvertQuote**](CrossExApi.md#CreateCrossexConvertQuote) | **Post** /crossex/convert/quote | Flash Swap Inquiry
+[**CreateCrossexConvertOrder**](CrossExApi.md#CreateCrossexConvertOrder) | **Post** /crossex/convert/orders | Flash Swap Transaction
+[**GetCrossexAccount**](CrossExApi.md#GetCrossexAccount) | **Get** /crossex/accounts | Query Account Assets
+[**UpdateCrossexAccount**](CrossExApi.md#UpdateCrossexAccount) | **Put** /crossex/accounts | Modify Account Contract Position Mode and Account Mode
+[**GetCrossexPositionsLeverage**](CrossExApi.md#GetCrossexPositionsLeverage) | **Get** /crossex/positions/leverage | Query Contract Trading Pair Leverage Multiplier
+[**UpdateCrossexPositionsLeverage**](CrossExApi.md#UpdateCrossexPositionsLeverage) | **Post** /crossex/positions/leverage | Modify Contract Trading Pair Leverage Multiplier
+[**GetCrossexMarginPositionsLeverage**](CrossExApi.md#GetCrossexMarginPositionsLeverage) | **Get** /crossex/margin_positions/leverage | Query Leveraged Trading Pair Leverage Multiplier
+[**UpdateCrossexMarginPositionsLeverage**](CrossExApi.md#UpdateCrossexMarginPositionsLeverage) | **Post** /crossex/margin_positions/leverage | Modify Leveraged Trading Pair Leverage Multiplier
+[**CloseCrossexPosition**](CrossExApi.md#CloseCrossexPosition) | **Post** /crossex/position | Full Close Position
+[**GetCrossexInterestRate**](CrossExApi.md#GetCrossexInterestRate) | **Get** /crossex/interest_rate | Query margin asset interest rates
+[**GetCrossexFee**](CrossExApi.md#GetCrossexFee) | **Get** /crossex/fee | Query User Fee Rates
+[**ListCrossexPositions**](CrossExApi.md#ListCrossexPositions) | **Get** /crossex/positions | Query Contract Positions
+[**ListCrossexMarginPositions**](CrossExApi.md#ListCrossexMarginPositions) | **Get** /crossex/margin_positions | Query Leveraged Positions
+[**ListCrossexAdlRank**](CrossExApi.md#ListCrossexAdlRank) | **Get** /crossex/adl_rank | Query ADL Position Reduction Ranking
+[**ListCrossexOpenOrders**](CrossExApi.md#ListCrossexOpenOrders) | **Get** /crossex/open_orders | Query All Current Open Orders
+[**ListCrossexHistoryOrders**](CrossExApi.md#ListCrossexHistoryOrders) | **Get** /crossex/history_orders | queryorderhistory
+[**ListCrossexHistoryPositions**](CrossExApi.md#ListCrossexHistoryPositions) | **Get** /crossex/history_positions | Query Contract Position History
+[**ListCrossexHistoryMarginPositions**](CrossExApi.md#ListCrossexHistoryMarginPositions) | **Get** /crossex/history_margin_positions | Query Leveraged Position History
+[**ListCrossexHistoryMarginInterests**](CrossExApi.md#ListCrossexHistoryMarginInterests) | **Get** /crossex/history_margin_interests | Query Leveraged Interest Deduction History
+[**ListCrossexHistoryTrades**](CrossExApi.md#ListCrossexHistoryTrades) | **Get** /crossex/history_trades | queryfilledhistory
+[**ListCrossexAccountBook**](CrossExApi.md#ListCrossexAccountBook) | **Get** /crossex/account_book | Query Account Asset Change History
+[**ListCrossexCoinDiscountRate**](CrossExApi.md#ListCrossexCoinDiscountRate) | **Get** /crossex/coin_discount_rate | Query currency discount rate (discount rate of margin currency in isolated exchange mode)
 
 
 ## ListCrossexRuleSymbols
@@ -111,7 +111,7 @@ No authorization required
 
 ## ListCrossexRuleRiskLimits
 
-> []InlineResponse20026 ListCrossexRuleRiskLimits(ctx, symbols)
+> []InlineResponse20027 ListCrossexRuleRiskLimits(ctx, symbols)
 
 [Public Interface] Query Risk Limit Information
 
@@ -159,7 +159,7 @@ func main() {
 
 ### Return type
 
-[**[]InlineResponse20026**](inline_response_200_26.md)
+[**[]InlineResponse20027**](inline_response_200_27.md)
 
 ### Authorization
 
@@ -176,7 +176,7 @@ No authorization required
 
 ## ListCrossexTransferCoins
 
-> []InlineResponse20027 ListCrossexTransferCoins(ctx, optional)
+> []InlineResponse20028 ListCrossexTransferCoins(ctx, optional)
 
 [Public Interface] Query Supported Transfer Currencies
 
@@ -231,7 +231,7 @@ func main() {
 
 ### Return type
 
-[**[]InlineResponse20027**](inline_response_200_27.md)
+[**[]InlineResponse20028**](inline_response_200_28.md)
 
 ### Authorization
 
@@ -248,7 +248,7 @@ No authorization required
 
 ## ListCrossexTransfers
 
-> []InlineResponse20028 ListCrossexTransfers(ctx, optional)
+> []InlineResponse20029 ListCrossexTransfers(ctx, optional)
 
 Query Fund Transfer History
 
@@ -314,7 +314,7 @@ func main() {
 
 ### Return type
 
-[**[]InlineResponse20028**](inline_response_200_28.md)
+[**[]InlineResponse20029**](inline_response_200_29.md)
 
 ### Authorization
 
@@ -331,7 +331,7 @@ func main() {
 
 ## CreateCrossexTransfer
 
-> InlineResponse20029 CreateCrossexTransfer(ctx, optional)
+> InlineResponse20030 CreateCrossexTransfer(ctx, optional)
 
 Fund Transfer
 
@@ -350,7 +350,7 @@ Optional parameters are passed through a pointer to a CreateCrossexTransferOpts 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**inlineObject21** | [**optional.Interface of InlineObject21**](InlineObject21.md)|  | 
+**inlineObject10** | [**optional.Interface of InlineObject10**](InlineObject10.md)|  | 
 
 ### Example
 
@@ -392,7 +392,7 @@ func main() {
 
 ### Return type
 
-[**InlineResponse20029**](inline_response_200_29.md)
+[**InlineResponse20030**](inline_response_200_30.md)
 
 ### Authorization
 
@@ -409,11 +409,11 @@ func main() {
 
 ## CreateCrossexOrder
 
-> InlineResponse20030 CreateCrossexOrder(ctx, optional)
+> InlineResponse20031 CreateCrossexOrder(ctx, optional)
 
 Create an order
 
-Rate Limit: 100 requests per 10 seconds
+Rate Limit: 100 requests per 10 seconds, maximum 1,000 open orders per user
 
 ### Required Parameters
 
@@ -428,7 +428,7 @@ Optional parameters are passed through a pointer to a CreateCrossexOrderOpts str
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**inlineObject22** | [**optional.Interface of InlineObject22**](InlineObject22.md)|  | 
+**inlineObject11** | [**optional.Interface of InlineObject11**](InlineObject11.md)|  | 
 
 ### Example
 
@@ -470,7 +470,7 @@ func main() {
 
 ### Return type
 
-[**InlineResponse20030**](inline_response_200_30.md)
+[**InlineResponse20031**](inline_response_200_31.md)
 
 ### Authorization
 
@@ -487,7 +487,7 @@ func main() {
 
 ## GetCrossexOrder
 
-> InlineResponse20031 GetCrossexOrder(ctx, orderId)
+> InlineResponse20032 GetCrossexOrder(ctx, orderId)
 
 Query order details
 
@@ -541,7 +541,7 @@ func main() {
 
 ### Return type
 
-[**InlineResponse20031**](inline_response_200_31.md)
+[**InlineResponse20032**](inline_response_200_32.md)
 
 ### Authorization
 
@@ -558,7 +558,7 @@ func main() {
 
 ## UpdateCrossexOrder
 
-> InlineResponse20032 UpdateCrossexOrder(ctx, orderId, optional)
+> InlineResponse20033 UpdateCrossexOrder(ctx, orderId, optional)
 
 Modify Order
 
@@ -578,7 +578,7 @@ Optional parameters are passed through a pointer to a UpdateCrossexOrderOpts str
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**inlineObject23** | [**optional.Interface of InlineObject23**](InlineObject23.md)|  | 
+**inlineObject12** | [**optional.Interface of InlineObject12**](InlineObject12.md)|  | 
 
 ### Example
 
@@ -621,7 +621,7 @@ func main() {
 
 ### Return type
 
-[**InlineResponse20032**](inline_response_200_32.md)
+[**InlineResponse20033**](inline_response_200_33.md)
 
 ### Authorization
 
@@ -638,7 +638,7 @@ func main() {
 
 ## CancelCrossexOrder
 
-> map[string]interface{} CancelCrossexOrder(ctx, orderId, optional)
+> map[string]interface{} CancelCrossexOrder(ctx, orderId)
 
 Cancel Order
 
@@ -650,15 +650,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **orderId** | **string**| Support Order ID or Text for Cancel Order | 
-**optional** | **CancelCrossexOrderOpts** | optional parameters | nil if no parameters
-
-### Optional Parameters
-
-Optional parameters are passed through a pointer to a CancelCrossexOrderOpts struct
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**body** | **optional.Map[string]interface{}**|  | 
 
 ### Example
 
@@ -685,7 +676,7 @@ func main() {
                             )
     orderId := "orderId_example" // string - Support Order ID or Text for Cancel Order
     
-    result, _, err := client.CrossExApi.CancelCrossexOrder(ctx, orderId, nil)
+    result, _, err := client.CrossExApi.CancelCrossexOrder(ctx, orderId)
     if err != nil {
         if e, ok := err.(gateapi.GateAPIError); ok {
             fmt.Printf("gate api error: %s\n", e.Error())
@@ -709,7 +700,7 @@ func main() {
 
 ### HTTP request headers
 
-- **Content-Type**: application/json
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -718,7 +709,7 @@ func main() {
 
 ## CreateCrossexConvertQuote
 
-> InlineResponse20033 CreateCrossexConvertQuote(ctx, optional)
+> InlineResponse20034 CreateCrossexConvertQuote(ctx, optional)
 
 Flash Swap Inquiry
 
@@ -737,7 +728,7 @@ Optional parameters are passed through a pointer to a CreateCrossexConvertQuoteO
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**inlineObject24** | [**optional.Interface of InlineObject24**](InlineObject24.md)|  | 
+**inlineObject13** | [**optional.Interface of InlineObject13**](InlineObject13.md)|  | 
 
 ### Example
 
@@ -779,7 +770,7 @@ func main() {
 
 ### Return type
 
-[**InlineResponse20033**](inline_response_200_33.md)
+[**InlineResponse20034**](inline_response_200_34.md)
 
 ### Authorization
 
@@ -815,7 +806,7 @@ Optional parameters are passed through a pointer to a CreateCrossexConvertOrderO
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**inlineObject25** | [**optional.Interface of InlineObject25**](InlineObject25.md)|  | 
+**inlineObject14** | [**optional.Interface of InlineObject14**](InlineObject14.md)|  | 
 
 ### Example
 
@@ -874,7 +865,7 @@ func main() {
 
 ## GetCrossexAccount
 
-> InlineResponse20034 GetCrossexAccount(ctx, optional)
+> InlineResponse20035 GetCrossexAccount(ctx, optional)
 
 Query Account Assets
 
@@ -935,7 +926,7 @@ func main() {
 
 ### Return type
 
-[**InlineResponse20034**](inline_response_200_34.md)
+[**InlineResponse20035**](inline_response_200_35.md)
 
 ### Authorization
 
@@ -971,7 +962,7 @@ Optional parameters are passed through a pointer to a UpdateCrossexAccountOpts s
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**inlineObject26** | [**optional.Interface of InlineObject26**](InlineObject26.md)|  | 
+**inlineObject15** | [**optional.Interface of InlineObject15**](InlineObject15.md)|  | 
 
 ### Example
 
@@ -1030,7 +1021,7 @@ func main() {
 
 ## GetCrossexPositionsLeverage
 
-> []InlineResponse20035 GetCrossexPositionsLeverage(ctx, optional)
+> map[string]string GetCrossexPositionsLeverage(ctx, optional)
 
 Query Contract Trading Pair Leverage Multiplier
 
@@ -1091,7 +1082,7 @@ func main() {
 
 ### Return type
 
-[**[]InlineResponse20035**](inline_response_200_35.md)
+**map[string]string**
 
 ### Authorization
 
@@ -1127,7 +1118,7 @@ Optional parameters are passed through a pointer to a UpdateCrossexPositionsLeve
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**inlineObject27** | [**optional.Interface of InlineObject27**](InlineObject27.md)|  | 
+**inlineObject16** | [**optional.Interface of InlineObject16**](InlineObject16.md)|  | 
 
 ### Example
 
@@ -1186,7 +1177,7 @@ func main() {
 
 ## GetCrossexMarginPositionsLeverage
 
-> []InlineResponse20035 GetCrossexMarginPositionsLeverage(ctx, optional)
+> map[string]string GetCrossexMarginPositionsLeverage(ctx, optional)
 
 Query Leveraged Trading Pair Leverage Multiplier
 
@@ -1247,7 +1238,7 @@ func main() {
 
 ### Return type
 
-[**[]InlineResponse20035**](inline_response_200_35.md)
+**map[string]string**
 
 ### Authorization
 
@@ -1283,7 +1274,7 @@ Optional parameters are passed through a pointer to a UpdateCrossexMarginPositio
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**inlineObject28** | [**optional.Interface of InlineObject28**](InlineObject28.md)|  | 
+**inlineObject17** | [**optional.Interface of InlineObject17**](InlineObject17.md)|  | 
 
 ### Example
 
@@ -1342,7 +1333,7 @@ func main() {
 
 ## CloseCrossexPosition
 
-> InlineResponse20030 CloseCrossexPosition(ctx, optional)
+> InlineResponse20031 CloseCrossexPosition(ctx, optional)
 
 Full Close Position
 
@@ -1361,7 +1352,7 @@ Optional parameters are passed through a pointer to a CloseCrossexPositionOpts s
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**inlineObject29** | [**optional.Interface of InlineObject29**](InlineObject29.md)|  | 
+**inlineObject18** | [**optional.Interface of InlineObject18**](InlineObject18.md)|  | 
 
 ### Example
 
@@ -1403,7 +1394,7 @@ func main() {
 
 ### Return type
 
-[**InlineResponse20030**](inline_response_200_30.md)
+[**InlineResponse20031**](inline_response_200_31.md)
 
 ### Authorization
 
@@ -1794,7 +1785,7 @@ func main() {
 
 ## ListCrossexOpenOrders
 
-> []InlineResponse20031 ListCrossexOpenOrders(ctx, optional)
+> []InlineResponse20032 ListCrossexOpenOrders(ctx, optional)
 
 Query All Current Open Orders
 
@@ -1857,7 +1848,7 @@ func main() {
 
 ### Return type
 
-[**[]InlineResponse20031**](inline_response_200_31.md)
+[**[]InlineResponse20032**](inline_response_200_32.md)
 
 ### Authorization
 

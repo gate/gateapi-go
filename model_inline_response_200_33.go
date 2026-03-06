@@ -10,18 +10,6 @@
 package gateapi
 
 type InlineResponse20033 struct {
-	// Quote ID
-	QuoteId string `json:"quote_id"`
-	// Valid time (milliseconds timestamp)
-	ValidMs string `json:"valid_ms"`
-	// Asset Sold
-	FromCoin string `json:"from_coin"`
-	// Asset Bought
-	ToCoin string `json:"to_coin"`
-	// Amount to sell
-	FromAmount string `json:"from_amount"`
-	// Amount to buy
-	ToAmount string `json:"to_amount"`
-	// Price
-	Price string `json:"price"`
+	OrderId float32 `json:"order_id"`
+	Text    string  `json:"text"`
 }

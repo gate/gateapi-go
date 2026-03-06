@@ -9,7 +9,10 @@
 
 package gateapi
 
+// Modify position take profit/stop loss parameters
 type InlineObject4 struct {
-	// Order ID
-	OrderId string `json:"order_id"`
+	// 止盈价格  说明： - 不传 或 传 \"0\"：将清空原有止盈价 - 如不希望清空，请传接口返回的原止盈价
+	PriceTp *string `json:"price_tp,omitempty"`
+	// 止损价格  说明： - 不传 或 传 \"0\"：将清空原有止损价 - 如不希望清空，请传接口返回的原止损价
+	PriceSl *string `json:"price_sl,omitempty"`
 }

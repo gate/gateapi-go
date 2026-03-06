@@ -10,20 +10,5 @@
 package gateapi
 
 type InlineResponse20022Data struct {
-	// Serial number
-	Index int32 `json:"index"`
-	// Cryptocurrency
-	Asset string `json:"asset"`
-	// Fiat currency
-	FiatUnit string `json:"fiat_unit"`
-	// 广告id
-	AdvNo int32 `json:"adv_no"`
-	// Price
-	Price string `json:"price"`
-	// Maximum Cryptocurrency Amount
-	MaxSingleTransAmount string `json:"max_single_trans_amount"`
-	// Minimum Cryptocurrency Amount
-	MinSingleTransAmount string `json:"min_single_trans_amount"`
-	// Advertiser Nickname
-	NickName string `json:"nick_name"`
+	Lists []InlineResponse20022DataLists `json:"lists,omitempty"`
 }

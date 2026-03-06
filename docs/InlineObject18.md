@@ -4,9 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Txid** | **int32** | Order ID | 
-**Lastreceived** | **int32** | Pagination timestamp (forward) | [optional] 
-**Firstreceived** | **int32** | Pagination timestamp (backward) | [optional] 
+**Symbol** | **string** | Trading Pair 1. Supports leveraged trading pairs, e.g., BINANCE_MARGIN_SOL_USDT 2. Supports contract trading pairs, e.g., OKX_FUTURE_ETH_USDT | 
+**PositionSide** | **string** | Position Direction 1. For leveraged positions, this parameter must be passed 2. For contract positions, pass selectively based on your contract holding method | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

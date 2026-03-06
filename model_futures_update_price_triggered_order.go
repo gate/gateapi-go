@@ -13,8 +13,8 @@ package gateapi
 type FuturesUpdatePriceTriggeredOrder struct {
 	// Settlement Currency (e.g., USDT, BTC)
 	Settle string `json:"settle,omitempty"`
-	// The order ID of the modified price-triggered order. This ID is returned upon successful creation of the price-triggered order. Note: This ID must be passed in both the request path and request body.
-	OrderId string `json:"order_id"`
+	// ID of the Pending Take-Profit/Stop-Loss Trigger Order
+	OrderId int32 `json:"order_id"`
 	// Modified Contract Quantity. Full Close: 0; Partial Close: Positive/Negative values indicate direction (consistent with the creation interface logic).
 	Size int64 `json:"size,omitempty"`
 	// Represents the modified trading price. A value of 0 indicates a market order.

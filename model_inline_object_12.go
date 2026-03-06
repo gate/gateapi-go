@@ -10,7 +10,8 @@
 package gateapi
 
 type InlineObject12 struct {
-	TradeId    string `json:"trade_id"`
-	ReasonId   string `json:"reason_id"`
-	ReasonMemo string `json:"reason_memo"`
+	// modify amount
+	Qty string `json:"qty,omitempty"`
+	// modify price
+	Price string `json:"price,omitempty"`
 }

@@ -10,8 +10,6 @@
 package gateapi
 
 type InlineObject14 struct {
-	// Ad ID
-	AdvNo int32 `json:"adv_no"`
-	// Ad status: 1=Active, 3=Inactive, 4=Closed
-	AdvStatus int32 `json:"adv_status"`
+	// Inquiry ID
+	QuoteId string `json:"quote_id"`
 }

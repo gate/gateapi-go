@@ -10,6 +10,16 @@
 package gateapi
 
 type InlineResponse20024Data struct {
-	// Timestamp when message was successfully sent (current timestamp)
-	SRVTM int32 `json:"SRVTM"`
+	// Message List
+	Messages []InlineResponse20024DataMessages `json:"messages,omitempty"`
+	// Payment tip (displayed on homepage only)
+	Memo string `json:"memo,omitempty"`
+	// Whether historical records exist
+	HasHistory bool `json:"has_history,omitempty"`
+	// Order ID
+	Txid int32 `json:"txid,omitempty"`
+	// Timestamp of the latest message
+	SRVTM int32 `json:"SRVTM,omitempty"`
+	// Order Status
+	OrderStatus string `json:"order_status,omitempty"`
 }

@@ -73,13 +73,15 @@ type APIClient struct {
 
 	OptionsApi *OptionsApiService
 
-	P2PApi *P2PApiService
+	P2pApi *P2pApiService
 
 	RebateApi *RebateApiService
 
 	SpotApi *SpotApiService
 
 	SubAccountApi *SubAccountApiService
+
+	TradFiApi *TradFiApiService
 
 	UnifiedApi *UnifiedApiService
 
@@ -116,10 +118,11 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.MultiCollateralLoanApi = (*MultiCollateralLoanApiService)(&c.common)
 	c.OTCApi = (*OTCApiService)(&c.common)
 	c.OptionsApi = (*OptionsApiService)(&c.common)
-	c.P2PApi = (*P2PApiService)(&c.common)
+	c.P2pApi = (*P2pApiService)(&c.common)
 	c.RebateApi = (*RebateApiService)(&c.common)
 	c.SpotApi = (*SpotApiService)(&c.common)
 	c.SubAccountApi = (*SubAccountApiService)(&c.common)
+	c.TradFiApi = (*TradFiApiService)(&c.common)
 	c.UnifiedApi = (*UnifiedApiService)(&c.common)
 	c.WalletApi = (*WalletApiService)(&c.common)
 	c.WithdrawalApi = (*WithdrawalApiService)(&c.common)

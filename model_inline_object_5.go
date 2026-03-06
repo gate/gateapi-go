@@ -9,7 +9,10 @@
 
 package gateapi
 
+// Close position request parameters
 type InlineObject5 struct {
-	// Counterparty UID (encrypted)
-	BizUid string `json:"biz_uid"`
+	// 平仓类型  说明： - 1：部分平仓（必须传 close_volume） - 2：全平（无需传 close_volume）
+	CloseType int32 `json:"close_type"`
+	// 平仓数量  说明： - 当 close_type = 1 时必传 - 当 close_type = 2 时忽略该字段
+	CloseVolume *string `json:"close_volume,omitempty"`
 }

@@ -11,7 +11,7 @@ package gateapi
 
 type InlineResponse20030 struct {
 	// Order ID
-	OrderId string `json:"order_id"`
+	TxId string `json:"tx_id"`
 	// User-defined Order ID
 	Text string `json:"text"`
 }

@@ -10,5 +10,86 @@
 package gateapi
 
 type InlineResponse20021Data struct {
-	Lists []InlineResponse20021DataLists `json:"lists"`
+	// Price
+	Rate string `json:"rate,omitempty"`
+	// Buy/Sell order
+	Type string `json:"type,omitempty"`
+	// Cryptocurrency amount
+	Amount string `json:"amount,omitempty"`
+	// Minimum limit
+	MinAmount string `json:"min_amount,omitempty"`
+	// Maximum limit
+	MaxAmount string `json:"max_amount,omitempty"`
+	// Fiat amount
+	Total string `json:"total,omitempty"`
+	// Whether Alipay payment is supported
+	PayAli int32 `json:"pay_ali,omitempty"`
+	// Whether bank payment is supported
+	PayBank int32 `json:"pay_bank,omitempty"`
+	// Whether PayPal payment is supported
+	PayPaypal int32 `json:"pay_paypal,omitempty"`
+	// Whether WeChat payment is supported
+	PayWechat int32 `json:"pay_wechat,omitempty"`
+	// Payment method ID list
+	PayTypeNum string `json:"pay_type_num,omitempty"`
+	// Payment method list
+	PayTypeJson string `json:"pay_type_json,omitempty"`
+	// Locked amount
+	LockedAmount string `json:"locked_amount,omitempty"`
+	// Order ID
+	Orderid int32 `json:"orderid,omitempty"`
+	// Created time
+	Timestamp int32 `json:"timestamp,omitempty"`
+	// Cryptocurrency type
+	CurrencyType string `json:"currencyType,omitempty"`
+	// Fiat type
+	WantType string `json:"want_type,omitempty"`
+	// Hidden price
+	HideRate string `json:"hide_rate,omitempty"`
+	// Trading terms
+	TradeTips string `json:"trade_tips,omitempty"`
+	// Auto reply
+	AutoReply string `json:"auto_reply,omitempty"`
+	// Merchant-friendly order
+	NewHand string `json:"new_hand,omitempty"`
+	// Floating price reference ID: 1=Platform reference price, 3=Spot reference price (≤0 means fixed price, >0 means floating price)
+	RateRefId int32 `json:"rate_ref_id,omitempty"`
+	// Floating ratio (absolute value)
+	RateOffset float32 `json:"rate_offset,omitempty"`
+	// Status
+	Status string `json:"status,omitempty"`
+	// 0=Floating, 1=Fixed
+	RateFixed int32 `json:"rate_fixed,omitempty"`
+	// 0=Upward float, 1=Downward float
+	FloatTrend int32 `json:"float_trend,omitempty"`
+	// Timeout (minutes)
+	ExpireMin int32 `json:"expire_min,omitempty"`
+	// Tier limit
+	TierLimit int32 `json:"tier_limit,omitempty"`
+	// Registration time limit
+	RegTimeLimit int32 `json:"reg_time_limit,omitempty"`
+	// Do not trade with advertisers, advertiser limit: 0=No limit, 1=Limit
+	AdvertisersLimit int32 `json:"advertisers_limit,omitempty"`
+	// kyclimit
+	VerifiedLimit int32 `json:"verified_limit,omitempty"`
+	// Minimum limit of completed orders
+	MinCompletedLimit int32 `json:"min_completed_limit,omitempty"`
+	// Maximum limit of completed orders
+	MaxCompletedLimit int32 `json:"max_completed_limit,omitempty"`
+	// Order count limit
+	UserOrdersLimit int32 `json:"user_orders_limit,omitempty"`
+	// 30-day completion rate limit
+	CompletedRateLimit float32 `json:"completed_rate_limit,omitempty"`
+	// KYC nationality restriction
+	UserCountryLimit int32 `json:"user_country_limit,omitempty"`
+	// Restricted nationality (Chinese)
+	LimitCountryCn string `json:"limit_country_cn,omitempty"`
+	// Restricted nationality (English)
+	LimitCountryEn string `json:"limit_country_en,omitempty"`
+	// Whether auto delegation
+	IsHedge int32 `json:"is_hedge,omitempty"`
+	// Whether to hide payment method
+	HidePayment int32 `json:"hide_payment,omitempty"`
+	// fee
+	Fee int32 `json:"fee,omitempty"`
 }

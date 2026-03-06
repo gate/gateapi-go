@@ -10,58 +10,12 @@
 package gateapi
 
 type InlineObject13 struct {
-	// Cryptocurrency
-	CurrencyType string `json:"currencyType"`
-	// Fiat currency
-	ExchangeType string `json:"exchangeType"`
-	// Ad type: 0=Sell, 1=Buy, 2=Edit sell, 3=Edit buy
-	Type string `json:"type"`
-	// Unit price
-	UnitPrice string `json:"unitPrice"`
-	// Size
-	Number string `json:"number"`
-	// Payment method
-	PayType string `json:"payType,omitempty"`
-	// Payment method JSON string
-	PayTypeJson string `json:"pay_type_json,omitempty"`
-	// Price type: 0-Floating price, 1-Fixed price
-	RateFixed string `json:"rateFixed,omitempty"`
-	// Ad ID when editing
-	Oid string `json:"oid,omitempty"`
-	// Minimum transaction amount per order
-	MinAmount string `json:"minAmount"`
-	// Maximum transaction amount per order
-	MaxAmount string `json:"maxAmount"`
-	// Order tier limit
-	TierLimit string `json:"tierLimit,omitempty"`
-	// Verification level limit
-	VerifiedLimit string `json:"verifiedLimit,omitempty"`
-	// Registration time limit
-	RegTimeLimit string `json:"regTimeLimit,omitempty"`
-	// Advertiser restriction
-	AdvertisersLimit string `json:"advertisersLimit,omitempty"`
-	// Whether to hide payment method: 1=Yes, 0=No
-	HidePayment string `json:"hide_payment,omitempty"`
-	// Ad expiration time (minutes)
-	ExpireMin string `json:"expire_min,omitempty"`
-	// Trading terms
-	TradeTips string `json:"trade_tips,omitempty"`
-	// Auto reply
-	AutoReply string `json:"auto_reply,omitempty"`
-	// Minimum limit of completed orders
-	MinCompletedLimit string `json:"min_completed_limit,omitempty"`
-	// Maximum limit of completed orders
-	MaxCompletedLimit string `json:"max_completed_limit,omitempty"`
-	// 30-day completion rate limit
-	CompletedRateLimit string `json:"completed_rate_limit,omitempty"`
-	// KYC nationality restriction
-	UserCountryLimit string `json:"user_country_limit,omitempty"`
-	// Order count limit
-	UserOrderLimit string `json:"user_order_limit,omitempty"`
-	// Reference exchange rate ID
-	RateReferenceId string `json:"rateReferenceId,omitempty"`
-	// Reference exchange rate offset
-	RateOffset string `json:"rateOffset,omitempty"`
-	// 444
-	FloatTrend string `json:"float_trend,omitempty"`
+	// Exchange Type
+	ExchangeType string `json:"exchange_type"`
+	// Asset Sold
+	FromCoin string `json:"from_coin"`
+	// Asset name to buy (OKX and GATE only allow BTC, ETH, USDT; BN only allows USDT)
+	ToCoin string `json:"to_coin"`
+	// Amount to sell
+	FromAmount string `json:"from_amount"`
 }

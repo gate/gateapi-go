@@ -10,11 +10,11 @@
 package gateapi
 
 type InlineResponse20017Data struct {
-	List []InlineResponse20017DataList `json:"list"`
+	List []InlineResponse20017DataList `json:"list,omitempty"`
 	// Countdown time
-	TransTime []InlineResponse20017DataTransTime `json:"trans_time"`
+	TransTime []InlineResponse20017DataTransTime `json:"trans_time,omitempty"`
 	// Number of orders
-	Count int32 `json:"count"`
+	Count int32 `json:"count,omitempty"`
 	// Export count
-	ExportedNum int32 `json:"exported_num"`
+	ExportedNum int32 `json:"exported_num,omitempty"`
 }

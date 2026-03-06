@@ -11,6 +11,6 @@ package gateapi
 
 // Markets where user can place orders
 type InlineResponse20014DataMerchantInfo struct {
-	Type   string `json:"type"`
-	Market string `json:"market"`
+	Type   string `json:"type,omitempty"`
+	Market string `json:"market,omitempty"`
 }
