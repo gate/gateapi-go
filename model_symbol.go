@@ -12,7 +12,7 @@ package gateapi
 type Symbol struct {
 	// ExchangeType_BusinessType_Base_Counter
 	Symbol string `json:"symbol"`
-	// BINANCE,OKX,GATE,CROSSEX
+	// BINANCE,OKX,GATE,BYBIT,CROSSEX
 	ExchangeType string `json:"exchange_type"`
 	// SPOT, FUTURE, MARGIN
 	BusinessType string `json:"business_type"`

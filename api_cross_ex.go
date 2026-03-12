@@ -36,7 +36,7 @@ ListCrossexRuleSymbols [Public Interface] Query Trading Pair Information
 Query Trading Pair Information
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param optional nil or *ListCrossexRuleSymbolsOpts - Optional Parameters:
-  - @param "Symbols" (optional.String) -  Trading Pair List, multiple separated by commas  Example values: BINANCE_FUTURE_ADA_USDT,OKX_FUTURE_ADA_USDT
+  - @param "Symbols" (optional.String) -  币对列表，多个以逗号分隔 示例值: BINANCE_FUTURE_ADA_USDT,OKX_FUTURE_ADA_USDT
 
 @return []Symbol
 */
@@ -1165,7 +1165,7 @@ GetCrossexAccount Query Account Assets
 Rate Limit: 200 requests per 10 seconds If 100% ≤ initial_margin_rate &lt; 110%, transferring out the margin currency is prohibited. If initial_margin_rate &lt; 100%, the system will automatically cancel orders; only closing positions is allowed, not opening new ones. If maintenance_margin_rate ≤ 100%, the system will force liquidation.
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param optional nil or *GetCrossexAccountOpts - Optional Parameters:
-  - @param "ExchangeType" (optional.String) -  Exchange. Not required in cross-exchange mode; required in single-exchange mode (BINANCE/OKX/GATE)
+  - @param "ExchangeType" (optional.String) -  Exchange. Not required in cross-exchange mode; required in single-exchange mode (BINANCE/OKX/GATE/BYBIT)
 
 @return InlineResponse20035
 */
@@ -3242,7 +3242,7 @@ Rate Limit: 200 requests per 10 seconds
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param optional nil or *ListCrossexCoinDiscountRateOpts - Optional Parameters:
   - @param "Coin" (optional.String) -  Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME <EMAIL@ADDRESS> Language: en Language-Team: en <L@li.org> Plural-Forms: nplurals=2; plural=(n !=1) MIME-Version: 1.0 Content-Type: text/plain; charset=utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0
-  - @param "ExchangeType" (optional.String) -  OKX/GATE/BINANCE
+  - @param "ExchangeType" (optional.String) -  OKX/GATE/BINANCE/BYBIT
 
 @return []InlineResponse20047
 */

@@ -14,9 +14,9 @@ type InlineObject10 struct {
 	Coin string `json:"coin"`
 	// Transfer amount
 	Amount string `json:"amount"`
-	// Transfer-in account: CROSSEX_BINANCE, CROSSEX_OKX, CROSSEX_GATE, CROSSEX, SPOT
+	// Transfer-in account: CROSSEX_BINANCE, CROSSEX_OKX, CROSSEX_GATE, CROSSEX_BYBIT, CROSSEX, SPOT
 	From string `json:"from"`
-	// Transfer-out account: CROSSEX_BINANCE, CROSSEX_OKX, CROSSEX_GATE, CROSSEX, SPOT
+	// Transfer-out account: CROSSEX_BINANCE, CROSSEX_OKX, CROSSEX_GATE, CROSSEX_BYBIT, CROSSEX, SPOT
 	To string `json:"to"`
 	// User-defined ID
 	Text string `json:"text,omitempty"`

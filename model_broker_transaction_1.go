@@ -24,7 +24,7 @@ type BrokerTransaction1 struct {
 	Amount string `json:"amount,omitempty"`
 	// Fee currency
 	FeeAsset string `json:"fee_asset,omitempty"`
-	// Commission transaction type: Spot, Futures, Options, Alpha
+	// Commission transaction type: Spot, Futures, Options, Alpha、TradFi
 	Source        string                        `json:"source,omitempty"`
 	SubBrokerInfo BrokerCommissionSubBrokerInfo `json:"sub_broker_info,omitempty"`
 	// Alpha contract address

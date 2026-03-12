@@ -24,7 +24,7 @@ type BrokerCommission1 struct {
 	FeeAsset string `json:"fee_asset,omitempty"`
 	// The income from rebates, converted to USDT
 	RebateFee string `json:"rebate_fee,omitempty"`
-	// Commission transaction type: Spot, Futures, Options, Alpha
+	// Commission transaction type: Spot, Futures, Options, Alpha、TradFi
 	Source string `json:"source,omitempty"`
 	// Currency pair
 	CurrencyPair  string                        `json:"currency_pair,omitempty"`

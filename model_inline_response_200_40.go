@@ -16,6 +16,6 @@ type InlineResponse20040 struct {
 	Symbol string `json:"symbol"`
 	// CROSSEX position-reduction indicator ranking (1–5, higher value ranks higher)
 	CrossexAdlRank string `json:"crossex_adl_rank"`
-	// Original exchange information (Binance: 0–4, higher value ranks higher; OKX: 0–5, higher value ranks higher; Gate: 1–5, lower value ranks higher)
+	// Original exchange information (BINANCE: 0–4, higher value ranks higher; OKX: 0–5, higher value ranks higher; GATE: 1–5, lower value ranks higher; BYBIT: 0–5, higher value ranks higher)
 	ExchangeAdlRank string `json:"exchange_adl_rank"`
 }

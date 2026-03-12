@@ -14,7 +14,7 @@ type InlineResponse20029 struct {
 	Id string `json:"id"`
 	// Client Custom ID
 	Text string `json:"text"`
-	// Source `from` account (CROSSEX_BINANCE, CROSSEX_OKX, CROSSEX_GATE, CROSSEX, SPOT)
+	// Source `from` account (CROSSEX_BINANCE, CROSSEX_OKX, CROSSEX_GATE, CROSSEX_BYBIT, CROSSEX, SPOT)
 	FromAccountType string `json:"from_account_type"`
 	ToAccountType   string `json:"to_account_type"`
 	// Currency
