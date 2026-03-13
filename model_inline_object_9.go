@@ -10,6 +10,18 @@
 package gateapi
 
 type InlineObject9 struct {
-	// Order ID
-	OrderId string `json:"order_id"`
+	// Currency paid by the user. Supported currencies can be queried from the OTC web stablecoin quote page.
+	PayCoin string `json:"pay_coin,omitempty"`
+	// Currency to be received by the user. Supported currencies can be queried from the OTC web stablecoin quote page.
+	GetCoin string `json:"get_coin,omitempty"`
+	// User payment currency amount
+	PayAmount string `json:"pay_amount,omitempty"`
+	// Amount of currency received by the user
+	GetAmount string `json:"get_amount,omitempty"`
+	// Quote direction returned by the quote API (used for order validation)
+	Side string `json:"side,omitempty"`
+	// promotion code
+	PromotionCode string `json:"promotion_code,omitempty"`
+	// Parameter returned by the quote API
+	QuoteToken string `json:"quote_token,omitempty"`
 }

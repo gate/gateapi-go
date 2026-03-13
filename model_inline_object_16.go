@@ -10,8 +10,10 @@
 package gateapi
 
 type InlineObject16 struct {
-	// Currency pair
-	Symbol string `json:"symbol"`
-	// leverage
-	Leverage string `json:"leverage"`
+	// Futures position mode (SINGLE/DUAL)
+	PositionMode string `json:"position_mode,omitempty"`
+	// Account mode (CROSS_EXCHANGE/ISOLATED_EXCHANGE, default: CROSS_EXCHANGE)
+	AccountMode string `json:"account_mode,omitempty"`
+	// Exchange (BINANCE/OKX/GATE/BYBIT/CROSSEX; when account mode is ISOLATED_EXCHANGE, the exchange must be specified to modify futures position mode)
+	ExchangeType string `json:"exchange_type,omitempty"`
 }

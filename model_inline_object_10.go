@@ -10,14 +10,6 @@
 package gateapi
 
 type InlineObject10 struct {
-	// Currency
-	Coin string `json:"coin"`
-	// Transfer amount
-	Amount string `json:"amount"`
-	// Transfer-in account: CROSSEX_BINANCE, CROSSEX_OKX, CROSSEX_GATE, CROSSEX_BYBIT, CROSSEX, SPOT
-	From string `json:"from"`
-	// Transfer-out account: CROSSEX_BINANCE, CROSSEX_OKX, CROSSEX_GATE, CROSSEX_BYBIT, CROSSEX, SPOT
-	To string `json:"to"`
-	// User-defined ID
-	Text string `json:"text,omitempty"`
+	// Order ID
+	OrderId string `json:"order_id"`
 }

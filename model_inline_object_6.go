@@ -9,19 +9,10 @@
 
 package gateapi
 
+// Order Modification Request Body
 type InlineObject6 struct {
-	// PAY/GET quote direction. PAY means user inputs pay amount, GET means user inputs get amount. If PAY, pay_amount is required. If GET, get_amount is required
-	Side string `json:"side"`
-	// Currency the user pays. Supported currencies can be found on the OTC web quote page.
-	PayCoin string `json:"pay_coin"`
-	// Currency the user receives. Supported currencies can be found on the OTC web quote page.
-	GetCoin string `json:"get_coin"`
-	// User payment currency amount
-	PayAmount string `json:"pay_amount,omitempty"`
-	// Amount of currency received by the user
-	GetAmount string `json:"get_amount,omitempty"`
-	// Create quote token: 0: quote preview only; 1: generate quote token for order placement.
-	CreateQuoteToken string `json:"create_quote_token,omitempty"`
-	// Promotion code (optional)
-	PromotionCode string `json:"promotion_code,omitempty"`
+	// Order Price
+	Price string `json:"price"`
+	// Trade amount
+	Size int64 `json:"size"`
 }

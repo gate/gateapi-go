@@ -350,7 +350,7 @@ Optional parameters are passed through a pointer to a CreateCrossexTransferOpts 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**inlineObject10** | [**optional.Interface of InlineObject10**](InlineObject10.md)|  | 
+**inlineObject11** | [**optional.Interface of InlineObject11**](InlineObject11.md)|  | 
 
 ### Example
 
@@ -428,7 +428,7 @@ Optional parameters are passed through a pointer to a CreateCrossexOrderOpts str
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**inlineObject11** | [**optional.Interface of InlineObject11**](InlineObject11.md)|  | 
+**inlineObject12** | [**optional.Interface of InlineObject12**](InlineObject12.md)|  | 
 
 ### Example
 
@@ -578,7 +578,7 @@ Optional parameters are passed through a pointer to a UpdateCrossexOrderOpts str
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**inlineObject12** | [**optional.Interface of InlineObject12**](InlineObject12.md)|  | 
+**inlineObject13** | [**optional.Interface of InlineObject13**](InlineObject13.md)|  | 
 
 ### Example
 
@@ -728,7 +728,7 @@ Optional parameters are passed through a pointer to a CreateCrossexConvertQuoteO
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**inlineObject13** | [**optional.Interface of InlineObject13**](InlineObject13.md)|  | 
+**inlineObject14** | [**optional.Interface of InlineObject14**](InlineObject14.md)|  | 
 
 ### Example
 
@@ -806,7 +806,7 @@ Optional parameters are passed through a pointer to a CreateCrossexConvertOrderO
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**inlineObject14** | [**optional.Interface of InlineObject14**](InlineObject14.md)|  | 
+**inlineObject15** | [**optional.Interface of InlineObject15**](InlineObject15.md)|  | 
 
 ### Example
 
@@ -962,7 +962,7 @@ Optional parameters are passed through a pointer to a UpdateCrossexAccountOpts s
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**inlineObject15** | [**optional.Interface of InlineObject15**](InlineObject15.md)|  | 
+**inlineObject16** | [**optional.Interface of InlineObject16**](InlineObject16.md)|  | 
 
 ### Example
 
@@ -1118,7 +1118,7 @@ Optional parameters are passed through a pointer to a UpdateCrossexPositionsLeve
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**inlineObject16** | [**optional.Interface of InlineObject16**](InlineObject16.md)|  | 
+**inlineObject17** | [**optional.Interface of InlineObject17**](InlineObject17.md)|  | 
 
 ### Example
 
@@ -1274,7 +1274,7 @@ Optional parameters are passed through a pointer to a UpdateCrossexMarginPositio
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**inlineObject17** | [**optional.Interface of InlineObject17**](InlineObject17.md)|  | 
+**inlineObject18** | [**optional.Interface of InlineObject18**](InlineObject18.md)|  | 
 
 ### Example
 
@@ -1352,7 +1352,7 @@ Optional parameters are passed through a pointer to a CloseCrossexPositionOpts s
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**inlineObject18** | [**optional.Interface of InlineObject18**](InlineObject18.md)|  | 
+**inlineObject19** | [**optional.Interface of InlineObject19**](InlineObject19.md)|  | 
 
 ### Example
 

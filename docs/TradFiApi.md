@@ -50,7 +50,13 @@ func main() {
     client := gateapi.NewAPIClient(gateapi.NewConfiguration())
     // uncomment the next line if your are testing against testnet
     // client.ChangeBasePath("https://fx-api-testnet.gateio.ws/api/v4")
-    ctx := context.Background()
+    ctx := context.WithValue(context.Background(),
+                             gateapi.ContextGateAPIV4,
+                             gateapi.GateAPIV4{
+                                 Key:    "YOUR_API_KEY",
+                                 Secret: "YOUR_API_SECRET",
+                             }
+                            )
     
     result, _, err := client.TradFiApi.QueryMt5AccountInfo(ctx)
     if err != nil {
@@ -72,7 +78,7 @@ func main() {
 
 ### Authorization
 
-No authorization required
+[apiv4](../README.md#apiv4)
 
 ### HTTP request headers
 

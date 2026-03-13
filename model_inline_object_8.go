@@ -10,18 +10,22 @@
 package gateapi
 
 type InlineObject8 struct {
-	// Currency paid by the user. Supported currencies can be queried from the OTC web stablecoin quote page.
-	PayCoin string `json:"pay_coin,omitempty"`
-	// Currency to be received by the user. Supported currencies can be queried from the OTC web stablecoin quote page.
-	GetCoin string `json:"get_coin,omitempty"`
-	// User payment currency amount
-	PayAmount string `json:"pay_amount,omitempty"`
-	// Amount of currency received by the user
-	GetAmount string `json:"get_amount,omitempty"`
+	// BUY for on-ramp, SELL for off-ramp
+	Type string `json:"type"`
 	// Quote direction returned by the quote API (used for order validation)
-	Side string `json:"side,omitempty"`
-	// promotion code
+	Side string `json:"side"`
+	// Cryptocurrency (supported currencies can be queried from the OTC web fiat quote page)
+	CryptoCurrency string `json:"crypto_currency"`
+	// Fiat currency (supported currencies can be queried from the OTC web fiat quote page)
+	FiatCurrency string `json:"fiat_currency"`
+	// Amount of cryptocurrency
+	CryptoAmount string `json:"crypto_amount"`
+	// Fiat amount
+	FiatAmount string `json:"fiat_amount"`
+	// Promotion code
 	PromotionCode string `json:"promotion_code,omitempty"`
 	// Parameter returned by the quote API
-	QuoteToken string `json:"quote_token,omitempty"`
+	QuoteToken string `json:"quote_token"`
+	// Bank card ID used for the order (retrieved via the default bank card API)
+	BankId string `json:"bank_id"`
 }

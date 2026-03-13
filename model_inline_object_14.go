@@ -10,6 +10,12 @@
 package gateapi
 
 type InlineObject14 struct {
-	// Inquiry ID
-	QuoteId string `json:"quote_id"`
+	// Exchange Type
+	ExchangeType string `json:"exchange_type"`
+	// Asset Sold
+	FromCoin string `json:"from_coin"`
+	// Asset name to buy (OKX and GATE only allow BTC, ETH, USDT; BN only allows USDT)
+	ToCoin string `json:"to_coin"`
+	// Amount to sell
+	FromAmount string `json:"from_amount"`
 }

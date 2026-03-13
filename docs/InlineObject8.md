@@ -4,13 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**PayCoin** | **string** | Currency paid by the user. Supported currencies can be queried from the OTC web stablecoin quote page. | [optional] 
-**GetCoin** | **string** | Currency to be received by the user. Supported currencies can be queried from the OTC web stablecoin quote page. | [optional] 
-**PayAmount** | **string** | User payment currency amount | [optional] 
-**GetAmount** | **string** | Amount of currency received by the user | [optional] 
-**Side** | **string** | Quote direction returned by the quote API (used for order validation) | [optional] 
-**PromotionCode** | **string** | promotion code  | [optional] 
-**QuoteToken** | **string** | Parameter returned by the quote API | [optional] 
+**Type** | **string** | BUY for on-ramp, SELL for off-ramp | 
+**Side** | **string** | Quote direction returned by the quote API (used for order validation) | 
+**CryptoCurrency** | **string** | Cryptocurrency (supported currencies can be queried from the OTC web fiat quote page) | 
+**FiatCurrency** | **string** | Fiat currency (supported currencies can be queried from the OTC web fiat quote page) | 
+**CryptoAmount** | **string** | Amount of cryptocurrency | 
+**FiatAmount** | **string** | Fiat amount | 
+**PromotionCode** | **string** | Promotion code | [optional] 
+**QuoteToken** | **string** | Parameter returned by the quote API | 
+**BankId** | **string** | Bank card ID used for the order (retrieved via the default bank card API) | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

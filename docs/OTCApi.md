@@ -18,82 +18,11 @@ Method | HTTP request | Description
 
 ## CreateOtcQuote
 
-> InlineResponse2006 CreateOtcQuote(ctx, inlineObject6)
+> InlineResponse2006 CreateOtcQuote(ctx, inlineObject7)
 
 Fiat and stablecoin quote
 
 Create fiat and stablecoin quotes, supporting both PAY and GET directions
-
-### Required Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**inlineObject6** | [**InlineObject6**](InlineObject6.md)|  | 
-
-### Example
-
-```golang
-package main
-
-import (
-    "context"
-    "fmt"
-
-    "github.com/gate/gateapi-go/v7"
-)
-
-func main() {
-    client := gateapi.NewAPIClient(gateapi.NewConfiguration())
-    // uncomment the next line if your are testing against testnet
-    // client.ChangeBasePath("https://fx-api-testnet.gateio.ws/api/v4")
-    ctx := context.WithValue(context.Background(),
-                             gateapi.ContextGateAPIV4,
-                             gateapi.GateAPIV4{
-                                 Key:    "YOUR_API_KEY",
-                                 Secret: "YOUR_API_SECRET",
-                             }
-                            )
-    inlineObject6 := gateapi.InlineObject6{} // InlineObject6 - 
-    
-    result, _, err := client.OTCApi.CreateOtcQuote(ctx, inlineObject6)
-    if err != nil {
-        if e, ok := err.(gateapi.GateAPIError); ok {
-            fmt.Printf("gate api error: %s\n", e.Error())
-        } else {
-            fmt.Printf("generic error: %s\n", err.Error())
-        }
-    } else {
-        fmt.Println(result)
-    }
-}
-```
-
-
-### Return type
-
-[**InlineResponse2006**](inline_response_200_6.md)
-
-### Authorization
-
-[apiv4](../README.md#apiv4)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-## CreateOtcOrder
-
-> InlineResponse2007 CreateOtcOrder(ctx, inlineObject7)
-
-Create fiat order
-
-Create a fiat order, supporting BUY for on-ramp and SELL for off-ramp
 
 ### Required Parameters
 
@@ -127,7 +56,7 @@ func main() {
                             )
     inlineObject7 := gateapi.InlineObject7{} // InlineObject7 - 
     
-    result, _, err := client.OTCApi.CreateOtcOrder(ctx, inlineObject7)
+    result, _, err := client.OTCApi.CreateOtcQuote(ctx, inlineObject7)
     if err != nil {
         if e, ok := err.(gateapi.GateAPIError); ok {
             fmt.Printf("gate api error: %s\n", e.Error())
@@ -143,7 +72,7 @@ func main() {
 
 ### Return type
 
-[**InlineResponse2007**](inline_response_200_7.md)
+[**InlineResponse2006**](inline_response_200_6.md)
 
 ### Authorization
 
@@ -158,13 +87,13 @@ func main() {
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-## CreateStableCoinOrder
+## CreateOtcOrder
 
-> InlineResponse2008 CreateStableCoinOrder(ctx, inlineObject8)
+> InlineResponse2007 CreateOtcOrder(ctx, inlineObject8)
 
-Create stablecoin order
+Create fiat order
 
-Create stablecoin order
+Create a fiat order, supporting BUY for on-ramp and SELL for off-ramp
 
 ### Required Parameters
 
@@ -198,7 +127,78 @@ func main() {
                             )
     inlineObject8 := gateapi.InlineObject8{} // InlineObject8 - 
     
-    result, _, err := client.OTCApi.CreateStableCoinOrder(ctx, inlineObject8)
+    result, _, err := client.OTCApi.CreateOtcOrder(ctx, inlineObject8)
+    if err != nil {
+        if e, ok := err.(gateapi.GateAPIError); ok {
+            fmt.Printf("gate api error: %s\n", e.Error())
+        } else {
+            fmt.Printf("generic error: %s\n", err.Error())
+        }
+    } else {
+        fmt.Println(result)
+    }
+}
+```
+
+
+### Return type
+
+[**InlineResponse2007**](inline_response_200_7.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+## CreateStableCoinOrder
+
+> InlineResponse2008 CreateStableCoinOrder(ctx, inlineObject9)
+
+Create stablecoin order
+
+Create stablecoin order
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**inlineObject9** | [**InlineObject9**](InlineObject9.md)|  | 
+
+### Example
+
+```golang
+package main
+
+import (
+    "context"
+    "fmt"
+
+    "github.com/gate/gateapi-go/v7"
+)
+
+func main() {
+    client := gateapi.NewAPIClient(gateapi.NewConfiguration())
+    // uncomment the next line if your are testing against testnet
+    // client.ChangeBasePath("https://fx-api-testnet.gateio.ws/api/v4")
+    ctx := context.WithValue(context.Background(),
+                             gateapi.ContextGateAPIV4,
+                             gateapi.GateAPIV4{
+                                 Key:    "YOUR_API_KEY",
+                                 Secret: "YOUR_API_SECRET",
+                             }
+                            )
+    inlineObject9 := gateapi.InlineObject9{} // InlineObject9 - 
+    
+    result, _, err := client.OTCApi.CreateStableCoinOrder(ctx, inlineObject9)
     if err != nil {
         if e, ok := err.(gateapi.GateAPIError); ok {
             fmt.Printf("gate api error: %s\n", e.Error())
@@ -363,7 +363,7 @@ func main() {
 
 ## MarkOtcOrderPaid
 
-> InlineResponse2007 MarkOtcOrderPaid(ctx, inlineObject9)
+> InlineResponse2007 MarkOtcOrderPaid(ctx, inlineObject10)
 
 Mark fiat order as paid
 
@@ -374,7 +374,7 @@ Mark fiat order as paid
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**inlineObject9** | [**InlineObject9**](InlineObject9.md)|  | 
+**inlineObject10** | [**InlineObject10**](InlineObject10.md)|  | 
 
 ### Example
 
@@ -399,9 +399,9 @@ func main() {
                                  Secret: "YOUR_API_SECRET",
                              }
                             )
-    inlineObject9 := gateapi.InlineObject9{} // InlineObject9 - 
+    inlineObject10 := gateapi.InlineObject10{} // InlineObject10 - 
     
-    result, _, err := client.OTCApi.MarkOtcOrderPaid(ctx, inlineObject9)
+    result, _, err := client.OTCApi.MarkOtcOrderPaid(ctx, inlineObject10)
     if err != nil {
         if e, ok := err.(gateapi.GateAPIError); ok {
             fmt.Printf("gate api error: %s\n", e.Error())

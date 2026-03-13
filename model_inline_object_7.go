@@ -10,22 +10,18 @@
 package gateapi
 
 type InlineObject7 struct {
-	// BUY for on-ramp, SELL for off-ramp
-	Type string `json:"type"`
-	// Quote direction returned by the quote API (used for order validation)
+	// PAY/GET quote direction. PAY means user inputs pay amount, GET means user inputs get amount. If PAY, pay_amount is required. If GET, get_amount is required
 	Side string `json:"side"`
-	// Cryptocurrency (supported currencies can be queried from the OTC web fiat quote page)
-	CryptoCurrency string `json:"crypto_currency"`
-	// Fiat currency (supported currencies can be queried from the OTC web fiat quote page)
-	FiatCurrency string `json:"fiat_currency"`
-	// Amount of cryptocurrency
-	CryptoAmount string `json:"crypto_amount"`
-	// Fiat amount
-	FiatAmount string `json:"fiat_amount"`
-	// Promotion code
+	// Currency the user pays. Supported currencies can be found on the OTC web quote page.
+	PayCoin string `json:"pay_coin"`
+	// Currency the user receives. Supported currencies can be found on the OTC web quote page.
+	GetCoin string `json:"get_coin"`
+	// User payment currency amount
+	PayAmount string `json:"pay_amount,omitempty"`
+	// Amount of currency received by the user
+	GetAmount string `json:"get_amount,omitempty"`
+	// Create quote token: 0: quote preview only; 1: generate quote token for order placement.
+	CreateQuoteToken string `json:"create_quote_token,omitempty"`
+	// Promotion code (optional)
 	PromotionCode string `json:"promotion_code,omitempty"`
-	// Parameter returned by the quote API
-	QuoteToken string `json:"quote_token"`
-	// Bank card ID used for the order (retrieved via the default bank card API)
-	BankId string `json:"bank_id"`
 }
