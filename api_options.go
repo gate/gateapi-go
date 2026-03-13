@@ -2258,11 +2258,11 @@ AmendOptionsOrder Option Order Modification
 Modify the order price and/or quantity of a specified order; only orders with status &#39;open&#39; are supported
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param orderId Order ID returned when order is successfully created
-  - @param inlineObject6
+  - @param inlineObject1
 
 @return OptionsOrder
 */
-func (a *OptionsApiService) AmendOptionsOrder(ctx context.Context, orderId int64, inlineObject6 InlineObject6) (OptionsOrder, *http.Response, error) {
+func (a *OptionsApiService) AmendOptionsOrder(ctx context.Context, orderId int64, inlineObject1 InlineObject1) (OptionsOrder, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -2298,7 +2298,7 @@ func (a *OptionsApiService) AmendOptionsOrder(ctx context.Context, orderId int64
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = &inlineObject6
+	localVarPostBody = &inlineObject1
 	if ctx == nil {
 		ctx = context.Background()
 	}

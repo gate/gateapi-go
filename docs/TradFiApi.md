@@ -619,7 +619,7 @@ func main() {
 
 ## CreateTransaction
 
-> CreateTransaction CreateTransaction(ctx, inlineObject1)
+> CreateTransaction CreateTransaction(ctx, tradFiTransactionRequest)
 
 Fund Deposit and Withdrawal
 
@@ -628,7 +628,7 @@ Fund Deposit and Withdrawal
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**inlineObject1** | [**InlineObject1**](InlineObject1.md)|  | 
+**tradFiTransactionRequest** | [**TradFiTransactionRequest**](TradFiTransactionRequest.md)|  | 
 
 ### Example
 
@@ -653,9 +653,9 @@ func main() {
                                  Secret: "YOUR_API_SECRET",
                              }
                             )
-    inlineObject1 := gateapi.InlineObject1{} // InlineObject1 - 
+    tradFiTransactionRequest := gateapi.TradFiTransactionRequest{} // TradFiTransactionRequest - 
     
-    result, _, err := client.TradFiApi.CreateTransaction(ctx, inlineObject1)
+    result, _, err := client.TradFiApi.CreateTransaction(ctx, tradFiTransactionRequest)
     if err != nil {
         if e, ok := err.(gateapi.GateAPIError); ok {
             fmt.Printf("gate api error: %s\n", e.Error())
@@ -752,7 +752,7 @@ func main() {
 
 ## CreateTradFiOrder
 
-> CreateOrder CreateTradFiOrder(ctx, inlineObject2)
+> CreateOrder CreateTradFiOrder(ctx, tradFiOrderRequest)
 
 Create an order
 
@@ -761,7 +761,7 @@ Create an order
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**inlineObject2** | [**InlineObject2**](InlineObject2.md)|  | 
+**tradFiOrderRequest** | [**TradFiOrderRequest**](TradFiOrderRequest.md)|  | 
 
 ### Example
 
@@ -786,9 +786,9 @@ func main() {
                                  Secret: "YOUR_API_SECRET",
                              }
                             )
-    inlineObject2 := gateapi.InlineObject2{} // InlineObject2 - 
+    tradFiOrderRequest := gateapi.TradFiOrderRequest{} // TradFiOrderRequest - 
     
-    result, _, err := client.TradFiApi.CreateTradFiOrder(ctx, inlineObject2)
+    result, _, err := client.TradFiApi.CreateTradFiOrder(ctx, tradFiOrderRequest)
     if err != nil {
         if e, ok := err.(gateapi.GateAPIError); ok {
             fmt.Printf("gate api error: %s\n", e.Error())
@@ -821,7 +821,7 @@ func main() {
 
 ## UpdateOrder
 
-> UpdateOrder UpdateOrder(ctx, orderId, inlineObject3)
+> UpdateOrder UpdateOrder(ctx, orderId, tradFiOrderUpdateRequest)
 
 Modify order
 
@@ -831,7 +831,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **orderId** | **int32**| Order ID | 
-**inlineObject3** | [**InlineObject3**](InlineObject3.md)|  | 
+**tradFiOrderUpdateRequest** | [**TradFiOrderUpdateRequest**](TradFiOrderUpdateRequest.md)|  | 
 
 ### Example
 
@@ -857,9 +857,9 @@ func main() {
                              }
                             )
     orderId := 1223 // int32 - Order ID
-    inlineObject3 := gateapi.InlineObject3{} // InlineObject3 - 
+    tradFiOrderUpdateRequest := gateapi.TradFiOrderUpdateRequest{} // TradFiOrderUpdateRequest - 
     
-    result, _, err := client.TradFiApi.UpdateOrder(ctx, orderId, inlineObject3)
+    result, _, err := client.TradFiApi.UpdateOrder(ctx, orderId, tradFiOrderUpdateRequest)
     if err != nil {
         if e, ok := err.(gateapi.GateAPIError); ok {
             fmt.Printf("gate api error: %s\n", e.Error())
@@ -1104,7 +1104,7 @@ func main() {
 
 ## UpdatePosition
 
-> UpdatePosition UpdatePosition(ctx, positionId, inlineObject4)
+> UpdatePosition UpdatePosition(ctx, positionId, tradFiPositionUpdateRequest)
 
 Modify position
 
@@ -1114,7 +1114,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **positionId** | **int32**| Position ID | 
-**inlineObject4** | [**InlineObject4**](InlineObject4.md)|  | 
+**tradFiPositionUpdateRequest** | [**TradFiPositionUpdateRequest**](TradFiPositionUpdateRequest.md)|  | 
 
 ### Example
 
@@ -1140,9 +1140,9 @@ func main() {
                              }
                             )
     positionId := 1223 // int32 - Position ID
-    inlineObject4 := gateapi.InlineObject4{} // InlineObject4 - 
+    tradFiPositionUpdateRequest := gateapi.TradFiPositionUpdateRequest{} // TradFiPositionUpdateRequest - 
     
-    result, _, err := client.TradFiApi.UpdatePosition(ctx, positionId, inlineObject4)
+    result, _, err := client.TradFiApi.UpdatePosition(ctx, positionId, tradFiPositionUpdateRequest)
     if err != nil {
         if e, ok := err.(gateapi.GateAPIError); ok {
             fmt.Printf("gate api error: %s\n", e.Error())
@@ -1175,7 +1175,7 @@ func main() {
 
 ## ClosePosition
 
-> DeletePosition ClosePosition(ctx, positionId, inlineObject5)
+> DeletePosition ClosePosition(ctx, positionId, tradFiClosePositionRequest)
 
 Close position
 
@@ -1185,7 +1185,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **positionId** | **int32**| Position ID | 
-**inlineObject5** | [**InlineObject5**](InlineObject5.md)|  | 
+**tradFiClosePositionRequest** | [**TradFiClosePositionRequest**](TradFiClosePositionRequest.md)|  | 
 
 ### Example
 
@@ -1211,9 +1211,9 @@ func main() {
                              }
                             )
     positionId := 1223 // int32 - Position ID
-    inlineObject5 := gateapi.InlineObject5{} // InlineObject5 - 
+    tradFiClosePositionRequest := gateapi.TradFiClosePositionRequest{} // TradFiClosePositionRequest - 
     
-    result, _, err := client.TradFiApi.ClosePosition(ctx, positionId, inlineObject5)
+    result, _, err := client.TradFiApi.ClosePosition(ctx, positionId, tradFiClosePositionRequest)
     if err != nil {
         if e, ok := err.(gateapi.GateAPIError); ok {
             fmt.Printf("gate api error: %s\n", e.Error())

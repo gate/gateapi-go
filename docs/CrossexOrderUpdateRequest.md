@@ -1,11 +1,11 @@
-# InlineObject1
+# CrossexOrderUpdateRequest
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Price** | **string** | Order Price | 
-**Size** | **int64** | Trade amount | 
+**Qty** | **string** | modify amount | [optional] 
+**Price** | **string** | modify price | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

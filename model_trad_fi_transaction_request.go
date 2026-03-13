@@ -9,10 +9,12 @@
 
 package gateapi
 
-// Order Modification Request Body
-type InlineObject1 struct {
-	// Order Price
-	Price string `json:"price"`
-	// Trade amount
-	Size int64 `json:"size"`
+// 资金转入转出请求体
+type TradFiTransactionRequest struct {
+	// Asset type, e.g., USDT, currently only USDT is supported
+	Asset string `json:"asset"`
+	// Change Quantity, supports up to two decimal places
+	Change string `json:"change"`
+	// Transaction Type (deposit - transfer in, withdraw - transfer out)
+	Type string `json:"type"`
 }

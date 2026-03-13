@@ -10,9 +10,9 @@
 package gateapi
 
 // Order Modification Request Body
-type InlineObject1 struct {
-	// Order Price
-	Price string `json:"price"`
-	// Trade amount
-	Size int64 `json:"size"`
+type CrossexOrderUpdateRequest struct {
+	// modify amount
+	Qty string `json:"qty,omitempty"`
+	// modify price
+	Price string `json:"price,omitempty"`
 }

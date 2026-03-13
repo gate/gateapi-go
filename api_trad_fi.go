@@ -870,11 +870,11 @@ func (a *TradFiApiService) QueryTransaction(ctx context.Context, localVarOptiona
 /*
 CreateTransaction Fund Deposit and Withdrawal
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param inlineObject1
+  - @param tradFiTransactionRequest
 
 @return CreateTransaction
 */
-func (a *TradFiApiService) CreateTransaction(ctx context.Context, inlineObject1 InlineObject1) (CreateTransaction, *http.Response, error) {
+func (a *TradFiApiService) CreateTransaction(ctx context.Context, tradFiTransactionRequest TradFiTransactionRequest) (CreateTransaction, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -908,7 +908,7 @@ func (a *TradFiApiService) CreateTransaction(ctx context.Context, inlineObject1 
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = &inlineObject1
+	localVarPostBody = &tradFiTransactionRequest
 	if ctx == nil {
 		ctx = context.Background()
 	}
@@ -1053,11 +1053,11 @@ func (a *TradFiApiService) QueryOrderList(ctx context.Context) (OrderList, *http
 /*
 CreateTradFiOrder Create an order
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param inlineObject2
+  - @param tradFiOrderRequest
 
 @return CreateOrder
 */
-func (a *TradFiApiService) CreateTradFiOrder(ctx context.Context, inlineObject2 InlineObject2) (CreateOrder, *http.Response, error) {
+func (a *TradFiApiService) CreateTradFiOrder(ctx context.Context, tradFiOrderRequest TradFiOrderRequest) (CreateOrder, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -1091,7 +1091,7 @@ func (a *TradFiApiService) CreateTradFiOrder(ctx context.Context, inlineObject2 
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = &inlineObject2
+	localVarPostBody = &tradFiOrderRequest
 	if ctx == nil {
 		ctx = context.Background()
 	}
@@ -1147,11 +1147,11 @@ func (a *TradFiApiService) CreateTradFiOrder(ctx context.Context, inlineObject2 
 UpdateOrder Modify order
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param orderId Order ID
-  - @param inlineObject3
+  - @param tradFiOrderUpdateRequest
 
 @return UpdateOrder
 */
-func (a *TradFiApiService) UpdateOrder(ctx context.Context, orderId int32, inlineObject3 InlineObject3) (UpdateOrder, *http.Response, error) {
+func (a *TradFiApiService) UpdateOrder(ctx context.Context, orderId int32, tradFiOrderUpdateRequest TradFiOrderUpdateRequest) (UpdateOrder, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -1187,7 +1187,7 @@ func (a *TradFiApiService) UpdateOrder(ctx context.Context, orderId int32, inlin
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = &inlineObject3
+	localVarPostBody = &tradFiOrderUpdateRequest
 	if ctx == nil {
 		ctx = context.Background()
 	}
@@ -1541,11 +1541,11 @@ func (a *TradFiApiService) QueryPositionList(ctx context.Context) (PositionList,
 UpdatePosition Modify position
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param positionId Position ID
-  - @param inlineObject4
+  - @param tradFiPositionUpdateRequest
 
 @return UpdatePosition
 */
-func (a *TradFiApiService) UpdatePosition(ctx context.Context, positionId int32, inlineObject4 InlineObject4) (UpdatePosition, *http.Response, error) {
+func (a *TradFiApiService) UpdatePosition(ctx context.Context, positionId int32, tradFiPositionUpdateRequest TradFiPositionUpdateRequest) (UpdatePosition, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -1581,7 +1581,7 @@ func (a *TradFiApiService) UpdatePosition(ctx context.Context, positionId int32,
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = &inlineObject4
+	localVarPostBody = &tradFiPositionUpdateRequest
 	if ctx == nil {
 		ctx = context.Background()
 	}
@@ -1637,11 +1637,11 @@ func (a *TradFiApiService) UpdatePosition(ctx context.Context, positionId int32,
 ClosePosition Close position
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param positionId Position ID
-  - @param inlineObject5
+  - @param tradFiClosePositionRequest
 
 @return DeletePosition
 */
-func (a *TradFiApiService) ClosePosition(ctx context.Context, positionId int32, inlineObject5 InlineObject5) (DeletePosition, *http.Response, error) {
+func (a *TradFiApiService) ClosePosition(ctx context.Context, positionId int32, tradFiClosePositionRequest TradFiClosePositionRequest) (DeletePosition, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -1677,7 +1677,7 @@ func (a *TradFiApiService) ClosePosition(ctx context.Context, positionId int32, 
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = &inlineObject5
+	localVarPostBody = &tradFiClosePositionRequest
 	if ctx == nil {
 		ctx = context.Background()
 	}

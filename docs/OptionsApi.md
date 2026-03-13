@@ -1612,7 +1612,7 @@ func main() {
 
 ## AmendOptionsOrder
 
-> OptionsOrder AmendOptionsOrder(ctx, orderId, inlineObject6)
+> OptionsOrder AmendOptionsOrder(ctx, orderId, inlineObject1)
 
 Option Order Modification
 
@@ -1624,7 +1624,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **orderId** | **int64**| Order ID returned when order is successfully created | 
-**inlineObject6** | [**InlineObject6**](InlineObject6.md)|  | 
+**inlineObject1** | [**InlineObject1**](InlineObject1.md)|  | 
 
 ### Example
 
@@ -1650,9 +1650,9 @@ func main() {
                              }
                             )
     orderId := 12345 // int64 - Order ID returned when order is successfully created
-    inlineObject6 := gateapi.InlineObject6{} // InlineObject6 - 
+    inlineObject1 := gateapi.InlineObject1{} // InlineObject1 - 
     
-    result, _, err := client.OptionsApi.AmendOptionsOrder(ctx, orderId, inlineObject6)
+    result, _, err := client.OptionsApi.AmendOptionsOrder(ctx, orderId, inlineObject1)
     if err != nil {
         if e, ok := err.(gateapi.GateAPIError); ok {
             fmt.Printf("gate api error: %s\n", e.Error())

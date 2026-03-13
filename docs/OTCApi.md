@@ -18,7 +18,7 @@ Method | HTTP request | Description
 
 ## CreateOtcQuote
 
-> InlineResponse2006 CreateOtcQuote(ctx, inlineObject7)
+> InlineResponse2006 CreateOtcQuote(ctx, otcQuoteRequest)
 
 Fiat and stablecoin quote
 
@@ -29,7 +29,7 @@ Create fiat and stablecoin quotes, supporting both PAY and GET directions
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**inlineObject7** | [**InlineObject7**](InlineObject7.md)|  | 
+**otcQuoteRequest** | [**OtcQuoteRequest**](OtcQuoteRequest.md)|  | 
 
 ### Example
 
@@ -54,9 +54,9 @@ func main() {
                                  Secret: "YOUR_API_SECRET",
                              }
                             )
-    inlineObject7 := gateapi.InlineObject7{} // InlineObject7 - 
+    otcQuoteRequest := gateapi.OtcQuoteRequest{} // OtcQuoteRequest - 
     
-    result, _, err := client.OTCApi.CreateOtcQuote(ctx, inlineObject7)
+    result, _, err := client.OTCApi.CreateOtcQuote(ctx, otcQuoteRequest)
     if err != nil {
         if e, ok := err.(gateapi.GateAPIError); ok {
             fmt.Printf("gate api error: %s\n", e.Error())
@@ -89,7 +89,7 @@ func main() {
 
 ## CreateOtcOrder
 
-> InlineResponse2007 CreateOtcOrder(ctx, inlineObject8)
+> InlineResponse2007 CreateOtcOrder(ctx, otcOrderRequest)
 
 Create fiat order
 
@@ -100,7 +100,7 @@ Create a fiat order, supporting BUY for on-ramp and SELL for off-ramp
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**inlineObject8** | [**InlineObject8**](InlineObject8.md)|  | 
+**otcOrderRequest** | [**OtcOrderRequest**](OtcOrderRequest.md)|  | 
 
 ### Example
 
@@ -125,9 +125,9 @@ func main() {
                                  Secret: "YOUR_API_SECRET",
                              }
                             )
-    inlineObject8 := gateapi.InlineObject8{} // InlineObject8 - 
+    otcOrderRequest := gateapi.OtcOrderRequest{} // OtcOrderRequest - 
     
-    result, _, err := client.OTCApi.CreateOtcOrder(ctx, inlineObject8)
+    result, _, err := client.OTCApi.CreateOtcOrder(ctx, otcOrderRequest)
     if err != nil {
         if e, ok := err.(gateapi.GateAPIError); ok {
             fmt.Printf("gate api error: %s\n", e.Error())
@@ -160,7 +160,7 @@ func main() {
 
 ## CreateStableCoinOrder
 
-> InlineResponse2008 CreateStableCoinOrder(ctx, inlineObject9)
+> InlineResponse2008 CreateStableCoinOrder(ctx, otcStableCoinOrderRequest)
 
 Create stablecoin order
 
@@ -171,7 +171,7 @@ Create stablecoin order
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**inlineObject9** | [**InlineObject9**](InlineObject9.md)|  | 
+**otcStableCoinOrderRequest** | [**OtcStableCoinOrderRequest**](OtcStableCoinOrderRequest.md)|  | 
 
 ### Example
 
@@ -196,9 +196,9 @@ func main() {
                                  Secret: "YOUR_API_SECRET",
                              }
                             )
-    inlineObject9 := gateapi.InlineObject9{} // InlineObject9 - 
+    otcStableCoinOrderRequest := gateapi.OtcStableCoinOrderRequest{} // OtcStableCoinOrderRequest - 
     
-    result, _, err := client.OTCApi.CreateStableCoinOrder(ctx, inlineObject9)
+    result, _, err := client.OTCApi.CreateStableCoinOrder(ctx, otcStableCoinOrderRequest)
     if err != nil {
         if e, ok := err.(gateapi.GateAPIError); ok {
             fmt.Printf("gate api error: %s\n", e.Error())
@@ -363,7 +363,7 @@ func main() {
 
 ## MarkOtcOrderPaid
 
-> InlineResponse2007 MarkOtcOrderPaid(ctx, inlineObject10)
+> InlineResponse2007 MarkOtcOrderPaid(ctx, otcMarkOrderPaidRequest)
 
 Mark fiat order as paid
 
@@ -374,7 +374,7 @@ Mark fiat order as paid
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**inlineObject10** | [**InlineObject10**](InlineObject10.md)|  | 
+**otcMarkOrderPaidRequest** | [**OtcMarkOrderPaidRequest**](OtcMarkOrderPaidRequest.md)|  | 
 
 ### Example
 
@@ -399,9 +399,9 @@ func main() {
                                  Secret: "YOUR_API_SECRET",
                              }
                             )
-    inlineObject10 := gateapi.InlineObject10{} // InlineObject10 - 
+    otcMarkOrderPaidRequest := gateapi.OtcMarkOrderPaidRequest{} // OtcMarkOrderPaidRequest - 
     
-    result, _, err := client.OTCApi.MarkOtcOrderPaid(ctx, inlineObject10)
+    result, _, err := client.OTCApi.MarkOtcOrderPaid(ctx, otcMarkOrderPaidRequest)
     if err != nil {
         if e, ok := err.(gateapi.GateAPIError); ok {
             fmt.Printf("gate api error: %s\n", e.Error())

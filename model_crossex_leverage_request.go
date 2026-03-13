@@ -9,10 +9,10 @@
 
 package gateapi
 
-// Order Modification Request Body
-type InlineObject1 struct {
-	// Order Price
-	Price string `json:"price"`
-	// Trade amount
-	Size int64 `json:"size"`
+// 更改杠杆请求体（合约/杠杆通用）
+type CrossexLeverageRequest struct {
+	// Currency pair
+	Symbol string `json:"symbol"`
+	// leverage
+	Leverage string `json:"leverage"`
 }

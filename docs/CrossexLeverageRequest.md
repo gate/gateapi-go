@@ -1,11 +1,11 @@
-# InlineObject1
+# CrossexLeverageRequest
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Price** | **string** | Order Price | 
-**Size** | **int64** | Trade amount | 
+**Symbol** | **string** | Currency pair | 
+**Leverage** | **string** | leverage | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -431,7 +431,7 @@ func (a *CrossExApiService) ListCrossexTransfers(ctx context.Context, localVarOp
 
 // CreateCrossexTransferOpts Optional parameters for the method 'CreateCrossexTransfer'
 type CreateCrossexTransferOpts struct {
-	InlineObject11 optional.Interface
+	CrossexTransferRequest optional.Interface
 }
 
 /*
@@ -439,7 +439,7 @@ CreateCrossexTransfer Fund Transfer
 Rate limit: 10 requests per 10 seconds - In cross-exchange mode, when transferring USDT, either &#x60;from&#x60; or &#x60;to&#x60; must be &#x60;SPOT&#x60;, and the other side must be &#x60;CROSSEX&#x60;.   If &#x60;CROSSEX_${exchange_type}&#x60; (e.g. &#x60;CROSSEX_GATE&#x60;) is provided, it will be automatically treated as &#x60;CROSSEX&#x60;. - In isolated exchange mode, when transferring USDT, either &#x60;from&#x60; or &#x60;to&#x60; must be &#x60;CROSSEX_${exchange_type}&#x60;, and the other side must be &#x60;SPOT&#x60; or &#x60;CROSSEX_${exchange_type}&#x60;.   If &#x60;CROSSEX&#x60; is provided, it will be automatically treated as &#x60;CROSSEX_GATE&#x60;. - When transferring non-USDT assets to or from CrossEx, neither &#x60;from&#x60; nor &#x60;to&#x60; can be &#x60;CROSSEX&#x60;; &#x60;CROSSEX_${exchange_type}&#x60; must be explicitly specified. - When transferring non-USDT assets, transfers between &#x60;CROSSEX_{exchange_type}&#x60; accounts are supported, for example: from &#x3D; &#x60;CROSSEX_BINANCE&#x60;, to &#x3D; &#x60;CROSSEX_GATE&#x60;
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param optional nil or *CreateCrossexTransferOpts - Optional Parameters:
-  - @param "InlineObject11" (optional.Interface of InlineObject11) -
+  - @param "CrossexTransferRequest" (optional.Interface of CrossexTransferRequest) -
 
 @return InlineResponse20030
 */
@@ -477,12 +477,12 @@ func (a *CrossExApiService) CreateCrossexTransfer(ctx context.Context, localVarO
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	if localVarOptionals != nil && localVarOptionals.InlineObject11.IsSet() {
-		localVarOptionalInlineObject11, localVarOptionalInlineObject11ok := localVarOptionals.InlineObject11.Value().(InlineObject11)
-		if !localVarOptionalInlineObject11ok {
-			return localVarReturnValue, nil, reportError("inlineObject11 should be InlineObject11")
+	if localVarOptionals != nil && localVarOptionals.CrossexTransferRequest.IsSet() {
+		localVarOptionalCrossexTransferRequest, localVarOptionalCrossexTransferRequestok := localVarOptionals.CrossexTransferRequest.Value().(CrossexTransferRequest)
+		if !localVarOptionalCrossexTransferRequestok {
+			return localVarReturnValue, nil, reportError("crossexTransferRequest should be CrossexTransferRequest")
 		}
-		localVarPostBody = &localVarOptionalInlineObject11
+		localVarPostBody = &localVarOptionalCrossexTransferRequest
 	}
 
 	if ctx == nil {
@@ -538,7 +538,7 @@ func (a *CrossExApiService) CreateCrossexTransfer(ctx context.Context, localVarO
 
 // CreateCrossexOrderOpts Optional parameters for the method 'CreateCrossexOrder'
 type CreateCrossexOrderOpts struct {
-	InlineObject12 optional.Interface
+	CrossexOrderRequest optional.Interface
 }
 
 /*
@@ -546,7 +546,7 @@ CreateCrossexOrder Create an order
 Rate Limit: 100 requests per 10 seconds, maximum 1,000 open orders per user
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param optional nil or *CreateCrossexOrderOpts - Optional Parameters:
-  - @param "InlineObject12" (optional.Interface of InlineObject12) -
+  - @param "CrossexOrderRequest" (optional.Interface of CrossexOrderRequest) -
 
 @return InlineResponse20031
 */
@@ -584,12 +584,12 @@ func (a *CrossExApiService) CreateCrossexOrder(ctx context.Context, localVarOpti
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	if localVarOptionals != nil && localVarOptionals.InlineObject12.IsSet() {
-		localVarOptionalInlineObject12, localVarOptionalInlineObject12ok := localVarOptionals.InlineObject12.Value().(InlineObject12)
-		if !localVarOptionalInlineObject12ok {
-			return localVarReturnValue, nil, reportError("inlineObject12 should be InlineObject12")
+	if localVarOptionals != nil && localVarOptionals.CrossexOrderRequest.IsSet() {
+		localVarOptionalCrossexOrderRequest, localVarOptionalCrossexOrderRequestok := localVarOptionals.CrossexOrderRequest.Value().(CrossexOrderRequest)
+		if !localVarOptionalCrossexOrderRequestok {
+			return localVarReturnValue, nil, reportError("crossexOrderRequest should be CrossexOrderRequest")
 		}
-		localVarPostBody = &localVarOptionalInlineObject12
+		localVarPostBody = &localVarOptionalCrossexOrderRequest
 	}
 
 	if ctx == nil {
@@ -739,7 +739,7 @@ func (a *CrossExApiService) GetCrossexOrder(ctx context.Context, orderId string)
 
 // UpdateCrossexOrderOpts Optional parameters for the method 'UpdateCrossexOrder'
 type UpdateCrossexOrderOpts struct {
-	InlineObject13 optional.Interface
+	CrossexOrderUpdateRequest optional.Interface
 }
 
 /*
@@ -748,7 +748,7 @@ Rate Limit: 100 requests per 10 seconds
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param orderId Support Order ID or Text for Modify Order
   - @param optional nil or *UpdateCrossexOrderOpts - Optional Parameters:
-  - @param "InlineObject13" (optional.Interface of InlineObject13) -
+  - @param "CrossexOrderUpdateRequest" (optional.Interface of CrossexOrderUpdateRequest) -
 
 @return InlineResponse20033
 */
@@ -788,12 +788,12 @@ func (a *CrossExApiService) UpdateCrossexOrder(ctx context.Context, orderId stri
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	if localVarOptionals != nil && localVarOptionals.InlineObject13.IsSet() {
-		localVarOptionalInlineObject13, localVarOptionalInlineObject13ok := localVarOptionals.InlineObject13.Value().(InlineObject13)
-		if !localVarOptionalInlineObject13ok {
-			return localVarReturnValue, nil, reportError("inlineObject13 should be InlineObject13")
+	if localVarOptionals != nil && localVarOptionals.CrossexOrderUpdateRequest.IsSet() {
+		localVarOptionalCrossexOrderUpdateRequest, localVarOptionalCrossexOrderUpdateRequestok := localVarOptionals.CrossexOrderUpdateRequest.Value().(CrossexOrderUpdateRequest)
+		if !localVarOptionalCrossexOrderUpdateRequestok {
+			return localVarReturnValue, nil, reportError("crossexOrderUpdateRequest should be CrossexOrderUpdateRequest")
 		}
-		localVarPostBody = &localVarOptionalInlineObject13
+		localVarPostBody = &localVarOptionalCrossexOrderUpdateRequest
 	}
 
 	if ctx == nil {
@@ -943,7 +943,7 @@ func (a *CrossExApiService) CancelCrossexOrder(ctx context.Context, orderId stri
 
 // CreateCrossexConvertQuoteOpts Optional parameters for the method 'CreateCrossexConvertQuote'
 type CreateCrossexConvertQuoteOpts struct {
-	InlineObject14 optional.Interface
+	CrossexConvertQuoteRequest optional.Interface
 }
 
 /*
@@ -951,7 +951,7 @@ CreateCrossexConvertQuote Flash Swap Inquiry
 Rate Limit: 100 requests per day
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param optional nil or *CreateCrossexConvertQuoteOpts - Optional Parameters:
-  - @param "InlineObject14" (optional.Interface of InlineObject14) -
+  - @param "CrossexConvertQuoteRequest" (optional.Interface of CrossexConvertQuoteRequest) -
 
 @return InlineResponse20034
 */
@@ -989,12 +989,12 @@ func (a *CrossExApiService) CreateCrossexConvertQuote(ctx context.Context, local
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	if localVarOptionals != nil && localVarOptionals.InlineObject14.IsSet() {
-		localVarOptionalInlineObject14, localVarOptionalInlineObject14ok := localVarOptionals.InlineObject14.Value().(InlineObject14)
-		if !localVarOptionalInlineObject14ok {
-			return localVarReturnValue, nil, reportError("inlineObject14 should be InlineObject14")
+	if localVarOptionals != nil && localVarOptionals.CrossexConvertQuoteRequest.IsSet() {
+		localVarOptionalCrossexConvertQuoteRequest, localVarOptionalCrossexConvertQuoteRequestok := localVarOptionals.CrossexConvertQuoteRequest.Value().(CrossexConvertQuoteRequest)
+		if !localVarOptionalCrossexConvertQuoteRequestok {
+			return localVarReturnValue, nil, reportError("crossexConvertQuoteRequest should be CrossexConvertQuoteRequest")
 		}
-		localVarPostBody = &localVarOptionalInlineObject14
+		localVarPostBody = &localVarOptionalCrossexConvertQuoteRequest
 	}
 
 	if ctx == nil {
@@ -1050,7 +1050,7 @@ func (a *CrossExApiService) CreateCrossexConvertQuote(ctx context.Context, local
 
 // CreateCrossexConvertOrderOpts Optional parameters for the method 'CreateCrossexConvertOrder'
 type CreateCrossexConvertOrderOpts struct {
-	InlineObject15 optional.Interface
+	CrossexConvertOrderRequest optional.Interface
 }
 
 /*
@@ -1058,7 +1058,7 @@ CreateCrossexConvertOrder Flash Swap Transaction
 Rate limit: 10 requests per 10 seconds
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param optional nil or *CreateCrossexConvertOrderOpts - Optional Parameters:
-  - @param "InlineObject15" (optional.Interface of InlineObject15) -
+  - @param "CrossexConvertOrderRequest" (optional.Interface of CrossexConvertOrderRequest) -
 
 @return map[string]interface{}
 */
@@ -1096,12 +1096,12 @@ func (a *CrossExApiService) CreateCrossexConvertOrder(ctx context.Context, local
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	if localVarOptionals != nil && localVarOptionals.InlineObject15.IsSet() {
-		localVarOptionalInlineObject15, localVarOptionalInlineObject15ok := localVarOptionals.InlineObject15.Value().(InlineObject15)
-		if !localVarOptionalInlineObject15ok {
-			return localVarReturnValue, nil, reportError("inlineObject15 should be InlineObject15")
+	if localVarOptionals != nil && localVarOptionals.CrossexConvertOrderRequest.IsSet() {
+		localVarOptionalCrossexConvertOrderRequest, localVarOptionalCrossexConvertOrderRequestok := localVarOptionals.CrossexConvertOrderRequest.Value().(CrossexConvertOrderRequest)
+		if !localVarOptionalCrossexConvertOrderRequestok {
+			return localVarReturnValue, nil, reportError("crossexConvertOrderRequest should be CrossexConvertOrderRequest")
 		}
-		localVarPostBody = &localVarOptionalInlineObject15
+		localVarPostBody = &localVarOptionalCrossexConvertOrderRequest
 	}
 
 	if ctx == nil {
@@ -1258,7 +1258,7 @@ func (a *CrossExApiService) GetCrossexAccount(ctx context.Context, localVarOptio
 
 // UpdateCrossexAccountOpts Optional parameters for the method 'UpdateCrossexAccount'
 type UpdateCrossexAccountOpts struct {
-	InlineObject16 optional.Interface
+	CrossexAccountUpdateRequest optional.Interface
 }
 
 /*
@@ -1266,7 +1266,7 @@ UpdateCrossexAccount Modify Account Contract Position Mode and Account Mode
 Rate Limit: 100 requests per 60 seconds. position_mode+exchange_type modifies contract position mode (exchange_type is required when the user&#39;s account mode is split exchange); account_mode modifies the user&#39;s account mode.
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param optional nil or *UpdateCrossexAccountOpts - Optional Parameters:
-  - @param "InlineObject16" (optional.Interface of InlineObject16) -
+  - @param "CrossexAccountUpdateRequest" (optional.Interface of CrossexAccountUpdateRequest) -
 
 @return InlineResponse202
 */
@@ -1304,12 +1304,12 @@ func (a *CrossExApiService) UpdateCrossexAccount(ctx context.Context, localVarOp
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	if localVarOptionals != nil && localVarOptionals.InlineObject16.IsSet() {
-		localVarOptionalInlineObject16, localVarOptionalInlineObject16ok := localVarOptionals.InlineObject16.Value().(InlineObject16)
-		if !localVarOptionalInlineObject16ok {
-			return localVarReturnValue, nil, reportError("inlineObject16 should be InlineObject16")
+	if localVarOptionals != nil && localVarOptionals.CrossexAccountUpdateRequest.IsSet() {
+		localVarOptionalCrossexAccountUpdateRequest, localVarOptionalCrossexAccountUpdateRequestok := localVarOptionals.CrossexAccountUpdateRequest.Value().(CrossexAccountUpdateRequest)
+		if !localVarOptionalCrossexAccountUpdateRequestok {
+			return localVarReturnValue, nil, reportError("crossexAccountUpdateRequest should be CrossexAccountUpdateRequest")
 		}
-		localVarPostBody = &localVarOptionalInlineObject16
+		localVarPostBody = &localVarOptionalCrossexAccountUpdateRequest
 	}
 
 	if ctx == nil {
@@ -1466,7 +1466,7 @@ func (a *CrossExApiService) GetCrossexPositionsLeverage(ctx context.Context, loc
 
 // UpdateCrossexPositionsLeverageOpts Optional parameters for the method 'UpdateCrossexPositionsLeverage'
 type UpdateCrossexPositionsLeverageOpts struct {
-	InlineObject17 optional.Interface
+	CrossexLeverageRequest optional.Interface
 }
 
 /*
@@ -1474,7 +1474,7 @@ UpdateCrossexPositionsLeverage Modify Contract Trading Pair Leverage Multiplier
 Rate Limit: 100 requests per 10 seconds
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param optional nil or *UpdateCrossexPositionsLeverageOpts - Optional Parameters:
-  - @param "InlineObject17" (optional.Interface of InlineObject17) -
+  - @param "CrossexLeverageRequest" (optional.Interface of CrossexLeverageRequest) -
 
 @return InlineResponse2021
 */
@@ -1512,12 +1512,12 @@ func (a *CrossExApiService) UpdateCrossexPositionsLeverage(ctx context.Context, 
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	if localVarOptionals != nil && localVarOptionals.InlineObject17.IsSet() {
-		localVarOptionalInlineObject17, localVarOptionalInlineObject17ok := localVarOptionals.InlineObject17.Value().(InlineObject17)
-		if !localVarOptionalInlineObject17ok {
-			return localVarReturnValue, nil, reportError("inlineObject17 should be InlineObject17")
+	if localVarOptionals != nil && localVarOptionals.CrossexLeverageRequest.IsSet() {
+		localVarOptionalCrossexLeverageRequest, localVarOptionalCrossexLeverageRequestok := localVarOptionals.CrossexLeverageRequest.Value().(CrossexLeverageRequest)
+		if !localVarOptionalCrossexLeverageRequestok {
+			return localVarReturnValue, nil, reportError("crossexLeverageRequest should be CrossexLeverageRequest")
 		}
-		localVarPostBody = &localVarOptionalInlineObject17
+		localVarPostBody = &localVarOptionalCrossexLeverageRequest
 	}
 
 	if ctx == nil {
@@ -1674,7 +1674,7 @@ func (a *CrossExApiService) GetCrossexMarginPositionsLeverage(ctx context.Contex
 
 // UpdateCrossexMarginPositionsLeverageOpts Optional parameters for the method 'UpdateCrossexMarginPositionsLeverage'
 type UpdateCrossexMarginPositionsLeverageOpts struct {
-	InlineObject18 optional.Interface
+	CrossexLeverageRequest optional.Interface
 }
 
 /*
@@ -1682,7 +1682,7 @@ UpdateCrossexMarginPositionsLeverage Modify Leveraged Trading Pair Leverage Mult
 Rate Limit: 100 requests per 10 seconds
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param optional nil or *UpdateCrossexMarginPositionsLeverageOpts - Optional Parameters:
-  - @param "InlineObject18" (optional.Interface of InlineObject18) -
+  - @param "CrossexLeverageRequest" (optional.Interface of CrossexLeverageRequest) -
 
 @return InlineResponse2021
 */
@@ -1720,12 +1720,12 @@ func (a *CrossExApiService) UpdateCrossexMarginPositionsLeverage(ctx context.Con
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	if localVarOptionals != nil && localVarOptionals.InlineObject18.IsSet() {
-		localVarOptionalInlineObject18, localVarOptionalInlineObject18ok := localVarOptionals.InlineObject18.Value().(InlineObject18)
-		if !localVarOptionalInlineObject18ok {
-			return localVarReturnValue, nil, reportError("inlineObject18 should be InlineObject18")
+	if localVarOptionals != nil && localVarOptionals.CrossexLeverageRequest.IsSet() {
+		localVarOptionalCrossexLeverageRequest, localVarOptionalCrossexLeverageRequestok := localVarOptionals.CrossexLeverageRequest.Value().(CrossexLeverageRequest)
+		if !localVarOptionalCrossexLeverageRequestok {
+			return localVarReturnValue, nil, reportError("crossexLeverageRequest should be CrossexLeverageRequest")
 		}
-		localVarPostBody = &localVarOptionalInlineObject18
+		localVarPostBody = &localVarOptionalCrossexLeverageRequest
 	}
 
 	if ctx == nil {
@@ -1781,7 +1781,7 @@ func (a *CrossExApiService) UpdateCrossexMarginPositionsLeverage(ctx context.Con
 
 // CloseCrossexPositionOpts Optional parameters for the method 'CloseCrossexPosition'
 type CloseCrossexPositionOpts struct {
-	InlineObject19 optional.Interface
+	CrossexClosePositionRequest optional.Interface
 }
 
 /*
@@ -1789,7 +1789,7 @@ CloseCrossexPosition Full Close Position
 Rate Limit: 100 requests per day. Automatic close-out rules. Supports closing FUTURE or MARGIN positions.  Prerequisites before using this interface: - No pending orders for the symbol exist in the current account. - When the system detects the position meets any of the following limits while prerequisites are met: - Less than or equal to the minimum notional amount (minNotional) - Less than or equal to the minimum order quantity (minSize)  After meeting the conditions, the system will automatically generate a close-out order and immediately fully close the position. This interface is used to avoid issues where orders are too small to be placed on the exchange, ensuring small positions can be closed smoothly when reaching the threshold.
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param optional nil or *CloseCrossexPositionOpts - Optional Parameters:
-  - @param "InlineObject19" (optional.Interface of InlineObject19) -
+  - @param "CrossexClosePositionRequest" (optional.Interface of CrossexClosePositionRequest) -
 
 @return InlineResponse20031
 */
@@ -1827,12 +1827,12 @@ func (a *CrossExApiService) CloseCrossexPosition(ctx context.Context, localVarOp
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	if localVarOptionals != nil && localVarOptionals.InlineObject19.IsSet() {
-		localVarOptionalInlineObject19, localVarOptionalInlineObject19ok := localVarOptionals.InlineObject19.Value().(InlineObject19)
-		if !localVarOptionalInlineObject19ok {
-			return localVarReturnValue, nil, reportError("inlineObject19 should be InlineObject19")
+	if localVarOptionals != nil && localVarOptionals.CrossexClosePositionRequest.IsSet() {
+		localVarOptionalCrossexClosePositionRequest, localVarOptionalCrossexClosePositionRequestok := localVarOptionals.CrossexClosePositionRequest.Value().(CrossexClosePositionRequest)
+		if !localVarOptionalCrossexClosePositionRequestok {
+			return localVarReturnValue, nil, reportError("crossexClosePositionRequest should be CrossexClosePositionRequest")
 		}
-		localVarPostBody = &localVarOptionalInlineObject19
+		localVarPostBody = &localVarOptionalCrossexClosePositionRequest
 	}
 
 	if ctx == nil {

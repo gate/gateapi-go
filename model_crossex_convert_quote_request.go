@@ -9,10 +9,14 @@
 
 package gateapi
 
-// Order Modification Request Body
-type InlineObject1 struct {
-	// Order Price
-	Price string `json:"price"`
-	// Trade amount
-	Size int64 `json:"size"`
+// 闪兑询价请求体
+type CrossexConvertQuoteRequest struct {
+	// Exchange Type
+	ExchangeType string `json:"exchange_type"`
+	// Asset Sold
+	FromCoin string `json:"from_coin"`
+	// Asset name to buy (OKX and GATE only allow BTC, ETH, USDT; BN only allows USDT)
+	ToCoin string `json:"to_coin"`
+	// Amount to sell
+	FromAmount string `json:"from_amount"`
 }

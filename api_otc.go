@@ -29,11 +29,11 @@ type OTCApiService service
 CreateOtcQuote Fiat and stablecoin quote
 Create fiat and stablecoin quotes, supporting both PAY and GET directions
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param inlineObject7
+  - @param otcQuoteRequest
 
 @return InlineResponse2006
 */
-func (a *OTCApiService) CreateOtcQuote(ctx context.Context, inlineObject7 InlineObject7) (InlineResponse2006, *http.Response, error) {
+func (a *OTCApiService) CreateOtcQuote(ctx context.Context, otcQuoteRequest OtcQuoteRequest) (InlineResponse2006, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -67,7 +67,7 @@ func (a *OTCApiService) CreateOtcQuote(ctx context.Context, inlineObject7 Inline
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = &inlineObject7
+	localVarPostBody = &otcQuoteRequest
 	if ctx == nil {
 		ctx = context.Background()
 	}
@@ -123,11 +123,11 @@ func (a *OTCApiService) CreateOtcQuote(ctx context.Context, inlineObject7 Inline
 CreateOtcOrder Create fiat order
 Create a fiat order, supporting BUY for on-ramp and SELL for off-ramp
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param inlineObject8
+  - @param otcOrderRequest
 
 @return InlineResponse2007
 */
-func (a *OTCApiService) CreateOtcOrder(ctx context.Context, inlineObject8 InlineObject8) (InlineResponse2007, *http.Response, error) {
+func (a *OTCApiService) CreateOtcOrder(ctx context.Context, otcOrderRequest OtcOrderRequest) (InlineResponse2007, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -161,7 +161,7 @@ func (a *OTCApiService) CreateOtcOrder(ctx context.Context, inlineObject8 Inline
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = &inlineObject8
+	localVarPostBody = &otcOrderRequest
 	if ctx == nil {
 		ctx = context.Background()
 	}
@@ -217,11 +217,11 @@ func (a *OTCApiService) CreateOtcOrder(ctx context.Context, inlineObject8 Inline
 CreateStableCoinOrder Create stablecoin order
 Create stablecoin order
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param inlineObject9
+  - @param otcStableCoinOrderRequest
 
 @return InlineResponse2008
 */
-func (a *OTCApiService) CreateStableCoinOrder(ctx context.Context, inlineObject9 InlineObject9) (InlineResponse2008, *http.Response, error) {
+func (a *OTCApiService) CreateStableCoinOrder(ctx context.Context, otcStableCoinOrderRequest OtcStableCoinOrderRequest) (InlineResponse2008, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -255,7 +255,7 @@ func (a *OTCApiService) CreateStableCoinOrder(ctx context.Context, inlineObject9
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = &inlineObject9
+	localVarPostBody = &otcStableCoinOrderRequest
 	if ctx == nil {
 		ctx = context.Background()
 	}
@@ -493,11 +493,11 @@ func (a *OTCApiService) GetBankList(ctx context.Context) (InlineResponse20010, *
 MarkOtcOrderPaid Mark fiat order as paid
 Mark fiat order as paid
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param inlineObject10
+  - @param otcMarkOrderPaidRequest
 
 @return InlineResponse2007
 */
-func (a *OTCApiService) MarkOtcOrderPaid(ctx context.Context, inlineObject10 InlineObject10) (InlineResponse2007, *http.Response, error) {
+func (a *OTCApiService) MarkOtcOrderPaid(ctx context.Context, otcMarkOrderPaidRequest OtcMarkOrderPaidRequest) (InlineResponse2007, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -531,7 +531,7 @@ func (a *OTCApiService) MarkOtcOrderPaid(ctx context.Context, inlineObject10 Inl
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = &inlineObject10
+	localVarPostBody = &otcMarkOrderPaidRequest
 	if ctx == nil {
 		ctx = context.Background()
 	}

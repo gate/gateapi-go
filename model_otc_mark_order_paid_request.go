@@ -9,10 +9,8 @@
 
 package gateapi
 
-// Order Modification Request Body
-type InlineObject1 struct {
-	// Order Price
-	Price string `json:"price"`
-	// Trade amount
-	Size int64 `json:"size"`
+// 法币订单设置已付款请求体
+type OtcMarkOrderPaidRequest struct {
+	// Order ID
+	OrderId string `json:"order_id"`
 }
