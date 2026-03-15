@@ -760,16 +760,16 @@ When currency is provided, returns ticker information for the specified currency
   - @param "Limit" (optional.Int32) -  Maximum number of records returned in a single list
   - @param "Page" (optional.Int32) -  Page number
 
-@return []Ticker2
+@return []AlphaTicker
 */
-func (a *AlphaApiService) ListAlphaTickers(ctx context.Context, localVarOptionals *ListAlphaTickersOpts) ([]Ticker2, *http.Response, error) {
+func (a *AlphaApiService) ListAlphaTickers(ctx context.Context, localVarOptionals *ListAlphaTickersOpts) ([]AlphaTicker, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  []Ticker2
+		localVarReturnValue  []AlphaTicker
 	)
 
 	// create path and map variables

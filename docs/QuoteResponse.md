@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **Price** | **string** | Token Price (USDT-based) | [optional] 
 **Slippage** | **string** | Slippage | [optional] 
 **EstimateGasFeeAmountUsdt** | **string** | Estimated Gas Fee (USDT-based) | [optional] 
-**OrderFee** | **string** | Slippage tolerance (10 means 10% tolerance) | [optional] 
+**OrderFee** | **string** | Trading fee | [optional] 
 **TargetTokenMinAmount** | **string** | Minimum received amount | [optional] 
 **TargetTokenMaxAmount** | **string** | Maximum received amount | [optional] 
 **ErrorType** | **int32** | Failure Type - &#x60;0&#x60; : Success - &#x60;1&#x60; : Exceeds maximum value - &#x60;2&#x60; : Below minimum value | [optional] 

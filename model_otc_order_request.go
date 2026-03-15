@@ -9,7 +9,7 @@
 
 package gateapi
 
-// 法币下单请求体
+// Fiat Order Request Body
 type OtcOrderRequest struct {
 	// BUY for on-ramp, SELL for off-ramp
 	Type string `json:"type"`

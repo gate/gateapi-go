@@ -9,7 +9,7 @@
 
 package gateapi
 
-// 稳定币下单请求体
+// Stablecoin Order Request Body
 type OtcStableCoinOrderRequest struct {
 	// Currency paid by the user. Supported currencies can be queried from the OTC web stablecoin quote page.
 	PayCoin string `json:"pay_coin,omitempty"`

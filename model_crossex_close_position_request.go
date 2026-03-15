@@ -9,7 +9,7 @@
 
 package gateapi
 
-// 完全平仓请求体
+// Full Close Position Request Body
 type CrossexClosePositionRequest struct {
 	// Trading Pair 1. Supports leveraged trading pairs, e.g., BINANCE_MARGIN_SOL_USDT 2. Supports contract trading pairs, e.g., OKX_FUTURE_ETH_USDT
 	Symbol string `json:"symbol"`

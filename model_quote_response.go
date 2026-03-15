@@ -23,7 +23,7 @@ type QuoteResponse struct {
 	Slippage string `json:"slippage,omitempty"`
 	// Estimated Gas Fee (USDT-based)
 	EstimateGasFeeAmountUsdt string `json:"estimate_gas_fee_amount_usdt,omitempty"`
-	// Slippage tolerance (10 means 10% tolerance)
+	// Trading fee
 	OrderFee string `json:"order_fee,omitempty"`
 	// Minimum received amount
 	TargetTokenMinAmount string `json:"target_token_min_amount,omitempty"`

@@ -9,7 +9,7 @@
 
 package gateapi
 
-// 闪兑询价请求体
+// Flash Swap Quote Request Body
 type CrossexConvertQuoteRequest struct {
 	// Exchange Type
 	ExchangeType string `json:"exchange_type"`

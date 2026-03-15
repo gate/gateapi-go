@@ -532,7 +532,7 @@ No authorization required
 
 ## ListAlphaTickers
 
-> []Ticker2 ListAlphaTickers(ctx, optional)
+> []AlphaTicker ListAlphaTickers(ctx, optional)
 
 Query currency ticker
 
@@ -589,7 +589,7 @@ func main() {
 
 ### Return type
 
-[**[]Ticker2**](Ticker_2.md)
+[**[]AlphaTicker**](AlphaTicker.md)
 
 ### Authorization
 

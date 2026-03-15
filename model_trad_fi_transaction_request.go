@@ -9,7 +9,7 @@
 
 package gateapi
 
-// 资金转入转出请求体
+// Fund Transfer Request Body
 type TradFiTransactionRequest struct {
 	// Asset type, e.g., USDT, currently only USDT is supported
 	Asset string `json:"asset"`

@@ -9,7 +9,7 @@
 
 package gateapi
 
-// 法币和稳定币询价请求体
+// Fiat and Stablecoin Quote Request Body
 type OtcQuoteRequest struct {
 	// PAY/GET quote direction. PAY means user inputs pay amount, GET means user inputs get amount. If PAY, pay_amount is required. If GET, get_amount is required
 	Side string `json:"side"`

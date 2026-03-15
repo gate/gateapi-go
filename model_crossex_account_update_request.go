@@ -9,7 +9,7 @@
 
 package gateapi
 
-// 更改账户请求体
+// Change Account Request Body
 type CrossexAccountUpdateRequest struct {
 	// Futures position mode (SINGLE/DUAL)
 	PositionMode string `json:"position_mode,omitempty"`

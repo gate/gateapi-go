@@ -9,7 +9,7 @@
 
 package gateapi
 
-// 资金划转请求体
+// Fund Transfer Request Body
 type CrossexTransferRequest struct {
 	// Currency
 	Coin string `json:"coin"`
