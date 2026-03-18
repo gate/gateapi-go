@@ -2159,7 +2159,7 @@ func main() {
 
 ## CreateSpotPriceTriggeredOrder
 
-> TriggerOrderResponse CreateSpotPriceTriggeredOrder(ctx, spotPriceTriggeredOrder)
+> TriggerOrderResponse1 CreateSpotPriceTriggeredOrder(ctx, spotPriceTriggeredOrder)
 
 Create price-triggered order
 
@@ -2211,7 +2211,7 @@ func main() {
 
 ### Return type
 
-[**TriggerOrderResponse**](TriggerOrderResponse.md)
+[**TriggerOrderResponse1**](TriggerOrderResponse_1.md)
 
 ### Authorization
 

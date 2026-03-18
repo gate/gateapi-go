@@ -1917,7 +1917,7 @@ func main() {
 
 ## CreatePriceTriggeredDeliveryOrder
 
-> TriggerOrderResponse CreatePriceTriggeredDeliveryOrder(ctx, settle, futuresPriceTriggeredOrder)
+> TriggerOrderResponse1 CreatePriceTriggeredDeliveryOrder(ctx, settle, futuresPriceTriggeredOrder)
 
 Create price-triggered order
 
@@ -1971,7 +1971,7 @@ func main() {
 
 ### Return type
 
-[**TriggerOrderResponse**](TriggerOrderResponse.md)
+[**TriggerOrderResponse1**](TriggerOrderResponse_1.md)
 
 ### Authorization
 
