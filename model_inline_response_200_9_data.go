@@ -10,12 +10,6 @@
 package gateapi
 
 type InlineResponse2009Data struct {
-	// Bank ID (required for order placement)
-	Id              string `json:"id"`
-	BankAccountName string `json:"bank_account_name"`
-	BankName        string `json:"bank_name"`
-	BankCountry     string `json:"bank_country"`
-	BankAddress     string `json:"bank_address"`
-	BankCode        string `json:"bank_code"`
-	BranchCode      string `json:"branch_code"`
+	// Live stream/replay list
+	List []InlineResponse2009DataList `json:"list,omitempty"`
 }

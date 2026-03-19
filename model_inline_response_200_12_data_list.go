@@ -10,26 +10,44 @@
 package gateapi
 
 type InlineResponse20012DataList struct {
-	// Order ID
-	Id int32 `json:"id,omitempty"`
-	// Transaction reference number
-	TradeNo string `json:"trade_no,omitempty"`
-	// Payment currency
-	PayCoin string `json:"pay_coin,omitempty"`
-	// Payment amount
-	PayAmount string `json:"pay_amount,omitempty"`
-	// Received currency
-	GetCoin string `json:"get_coin,omitempty"`
-	// Received amount
-	GetAmount string `json:"get_amount,omitempty"`
-	// Exchange rate
-	Rate string `json:"rate,omitempty"`
-	// Reciprocal of the exchange rate
-	RateReci string `json:"rate_reci,omitempty"`
-	// PROCESSING: in progress / DONE: completed / FAILED: failed
-	Status string `json:"status,omitempty"`
-	// timetimestamp
-	CreateTimest int32 `json:"create_timest,omitempty"`
-	// Created time
-	CreateTime string `json:"create_time,omitempty"`
+	// Activity ID
+	Id int32 `json:"id"`
+	// Activity type ID
+	TypeId int32 `json:"type_id"`
+	// Activity type name
+	TypeName string `json:"type_name"`
+	// Activity name
+	CompetitionName string `json:"competition_name"`
+	// Activity start time (Unix timestamp, in seconds)
+	StartAt int32 `json:"start_at"`
+	// Activity end time (Unix timestamp, in seconds)
+	EndAt int32 `json:"end_at"`
+	// Activity image URL (light mode)
+	Img string `json:"img"`
+	// Activity image URL (dark mode)
+	ImgDark string `json:"img_dark"`
+	// Activity redirect link
+	Url string `json:"url"`
+	// Popularity score
+	Hot int32 `json:"hot"`
+	// Main title first line
+	MasterOneLine string `json:"master_one_line"`
+	// Main title second line
+	MasterTwoLine string `json:"master_two_line"`
+	// Subtitle first line
+	SlaveOneLine string `json:"slave_one_line"`
+	// Subtitle second line
+	SlaveTwoLine string `json:"slave_two_line"`
+	// Activity title
+	CompetitionTitle string `json:"competition_title"`
+	// Pin ID, 0 means not pinned
+	TopId int32 `json:"top_id"`
+	// Parent activity ID, 0 means no parent activity
+	ParentId int32 `json:"parent_id"`
+	// New activity image URL (light mode)
+	NewImg string `json:"new_img"`
+	// New activity image URL (dark mode)
+	NewImgDark string `json:"new_img_dark"`
+	// Activity tag list
+	Tag []string `json:"tag"`
 }

@@ -458,7 +458,7 @@ func main() {
 
 ## ListAlphaCurrencies
 
-> []Currency2 ListAlphaCurrencies(ctx, optional)
+> []AlphaCurrency ListAlphaCurrencies(ctx, optional)
 
 Query currency information
 
@@ -515,7 +515,7 @@ func main() {
 
 ### Return type
 
-[**[]Currency2**](Currency_2.md)
+[**[]AlphaCurrency**](AlphaCurrency.md)
 
 ### Authorization
 

@@ -909,16 +909,16 @@ ListUniChart UniLoan currency annualized trend chart
   - @param to End timestamp in seconds, maximum span 30 days
   - @param asset Currency name
 
-@return []InlineResponse2004
+@return []UniChartPoint
 */
-func (a *EarnUniApiService) ListUniChart(ctx context.Context, from int64, to int64, asset string) ([]InlineResponse2004, *http.Response, error) {
+func (a *EarnUniApiService) ListUniChart(ctx context.Context, from int64, to int64, asset string) ([]UniChartPoint, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  []InlineResponse2004
+		localVarReturnValue  []UniChartPoint
 	)
 
 	// create path and map variables
@@ -1002,16 +1002,16 @@ func (a *EarnUniApiService) ListUniChart(ctx context.Context, from int64, to int
 ListUniRate Currency estimated annualized interest rate
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 
-@return []InlineResponse2005
+@return []UniEstimatedRate
 */
-func (a *EarnUniApiService) ListUniRate(ctx context.Context) ([]InlineResponse2005, *http.Response, error) {
+func (a *EarnUniApiService) ListUniRate(ctx context.Context) ([]UniEstimatedRate, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  []InlineResponse2005
+		localVarReturnValue  []UniEstimatedRate
 	)
 
 	// create path and map variables

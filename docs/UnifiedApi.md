@@ -316,7 +316,7 @@ func main() {
 
 ## GetUnifiedBorrowableList
 
-> []UnifiedBorrowable1 GetUnifiedBorrowableList(ctx, currencies)
+> []UnifiedBorrowable GetUnifiedBorrowableList(ctx, currencies)
 
 Batch query unified account maximum borrowable amount
 
@@ -368,7 +368,7 @@ func main() {
 
 ### Return type
 
-[**[]UnifiedBorrowable1**](UnifiedBorrowable_1.md)
+[**[]UnifiedBorrowable**](UnifiedBorrowable.md)
 
 ### Authorization
 

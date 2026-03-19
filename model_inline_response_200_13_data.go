@@ -9,36 +9,8 @@
 
 package gateapi
 
+// Activity type data
 type InlineResponse20013Data struct {
-	// Order ID
-	OrderId string `json:"order_id"`
-	// User ID
-	Uid string `json:"uid"`
-	// Order Type
-	Type string `json:"type"`
-	// Fiat type
-	FiatCurrency string `json:"fiat_currency"`
-	// Fiat amount
-	FiatAmount string `json:"fiat_amount"`
-	// Stablecoin
-	CryptoCurrency string `json:"crypto_currency"`
-	// Stablecoin amount
-	CryptoAmount string `json:"crypto_amount"`
-	// Exchange rate
-	Rate string `json:"rate"`
-	// Remark
-	TransferRemark string `json:"transfer_remark"`
-	// Status
-	Status   string `json:"status"`
-	DbStatus string `json:"db_status"`
-	// Created time
-	CreateTime string `json:"create_time"`
-	// Cancellation or rejection reason
-	Memo string `json:"memo"`
-	// Quote direction
-	Side string `json:"side"`
-	// Promotion code
-	PromotionCode string `json:"promotion_code"`
-	// Trade number
-	TradeNo string `json:"trade_no"`
+	// Activity type list
+	List []InlineResponse20013DataList `json:"list"`
 }

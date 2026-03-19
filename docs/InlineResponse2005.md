@@ -4,8 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Currency** | **string** |  | [optional] 
-**EstRate** | **string** | Estimated Annualized Rate, e.g., &#x60;est_rate&#x60;: &#x60;0.8014&#x60; represents an annualized rate of 80.14% | [optional] 
+**Code** | **int32** | Return code, 0 means success | [optional] 
+**Message** | **string** | Response message | [optional] 
+**Data** | [**InlineResponse2005Data**](inline_response_200_5_data.md) |  | [optional] 
+**Timestamp** | **int32** | Response timestamp (in seconds) | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

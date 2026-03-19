@@ -17,7 +17,7 @@ type OptionsOrderBook struct {
 	// Order book changed timestamp
 	Update float64 `json:"update,omitempty"`
 	// Ask Depth
-	Asks []FuturesOrderBookItem1 `json:"asks"`
+	Asks []DeliveryOrderBookItem `json:"asks"`
 	// Bid Depth
-	Bids []FuturesOrderBookItem1 `json:"bids"`
+	Bids []DeliveryOrderBookItem `json:"bids"`
 }

@@ -29,16 +29,16 @@ type P2pApiService service
 P2pMerchantAccountGetUserInfo Get account information
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 
-@return InlineResponse20014
+@return P2pMerchantUserInfoResponse
 */
-func (a *P2pApiService) P2pMerchantAccountGetUserInfo(ctx context.Context) (InlineResponse20014, *http.Response, error) {
+func (a *P2pApiService) P2pMerchantAccountGetUserInfo(ctx context.Context) (P2pMerchantUserInfoResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  InlineResponse20014
+		localVarReturnValue  P2pMerchantUserInfoResponse
 	)
 
 	// create path and map variables
@@ -120,16 +120,16 @@ P2pMerchantAccountGetCounterpartyUserInfo Get counterparty information
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param getCounterpartyUserInfoRequest
 
-@return InlineResponse20015
+@return P2pCounterpartyUserInfoResponse
 */
-func (a *P2pApiService) P2pMerchantAccountGetCounterpartyUserInfo(ctx context.Context, getCounterpartyUserInfoRequest GetCounterpartyUserInfoRequest) (InlineResponse20015, *http.Response, error) {
+func (a *P2pApiService) P2pMerchantAccountGetCounterpartyUserInfo(ctx context.Context, getCounterpartyUserInfoRequest GetCounterpartyUserInfoRequest) (P2pCounterpartyUserInfoResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  InlineResponse20015
+		localVarReturnValue  P2pCounterpartyUserInfoResponse
 	)
 
 	// create path and map variables
@@ -219,16 +219,16 @@ P2pMerchantAccountGetMyselfPayment Get payment method list
   - @param optional nil or *P2pMerchantAccountGetMyselfPaymentOpts - Optional Parameters:
   - @param "GetMyselfPaymentRequest" (optional.Interface of GetMyselfPaymentRequest) -
 
-@return InlineResponse20016
+@return P2pPaymentMethodsResponse
 */
-func (a *P2pApiService) P2pMerchantAccountGetMyselfPayment(ctx context.Context, localVarOptionals *P2pMerchantAccountGetMyselfPaymentOpts) (InlineResponse20016, *http.Response, error) {
+func (a *P2pApiService) P2pMerchantAccountGetMyselfPayment(ctx context.Context, localVarOptionals *P2pMerchantAccountGetMyselfPaymentOpts) (P2pPaymentMethodsResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  InlineResponse20016
+		localVarReturnValue  P2pPaymentMethodsResponse
 	)
 
 	// create path and map variables
@@ -319,16 +319,16 @@ P2pMerchantTransactionGetPendingTransactionList Get pending orders
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param getPendingTransactionListRequest
 
-@return InlineResponse20017
+@return P2pTransactionListResponse
 */
-func (a *P2pApiService) P2pMerchantTransactionGetPendingTransactionList(ctx context.Context, getPendingTransactionListRequest GetPendingTransactionListRequest) (InlineResponse20017, *http.Response, error) {
+func (a *P2pApiService) P2pMerchantTransactionGetPendingTransactionList(ctx context.Context, getPendingTransactionListRequest GetPendingTransactionListRequest) (P2pTransactionListResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  InlineResponse20017
+		localVarReturnValue  P2pTransactionListResponse
 	)
 
 	// create path and map variables
@@ -412,16 +412,16 @@ P2pMerchantTransactionGetCompletedTransactionList Get all/historical orders
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param getCompletedTransactionListRequest
 
-@return InlineResponse20017
+@return P2pTransactionListResponse
 */
-func (a *P2pApiService) P2pMerchantTransactionGetCompletedTransactionList(ctx context.Context, getCompletedTransactionListRequest GetCompletedTransactionListRequest) (InlineResponse20017, *http.Response, error) {
+func (a *P2pApiService) P2pMerchantTransactionGetCompletedTransactionList(ctx context.Context, getCompletedTransactionListRequest GetCompletedTransactionListRequest) (P2pTransactionListResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  InlineResponse20017
+		localVarReturnValue  P2pTransactionListResponse
 	)
 
 	// create path and map variables
@@ -505,16 +505,16 @@ P2pMerchantTransactionGetTransactionDetails Query order details
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param getTransactionDetailsRequest
 
-@return InlineResponse20018
+@return P2pTransactionDetailResponse
 */
-func (a *P2pApiService) P2pMerchantTransactionGetTransactionDetails(ctx context.Context, getTransactionDetailsRequest GetTransactionDetailsRequest) (InlineResponse20018, *http.Response, error) {
+func (a *P2pApiService) P2pMerchantTransactionGetTransactionDetails(ctx context.Context, getTransactionDetailsRequest GetTransactionDetailsRequest) (P2pTransactionDetailResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  InlineResponse20018
+		localVarReturnValue  P2pTransactionDetailResponse
 	)
 
 	// create path and map variables
@@ -598,16 +598,16 @@ P2pMerchantTransactionConfirmPayment Confirm payment
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param confirmPayment
 
-@return InlineResponse20019
+@return P2pTransactionActionResponse
 */
-func (a *P2pApiService) P2pMerchantTransactionConfirmPayment(ctx context.Context, confirmPayment ConfirmPayment) (InlineResponse20019, *http.Response, error) {
+func (a *P2pApiService) P2pMerchantTransactionConfirmPayment(ctx context.Context, confirmPayment ConfirmPayment) (P2pTransactionActionResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  InlineResponse20019
+		localVarReturnValue  P2pTransactionActionResponse
 	)
 
 	// create path and map variables
@@ -691,16 +691,16 @@ P2pMerchantTransactionConfirmReceipt Confirm receipt
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param confirmReceipt
 
-@return InlineResponse20019
+@return P2pTransactionActionResponse
 */
-func (a *P2pApiService) P2pMerchantTransactionConfirmReceipt(ctx context.Context, confirmReceipt ConfirmReceipt) (InlineResponse20019, *http.Response, error) {
+func (a *P2pApiService) P2pMerchantTransactionConfirmReceipt(ctx context.Context, confirmReceipt ConfirmReceipt) (P2pTransactionActionResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  InlineResponse20019
+		localVarReturnValue  P2pTransactionActionResponse
 	)
 
 	// create path and map variables
@@ -784,16 +784,16 @@ P2pMerchantTransactionCancel Cancel order
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param cancelOrder
 
-@return InlineResponse20019
+@return P2pTransactionActionResponse
 */
-func (a *P2pApiService) P2pMerchantTransactionCancel(ctx context.Context, cancelOrder CancelOrder) (InlineResponse20019, *http.Response, error) {
+func (a *P2pApiService) P2pMerchantTransactionCancel(ctx context.Context, cancelOrder CancelOrder) (P2pTransactionActionResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  InlineResponse20019
+		localVarReturnValue  P2pTransactionActionResponse
 	)
 
 	// create path and map variables
@@ -977,16 +977,16 @@ P2pMerchantBooksAdsUpdateStatus Update ad status
   - @param optional nil or *P2pMerchantBooksAdsUpdateStatusOpts - Optional Parameters:
   - @param "TradeType" (optional.String) -  Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME <EMAIL@ADDRESS> Language: en Language-Team: en <L@li.org> Plural-Forms: nplurals=2; plural=(n !=1) MIME-Version: 1.0 Content-Type: text/plain; charset=utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0
 
-@return InlineResponse20020
+@return P2pAdsUpdateStatusResponse
 */
-func (a *P2pApiService) P2pMerchantBooksAdsUpdateStatus(ctx context.Context, adsUpdateStatus AdsUpdateStatus, localVarOptionals *P2pMerchantBooksAdsUpdateStatusOpts) (InlineResponse20020, *http.Response, error) {
+func (a *P2pApiService) P2pMerchantBooksAdsUpdateStatus(ctx context.Context, adsUpdateStatus AdsUpdateStatus, localVarOptionals *P2pMerchantBooksAdsUpdateStatusOpts) (P2pAdsUpdateStatusResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  InlineResponse20020
+		localVarReturnValue  P2pAdsUpdateStatusResponse
 	)
 
 	// create path and map variables
@@ -1073,16 +1073,16 @@ P2pMerchantBooksAdsDetail Query ad details
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param adsDetailRequest
 
-@return InlineResponse20021
+@return P2pAdDetailResponse
 */
-func (a *P2pApiService) P2pMerchantBooksAdsDetail(ctx context.Context, adsDetailRequest AdsDetailRequest) (InlineResponse20021, *http.Response, error) {
+func (a *P2pApiService) P2pMerchantBooksAdsDetail(ctx context.Context, adsDetailRequest AdsDetailRequest) (P2pAdDetailResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  InlineResponse20021
+		localVarReturnValue  P2pAdDetailResponse
 	)
 
 	// create path and map variables
@@ -1172,16 +1172,16 @@ P2pMerchantBooksMyAdsList Get my ad list
   - @param optional nil or *P2pMerchantBooksMyAdsListOpts - Optional Parameters:
   - @param "MyAdsListRequest" (optional.Interface of MyAdsListRequest) -
 
-@return InlineResponse20022
+@return P2pMyAdsListResponse
 */
-func (a *P2pApiService) P2pMerchantBooksMyAdsList(ctx context.Context, localVarOptionals *P2pMerchantBooksMyAdsListOpts) (InlineResponse20022, *http.Response, error) {
+func (a *P2pApiService) P2pMerchantBooksMyAdsList(ctx context.Context, localVarOptionals *P2pMerchantBooksMyAdsListOpts) (P2pMyAdsListResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  InlineResponse20022
+		localVarReturnValue  P2pMyAdsListResponse
 	)
 
 	// create path and map variables
@@ -1273,16 +1273,16 @@ Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-C
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param adsListRequest
 
-@return InlineResponse20023
+@return P2pAdsListResponse
 */
-func (a *P2pApiService) P2pMerchantBooksAdsList(ctx context.Context, adsListRequest AdsListRequest) (InlineResponse20023, *http.Response, error) {
+func (a *P2pApiService) P2pMerchantBooksAdsList(ctx context.Context, adsListRequest AdsListRequest) (P2pAdsListResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  InlineResponse20023
+		localVarReturnValue  P2pAdsListResponse
 	)
 
 	// create path and map variables
@@ -1366,16 +1366,16 @@ P2pMerchantChatGetChatsList Get chat history
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param getChatsListRequest
 
-@return InlineResponse20024
+@return P2pChatListResponse
 */
-func (a *P2pApiService) P2pMerchantChatGetChatsList(ctx context.Context, getChatsListRequest GetChatsListRequest) (InlineResponse20024, *http.Response, error) {
+func (a *P2pApiService) P2pMerchantChatGetChatsList(ctx context.Context, getChatsListRequest GetChatsListRequest) (P2pChatListResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  InlineResponse20024
+		localVarReturnValue  P2pChatListResponse
 	)
 
 	// create path and map variables
@@ -1459,16 +1459,16 @@ P2pMerchantChatSendChatMessage Send text message
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param sendChatMessageRequest
 
-@return InlineResponse20025
+@return P2pSendChatMessageResponse
 */
-func (a *P2pApiService) P2pMerchantChatSendChatMessage(ctx context.Context, sendChatMessageRequest SendChatMessageRequest) (InlineResponse20025, *http.Response, error) {
+func (a *P2pApiService) P2pMerchantChatSendChatMessage(ctx context.Context, sendChatMessageRequest SendChatMessageRequest) (P2pSendChatMessageResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  InlineResponse20025
+		localVarReturnValue  P2pSendChatMessageResponse
 	)
 
 	// create path and map variables
@@ -1552,16 +1552,16 @@ P2pMerchantChatUploadChatFile Upload chat file
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param uploadChatFile
 
-@return InlineResponse20026
+@return P2pUploadChatFileResponse
 */
-func (a *P2pApiService) P2pMerchantChatUploadChatFile(ctx context.Context, uploadChatFile UploadChatFile) (InlineResponse20026, *http.Response, error) {
+func (a *P2pApiService) P2pMerchantChatUploadChatFile(ctx context.Context, uploadChatFile UploadChatFile) (P2pUploadChatFileResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  InlineResponse20026
+		localVarReturnValue  P2pUploadChatFileResponse
 	)
 
 	// create path and map variables

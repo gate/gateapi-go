@@ -49,9 +49,13 @@ type APIClient struct {
 
 	// API Services
 
+	DefaultApi *DefaultApiService
+
 	AccountApi *AccountApiService
 
 	AlphaApi *AlphaApiService
+
+	CouponApi *CouponApiService
 
 	CrossExApi *CrossExApiService
 
@@ -64,6 +68,8 @@ type APIClient struct {
 	FlashSwapApi *FlashSwapApiService
 
 	FuturesApi *FuturesApiService
+
+	LaunchApi *LaunchApiService
 
 	MarginApi *MarginApiService
 
@@ -81,6 +87,8 @@ type APIClient struct {
 
 	SpotApi *SpotApiService
 
+	SquareApi *SquareApiService
+
 	SubAccountApi *SubAccountApiService
 
 	TradFiApi *TradFiApiService
@@ -88,6 +96,8 @@ type APIClient struct {
 	UnifiedApi *UnifiedApiService
 
 	WalletApi *WalletApiService
+
+	WelfareApi *WelfareApiService
 
 	WithdrawalApi *WithdrawalApiService
 }
@@ -108,14 +118,17 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.common.client = c
 
 	// API Services
+	c.DefaultApi = (*DefaultApiService)(&c.common)
 	c.AccountApi = (*AccountApiService)(&c.common)
 	c.AlphaApi = (*AlphaApiService)(&c.common)
+	c.CouponApi = (*CouponApiService)(&c.common)
 	c.CrossExApi = (*CrossExApiService)(&c.common)
 	c.DeliveryApi = (*DeliveryApiService)(&c.common)
 	c.EarnApi = (*EarnApiService)(&c.common)
 	c.EarnUniApi = (*EarnUniApiService)(&c.common)
 	c.FlashSwapApi = (*FlashSwapApiService)(&c.common)
 	c.FuturesApi = (*FuturesApiService)(&c.common)
+	c.LaunchApi = (*LaunchApiService)(&c.common)
 	c.MarginApi = (*MarginApiService)(&c.common)
 	c.MarginUniApi = (*MarginUniApiService)(&c.common)
 	c.MultiCollateralLoanApi = (*MultiCollateralLoanApiService)(&c.common)
@@ -124,10 +137,12 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.P2pApi = (*P2pApiService)(&c.common)
 	c.RebateApi = (*RebateApiService)(&c.common)
 	c.SpotApi = (*SpotApiService)(&c.common)
+	c.SquareApi = (*SquareApiService)(&c.common)
 	c.SubAccountApi = (*SubAccountApiService)(&c.common)
 	c.TradFiApi = (*TradFiApiService)(&c.common)
 	c.UnifiedApi = (*UnifiedApiService)(&c.common)
 	c.WalletApi = (*WalletApiService)(&c.common)
+	c.WelfareApi = (*WelfareApiService)(&c.common)
 	c.WithdrawalApi = (*WithdrawalApiService)(&c.common)
 
 	return c

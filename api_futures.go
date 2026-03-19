@@ -2048,25 +2048,18 @@ func (a *FuturesApiService) GetPosition(ctx context.Context, settle string, cont
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-// GetLeverageOpts Optional parameters for the method 'GetLeverage'
-type GetLeverageOpts struct {
-	PosMarginMode optional.String
-	DualSide      optional.String
-}
-
 /*
 GetLeverage Get Leverage Information for Specified Mode
 Get Leverage Information for Specified Mode
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param settle Settle currency
   - @param contract Futures contract
-  - @param optional nil or *GetLeverageOpts - Optional Parameters:
-  - @param "PosMarginMode" (optional.String) -  Position Margin Mode, required for split position mode, values: isolated/cross.
-  - @param "DualSide" (optional.String) -  dual_long - Long, dual_short - Short
+  - @param posMarginMode Position Margin Mode, required for split position mode, values: isolated/cross.
+  - @param dualSide dual_long - Long, dual_short - Short
 
 @return FuturesLeverage
 */
-func (a *FuturesApiService) GetLeverage(ctx context.Context, settle string, contract string, localVarOptionals *GetLeverageOpts) (FuturesLeverage, *http.Response, error) {
+func (a *FuturesApiService) GetLeverage(ctx context.Context, settle string, contract string, posMarginMode string, dualSide string) (FuturesLeverage, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -2086,12 +2079,8 @@ func (a *FuturesApiService) GetLeverage(ctx context.Context, settle string, cont
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-	if localVarOptionals != nil && localVarOptionals.PosMarginMode.IsSet() {
-		localVarQueryParams.Add("pos_margin_mode", parameterToString(localVarOptionals.PosMarginMode.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.DualSide.IsSet() {
-		localVarQueryParams.Add("dual_side", parameterToString(localVarOptionals.DualSide.Value(), ""))
-	}
+	localVarQueryParams.Add("pos_margin_mode", parameterToString(posMarginMode, ""))
+	localVarQueryParams.Add("dual_side", parameterToString(dualSide, ""))
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -2584,11 +2573,11 @@ func (a *FuturesApiService) UpdatePositionCrossMode(ctx context.Context, settle 
 UpdateDualCompPositionCrossMode Switch Between Cross and Isolated Margin Modes Under Hedge Mode
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param settle Settle currency
-  - @param inlineObject
+  - @param updateDualCompPositionCrossModeRequest
 
 @return []Position
 */
-func (a *FuturesApiService) UpdateDualCompPositionCrossMode(ctx context.Context, settle string, inlineObject InlineObject) ([]Position, *http.Response, error) {
+func (a *FuturesApiService) UpdateDualCompPositionCrossMode(ctx context.Context, settle string, updateDualCompPositionCrossModeRequest UpdateDualCompPositionCrossModeRequest) ([]Position, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -2624,7 +2613,7 @@ func (a *FuturesApiService) UpdateDualCompPositionCrossMode(ctx context.Context,
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = &inlineObject
+	localVarPostBody = &updateDualCompPositionCrossModeRequest
 	if ctx == nil {
 		ctx = context.Background()
 	}
@@ -5522,16 +5511,16 @@ CreateTrailOrder Create trail order
   - @param settle Settle currency
   - @param createTrailOrder
 
-@return InlineResponse201
+@return CreateTrailOrderResponse
 */
-func (a *FuturesApiService) CreateTrailOrder(ctx context.Context, settle string, createTrailOrder CreateTrailOrder) (InlineResponse201, *http.Response, error) {
+func (a *FuturesApiService) CreateTrailOrder(ctx context.Context, settle string, createTrailOrder CreateTrailOrder) (CreateTrailOrderResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  InlineResponse201
+		localVarReturnValue  CreateTrailOrderResponse
 	)
 
 	// create path and map variables
@@ -5618,16 +5607,16 @@ StopTrailOrder Terminate trail order
   - @param settle Settle currency
   - @param stopTrailOrder
 
-@return InlineResponse200
+@return TrailOrderResponse
 */
-func (a *FuturesApiService) StopTrailOrder(ctx context.Context, settle string, stopTrailOrder StopTrailOrder) (InlineResponse200, *http.Response, error) {
+func (a *FuturesApiService) StopTrailOrder(ctx context.Context, settle string, stopTrailOrder StopTrailOrder) (TrailOrderResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  InlineResponse200
+		localVarReturnValue  TrailOrderResponse
 	)
 
 	// create path and map variables
@@ -5714,16 +5703,16 @@ StopAllTrailOrders Batch terminate trail orders
   - @param settle Settle currency
   - @param stopAllTrailOrders
 
-@return InlineResponse2001
+@return TrailOrderListResponse
 */
-func (a *FuturesApiService) StopAllTrailOrders(ctx context.Context, settle string, stopAllTrailOrders StopAllTrailOrders) (InlineResponse2001, *http.Response, error) {
+func (a *FuturesApiService) StopAllTrailOrders(ctx context.Context, settle string, stopAllTrailOrders StopAllTrailOrders) (TrailOrderListResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  InlineResponse2001
+		localVarReturnValue  TrailOrderListResponse
 	)
 
 	// create path and map variables
@@ -5838,16 +5827,16 @@ GetTrailOrders Get trail order list
   - @param "ReduceOnly" (optional.Int32) -  Whether reduce only, 1-yes, 2-no
   - @param "Side" (optional.Int32) -  Direction, 1-long position, 2-short position
 
-@return InlineResponse2001
+@return TrailOrderListResponse
 */
-func (a *FuturesApiService) GetTrailOrders(ctx context.Context, settle string, localVarOptionals *GetTrailOrdersOpts) (InlineResponse2001, *http.Response, error) {
+func (a *FuturesApiService) GetTrailOrders(ctx context.Context, settle string, localVarOptionals *GetTrailOrdersOpts) (TrailOrderListResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  InlineResponse2001
+		localVarReturnValue  TrailOrderListResponse
 	)
 
 	// create path and map variables
@@ -5968,16 +5957,16 @@ GetTrailOrderDetail Get trail order details
   - @param settle Settle currency
   - @param id Order ID
 
-@return InlineResponse2002
+@return TrailOrderDetailResponse
 */
-func (a *FuturesApiService) GetTrailOrderDetail(ctx context.Context, settle string, id int64) (InlineResponse2002, *http.Response, error) {
+func (a *FuturesApiService) GetTrailOrderDetail(ctx context.Context, settle string, id int64) (TrailOrderDetailResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  InlineResponse2002
+		localVarReturnValue  TrailOrderDetailResponse
 	)
 
 	// create path and map variables
@@ -6063,16 +6052,16 @@ UpdateTrailOrder Update trail order
   - @param settle Settle currency
   - @param updateTrailOrder
 
-@return InlineResponse200
+@return TrailOrderResponse
 */
-func (a *FuturesApiService) UpdateTrailOrder(ctx context.Context, settle string, updateTrailOrder UpdateTrailOrder) (InlineResponse200, *http.Response, error) {
+func (a *FuturesApiService) UpdateTrailOrder(ctx context.Context, settle string, updateTrailOrder UpdateTrailOrder) (TrailOrderResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  InlineResponse200
+		localVarReturnValue  TrailOrderResponse
 	)
 
 	// create path and map variables
@@ -6168,16 +6157,16 @@ GetTrailOrderChangeLog Get trail order user modification records
   - @param "PageNum" (optional.Int32) -  Page number, starting from 1
   - @param "PageSize" (optional.Int32) -  Number of items per page
 
-@return InlineResponse2003
+@return TrailOrderChangeLogResponse
 */
-func (a *FuturesApiService) GetTrailOrderChangeLog(ctx context.Context, settle string, id int64, localVarOptionals *GetTrailOrderChangeLogOpts) (InlineResponse2003, *http.Response, error) {
+func (a *FuturesApiService) GetTrailOrderChangeLog(ctx context.Context, settle string, id int64, localVarOptionals *GetTrailOrderChangeLogOpts) (TrailOrderChangeLogResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  InlineResponse2003
+		localVarReturnValue  TrailOrderChangeLogResponse
 	)
 
 	// create path and map variables
@@ -6585,7 +6574,7 @@ GetPriceTriggeredOrder Query single auto order details
 
 @return FuturesPriceTriggeredOrder
 */
-func (a *FuturesApiService) GetPriceTriggeredOrder(ctx context.Context, settle string, orderId int32) (FuturesPriceTriggeredOrder, *http.Response, error) {
+func (a *FuturesApiService) GetPriceTriggeredOrder(ctx context.Context, settle string, orderId int64) (FuturesPriceTriggeredOrder, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -6681,7 +6670,7 @@ CancelPriceTriggeredOrder Cancel single auto order
 
 @return FuturesPriceTriggeredOrder
 */
-func (a *FuturesApiService) CancelPriceTriggeredOrder(ctx context.Context, settle string, orderId int32) (FuturesPriceTriggeredOrder, *http.Response, error) {
+func (a *FuturesApiService) CancelPriceTriggeredOrder(ctx context.Context, settle string, orderId int64) (FuturesPriceTriggeredOrder, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -6778,7 +6767,7 @@ UpdatePriceTriggeredOrder Modify a Single Auto Order
 
 @return TriggerOrderResponse
 */
-func (a *FuturesApiService) UpdatePriceTriggeredOrder(ctx context.Context, settle string, orderId int32, futuresUpdatePriceTriggeredOrder FuturesUpdatePriceTriggeredOrder) (TriggerOrderResponse, *http.Response, error) {
+func (a *FuturesApiService) UpdatePriceTriggeredOrder(ctx context.Context, settle string, orderId int64, futuresUpdatePriceTriggeredOrder FuturesUpdatePriceTriggeredOrder) (TriggerOrderResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}

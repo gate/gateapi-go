@@ -4,9 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Code** | **int32** |  | 
-**Message** | **string** |  | 
-**Timestamp** | **int32** |  | 
+**Code** | **int32** | Response code. &#x60;0&#x60; &#x3D; success; &#x60;2002&#x60; &#x3D; user not logged in; &#x60;50105&#x60; &#x3D; parameter validation failed; &#x60;10001&#x60; &#x3D; coupon record does not exist or does not belong to current user; &#x60;10000&#x60; &#x3D; invalid parameter (e.g., task coupon missing coupon_info) | [optional] 
+**Label** | **string** | Error identifier code. Empty string on success, machine-readable error label on error | [optional] 
+**Message** | **string** |  | [optional] 
+**Data** | [**InlineResponse2007Data**](inline_response_200_7_data.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

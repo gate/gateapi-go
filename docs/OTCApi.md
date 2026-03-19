@@ -18,7 +18,7 @@ Method | HTTP request | Description
 
 ## CreateOtcQuote
 
-> InlineResponse2006 CreateOtcQuote(ctx, otcQuoteRequest)
+> OtcQuoteResponse CreateOtcQuote(ctx, otcQuoteRequest)
 
 Fiat and stablecoin quote
 
@@ -72,7 +72,7 @@ func main() {
 
 ### Return type
 
-[**InlineResponse2006**](inline_response_200_6.md)
+[**OtcQuoteResponse**](OtcQuoteResponse.md)
 
 ### Authorization
 
@@ -89,7 +89,7 @@ func main() {
 
 ## CreateOtcOrder
 
-> InlineResponse2007 CreateOtcOrder(ctx, otcOrderRequest)
+> OtcActionResponse CreateOtcOrder(ctx, otcOrderRequest)
 
 Create fiat order
 
@@ -143,7 +143,7 @@ func main() {
 
 ### Return type
 
-[**InlineResponse2007**](inline_response_200_7.md)
+[**OtcActionResponse**](OtcActionResponse.md)
 
 ### Authorization
 
@@ -160,7 +160,7 @@ func main() {
 
 ## CreateStableCoinOrder
 
-> InlineResponse2008 CreateStableCoinOrder(ctx, otcStableCoinOrderRequest)
+> OtcStableCoinOrderCreateResponse CreateStableCoinOrder(ctx, otcStableCoinOrderRequest)
 
 Create stablecoin order
 
@@ -214,7 +214,7 @@ func main() {
 
 ### Return type
 
-[**InlineResponse2008**](inline_response_200_8.md)
+[**OtcStableCoinOrderCreateResponse**](OtcStableCoinOrderCreateResponse.md)
 
 ### Authorization
 
@@ -231,7 +231,7 @@ func main() {
 
 ## GetUserDefaultBank
 
-> InlineResponse2009 GetUserDefaultBank(ctx, )
+> OtcUserDefaultBankResponse GetUserDefaultBank(ctx, )
 
 Get user's default bank account information
 
@@ -280,7 +280,7 @@ func main() {
 
 ### Return type
 
-[**InlineResponse2009**](inline_response_200_9.md)
+[**OtcUserDefaultBankResponse**](OtcUserDefaultBankResponse.md)
 
 ### Authorization
 
@@ -297,7 +297,7 @@ func main() {
 
 ## GetBankList
 
-> InlineResponse20010 GetBankList(ctx, )
+> OtcBankListResponse GetBankList(ctx, )
 
 Get user bank card list
 
@@ -346,7 +346,7 @@ func main() {
 
 ### Return type
 
-[**InlineResponse20010**](inline_response_200_10.md)
+[**OtcBankListResponse**](OtcBankListResponse.md)
 
 ### Authorization
 
@@ -363,7 +363,7 @@ func main() {
 
 ## MarkOtcOrderPaid
 
-> InlineResponse2007 MarkOtcOrderPaid(ctx, otcMarkOrderPaidRequest)
+> OtcActionResponse MarkOtcOrderPaid(ctx, otcMarkOrderPaidRequest)
 
 Mark fiat order as paid
 
@@ -417,7 +417,7 @@ func main() {
 
 ### Return type
 
-[**InlineResponse2007**](inline_response_200_7.md)
+[**OtcActionResponse**](OtcActionResponse.md)
 
 ### Authorization
 
@@ -434,7 +434,7 @@ func main() {
 
 ## CancelOtcOrder
 
-> InlineResponse2007 CancelOtcOrder(ctx, orderId)
+> OtcActionResponse CancelOtcOrder(ctx, orderId)
 
 Fiat order cancellation
 
@@ -488,7 +488,7 @@ func main() {
 
 ### Return type
 
-[**InlineResponse2007**](inline_response_200_7.md)
+[**OtcActionResponse**](OtcActionResponse.md)
 
 ### Authorization
 
@@ -505,7 +505,7 @@ func main() {
 
 ## ListOtcOrders
 
-> InlineResponse20011 ListOtcOrders(ctx, optional)
+> OtcOrderListResponse ListOtcOrders(ctx, optional)
 
 Fiat order list
 
@@ -573,7 +573,7 @@ func main() {
 
 ### Return type
 
-[**InlineResponse20011**](inline_response_200_11.md)
+[**OtcOrderListResponse**](OtcOrderListResponse.md)
 
 ### Authorization
 
@@ -590,7 +590,7 @@ func main() {
 
 ## ListStableCoinOrders
 
-> InlineResponse20012 ListStableCoinOrders(ctx, optional)
+> OtcStableCoinOrderListResponse ListStableCoinOrders(ctx, optional)
 
 Stablecoin order list
 
@@ -656,7 +656,7 @@ func main() {
 
 ### Return type
 
-[**InlineResponse20012**](inline_response_200_12.md)
+[**OtcStableCoinOrderListResponse**](OtcStableCoinOrderListResponse.md)
 
 ### Authorization
 
@@ -673,7 +673,7 @@ func main() {
 
 ## GetOtcOrderDetail
 
-> InlineResponse20013 GetOtcOrderDetail(ctx, orderId)
+> OtcOrderDetailResponse GetOtcOrderDetail(ctx, orderId)
 
 Fiat order details
 
@@ -727,7 +727,7 @@ func main() {
 
 ### Return type
 
-[**InlineResponse20013**](inline_response_200_13.md)
+[**OtcOrderDetailResponse**](OtcOrderDetailResponse.md)
 
 ### Authorization
 

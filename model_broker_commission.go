@@ -13,5 +13,5 @@ type BrokerCommission struct {
 	// Total
 	Total int64 `json:"total,omitempty"`
 	// List of commission history
-	List []BrokerCommission1 `json:"list,omitempty"`
+	List []BrokerCommissionItem `json:"list,omitempty"`
 }

@@ -346,7 +346,7 @@ No authorization required
 
 ## QuerySymbolTicker
 
-> Ticker2 QuerySymbolTicker(ctx, symbol)
+> TradFiTicker QuerySymbolTicker(ctx, symbol)
 
 Query trading symbol ticker
 
@@ -392,7 +392,7 @@ func main() {
 
 ### Return type
 
-[**Ticker2**](Ticker_2.md)
+[**TradFiTicker**](TradFiTicker.md)
 
 ### Authorization
 

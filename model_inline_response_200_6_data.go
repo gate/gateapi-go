@@ -9,27 +9,10 @@
 
 package gateapi
 
+// Returned when code=0; empty object {} otherwise
 type InlineResponse2006Data struct {
-	// BUY (on-ramp) or SELL (off-ramp)
-	Type string `json:"type"`
-	// Payment currency
-	PayCoin string `json:"pay_coin"`
-	// Currency
-	GetCoin string `json:"get_coin"`
-	// Payment amount
-	PayAmount string `json:"pay_amount"`
-	// Redemption Amount
-	GetAmount string `json:"get_amount"`
-	// Exchange rate
-	Rate string `json:"rate"`
-	// Reciprocal of the exchange rate
-	RateReci string `json:"rate_reci"`
-	// Promotion code
-	PromotionCode string `json:"promotion_code"`
-	// Quote method
-	Side string `json:"side"`
-	// Order type: FIAT (fiat) / STABLE (stablecoin)
-	OrderType string `json:"order_type"`
-	// Quote token required when placing an order
-	QuoteToken string `json:"quote_token"`
+	// Whether there is a next page. `true` means more data is available. Pass the `id` of the last record as `last_id` and `expire_time_order_by` as `expire_time` in the next request
+	NextPage bool `json:"next_page,omitempty"`
+	// Coupon object array, see field details below
+	List []InlineResponse2006DataList `json:"list,omitempty"`
 }

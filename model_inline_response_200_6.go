@@ -10,7 +10,10 @@
 package gateapi
 
 type InlineResponse2006 struct {
-	Code    int32                  `json:"code"`
-	Message string                 `json:"message"`
-	Data    InlineResponse2006Data `json:"data"`
+	// Response Code. `0` = Success; `2002` = User not logged in; `50105` = Input parameter validation failed
+	Code int32 `json:"code,omitempty"`
+	// Error identifier code. Empty string on success, machine-readable error label on error
+	Label   string                 `json:"label,omitempty"`
+	Message string                 `json:"message,omitempty"`
+	Data    InlineResponse2006Data `json:"data,omitempty"`
 }

@@ -10,6 +10,11 @@
 package gateapi
 
 type InlineResponse2008 struct {
-	Code    int32  `json:"code"`
-	Message string `json:"message"`
+	// Status code, 0 = success
+	Code int32 `json:"code,omitempty"`
+	// Error identifier code. Empty string on success, machine-readable error label on error
+	Label string `json:"label,omitempty"`
+	// Status message
+	Msg  string                 `json:"msg,omitempty"`
+	Data InlineResponse2008Data `json:"data,omitempty"`
 }

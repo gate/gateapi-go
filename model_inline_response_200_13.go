@@ -10,7 +10,11 @@
 package gateapi
 
 type InlineResponse20013 struct {
+	// Response status code, 0 means success
+	Code int32 `json:"code"`
+	// 响应消息，成功时为 \"success\"
 	Message string                  `json:"message"`
-	Code    int32                   `json:"code"`
 	Data    InlineResponse20013Data `json:"data"`
+	// Server timestamp (milliseconds)
+	Timestamp int64 `json:"timestamp"`
 }

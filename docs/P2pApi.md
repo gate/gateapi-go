@@ -25,7 +25,7 @@ Method | HTTP request | Description
 
 ## P2pMerchantAccountGetUserInfo
 
-> InlineResponse20014 P2pMerchantAccountGetUserInfo(ctx, )
+> P2pMerchantUserInfoResponse P2pMerchantAccountGetUserInfo(ctx, )
 
 Get account information
 
@@ -72,7 +72,7 @@ func main() {
 
 ### Return type
 
-[**InlineResponse20014**](inline_response_200_14.md)
+[**P2pMerchantUserInfoResponse**](P2pMerchantUserInfoResponse.md)
 
 ### Authorization
 
@@ -89,7 +89,7 @@ func main() {
 
 ## P2pMerchantAccountGetCounterpartyUserInfo
 
-> InlineResponse20015 P2pMerchantAccountGetCounterpartyUserInfo(ctx, getCounterpartyUserInfoRequest)
+> P2pCounterpartyUserInfoResponse P2pMerchantAccountGetCounterpartyUserInfo(ctx, getCounterpartyUserInfoRequest)
 
 Get counterparty information
 
@@ -141,7 +141,7 @@ func main() {
 
 ### Return type
 
-[**InlineResponse20015**](inline_response_200_15.md)
+[**P2pCounterpartyUserInfoResponse**](P2pCounterpartyUserInfoResponse.md)
 
 ### Authorization
 
@@ -158,7 +158,7 @@ func main() {
 
 ## P2pMerchantAccountGetMyselfPayment
 
-> InlineResponse20016 P2pMerchantAccountGetMyselfPayment(ctx, optional)
+> P2pPaymentMethodsResponse P2pMerchantAccountGetMyselfPayment(ctx, optional)
 
 Get payment method list
 
@@ -217,7 +217,7 @@ func main() {
 
 ### Return type
 
-[**InlineResponse20016**](inline_response_200_16.md)
+[**P2pPaymentMethodsResponse**](P2pPaymentMethodsResponse.md)
 
 ### Authorization
 
@@ -234,7 +234,7 @@ func main() {
 
 ## P2pMerchantTransactionGetPendingTransactionList
 
-> InlineResponse20017 P2pMerchantTransactionGetPendingTransactionList(ctx, getPendingTransactionListRequest)
+> P2pTransactionListResponse P2pMerchantTransactionGetPendingTransactionList(ctx, getPendingTransactionListRequest)
 
 Get pending orders
 
@@ -286,7 +286,7 @@ func main() {
 
 ### Return type
 
-[**InlineResponse20017**](inline_response_200_17.md)
+[**P2pTransactionListResponse**](P2pTransactionListResponse.md)
 
 ### Authorization
 
@@ -303,7 +303,7 @@ func main() {
 
 ## P2pMerchantTransactionGetCompletedTransactionList
 
-> InlineResponse20017 P2pMerchantTransactionGetCompletedTransactionList(ctx, getCompletedTransactionListRequest)
+> P2pTransactionListResponse P2pMerchantTransactionGetCompletedTransactionList(ctx, getCompletedTransactionListRequest)
 
 Get all/historical orders
 
@@ -355,7 +355,7 @@ func main() {
 
 ### Return type
 
-[**InlineResponse20017**](inline_response_200_17.md)
+[**P2pTransactionListResponse**](P2pTransactionListResponse.md)
 
 ### Authorization
 
@@ -372,7 +372,7 @@ func main() {
 
 ## P2pMerchantTransactionGetTransactionDetails
 
-> InlineResponse20018 P2pMerchantTransactionGetTransactionDetails(ctx, getTransactionDetailsRequest)
+> P2pTransactionDetailResponse P2pMerchantTransactionGetTransactionDetails(ctx, getTransactionDetailsRequest)
 
 Query order details
 
@@ -424,7 +424,7 @@ func main() {
 
 ### Return type
 
-[**InlineResponse20018**](inline_response_200_18.md)
+[**P2pTransactionDetailResponse**](P2pTransactionDetailResponse.md)
 
 ### Authorization
 
@@ -441,7 +441,7 @@ func main() {
 
 ## P2pMerchantTransactionConfirmPayment
 
-> InlineResponse20019 P2pMerchantTransactionConfirmPayment(ctx, confirmPayment)
+> P2pTransactionActionResponse P2pMerchantTransactionConfirmPayment(ctx, confirmPayment)
 
 Confirm payment
 
@@ -493,7 +493,7 @@ func main() {
 
 ### Return type
 
-[**InlineResponse20019**](inline_response_200_19.md)
+[**P2pTransactionActionResponse**](P2pTransactionActionResponse.md)
 
 ### Authorization
 
@@ -510,7 +510,7 @@ func main() {
 
 ## P2pMerchantTransactionConfirmReceipt
 
-> InlineResponse20019 P2pMerchantTransactionConfirmReceipt(ctx, confirmReceipt)
+> P2pTransactionActionResponse P2pMerchantTransactionConfirmReceipt(ctx, confirmReceipt)
 
 Confirm receipt
 
@@ -562,7 +562,7 @@ func main() {
 
 ### Return type
 
-[**InlineResponse20019**](inline_response_200_19.md)
+[**P2pTransactionActionResponse**](P2pTransactionActionResponse.md)
 
 ### Authorization
 
@@ -579,7 +579,7 @@ func main() {
 
 ## P2pMerchantTransactionCancel
 
-> InlineResponse20019 P2pMerchantTransactionCancel(ctx, cancelOrder)
+> P2pTransactionActionResponse P2pMerchantTransactionCancel(ctx, cancelOrder)
 
 Cancel order
 
@@ -631,7 +631,7 @@ func main() {
 
 ### Return type
 
-[**InlineResponse20019**](inline_response_200_19.md)
+[**P2pTransactionActionResponse**](P2pTransactionActionResponse.md)
 
 ### Authorization
 
@@ -717,7 +717,7 @@ func main() {
 
 ## P2pMerchantBooksAdsUpdateStatus
 
-> InlineResponse20020 P2pMerchantBooksAdsUpdateStatus(ctx, adsUpdateStatus, optional)
+> P2pAdsUpdateStatusResponse P2pMerchantBooksAdsUpdateStatus(ctx, adsUpdateStatus, optional)
 
 Update ad status
 
@@ -778,7 +778,7 @@ func main() {
 
 ### Return type
 
-[**InlineResponse20020**](inline_response_200_20.md)
+[**P2pAdsUpdateStatusResponse**](P2pAdsUpdateStatusResponse.md)
 
 ### Authorization
 
@@ -795,7 +795,7 @@ func main() {
 
 ## P2pMerchantBooksAdsDetail
 
-> InlineResponse20021 P2pMerchantBooksAdsDetail(ctx, adsDetailRequest)
+> P2pAdDetailResponse P2pMerchantBooksAdsDetail(ctx, adsDetailRequest)
 
 Query ad details
 
@@ -847,7 +847,7 @@ func main() {
 
 ### Return type
 
-[**InlineResponse20021**](inline_response_200_21.md)
+[**P2pAdDetailResponse**](P2pAdDetailResponse.md)
 
 ### Authorization
 
@@ -864,7 +864,7 @@ func main() {
 
 ## P2pMerchantBooksMyAdsList
 
-> InlineResponse20022 P2pMerchantBooksMyAdsList(ctx, optional)
+> P2pMyAdsListResponse P2pMerchantBooksMyAdsList(ctx, optional)
 
 Get my ad list
 
@@ -923,7 +923,7 @@ func main() {
 
 ### Return type
 
-[**InlineResponse20022**](inline_response_200_22.md)
+[**P2pMyAdsListResponse**](P2pMyAdsListResponse.md)
 
 ### Authorization
 
@@ -940,7 +940,7 @@ func main() {
 
 ## P2pMerchantBooksAdsList
 
-> InlineResponse20023 P2pMerchantBooksAdsList(ctx, adsListRequest)
+> P2pAdsListResponse P2pMerchantBooksAdsList(ctx, adsListRequest)
 
 Get Advertisement List
 
@@ -994,7 +994,7 @@ func main() {
 
 ### Return type
 
-[**InlineResponse20023**](inline_response_200_23.md)
+[**P2pAdsListResponse**](P2pAdsListResponse.md)
 
 ### Authorization
 
@@ -1011,7 +1011,7 @@ func main() {
 
 ## P2pMerchantChatGetChatsList
 
-> InlineResponse20024 P2pMerchantChatGetChatsList(ctx, getChatsListRequest)
+> P2pChatListResponse P2pMerchantChatGetChatsList(ctx, getChatsListRequest)
 
 Get chat history
 
@@ -1063,7 +1063,7 @@ func main() {
 
 ### Return type
 
-[**InlineResponse20024**](inline_response_200_24.md)
+[**P2pChatListResponse**](P2pChatListResponse.md)
 
 ### Authorization
 
@@ -1080,7 +1080,7 @@ func main() {
 
 ## P2pMerchantChatSendChatMessage
 
-> InlineResponse20025 P2pMerchantChatSendChatMessage(ctx, sendChatMessageRequest)
+> P2pSendChatMessageResponse P2pMerchantChatSendChatMessage(ctx, sendChatMessageRequest)
 
 Send text message
 
@@ -1132,7 +1132,7 @@ func main() {
 
 ### Return type
 
-[**InlineResponse20025**](inline_response_200_25.md)
+[**P2pSendChatMessageResponse**](P2pSendChatMessageResponse.md)
 
 ### Authorization
 
@@ -1149,7 +1149,7 @@ func main() {
 
 ## P2pMerchantChatUploadChatFile
 
-> InlineResponse20026 P2pMerchantChatUploadChatFile(ctx, uploadChatFile)
+> P2pUploadChatFileResponse P2pMerchantChatUploadChatFile(ctx, uploadChatFile)
 
 Upload chat file
 
@@ -1201,7 +1201,7 @@ func main() {
 
 ### Return type
 
-[**InlineResponse20026**](inline_response_200_26.md)
+[**P2pUploadChatFileResponse**](P2pUploadChatFileResponse.md)
 
 ### Authorization
 

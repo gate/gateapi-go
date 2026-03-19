@@ -13,6 +13,8 @@ Method | HTTP request | Description
 [**RebateBrokerTransactionHistory**](RebateApi.md#RebateBrokerTransactionHistory) | **Get** /rebate/broker/transaction_history | Broker obtains user&#39;s trading history
 [**RebateUserInfo**](RebateApi.md#RebateUserInfo) | **Get** /rebate/user/info | User obtains rebate information
 [**UserSubRelation**](RebateApi.md#UserSubRelation) | **Get** /rebate/user/sub_relation | User subordinate relationship
+[**GetPartnerApplicationRecent**](RebateApi.md#GetPartnerApplicationRecent) | **Get** /rebate/partner/applications/recent | Get recent partner application records
+[**GetPartnerEligibility**](RebateApi.md#GetPartnerEligibility) | **Get** /rebate/partner/eligibility | Check partner application eligibility
 
 
 ## AgencyTransactionHistory
@@ -512,7 +514,7 @@ func main() {
 
 ## RebateBrokerTransactionHistory
 
-> []BrokerTransaction RebateBrokerTransactionHistory(ctx, optional)
+> []BrokerTransactionHistory RebateBrokerTransactionHistory(ctx, optional)
 
 Broker obtains user's trading history
 
@@ -577,7 +579,7 @@ func main() {
 
 ### Return type
 
-[**[]BrokerTransaction**](BrokerTransaction.md)
+[**[]BrokerTransactionHistory**](BrokerTransactionHistory.md)
 
 ### Authorization
 
@@ -713,6 +715,138 @@ func main() {
 ### Return type
 
 [**UserSubRelation**](UserSubRelation.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+## GetPartnerApplicationRecent
+
+> PartnerApplicationResponse GetPartnerApplicationRecent(ctx, )
+
+Get recent partner application records
+
+获取当前用户最近的合伙人申请记录。  此接口返回用户最近 30 天内的申请记录，包括申请状态、审核信息、申请材料等详细信息。
+
+### Required Parameters
+
+
+### Example
+
+```golang
+package main
+
+import (
+    "context"
+    "fmt"
+
+    "github.com/gate/gateapi-go/v7"
+)
+
+func main() {
+    client := gateapi.NewAPIClient(gateapi.NewConfiguration())
+    // uncomment the next line if your are testing against testnet
+    // client.ChangeBasePath("https://fx-api-testnet.gateio.ws/api/v4")
+    ctx := context.WithValue(context.Background(),
+                             gateapi.ContextGateAPIV4,
+                             gateapi.GateAPIV4{
+                                 Key:    "YOUR_API_KEY",
+                                 Secret: "YOUR_API_SECRET",
+                             }
+                            )
+    
+    result, _, err := client.RebateApi.GetPartnerApplicationRecent(ctx)
+    if err != nil {
+        if e, ok := err.(gateapi.GateAPIError); ok {
+            fmt.Printf("gate api error: %s\n", e.Error())
+        } else {
+            fmt.Printf("generic error: %s\n", err.Error())
+        }
+    } else {
+        fmt.Println(result)
+    }
+}
+```
+
+
+### Return type
+
+[**PartnerApplicationResponse**](PartnerApplicationResponse.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+## GetPartnerEligibility
+
+> EligibilityResponse GetPartnerEligibility(ctx, )
+
+Check partner application eligibility
+
+检查当前用户是否有资格申请成为合伙人。  此接口会检查多个条件： - 账户状态（是否被封禁） - 是否为子账号 - 是否已经是合伙人 - KYC 认证状态 - 是否在其他代理商的邀请链下 - 是否在黑名单中 - 其他业务规则限制
+
+### Required Parameters
+
+
+### Example
+
+```golang
+package main
+
+import (
+    "context"
+    "fmt"
+
+    "github.com/gate/gateapi-go/v7"
+)
+
+func main() {
+    client := gateapi.NewAPIClient(gateapi.NewConfiguration())
+    // uncomment the next line if your are testing against testnet
+    // client.ChangeBasePath("https://fx-api-testnet.gateio.ws/api/v4")
+    ctx := context.WithValue(context.Background(),
+                             gateapi.ContextGateAPIV4,
+                             gateapi.GateAPIV4{
+                                 Key:    "YOUR_API_KEY",
+                                 Secret: "YOUR_API_SECRET",
+                             }
+                            )
+    
+    result, _, err := client.RebateApi.GetPartnerEligibility(ctx)
+    if err != nil {
+        if e, ok := err.(gateapi.GateAPIError); ok {
+            fmt.Printf("gate api error: %s\n", e.Error())
+        } else {
+            fmt.Printf("generic error: %s\n", err.Error())
+        }
+    } else {
+        fmt.Println(result)
+    }
+}
+```
+
+
+### Return type
+
+[**EligibilityResponse**](EligibilityResponse.md)
 
 ### Authorization
 

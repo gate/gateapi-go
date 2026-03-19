@@ -659,7 +659,7 @@ func main() {
 
 ## ListUniChart
 
-> []InlineResponse2004 ListUniChart(ctx, from, to, asset)
+> []UniChartPoint ListUniChart(ctx, from, to, asset)
 
 UniLoan currency annualized trend chart
 
@@ -715,7 +715,7 @@ func main() {
 
 ### Return type
 
-[**[]InlineResponse2004**](inline_response_200_4.md)
+[**[]UniChartPoint**](UniChartPoint.md)
 
 ### Authorization
 
@@ -732,7 +732,7 @@ func main() {
 
 ## ListUniRate
 
-> []InlineResponse2005 ListUniRate(ctx, )
+> []UniEstimatedRate ListUniRate(ctx, )
 
 Currency estimated annualized interest rate
 
@@ -779,7 +779,7 @@ func main() {
 
 ### Return type
 
-[**[]InlineResponse2005**](inline_response_200_5.md)
+[**[]UniEstimatedRate**](UniEstimatedRate.md)
 
 ### Authorization
 

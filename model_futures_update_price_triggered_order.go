@@ -14,7 +14,7 @@ type FuturesUpdatePriceTriggeredOrder struct {
 	// Settlement Currency (e.g., USDT, BTC)
 	Settle string `json:"settle,omitempty"`
 	// ID of the Pending Take-Profit/Stop-Loss Trigger Order
-	OrderId int32 `json:"order_id"`
+	OrderId int64 `json:"order_id"`
 	// Modified Contract Quantity. Full Close: 0; Partial Close: Positive/Negative values indicate direction (consistent with the creation interface logic).
 	Size int64 `json:"size,omitempty"`
 	// Represents the modified trading price. A value of 0 indicates a market order.

@@ -1496,7 +1496,7 @@ func main() {
 
 ## GetLeverage
 
-> FuturesLeverage GetLeverage(ctx, settle, contract, optional)
+> FuturesLeverage GetLeverage(ctx, settle, contract, posMarginMode, dualSide)
 
 Get Leverage Information for Specified Mode
 
@@ -1509,16 +1509,8 @@ Name | Type | Description  | Notes
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **settle** | **string**| Settle currency | 
 **contract** | **string**| Futures contract | 
-**optional** | **GetLeverageOpts** | optional parameters | nil if no parameters
-
-### Optional Parameters
-
-Optional parameters are passed through a pointer to a GetLeverageOpts struct
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**posMarginMode** | **optional.String**| Position Margin Mode, required for split position mode, values: isolated/cross. | 
-**dualSide** | **optional.String**| dual_long - Long, dual_short - Short | 
+**posMarginMode** | **string**| Position Margin Mode, required for split position mode, values: isolated/cross. | 
+**dualSide** | **string**| dual_long - Long, dual_short - Short | 
 
 ### Example
 
@@ -1545,8 +1537,10 @@ func main() {
                             )
     settle := "usdt" // string - Settle currency
     contract := "BTC_USDT" // string - Futures contract
+    posMarginMode := "isolated" // string - Position Margin Mode, required for split position mode, values: isolated/cross.
+    dualSide := "dual_long" // string - dual_long - Long, dual_short - Short
     
-    result, _, err := client.FuturesApi.GetLeverage(ctx, settle, contract, nil)
+    result, _, err := client.FuturesApi.GetLeverage(ctx, settle, contract, posMarginMode, dualSide)
     if err != nil {
         if e, ok := err.(gateapi.GateAPIError); ok {
             fmt.Printf("gate api error: %s\n", e.Error())
@@ -1896,7 +1890,7 @@ func main() {
 
 ## UpdateDualCompPositionCrossMode
 
-> []Position UpdateDualCompPositionCrossMode(ctx, settle, inlineObject)
+> []Position UpdateDualCompPositionCrossMode(ctx, settle, updateDualCompPositionCrossModeRequest)
 
 Switch Between Cross and Isolated Margin Modes Under Hedge Mode
 
@@ -1906,7 +1900,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **settle** | **string**| Settle currency | 
-**inlineObject** | [**InlineObject**](InlineObject.md)|  | 
+**updateDualCompPositionCrossModeRequest** | [**UpdateDualCompPositionCrossModeRequest**](UpdateDualCompPositionCrossModeRequest.md)|  | 
 
 ### Example
 
@@ -1932,9 +1926,9 @@ func main() {
                              }
                             )
     settle := "usdt" // string - Settle currency
-    inlineObject := gateapi.InlineObject{} // InlineObject - 
+    updateDualCompPositionCrossModeRequest := gateapi.UpdateDualCompPositionCrossModeRequest{} // UpdateDualCompPositionCrossModeRequest - 
     
-    result, _, err := client.FuturesApi.UpdateDualCompPositionCrossMode(ctx, settle, inlineObject)
+    result, _, err := client.FuturesApi.UpdateDualCompPositionCrossMode(ctx, settle, updateDualCompPositionCrossModeRequest)
     if err != nil {
         if e, ok := err.(gateapi.GateAPIError); ok {
             fmt.Printf("gate api error: %s\n", e.Error())
@@ -4022,7 +4016,7 @@ func main() {
 
 ## CreateTrailOrder
 
-> InlineResponse201 CreateTrailOrder(ctx, settle, createTrailOrder)
+> CreateTrailOrderResponse CreateTrailOrder(ctx, settle, createTrailOrder)
 
 Create trail order
 
@@ -4076,7 +4070,7 @@ func main() {
 
 ### Return type
 
-[**InlineResponse201**](inline_response_201.md)
+[**CreateTrailOrderResponse**](CreateTrailOrderResponse.md)
 
 ### Authorization
 
@@ -4093,7 +4087,7 @@ func main() {
 
 ## StopTrailOrder
 
-> InlineResponse200 StopTrailOrder(ctx, settle, stopTrailOrder)
+> TrailOrderResponse StopTrailOrder(ctx, settle, stopTrailOrder)
 
 Terminate trail order
 
@@ -4147,7 +4141,7 @@ func main() {
 
 ### Return type
 
-[**InlineResponse200**](inline_response_200.md)
+[**TrailOrderResponse**](TrailOrderResponse.md)
 
 ### Authorization
 
@@ -4164,7 +4158,7 @@ func main() {
 
 ## StopAllTrailOrders
 
-> InlineResponse2001 StopAllTrailOrders(ctx, settle, stopAllTrailOrders)
+> TrailOrderListResponse StopAllTrailOrders(ctx, settle, stopAllTrailOrders)
 
 Batch terminate trail orders
 
@@ -4218,7 +4212,7 @@ func main() {
 
 ### Return type
 
-[**InlineResponse2001**](inline_response_200_1.md)
+[**TrailOrderListResponse**](TrailOrderListResponse.md)
 
 ### Authorization
 
@@ -4235,7 +4229,7 @@ func main() {
 
 ## GetTrailOrders
 
-> InlineResponse2001 GetTrailOrders(ctx, settle, optional)
+> TrailOrderListResponse GetTrailOrders(ctx, settle, optional)
 
 Get trail order list
 
@@ -4307,7 +4301,7 @@ func main() {
 
 ### Return type
 
-[**InlineResponse2001**](inline_response_200_1.md)
+[**TrailOrderListResponse**](TrailOrderListResponse.md)
 
 ### Authorization
 
@@ -4324,7 +4318,7 @@ func main() {
 
 ## GetTrailOrderDetail
 
-> InlineResponse2002 GetTrailOrderDetail(ctx, settle, id)
+> TrailOrderDetailResponse GetTrailOrderDetail(ctx, settle, id)
 
 Get trail order details
 
@@ -4378,7 +4372,7 @@ func main() {
 
 ### Return type
 
-[**InlineResponse2002**](inline_response_200_2.md)
+[**TrailOrderDetailResponse**](TrailOrderDetailResponse.md)
 
 ### Authorization
 
@@ -4395,7 +4389,7 @@ func main() {
 
 ## UpdateTrailOrder
 
-> InlineResponse200 UpdateTrailOrder(ctx, settle, updateTrailOrder)
+> TrailOrderResponse UpdateTrailOrder(ctx, settle, updateTrailOrder)
 
 Update trail order
 
@@ -4449,7 +4443,7 @@ func main() {
 
 ### Return type
 
-[**InlineResponse200**](inline_response_200.md)
+[**TrailOrderResponse**](TrailOrderResponse.md)
 
 ### Authorization
 
@@ -4466,7 +4460,7 @@ func main() {
 
 ## GetTrailOrderChangeLog
 
-> InlineResponse2003 GetTrailOrderChangeLog(ctx, settle, id, optional)
+> TrailOrderChangeLogResponse GetTrailOrderChangeLog(ctx, settle, id, optional)
 
 Get trail order user modification records
 
@@ -4530,7 +4524,7 @@ func main() {
 
 ### Return type
 
-[**InlineResponse2003**](inline_response_200_3.md)
+[**TrailOrderChangeLogResponse**](TrailOrderChangeLogResponse.md)
 
 ### Authorization
 
@@ -4788,7 +4782,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **settle** | **string**| Settle currency | 
-**orderId** | **int32**| ID returned when order is successfully created | 
+**orderId** | **int64**| ID returned when order is successfully created | 
 
 ### Example
 
@@ -4814,7 +4808,7 @@ func main() {
                              }
                             )
     settle := "usdt" // string - Settle currency
-    orderId := 56 // int32 - ID returned when order is successfully created
+    orderId := 56 // int64 - ID returned when order is successfully created
     
     result, _, err := client.FuturesApi.GetPriceTriggeredOrder(ctx, settle, orderId)
     if err != nil {
@@ -4859,7 +4853,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **settle** | **string**| Settle currency | 
-**orderId** | **int32**| ID returned when order is successfully created | 
+**orderId** | **int64**| ID returned when order is successfully created | 
 
 ### Example
 
@@ -4885,7 +4879,7 @@ func main() {
                              }
                             )
     settle := "usdt" // string - Settle currency
-    orderId := 56 // int32 - ID returned when order is successfully created
+    orderId := 56 // int64 - ID returned when order is successfully created
     
     result, _, err := client.FuturesApi.CancelPriceTriggeredOrder(ctx, settle, orderId)
     if err != nil {
@@ -4930,7 +4924,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **settle** | **string**| Settle currency | 
-**orderId** | **int32**| ID returned when order is successfully created | 
+**orderId** | **int64**| ID returned when order is successfully created | 
 **futuresUpdatePriceTriggeredOrder** | [**FuturesUpdatePriceTriggeredOrder**](FuturesUpdatePriceTriggeredOrder.md)|  | 
 
 ### Example
@@ -4957,7 +4951,7 @@ func main() {
                              }
                             )
     settle := "usdt" // string - Settle currency
-    orderId := 56 // int32 - ID returned when order is successfully created
+    orderId := 56 // int64 - ID returned when order is successfully created
     futuresUpdatePriceTriggeredOrder := gateapi.FuturesUpdatePriceTriggeredOrder{} // FuturesUpdatePriceTriggeredOrder - 
     
     result, _, err := client.FuturesApi.UpdatePriceTriggeredOrder(ctx, settle, orderId, futuresUpdatePriceTriggeredOrder)

@@ -412,16 +412,16 @@ GetUnifiedBorrowableList Batch query unified account maximum borrowable amount
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param currencies Specify currency names for querying in an array, separated by commas, maximum 10 currencies
 
-@return []UnifiedBorrowable1
+@return []UnifiedBorrowable
 */
-func (a *UnifiedApiService) GetUnifiedBorrowableList(ctx context.Context, currencies []string) ([]UnifiedBorrowable1, *http.Response, error) {
+func (a *UnifiedApiService) GetUnifiedBorrowableList(ctx context.Context, currencies []string) ([]UnifiedBorrowable, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  []UnifiedBorrowable1
+		localVarReturnValue  []UnifiedBorrowable
 	)
 
 	// create path and map variables

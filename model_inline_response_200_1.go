@@ -10,5 +10,11 @@
 package gateapi
 
 type InlineResponse2001 struct {
-	Orders []TrailOrder `json:"orders,omitempty"`
+	// Return code, 0 means success
+	Code int32 `json:"code"`
+	// Response message
+	Message string                 `json:"message"`
+	Data    InlineResponse2001Data `json:"data"`
+	// Response timestamp (in seconds)
+	Timestamp int32 `json:"timestamp"`
 }

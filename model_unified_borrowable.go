@@ -9,6 +9,7 @@
 
 package gateapi
 
+// 统一账户最多可借入额度
 type UnifiedBorrowable struct {
 	// Currency detail
 	Currency string `json:"currency,omitempty"`

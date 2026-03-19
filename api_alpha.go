@@ -655,16 +655,16 @@ When currency is provided, query and return specified currency information; when
   - @param "Limit" (optional.Int32) -  Maximum number of records returned in a single list
   - @param "Page" (optional.Int32) -  Page number
 
-@return []Currency2
+@return []AlphaCurrency
 */
-func (a *AlphaApiService) ListAlphaCurrencies(ctx context.Context, localVarOptionals *ListAlphaCurrenciesOpts) ([]Currency2, *http.Response, error) {
+func (a *AlphaApiService) ListAlphaCurrencies(ctx context.Context, localVarOptionals *ListAlphaCurrenciesOpts) ([]AlphaCurrency, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  []Currency2
+		localVarReturnValue  []AlphaCurrency
 	)
 
 	// create path and map variables

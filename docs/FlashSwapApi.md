@@ -9,6 +9,12 @@ Method | HTTP request | Description
 [**CreateFlashSwapOrder**](FlashSwapApi.md#CreateFlashSwapOrder) | **Post** /flash_swap/orders | Create a flash swap order
 [**GetFlashSwapOrder**](FlashSwapApi.md#GetFlashSwapOrder) | **Get** /flash_swap/orders/{order_id} | Query single flash swap order
 [**PreviewFlashSwapOrder**](FlashSwapApi.md#PreviewFlashSwapOrder) | **Post** /flash_swap/orders/preview | Flash swap order preview
+[**CreateFlashSwapMultiCurrencyManyToOneOrder**](FlashSwapApi.md#CreateFlashSwapMultiCurrencyManyToOneOrder) | **Post** /flash-swap/multi-currency/many-to-one/order/create | Flash Swap - Multi-currency exchange - Place order (many-to-one)
+[**PreviewFlashSwapMultiCurrencyManyToOneOrder**](FlashSwapApi.md#PreviewFlashSwapMultiCurrencyManyToOneOrder) | **Post** /flash-swap/multi-currency/many-to-one/order/preview | Flash Swap - Multi-currency exchange - Preview (many-to-one)
+[**CreateFlashSwapOrderV1**](FlashSwapApi.md#CreateFlashSwapOrderV1) | **Post** /flash-swap/order/create | Flash Swap - Place order (one-to-one)
+[**CreateFlashSwapMultiCurrencyOneToManyOrder**](FlashSwapApi.md#CreateFlashSwapMultiCurrencyOneToManyOrder) | **Post** /flash-swap/multi-currency/one-to-many/order/create | Flash Swap - Multi-currency exchange - Place order (one-to-many)
+[**PreviewFlashSwapMultiCurrencyOneToManyOrder**](FlashSwapApi.md#PreviewFlashSwapMultiCurrencyOneToManyOrder) | **Post** /flash-swap/multi-currency/one-to-many/order/preview | Flash Swap - Multi-currency exchange - Preview (one-to-many)
+[**PreviewFlashSwapOrderV1**](FlashSwapApi.md#PreviewFlashSwapOrderV1) | **Get** /flash-swap/order/preview | Flash Swap - Preview (one-to-one)
 
 
 ## ListFlashSwapCurrencyPair
@@ -369,6 +375,444 @@ func main() {
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+## CreateFlashSwapMultiCurrencyManyToOneOrder
+
+> FlashSwapMultiCurrencyManyToOneOrderCreateResp CreateFlashSwapMultiCurrencyManyToOneOrder(ctx, flashSwapMultiCurrencyManyToOneOrderCreateReq)
+
+Flash Swap - Multi-currency exchange - Place order (many-to-one)
+
+Create a multi-currency to single target currency exchange order
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**flashSwapMultiCurrencyManyToOneOrderCreateReq** | [**FlashSwapMultiCurrencyManyToOneOrderCreateReq**](FlashSwapMultiCurrencyManyToOneOrderCreateReq.md)|  | 
+
+### Example
+
+```golang
+package main
+
+import (
+    "context"
+    "fmt"
+
+    "github.com/gate/gateapi-go/v7"
+)
+
+func main() {
+    client := gateapi.NewAPIClient(gateapi.NewConfiguration())
+    // uncomment the next line if your are testing against testnet
+    // client.ChangeBasePath("https://fx-api-testnet.gateio.ws/api/v4")
+    ctx := context.WithValue(context.Background(),
+                             gateapi.ContextGateAPIV4,
+                             gateapi.GateAPIV4{
+                                 Key:    "YOUR_API_KEY",
+                                 Secret: "YOUR_API_SECRET",
+                             }
+                            )
+    flashSwapMultiCurrencyManyToOneOrderCreateReq := gateapi.FlashSwapMultiCurrencyManyToOneOrderCreateReq{} // FlashSwapMultiCurrencyManyToOneOrderCreateReq - 
+    
+    result, _, err := client.FlashSwapApi.CreateFlashSwapMultiCurrencyManyToOneOrder(ctx, flashSwapMultiCurrencyManyToOneOrderCreateReq)
+    if err != nil {
+        if e, ok := err.(gateapi.GateAPIError); ok {
+            fmt.Printf("gate api error: %s\n", e.Error())
+        } else {
+            fmt.Printf("generic error: %s\n", err.Error())
+        }
+    } else {
+        fmt.Println(result)
+    }
+}
+```
+
+
+### Return type
+
+[**FlashSwapMultiCurrencyManyToOneOrderCreateResp**](FlashSwapMultiCurrencyManyToOneOrderCreateResp.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+## PreviewFlashSwapMultiCurrencyManyToOneOrder
+
+> FlashSwapMultiCurrencyManyToOneOrderPreviewResp PreviewFlashSwapMultiCurrencyManyToOneOrder(ctx, flashSwapMultiCurrencyManyToOneOrderPreviewReq)
+
+Flash Swap - Multi-currency exchange - Preview (many-to-one)
+
+Preview quote for multi-currency to single target currency exchange
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**flashSwapMultiCurrencyManyToOneOrderPreviewReq** | [**FlashSwapMultiCurrencyManyToOneOrderPreviewReq**](FlashSwapMultiCurrencyManyToOneOrderPreviewReq.md)|  | 
+
+### Example
+
+```golang
+package main
+
+import (
+    "context"
+    "fmt"
+
+    "github.com/gate/gateapi-go/v7"
+)
+
+func main() {
+    client := gateapi.NewAPIClient(gateapi.NewConfiguration())
+    // uncomment the next line if your are testing against testnet
+    // client.ChangeBasePath("https://fx-api-testnet.gateio.ws/api/v4")
+    ctx := context.WithValue(context.Background(),
+                             gateapi.ContextGateAPIV4,
+                             gateapi.GateAPIV4{
+                                 Key:    "YOUR_API_KEY",
+                                 Secret: "YOUR_API_SECRET",
+                             }
+                            )
+    flashSwapMultiCurrencyManyToOneOrderPreviewReq := gateapi.FlashSwapMultiCurrencyManyToOneOrderPreviewReq{} // FlashSwapMultiCurrencyManyToOneOrderPreviewReq - 
+    
+    result, _, err := client.FlashSwapApi.PreviewFlashSwapMultiCurrencyManyToOneOrder(ctx, flashSwapMultiCurrencyManyToOneOrderPreviewReq)
+    if err != nil {
+        if e, ok := err.(gateapi.GateAPIError); ok {
+            fmt.Printf("gate api error: %s\n", e.Error())
+        } else {
+            fmt.Printf("generic error: %s\n", err.Error())
+        }
+    } else {
+        fmt.Println(result)
+    }
+}
+```
+
+
+### Return type
+
+[**FlashSwapMultiCurrencyManyToOneOrderPreviewResp**](FlashSwapMultiCurrencyManyToOneOrderPreviewResp.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+## CreateFlashSwapOrderV1
+
+> FlashSwapOrderCreateResp CreateFlashSwapOrderV1(ctx, flashSwapOrderCreateReq)
+
+Flash Swap - Place order (one-to-one)
+
+Submit a one-to-one flash swap order. A quote_id must be obtained from the preview endpoint first
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**flashSwapOrderCreateReq** | [**FlashSwapOrderCreateReq**](FlashSwapOrderCreateReq.md)|  | 
+
+### Example
+
+```golang
+package main
+
+import (
+    "context"
+    "fmt"
+
+    "github.com/gate/gateapi-go/v7"
+)
+
+func main() {
+    client := gateapi.NewAPIClient(gateapi.NewConfiguration())
+    // uncomment the next line if your are testing against testnet
+    // client.ChangeBasePath("https://fx-api-testnet.gateio.ws/api/v4")
+    ctx := context.WithValue(context.Background(),
+                             gateapi.ContextGateAPIV4,
+                             gateapi.GateAPIV4{
+                                 Key:    "YOUR_API_KEY",
+                                 Secret: "YOUR_API_SECRET",
+                             }
+                            )
+    flashSwapOrderCreateReq := gateapi.FlashSwapOrderCreateReq{} // FlashSwapOrderCreateReq - 
+    
+    result, _, err := client.FlashSwapApi.CreateFlashSwapOrderV1(ctx, flashSwapOrderCreateReq)
+    if err != nil {
+        if e, ok := err.(gateapi.GateAPIError); ok {
+            fmt.Printf("gate api error: %s\n", e.Error())
+        } else {
+            fmt.Printf("generic error: %s\n", err.Error())
+        }
+    } else {
+        fmt.Println(result)
+    }
+}
+```
+
+
+### Return type
+
+[**FlashSwapOrderCreateResp**](FlashSwapOrderCreateResp.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+## CreateFlashSwapMultiCurrencyOneToManyOrder
+
+> FlashSwapMultiCurrencyOneToManyOrderCreateResp CreateFlashSwapMultiCurrencyOneToManyOrder(ctx, flashSwapMultiCurrencyOneToManyOrderCreateReq)
+
+Flash Swap - Multi-currency exchange - Place order (one-to-many)
+
+Create a single currency to multiple target currencies exchange order
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**flashSwapMultiCurrencyOneToManyOrderCreateReq** | [**FlashSwapMultiCurrencyOneToManyOrderCreateReq**](FlashSwapMultiCurrencyOneToManyOrderCreateReq.md)|  | 
+
+### Example
+
+```golang
+package main
+
+import (
+    "context"
+    "fmt"
+
+    "github.com/gate/gateapi-go/v7"
+)
+
+func main() {
+    client := gateapi.NewAPIClient(gateapi.NewConfiguration())
+    // uncomment the next line if your are testing against testnet
+    // client.ChangeBasePath("https://fx-api-testnet.gateio.ws/api/v4")
+    ctx := context.WithValue(context.Background(),
+                             gateapi.ContextGateAPIV4,
+                             gateapi.GateAPIV4{
+                                 Key:    "YOUR_API_KEY",
+                                 Secret: "YOUR_API_SECRET",
+                             }
+                            )
+    flashSwapMultiCurrencyOneToManyOrderCreateReq := gateapi.FlashSwapMultiCurrencyOneToManyOrderCreateReq{} // FlashSwapMultiCurrencyOneToManyOrderCreateReq - 
+    
+    result, _, err := client.FlashSwapApi.CreateFlashSwapMultiCurrencyOneToManyOrder(ctx, flashSwapMultiCurrencyOneToManyOrderCreateReq)
+    if err != nil {
+        if e, ok := err.(gateapi.GateAPIError); ok {
+            fmt.Printf("gate api error: %s\n", e.Error())
+        } else {
+            fmt.Printf("generic error: %s\n", err.Error())
+        }
+    } else {
+        fmt.Println(result)
+    }
+}
+```
+
+
+### Return type
+
+[**FlashSwapMultiCurrencyOneToManyOrderCreateResp**](FlashSwapMultiCurrencyOneToManyOrderCreateResp.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+## PreviewFlashSwapMultiCurrencyOneToManyOrder
+
+> FlashSwapMultiCurrencyOneToManyOrderPreviewResp PreviewFlashSwapMultiCurrencyOneToManyOrder(ctx, flashSwapMultiCurrencyOneToManyOrderPreviewReq)
+
+Flash Swap - Multi-currency exchange - Preview (one-to-many)
+
+Preview quote for single currency to multiple target currencies exchange
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**flashSwapMultiCurrencyOneToManyOrderPreviewReq** | [**FlashSwapMultiCurrencyOneToManyOrderPreviewReq**](FlashSwapMultiCurrencyOneToManyOrderPreviewReq.md)|  | 
+
+### Example
+
+```golang
+package main
+
+import (
+    "context"
+    "fmt"
+
+    "github.com/gate/gateapi-go/v7"
+)
+
+func main() {
+    client := gateapi.NewAPIClient(gateapi.NewConfiguration())
+    // uncomment the next line if your are testing against testnet
+    // client.ChangeBasePath("https://fx-api-testnet.gateio.ws/api/v4")
+    ctx := context.WithValue(context.Background(),
+                             gateapi.ContextGateAPIV4,
+                             gateapi.GateAPIV4{
+                                 Key:    "YOUR_API_KEY",
+                                 Secret: "YOUR_API_SECRET",
+                             }
+                            )
+    flashSwapMultiCurrencyOneToManyOrderPreviewReq := gateapi.FlashSwapMultiCurrencyOneToManyOrderPreviewReq{} // FlashSwapMultiCurrencyOneToManyOrderPreviewReq - 
+    
+    result, _, err := client.FlashSwapApi.PreviewFlashSwapMultiCurrencyOneToManyOrder(ctx, flashSwapMultiCurrencyOneToManyOrderPreviewReq)
+    if err != nil {
+        if e, ok := err.(gateapi.GateAPIError); ok {
+            fmt.Printf("gate api error: %s\n", e.Error())
+        } else {
+            fmt.Printf("generic error: %s\n", err.Error())
+        }
+    } else {
+        fmt.Println(result)
+    }
+}
+```
+
+
+### Return type
+
+[**FlashSwapMultiCurrencyOneToManyOrderPreviewResp**](FlashSwapMultiCurrencyOneToManyOrderPreviewResp.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+## PreviewFlashSwapOrderV1
+
+> FlashSwapOrderPreviewResp PreviewFlashSwapOrderV1(ctx, sellAsset, buyAsset, optional)
+
+Flash Swap - Preview (one-to-one)
+
+Get one-to-one flash swap quote. Either sell_amount or buy_amount must be specified
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**sellAsset** | **string**| Currency to sell | 
+**buyAsset** | **string**| Currency to buy | 
+**optional** | **PreviewFlashSwapOrderV1Opts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+
+Optional parameters are passed through a pointer to a PreviewFlashSwapOrderV1Opts struct
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**sellAmount** | **optional.String**| Sell amount, either this or buy_amount must be specified | 
+**buyAmount** | **optional.String**| Buy amount, either this or sell_amount must be specified | 
+
+### Example
+
+```golang
+package main
+
+import (
+    "context"
+    "fmt"
+
+    "github.com/gate/gateapi-go/v7"
+)
+
+func main() {
+    client := gateapi.NewAPIClient(gateapi.NewConfiguration())
+    // uncomment the next line if your are testing against testnet
+    // client.ChangeBasePath("https://fx-api-testnet.gateio.ws/api/v4")
+    ctx := context.WithValue(context.Background(),
+                             gateapi.ContextGateAPIV4,
+                             gateapi.GateAPIV4{
+                                 Key:    "YOUR_API_KEY",
+                                 Secret: "YOUR_API_SECRET",
+                             }
+                            )
+    sellAsset := "sellAsset_example" // string - Currency to sell
+    buyAsset := "buyAsset_example" // string - Currency to buy
+    
+    result, _, err := client.FlashSwapApi.PreviewFlashSwapOrderV1(ctx, sellAsset, buyAsset, nil)
+    if err != nil {
+        if e, ok := err.(gateapi.GateAPIError); ok {
+            fmt.Printf("gate api error: %s\n", e.Error())
+        } else {
+            fmt.Printf("generic error: %s\n", err.Error())
+        }
+    } else {
+        fmt.Println(result)
+    }
+}
+```
+
+
+### Return type
+
+[**FlashSwapOrderPreviewResp**](FlashSwapOrderPreviewResp.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

@@ -10,8 +10,6 @@
 package gateapi
 
 type InlineObject struct {
-	// Cross/isolated margin mode. ISOLATED - isolated margin, CROSS - cross margin
-	Mode string `json:"mode"`
-	// Futures market
-	Contract string `json:"contract"`
+	// Order ID
+	OrderId string `json:"order_id"`
 }

@@ -15,6 +15,7 @@ import (
 	"io/ioutil"
 	"net/http"
 	"net/url"
+	"strings"
 )
 
 // Linger please
@@ -1333,6 +1334,686 @@ func (a *EarnApiService) AssetList(ctx context.Context, localVarOptionals *Asset
 
 	if localVarOptionals != nil && localVarOptionals.Coin.IsSet() {
 		localVarQueryParams.Add("coin", parameterToString(localVarOptionals.Coin.Value(), ""))
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if ctx == nil {
+		ctx = context.Background()
+	}
+	if ctx.Value(ContextGateAPIV4) == nil {
+		// for compatibility, set configuration key and secret to context if ContextGateAPIV4 value is not present
+		ctx = context.WithValue(ctx, ContextGateAPIV4, GateAPIV4{
+			Key:    a.client.cfg.Key,
+			Secret: a.client.cfg.Secret,
+		})
+	}
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(r)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status + ", " + string(localVarBody),
+		}
+		var gateErr GateAPIError
+		if e := a.client.decode(&gateErr, localVarBody, localVarHTTPResponse.Header.Get("Content-Type")); e == nil && gateErr.Label != "" {
+			gateErr.APIError = newErr
+			return localVarReturnValue, localVarHTTPResponse, gateErr
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+// ListEarnFixedTermProductsOpts Optional parameters for the method 'ListEarnFixedTermProducts'
+type ListEarnFixedTermProductsOpts struct {
+	Asset optional.String
+	Type_ optional.Int32
+}
+
+/*
+ListEarnFixedTermProducts Get product list
+Query fixed-term earn product list. Supports filtering by currency, product type, status, etc. Returns product interest rate, lock-up period, quota, and reward campaign information
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param page Page number
+  - @param limit Page size
+  - @param optional nil or *ListEarnFixedTermProductsOpts - Optional Parameters:
+  - @param "Asset" (optional.String) -  Currency
+  - @param "Type_" (optional.Int32) -  Product type: 1 for regular, 2 for VIP
+
+@return InlineResponse200
+*/
+func (a *EarnApiService) ListEarnFixedTermProducts(ctx context.Context, page int32, limit int32, localVarOptionals *ListEarnFixedTermProductsOpts) (InlineResponse200, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  InlineResponse200
+	)
+
+	// create path and map variables
+	localVarPath := a.client.cfg.BasePath + "/earn/fixed-term/product"
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if localVarOptionals != nil && localVarOptionals.Asset.IsSet() {
+		localVarQueryParams.Add("asset", parameterToString(localVarOptionals.Asset.Value(), ""))
+	}
+	if localVarOptionals != nil && localVarOptionals.Type_.IsSet() {
+		localVarQueryParams.Add("type", parameterToString(localVarOptionals.Type_.Value(), ""))
+	}
+	localVarQueryParams.Add("page", parameterToString(page, ""))
+	localVarQueryParams.Add("limit", parameterToString(limit, ""))
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if ctx == nil {
+		ctx = context.Background()
+	}
+	ctx = context.WithValue(ctx, ContextPublic, true)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(r)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status + ", " + string(localVarBody),
+		}
+		var gateErr GateAPIError
+		if e := a.client.decode(&gateErr, localVarBody, localVarHTTPResponse.Header.Get("Content-Type")); e == nil && gateErr.Label != "" {
+			gateErr.APIError = newErr
+			return localVarReturnValue, localVarHTTPResponse, gateErr
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+// ListEarnFixedTermProductsByAssetOpts Optional parameters for the method 'ListEarnFixedTermProductsByAsset'
+type ListEarnFixedTermProductsByAssetOpts struct {
+	Type_ optional.String
+}
+
+/*
+ListEarnFixedTermProductsByAsset Get product list by single currency
+Sort by product term in ascending order
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param asset Currency name, e.g., USDT, BTC
+  - @param optional nil or *ListEarnFixedTermProductsByAssetOpts - Optional Parameters:
+  - @param "Type_" (optional.String) -  Product type: \"\" or 1 for regular product list, 2 for VIP product list, 0 for all products
+
+@return InlineResponse2001
+*/
+func (a *EarnApiService) ListEarnFixedTermProductsByAsset(ctx context.Context, asset string, localVarOptionals *ListEarnFixedTermProductsByAssetOpts) (InlineResponse2001, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  InlineResponse2001
+	)
+
+	// create path and map variables
+	localVarPath := a.client.cfg.BasePath + "/earn/fixed-term/product/{asset}/list"
+	localVarPath = strings.Replace(localVarPath, "{"+"asset"+"}", url.QueryEscape(parameterToString(asset, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if localVarOptionals != nil && localVarOptionals.Type_.IsSet() {
+		localVarQueryParams.Add("type", parameterToString(localVarOptionals.Type_.Value(), ""))
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if ctx == nil {
+		ctx = context.Background()
+	}
+	ctx = context.WithValue(ctx, ContextPublic, true)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(r)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status + ", " + string(localVarBody),
+		}
+		var gateErr GateAPIError
+		if e := a.client.decode(&gateErr, localVarBody, localVarHTTPResponse.Header.Get("Content-Type")); e == nil && gateErr.Label != "" {
+			gateErr.APIError = newErr
+			return localVarReturnValue, localVarHTTPResponse, gateErr
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+// ListEarnFixedTermLendsOpts Optional parameters for the method 'ListEarnFixedTermLends'
+type ListEarnFixedTermLendsOpts struct {
+	ProductId      optional.Int32
+	OrderId        optional.Int64
+	Asset          optional.String
+	SubBusiness    optional.Int32
+	BusinessFilter optional.String
+}
+
+/*
+ListEarnFixedTermLends Subscription list
+Query the user&#39;s fixed-term earn subscription order list. Supports filtering by product, currency, order type, etc. Returns order details, earnings, rewards, and interest rate boost coupon information
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param orderType Order type: 1 for current orders, 2 for historical orders
+  - @param page Page number
+  - @param limit Page size
+  - @param optional nil or *ListEarnFixedTermLendsOpts - Optional Parameters:
+  - @param "ProductId" (optional.Int32) -  Product ID
+  - @param "OrderId" (optional.Int64) -  Order ID
+  - @param "Asset" (optional.String) -  Currency
+  - @param "SubBusiness" (optional.Int32) -  Sub-business
+  - @param "BusinessFilter" (optional.String) -  Business filter conditions, JSON array format, e.g., [{\"business\":1, \"sub_business\": 0}]. business: 1 for regular, 2 for VIP
+
+@return InlineResponse2002
+*/
+func (a *EarnApiService) ListEarnFixedTermLends(ctx context.Context, orderType string, page int32, limit int32, localVarOptionals *ListEarnFixedTermLendsOpts) (InlineResponse2002, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  InlineResponse2002
+	)
+
+	// create path and map variables
+	localVarPath := a.client.cfg.BasePath + "/earn/fixed-term/user/lend"
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if localVarOptionals != nil && localVarOptionals.ProductId.IsSet() {
+		localVarQueryParams.Add("product_id", parameterToString(localVarOptionals.ProductId.Value(), ""))
+	}
+	if localVarOptionals != nil && localVarOptionals.OrderId.IsSet() {
+		localVarQueryParams.Add("order_id", parameterToString(localVarOptionals.OrderId.Value(), ""))
+	}
+	if localVarOptionals != nil && localVarOptionals.Asset.IsSet() {
+		localVarQueryParams.Add("asset", parameterToString(localVarOptionals.Asset.Value(), ""))
+	}
+	localVarQueryParams.Add("order_type", parameterToString(orderType, ""))
+	localVarQueryParams.Add("page", parameterToString(page, ""))
+	localVarQueryParams.Add("limit", parameterToString(limit, ""))
+	if localVarOptionals != nil && localVarOptionals.SubBusiness.IsSet() {
+		localVarQueryParams.Add("sub_business", parameterToString(localVarOptionals.SubBusiness.Value(), ""))
+	}
+	if localVarOptionals != nil && localVarOptionals.BusinessFilter.IsSet() {
+		localVarQueryParams.Add("business_filter", parameterToString(localVarOptionals.BusinessFilter.Value(), ""))
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if ctx == nil {
+		ctx = context.Background()
+	}
+	if ctx.Value(ContextGateAPIV4) == nil {
+		// for compatibility, set configuration key and secret to context if ContextGateAPIV4 value is not present
+		ctx = context.WithValue(ctx, ContextGateAPIV4, GateAPIV4{
+			Key:    a.client.cfg.Key,
+			Secret: a.client.cfg.Secret,
+		})
+	}
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(r)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status + ", " + string(localVarBody),
+		}
+		var gateErr GateAPIError
+		if e := a.client.decode(&gateErr, localVarBody, localVarHTTPResponse.Header.Get("Content-Type")); e == nil && gateErr.Label != "" {
+			gateErr.APIError = newErr
+			return localVarReturnValue, localVarHTTPResponse, gateErr
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+// CreateEarnFixedTermLendOpts Optional parameters for the method 'CreateEarnFixedTermLend'
+type CreateEarnFixedTermLendOpts struct {
+	FixedTermLendRequest optional.Interface
+}
+
+/*
+CreateEarnFixedTermLend Subscription
+Subscribe to a fixed-term earn product by specifying the product ID and subscription amount. Optionally enable auto-renewal and apply an interest rate boost coupon
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param optional nil or *CreateEarnFixedTermLendOpts - Optional Parameters:
+  - @param "FixedTermLendRequest" (optional.Interface of FixedTermLendRequest) -
+
+@return InlineResponse2003
+*/
+func (a *EarnApiService) CreateEarnFixedTermLend(ctx context.Context, localVarOptionals *CreateEarnFixedTermLendOpts) (InlineResponse2003, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  InlineResponse2003
+	)
+
+	// create path and map variables
+	localVarPath := a.client.cfg.BasePath + "/earn/fixed-term/user/lend"
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	if localVarOptionals != nil && localVarOptionals.FixedTermLendRequest.IsSet() {
+		localVarOptionalFixedTermLendRequest, localVarOptionalFixedTermLendRequestok := localVarOptionals.FixedTermLendRequest.Value().(FixedTermLendRequest)
+		if !localVarOptionalFixedTermLendRequestok {
+			return localVarReturnValue, nil, reportError("fixedTermLendRequest should be FixedTermLendRequest")
+		}
+		localVarPostBody = &localVarOptionalFixedTermLendRequest
+	}
+
+	if ctx == nil {
+		ctx = context.Background()
+	}
+	if ctx.Value(ContextGateAPIV4) == nil {
+		// for compatibility, set configuration key and secret to context if ContextGateAPIV4 value is not present
+		ctx = context.WithValue(ctx, ContextGateAPIV4, GateAPIV4{
+			Key:    a.client.cfg.Key,
+			Secret: a.client.cfg.Secret,
+		})
+	}
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(r)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status + ", " + string(localVarBody),
+		}
+		var gateErr GateAPIError
+		if e := a.client.decode(&gateErr, localVarBody, localVarHTTPResponse.Header.Get("Content-Type")); e == nil && gateErr.Label != "" {
+			gateErr.APIError = newErr
+			return localVarReturnValue, localVarHTTPResponse, gateErr
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+// CreateEarnFixedTermPreRedeemOpts Optional parameters for the method 'CreateEarnFixedTermPreRedeem'
+type CreateEarnFixedTermPreRedeemOpts struct {
+	InlineObject optional.Interface
+}
+
+/*
+CreateEarnFixedTermPreRedeem Redeem
+Early redemption of a fixed-term earn order, order ID is required
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param optional nil or *CreateEarnFixedTermPreRedeemOpts - Optional Parameters:
+  - @param "InlineObject" (optional.Interface of InlineObject) -
+
+@return InlineResponse2004
+*/
+func (a *EarnApiService) CreateEarnFixedTermPreRedeem(ctx context.Context, localVarOptionals *CreateEarnFixedTermPreRedeemOpts) (InlineResponse2004, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  InlineResponse2004
+	)
+
+	// create path and map variables
+	localVarPath := a.client.cfg.BasePath + "/earn/fixed-term/user/pre-redeem"
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	if localVarOptionals != nil && localVarOptionals.InlineObject.IsSet() {
+		localVarOptionalInlineObject, localVarOptionalInlineObjectok := localVarOptionals.InlineObject.Value().(InlineObject)
+		if !localVarOptionalInlineObjectok {
+			return localVarReturnValue, nil, reportError("inlineObject should be InlineObject")
+		}
+		localVarPostBody = &localVarOptionalInlineObject
+	}
+
+	if ctx == nil {
+		ctx = context.Background()
+	}
+	if ctx.Value(ContextGateAPIV4) == nil {
+		// for compatibility, set configuration key and secret to context if ContextGateAPIV4 value is not present
+		ctx = context.WithValue(ctx, ContextGateAPIV4, GateAPIV4{
+			Key:    a.client.cfg.Key,
+			Secret: a.client.cfg.Secret,
+		})
+	}
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(r)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status + ", " + string(localVarBody),
+		}
+		var gateErr GateAPIError
+		if e := a.client.decode(&gateErr, localVarBody, localVarHTTPResponse.Header.Get("Content-Type")); e == nil && gateErr.Label != "" {
+			gateErr.APIError = newErr
+			return localVarReturnValue, localVarHTTPResponse, gateErr
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+// ListEarnFixedTermHistoryOpts Optional parameters for the method 'ListEarnFixedTermHistory'
+type ListEarnFixedTermHistoryOpts struct {
+	ProductId      optional.Int32
+	OrderId        optional.String
+	Asset          optional.String
+	StartAt        optional.Int32
+	EndAt          optional.Int32
+	SubBusiness    optional.Int32
+	BusinessFilter optional.String
+}
+
+/*
+ListEarnFixedTermHistory Subscription history
+Query the user&#39;s fixed-term earn history records. Supports filtering by type (subscription, redemption, interest, bonus rewards) and time range
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param type_ 1 for subscription, 2 for redemption, 3 for interest, 4 for bonus reward
+  - @param page Page number
+  - @param limit Page size
+  - @param optional nil or *ListEarnFixedTermHistoryOpts - Optional Parameters:
+  - @param "ProductId" (optional.Int32) -  Product ID
+  - @param "OrderId" (optional.String) -  Order ID
+  - @param "Asset" (optional.String) -  Currency
+  - @param "StartAt" (optional.Int32) -  Start timestamp
+  - @param "EndAt" (optional.Int32) -  End Timestamp
+  - @param "SubBusiness" (optional.Int32) -  Sub-business
+  - @param "BusinessFilter" (optional.String) -  Business filter conditions, JSON array format, e.g., [{\"business\":1, \"sub_business\": 0}]. business: 1 for regular, 2 for VIP
+
+@return InlineResponse2005
+*/
+func (a *EarnApiService) ListEarnFixedTermHistory(ctx context.Context, type_ string, page int32, limit int32, localVarOptionals *ListEarnFixedTermHistoryOpts) (InlineResponse2005, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  InlineResponse2005
+	)
+
+	// create path and map variables
+	localVarPath := a.client.cfg.BasePath + "/earn/fixed-term/user/history"
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if localVarOptionals != nil && localVarOptionals.ProductId.IsSet() {
+		localVarQueryParams.Add("product_id", parameterToString(localVarOptionals.ProductId.Value(), ""))
+	}
+	if localVarOptionals != nil && localVarOptionals.OrderId.IsSet() {
+		localVarQueryParams.Add("order_id", parameterToString(localVarOptionals.OrderId.Value(), ""))
+	}
+	if localVarOptionals != nil && localVarOptionals.Asset.IsSet() {
+		localVarQueryParams.Add("asset", parameterToString(localVarOptionals.Asset.Value(), ""))
+	}
+	localVarQueryParams.Add("type", parameterToString(type_, ""))
+	localVarQueryParams.Add("page", parameterToString(page, ""))
+	localVarQueryParams.Add("limit", parameterToString(limit, ""))
+	if localVarOptionals != nil && localVarOptionals.StartAt.IsSet() {
+		localVarQueryParams.Add("start_at", parameterToString(localVarOptionals.StartAt.Value(), ""))
+	}
+	if localVarOptionals != nil && localVarOptionals.EndAt.IsSet() {
+		localVarQueryParams.Add("end_at", parameterToString(localVarOptionals.EndAt.Value(), ""))
+	}
+	if localVarOptionals != nil && localVarOptionals.SubBusiness.IsSet() {
+		localVarQueryParams.Add("sub_business", parameterToString(localVarOptionals.SubBusiness.Value(), ""))
+	}
+	if localVarOptionals != nil && localVarOptionals.BusinessFilter.IsSet() {
+		localVarQueryParams.Add("business_filter", parameterToString(localVarOptionals.BusinessFilter.Value(), ""))
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

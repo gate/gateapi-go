@@ -9,10 +9,18 @@
 
 package gateapi
 
+// Activity entry data
 type InlineResponse20011Data struct {
-	Pn      int32                         `json:"pn"`
-	Ps      int32                         `json:"ps"`
-	TotalPn int32                         `json:"total_pn"`
-	Count   int32                         `json:"count"`
-	List    []InlineResponse20011DataList `json:"list"`
+	// Activity entry icon URL (light mode)
+	IconUrl string `json:"icon_url"`
+	// Activity entry icon URL (dark mode)
+	IconUrlDark string `json:"icon_url_dark"`
+	// Source type, e.g., activity for campaign
+	SourceType string `json:"source_type"`
+	// Activity entry title
+	Title string `json:"title"`
+	// Redirect link type, e.g., h5 for H5 page
+	UrlType string `json:"url_type"`
+	// Activity entry redirect URL
+	Url string `json:"url"`
 }

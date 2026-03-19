@@ -4,13 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** | Bank ID (required for order placement) | 
-**BankAccountName** | **string** |  | 
-**BankName** | **string** |  | 
-**BankCountry** | **string** |  | 
-**BankAddress** | **string** |  | 
-**BankCode** | **string** |  | 
-**BranchCode** | **string** |  | 
+**List** | [**[]InlineResponse2009DataList**](inline_response_200_9_data_list.md) | Live stream/replay list | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
