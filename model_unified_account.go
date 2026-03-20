@@ -10,6 +10,8 @@
 package gateapi
 
 type UnifiedAccount struct {
+	// Unified account mode: - classic: Classic account mode - multi_currency: Multi-currency margin mode - portfolio: Portfolio margin mode - single_currency: Single-currency margin mode
+	Mode string `json:"mode,omitempty"`
 	// User ID
 	UserId int64 `json:"user_id,omitempty"`
 	// Last refresh time
@@ -21,25 +23,25 @@ type UnifiedAccount struct {
 	Total string `json:"total,omitempty"`
 	// Total borrowed amount converted to USD, i.e. the sum of `borrowed * price` of all currencies (excluding point cards), valid in cross-currency margin/combined margin mode, 0 in other modes such as single-currency margin mode
 	Borrowed string `json:"borrowed,omitempty"`
-	// Total initial margin, valid in cross-currency margin/combined margin mode, 0 in other modes such as single-currency margin mode
+	// Total initial margin (cross), effective in multi-currency margin/portfolio margin mode, 0 in single-currency margin mode
 	TotalInitialMargin string `json:"total_initial_margin,omitempty"`
-	// Total margin balance, valid in cross-currency margin/combined margin mode, 0 in other modes such as single-currency margin mode
+	// Total margin balance (cross), effective in multi-currency margin/portfolio margin mode, 0 in single-currency margin mode
 	TotalMarginBalance string `json:"total_margin_balance,omitempty"`
-	// Total maintenance margin is valid in cross-currency margin/combined margin mode, and is 0 in other modes such as single-currency margin mode
+	// Total maintenance margin (cross), effective in multi-currency margin/portfolio margin mode, 0 in single-currency margin mode
 	TotalMaintenanceMargin string `json:"total_maintenance_margin,omitempty"`
-	// Total initial margin rate, valid in cross-currency margin/combined margin mode, 0 in other modes such as single-currency margin mode
+	// Total initial margin rate (cross), effective in multi-currency margin/portfolio margin mode, 0 in single-currency margin mode
 	TotalInitialMarginRate string `json:"total_initial_margin_rate,omitempty"`
-	// Total maintenance margin rate, valid in cross-currency margin/combined margin mode, 0 in other modes such as single-currency margin mode
+	// Total maintenance margin rate (cross), effective in multi-currency margin/portfolio margin mode, 0 in single-currency margin mode
 	TotalMaintenanceMarginRate string `json:"total_maintenance_margin_rate,omitempty"`
 	// Available margin amount, valid in cross-currency margin/combined margin mode, 0 in other modes such as single-currency margin mode
 	TotalAvailableMargin string `json:"total_available_margin,omitempty"`
-	// Total unified account assets, valid in single currency margin/cross-currency margin/combined margin mode
+	// Total unified account assets, includes both cross and isolated total assets in single-currency/multi-currency mode, only cross total assets in portfolio margin mode
 	UnifiedAccountTotal string `json:"unified_account_total,omitempty"`
-	// Total unified account borrowed amount, valid in cross-currency margin/combined margin mode, 0 in other modes such as single-currency margin mode
+	// Total unified account borrowed, i.e. total cross borrowed, effective in multi-currency margin/portfolio margin mode, 0 in single-currency margin mode
 	UnifiedAccountTotalLiab string `json:"unified_account_total_liab,omitempty"`
-	// Total unified account equity, valid in single currency margin/cross-currency margin/combined margin mode
+	// Total unified account equity, includes both cross and isolated total equity in single-currency/multi-currency mode, only cross total equity in portfolio margin mode
 	UnifiedAccountTotalEquity string `json:"unified_account_total_equity,omitempty"`
-	// Actual leverage ratio, valid in cross-currency margin/combined margin mode
+	// Account leverage multiplier, effective in multi-currency/portfolio margin mode (deprecated). Currency leverage query API: GET /unified/leverage/user_currency_setting
 	Leverage string `json:"leverage,omitempty"`
 	// Spot Pending Order Loss, in USDT, effective only in Cross-Currency Margin Mode and Portfolio Margin Mode.
 	SpotOrderLoss string `json:"spot_order_loss,omitempty"`

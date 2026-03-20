@@ -10,9 +10,9 @@
 package gateapi
 
 type UnifiedBalance struct {
-	// Available balance, valid in single currency margin/cross-currency margin/combined margin mode, calculation varies by mode
+	// Cross available balance, deducted futures isolated margin occupation and frozen amount (futures isolated occupation, i.e. futures isolated balance), effective in single-currency/multi-currency/portfolio margin mode.
 	Available string `json:"available,omitempty"`
-	// Locked balance, valid in single currency margin/cross-currency margin/combined margin mode
+	// Frozen amount, effective in single-currency/multi-currency/portfolio margin mode
 	Freeze string `json:"freeze,omitempty"`
 	// Borrowed amount, valid in cross-currency margin/combined margin mode, 0 in other modes such as single-currency margin mode
 	Borrowed string `json:"borrowed,omitempty"`
@@ -20,7 +20,7 @@ type UnifiedBalance struct {
 	NegativeLiab string `json:"negative_liab,omitempty"`
 	// Contract opening position borrowing currency (abandoned, to be offline field)
 	FuturesPosLiab string `json:"futures_pos_liab,omitempty"`
-	// Equity, valid in single currency margin/cross currency margin/combined margin mode
+	// Currency equity amount (cross), effective in single-currency/multi-currency/portfolio margin mode
 	Equity string `json:"equity,omitempty"`
 	// Total frozen (deprecated, to be removed)
 	TotalFreeze string `json:"total_freeze,omitempty"`
@@ -34,20 +34,22 @@ type UnifiedBalance struct {
 	FundingVersion string `json:"funding_version,omitempty"`
 	// Full margin balance is valid in single currency margin mode, and is 0 in other modes such as cross currency margin/combined margin mode
 	CrossBalance string `json:"cross_balance,omitempty"`
-	// Isolated Margin Balance applies to Single-Currency Margin Mode and Cross-Currency Margin Mode, and is 0 in other modes such as Portfolio Margin Mode.
+	// Futures isolated balance, effective in single-currency and multi-currency margin mode, 0 in portfolio margin mode
 	IsoBalance string `json:"iso_balance,omitempty"`
-	// Full-position initial margin is valid in single-currency margin mode and is 0 in other modes such as cross-currency margin/combined margin mode
+	// Cross initial margin, only effective for USDT in single-currency margin mode, 0 in multi-currency/portfolio margin mode
 	Im string `json:"im,omitempty"`
-	// Cross margin maintenance margin, valid in single-currency margin mode, 0 in other modes such as cross-currency margin/combined margin mode
+	// Cross maintenance margin, only effective for USDT in single-currency margin mode, 0 in multi-currency/portfolio margin mode
 	Mm string `json:"mm,omitempty"`
-	// Full-position initial margin rate is valid in single-currency margin mode and is 0 in other modes such as cross-currency margin/combined margin mode
+	// Cross initial margin rate, only effective for USDT in single-currency margin mode, 0 in multi-currency/portfolio margin mode
 	Imr string `json:"imr,omitempty"`
-	// Full-position maintenance margin rate is valid in single-currency margin mode and is 0 in other modes such as cross-currency margin/combined margin mode
+	// Cross maintenance margin rate, only effective for USDT in single-currency margin mode, 0 in multi-currency/portfolio margin mode
 	Mmr string `json:"mmr,omitempty"`
-	// Full margin balance is valid in single currency margin mode and is 0 in other modes such as cross currency margin/combined margin mode
+	// Cross margin balance, only effective for USDT in single-currency margin mode, 0 in multi-currency/portfolio margin mode
 	MarginBalance string `json:"margin_balance,omitempty"`
-	// Cross margin available balance, valid in single currency margin mode, 0 in other modes such as cross-currency margin/combined margin mode
+	// Cross available margin, only effective for USDT in single-currency margin mode, 0 in multi-currency/portfolio margin mode
 	AvailableMargin string `json:"available_margin,omitempty"`
 	// Currency enabled as margin: true - Enabled, false - Disabled
 	EnabledCollateral bool `json:"enabled_collateral,omitempty"`
+	// Balance version number
+	BalanceVersion float32 `json:"balance_version,omitempty"`
 }
