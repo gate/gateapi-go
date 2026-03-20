@@ -9,18 +9,18 @@
 
 package gateapi
 
-// Activity list data
+// Activity entry data
 type InlineResponse20012Data struct {
-	// Activity list
-	List []InlineResponse20012DataList `json:"list"`
-	// Current page number
-	Page int32 `json:"page"`
-	// Items per page
-	PageSize int32 `json:"pageSize"`
-	// Total pages
-	PageCount int32 `json:"pageCount"`
-	// Total Records
-	TotalCount int32 `json:"totalCount"`
-	// Activity Center page link
+	// Activity entry icon URL (light mode)
+	IconUrl string `json:"icon_url"`
+	// Activity entry icon URL (dark mode)
+	IconUrlDark string `json:"icon_url_dark"`
+	// Source type, e.g., activity for campaign
+	SourceType string `json:"source_type"`
+	// Activity entry title
+	Title string `json:"title"`
+	// Redirect link type, e.g., h5 for H5 page
+	UrlType string `json:"url_type"`
+	// Activity entry redirect URL
 	Url string `json:"url"`
 }

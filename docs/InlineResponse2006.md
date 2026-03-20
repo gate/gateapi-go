@@ -4,10 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Code** | **int32** | Response Code. &#x60;0&#x60; &#x3D; Success; &#x60;2002&#x60; &#x3D; User not logged in; &#x60;50105&#x60; &#x3D; Input parameter validation failed | [optional] 
-**Label** | **string** | Error identifier code. Empty string on success, machine-readable error label on error | [optional] 
-**Message** | **string** |  | [optional] 
-**Data** | [**InlineResponse2006Data**](inline_response_200_6_data.md) |  | [optional] 
+**ExchangeType** | **string** | Exchange | [optional] 
+**SpotMakerFee** | **string** | spotMakerfee rate | 
+**SpotTakerFee** | **string** | spotTakerfee rate | 
+**FutureMakerFee** | **string** | contractMakerfee rate | 
+**FutureTakerFee** | **string** | contractTakerfee rate | 
+**SpecialFeeList** | [**[]CrossexSpecialFee**](CrossexSpecialFee.md) |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

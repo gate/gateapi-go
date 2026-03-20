@@ -9,12 +9,12 @@
 
 package gateapi
 
-type InlineResponse2009 struct {
-	// Status code, 0 = success
-	Code int32 `json:"code,omitempty"`
-	// Error identifier code. Empty string on success, machine-readable error label on error
-	Label string `json:"label,omitempty"`
-	// Status message
-	Msg  string                 `json:"msg,omitempty"`
-	Data InlineResponse2009Data `json:"data,omitempty"`
+// Redirect Link
+type InlineResponse2007DataJumpUrl struct {
+	// Web Redirect Link
+	Web string `json:"web,omitempty"`
+	// App Redirect Link
+	App string `json:"app,omitempty"`
+	// Mini Program Redirect Link (empty string for most types)
+	MiniApp string `json:"mini_app,omitempty"`
 }

@@ -9,10 +9,9 @@
 
 package gateapi
 
-// Help Center Link
-type InlineResponse2006DataHelpUrl struct {
-	// Web Help Link
-	Web string `json:"web,omitempty"`
-	// App Help Link
-	App string `json:"app,omitempty"`
+type InlineResponse20014DataList struct {
+	// Activity type ID
+	Id int32 `json:"id"`
+	// Activity type name
+	Name string `json:"name"`
 }

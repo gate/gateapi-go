@@ -9,8 +9,18 @@
 
 package gateapi
 
-// Activity type data
+// Activity list data
 type InlineResponse20013Data struct {
-	// Activity type list
+	// Activity list
 	List []InlineResponse20013DataList `json:"list"`
+	// Current page number
+	Page int32 `json:"page"`
+	// Items per page
+	PageSize int32 `json:"pageSize"`
+	// Total pages
+	PageCount int32 `json:"pageCount"`
+	// Total Records
+	TotalCount int32 `json:"totalCount"`
+	// Activity Center page link
+	Url string `json:"url"`
 }

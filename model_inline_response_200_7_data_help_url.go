@@ -9,9 +9,10 @@
 
 package gateapi
 
-type InlineResponse2009DataList struct {
-	// Content type: streaming = live broadcast, video = replay video
-	ContentType string                      `json:"content_type,omitempty"`
-	Live        InlineResponse2009DataLive  `json:"live,omitempty"`
-	Video       InlineResponse2009DataVideo `json:"video,omitempty"`
+// Help Center Link
+type InlineResponse2007DataHelpUrl struct {
+	// Web Help Link
+	Web string `json:"web,omitempty"`
+	// App Help Link
+	App string `json:"app,omitempty"`
 }

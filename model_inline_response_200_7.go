@@ -10,7 +10,7 @@
 package gateapi
 
 type InlineResponse2007 struct {
-	// Response code. `0` = success; `2002` = user not logged in; `50105` = parameter validation failed; `10001` = coupon record does not exist or does not belong to current user; `10000` = invalid parameter (e.g., task coupon missing coupon_info)
+	// Response Code. `0` = Success; `2002` = User not logged in; `50105` = Input parameter validation failed
 	Code int32 `json:"code,omitempty"`
 	// Error identifier code. Empty string on success, machine-readable error label on error
 	Label   string                 `json:"label,omitempty"`

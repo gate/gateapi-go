@@ -9,16 +9,9 @@
 
 package gateapi
 
-// Streamer information
-type InlineResponse2009DataLiveHost struct {
-	// Streamer ID
-	Id string `json:"id,omitempty"`
-	// Streamer nickname
-	Name string `json:"name,omitempty"`
-	// Streamer avatar URL
-	Avatar string `json:"avatar,omitempty"`
-	// Follower count
-	Fans int32 `json:"fans,omitempty"`
-	// Streamer level
-	Tier int32 `json:"tier,omitempty"`
+type CrossexConvertOrderResponse struct {
+	// Order ID
+	OrderId string `json:"order_id"`
+	// Order ID (cannot be customized)
+	Text string `json:"text"`
 }

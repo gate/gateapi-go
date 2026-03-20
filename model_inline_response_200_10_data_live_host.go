@@ -9,12 +9,16 @@
 
 package gateapi
 
-type InlineResponse2009 struct {
-	// Status code, 0 = success
-	Code int32 `json:"code,omitempty"`
-	// Error identifier code. Empty string on success, machine-readable error label on error
-	Label string `json:"label,omitempty"`
-	// Status message
-	Msg  string                 `json:"msg,omitempty"`
-	Data InlineResponse2009Data `json:"data,omitempty"`
+// Streamer information
+type InlineResponse20010DataLiveHost struct {
+	// Streamer ID
+	Id string `json:"id,omitempty"`
+	// Streamer nickname
+	Name string `json:"name,omitempty"`
+	// Streamer avatar URL
+	Avatar string `json:"avatar,omitempty"`
+	// Follower count
+	Fans int32 `json:"fans,omitempty"`
+	// Streamer level
+	Tier int32 `json:"tier,omitempty"`
 }

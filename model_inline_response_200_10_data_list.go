@@ -9,12 +9,9 @@
 
 package gateapi
 
-type InlineResponse2009 struct {
-	// Status code, 0 = success
-	Code int32 `json:"code,omitempty"`
-	// Error identifier code. Empty string on success, machine-readable error label on error
-	Label string `json:"label,omitempty"`
-	// Status message
-	Msg  string                 `json:"msg,omitempty"`
-	Data InlineResponse2009Data `json:"data,omitempty"`
+type InlineResponse20010DataList struct {
+	// Content type: streaming = live broadcast, video = replay video
+	ContentType string                       `json:"content_type,omitempty"`
+	Live        InlineResponse20010DataLive  `json:"live,omitempty"`
+	Video       InlineResponse20010DataVideo `json:"video,omitempty"`
 }

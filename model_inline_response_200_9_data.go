@@ -10,6 +10,8 @@
 package gateapi
 
 type InlineResponse2009Data struct {
-	// Live stream/replay list
-	List []InlineResponse2009DataList `json:"list,omitempty"`
+	// Total number of results
+	Total int32 `json:"total,omitempty"`
+	// Search result list
+	Items []InlineResponse2009DataItems `json:"items,omitempty"`
 }

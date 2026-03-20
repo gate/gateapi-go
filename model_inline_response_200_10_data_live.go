@@ -10,7 +10,7 @@
 package gateapi
 
 // Live stream information (has value when content_type=streaming)
-type InlineResponse2009DataLive struct {
+type InlineResponse20010DataLive struct {
 	// Live ID
 	Id string `json:"id,omitempty"`
 	// Anchor User ID
@@ -30,8 +30,8 @@ type InlineResponse2009DataLive struct {
 	// Live stream type
 	LiveType int32 `json:"live_type,omitempty"`
 	// Session ID
-	SessionId string                         `json:"session_id,omitempty"`
-	Host      InlineResponse2009DataLiveHost `json:"host,omitempty"`
+	SessionId string                          `json:"session_id,omitempty"`
+	Host      InlineResponse20010DataLiveHost `json:"host,omitempty"`
 	// Live stream status (e.g., streaming)
 	Status string `json:"status,omitempty"`
 }

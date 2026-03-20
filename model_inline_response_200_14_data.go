@@ -9,12 +9,8 @@
 
 package gateapi
 
-// Redirect Link
-type InlineResponse2006DataJumpUrl struct {
-	// Web Redirect Link
-	Web string `json:"web,omitempty"`
-	// App Redirect Link
-	App string `json:"app,omitempty"`
-	// Mini Program Redirect Link (empty string for most types)
-	MiniApp string `json:"mini_app,omitempty"`
+// Activity type data
+type InlineResponse20014Data struct {
+	// Activity type list
+	List []InlineResponse20014DataList `json:"list"`
 }

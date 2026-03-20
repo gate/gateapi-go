@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 ## GetMyActivityEntry
 
-> InlineResponse20011 GetMyActivityEntry(ctx, )
+> InlineResponse20012 GetMyActivityEntry(ctx, )
 
 My activity entry
 
@@ -60,7 +60,7 @@ func main() {
 
 ### Return type
 
-[**InlineResponse20011**](inline_response_200_11.md)
+[**InlineResponse20012**](inline_response_200_12.md)
 
 ### Authorization
 
@@ -77,7 +77,7 @@ func main() {
 
 ## ListActivities
 
-> InlineResponse20012 ListActivities(ctx, optional)
+> InlineResponse20013 ListActivities(ctx, optional)
 
 Recommended activity list
 
@@ -143,7 +143,7 @@ func main() {
 
 ### Return type
 
-[**InlineResponse20012**](inline_response_200_12.md)
+[**InlineResponse20013**](inline_response_200_13.md)
 
 ### Authorization
 
@@ -160,7 +160,7 @@ func main() {
 
 ## ListActivityTypes
 
-> InlineResponse20013 ListActivityTypes(ctx, )
+> InlineResponse20014 ListActivityTypes(ctx, )
 
 Activity type list
 
@@ -203,7 +203,7 @@ func main() {
 
 ### Return type
 
-[**InlineResponse20013**](inline_response_200_13.md)
+[**InlineResponse20014**](inline_response_200_14.md)
 
 ### Authorization
 

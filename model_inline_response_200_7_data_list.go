@@ -9,7 +9,7 @@
 
 package gateapi
 
-type InlineResponse2006DataList struct {
+type InlineResponse2007DataList struct {
 	// Coupon distribution record ID (coupon_send_issuing_log.id), used as `last_id` for cursor-based pagination
 	Id int32 `json:"id,omitempty"`
 	// User coupon detail table primary key (separate table per type). This field is 0 for task coupons, has value for regular coupons
@@ -28,8 +28,8 @@ type InlineResponse2006DataList struct {
 	RuleNew string `json:"rule_new,omitempty"`
 	// Coupon status. Regular coupon: NOT_ACTIVE (pending activation), ACTIVATED (activated), TO_BE_USED (to be used), EXPIRED (expired), RECYCLED (recycled), INVALID (invalidated), USED (used), UNKNOWN (unknown), LOCKED (locked, P2P only). Task coupon: TASK_START (task not started), TASK_WAIT (task in progress), TASK_DONE (task completed, processing), TASK_EXPIRED (task not completed, expired), TASK_NOT_STARTED_EXPIRED (not started, expired), TASK_RECEIVE_SUCCESS (reward claimed successfully), TASK_RECEIVE_FAIL (reward claim failed)
 	Status  string                        `json:"status,omitempty"`
-	JumpUrl InlineResponse2006DataJumpUrl `json:"jump_url,omitempty"`
-	HelpUrl InlineResponse2006DataHelpUrl `json:"help_url,omitempty"`
+	JumpUrl InlineResponse2007DataJumpUrl `json:"jump_url,omitempty"`
+	HelpUrl InlineResponse2007DataHelpUrl `json:"help_url,omitempty"`
 	// Expiration time (Unix timestamp). Some types replace this with actual expiration time after activation or use (e.g., contract_bonus uses expired_timest after activation). Point card type returns 0
 	ExpireTime int32 `json:"expire_time,omitempty"`
 	// Sorting expiration time (from the original expiration time of the distribution record, unaffected by activation). Used as the `expire_time` parameter for the next request in cursor-based pagination
@@ -40,7 +40,7 @@ type InlineResponse2006DataList struct {
 	HasUsageHistory bool `json:"has_usage_history,omitempty"`
 	// Whether to display a progress bar. Only true for commission_rebate, interest_voucher, and qualifying task coupons
 	HasProgress    bool                                 `json:"has_progress,omitempty"`
-	ProgressConfig InlineResponse2006DataProgressConfig `json:"progress_config,omitempty"`
+	ProgressConfig InlineResponse2007DataProgressConfig `json:"progress_config,omitempty"`
 	// Type-specific activation information. Types without specific fields return empty object {}. Fields by type: interest_voucher={supported_pairs,transaction_type}; contract_bonus_new={received_expired_hour}; contract_bonus={check_unified_account_mode,received_expired_days,abtest}; commission_rebate={market,market_name}; robot_bonus={designated_bots}; position_voucher={symbols,leverage,need_user_funds,user_funds_amount,position_bonus}; tradfi_position_voucher={symbols,leverage,position_bonus}; etf_voucher={currency_markets,amount}
 	ActivationInfo map[string]interface{} `json:"activation_info,omitempty"`
 	// Whether it is a task coupon. `0` = regular coupon; `1` = task coupon

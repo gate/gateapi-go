@@ -10,7 +10,7 @@
 package gateapi
 
 // Progress bar configuration. All fields are empty strings when has_progress is false
-type InlineResponse2006DataProgressConfig struct {
+type InlineResponse2007DataProgressConfig struct {
 	// Total Required Amount
 	TotalBalance string `json:"total_balance,omitempty"`
 	// Used Amount

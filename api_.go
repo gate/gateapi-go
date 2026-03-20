@@ -30,16 +30,16 @@ GetMyActivityEntry My activity entry
 Query user&#39;s Activity Center entry information, including activity icon and redirect link
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 
-@return InlineResponse20011
+@return InlineResponse20012
 */
-func (a *DefaultApiService) GetMyActivityEntry(ctx context.Context) (InlineResponse20011, *http.Response, error) {
+func (a *DefaultApiService) GetMyActivityEntry(ctx context.Context) (InlineResponse20012, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  InlineResponse20011
+		localVarReturnValue  InlineResponse20012
 	)
 
 	// create path and map variables
@@ -138,16 +138,16 @@ Query recommended activity list from Activity Center, supports pagination and so
   - @param "PageSize" (optional.Int32) -  Items per page
   - @param "SortBy" (optional.String) -  Sort order, e.g., hot for sorting by popularity
 
-@return InlineResponse20012
+@return InlineResponse20013
 */
-func (a *DefaultApiService) ListActivities(ctx context.Context, localVarOptionals *ListActivitiesOpts) (InlineResponse20012, *http.Response, error) {
+func (a *DefaultApiService) ListActivities(ctx context.Context, localVarOptionals *ListActivitiesOpts) (InlineResponse20013, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  InlineResponse20012
+		localVarReturnValue  InlineResponse20013
 	)
 
 	// create path and map variables
@@ -247,16 +247,16 @@ ListActivityTypes Activity type list
 Query all activity types supported by Activity Center
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 
-@return InlineResponse20013
+@return InlineResponse20014
 */
-func (a *DefaultApiService) ListActivityTypes(ctx context.Context) (InlineResponse20013, *http.Response, error) {
+func (a *DefaultApiService) ListActivityTypes(ctx context.Context) (InlineResponse20014, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  InlineResponse20013
+		localVarReturnValue  InlineResponse20014
 	)
 
 	// create path and map variables

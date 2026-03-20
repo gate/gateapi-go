@@ -9,7 +9,7 @@
 
 package gateapi
 
-type InlineResponse2008DataItems struct {
+type InlineResponse2009DataItems struct {
 	// Post ID
 	Id int64 `json:"id,omitempty"`
 	// Post content

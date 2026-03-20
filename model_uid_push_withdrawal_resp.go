@@ -11,5 +11,5 @@ package gateapi
 
 type UidPushWithdrawalResp struct {
 	// Order ID
-	Id int64 `json:"id,omitempty"`
+	Id string `json:"id,omitempty"`
 }

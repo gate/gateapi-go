@@ -1060,16 +1060,16 @@ Rate limit: 10 requests per 10 seconds
   - @param optional nil or *CreateCrossexConvertOrderOpts - Optional Parameters:
   - @param "CrossexConvertOrderRequest" (optional.Interface of CrossexConvertOrderRequest) -
 
-@return map[string]interface{}
+@return CrossexConvertOrderResponse
 */
-func (a *CrossExApiService) CreateCrossexConvertOrder(ctx context.Context, localVarOptionals *CreateCrossexConvertOrderOpts) (map[string]interface{}, *http.Response, error) {
+func (a *CrossExApiService) CreateCrossexConvertOrder(ctx context.Context, localVarOptionals *CreateCrossexConvertOrderOpts) (CrossexConvertOrderResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  map[string]interface{}
+		localVarReturnValue  CrossexConvertOrderResponse
 	)
 
 	// create path and map variables
@@ -1997,16 +1997,16 @@ GetCrossexFee Query User Fee Rates
 Rate Limit: 200 requests per 10 seconds
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 
-@return CrossexFee
+@return []InlineResponse2006
 */
-func (a *CrossExApiService) GetCrossexFee(ctx context.Context) (CrossexFee, *http.Response, error) {
+func (a *CrossExApiService) GetCrossexFee(ctx context.Context) ([]InlineResponse2006, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  CrossexFee
+		localVarReturnValue  []InlineResponse2006
 	)
 
 	// create path and map variables

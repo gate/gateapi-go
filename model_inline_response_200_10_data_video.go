@@ -10,7 +10,7 @@
 package gateapi
 
 // Replay video information (has value when content_type=video)
-type InlineResponse2009DataVideo struct {
+type InlineResponse20010DataVideo struct {
 	// Video ID
 	Id string `json:"id,omitempty"`
 	// Live stream ID

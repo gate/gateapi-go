@@ -1,12 +1,11 @@
-# InlineResponse2006DataJumpUrl
+# CrossexConvertOrderResponse
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Web** | **string** | Web Redirect Link | [optional] 
-**App** | **string** | App Redirect Link | [optional] 
-**MiniApp** | **string** | Mini Program Redirect Link (empty string for most types) | [optional] 
+**OrderId** | **string** | Order ID | 
+**Text** | **string** | Order ID (cannot be customized) | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

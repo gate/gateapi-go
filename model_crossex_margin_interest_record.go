@@ -26,7 +26,7 @@ type CrossexMarginInterestRecord struct {
 	Interest string `json:"interest"`
 	// interest rate
 	InterestRate string `json:"interest_rate"`
-	// Interest deduction type (`PERIODIC_POSITION`: periodic position interest; `PERIODIC_OPEN_ORDER`: periodic open-order interest; `IMMEDIATE_OPEN_ORDER`: interest charged on order opening)
+	// Interest deduction type (`PERIODIC_POSITION` hourly interest on position, `PERIODIC_OPEN_ORDER` hourly interest on open orders, `IMMEDIATE_OPEN_ORDER` interest charged on order placement, `PERIODIC_ISOLATED` hourly interest on debt)
 	InterestType string `json:"interest_type"`
 	// Created time
 	CreateTime string `json:"create_time"`

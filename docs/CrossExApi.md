@@ -787,7 +787,7 @@ func main() {
 
 ## CreateCrossexConvertOrder
 
-> map[string]interface{} CreateCrossexConvertOrder(ctx, optional)
+> CrossexConvertOrderResponse CreateCrossexConvertOrder(ctx, optional)
 
 Flash Swap Transaction
 
@@ -848,7 +848,7 @@ func main() {
 
 ### Return type
 
-**map[string]interface{}**
+[**CrossexConvertOrderResponse**](CrossexConvertOrderResponse.md)
 
 ### Authorization
 
@@ -1490,7 +1490,7 @@ func main() {
 
 ## GetCrossexFee
 
-> CrossexFee GetCrossexFee(ctx, )
+> []InlineResponse2006 GetCrossexFee(ctx, )
 
 Query User Fee Rates
 
@@ -1539,7 +1539,7 @@ func main() {
 
 ### Return type
 
-[**CrossexFee**](CrossexFee.md)
+[**[]InlineResponse2006**](inline_response_200_6.md)
 
 ### Authorization
 

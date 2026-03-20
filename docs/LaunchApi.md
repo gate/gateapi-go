@@ -162,7 +162,7 @@ func main() {
 
 ## RedeemLaunchPool
 
-> InlineResponse20010 RedeemLaunchPool(ctx, redeemV4)
+> InlineResponse20011 RedeemLaunchPool(ctx, redeemV4)
 
 Redeem LaunchPool staked assets
 
@@ -216,7 +216,7 @@ func main() {
 
 ### Return type
 
-[**InlineResponse20010**](inline_response_200_10.md)
+[**InlineResponse20011**](inline_response_200_11.md)
 
 ### Authorization
 
