@@ -3608,7 +3608,7 @@ func main() {
 
 ### Return type
 
-[**TriggerTime**](triggerTime.md)
+[**TriggerTime**](TriggerTime.md)
 
 ### Authorization
 
@@ -3750,7 +3750,7 @@ func main() {
                              }
                             )
     settle := "usdt" // string - Settle currency
-    requestBody := []string{"requestBody_example"} // []string - 
+    requestBody := []string{"[\"1\",\"2\",\"3\"]"} // []string - 
     
     result, _, err := client.FuturesApi.CancelBatchFutureOrders(ctx, settle, requestBody, nil)
     if err != nil {

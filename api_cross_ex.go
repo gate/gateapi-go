@@ -1997,16 +1997,16 @@ GetCrossexFee Query User Fee Rates
 Rate Limit: 200 requests per 10 seconds
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 
-@return []InlineResponse2006
+@return []InlineResponse200
 */
-func (a *CrossExApiService) GetCrossexFee(ctx context.Context) ([]InlineResponse2006, *http.Response, error) {
+func (a *CrossExApiService) GetCrossexFee(ctx context.Context) ([]InlineResponse200, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  []InlineResponse2006
+		localVarReturnValue  []InlineResponse200
 	)
 
 	// create path and map variables

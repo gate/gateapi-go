@@ -10,11 +10,15 @@
 package gateapi
 
 type InlineResponse200 struct {
-	// Return code, 0 means success
-	Code int32 `json:"code"`
-	// Response message
-	Message string                `json:"message"`
-	Data    InlineResponse200Data `json:"data"`
-	// Response timestamp (in seconds)
-	Timestamp int32 `json:"timestamp"`
+	// Exchange
+	ExchangeType string `json:"exchange_type,omitempty"`
+	// spotMakerfee rate
+	SpotMakerFee string `json:"spot_maker_fee"`
+	// spotTakerfee rate
+	SpotTakerFee string `json:"spot_taker_fee"`
+	// contractMakerfee rate
+	FutureMakerFee string `json:"future_maker_fee"`
+	// contractTakerfee rate
+	FutureTakerFee string              `json:"future_taker_fee"`
+	SpecialFeeList []CrossexSpecialFee `json:"special_fee_list"`
 }

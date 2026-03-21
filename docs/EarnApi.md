@@ -1038,7 +1038,7 @@ func main() {
 
 ## ListEarnFixedTermProducts
 
-> InlineResponse200 ListEarnFixedTermProducts(ctx, page, limit, optional)
+> ListEarnFixedTermProductsResponse ListEarnFixedTermProducts(ctx, page, limit, optional)
 
 Get product list
 
@@ -1098,7 +1098,7 @@ func main() {
 
 ### Return type
 
-[**InlineResponse200**](inline_response_200.md)
+[**ListEarnFixedTermProductsResponse**](ListEarnFixedTermProductsResponse.md)
 
 ### Authorization
 
@@ -1115,7 +1115,7 @@ No authorization required
 
 ## ListEarnFixedTermProductsByAsset
 
-> InlineResponse2001 ListEarnFixedTermProductsByAsset(ctx, asset, optional)
+> ListEarnFixedTermProductsByAssetResponse ListEarnFixedTermProductsByAsset(ctx, asset, optional)
 
 Get product list by single currency
 
@@ -1172,7 +1172,7 @@ func main() {
 
 ### Return type
 
-[**InlineResponse2001**](inline_response_200_1.md)
+[**ListEarnFixedTermProductsByAssetResponse**](ListEarnFixedTermProductsByAssetResponse.md)
 
 ### Authorization
 
@@ -1189,7 +1189,7 @@ No authorization required
 
 ## ListEarnFixedTermLends
 
-> InlineResponse2002 ListEarnFixedTermLends(ctx, orderType, page, limit, optional)
+> ListEarnFixedTermLendsResponse ListEarnFixedTermLends(ctx, orderType, page, limit, optional)
 
 Subscription list
 
@@ -1260,7 +1260,7 @@ func main() {
 
 ### Return type
 
-[**InlineResponse2002**](inline_response_200_2.md)
+[**ListEarnFixedTermLendsResponse**](ListEarnFixedTermLendsResponse.md)
 
 ### Authorization
 
@@ -1277,7 +1277,7 @@ func main() {
 
 ## CreateEarnFixedTermLend
 
-> InlineResponse2003 CreateEarnFixedTermLend(ctx, optional)
+> CreateEarnFixedTermLendResponse CreateEarnFixedTermLend(ctx, optional)
 
 Subscription
 
@@ -1338,7 +1338,7 @@ func main() {
 
 ### Return type
 
-[**InlineResponse2003**](inline_response_200_3.md)
+[**CreateEarnFixedTermLendResponse**](CreateEarnFixedTermLendResponse.md)
 
 ### Authorization
 
@@ -1355,7 +1355,7 @@ func main() {
 
 ## CreateEarnFixedTermPreRedeem
 
-> InlineResponse2004 CreateEarnFixedTermPreRedeem(ctx, optional)
+> CreateEarnFixedTermPreRedeemResponse CreateEarnFixedTermPreRedeem(ctx, optional)
 
 Redeem
 
@@ -1374,7 +1374,7 @@ Optional parameters are passed through a pointer to a CreateEarnFixedTermPreRede
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**inlineObject** | [**optional.Interface of InlineObject**](InlineObject.md)|  | 
+**earnFixedTermPreRedeemRequest** | [**optional.Interface of EarnFixedTermPreRedeemRequest**](EarnFixedTermPreRedeemRequest.md)|  | 
 
 ### Example
 
@@ -1416,7 +1416,7 @@ func main() {
 
 ### Return type
 
-[**InlineResponse2004**](inline_response_200_4.md)
+[**CreateEarnFixedTermPreRedeemResponse**](CreateEarnFixedTermPreRedeemResponse.md)
 
 ### Authorization
 
@@ -1433,7 +1433,7 @@ func main() {
 
 ## ListEarnFixedTermHistory
 
-> InlineResponse2005 ListEarnFixedTermHistory(ctx, type_, page, limit, optional)
+> ListEarnFixedTermHistoryResponse ListEarnFixedTermHistory(ctx, type_, page, limit, optional)
 
 Subscription history
 
@@ -1506,7 +1506,7 @@ func main() {
 
 ### Return type
 
-[**InlineResponse2005**](inline_response_200_5.md)
+[**ListEarnFixedTermHistoryResponse**](ListEarnFixedTermHistoryResponse.md)
 
 ### Authorization
 

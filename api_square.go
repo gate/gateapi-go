@@ -47,16 +47,16 @@ Dynamic search endpoint for AI MCP platform. All parameters are passed via query
   - @param "Limit" (optional.Int32) -  Return count, 1-50, default 10
   - @param "Page" (optional.Int32) -  Page number
 
-@return InlineResponse2009
+@return ListSquareAiSearchResponse
 */
-func (a *SquareApiService) ListSquareAiSearch(ctx context.Context, localVarOptionals *ListSquareAiSearchOpts) (InlineResponse2009, *http.Response, error) {
+func (a *SquareApiService) ListSquareAiSearch(ctx context.Context, localVarOptionals *ListSquareAiSearchOpts) (ListSquareAiSearchResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  InlineResponse2009
+		localVarReturnValue  ListSquareAiSearchResponse
 	)
 
 	// create path and map variables
@@ -163,16 +163,16 @@ AI assistant live stream/replay search endpoint. Filters live rooms or replay vi
   - @param "Sort" (optional.String) -  Sort order: hot = most popular (default), new = latest
   - @param "Limit" (optional.Int32) -  Return count, 1-10, default 3
 
-@return InlineResponse20010
+@return ListLiveReplayResponse
 */
-func (a *SquareApiService) ListLiveReplay(ctx context.Context, localVarOptionals *ListLiveReplayOpts) (InlineResponse20010, *http.Response, error) {
+func (a *SquareApiService) ListLiveReplay(ctx context.Context, localVarOptionals *ListLiveReplayOpts) (ListLiveReplayResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  InlineResponse20010
+		localVarReturnValue  ListLiveReplayResponse
 	)
 
 	// create path and map variables

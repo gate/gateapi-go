@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 ## ListSquareAiSearch
 
-> InlineResponse2009 ListSquareAiSearch(ctx, optional)
+> ListSquareAiSearchResponse ListSquareAiSearch(ctx, optional)
 
 AI MCP Dynamic Search
 
@@ -70,7 +70,7 @@ func main() {
 
 ### Return type
 
-[**InlineResponse2009**](inline_response_200_9.md)
+[**ListSquareAiSearchResponse**](ListSquareAiSearchResponse.md)
 
 ### Authorization
 
@@ -87,7 +87,7 @@ No authorization required
 
 ## ListLiveReplay
 
-> InlineResponse20010 ListLiveReplay(ctx, optional)
+> ListLiveReplayResponse ListLiveReplay(ctx, optional)
 
 Gate AI Assistant live stream data retrieval
 
@@ -145,7 +145,7 @@ func main() {
 
 ### Return type
 
-[**InlineResponse20010**](inline_response_200_10.md)
+[**ListLiveReplayResponse**](ListLiveReplayResponse.md)
 
 ### Authorization
 

@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 ## ListUserCoupons
 
-> InlineResponse2007 ListUserCoupons(ctx, optional)
+> ListUserCouponsResponse ListUserCoupons(ctx, optional)
 
 Coupon Center list
 
@@ -77,7 +77,7 @@ func main() {
 
 ### Return type
 
-[**InlineResponse2007**](inline_response_200_7.md)
+[**ListUserCouponsResponse**](ListUserCouponsResponse.md)
 
 ### Authorization
 
@@ -94,7 +94,7 @@ func main() {
 
 ## GetUserCouponDetail
 
-> InlineResponse2008 GetUserCouponDetail(ctx, couponType, detailId, optional)
+> GetUserCouponDetailResponse GetUserCouponDetail(ctx, couponType, detailId, optional)
 
 Coupon Center details
 
@@ -159,7 +159,7 @@ func main() {
 
 ### Return type
 
-[**InlineResponse2008**](inline_response_200_8.md)
+[**GetUserCouponDetailResponse**](GetUserCouponDetailResponse.md)
 
 ### Authorization
 

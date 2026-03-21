@@ -1419,16 +1419,16 @@ Query fixed-term earn product list. Supports filtering by currency, product type
   - @param "Asset" (optional.String) -  Currency
   - @param "Type_" (optional.Int32) -  Product type: 1 for regular, 2 for VIP
 
-@return InlineResponse200
+@return ListEarnFixedTermProductsResponse
 */
-func (a *EarnApiService) ListEarnFixedTermProducts(ctx context.Context, page int32, limit int32, localVarOptionals *ListEarnFixedTermProductsOpts) (InlineResponse200, *http.Response, error) {
+func (a *EarnApiService) ListEarnFixedTermProducts(ctx context.Context, page int32, limit int32, localVarOptionals *ListEarnFixedTermProductsOpts) (ListEarnFixedTermProductsResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  InlineResponse200
+		localVarReturnValue  ListEarnFixedTermProductsResponse
 	)
 
 	// create path and map variables
@@ -1520,16 +1520,16 @@ Sort by product term in ascending order
   - @param optional nil or *ListEarnFixedTermProductsByAssetOpts - Optional Parameters:
   - @param "Type_" (optional.String) -  Product type: \"\" or 1 for regular product list, 2 for VIP product list, 0 for all products
 
-@return InlineResponse2001
+@return ListEarnFixedTermProductsByAssetResponse
 */
-func (a *EarnApiService) ListEarnFixedTermProductsByAsset(ctx context.Context, asset string, localVarOptionals *ListEarnFixedTermProductsByAssetOpts) (InlineResponse2001, *http.Response, error) {
+func (a *EarnApiService) ListEarnFixedTermProductsByAsset(ctx context.Context, asset string, localVarOptionals *ListEarnFixedTermProductsByAssetOpts) (ListEarnFixedTermProductsByAssetResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  InlineResponse2001
+		localVarReturnValue  ListEarnFixedTermProductsByAssetResponse
 	)
 
 	// create path and map variables
@@ -1628,16 +1628,16 @@ Query the user&#39;s fixed-term earn subscription order list. Supports filtering
   - @param "SubBusiness" (optional.Int32) -  Sub-business
   - @param "BusinessFilter" (optional.String) -  Business filter conditions, JSON array format, e.g., [{\"business\":1, \"sub_business\": 0}]. business: 1 for regular, 2 for VIP
 
-@return InlineResponse2002
+@return ListEarnFixedTermLendsResponse
 */
-func (a *EarnApiService) ListEarnFixedTermLends(ctx context.Context, orderType string, page int32, limit int32, localVarOptionals *ListEarnFixedTermLendsOpts) (InlineResponse2002, *http.Response, error) {
+func (a *EarnApiService) ListEarnFixedTermLends(ctx context.Context, orderType string, page int32, limit int32, localVarOptionals *ListEarnFixedTermLendsOpts) (ListEarnFixedTermLendsResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  InlineResponse2002
+		localVarReturnValue  ListEarnFixedTermLendsResponse
 	)
 
 	// create path and map variables
@@ -1744,16 +1744,16 @@ Subscribe to a fixed-term earn product by specifying the product ID and subscrip
   - @param optional nil or *CreateEarnFixedTermLendOpts - Optional Parameters:
   - @param "FixedTermLendRequest" (optional.Interface of FixedTermLendRequest) -
 
-@return InlineResponse2003
+@return CreateEarnFixedTermLendResponse
 */
-func (a *EarnApiService) CreateEarnFixedTermLend(ctx context.Context, localVarOptionals *CreateEarnFixedTermLendOpts) (InlineResponse2003, *http.Response, error) {
+func (a *EarnApiService) CreateEarnFixedTermLend(ctx context.Context, localVarOptionals *CreateEarnFixedTermLendOpts) (CreateEarnFixedTermLendResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  InlineResponse2003
+		localVarReturnValue  CreateEarnFixedTermLendResponse
 	)
 
 	// create path and map variables
@@ -1841,7 +1841,7 @@ func (a *EarnApiService) CreateEarnFixedTermLend(ctx context.Context, localVarOp
 
 // CreateEarnFixedTermPreRedeemOpts Optional parameters for the method 'CreateEarnFixedTermPreRedeem'
 type CreateEarnFixedTermPreRedeemOpts struct {
-	InlineObject optional.Interface
+	EarnFixedTermPreRedeemRequest optional.Interface
 }
 
 /*
@@ -1849,18 +1849,18 @@ CreateEarnFixedTermPreRedeem Redeem
 Early redemption of a fixed-term earn order, order ID is required
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param optional nil or *CreateEarnFixedTermPreRedeemOpts - Optional Parameters:
-  - @param "InlineObject" (optional.Interface of InlineObject) -
+  - @param "EarnFixedTermPreRedeemRequest" (optional.Interface of EarnFixedTermPreRedeemRequest) -
 
-@return InlineResponse2004
+@return CreateEarnFixedTermPreRedeemResponse
 */
-func (a *EarnApiService) CreateEarnFixedTermPreRedeem(ctx context.Context, localVarOptionals *CreateEarnFixedTermPreRedeemOpts) (InlineResponse2004, *http.Response, error) {
+func (a *EarnApiService) CreateEarnFixedTermPreRedeem(ctx context.Context, localVarOptionals *CreateEarnFixedTermPreRedeemOpts) (CreateEarnFixedTermPreRedeemResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  InlineResponse2004
+		localVarReturnValue  CreateEarnFixedTermPreRedeemResponse
 	)
 
 	// create path and map variables
@@ -1887,12 +1887,12 @@ func (a *EarnApiService) CreateEarnFixedTermPreRedeem(ctx context.Context, local
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	if localVarOptionals != nil && localVarOptionals.InlineObject.IsSet() {
-		localVarOptionalInlineObject, localVarOptionalInlineObjectok := localVarOptionals.InlineObject.Value().(InlineObject)
-		if !localVarOptionalInlineObjectok {
-			return localVarReturnValue, nil, reportError("inlineObject should be InlineObject")
+	if localVarOptionals != nil && localVarOptionals.EarnFixedTermPreRedeemRequest.IsSet() {
+		localVarOptionalEarnFixedTermPreRedeemRequest, localVarOptionalEarnFixedTermPreRedeemRequestok := localVarOptionals.EarnFixedTermPreRedeemRequest.Value().(EarnFixedTermPreRedeemRequest)
+		if !localVarOptionalEarnFixedTermPreRedeemRequestok {
+			return localVarReturnValue, nil, reportError("earnFixedTermPreRedeemRequest should be EarnFixedTermPreRedeemRequest")
 		}
-		localVarPostBody = &localVarOptionalInlineObject
+		localVarPostBody = &localVarOptionalEarnFixedTermPreRedeemRequest
 	}
 
 	if ctx == nil {
@@ -1973,16 +1973,16 @@ Query the user&#39;s fixed-term earn history records. Supports filtering by type
   - @param "SubBusiness" (optional.Int32) -  Sub-business
   - @param "BusinessFilter" (optional.String) -  Business filter conditions, JSON array format, e.g., [{\"business\":1, \"sub_business\": 0}]. business: 1 for regular, 2 for VIP
 
-@return InlineResponse2005
+@return ListEarnFixedTermHistoryResponse
 */
-func (a *EarnApiService) ListEarnFixedTermHistory(ctx context.Context, type_ string, page int32, limit int32, localVarOptionals *ListEarnFixedTermHistoryOpts) (InlineResponse2005, *http.Response, error) {
+func (a *EarnApiService) ListEarnFixedTermHistory(ctx context.Context, type_ string, page int32, limit int32, localVarOptionals *ListEarnFixedTermHistoryOpts) (ListEarnFixedTermHistoryResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  InlineResponse2005
+		localVarReturnValue  ListEarnFixedTermHistoryResponse
 	)
 
 	// create path and map variables

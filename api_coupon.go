@@ -49,16 +49,16 @@ ListUserCoupons Coupon Center list
   - @param "Type_" (optional.String) -  Coupon type filter. If not specified, all supported types are returned. Available values: `position_voucher` (position voucher), `tradfi_position_voucher` (TradFi position voucher), `contract_bonus` (futures bonus), `contract_bonus_new` (futures trial coupon), `commission_rebate` (commission rebate coupon), `hold_bonus` (earn trial bonus), `point` (point card), `financial_rate` (interest rate boost coupon), `robot_bonus` (trading bot bonus), `loss_protection_copier` (copy trading loss protection), `vip_card` (VIP trial card), `interest_voucher` (margin interest discount coupon), `p2p` (P2P trading deduction coupon), `cash` (cash coupon), `crypto_loan_interest` (crypto loan interest discount coupon), `copy_trading` (copy trading bonus), `alpha_voucher` (Alpha cash coupon), `etf_voucher` (ETF trial bonus)
   - @param "IsTaskCoupon" (optional.Int32) -  Task Coupon Filter. `0` = Return only regular coupons; `1` = Return only task coupons; Omit to return both
 
-@return InlineResponse2007
+@return ListUserCouponsResponse
 */
-func (a *CouponApiService) ListUserCoupons(ctx context.Context, localVarOptionals *ListUserCouponsOpts) (InlineResponse2007, *http.Response, error) {
+func (a *CouponApiService) ListUserCoupons(ctx context.Context, localVarOptionals *ListUserCouponsOpts) (ListUserCouponsResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  InlineResponse2007
+		localVarReturnValue  ListUserCouponsResponse
 	)
 
 	// create path and map variables
@@ -170,16 +170,16 @@ GetUserCouponDetail Coupon Center details
   - @param optional nil or *GetUserCouponDetailOpts - Optional Parameters:
   - @param "IsTaskCoupon" (optional.Int32) -  Coupon source type. `0` = regular coupon (default); `1` = task coupon. This parameter determines the query logic for `detail_id`
 
-@return InlineResponse2008
+@return GetUserCouponDetailResponse
 */
-func (a *CouponApiService) GetUserCouponDetail(ctx context.Context, couponType string, detailId int32, localVarOptionals *GetUserCouponDetailOpts) (InlineResponse2008, *http.Response, error) {
+func (a *CouponApiService) GetUserCouponDetail(ctx context.Context, couponType string, detailId int32, localVarOptionals *GetUserCouponDetailOpts) (GetUserCouponDetailResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  InlineResponse2008
+		localVarReturnValue  GetUserCouponDetailResponse
 	)
 
 	// create path and map variables

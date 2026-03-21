@@ -1490,7 +1490,7 @@ func main() {
 
 ## GetCrossexFee
 
-> []InlineResponse2006 GetCrossexFee(ctx, )
+> []InlineResponse200 GetCrossexFee(ctx, )
 
 Query User Fee Rates
 
@@ -1539,7 +1539,7 @@ func main() {
 
 ### Return type
 
-[**[]InlineResponse2006**](inline_response_200_6.md)
+[**[]InlineResponse200**](inline_response_200.md)
 
 ### Authorization
 

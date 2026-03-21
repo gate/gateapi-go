@@ -2643,16 +2643,16 @@ CreatePriceTriggeredDeliveryOrder Create price-triggered order
   - @param settle Settle currency
   - @param futuresPriceTriggeredOrder
 
-@return TriggerOrderResponse1
+@return TriggerOrderResponse
 */
-func (a *DeliveryApiService) CreatePriceTriggeredDeliveryOrder(ctx context.Context, settle string, futuresPriceTriggeredOrder FuturesPriceTriggeredOrder) (TriggerOrderResponse1, *http.Response, error) {
+func (a *DeliveryApiService) CreatePriceTriggeredDeliveryOrder(ctx context.Context, settle string, futuresPriceTriggeredOrder FuturesPriceTriggeredOrder) (TriggerOrderResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  TriggerOrderResponse1
+		localVarReturnValue  TriggerOrderResponse
 	)
 
 	// create path and map variables

@@ -2983,16 +2983,16 @@ CreateSpotPriceTriggeredOrder Create price-triggered order
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param spotPriceTriggeredOrder
 
-@return TriggerOrderResponse1
+@return TriggerOrderResponse
 */
-func (a *SpotApiService) CreateSpotPriceTriggeredOrder(ctx context.Context, spotPriceTriggeredOrder SpotPriceTriggeredOrder) (TriggerOrderResponse1, *http.Response, error) {
+func (a *SpotApiService) CreateSpotPriceTriggeredOrder(ctx context.Context, spotPriceTriggeredOrder SpotPriceTriggeredOrder) (TriggerOrderResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  TriggerOrderResponse1
+		localVarReturnValue  TriggerOrderResponse
 	)
 
 	// create path and map variables

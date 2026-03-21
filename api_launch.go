@@ -250,16 +250,16 @@ Redeem staked assets and end staking mining. This endpoint requires API Key sign
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param redeemV4
 
-@return InlineResponse20011
+@return RedeemLaunchPoolResponse
 */
-func (a *LaunchApiService) RedeemLaunchPool(ctx context.Context, redeemV4 RedeemV4) (InlineResponse20011, *http.Response, error) {
+func (a *LaunchApiService) RedeemLaunchPool(ctx context.Context, redeemV4 RedeemV4) (RedeemLaunchPoolResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  InlineResponse20011
+		localVarReturnValue  RedeemLaunchPoolResponse
 	)
 
 	// create path and map variables

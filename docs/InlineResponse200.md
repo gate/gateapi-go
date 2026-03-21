@@ -4,10 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Code** | **int32** | Return code, 0 means success | 
-**Message** | **string** | Response message | 
-**Data** | [**InlineResponse200Data**](inline_response_200_data.md) |  | 
-**Timestamp** | **int32** | Response timestamp (in seconds) | 
+**ExchangeType** | **string** | Exchange | [optional] 
+**SpotMakerFee** | **string** | spotMakerfee rate | 
+**SpotTakerFee** | **string** | spotTakerfee rate | 
+**FutureMakerFee** | **string** | contractMakerfee rate | 
+**FutureTakerFee** | **string** | contractTakerfee rate | 
+**SpecialFeeList** | [**[]CrossexSpecialFee**](CrossexSpecialFee.md) |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -49,9 +49,9 @@ type APIClient struct {
 
 	// API Services
 
-	DefaultApi *DefaultApiService
-
 	AccountApi *AccountApiService
+
+	ActivityApi *ActivityApiService
 
 	AlphaApi *AlphaApiService
 
@@ -118,8 +118,8 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.common.client = c
 
 	// API Services
-	c.DefaultApi = (*DefaultApiService)(&c.common)
 	c.AccountApi = (*AccountApiService)(&c.common)
+	c.ActivityApi = (*ActivityApiService)(&c.common)
 	c.AlphaApi = (*AlphaApiService)(&c.common)
 	c.CouponApi = (*CouponApiService)(&c.common)
 	c.CrossExApi = (*CrossExApiService)(&c.common)

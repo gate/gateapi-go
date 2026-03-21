@@ -1808,7 +1808,7 @@ func main() {
 
 ### Return type
 
-[**TriggerTime**](triggerTime.md)
+[**TriggerTime**](TriggerTime.md)
 
 ### Authorization
 
