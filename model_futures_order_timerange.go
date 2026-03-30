@@ -10,7 +10,7 @@
 package gateapi
 
 // Futures order details
-type FuturesOrder struct {
+type FuturesOrderTimerange struct {
 	// Futures order ID
 	Id int64 `json:"id,omitempty"`
 	// User ID
@@ -18,9 +18,9 @@ type FuturesOrder struct {
 	// Creation time of order
 	CreateTime float64 `json:"create_time,omitempty"`
 	// OrderUpdateTime
-	UpdateTime float64 `json:"update_time,omitempty"`
+	UpdateTime string `json:"update_time,omitempty"`
 	// Order finished time. Not returned if order is open
-	FinishTime float64 `json:"finish_time,omitempty"`
+	FinishTime string `json:"finish_time,omitempty"`
 	// How the order was finished:  - filled: all filled - cancelled: manually cancelled - liquidated: cancelled because of liquidation - ioc: time in force is `IOC`, finish immediately - auto_deleveraged: finished by ADL - reduce_only: cancelled because of increasing position while `reduce-only` set - position_closed: cancelled because the position was closed - reduce_out: only reduce positions by excluding hard-to-fill orders - stp: cancelled because self trade prevention
 	FinishAs string `json:"finish_as,omitempty"`
 	// Order status  - `open`: Pending - `finished`: Completed

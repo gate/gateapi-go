@@ -555,7 +555,7 @@ func (a *FlashSwapApiService) CreateFlashSwapMultiCurrencyManyToOneOrder(ctx con
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/flash-swap/multi-currency/many-to-one/order/create"
+	localVarPath := a.client.cfg.BasePath + "/flash_swap/multi-currency/many-to-one/order/create"
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
@@ -649,7 +649,7 @@ func (a *FlashSwapApiService) PreviewFlashSwapMultiCurrencyManyToOneOrder(ctx co
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/flash-swap/multi-currency/many-to-one/order/preview"
+	localVarPath := a.client.cfg.BasePath + "/flash_swap/multi-currency/many-to-one/order/preview"
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
@@ -743,7 +743,7 @@ func (a *FlashSwapApiService) CreateFlashSwapOrderV1(ctx context.Context, flashS
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/flash-swap/order/create"
+	localVarPath := a.client.cfg.BasePath + "/flash_swap/order/create"
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
@@ -837,7 +837,7 @@ func (a *FlashSwapApiService) CreateFlashSwapMultiCurrencyOneToManyOrder(ctx con
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/flash-swap/multi-currency/one-to-many/order/create"
+	localVarPath := a.client.cfg.BasePath + "/flash_swap/multi-currency/one-to-many/order/create"
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
@@ -931,7 +931,7 @@ func (a *FlashSwapApiService) PreviewFlashSwapMultiCurrencyOneToManyOrder(ctx co
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/flash-swap/multi-currency/one-to-many/order/preview"
+	localVarPath := a.client.cfg.BasePath + "/flash_swap/multi-currency/one-to-many/order/preview"
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
@@ -1035,7 +1035,7 @@ func (a *FlashSwapApiService) PreviewFlashSwapOrderV1(ctx context.Context, sellA
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/flash-swap/order/preview"
+	localVarPath := a.client.cfg.BasePath + "/flash_swap/order/preview"
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}

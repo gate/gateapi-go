@@ -17,6 +17,8 @@ type FuturesUpdatePriceTriggeredOrder struct {
 	OrderId int64 `json:"order_id"`
 	// Modified Contract Quantity. Full Close: 0; Partial Close: Positive/Negative values indicate direction (consistent with the creation interface logic).
 	Size int64 `json:"size,omitempty"`
+	// Same as `size`; used for decimal contract size. When both `size` and `amount` are provided, `amount` takes precedence.
+	Amount string `json:"amount,omitempty"`
 	// Represents the modified trading price. A value of 0 indicates a market order.
 	Price string `json:"price,omitempty"`
 	// Modified Trigger Price

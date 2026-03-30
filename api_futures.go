@@ -3731,16 +3731,16 @@ GetOrdersWithTimeRange Query futures order list by time range
   - @param "Limit" (optional.Int32) -  Maximum number of records returned in a single list
   - @param "Offset" (optional.Int32) -  List offset, starting from 0
 
-@return []FuturesOrder
+@return []FuturesOrderTimerange
 */
-func (a *FuturesApiService) GetOrdersWithTimeRange(ctx context.Context, settle string, localVarOptionals *GetOrdersWithTimeRangeOpts) ([]FuturesOrder, *http.Response, error) {
+func (a *FuturesApiService) GetOrdersWithTimeRange(ctx context.Context, settle string, localVarOptionals *GetOrdersWithTimeRangeOpts) ([]FuturesOrderTimerange, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  []FuturesOrder
+		localVarReturnValue  []FuturesOrderTimerange
 	)
 
 	// create path and map variables
@@ -3946,7 +3946,7 @@ GetFuturesOrder Query single order details
 - Zero-fill order cannot be retrieved for 10 minutes after cancellation - Historical orders, by default, only data within the past 6 months is supported.
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param settle Settle currency
-  - @param orderId Order ID returned, or user custom ID(i.e., `text` field). Operations based on custom ID can only be checked when the order is in orderbook. finished, it can be checked within 60 seconds after the end of the order. After that, only order ID is accepted.
+  - @param orderId The order ID returned when the order is created successfully, or the custom ID specified by the user when creating the order (i.e. the `text` field). When using the custom `text` field: 1. If the order was not filled and has been cancelled, after 60 seconds you cannot query the order by `text`; continuing to use `text` returns error ORDER_NOT_FOUND. 2. If the order was fully or partially filled, you can query the order by `text` indefinitely.
 
 @return FuturesOrder
 */
@@ -4047,7 +4047,7 @@ type AmendFuturesOrderOpts struct {
 AmendFuturesOrder Amend single order
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param settle Settle currency
-  - @param orderId Order ID returned, or user custom ID(i.e., `text` field). Operations based on custom ID can only be checked when the order is in orderbook. finished, it can be checked within 60 seconds after the end of the order. After that, only order ID is accepted.
+  - @param orderId The order ID returned when the order is created successfully, or the custom ID specified by the user when creating the order (i.e. the `text` field). When using the custom `text` field: 1. If the order was not filled and has been cancelled, after 60 seconds you cannot query the order by `text`; continuing to use `text` returns error ORDER_NOT_FOUND. 2. If the order was fully or partially filled, you can query the order by `text` indefinitely.
   - @param futuresOrderAmendment
   - @param optional nil or *AmendFuturesOrderOpts - Optional Parameters:
   - @param "XGateExptime" (optional.String) -  Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected
@@ -4156,7 +4156,7 @@ type CancelFuturesOrderOpts struct {
 CancelFuturesOrder Cancel single order
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param settle Settle currency
-  - @param orderId Order ID returned, or user custom ID(i.e., `text` field). Operations based on custom ID can only be checked when the order is in orderbook. finished, it can be checked within 60 seconds after the end of the order. After that, only order ID is accepted.
+  - @param orderId The order ID returned when the order is created successfully, or the custom ID specified by the user when creating the order (i.e. the `text` field). When using the custom `text` field: 1. If the order was not filled and has been cancelled, after 60 seconds you cannot query the order by `text`; continuing to use `text` returns error ORDER_NOT_FOUND. 2. If the order was fully or partially filled, you can query the order by `text` indefinitely.
   - @param optional nil or *CancelFuturesOrderOpts - Optional Parameters:
   - @param "XGateExptime" (optional.String) -  Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected
 

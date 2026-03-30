@@ -9,12 +9,12 @@ Method | HTTP request | Description
 [**CreateFlashSwapOrder**](FlashSwapApi.md#CreateFlashSwapOrder) | **Post** /flash_swap/orders | Create a flash swap order
 [**GetFlashSwapOrder**](FlashSwapApi.md#GetFlashSwapOrder) | **Get** /flash_swap/orders/{order_id} | Query single flash swap order
 [**PreviewFlashSwapOrder**](FlashSwapApi.md#PreviewFlashSwapOrder) | **Post** /flash_swap/orders/preview | Flash swap order preview
-[**CreateFlashSwapMultiCurrencyManyToOneOrder**](FlashSwapApi.md#CreateFlashSwapMultiCurrencyManyToOneOrder) | **Post** /flash-swap/multi-currency/many-to-one/order/create | Flash Swap - Multi-currency exchange - Place order (many-to-one)
-[**PreviewFlashSwapMultiCurrencyManyToOneOrder**](FlashSwapApi.md#PreviewFlashSwapMultiCurrencyManyToOneOrder) | **Post** /flash-swap/multi-currency/many-to-one/order/preview | Flash Swap - Multi-currency exchange - Preview (many-to-one)
-[**CreateFlashSwapOrderV1**](FlashSwapApi.md#CreateFlashSwapOrderV1) | **Post** /flash-swap/order/create | Flash Swap - Place order (one-to-one)
-[**CreateFlashSwapMultiCurrencyOneToManyOrder**](FlashSwapApi.md#CreateFlashSwapMultiCurrencyOneToManyOrder) | **Post** /flash-swap/multi-currency/one-to-many/order/create | Flash Swap - Multi-currency exchange - Place order (one-to-many)
-[**PreviewFlashSwapMultiCurrencyOneToManyOrder**](FlashSwapApi.md#PreviewFlashSwapMultiCurrencyOneToManyOrder) | **Post** /flash-swap/multi-currency/one-to-many/order/preview | Flash Swap - Multi-currency exchange - Preview (one-to-many)
-[**PreviewFlashSwapOrderV1**](FlashSwapApi.md#PreviewFlashSwapOrderV1) | **Get** /flash-swap/order/preview | Flash Swap - Preview (one-to-one)
+[**CreateFlashSwapMultiCurrencyManyToOneOrder**](FlashSwapApi.md#CreateFlashSwapMultiCurrencyManyToOneOrder) | **Post** /flash_swap/multi-currency/many-to-one/order/create | Flash Swap - Multi-currency exchange - Place order (many-to-one)
+[**PreviewFlashSwapMultiCurrencyManyToOneOrder**](FlashSwapApi.md#PreviewFlashSwapMultiCurrencyManyToOneOrder) | **Post** /flash_swap/multi-currency/many-to-one/order/preview | Flash Swap - Multi-currency exchange - Preview (many-to-one)
+[**CreateFlashSwapOrderV1**](FlashSwapApi.md#CreateFlashSwapOrderV1) | **Post** /flash_swap/order/create | Flash Swap - Place order (one-to-one)
+[**CreateFlashSwapMultiCurrencyOneToManyOrder**](FlashSwapApi.md#CreateFlashSwapMultiCurrencyOneToManyOrder) | **Post** /flash_swap/multi-currency/one-to-many/order/create | Flash Swap - Multi-currency exchange - Place order (one-to-many)
+[**PreviewFlashSwapMultiCurrencyOneToManyOrder**](FlashSwapApi.md#PreviewFlashSwapMultiCurrencyOneToManyOrder) | **Post** /flash_swap/multi-currency/one-to-many/order/preview | Flash Swap - Multi-currency exchange - Preview (one-to-many)
+[**PreviewFlashSwapOrderV1**](FlashSwapApi.md#PreviewFlashSwapOrderV1) | **Get** /flash_swap/order/preview | Flash Swap - Preview (one-to-one)
 
 
 ## ListFlashSwapCurrencyPair

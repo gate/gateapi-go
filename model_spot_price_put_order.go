@@ -21,7 +21,7 @@ type SpotPricePutOrder struct {
 	// Trading account type. Unified account must be set to `unified`  - normal: spot trading - margin: margin trading - unified: unified account
 	Account string `json:"account"`
 	// time_in_force  - gtc: GoodTillCancelled - ioc: ImmediateOrCancelled, taker only
-	TimeInForce string `json:"time_in_force,omitempty"`
+	TimeInForce string `json:"time_in_force"`
 	// Whether to borrow coins automatically
 	AutoBorrow bool `json:"auto_borrow,omitempty"`
 	// Whether to repay the loan automatically

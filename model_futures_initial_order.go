@@ -14,6 +14,8 @@ type FuturesInitialOrder struct {
 	Contract string `json:"contract"`
 	// Represents the number of contracts that need to be closed, full closing: size=0 Partial closing: plan-close-short-position size>0  Partial closing: plan-close-long-position size<0
 	Size int64 `json:"size,omitempty"`
+	// Same as `size`; used for decimal contract size. When both `size` and `amount` are provided, `amount` takes precedence.
+	Amount string `json:"amount,omitempty"`
 	// Order price. Set to 0 to use market price
 	Price string `json:"price"`
 	// When fully closing a position in single-position mode, close must be set to true to execute the close operation. When partially closing a position in single-position mode or in dual-position mode, close can be left unset or set to false.

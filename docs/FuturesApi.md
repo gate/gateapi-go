@@ -2736,7 +2736,7 @@ func main() {
 
 ## GetOrdersWithTimeRange
 
-> []FuturesOrder GetOrdersWithTimeRange(ctx, settle, optional)
+> []FuturesOrderTimerange GetOrdersWithTimeRange(ctx, settle, optional)
 
 Query futures order list by time range
 
@@ -2801,7 +2801,7 @@ func main() {
 
 ### Return type
 
-[**[]FuturesOrder**](FuturesOrder.md)
+[**[]FuturesOrderTimerange**](FuturesOrderTimerange.md)
 
 ### Authorization
 
@@ -2912,7 +2912,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **settle** | **string**| Settle currency | 
-**orderId** | **string**| Order ID returned, or user custom ID(i.e., &#x60;text&#x60; field). Operations based on custom ID can only be checked when the order is in orderbook. finished, it can be checked within 60 seconds after the end of the order. After that, only order ID is accepted. | 
+**orderId** | **string**| The order ID returned when the order is created successfully, or the custom ID specified by the user when creating the order (i.e. the &#x60;text&#x60; field). When using the custom &#x60;text&#x60; field: 1. If the order was not filled and has been cancelled, after 60 seconds you cannot query the order by &#x60;text&#x60;; continuing to use &#x60;text&#x60; returns error ORDER_NOT_FOUND. 2. If the order was fully or partially filled, you can query the order by &#x60;text&#x60; indefinitely. | 
 
 ### Example
 
@@ -2938,7 +2938,7 @@ func main() {
                              }
                             )
     settle := "usdt" // string - Settle currency
-    orderId := "12345" // string - Order ID returned, or user custom ID(i.e., `text` field). Operations based on custom ID can only be checked when the order is in orderbook. finished, it can be checked within 60 seconds after the end of the order. After that, only order ID is accepted.
+    orderId := "12345" // string - The order ID returned when the order is created successfully, or the custom ID specified by the user when creating the order (i.e. the `text` field). When using the custom `text` field: 1. If the order was not filled and has been cancelled, after 60 seconds you cannot query the order by `text`; continuing to use `text` returns error ORDER_NOT_FOUND. 2. If the order was fully or partially filled, you can query the order by `text` indefinitely.
     
     result, _, err := client.FuturesApi.GetFuturesOrder(ctx, settle, orderId)
     if err != nil {
@@ -2983,7 +2983,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **settle** | **string**| Settle currency | 
-**orderId** | **string**| Order ID returned, or user custom ID(i.e., &#x60;text&#x60; field). Operations based on custom ID can only be checked when the order is in orderbook. finished, it can be checked within 60 seconds after the end of the order. After that, only order ID is accepted. | 
+**orderId** | **string**| The order ID returned when the order is created successfully, or the custom ID specified by the user when creating the order (i.e. the &#x60;text&#x60; field). When using the custom &#x60;text&#x60; field: 1. If the order was not filled and has been cancelled, after 60 seconds you cannot query the order by &#x60;text&#x60;; continuing to use &#x60;text&#x60; returns error ORDER_NOT_FOUND. 2. If the order was fully or partially filled, you can query the order by &#x60;text&#x60; indefinitely. | 
 **futuresOrderAmendment** | [**FuturesOrderAmendment**](FuturesOrderAmendment.md)|  | 
 **optional** | **AmendFuturesOrderOpts** | optional parameters | nil if no parameters
 
@@ -3019,7 +3019,7 @@ func main() {
                              }
                             )
     settle := "usdt" // string - Settle currency
-    orderId := "12345" // string - Order ID returned, or user custom ID(i.e., `text` field). Operations based on custom ID can only be checked when the order is in orderbook. finished, it can be checked within 60 seconds after the end of the order. After that, only order ID is accepted.
+    orderId := "12345" // string - The order ID returned when the order is created successfully, or the custom ID specified by the user when creating the order (i.e. the `text` field). When using the custom `text` field: 1. If the order was not filled and has been cancelled, after 60 seconds you cannot query the order by `text`; continuing to use `text` returns error ORDER_NOT_FOUND. 2. If the order was fully or partially filled, you can query the order by `text` indefinitely.
     futuresOrderAmendment := gateapi.FuturesOrderAmendment{} // FuturesOrderAmendment - 
     
     result, _, err := client.FuturesApi.AmendFuturesOrder(ctx, settle, orderId, futuresOrderAmendment, nil)
@@ -3065,7 +3065,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **settle** | **string**| Settle currency | 
-**orderId** | **string**| Order ID returned, or user custom ID(i.e., &#x60;text&#x60; field). Operations based on custom ID can only be checked when the order is in orderbook. finished, it can be checked within 60 seconds after the end of the order. After that, only order ID is accepted. | 
+**orderId** | **string**| The order ID returned when the order is created successfully, or the custom ID specified by the user when creating the order (i.e. the &#x60;text&#x60; field). When using the custom &#x60;text&#x60; field: 1. If the order was not filled and has been cancelled, after 60 seconds you cannot query the order by &#x60;text&#x60;; continuing to use &#x60;text&#x60; returns error ORDER_NOT_FOUND. 2. If the order was fully or partially filled, you can query the order by &#x60;text&#x60; indefinitely. | 
 **optional** | **CancelFuturesOrderOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
@@ -3100,7 +3100,7 @@ func main() {
                              }
                             )
     settle := "usdt" // string - Settle currency
-    orderId := "12345" // string - Order ID returned, or user custom ID(i.e., `text` field). Operations based on custom ID can only be checked when the order is in orderbook. finished, it can be checked within 60 seconds after the end of the order. After that, only order ID is accepted.
+    orderId := "12345" // string - The order ID returned when the order is created successfully, or the custom ID specified by the user when creating the order (i.e. the `text` field). When using the custom `text` field: 1. If the order was not filled and has been cancelled, after 60 seconds you cannot query the order by `text`; continuing to use `text` returns error ORDER_NOT_FOUND. 2. If the order was fully or partially filled, you can query the order by `text` indefinitely.
     
     result, _, err := client.FuturesApi.CancelFuturesOrder(ctx, settle, orderId, nil)
     if err != nil {
