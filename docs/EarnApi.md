@@ -13,6 +13,17 @@ Method | HTTP request | Description
 [**OrderList**](EarnApi.md#OrderList) | **Get** /earn/staking/order_list | List of on-chain coin-earning orders
 [**AwardList**](EarnApi.md#AwardList) | **Get** /earn/staking/award_list | On-chain coin-earning dividend records
 [**AssetList**](EarnApi.md#AssetList) | **Get** /earn/staking/assets | On-chain coin-earning assets
+[**CreateAutoInvestPlan**](EarnApi.md#CreateAutoInvestPlan) | **Post** /earn/autoinvest/plans/create | Create auto invest plan
+[**UpdateAutoInvestPlan**](EarnApi.md#UpdateAutoInvestPlan) | **Post** /earn/autoinvest/plans/update | UpdateAuto invest plan
+[**StopAutoInvestPlan**](EarnApi.md#StopAutoInvestPlan) | **Post** /earn/autoinvest/plans/stop | StopAuto invest plan
+[**AddPositionAutoInvestPlan**](EarnApi.md#AddPositionAutoInvestPlan) | **Post** /earn/autoinvest/plans/add_position | Add position immediately
+[**ListAutoInvestCoins**](EarnApi.md#ListAutoInvestCoins) | **Get** /earn/autoinvest/coins | QueryCurrencies supporting auto invest
+[**GetAutoInvestMinAmount**](EarnApi.md#GetAutoInvestMinAmount) | **Post** /earn/autoinvest/min_invest_amount | Get minimum investment amount
+[**ListAutoInvestPlanRecords**](EarnApi.md#ListAutoInvestPlanRecords) | **Get** /earn/autoinvest/plans/records | List plan execution records
+[**ListAutoInvestOrders**](EarnApi.md#ListAutoInvestOrders) | **Get** /earn/autoinvest/orders | List plan execution recordsDetails（OrderDetails）
+[**ListAutoInvestConfig**](EarnApi.md#ListAutoInvestConfig) | **Get** /earn/autoinvest/config | List investment currency configuration
+[**GetAutoInvestPlanDetail**](EarnApi.md#GetAutoInvestPlanDetail) | **Get** /earn/autoinvest/plans/detail | QueryAuto invest planDetails
+[**ListAutoInvestPlans**](EarnApi.md#ListAutoInvestPlans) | **Get** /earn/autoinvest/plans/list_info | QueryAuto invest planList
 [**ListEarnFixedTermProducts**](EarnApi.md#ListEarnFixedTermProducts) | **Get** /earn/fixed-term/product | Get product list
 [**ListEarnFixedTermProductsByAsset**](EarnApi.md#ListEarnFixedTermProductsByAsset) | **Get** /earn/fixed-term/product/{asset}/list | Get product list by single currency
 [**ListEarnFixedTermLends**](EarnApi.md#ListEarnFixedTermLends) | **Get** /earn/fixed-term/user/lend | Subscription list
@@ -305,7 +316,7 @@ func main() {
 
 ## FindCoin
 
-> []map[string]interface{} FindCoin(ctx, findCoin)
+> []map[string]interface{} FindCoin(ctx, optional)
 
 Staking coins
 
@@ -314,7 +325,15 @@ Staking coins
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**findCoin** | [**FindCoin**](FindCoin.md)|  | 
+**optional** | **FindCoinOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+
+Optional parameters are passed through a pointer to a FindCoinOpts struct
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**cointype** | **optional.String**| Currency type: swap - voucher; lock - locked position; debt - US Treasury bond. | 
 
 ### Example
 
@@ -339,9 +358,8 @@ func main() {
                                  Secret: "YOUR_API_SECRET",
                              }
                             )
-    findCoin := gateapi.FindCoin{} // FindCoin - 
     
-    result, _, err := client.EarnApi.FindCoin(ctx, findCoin)
+    result, _, err := client.EarnApi.FindCoin(ctx, nil)
     if err != nil {
         if e, ok := err.(gateapi.GateAPIError); ok {
             fmt.Printf("gate api error: %s\n", e.Error())
@@ -365,7 +383,7 @@ func main() {
 
 ### HTTP request headers
 
-- **Content-Type**: application/json
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -660,6 +678,789 @@ func main() {
 ### Return type
 
 **[]map[string]interface{}**
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+## CreateAutoInvestPlan
+
+> AutoInvestPlanCreateResp CreateAutoInvestPlan(ctx, autoInvestPlanCreate)
+
+Create auto invest plan
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**autoInvestPlanCreate** | [**AutoInvestPlanCreate**](AutoInvestPlanCreate.md)|  | 
+
+### Example
+
+```golang
+package main
+
+import (
+    "context"
+    "fmt"
+
+    "github.com/gate/gateapi-go/v7"
+)
+
+func main() {
+    client := gateapi.NewAPIClient(gateapi.NewConfiguration())
+    // uncomment the next line if your are testing against testnet
+    // client.ChangeBasePath("https://fx-api-testnet.gateio.ws/api/v4")
+    ctx := context.WithValue(context.Background(),
+                             gateapi.ContextGateAPIV4,
+                             gateapi.GateAPIV4{
+                                 Key:    "YOUR_API_KEY",
+                                 Secret: "YOUR_API_SECRET",
+                             }
+                            )
+    autoInvestPlanCreate := gateapi.AutoInvestPlanCreate{} // AutoInvestPlanCreate - 
+    
+    result, _, err := client.EarnApi.CreateAutoInvestPlan(ctx, autoInvestPlanCreate)
+    if err != nil {
+        if e, ok := err.(gateapi.GateAPIError); ok {
+            fmt.Printf("gate api error: %s\n", e.Error())
+        } else {
+            fmt.Printf("generic error: %s\n", err.Error())
+        }
+    } else {
+        fmt.Println(result)
+    }
+}
+```
+
+
+### Return type
+
+[**AutoInvestPlanCreateResp**](AutoInvestPlanCreateResp.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+## UpdateAutoInvestPlan
+
+> UpdateAutoInvestPlan(ctx, autoInvestPlanUpdate)
+
+UpdateAuto invest plan
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**autoInvestPlanUpdate** | [**AutoInvestPlanUpdate**](AutoInvestPlanUpdate.md)|  | 
+
+### Example
+
+```golang
+package main
+
+import (
+    "context"
+    "fmt"
+
+    "github.com/gate/gateapi-go/v7"
+)
+
+func main() {
+    client := gateapi.NewAPIClient(gateapi.NewConfiguration())
+    // uncomment the next line if your are testing against testnet
+    // client.ChangeBasePath("https://fx-api-testnet.gateio.ws/api/v4")
+    ctx := context.WithValue(context.Background(),
+                             gateapi.ContextGateAPIV4,
+                             gateapi.GateAPIV4{
+                                 Key:    "YOUR_API_KEY",
+                                 Secret: "YOUR_API_SECRET",
+                             }
+                            )
+    autoInvestPlanUpdate := gateapi.AutoInvestPlanUpdate{} // AutoInvestPlanUpdate - 
+    
+    result, _, err := client.EarnApi.UpdateAutoInvestPlan(ctx, autoInvestPlanUpdate)
+    if err != nil {
+        if e, ok := err.(gateapi.GateAPIError); ok {
+            fmt.Printf("gate api error: %s\n", e.Error())
+        } else {
+            fmt.Printf("generic error: %s\n", err.Error())
+        }
+    } else {
+        fmt.Println(result)
+    }
+}
+```
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+## StopAutoInvestPlan
+
+> StopAutoInvestPlan(ctx, autoInvestPlanStop)
+
+StopAuto invest plan
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**autoInvestPlanStop** | [**AutoInvestPlanStop**](AutoInvestPlanStop.md)|  | 
+
+### Example
+
+```golang
+package main
+
+import (
+    "context"
+    "fmt"
+
+    "github.com/gate/gateapi-go/v7"
+)
+
+func main() {
+    client := gateapi.NewAPIClient(gateapi.NewConfiguration())
+    // uncomment the next line if your are testing against testnet
+    // client.ChangeBasePath("https://fx-api-testnet.gateio.ws/api/v4")
+    ctx := context.WithValue(context.Background(),
+                             gateapi.ContextGateAPIV4,
+                             gateapi.GateAPIV4{
+                                 Key:    "YOUR_API_KEY",
+                                 Secret: "YOUR_API_SECRET",
+                             }
+                            )
+    autoInvestPlanStop := gateapi.AutoInvestPlanStop{} // AutoInvestPlanStop - 
+    
+    result, _, err := client.EarnApi.StopAutoInvestPlan(ctx, autoInvestPlanStop)
+    if err != nil {
+        if e, ok := err.(gateapi.GateAPIError); ok {
+            fmt.Printf("gate api error: %s\n", e.Error())
+        } else {
+            fmt.Printf("generic error: %s\n", err.Error())
+        }
+    } else {
+        fmt.Println(result)
+    }
+}
+```
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+## AddPositionAutoInvestPlan
+
+> AddPositionAutoInvestPlan(ctx, autoInvestPlanAddPosition)
+
+Add position immediately
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**autoInvestPlanAddPosition** | [**AutoInvestPlanAddPosition**](AutoInvestPlanAddPosition.md)|  | 
+
+### Example
+
+```golang
+package main
+
+import (
+    "context"
+    "fmt"
+
+    "github.com/gate/gateapi-go/v7"
+)
+
+func main() {
+    client := gateapi.NewAPIClient(gateapi.NewConfiguration())
+    // uncomment the next line if your are testing against testnet
+    // client.ChangeBasePath("https://fx-api-testnet.gateio.ws/api/v4")
+    ctx := context.WithValue(context.Background(),
+                             gateapi.ContextGateAPIV4,
+                             gateapi.GateAPIV4{
+                                 Key:    "YOUR_API_KEY",
+                                 Secret: "YOUR_API_SECRET",
+                             }
+                            )
+    autoInvestPlanAddPosition := gateapi.AutoInvestPlanAddPosition{} // AutoInvestPlanAddPosition - 
+    
+    result, _, err := client.EarnApi.AddPositionAutoInvestPlan(ctx, autoInvestPlanAddPosition)
+    if err != nil {
+        if e, ok := err.(gateapi.GateAPIError); ok {
+            fmt.Printf("gate api error: %s\n", e.Error())
+        } else {
+            fmt.Printf("generic error: %s\n", err.Error())
+        }
+    } else {
+        fmt.Println(result)
+    }
+}
+```
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+## ListAutoInvestCoins
+
+> []AutoInvestCoinsItem ListAutoInvestCoins(ctx, optional)
+
+QueryCurrencies supporting auto invest
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**optional** | **ListAutoInvestCoinsOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+
+Optional parameters are passed through a pointer to a ListAutoInvestCoinsOpts struct
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**planMoney** | **optional.String**| Pricing currency，Optional: USDT or BTC，Default: USDT | 
+
+### Example
+
+```golang
+package main
+
+import (
+    "context"
+    "fmt"
+
+    "github.com/gate/gateapi-go/v7"
+)
+
+func main() {
+    client := gateapi.NewAPIClient(gateapi.NewConfiguration())
+    // uncomment the next line if your are testing against testnet
+    // client.ChangeBasePath("https://fx-api-testnet.gateio.ws/api/v4")
+    ctx := context.WithValue(context.Background(),
+                             gateapi.ContextGateAPIV4,
+                             gateapi.GateAPIV4{
+                                 Key:    "YOUR_API_KEY",
+                                 Secret: "YOUR_API_SECRET",
+                             }
+                            )
+    
+    result, _, err := client.EarnApi.ListAutoInvestCoins(ctx, nil)
+    if err != nil {
+        if e, ok := err.(gateapi.GateAPIError); ok {
+            fmt.Printf("gate api error: %s\n", e.Error())
+        } else {
+            fmt.Printf("generic error: %s\n", err.Error())
+        }
+    } else {
+        fmt.Println(result)
+    }
+}
+```
+
+
+### Return type
+
+[**[]AutoInvestCoinsItem**](AutoInvestCoinsItem.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+## GetAutoInvestMinAmount
+
+> AutoInvestMinInvestAmountResp GetAutoInvestMinAmount(ctx, autoInvestMinInvestAmount)
+
+Get minimum investment amount
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**autoInvestMinInvestAmount** | [**AutoInvestMinInvestAmount**](AutoInvestMinInvestAmount.md)|  | 
+
+### Example
+
+```golang
+package main
+
+import (
+    "context"
+    "fmt"
+
+    "github.com/gate/gateapi-go/v7"
+)
+
+func main() {
+    client := gateapi.NewAPIClient(gateapi.NewConfiguration())
+    // uncomment the next line if your are testing against testnet
+    // client.ChangeBasePath("https://fx-api-testnet.gateio.ws/api/v4")
+    ctx := context.WithValue(context.Background(),
+                             gateapi.ContextGateAPIV4,
+                             gateapi.GateAPIV4{
+                                 Key:    "YOUR_API_KEY",
+                                 Secret: "YOUR_API_SECRET",
+                             }
+                            )
+    autoInvestMinInvestAmount := gateapi.AutoInvestMinInvestAmount{} // AutoInvestMinInvestAmount - 
+    
+    result, _, err := client.EarnApi.GetAutoInvestMinAmount(ctx, autoInvestMinInvestAmount)
+    if err != nil {
+        if e, ok := err.(gateapi.GateAPIError); ok {
+            fmt.Printf("gate api error: %s\n", e.Error())
+        } else {
+            fmt.Printf("generic error: %s\n", err.Error())
+        }
+    } else {
+        fmt.Println(result)
+    }
+}
+```
+
+
+### Return type
+
+[**AutoInvestMinInvestAmountResp**](AutoInvestMinInvestAmountResp.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+## ListAutoInvestPlanRecords
+
+> AutoInvestPlanRecordsResp ListAutoInvestPlanRecords(ctx, planId, optional)
+
+List plan execution records
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**planId** | **int64**| Plan ID | 
+**optional** | **ListAutoInvestPlanRecordsOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+
+Optional parameters are passed through a pointer to a ListAutoInvestPlanRecordsOpts struct
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**page** | **optional.Int64**| page number | 
+**pageSize** | **optional.Int64**| Items per page，Maximum 100 | 
+
+### Example
+
+```golang
+package main
+
+import (
+    "context"
+    "fmt"
+
+    "github.com/gate/gateapi-go/v7"
+)
+
+func main() {
+    client := gateapi.NewAPIClient(gateapi.NewConfiguration())
+    // uncomment the next line if your are testing against testnet
+    // client.ChangeBasePath("https://fx-api-testnet.gateio.ws/api/v4")
+    ctx := context.WithValue(context.Background(),
+                             gateapi.ContextGateAPIV4,
+                             gateapi.GateAPIV4{
+                                 Key:    "YOUR_API_KEY",
+                                 Secret: "YOUR_API_SECRET",
+                             }
+                            )
+    planId := 141378 // int64 - Plan ID
+    
+    result, _, err := client.EarnApi.ListAutoInvestPlanRecords(ctx, planId, nil)
+    if err != nil {
+        if e, ok := err.(gateapi.GateAPIError); ok {
+            fmt.Printf("gate api error: %s\n", e.Error())
+        } else {
+            fmt.Printf("generic error: %s\n", err.Error())
+        }
+    } else {
+        fmt.Println(result)
+    }
+}
+```
+
+
+### Return type
+
+[**AutoInvestPlanRecordsResp**](AutoInvestPlanRecordsResp.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+## ListAutoInvestOrders
+
+> []AutoInvestOrderItem ListAutoInvestOrders(ctx, planId, recordId)
+
+List plan execution recordsDetails（OrderDetails）
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**planId** | **int64**| Plan ID | 
+**recordId** | **int64**| Record ID | 
+
+### Example
+
+```golang
+package main
+
+import (
+    "context"
+    "fmt"
+
+    "github.com/gate/gateapi-go/v7"
+)
+
+func main() {
+    client := gateapi.NewAPIClient(gateapi.NewConfiguration())
+    // uncomment the next line if your are testing against testnet
+    // client.ChangeBasePath("https://fx-api-testnet.gateio.ws/api/v4")
+    ctx := context.WithValue(context.Background(),
+                             gateapi.ContextGateAPIV4,
+                             gateapi.GateAPIV4{
+                                 Key:    "YOUR_API_KEY",
+                                 Secret: "YOUR_API_SECRET",
+                             }
+                            )
+    planId := 142583 // int64 - Plan ID
+    recordId := 1770805384904919 // int64 - Record ID
+    
+    result, _, err := client.EarnApi.ListAutoInvestOrders(ctx, planId, recordId)
+    if err != nil {
+        if e, ok := err.(gateapi.GateAPIError); ok {
+            fmt.Printf("gate api error: %s\n", e.Error())
+        } else {
+            fmt.Printf("generic error: %s\n", err.Error())
+        }
+    } else {
+        fmt.Println(result)
+    }
+}
+```
+
+
+### Return type
+
+[**[]AutoInvestOrderItem**](AutoInvestOrderItem.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+## ListAutoInvestConfig
+
+> []AutoInvestConfigItem ListAutoInvestConfig(ctx, )
+
+List investment currency configuration
+
+### Required Parameters
+
+
+### Example
+
+```golang
+package main
+
+import (
+    "context"
+    "fmt"
+
+    "github.com/gate/gateapi-go/v7"
+)
+
+func main() {
+    client := gateapi.NewAPIClient(gateapi.NewConfiguration())
+    // uncomment the next line if your are testing against testnet
+    // client.ChangeBasePath("https://fx-api-testnet.gateio.ws/api/v4")
+    ctx := context.WithValue(context.Background(),
+                             gateapi.ContextGateAPIV4,
+                             gateapi.GateAPIV4{
+                                 Key:    "YOUR_API_KEY",
+                                 Secret: "YOUR_API_SECRET",
+                             }
+                            )
+    
+    result, _, err := client.EarnApi.ListAutoInvestConfig(ctx)
+    if err != nil {
+        if e, ok := err.(gateapi.GateAPIError); ok {
+            fmt.Printf("gate api error: %s\n", e.Error())
+        } else {
+            fmt.Printf("generic error: %s\n", err.Error())
+        }
+    } else {
+        fmt.Println(result)
+    }
+}
+```
+
+
+### Return type
+
+[**[]AutoInvestConfigItem**](AutoInvestConfigItem.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+## GetAutoInvestPlanDetail
+
+> AutoInvestPlanDetail GetAutoInvestPlanDetail(ctx, planId)
+
+QueryAuto invest planDetails
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**planId** | **int64**| Plan ID | 
+
+### Example
+
+```golang
+package main
+
+import (
+    "context"
+    "fmt"
+
+    "github.com/gate/gateapi-go/v7"
+)
+
+func main() {
+    client := gateapi.NewAPIClient(gateapi.NewConfiguration())
+    // uncomment the next line if your are testing against testnet
+    // client.ChangeBasePath("https://fx-api-testnet.gateio.ws/api/v4")
+    ctx := context.WithValue(context.Background(),
+                             gateapi.ContextGateAPIV4,
+                             gateapi.GateAPIV4{
+                                 Key:    "YOUR_API_KEY",
+                                 Secret: "YOUR_API_SECRET",
+                             }
+                            )
+    planId := 142609 // int64 - Plan ID
+    
+    result, _, err := client.EarnApi.GetAutoInvestPlanDetail(ctx, planId)
+    if err != nil {
+        if e, ok := err.(gateapi.GateAPIError); ok {
+            fmt.Printf("gate api error: %s\n", e.Error())
+        } else {
+            fmt.Printf("generic error: %s\n", err.Error())
+        }
+    } else {
+        fmt.Println(result)
+    }
+}
+```
+
+
+### Return type
+
+[**AutoInvestPlanDetail**](AutoInvestPlanDetail.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+## ListAutoInvestPlans
+
+> AutoInvestPlanListInfoResp ListAutoInvestPlans(ctx, status, optional)
+
+QueryAuto invest planList
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**status** | **string**| Plan status，History history，Active active | 
+**optional** | **ListAutoInvestPlansOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+
+Optional parameters are passed through a pointer to a ListAutoInvestPlansOpts struct
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**page** | **optional.Int64**| page number | 
+**pageSize** | **optional.Int64**| Items per page，Maximum 100 | 
+
+### Example
+
+```golang
+package main
+
+import (
+    "context"
+    "fmt"
+
+    "github.com/gate/gateapi-go/v7"
+)
+
+func main() {
+    client := gateapi.NewAPIClient(gateapi.NewConfiguration())
+    // uncomment the next line if your are testing against testnet
+    // client.ChangeBasePath("https://fx-api-testnet.gateio.ws/api/v4")
+    ctx := context.WithValue(context.Background(),
+                             gateapi.ContextGateAPIV4,
+                             gateapi.GateAPIV4{
+                                 Key:    "YOUR_API_KEY",
+                                 Secret: "YOUR_API_SECRET",
+                             }
+                            )
+    status := "active" // string - Plan status，History history，Active active
+    
+    result, _, err := client.EarnApi.ListAutoInvestPlans(ctx, status, nil)
+    if err != nil {
+        if e, ok := err.(gateapi.GateAPIError); ok {
+            fmt.Printf("gate api error: %s\n", e.Error())
+        } else {
+            fmt.Printf("generic error: %s\n", err.Error())
+        }
+    } else {
+        fmt.Println(result)
+    }
+}
+```
+
+
+### Return type
+
+[**AutoInvestPlanListInfoResp**](AutoInvestPlanListInfoResp.md)
 
 ### Authorization
 

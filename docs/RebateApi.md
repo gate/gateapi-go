@@ -15,6 +15,7 @@ Method | HTTP request | Description
 [**UserSubRelation**](RebateApi.md#UserSubRelation) | **Get** /rebate/user/sub_relation | User subordinate relationship
 [**GetPartnerApplicationRecent**](RebateApi.md#GetPartnerApplicationRecent) | **Get** /rebate/partner/applications/recent | Get recent partner application records
 [**GetPartnerEligibility**](RebateApi.md#GetPartnerEligibility) | **Get** /rebate/partner/eligibility | Check partner application eligibility
+[**GetPartnerAgentDataAggregated**](RebateApi.md#GetPartnerAgentDataAggregated) | **Get** /rebate/partner/data/aggregated | Aggregated partner agent statistics
 
 
 ## AgencyTransactionHistory
@@ -847,6 +848,86 @@ func main() {
 ### Return type
 
 [**EligibilityResponse**](EligibilityResponse.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+## GetPartnerAgentDataAggregated
+
+> PartnerDataAggregatedResponse GetPartnerAgentDataAggregated(ctx, optional)
+
+Aggregated partner agent statistics
+
+查询指定时间范围内合伙人代理的数据聚合统计，包括返佣金额、交易量、净手续费、客户数和交易人数。  **注意事项：** - 交易人数 `trading_user_count` 仅在 `business_type=0`（全部）时返回 - 时间参数使用 UTC+8 时区 - 如不传时间参数，默认查询近 7 天数据 - 仅限合伙人代理访问，子账号无权限
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**optional** | **GetPartnerAgentDataAggregatedOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+
+Optional parameters are passed through a pointer to a GetPartnerAgentDataAggregatedOpts struct
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**startDate** | **optional.String**| 查询开始时间，格式：yyyy-mm-dd hh:ii:ss（UTC+8）  不传时默认为近 7 日开始时间 | 
+**endDate** | **optional.String**| 查询结束时间，格式：yyyy-mm-dd hh:ii:ss（UTC+8）  不传时默认为近 7 日结束时间 | 
+**businessType** | **optional.Int32**| Business type filter: - 0: All (default) - 1: Spot - 2: Futures - 3: Alpha - 4: Web3 - 5: Perps (DEX) - 6: Exchange All - 7: Web3 All - 8: TradFi | [default to 0]
+
+### Example
+
+```golang
+package main
+
+import (
+    "context"
+    "fmt"
+
+    "github.com/gate/gateapi-go/v7"
+)
+
+func main() {
+    client := gateapi.NewAPIClient(gateapi.NewConfiguration())
+    // uncomment the next line if your are testing against testnet
+    // client.ChangeBasePath("https://fx-api-testnet.gateio.ws/api/v4")
+    ctx := context.WithValue(context.Background(),
+                             gateapi.ContextGateAPIV4,
+                             gateapi.GateAPIV4{
+                                 Key:    "YOUR_API_KEY",
+                                 Secret: "YOUR_API_SECRET",
+                             }
+                            )
+    
+    result, _, err := client.RebateApi.GetPartnerAgentDataAggregated(ctx, nil)
+    if err != nil {
+        if e, ok := err.(gateapi.GateAPIError); ok {
+            fmt.Printf("gate api error: %s\n", e.Error())
+        } else {
+            fmt.Printf("generic error: %s\n", err.Error())
+        }
+    } else {
+        fmt.Println(result)
+    }
+}
+```
+
+
+### Return type
+
+[**PartnerDataAggregatedResponse**](PartnerDataAggregatedResponse.md)
 
 ### Authorization
 

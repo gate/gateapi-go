@@ -9,7 +9,13 @@
 
 package gateapi
 
-type FindCoin struct {
-	// Currency type: swap - voucher; lock - locked position; debt - US Treasury bond.
-	Cointype string `json:"cointype,omitempty"`
+type ErrorResponse struct {
+	// Error code
+	Code int32 `json:"code"`
+	// Error message
+	Message string `json:"message"`
+	// Empty object
+	Data map[string]interface{} `json:"data"`
+	// Unix timestamp
+	Timestamp int64 `json:"timestamp"`
 }

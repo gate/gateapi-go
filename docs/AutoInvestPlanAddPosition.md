@@ -1,10 +1,11 @@
-# FindCoin
+# AutoInvestPlanAddPosition
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Cointype** | **string** | Currency type: swap - voucher; lock - locked position; debt - US Treasury bond. | [optional] 
+**PlanId** | **int64** | Plan ID | 
+**Amount** | **string** | Amount | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
