@@ -17,7 +17,7 @@ type ApiResponseAssetSwapOrderQueryV1 struct {
 	Label string `json:"label,omitempty"`
 	// 描述信息
 	Message string `json:"message"`
-	// 成功时为订单详情（CreateOrder），失败时为 null
+	// 成功时为订单详情，失败时为 null
 	Data *interface{} `json:"data"`
 	// Server timestamp (milliseconds)
 	Timestamp int64 `json:"timestamp"`
