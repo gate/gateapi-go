@@ -9,8 +9,8 @@
 
 package gateapi
 
-// Order result
-type CreateOrderData struct {
-	// Queue Task ID (not task ID)
-	Id string `json:"id,omitempty"`
+type RecommendV2Scheme struct {
+	Name     string `json:"name"`
+	Priority int32  `json:"priority"`
+	Ratio    string `json:"ratio"`
 }

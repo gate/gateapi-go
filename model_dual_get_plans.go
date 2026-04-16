@@ -22,9 +22,9 @@ type DualGetPlans struct {
 	ExercisePrice float64 `json:"exercise_price,omitempty"`
 	// Settlement time
 	DeliveryTime int32 `json:"delivery_time,omitempty"`
-	// Minimum Units
+	// Minimum share count
 	MinCopies int32 `json:"min_copies,omitempty"`
-	// Maximum Units
+	// Maximum share count
 	MaxCopies int32 `json:"max_copies,omitempty"`
 	// Value Per Unit (deprecated)
 	PerValue string `json:"per_value,omitempty"`

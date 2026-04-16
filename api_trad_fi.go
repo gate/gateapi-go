@@ -1061,16 +1061,16 @@ CreateTradFiOrder Create an order
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param tradFiOrderRequest
 
-@return CreateOrder
+@return CreateOrder2
 */
-func (a *TradFiApiService) CreateTradFiOrder(ctx context.Context, tradFiOrderRequest TradFiOrderRequest) (CreateOrder, *http.Response, error) {
+func (a *TradFiApiService) CreateTradFiOrder(ctx context.Context, tradFiOrderRequest TradFiOrderRequest) (CreateOrder2, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  CreateOrder
+		localVarReturnValue  CreateOrder2
 	)
 
 	// create path and map variables

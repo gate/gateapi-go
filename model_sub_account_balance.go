@@ -14,4 +14,6 @@ type SubAccountBalance struct {
 	Uid string `json:"uid,omitempty"`
 	// Available balances of currencies
 	Available map[string]string `json:"available,omitempty"`
+	// Locked amount by currency
+	Locking map[string]string `json:"locking,omitempty"`
 }

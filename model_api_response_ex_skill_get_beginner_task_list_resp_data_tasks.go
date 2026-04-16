@@ -9,13 +9,13 @@
 
 package gateapi
 
-// Beginner task information
+// 入门任务信息。`task_center_id` 与 `status` 列入 required：二者均允许为 0（注册任务、待领取下载任务）， 且避免 Go SDK 对整型零值使用 omitempty 导致客户端序列化时丢失字段。
 type ApiResponseExSkillGetBeginnerTaskListRespDataTasks struct {
 	// Rewards Center task ID
 	WelfareTaskId int64 `json:"welfare_task_id,omitempty"`
 	// Task center task ID (fixed at 0 for registration tasks)
-	TaskCenterId int64 `json:"task_center_id,omitempty"`
-	// Task type: 1 = KYC level-2 verification, 2 = spot, 3 = futures, 4 = referral, 5 = quantitative, 6 = earn, 7 = startup, 8 = first deposit, 10 = registration task, 11 = onboarding task
+	TaskCenterId int64 `json:"task_center_id"`
+	// 任务类型：1=KYC二级认证 2=现货 3=合约 4=邀请 5=量化 6=余币宝 7=startup 8=首次入金 10=注册任务 11=引导任务 23=下载任务
 	TaskType int32 `json:"task_type,omitempty"`
 	// Task name
 	TaskName string `json:"task_name,omitempty"`
@@ -27,6 +27,6 @@ type ApiResponseExSkillGetBeginnerTaskListRespDataTasks struct {
 	RewardUnit string `json:"reward_unit,omitempty"`
 	// Reward type: 1 = points, 2 = regular coupon, 3 = VIP coupon
 	PrizeType int32 `json:"prize_type,omitempty"`
-	// Task status: 0 = unclaimed, 1 = claimed, 2 = reward pending, 3 = rewarding, 4 = completed, 5 = expired
-	Status int32 `json:"status,omitempty"`
+	// 任务状态：0=未领取（典型为待领取下载任务） 1=已领取/进行中 2=已完成待领奖 3=发奖中 4=已完成/已结算 5=已过期
+	Status int32 `json:"status"`
 }

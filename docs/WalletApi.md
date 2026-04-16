@@ -801,6 +801,8 @@ Optional parameters are passed through a pointer to a ListSubAccountBalancesOpts
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **subUid** | **optional.String**| Sub-account user ID, you can query multiple records separated by &#x60;,&#x60;. If not specified, it will return records of all sub-accounts | 
+**page** | **optional.Int32**| Page number | [default to 1]
+**limit** | **optional.Int32**| Maximum number of records returned. Default 20, max 100. | [default to 100]
 
 ### Example
 

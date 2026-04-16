@@ -32,11 +32,11 @@ type WithdrawalRecord struct {
 	Type string `json:"type,omitempty"`
 	// Reason for withdrawal failure. Has a value when status = CANCEL, empty for all other statuses
 	FailReason string `json:"fail_reason,omitempty"`
-	// Withdrawal final time, i.e.: withdrawal cancellation time or withdrawal success time When status = CANCEL, corresponds to cancellation time When status = DONE and block_number > 0, it is the withdrawal success time
+	// Withdrawal final time, i.e.: withdrawal cancellation time or withdrawal success time When status = CANCEL, corresponds to cancellation time When status = DONE, it is the withdrawal success time
 	Timestamp2 string `json:"timestamp2,omitempty"`
 	// Additional remarks with regards to the withdrawal
 	Memo string `json:"memo,omitempty"`
-	// Transaction Status  - BCODE: Deposit Code Operation - CANCEL: Cancelled - CANCELPEND: Withdrawal Cancellation Pending - DONE: Completed (Only considered truly on-chain when block_number > 0) - EXTPEND: Sent and Waiting for Confirmation - FAIL: On-Chain Failure Pending Confirmation - FVERIFY: Facial Verification in Progress - LOCKED: Wallet-Side Order Locked - MANUAL: Pending Manual Review - REJECT: Rejected - REQUEST: Request in Progress - REVIEW: Under Review
+	// Transaction Status  - BCODE: Deposit Code Operation - CANCEL: Cancelled - CANCELPEND: Withdrawal Cancellation Pending - DONE: Completed - EXTPEND: Sent and Waiting for Confirmation - FAIL: On-Chain Failure Pending Confirmation - FVERIFY: Facial Verification in Progress - LOCKED: Wallet-Side Order Locked - MANUAL: Pending Manual Review - REJECT: Rejected - REQUEST: Request in Progress - REVIEW: Under Review
 	Status string `json:"status,omitempty"`
 	// Name of the chain used in withdrawals
 	Chain string `json:"chain"`

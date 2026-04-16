@@ -16,7 +16,7 @@ type AgencyCommission struct {
 	UserId int64 `json:"user_id,omitempty"`
 	// Group name
 	GroupName string `json:"group_name,omitempty"`
-	// Transaction amount
+	// Commission amount
 	CommissionAmount string `json:"commission_amount,omitempty"`
 	// Commission Asset
 	CommissionAsset string `json:"commission_asset,omitempty"`

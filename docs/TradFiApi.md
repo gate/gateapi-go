@@ -758,7 +758,7 @@ func main() {
 
 ## CreateTradFiOrder
 
-> CreateOrder CreateTradFiOrder(ctx, tradFiOrderRequest)
+> CreateOrder2 CreateTradFiOrder(ctx, tradFiOrderRequest)
 
 Create an order
 
@@ -810,7 +810,7 @@ func main() {
 
 ### Return type
 
-[**CreateOrder**](CreateOrder.md)
+[**CreateOrder2**](CreateOrder_2.md)
 
 ### Authorization
 

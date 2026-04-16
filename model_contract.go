@@ -47,6 +47,8 @@ type Contract struct {
 	FundingNextApply float64 `json:"funding_next_apply,omitempty"`
 	// Base risk limit (deprecated)
 	RiskLimitBase string `json:"risk_limit_base,omitempty"`
+	// Interest rate parameter used in funding rate and premium-related calculations for perpetual contracts. Returned as a string decimal ratio (e.g. `0.0003`), same convention as `funding_rate` (ratio, not percent).
+	InterestRate string `json:"interest_rate,omitempty"`
 	// Risk limit adjustment step (deprecated)
 	RiskLimitStep string `json:"risk_limit_step,omitempty"`
 	// Maximum risk limit allowed by the contract (deprecated). It is recommended to use /futures/{settle}/risk_limit_tiers to query risk limits
@@ -99,6 +101,8 @@ type Contract struct {
 	MarketOrderSizeMax string `json:"market_order_size_max,omitempty"`
 	// Upper and lower limits of funding rate
 	FundingRateLimit string `json:"funding_rate_limit,omitempty"`
+	// Contract classification type, e.g. stocks, metals, indices, forex, commodities, etc.
+	ContractType string `json:"contract_type,omitempty"`
 	// Funding rate depth impact value
 	FundingImpactValue string `json:"funding_impact_value,omitempty"`
 }

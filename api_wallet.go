@@ -1074,6 +1074,8 @@ func (a *WalletApiService) ListWithdrawStatus(ctx context.Context, localVarOptio
 // ListSubAccountBalancesOpts Optional parameters for the method 'ListSubAccountBalances'
 type ListSubAccountBalancesOpts struct {
 	SubUid optional.String
+	Page   optional.Int32
+	Limit  optional.Int32
 }
 
 /*
@@ -1081,6 +1083,8 @@ ListSubAccountBalances Query sub-account balance information
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param optional nil or *ListSubAccountBalancesOpts - Optional Parameters:
   - @param "SubUid" (optional.String) -  Sub-account user ID, you can query multiple records separated by `,`. If not specified, it will return records of all sub-accounts
+  - @param "Page" (optional.Int32) -  Page number
+  - @param "Limit" (optional.Int32) -  Maximum number of records returned. Default 20, max 100.
 
 @return []SubAccountBalance
 */
@@ -1102,6 +1106,12 @@ func (a *WalletApiService) ListSubAccountBalances(ctx context.Context, localVarO
 
 	if localVarOptionals != nil && localVarOptionals.SubUid.IsSet() {
 		localVarQueryParams.Add("sub_uid", parameterToString(localVarOptionals.SubUid.Value(), ""))
+	}
+	if localVarOptionals != nil && localVarOptionals.Page.IsSet() {
+		localVarQueryParams.Add("page", parameterToString(localVarOptionals.Page.Value(), ""))
+	}
+	if localVarOptionals != nil && localVarOptionals.Limit.IsSet() {
+		localVarQueryParams.Add("limit", parameterToString(localVarOptionals.Limit.Value(), ""))
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

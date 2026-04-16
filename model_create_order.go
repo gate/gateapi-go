@@ -10,7 +10,13 @@
 package gateapi
 
 type CreateOrder struct {
-	// Server timestamp (milliseconds)
-	Timestamp int64           `json:"timestamp,omitempty"`
-	Data      CreateOrderData `json:"data,omitempty"`
+	Id          int64               `json:"id"`
+	UserId      int32               `json:"user_id"`
+	From        []CreateOrderDetail `json:"from"`
+	To          []CreateOrderDetail `json:"to"`
+	Source      string              `json:"source"`
+	AppId       string              `json:"app_id"`
+	ClientReqId string              `json:"client_req_id"`
+	Status      int32               `json:"status"`
+	CreateTime  int64               `json:"create_time"`
 }

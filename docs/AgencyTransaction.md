@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **FeeAsset** | **string** | Fee currency | [optional] 
 **CurrencyPair** | **string** | Currency pair | [optional] 
 **Amount** | **string** | Transaction amount | [optional] 
-**AmountAsset** | **string** | Commission Asset | [optional] 
+**AmountAsset** | **string** | Transaction amount currency | [optional] 
 **Source** | **string** | Commission source: SPOT - Spot commission, FUTURES - Futures commission | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

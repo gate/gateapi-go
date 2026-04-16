@@ -15,6 +15,8 @@ type FuturesPriceTriggeredOrder struct {
 	Trigger FuturesPriceTrigger `json:"trigger"`
 	// Auto order ID
 	Id int64 `json:"id,omitempty"`
+	// String form of the auto order ID; the same order as numeric `id`, as the decimal string of `id` to avoid int64 precision loss in JavaScript and similar environments. Prefer this field to display the order ID or when a string unique identifier is needed; one-to-one with `id`. Same meaning as the field of the same name in futures price-trigger REST APIs and in `futures.orders` / `futures.autoorders` WebSocket pushes.
+	IdString string `json:"id_string,omitempty"`
 	// User ID
 	User int32 `json:"user,omitempty"`
 	// Created time

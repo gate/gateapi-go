@@ -24,7 +24,7 @@ type AgencyTransaction struct {
 	CurrencyPair string `json:"currency_pair,omitempty"`
 	// Transaction amount
 	Amount string `json:"amount,omitempty"`
-	// Commission Asset
+	// Transaction amount currency
 	AmountAsset string `json:"amount_asset,omitempty"`
 	// Commission source: SPOT - Spot commission, FUTURES - Futures commission
 	Source string `json:"source,omitempty"`

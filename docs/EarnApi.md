@@ -8,6 +8,10 @@ Method | HTTP request | Description
 [**ListDualOrders**](EarnApi.md#ListDualOrders) | **Get** /earn/dual/orders | Dual Investment order list
 [**PlaceDualOrder**](EarnApi.md#PlaceDualOrder) | **Post** /earn/dual/orders | Place Dual Investment order
 [**ListDualBalance**](EarnApi.md#ListDualBalance) | **Get** /earn/dual/balance | Dual-Currency Earning Assets
+[**GetDualOrderRefundPreview**](EarnApi.md#GetDualOrderRefundPreview) | **Get** /earn/dual/order-refund-preview | Dual-currency early redemption preview
+[**PlaceDualOrderRefund**](EarnApi.md#PlaceDualOrderRefund) | **Post** /earn/dual/order-refund | Dual-currency order early redemption
+[**ModifyDualOrderReinvest**](EarnApi.md#ModifyDualOrderReinvest) | **Post** /earn/dual/modify-order-reinvest | Modify dual-currency order reinvest
+[**GetDualProjectRecommend**](EarnApi.md#GetDualProjectRecommend) | **Get** /earn/dual/project-recommend | Dual-currency recommended projects
 [**FindCoin**](EarnApi.md#FindCoin) | **Get** /earn/staking/coins | Staking coins
 [**SwapStakingCoin**](EarnApi.md#SwapStakingCoin) | **Post** /earn/staking/swap | On-chain token swap for earned coins
 [**OrderList**](EarnApi.md#OrderList) | **Get** /earn/staking/order_list | List of on-chain coin-earning orders
@@ -52,6 +56,12 @@ Optional parameters are passed through a pointer to a ListDualInvestmentPlansOpt
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **planId** | **optional.Int64**| Financial project ID | 
+**coin** | **optional.String**| Investment Token | 
+**type_** | **optional.String**| Type enum: &#x60;put&#x60; — buy low; &#x60;call&#x60; — sell high | 
+**quoteCurrency** | **optional.String**| Settlement currency enum: defaults to USDT; GUSD optional | 
+**sort** | **optional.String**| Sort field enum: &#x60;apy&#x60; — highest APY first &#x60;short-period&#x60; — shortest tenor first &#x60;multiple&#x60; — highest premium first | 
+**page** | **optional.Int32**| page number | 
+**pageSize** | **optional.Int32**| Items per page | 
 
 ### Example
 
@@ -123,6 +133,9 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **from** | **optional.Int64**| Start settlement time | 
 **to** | **optional.Int64**| End settlement time | 
+**type_** | **optional.String**| Type enum: &#x60;put&#x60; — buy low; &#x60;call&#x60; — sell high | 
+**status** | **optional.String**| Order status enum: &#x60;HOLD&#x60; — open position &#x60;REPAY&#x60; — historical position &#x60;PROCESSING&#x60; — position active &#x60;SETTLEMENT_PROCESSING&#x60; — settlement in progress &#x60;ALL&#x60; — all | 
+**coin** | **optional.String**| Investment Token | 
 **page** | **optional.Int32**| Page number | [default to 1]
 **limit** | **optional.Int32**| Maximum number of records returned in a single list | [default to 100]
 
@@ -300,6 +313,292 @@ func main() {
 ### Return type
 
 [**DualGetBalance**](DualGetBalance.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+## GetDualOrderRefundPreview
+
+> DualOrderRefundPreview GetDualOrderRefundPreview(ctx, orderId)
+
+Dual-currency early redemption preview
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**orderId** | **string**| Order ID | 
+
+### Example
+
+```golang
+package main
+
+import (
+    "context"
+    "fmt"
+
+    "github.com/gate/gateapi-go/v7"
+)
+
+func main() {
+    client := gateapi.NewAPIClient(gateapi.NewConfiguration())
+    // uncomment the next line if your are testing against testnet
+    // client.ChangeBasePath("https://fx-api-testnet.gateio.ws/api/v4")
+    ctx := context.WithValue(context.Background(),
+                             gateapi.ContextGateAPIV4,
+                             gateapi.GateAPIV4{
+                                 Key:    "YOUR_API_KEY",
+                                 Secret: "YOUR_API_SECRET",
+                             }
+                            )
+    orderId := "9497" // string - Order ID
+    
+    result, _, err := client.EarnApi.GetDualOrderRefundPreview(ctx, orderId)
+    if err != nil {
+        if e, ok := err.(gateapi.GateAPIError); ok {
+            fmt.Printf("gate api error: %s\n", e.Error())
+        } else {
+            fmt.Printf("generic error: %s\n", err.Error())
+        }
+    } else {
+        fmt.Println(result)
+    }
+}
+```
+
+
+### Return type
+
+[**DualOrderRefundPreview**](DualOrderRefundPreview.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+## PlaceDualOrderRefund
+
+> PlaceDualOrderRefund(ctx, dualOrderRefundParams)
+
+Dual-currency order early redemption
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**dualOrderRefundParams** | [**DualOrderRefundParams**](DualOrderRefundParams.md)|  | 
+
+### Example
+
+```golang
+package main
+
+import (
+    "context"
+    "fmt"
+
+    "github.com/gate/gateapi-go/v7"
+)
+
+func main() {
+    client := gateapi.NewAPIClient(gateapi.NewConfiguration())
+    // uncomment the next line if your are testing against testnet
+    // client.ChangeBasePath("https://fx-api-testnet.gateio.ws/api/v4")
+    ctx := context.WithValue(context.Background(),
+                             gateapi.ContextGateAPIV4,
+                             gateapi.GateAPIV4{
+                                 Key:    "YOUR_API_KEY",
+                                 Secret: "YOUR_API_SECRET",
+                             }
+                            )
+    dualOrderRefundParams := gateapi.DualOrderRefundParams{} // DualOrderRefundParams - 
+    
+    result, _, err := client.EarnApi.PlaceDualOrderRefund(ctx, dualOrderRefundParams)
+    if err != nil {
+        if e, ok := err.(gateapi.GateAPIError); ok {
+            fmt.Printf("gate api error: %s\n", e.Error())
+        } else {
+            fmt.Printf("generic error: %s\n", err.Error())
+        }
+    } else {
+        fmt.Println(result)
+    }
+}
+```
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+## ModifyDualOrderReinvest
+
+> ModifyDualOrderReinvest(ctx, dualModifyOrderReinvestParams)
+
+Modify dual-currency order reinvest
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**dualModifyOrderReinvestParams** | [**DualModifyOrderReinvestParams**](DualModifyOrderReinvestParams.md)|  | 
+
+### Example
+
+```golang
+package main
+
+import (
+    "context"
+    "fmt"
+
+    "github.com/gate/gateapi-go/v7"
+)
+
+func main() {
+    client := gateapi.NewAPIClient(gateapi.NewConfiguration())
+    // uncomment the next line if your are testing against testnet
+    // client.ChangeBasePath("https://fx-api-testnet.gateio.ws/api/v4")
+    ctx := context.WithValue(context.Background(),
+                             gateapi.ContextGateAPIV4,
+                             gateapi.GateAPIV4{
+                                 Key:    "YOUR_API_KEY",
+                                 Secret: "YOUR_API_SECRET",
+                             }
+                            )
+    dualModifyOrderReinvestParams := gateapi.DualModifyOrderReinvestParams{} // DualModifyOrderReinvestParams - 
+    
+    result, _, err := client.EarnApi.ModifyDualOrderReinvest(ctx, dualModifyOrderReinvestParams)
+    if err != nil {
+        if e, ok := err.(gateapi.GateAPIError); ok {
+            fmt.Printf("gate api error: %s\n", e.Error())
+        } else {
+            fmt.Printf("generic error: %s\n", err.Error())
+        }
+    } else {
+        fmt.Println(result)
+    }
+}
+```
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+## GetDualProjectRecommend
+
+> []DualProjectRecommend GetDualProjectRecommend(ctx, optional)
+
+Dual-currency recommended projects
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**optional** | **GetDualProjectRecommendOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+
+Optional parameters are passed through a pointer to a GetDualProjectRecommendOpts struct
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**mode** | **optional.String**| Sort mode; default &#x60;normal&#x60;: &#x60;senior&#x60; — curated picks (APR/tenor) &#x60;apy_up&#x60; — APY ascending &#x60;ep_down&#x60; — target price descending &#x60;ep_up&#x60; — target price ascending &#x60;dt_down&#x60; — maturity time descending &#x60;dt_up&#x60; — maturity time ascending | 
+**coin** | **optional.String**| Investment Token | 
+**type_** | **optional.String**| &#x60;call&#x60;: sell high; &#x60;put&#x60;: buy low | 
+**historyPids** | **optional.String**| Comma-separated project IDs to exclude already recommended items | 
+
+### Example
+
+```golang
+package main
+
+import (
+    "context"
+    "fmt"
+
+    "github.com/gate/gateapi-go/v7"
+)
+
+func main() {
+    client := gateapi.NewAPIClient(gateapi.NewConfiguration())
+    // uncomment the next line if your are testing against testnet
+    // client.ChangeBasePath("https://fx-api-testnet.gateio.ws/api/v4")
+    ctx := context.WithValue(context.Background(),
+                             gateapi.ContextGateAPIV4,
+                             gateapi.GateAPIV4{
+                                 Key:    "YOUR_API_KEY",
+                                 Secret: "YOUR_API_SECRET",
+                             }
+                            )
+    
+    result, _, err := client.EarnApi.GetDualProjectRecommend(ctx, nil)
+    if err != nil {
+        if e, ok := err.(gateapi.GateAPIError); ok {
+            fmt.Printf("gate api error: %s\n", e.Error())
+        } else {
+            fmt.Printf("generic error: %s\n", err.Error())
+        }
+    } else {
+        fmt.Println(result)
+    }
+}
+```
+
+
+### Return type
+
+[**[]DualProjectRecommend**](DualProjectRecommend.md)
 
 ### Authorization
 
