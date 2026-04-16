@@ -16,10 +16,10 @@ type AiHubPortfolioDetailData struct {
 	Market       string       `json:"market"`
 	Status       string       `json:"status"`
 	// 基础信息，字段按策略类型动态变化
-	BaseInfo map[string]interface{} `json:"base_info"`
+	BaseInfo map[string]string `json:"base_info"`
 	// 指标信息，字段按策略类型动态变化
-	Metrics map[string]interface{} `json:"metrics"`
+	Metrics map[string]string `json:"metrics"`
 	// 仓位或持仓信息，字段按策略类型动态变化
-	Position      *map[string]interface{} `json:"position,omitempty"`
-	StopSupported bool                    `json:"stop_supported"`
+	Position      *map[string]string `json:"position,omitempty"`
+	StopSupported bool               `json:"stop_supported"`
 }

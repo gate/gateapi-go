@@ -19,5 +19,5 @@ type AiHubRecommendation struct {
 	MaxDrawdown      string       `json:"max_drawdown,omitempty"`
 	Summary          string       `json:"summary"`
 	// 推荐参数预览；按策略类型动态变化
-	StrategyParamsPreview map[string]interface{} `json:"strategy_params_preview,omitempty"`
+	StrategyParamsPreview map[string]string `json:"strategy_params_preview,omitempty"`
 }
