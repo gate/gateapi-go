@@ -9,7 +9,7 @@
 
 package gateapi
 
-// 创建无限网格策略的请求体。
+// Create the request body for the infinite grid policy.
 type InfiniteGridCreateRequest struct {
 	StrategyType string                   `json:"strategy_type"`
 	Market       string                   `json:"market"`

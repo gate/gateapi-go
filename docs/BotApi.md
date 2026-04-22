@@ -4,23 +4,23 @@ All URIs are relative to *https://api.gateio.ws/api/v4*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**GetAIHubStrategyRecommend**](BotApi.md#GetAIHubStrategyRecommend) | **Get** /bot/strategy/recommend | 获取 AIHub 策略推荐
-[**PostAIHubSpotGridCreate**](BotApi.md#PostAIHubSpotGridCreate) | **Post** /bot/spot-grid/create | 创建现货网格
-[**PostAIHubMarginGridCreate**](BotApi.md#PostAIHubMarginGridCreate) | **Post** /bot/margin-grid/create | 创建杠杆网格
-[**PostAIHubInfiniteGridCreate**](BotApi.md#PostAIHubInfiniteGridCreate) | **Post** /bot/infinite-grid/create | 创建无限网格
-[**PostAIHubFuturesGridCreate**](BotApi.md#PostAIHubFuturesGridCreate) | **Post** /bot/futures-grid/create | 创建合约网格
-[**PostAIHubSpotMartingaleCreate**](BotApi.md#PostAIHubSpotMartingaleCreate) | **Post** /bot/spot-martingale/create | 创建现货马丁
-[**PostAIHubContractMartingaleCreate**](BotApi.md#PostAIHubContractMartingaleCreate) | **Post** /bot/contract-martingale/create | 创建合约马丁
-[**GetAIHubPortfolioRunning**](BotApi.md#GetAIHubPortfolioRunning) | **Get** /bot/portfolio/running | 查询运行中策略列表
-[**GetAIHubPortfolioDetail**](BotApi.md#GetAIHubPortfolioDetail) | **Get** /bot/portfolio/detail | 查询单策略详情
-[**PostAIHubPortfolioStop**](BotApi.md#PostAIHubPortfolioStop) | **Post** /bot/portfolio/stop | 终止单个运行中策略
+[**GetAIHubStrategyRecommend**](BotApi.md#GetAIHubStrategyRecommend) | **Get** /bot/strategy/recommend | Get AIHub strategy recommendations
+[**PostAIHubSpotGridCreate**](BotApi.md#PostAIHubSpotGridCreate) | **Post** /bot/spot-grid/create | Create spot grid
+[**PostAIHubMarginGridCreate**](BotApi.md#PostAIHubMarginGridCreate) | **Post** /bot/margin-grid/create | Create a lever grid
+[**PostAIHubInfiniteGridCreate**](BotApi.md#PostAIHubInfiniteGridCreate) | **Post** /bot/infinite-grid/create | Create infinite grid
+[**PostAIHubFuturesGridCreate**](BotApi.md#PostAIHubFuturesGridCreate) | **Post** /bot/futures-grid/create | Create a contract grid
+[**PostAIHubSpotMartingaleCreate**](BotApi.md#PostAIHubSpotMartingaleCreate) | **Post** /bot/spot-martingale/create | Create Spot Martin
+[**PostAIHubContractMartingaleCreate**](BotApi.md#PostAIHubContractMartingaleCreate) | **Post** /bot/contract-martingale/create | Create contract martin
+[**GetAIHubPortfolioRunning**](BotApi.md#GetAIHubPortfolioRunning) | **Get** /bot/portfolio/running | Query the list of running policies
+[**GetAIHubPortfolioDetail**](BotApi.md#GetAIHubPortfolioDetail) | **Get** /bot/portfolio/detail | Query order policy details
+[**PostAIHubPortfolioStop**](BotApi.md#PostAIHubPortfolioStop) | **Post** /bot/portfolio/stop | Terminate a single running policy
 
 
 ## GetAIHubStrategyRecommend
 
 > AiHubDiscoverSuccessResponse GetAIHubStrategyRecommend(ctx, optional)
 
-获取 AIHub 策略推荐
+Get AIHub strategy recommendations
 
 discover 域唯一正式接口。  支持场景： - `top1` - `bundle` - `filter` - `refresh`  约束： - 主动推荐池仅包含 `spot_grid`、`futures_grid`、`spot_martingale` - 可返回但不主动推荐 `infinite_grid`、`margin_grid` - 不得返回 `contract_martingale`、`smart-position`、`spot-future-arbitrage` - `scene=filter` 时只允许按 `market`、`backtest_apr_gte`、`max_drawdown_lte` 过滤 - `scene=refresh` 通过 `refresh_recommendation_id` 承接刷新上下文；正式最小格式只要求 `strategy_type|market` - 若上游直接透传上一条推荐的 `recommendation_id`，其中第三段 `backtest_id` 当前会被忽略
 
@@ -37,19 +37,19 @@ Optional parameters are passed through a pointer to a GetAIHubStrategyRecommendO
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**market** | **optional.String**| 交易对，例如 &#x60;BTC_USDT&#x60; | 
-**strategyType** | **optional.String**| 推荐目标策略类型；&#x60;contract_martingale&#x60; 不允许 | 
-**direction** | **optional.String**| 行情方向 | 
-**investAmount** | **optional.String**| 投入金额，字符串透传 | 
-**scene** | **optional.String**| 推荐场景；为空时 bot-service 可按实现逻辑自动推断 | 
-**refreshRecommendationId** | **optional.String**| 推荐刷新上下文。&#x60;scene&#x3D;refresh&#x60; 时使用；当 &#x60;scene&#x60; 为空但该字段存在时，bot-service 也会自动判定为 &#x60;refresh&#x60;。 正式最小格式为 &#x60;strategy_type|market&#x60;；若直接透传上一条推荐的 &#x60;recommendation_id&#x60;，第三段 &#x60;backtest_id&#x60; 会被忽略。 | 
-**limit** | **optional.Int32**| 返回数量；&#x60;scene&#x3D;filter&#x60; 时实际结果最多 10 条 | 
-**maxDrawdownLte** | **optional.String**| 最大回撤上限 | 
-**backtestAprGte** | **optional.String**| 回测年化下限 | 
-**xGateServiceId** | **optional.String**| 调用来源标识；如有需要由 APIv4 注入 | 
-**xGateAppLang** | **optional.String**| 语言上下文，例如 &#x60;zh-CN&#x60; / &#x60;en-US&#x60; | 
-**xRequestId** | **optional.String**| 请求链路 ID；调用方可透传 | 
-**xTraceId** | **optional.String**| trace header；可由 APIv4 统一生成 | 
+**market** | **optional.String**| Trading pair, such as &#x60;BTC_USDT&#x60; | 
+**strategyType** | **optional.String**| Recommended target policy type; &#x60;contract_martingale&#x60; not allowed | 
+**direction** | **optional.String**| Market direction | 
+**investAmount** | **optional.String**| Investment amount, string transparent transmission | 
+**scene** | **optional.String**| Recommended scenario; when empty, bot-service can automatically infer according to the implementation logic. | 
+**refreshRecommendationId** | **optional.String**| It is recommended to refresh the context. Used when &#x60;scene&#x3D;refresh&#x60; is used; when &#x60;scene&#x60; is empty but the field exists, bot-service will also automatically determine as &#x60;refresh&#x60;. The official minimum format is &#x60;strategy_type|market&#x60;; if the &#x60;recommendation_id&#x60; of the previous recommendation is directly passed through, the third paragraph &#x60;backtest_id&#x60; will be ignored. | 
+**limit** | **optional.Int32**| Return quantity; when &#x60;scene&#x3D;filter&#x60; is used, the actual results are up to 10 | 
+**maxDrawdownLte** | **optional.String**| Maximum drawdown limit | 
+**backtestAprGte** | **optional.String**| Backtest annualized lower limit | 
+**xGateServiceId** | **optional.String**| Call source identifier; injected by APIv4 if necessary | 
+**xGateAppLang** | **optional.String**| Language context, such as &#x60;zh-CN&#x60; / &#x60;en-US&#x60; | 
+**xRequestId** | **optional.String**| Request link ID; caller can transmit transparently | 
+**xTraceId** | **optional.String**| trace header; can be generated uniformly by APIv4 | 
 
 ### Example
 
@@ -110,9 +110,9 @@ func main() {
 
 > AiHubCreateSuccessResponse PostAIHubSpotGridCreate(ctx, spotGridCreateRequest, optional)
 
-创建现货网格
+Create spot grid
 
-根据传入参数创建现货网格策略。
+Create a spot grid strategy based on the incoming parameters.
 
 ### Required Parameters
 
@@ -128,10 +128,10 @@ Optional parameters are passed through a pointer to a PostAIHubSpotGridCreateOpt
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**xGateServiceId** | **optional.String**| 调用来源标识；如有需要由 APIv4 注入 | 
-**xGateAppLang** | **optional.String**| 语言上下文，例如 &#x60;zh-CN&#x60; / &#x60;en-US&#x60; | 
-**xRequestId** | **optional.String**| 请求链路 ID；调用方可透传 | 
-**xTraceId** | **optional.String**| trace header；可由 APIv4 统一生成 | 
+**xGateServiceId** | **optional.String**| Call source identifier; injected by APIv4 if necessary | 
+**xGateAppLang** | **optional.String**| Language context, such as &#x60;zh-CN&#x60; / &#x60;en-US&#x60; | 
+**xRequestId** | **optional.String**| Request link ID; caller can transmit transparently | 
+**xTraceId** | **optional.String**| trace header; can be generated uniformly by APIv4 | 
 
 ### Example
 
@@ -193,9 +193,9 @@ func main() {
 
 > AiHubCreateSuccessResponse PostAIHubMarginGridCreate(ctx, marginGridCreateRequest, optional)
 
-创建杠杆网格
+Create a lever grid
 
-根据传入参数创建杠杆网格策略。
+Create a leverage grid strategy based on the passed parameters.
 
 ### Required Parameters
 
@@ -211,10 +211,10 @@ Optional parameters are passed through a pointer to a PostAIHubMarginGridCreateO
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**xGateServiceId** | **optional.String**| 调用来源标识；如有需要由 APIv4 注入 | 
-**xGateAppLang** | **optional.String**| 语言上下文，例如 &#x60;zh-CN&#x60; / &#x60;en-US&#x60; | 
-**xRequestId** | **optional.String**| 请求链路 ID；调用方可透传 | 
-**xTraceId** | **optional.String**| trace header；可由 APIv4 统一生成 | 
+**xGateServiceId** | **optional.String**| Call source identifier; injected by APIv4 if necessary | 
+**xGateAppLang** | **optional.String**| Language context, such as &#x60;zh-CN&#x60; / &#x60;en-US&#x60; | 
+**xRequestId** | **optional.String**| Request link ID; caller can transmit transparently | 
+**xTraceId** | **optional.String**| trace header; can be generated uniformly by APIv4 | 
 
 ### Example
 
@@ -276,9 +276,9 @@ func main() {
 
 > AiHubCreateSuccessResponse PostAIHubInfiniteGridCreate(ctx, infiniteGridCreateRequest, optional)
 
-创建无限网格
+Create infinite grid
 
-根据传入参数创建无限网格策略。
+Create an infinite grid strategy based on passed parameters.
 
 ### Required Parameters
 
@@ -294,10 +294,10 @@ Optional parameters are passed through a pointer to a PostAIHubInfiniteGridCreat
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**xGateServiceId** | **optional.String**| 调用来源标识；如有需要由 APIv4 注入 | 
-**xGateAppLang** | **optional.String**| 语言上下文，例如 &#x60;zh-CN&#x60; / &#x60;en-US&#x60; | 
-**xRequestId** | **optional.String**| 请求链路 ID；调用方可透传 | 
-**xTraceId** | **optional.String**| trace header；可由 APIv4 统一生成 | 
+**xGateServiceId** | **optional.String**| Call source identifier; injected by APIv4 if necessary | 
+**xGateAppLang** | **optional.String**| Language context, such as &#x60;zh-CN&#x60; / &#x60;en-US&#x60; | 
+**xRequestId** | **optional.String**| Request link ID; caller can transmit transparently | 
+**xTraceId** | **optional.String**| trace header; can be generated uniformly by APIv4 | 
 
 ### Example
 
@@ -359,9 +359,9 @@ func main() {
 
 > AiHubCreateSuccessResponse PostAIHubFuturesGridCreate(ctx, futuresGridCreateRequest, optional)
 
-创建合约网格
+Create a contract grid
 
-根据传入参数创建合约网格策略。
+Create a contract grid strategy based on the incoming parameters.
 
 ### Required Parameters
 
@@ -377,10 +377,10 @@ Optional parameters are passed through a pointer to a PostAIHubFuturesGridCreate
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**xGateServiceId** | **optional.String**| 调用来源标识；如有需要由 APIv4 注入 | 
-**xGateAppLang** | **optional.String**| 语言上下文，例如 &#x60;zh-CN&#x60; / &#x60;en-US&#x60; | 
-**xRequestId** | **optional.String**| 请求链路 ID；调用方可透传 | 
-**xTraceId** | **optional.String**| trace header；可由 APIv4 统一生成 | 
+**xGateServiceId** | **optional.String**| Call source identifier; injected by APIv4 if necessary | 
+**xGateAppLang** | **optional.String**| Language context, such as &#x60;zh-CN&#x60; / &#x60;en-US&#x60; | 
+**xRequestId** | **optional.String**| Request link ID; caller can transmit transparently | 
+**xTraceId** | **optional.String**| trace header; can be generated uniformly by APIv4 | 
 
 ### Example
 
@@ -442,9 +442,9 @@ func main() {
 
 > AiHubCreateSuccessResponse PostAIHubSpotMartingaleCreate(ctx, spotMartingaleCreateRequest, optional)
 
-创建现货马丁
+Create Spot Martin
 
-根据传入参数创建现货马丁策略。
+Create a spot Martin strategy based on the passed parameters.
 
 ### Required Parameters
 
@@ -460,10 +460,10 @@ Optional parameters are passed through a pointer to a PostAIHubSpotMartingaleCre
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**xGateServiceId** | **optional.String**| 调用来源标识；如有需要由 APIv4 注入 | 
-**xGateAppLang** | **optional.String**| 语言上下文，例如 &#x60;zh-CN&#x60; / &#x60;en-US&#x60; | 
-**xRequestId** | **optional.String**| 请求链路 ID；调用方可透传 | 
-**xTraceId** | **optional.String**| trace header；可由 APIv4 统一生成 | 
+**xGateServiceId** | **optional.String**| Call source identifier; injected by APIv4 if necessary | 
+**xGateAppLang** | **optional.String**| Language context, such as &#x60;zh-CN&#x60; / &#x60;en-US&#x60; | 
+**xRequestId** | **optional.String**| Request link ID; caller can transmit transparently | 
+**xTraceId** | **optional.String**| trace header; can be generated uniformly by APIv4 | 
 
 ### Example
 
@@ -525,9 +525,9 @@ func main() {
 
 > AiHubCreateSuccessResponse PostAIHubContractMartingaleCreate(ctx, contractMartingaleCreateRequest, optional)
 
-创建合约马丁
+Create contract martin
 
-根据传入参数创建合约马丁策略。
+Create a contract Martin strategy based on the input parameters.
 
 ### Required Parameters
 
@@ -543,10 +543,10 @@ Optional parameters are passed through a pointer to a PostAIHubContractMartingal
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**xGateServiceId** | **optional.String**| 调用来源标识；如有需要由 APIv4 注入 | 
-**xGateAppLang** | **optional.String**| 语言上下文，例如 &#x60;zh-CN&#x60; / &#x60;en-US&#x60; | 
-**xRequestId** | **optional.String**| 请求链路 ID；调用方可透传 | 
-**xTraceId** | **optional.String**| trace header；可由 APIv4 统一生成 | 
+**xGateServiceId** | **optional.String**| Call source identifier; injected by APIv4 if necessary | 
+**xGateAppLang** | **optional.String**| Language context, such as &#x60;zh-CN&#x60; / &#x60;en-US&#x60; | 
+**xRequestId** | **optional.String**| Request link ID; caller can transmit transparently | 
+**xTraceId** | **optional.String**| trace header; can be generated uniformly by APIv4 | 
 
 ### Example
 
@@ -608,9 +608,9 @@ func main() {
 
 > AiHubPortfolioRunningSuccessResponse GetAIHubPortfolioRunning(ctx, optional)
 
-查询运行中策略列表
+Query the list of running policies
 
-查询当前用户运行中的 AIHub 策略列表，支持按策略类型、交易对和分页条件过滤。
+Query the list of AIHub strategies currently running by the user, and support filtering by strategy type, trading pair and paging conditions.
 
 ### Required Parameters
 
@@ -625,14 +625,14 @@ Optional parameters are passed through a pointer to a GetAIHubPortfolioRunningOp
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**strategyType** | **optional.String**| 按策略类型过滤 | 
-**market** | **optional.String**| 按交易对过滤 | 
-**page** | **optional.Int32**| 页码，默认 1 | [default to 1]
-**pageSize** | **optional.Int32**| 分页大小，默认 20，最大 50 | [default to 20]
-**xGateServiceId** | **optional.String**| 调用来源标识；如有需要由 APIv4 注入 | 
-**xGateAppLang** | **optional.String**| 语言上下文，例如 &#x60;zh-CN&#x60; / &#x60;en-US&#x60; | 
-**xRequestId** | **optional.String**| 请求链路 ID；调用方可透传 | 
-**xTraceId** | **optional.String**| trace header；可由 APIv4 统一生成 | 
+**strategyType** | **optional.String**| Filter by policy type | 
+**market** | **optional.String**| Filter by trading pair | 
+**page** | **optional.Int32**| Page number, default 1 | [default to 1]
+**pageSize** | **optional.Int32**| Paging size, default 20, maximum 50 | [default to 20]
+**xGateServiceId** | **optional.String**| Call source identifier; injected by APIv4 if necessary | 
+**xGateAppLang** | **optional.String**| Language context, such as &#x60;zh-CN&#x60; / &#x60;en-US&#x60; | 
+**xRequestId** | **optional.String**| Request link ID; caller can transmit transparently | 
+**xTraceId** | **optional.String**| trace header; can be generated uniformly by APIv4 | 
 
 ### Example
 
@@ -693,17 +693,17 @@ func main() {
 
 > AiHubPortfolioDetailSuccessResponse GetAIHubPortfolioDetail(ctx, strategyId, strategyType, optional)
 
-查询单策略详情
+Query order policy details
 
-请求中必须同时传 `strategy_id` 与 `strategy_type`，其中 `strategy_type` 用于按策略类型分发到底层详情实现。
+Both `strategy_id` and `strategy_type` must be passed in the request, where `strategy_type` is used to distribute to the underlying detailed implementation by strategy type.
 
 ### Required Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**strategyId** | **string**| 策略 ID | 
-**strategyType** | **string**| 策略类型；用于底层详情分发 | 
+**strategyId** | **string**| Policy ID | 
+**strategyType** | **string**| Policy type; used for underlying detail distribution | 
 **optional** | **GetAIHubPortfolioDetailOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
@@ -712,10 +712,10 @@ Optional parameters are passed through a pointer to a GetAIHubPortfolioDetailOpt
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**xGateServiceId** | **optional.String**| 调用来源标识；如有需要由 APIv4 注入 | 
-**xGateAppLang** | **optional.String**| 语言上下文，例如 &#x60;zh-CN&#x60; / &#x60;en-US&#x60; | 
-**xRequestId** | **optional.String**| 请求链路 ID；调用方可透传 | 
-**xTraceId** | **optional.String**| trace header；可由 APIv4 统一生成 | 
+**xGateServiceId** | **optional.String**| Call source identifier; injected by APIv4 if necessary | 
+**xGateAppLang** | **optional.String**| Language context, such as &#x60;zh-CN&#x60; / &#x60;en-US&#x60; | 
+**xRequestId** | **optional.String**| Request link ID; caller can transmit transparently | 
+**xTraceId** | **optional.String**| trace header; can be generated uniformly by APIv4 | 
 
 ### Example
 
@@ -740,8 +740,8 @@ func main() {
                                  Secret: "YOUR_API_SECRET",
                              }
                             )
-    strategyId := "strategyId_example" // string - 策略 ID
-    strategyType := "strategyType_example" // string - 策略类型；用于底层详情分发
+    strategyId := "strategyId_example" // string - Policy ID
+    strategyType := "strategyType_example" // string - Policy type; used for underlying detail distribution
     
     result, _, err := client.BotApi.GetAIHubPortfolioDetail(ctx, strategyId, strategyType, nil)
     if err != nil {
@@ -778,9 +778,9 @@ func main() {
 
 > AiHubPortfolioStopSuccessResponse PostAIHubPortfolioStop(ctx, aiHubPortfolioStopRequest, optional)
 
-终止单个运行中策略
+Terminate a single running policy
 
-单次请求只允许终止一个策略。 风险提示与二次确认由 OpenClaw 上层承担；本接口只负责执行 stop。
+Only one policy is allowed to be terminated per request. Risk warning and secondary confirmation are borne by the upper layer of OpenClaw; this interface is only responsible for executing stop.
 
 ### Required Parameters
 
@@ -796,10 +796,10 @@ Optional parameters are passed through a pointer to a PostAIHubPortfolioStopOpts
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**xGateServiceId** | **optional.String**| 调用来源标识；如有需要由 APIv4 注入 | 
-**xGateAppLang** | **optional.String**| 语言上下文，例如 &#x60;zh-CN&#x60; / &#x60;en-US&#x60; | 
-**xRequestId** | **optional.String**| 请求链路 ID；调用方可透传 | 
-**xTraceId** | **optional.String**| trace header；可由 APIv4 统一生成 | 
+**xGateServiceId** | **optional.String**| Call source identifier; injected by APIv4 if necessary | 
+**xGateAppLang** | **optional.String**| Language context, such as &#x60;zh-CN&#x60; / &#x60;en-US&#x60; | 
+**xRequestId** | **optional.String**| Request link ID; caller can transmit transparently | 
+**xTraceId** | **optional.String**| trace header; can be generated uniformly by APIv4 | 
 
 ### Example
 

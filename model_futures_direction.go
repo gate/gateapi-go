@@ -9,7 +9,7 @@
 
 package gateapi
 
-// FuturesDirection 合约类策略支持的方向枚举。
+// FuturesDirection Direction enumeration supported by contract-based strategies.
 type FuturesDirection string
 
 // List of FuturesDirection

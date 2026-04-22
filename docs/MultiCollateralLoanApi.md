@@ -795,7 +795,7 @@ Query the current interest rate of the currency in the previous hour, the curren
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**currencies** | [**[]string**](string.md)| Specify currency name query array, separated by commas, maximum 100 items | 
+**currencies** | [**[]string**](string.md)| Specify currency name query array, separated by commas, maximum 100 | 
 **optional** | **GetMultiCollateralCurrentRateOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
@@ -823,7 +823,7 @@ func main() {
     // uncomment the next line if your are testing against testnet
     // client.ChangeBasePath("https://fx-api-testnet.gateio.ws/api/v4")
     ctx := context.Background()
-    currencies := []string{"[\"BTC\",\"GT\"]"} // []string - Specify currency name query array, separated by commas, maximum 100 items
+    currencies := []string{"[\"BTC\",\"GT\"]"} // []string - Specify currency name query array, separated by commas, maximum 100
     
     result, _, err := client.MultiCollateralLoanApi.GetMultiCollateralCurrentRate(ctx, currencies, nil)
     if err != nil {

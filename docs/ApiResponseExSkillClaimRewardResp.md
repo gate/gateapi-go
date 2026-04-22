@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Code** | **int32** | 业务错误码，0 表示成功 | [optional] 
+**Code** | **int32** | Business error code, 0 means success | [optional] 
 **Label** | **string** | Error identifier code. Empty string on success, machine-readable error label on error | [optional] 
 **Message** | **string** | Error description | [optional] 
 **Data** | [**ApiResponseExSkillClaimRewardRespData**](ApiResponse_ExSkillClaimRewardResp_data.md) |  | [optional] 

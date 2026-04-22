@@ -9,9 +9,9 @@
 
 package gateapi
 
-// 领取任务奖励响应
+// Receive mission reward response
 type ApiResponseExSkillClaimRewardResp struct {
-	// 业务错误码，0 表示成功
+	// Business error code, 0 means success
 	Code int32 `json:"code,omitempty"`
 	// Error identifier code. Empty string on success, machine-readable error label on error
 	Label string `json:"label,omitempty"`

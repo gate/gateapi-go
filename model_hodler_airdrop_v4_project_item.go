@@ -9,26 +9,26 @@
 
 package gateapi
 
-// HODLer Airdrop活动列表项
+// HODLer Airdrop activity list item
 type HodlerAirdropV4ProjectItem struct {
 	// Product ID
 	HodlerId string `json:"hodler_id"`
 	// Product Name
 	Name string `json:"name"`
-	// 空投币种
+	// Airdrop currency
 	Asset string `json:"asset"`
-	// 项目状态
+	// Project status
 	Status string `json:"status"`
-	// 空投总量
+	// Total airdrop amount
 	TotalAmount string `json:"total_amount"`
-	// 活动开始时间，格式 Y-m-d H:i:s，UTC
+	// Event start time, format Y-m-d H:i:s, UTC
 	OpenTimest string `json:"open_timest"`
-	// 活动结束时间，格式 Y-m-d H:i:s，UTC
+	// Event end time, format Y-m-d H:i:s, UTC
 	CloseTimest string `json:"close_timest"`
-	// 每枚GT可获得的空投币数量，计算中时返回空字符串
+	// The number of airdrop coins that can be obtained for each GT. When the calculation is in progress, an empty string is returned.
 	PerGtRewardToken string `json:"per_gt_reward_token,omitempty"`
-	// 参与人数
+	// Number of participants
 	UserCount string `json:"user_count,omitempty"`
-	// 个人参与GT上限
+	// Personal GT limit
 	MaxQueueAmount string `json:"max_queue_amount,omitempty"`
 }

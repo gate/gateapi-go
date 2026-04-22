@@ -9,12 +9,12 @@
 
 package gateapi
 
-// 创建策略成功后返回的策略信息。
+// Policy information returned after the policy is successfully created.
 type AiHubCreateData struct {
 	StrategyId   string       `json:"strategy_id"`
 	StrategyType StrategyType `json:"strategy_type"`
 	Market       string       `json:"market"`
-	// 创建成功后的初始状态，通常为 `running`
+	// The initial state after successful creation, usually `running`
 	Status  string `json:"status"`
 	JumpUrl string `json:"jump_url,omitempty"`
 }

@@ -10,8 +10,8 @@
 package gateapi
 
 type CandyDropV4RegisterReqCd02 struct {
-	// 活动ID（可选，与 currency 配合使用）
+	// Activity ID (optional, used with currency)
 	ActivityId int64 `json:"activity_id,omitempty"`
-	// 项目/币种名称（必填）
+	// Project/currency name (required)
 	Currency string `json:"currency"`
 }

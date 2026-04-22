@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**PrizePoolType** | **int32** | 奖池类型 | [optional] 
-**PrizeAll** | **string** | 奖池总额度 | [optional] 
-**PrizeLimit** | **string** | 每人瓜分上限 | [optional] 
-**Tasks** | [**[]CandyDropV4TaskCd03**](CandyDropV4Task_cd03.md) | 任务列表 | [optional] 
+**PrizePoolType** | **int32** | Prize pool type | [optional] 
+**PrizeAll** | **string** | Total prize pool amount | [optional] 
+**PrizeLimit** | **string** | Maximum share per person | [optional] 
+**Tasks** | [**[]CandyDropV4TaskCd03**](CandyDropV4Task_cd03.md) | task list | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

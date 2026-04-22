@@ -9,17 +9,17 @@
 
 package gateapi
 
-// 策略详情数据。
+// Policy details data.
 type AiHubPortfolioDetailData struct {
 	StrategyId   string       `json:"strategy_id"`
 	StrategyType StrategyType `json:"strategy_type"`
 	Market       string       `json:"market"`
 	Status       string       `json:"status"`
-	// 基础信息，字段按策略类型动态变化
+	// Basic information, fields change dynamically according to strategy type
 	BaseInfo map[string]string `json:"base_info"`
-	// 指标信息，字段按策略类型动态变化
+	// Indicator information, fields change dynamically according to strategy type
 	Metrics map[string]string `json:"metrics"`
-	// 仓位或持仓信息，字段按策略类型动态变化
+	// Position or position information, fields dynamically change according to strategy type
 	Position      *map[string]string `json:"position,omitempty"`
 	StopSupported bool               `json:"stop_supported"`
 }

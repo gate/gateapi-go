@@ -9,7 +9,7 @@
 
 package gateapi
 
-// StrategyType AIHub 支持的完整策略类型枚举。
+// StrategyType The complete enumeration of policy types supported by AIHub.
 type StrategyType string
 
 // List of StrategyType

@@ -9,7 +9,7 @@
 
 package gateapi
 
-// 单条策略推荐信息。
+// A single piece of strategy recommendation information.
 type AiHubRecommendation struct {
 	RecommendationId string       `json:"recommendation_id"`
 	Market           string       `json:"market"`
@@ -18,6 +18,6 @@ type AiHubRecommendation struct {
 	BacktestApr      string       `json:"backtest_apr,omitempty"`
 	MaxDrawdown      string       `json:"max_drawdown,omitempty"`
 	Summary          string       `json:"summary"`
-	// 推荐参数预览；按策略类型动态变化
+	// Recommended parameter preview; dynamic changes by strategy type
 	StrategyParamsPreview map[string]string `json:"strategy_params_preview,omitempty"`
 }

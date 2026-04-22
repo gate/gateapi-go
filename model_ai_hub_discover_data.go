@@ -9,10 +9,10 @@
 
 package gateapi
 
-// 策略推荐结果数据。
+// Strategy recommendation result data.
 type AiHubDiscoverData struct {
 	Scene           DiscoverScene         `json:"scene"`
 	Recommendations []AiHubRecommendation `json:"recommendations"`
-	// 本期不支持的筛选条件
+	// Filter conditions not supported in this issue
 	UnsupportedFilters []string `json:"unsupported_filters"`
 }

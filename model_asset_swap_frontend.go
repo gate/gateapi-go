@@ -14,12 +14,12 @@ type AssetSwapFrontend struct {
 	BannerReappearIntervalHours int32                     `json:"banner_reappear_interval_hours"`
 	ConvertCurrencies           []string                  `json:"convert_currencies"`
 	ConvertCurrenciesV2         []ConvertCurrenciesV2Item `json:"convert_currencies_v2"`
-	// 字符串键到字符串值的映射，对应 Go 的 map[string]string。
+	// Mapping of string keys to string values, corresponding to Go's map[string]string.
 	Default             map[string]string `json:"default"`
 	MaxSelectCurrencies int32             `json:"max_select_currencies"`
 	MinEvaluateValue    string            `json:"min_evaluate_value"`
 	Recommend           Recommend         `json:"recommend"`
-	// 策略分组键到 RecommendV2Strategy 列表的映射。
+	// Mapping of strategy grouping keys to RecommendV2Strategy lists.
 	RecommendV2 map[string][]RecommendV2Strategy `json:"recommend_v2"`
 	TitleTips   string                           `json:"title_tips"`
 }

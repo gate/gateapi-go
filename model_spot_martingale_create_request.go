@@ -9,7 +9,7 @@
 
 package gateapi
 
-// 创建现货马丁策略的请求体。
+// Create the request body of the Spot Martin strategy.
 type SpotMartingaleCreateRequest struct {
 	StrategyType string                     `json:"strategy_type"`
 	Market       string                     `json:"market"`

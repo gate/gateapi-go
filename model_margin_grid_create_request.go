@@ -9,7 +9,7 @@
 
 package gateapi
 
-// 创建杠杆网格策略的请求体。
+// Create the request body for the Leverage Grid strategy.
 type MarginGridCreateRequest struct {
 	StrategyType string                 `json:"strategy_type"`
 	Market       string                 `json:"market"`

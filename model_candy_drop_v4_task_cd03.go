@@ -10,10 +10,10 @@
 package gateapi
 
 type CandyDropV4TaskCd03 struct {
-	// 任务主标题
+	// Task main title
 	TaskName string `json:"task_name,omitempty"`
-	// 任务副标题，无则返回 -
+	// Task subtitle, if none is returned -
 	TaskDesc string `json:"task_desc,omitempty"`
-	// 专属任务标签文案，未配置则返回 -
+	// Exclusive task label copywriting, if not configured, it will return -
 	ExclusiveLabel string `json:"exclusive_label,omitempty"`
 }

@@ -9,12 +9,12 @@
 
 package gateapi
 
-// 无限网格策略的创建参数。
+// Creation parameters for infinite grid strategies.
 type InfiniteGridCreateParams struct {
 	Money string `json:"money"`
-	// 价格地板
+	// price floor
 	PriceFloor string `json:"price_floor"`
-	// 每格利润
+	// Profit per square
 	ProfitPerGrid      string `json:"profit_per_grid"`
 	GridNum            int32  `json:"grid_num"`
 	PriceType          int32  `json:"price_type"`

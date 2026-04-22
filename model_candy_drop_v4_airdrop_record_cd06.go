@@ -12,10 +12,10 @@ package gateapi
 type CandyDropV4AirdropRecordCd06 struct {
 	// Product Name
 	Currency string `json:"currency,omitempty"`
-	// 空投时间（UTC格式化）
+	// Airdrop time (UTC format)
 	AirdropTime string `json:"airdrop_time,omitempty"`
-	// 空投奖励
+	// Airdrop rewards
 	Rewards string `json:"rewards,omitempty"`
-	// 自动兑换金额
+	// Automatic exchange amount
 	ConvertAmount string `json:"convert_amount,omitempty"`
 }

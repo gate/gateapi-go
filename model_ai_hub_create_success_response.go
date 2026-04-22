@@ -9,7 +9,7 @@
 
 package gateapi
 
-// 创建策略成功时的响应体。
+// The response body when the creation strategy is successful.
 type AiHubCreateSuccessResponse struct {
 	Code    int32           `json:"code"`
 	Message string          `json:"message"`

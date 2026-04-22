@@ -9,7 +9,7 @@
 
 package gateapi
 
-// 创建合约马丁策略的请求体。
+// Create the request body of the contract Martin strategy.
 type ContractMartingaleCreateRequest struct {
 	StrategyType string                         `json:"strategy_type"`
 	Market       string                         `json:"market"`

@@ -9,7 +9,7 @@
 
 package gateapi
 
-// DiscoverScene 策略推荐接口支持的场景枚举。
+// DiscoverScene Enumeration of scenarios supported by the policy recommendation interface.
 type DiscoverScene string
 
 // List of DiscoverScene

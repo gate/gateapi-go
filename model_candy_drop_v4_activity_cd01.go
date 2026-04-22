@@ -12,18 +12,18 @@ package gateapi
 type CandyDropV4ActivityCd01 struct {
 	// Activity ID
 	Id int64 `json:"id,omitempty"`
-	// 项目/币种名称
+	// Project/currency name
 	Currency string `json:"currency,omitempty"`
-	// 总奖池
+	// total prize pool
 	TotalRewards string `json:"total_rewards,omitempty"`
-	// 活动开始时间（UTC格式化）
+	// Event start time (UTC formatted)
 	StartTime string `json:"start_time,omitempty"`
-	// 活动结束时间（UTC格式化）
+	// Event end time (UTC format)
 	EndTime string `json:"end_time,omitempty"`
-	// 任务类型列表
+	// Task type list
 	RuleName []string `json:"rule_name,omitempty"`
-	// 参与人数
+	// Number of participants
 	Participants int64 `json:"participants,omitempty"`
-	// 最高可得奖励
+	// Maximum reward available
 	UserMaxRewards string `json:"user_max_rewards,omitempty"`
 }

@@ -5,13 +5,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **int64** | Activity ID | [optional] 
-**Currency** | **string** | 项目/币种名称 | [optional] 
-**TotalRewards** | **string** | 总奖池 | [optional] 
-**StartTime** | **string** | 活动开始时间（UTC格式化） | [optional] 
-**EndTime** | **string** | 活动结束时间（UTC格式化） | [optional] 
-**RuleName** | **[]string** | 任务类型列表 | [optional] 
-**Participants** | **int64** | 参与人数 | [optional] 
-**UserMaxRewards** | **string** | 最高可得奖励 | [optional] 
+**Currency** | **string** | Project/currency name | [optional] 
+**TotalRewards** | **string** | total prize pool | [optional] 
+**StartTime** | **string** | Event start time (UTC formatted) | [optional] 
+**EndTime** | **string** | Event end time (UTC format) | [optional] 
+**RuleName** | **[]string** | Task type list | [optional] 
+**Participants** | **int64** | Number of participants | [optional] 
+**UserMaxRewards** | **string** | Maximum reward available | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

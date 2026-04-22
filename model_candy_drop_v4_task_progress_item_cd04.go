@@ -10,10 +10,10 @@
 package gateapi
 
 type CandyDropV4TaskProgressItemCd04 struct {
-	// 任务主标题
+	// Task main title
 	TaskName string `json:"task_name,omitempty"`
-	// 任务副标题
+	// Task subtitle
 	TaskDesc string `json:"task_desc,omitempty"`
-	// 任务进度数据（交易量/充值量等）
+	// Task progress data (transaction volume/recharge volume, etc.)
 	Value string `json:"value,omitempty"`
 }

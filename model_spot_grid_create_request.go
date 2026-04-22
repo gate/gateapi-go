@@ -9,7 +9,7 @@
 
 package gateapi
 
-// 创建现货网格策略的请求体。
+// Create the request body for the spot grid policy.
 type SpotGridCreateRequest struct {
 	StrategyType string               `json:"strategy_type"`
 	Market       string               `json:"market"`

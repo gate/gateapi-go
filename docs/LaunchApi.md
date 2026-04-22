@@ -9,16 +9,16 @@ Method | HTTP request | Description
 [**RedeemLaunchPool**](LaunchApi.md#RedeemLaunchPool) | **Post** /launch/redeem | Redeem LaunchPool staked assets
 [**ListLaunchPoolPledgeRecords**](LaunchApi.md#ListLaunchPoolPledgeRecords) | **Get** /launch/user-pledge-records | Query user pledge records
 [**ListLaunchPoolRewardRecords**](LaunchApi.md#ListLaunchPoolRewardRecords) | **Get** /launch/get-user-reward-records | Query user reward records
-[**GetHodlerAirdropProjectList**](LaunchApi.md#GetHodlerAirdropProjectList) | **Get** /launch/hodler-airdrop/project-list | 查询HODLer Airdrop活动列表
-[**HodlerAirdropOrder**](LaunchApi.md#HodlerAirdropOrder) | **Post** /launch/hodler-airdrop/order | 参与HODLer Airdrop活动
-[**GetHodlerAirdropUserOrderRecords**](LaunchApi.md#GetHodlerAirdropUserOrderRecords) | **Get** /launch/hodler-airdrop/user-order-records | 查询HODLer Airdrop参与记录
-[**GetHodlerAirdropUserAirdropRecords**](LaunchApi.md#GetHodlerAirdropUserAirdropRecords) | **Get** /launch/hodler-airdrop/user-airdrop-records | 查询HODLer Airdrop空投记录
-[**GetCandyDropActivityListV4**](LaunchApi.md#GetCandyDropActivityListV4) | **Get** /launch/candydrop/activity-list | 查询活动列表
-[**RegisterCandyDropV4**](LaunchApi.md#RegisterCandyDropV4) | **Post** /launch/candydrop/register | 报名参与活动
-[**GetCandyDropActivityRulesV4**](LaunchApi.md#GetCandyDropActivityRulesV4) | **Get** /launch/candydrop/activity-rules | 查询活动规则
-[**GetCandyDropTaskProgressV4**](LaunchApi.md#GetCandyDropTaskProgressV4) | **Get** /launch/candydrop/task-progress | 查询任务完成进度
-[**GetCandyDropParticipationRecordsV4**](LaunchApi.md#GetCandyDropParticipationRecordsV4) | **Get** /launch/candydrop/participation-records | 查询参与记录
-[**GetCandyDropAirdropRecordsV4**](LaunchApi.md#GetCandyDropAirdropRecordsV4) | **Get** /launch/candydrop/airdrop-records | 查询空投记录
+[**GetHodlerAirdropProjectList**](LaunchApi.md#GetHodlerAirdropProjectList) | **Get** /launch/hodler-airdrop/project-list | Check the list of HODLer Airdrop activities
+[**HodlerAirdropOrder**](LaunchApi.md#HodlerAirdropOrder) | **Post** /launch/hodler-airdrop/order | Participate in the HODLer Airdrop event
+[**GetHodlerAirdropUserOrderRecords**](LaunchApi.md#GetHodlerAirdropUserOrderRecords) | **Get** /launch/hodler-airdrop/user-order-records | Check HODLer Airdrop participation records
+[**GetHodlerAirdropUserAirdropRecords**](LaunchApi.md#GetHodlerAirdropUserAirdropRecords) | **Get** /launch/hodler-airdrop/user-airdrop-records | Query HODLer Airdrop records
+[**GetCandyDropActivityListV4**](LaunchApi.md#GetCandyDropActivityListV4) | **Get** /launch/candydrop/activity-list | Query activity list
+[**RegisterCandyDropV4**](LaunchApi.md#RegisterCandyDropV4) | **Post** /launch/candydrop/register | Sign up for events
+[**GetCandyDropActivityRulesV4**](LaunchApi.md#GetCandyDropActivityRulesV4) | **Get** /launch/candydrop/activity-rules | Query activity rules
+[**GetCandyDropTaskProgressV4**](LaunchApi.md#GetCandyDropTaskProgressV4) | **Get** /launch/candydrop/task-progress | Query task completion progress
+[**GetCandyDropParticipationRecordsV4**](LaunchApi.md#GetCandyDropParticipationRecordsV4) | **Get** /launch/candydrop/participation-records | Query participation records
+[**GetCandyDropAirdropRecordsV4**](LaunchApi.md#GetCandyDropAirdropRecordsV4) | **Get** /launch/candydrop/airdrop-records | Query airdrop records
 
 
 ## ListLaunchPoolProjects
@@ -410,9 +410,9 @@ func main() {
 
 > []HodlerAirdropV4ProjectItem GetHodlerAirdropProjectList(ctx, optional)
 
-查询HODLer Airdrop活动列表
+Check the list of HODLer Airdrop activities
 
-获取HODLer Airdrop活动列表，支持按状态、币种/项目名称、参与情况筛选。此接口无需用户登录，登录用户可获取个人参与信息。
+Get the HODLer Airdrop activity list, which supports filtering by status, currency/project name, and participation status. This interface does not require user login, and logged in users can obtain personal participation information.
 
 ### Required Parameters
 
@@ -427,11 +427,11 @@ Optional parameters are passed through a pointer to a GetHodlerAirdropProjectLis
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**status** | **optional.String**| 活动状态筛选，可选值：ACTIVE（进行中+预热中）、UNDERWAY（进行中）、PREHEAT（预热中）、FINISH（已结束），不传返回全部 | 
-**keyword** | **optional.String**| 币种/项目名称关键词，模糊匹配 | 
-**join** | **optional.Int32**| 参与情况筛选：0全部（默认），1仅已参与 | [default to 0]
-**page** | **optional.Int32**| 页码，默认1 | [default to 1]
-**size** | **optional.Int32**| 每页条数，默认10 | [default to 10]
+**status** | **optional.String**| Activity status filtering, optional values: ACTIVE (in progress + preheating), UNDERWAY (in progress), PREHEAT (preheating), FINISH (ended), return all if not passed | 
+**keyword** | **optional.String**| Currency/project name keywords, fuzzy matching | 
+**join** | **optional.Int32**| Participation filter: 0 all (default), 1 only participated | [default to 0]
+**page** | **optional.Int32**| Page number, default 1 | [default to 1]
+**size** | **optional.Int32**| Number of items per page, default 10 | [default to 10]
 
 ### Example
 
@@ -486,9 +486,9 @@ No authorization required
 
 > HodlerAirdropV4OrderResponse HodlerAirdropOrder(ctx, hodlerAirdropV4OrderRequest)
 
-参与HODLer Airdrop活动
+Participate in the HODLer Airdrop event
 
-参与指定的HODLer Airdrop活动，需持有GT。此接口需要用户登录认证，且须满足KYC要求，不支持子账户、企业/机构用户。
+To participate in designated HODLer Airdrop activities, you need to hold GT. This interface requires user login authentication and must meet KYC requirements. It does not support sub-accounts and enterprise/institutional users.
 
 ### Required Parameters
 
@@ -557,9 +557,9 @@ func main() {
 
 > []HodlerAirdropV4UserOrderRecord GetHodlerAirdropUserOrderRecords(ctx, optional)
 
-查询HODLer Airdrop参与记录
+Check HODLer Airdrop participation records
 
-查询用户的HODLer Airdrop参与记录，返回每个活动的有效持仓和空投金额。此接口需要用户登录认证。
+Query the user's HODLer Airdrop participation record and return the effective holdings and airdrop amount of each activity. This interface requires user login authentication.
 
 ### Required Parameters
 
@@ -574,11 +574,11 @@ Optional parameters are passed through a pointer to a GetHodlerAirdropUserOrderR
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**keyword** | **optional.String**| 币种名称关键词筛选 | 
-**startTimest** | **optional.Int32**| 开始时间戳（秒） | 
-**endTimest** | **optional.Int32**| 结束时间戳（秒） | 
-**page** | **optional.Int32**| 页码，默认1 | [default to 1]
-**size** | **optional.Int32**| 每页条数，默认10 | [default to 10]
+**keyword** | **optional.String**| Currency name keyword filtering | 
+**startTimest** | **optional.Int32**| Start timestamp (seconds) | 
+**endTimest** | **optional.Int32**| end timestamp (seconds) | 
+**page** | **optional.Int32**| Page number, default 1 | [default to 1]
+**size** | **optional.Int32**| Number of items per page, default 10 | [default to 10]
 
 ### Example
 
@@ -639,9 +639,9 @@ func main() {
 
 > []HodlerAirdropV4UserAirdropRecord GetHodlerAirdropUserAirdropRecords(ctx, optional)
 
-查询HODLer Airdrop空投记录
+Query HODLer Airdrop records
 
-查询用户已获得的HODLer Airdrop空投发放记录，包含基础空投、额外空投和自动兑换状态。此接口需要用户登录认证。
+Query the HODLer Airdrop airdrop distribution record that the user has obtained, including basic airdrops, additional airdrops and automatic redemption status. This interface requires user login authentication.
 
 ### Required Parameters
 
@@ -656,11 +656,11 @@ Optional parameters are passed through a pointer to a GetHodlerAirdropUserAirdro
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**keyword** | **optional.String**| 币种名称关键词筛选 | 
-**startTimest** | **optional.Int32**| 开始时间戳（秒） | 
-**endTimest** | **optional.Int32**| 结束时间戳（秒） | 
-**page** | **optional.Int32**| 页码，默认1 | [default to 1]
-**size** | **optional.Int32**| 每页条数，默认10 | [default to 10]
+**keyword** | **optional.String**| Currency name keyword filtering | 
+**startTimest** | **optional.Int32**| Start timestamp (seconds) | 
+**endTimest** | **optional.Int32**| end timestamp (seconds) | 
+**page** | **optional.Int32**| Page number, default 1 | [default to 1]
+**size** | **optional.Int32**| Number of items per page, default 10 | [default to 10]
 
 ### Example
 
@@ -721,9 +721,9 @@ func main() {
 
 > []CandyDropV4ActivityCd01 GetCandyDropActivityListV4(ctx, optional)
 
-查询活动列表
+Query activity list
 
-支持多维度筛选 CandyDrop 活动，每次查询返回列表排序的前十条数据。不需要登录。
+Supports multi-dimensional filtering of CandyDrop activities, and each query returns the top ten data sorted by the list. No login required.
 
 ### Required Parameters
 
@@ -738,12 +738,12 @@ Optional parameters are passed through a pointer to a GetCandyDropActivityListV4
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**status** | **optional.String**| 活动状态筛选：ongoing(进行中)、upcoming(即将开始)、ended(已结束)，不传则返回全部 | 
-**ruleName** | **optional.String**| 任务类型筛选：spot(现货)、futures(合约)、deposit(充值)、invite(邀请)、trading_bot(交易机器人)、simple_earn(余币宝)、first_deposit(首笔入金)、alpha(Alpha)、flash_swap(闪兑)、tradfi(TradFi)、etf(ETF) | 
-**registerStatus** | **optional.String**| 参与情况筛选：registered(已参与)、unregistered(未参与)，不传则返回全部 | 
-**currency** | **optional.String**| 币种名称筛选 | 
-**limit** | **optional.Int32**| 返回条数，默认10，最大30 | [default to 10]
-**offset** | **optional.Int32**| 偏移量，默认0 | [default to 0]
+**status** | **optional.String**| Activity status filtering: ongoing (in progress), upcoming (about to start), ended (ended), if not passed, all will be returned | 
+**ruleName** | **optional.String**| Task type filtering: spot (spot), futures (contract), deposit (recharge), invite (invitation), trading_bot (trading robot), simple_earn (Yu Bibao), first_deposit (first deposit), alpha (Alpha), flash_swap (flash swap), tradfi (TradFi), etf (ETF) | 
+**registerStatus** | **optional.String**| Participation status screening: registered (already participated), unregistered (not participated), if not passed, all will be returned | 
+**currency** | **optional.String**| Currency name filter | 
+**limit** | **optional.Int32**| Number of items returned, default 10, maximum 30 | [default to 10]
+**offset** | **optional.Int32**| Offset, default 0 | [default to 0]
 
 ### Example
 
@@ -798,9 +798,9 @@ No authorization required
 
 > CandyDropV4RegisterRespCd02 RegisterCandyDropV4(ctx, candyDropV4RegisterReqCd02)
 
-报名参与活动
+Sign up for events
 
-报名参与特定 CandyDrop 活动。需要登录，需要 API Key 签名认证。
+Sign up for select CandyDrop events. Login is required and API Key signature authentication is required.
 
 ### Required Parameters
 
@@ -869,9 +869,9 @@ func main() {
 
 > CandyDropV4ActivityRulesCd03 GetCandyDropActivityRulesV4(ctx, optional)
 
-查询活动规则
+Query activity rules
 
-查询特定活动的规则，包括奖池及对应任务数据。不需要登录。
+Query the rules of a specific activity, including prize pool and corresponding task data. No login required.
 
 ### Required Parameters
 
@@ -886,8 +886,8 @@ Optional parameters are passed through a pointer to a GetCandyDropActivityRulesV
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**activityId** | **optional.Int64**| 活动ID，与 currency 二选一，至少须传其一 | 
-**currency** | **optional.String**| 项目/币种名称，与 activity_id 二选一，至少须传其一 | 
+**activityId** | **optional.Int64**| Activity ID, choose one from currency, at least one of them must be passed | 
+**currency** | **optional.String**| Project/currency name, choose one from activity_id, at least one of them must be passed | 
 
 ### Example
 
@@ -942,9 +942,9 @@ No authorization required
 
 > CandyDropV4TaskProgressCd04 GetCandyDropTaskProgressV4(ctx, optional)
 
-查询任务完成进度
+Query task completion progress
 
-查询进行中且已报名/参与的任务完成进度。需要登录。
+Check the completion progress of tasks that are in progress and have been registered/participated. Login required.
 
 ### Required Parameters
 
@@ -959,8 +959,8 @@ Optional parameters are passed through a pointer to a GetCandyDropTaskProgressV4
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**activityId** | **optional.Int64**| 活动ID，与 currency 二选一，至少须传其一 | 
-**currency** | **optional.String**| 项目/币种名称，与 activity_id 二选一，至少须传其一 | 
+**activityId** | **optional.Int64**| Activity ID, choose one from currency, at least one of them must be passed | 
+**currency** | **optional.String**| Project/currency name, choose one from activity_id, at least one of them must be passed | 
 
 ### Example
 
@@ -1021,9 +1021,9 @@ func main() {
 
 > []CandyDropV4ParticipationRecordCd05 GetCandyDropParticipationRecordsV4(ctx, optional)
 
-查询参与记录
+Query participation records
 
-查询用户的 CandyDrop 参与详情。需要登录。
+Query the user's CandyDrop participation details. Login required.
 
 ### Required Parameters
 
@@ -1038,12 +1038,12 @@ Optional parameters are passed through a pointer to a GetCandyDropParticipationR
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**currency** | **optional.String**| 币种名称筛选 | 
-**status** | **optional.String**| 状态筛选：ongoing(进行中)、awaiting_draw(待开奖)、won(已中奖)、not_win(未中奖) | 
-**startTime** | **optional.Int64**| 开始时间（Unix 时间戳秒） | 
-**endTime** | **optional.Int64**| 结束时间（Unix 时间戳秒） | 
-**page** | **optional.Int32**| 页码，默认1 | [default to 1]
-**limit** | **optional.Int32**| 每页条数，默认10，最大30 | [default to 10]
+**currency** | **optional.String**| Currency name filter | 
+**status** | **optional.String**| Status filtering: ongoing (in progress), awaiting_draw (to be drawn), won (already won), not_win (not won) | 
+**startTime** | **optional.Int64**| Start time (Unix timestamp seconds) | 
+**endTime** | **optional.Int64**| End time (Unix timestamp seconds) | 
+**page** | **optional.Int32**| Page number, default 1 | [default to 1]
+**limit** | **optional.Int32**| Number of items per page, default 10, maximum 30 | [default to 10]
 
 ### Example
 
@@ -1104,9 +1104,9 @@ func main() {
 
 > []CandyDropV4AirdropRecordCd06 GetCandyDropAirdropRecordsV4(ctx, optional)
 
-查询空投记录
+Query airdrop records
 
-查询用户的 CandyDrop 空投详情。需要登录。
+Query the user's CandyDrop airdrop details. Login required.
 
 ### Required Parameters
 
@@ -1121,11 +1121,11 @@ Optional parameters are passed through a pointer to a GetCandyDropAirdropRecords
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**currency** | **optional.String**| 币种名称筛选 | 
-**startTime** | **optional.Int64**| 开始时间（Unix 时间戳秒） | 
-**endTime** | **optional.Int64**| 结束时间（Unix 时间戳秒） | 
-**page** | **optional.Int32**| 页码，默认1 | [default to 1]
-**limit** | **optional.Int32**| 每页条数，默认10，最大30 | [default to 10]
+**currency** | **optional.String**| Currency name filter | 
+**startTime** | **optional.Int64**| Start time (Unix timestamp seconds) | 
+**endTime** | **optional.Int64**| End time (Unix timestamp seconds) | 
+**page** | **optional.Int32**| Page number, default 1 | [default to 1]
+**limit** | **optional.Int32**| Number of items per page, default 10, maximum 30 | [default to 10]
 
 ### Example
 

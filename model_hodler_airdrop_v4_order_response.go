@@ -9,8 +9,8 @@
 
 package gateapi
 
-// 参与活动响应
+// Participate in event response
 type HodlerAirdropV4OrderResponse struct {
-	// 获得空投的币种列表
+	// Get the list of airdropped currencies
 	InterestCoin []string `json:"interest_coin"`
 }

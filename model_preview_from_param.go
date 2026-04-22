@@ -9,10 +9,10 @@
 
 package gateapi
 
-// 预览请求的卖出侧单项：币种 + 数量。语义与 `CreateParam` 在 `from` 侧类似（均为 `asset` + `amount`）。
+// Preview the selling side of the request: currency + quantity. The semantics are similar to `CreateParam` on the `from` side (both `asset` + `amount`).
 type PreviewFromParam struct {
-	// 要换出的币种符号。
+	// The currency symbol to be swapped out.
 	Asset string `json:"asset"`
-	// 该币种换出数量，十进制字符串。
+	// The currency swap quantity, decimal string.
 	Amount string `json:"amount"`
 }

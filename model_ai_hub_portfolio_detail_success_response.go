@@ -9,7 +9,7 @@
 
 package gateapi
 
-// 查询策略详情成功时的响应体。
+// The response body when querying policy details is successful.
 type AiHubPortfolioDetailSuccessResponse struct {
 	Code    int32                    `json:"code"`
 	Message string                   `json:"message"`

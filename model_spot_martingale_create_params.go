@@ -9,7 +9,7 @@
 
 package gateapi
 
-// 现货马丁策略的创建参数。
+// Creation parameters of spot martin strategy.
 type SpotMartingaleCreateParams struct {
 	InvestAmount       string `json:"invest_amount"`
 	PriceDeviation     string `json:"price_deviation"`

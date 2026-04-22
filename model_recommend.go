@@ -10,12 +10,12 @@
 package gateapi
 
 type Recommend struct {
-	// 字符串键到字符串值的映射，对应 Go 的 map[string]string。
+	// Mapping of string keys to string values, corresponding to Go's map[string]string.
 	Balance map[string]string `json:"balance"`
-	// 字符串键到字符串值的映射，对应 Go 的 map[string]string。
+	// Mapping of string keys to string values, corresponding to Go's map[string]string.
 	BtcFaith map[string]string `json:"btc_faith"`
-	// 字符串键到字符串值的映射，对应 Go 的 map[string]string。
+	// Mapping of string keys to string values, corresponding to Go's map[string]string.
 	Conservative map[string]string `json:"conservative"`
-	// 字符串键到字符串值的映射，对应 Go 的 map[string]string。
+	// Mapping of string keys to string values, corresponding to Go's map[string]string.
 	GtFaith map[string]string `json:"gt_faith"`
 }

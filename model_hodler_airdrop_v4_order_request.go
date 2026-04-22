@@ -9,8 +9,8 @@
 
 package gateapi
 
-// 参与活动请求体
+// Participation activity request body
 type HodlerAirdropV4OrderRequest struct {
-	// 活动ID，必填
+	// Activity ID, required
 	HodlerId int32 `json:"hodler_id"`
 }

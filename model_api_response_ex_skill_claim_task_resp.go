@@ -9,15 +9,15 @@
 
 package gateapi
 
-// 领取任务响应
+// Receive task response
 type ApiResponseExSkillClaimTaskResp struct {
-	// 业务错误码，0 表示成功
+	// Business error code, 0 means success
 	Code int32 `json:"code,omitempty"`
 	// Error identifier code. Empty string on success, machine-readable error label on error
 	Label string `json:"label,omitempty"`
 	// Error description
 	Message string `json:"message,omitempty"`
-	// 成功时为空对象 {}
+	// Empty object {} on success
 	Data map[string]interface{} `json:"data,omitempty"`
 	// Server timestamp (milliseconds)
 	Timestamp int64 `json:"timestamp,omitempty"`

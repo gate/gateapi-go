@@ -595,15 +595,15 @@ type GetHodlerAirdropProjectListOpts struct {
 }
 
 /*
-GetHodlerAirdropProjectList 查询HODLer Airdrop活动列表
-获取HODLer Airdrop活动列表，支持按状态、币种/项目名称、参与情况筛选。此接口无需用户登录，登录用户可获取个人参与信息。
+GetHodlerAirdropProjectList Check the list of HODLer Airdrop activities
+Get the HODLer Airdrop activity list, which supports filtering by status, currency/project name, and participation status. This interface does not require user login, and logged in users can obtain personal participation information.
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param optional nil or *GetHodlerAirdropProjectListOpts - Optional Parameters:
-  - @param "Status" (optional.String) -  活动状态筛选，可选值：ACTIVE（进行中+预热中）、UNDERWAY（进行中）、PREHEAT（预热中）、FINISH（已结束），不传返回全部
-  - @param "Keyword" (optional.String) -  币种/项目名称关键词，模糊匹配
-  - @param "Join" (optional.Int32) -  参与情况筛选：0全部（默认），1仅已参与
-  - @param "Page" (optional.Int32) -  页码，默认1
-  - @param "Size" (optional.Int32) -  每页条数，默认10
+  - @param "Status" (optional.String) -  Activity status filtering, optional values: ACTIVE (in progress + preheating), UNDERWAY (in progress), PREHEAT (preheating), FINISH (ended), return all if not passed
+  - @param "Keyword" (optional.String) -  Currency/project name keywords, fuzzy matching
+  - @param "Join" (optional.Int32) -  Participation filter: 0 all (default), 1 only participated
+  - @param "Page" (optional.Int32) -  Page number, default 1
+  - @param "Size" (optional.Int32) -  Number of items per page, default 10
 
 @return []HodlerAirdropV4ProjectItem
 */
@@ -701,8 +701,8 @@ func (a *LaunchApiService) GetHodlerAirdropProjectList(ctx context.Context, loca
 }
 
 /*
-HodlerAirdropOrder 参与HODLer Airdrop活动
-参与指定的HODLer Airdrop活动，需持有GT。此接口需要用户登录认证，且须满足KYC要求，不支持子账户、企业/机构用户。
+HodlerAirdropOrder Participate in the HODLer Airdrop event
+To participate in designated HODLer Airdrop activities, you need to hold GT. This interface requires user login authentication and must meet KYC requirements. It does not support sub-accounts and enterprise/institutional users.
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param hodlerAirdropV4OrderRequest
 
@@ -804,15 +804,15 @@ type GetHodlerAirdropUserOrderRecordsOpts struct {
 }
 
 /*
-GetHodlerAirdropUserOrderRecords 查询HODLer Airdrop参与记录
-查询用户的HODLer Airdrop参与记录，返回每个活动的有效持仓和空投金额。此接口需要用户登录认证。
+GetHodlerAirdropUserOrderRecords Check HODLer Airdrop participation records
+Query the user&#39;s HODLer Airdrop participation record and return the effective holdings and airdrop amount of each activity. This interface requires user login authentication.
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param optional nil or *GetHodlerAirdropUserOrderRecordsOpts - Optional Parameters:
-  - @param "Keyword" (optional.String) -  币种名称关键词筛选
-  - @param "StartTimest" (optional.Int32) -  开始时间戳（秒）
-  - @param "EndTimest" (optional.Int32) -  结束时间戳（秒）
-  - @param "Page" (optional.Int32) -  页码，默认1
-  - @param "Size" (optional.Int32) -  每页条数，默认10
+  - @param "Keyword" (optional.String) -  Currency name keyword filtering
+  - @param "StartTimest" (optional.Int32) -  Start timestamp (seconds)
+  - @param "EndTimest" (optional.Int32) -  end timestamp (seconds)
+  - @param "Page" (optional.Int32) -  Page number, default 1
+  - @param "Size" (optional.Int32) -  Number of items per page, default 10
 
 @return []HodlerAirdropV4UserOrderRecord
 */
@@ -925,15 +925,15 @@ type GetHodlerAirdropUserAirdropRecordsOpts struct {
 }
 
 /*
-GetHodlerAirdropUserAirdropRecords 查询HODLer Airdrop空投记录
-查询用户已获得的HODLer Airdrop空投发放记录，包含基础空投、额外空投和自动兑换状态。此接口需要用户登录认证。
+GetHodlerAirdropUserAirdropRecords Query HODLer Airdrop records
+Query the HODLer Airdrop airdrop distribution record that the user has obtained, including basic airdrops, additional airdrops and automatic redemption status. This interface requires user login authentication.
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param optional nil or *GetHodlerAirdropUserAirdropRecordsOpts - Optional Parameters:
-  - @param "Keyword" (optional.String) -  币种名称关键词筛选
-  - @param "StartTimest" (optional.Int32) -  开始时间戳（秒）
-  - @param "EndTimest" (optional.Int32) -  结束时间戳（秒）
-  - @param "Page" (optional.Int32) -  页码，默认1
-  - @param "Size" (optional.Int32) -  每页条数，默认10
+  - @param "Keyword" (optional.String) -  Currency name keyword filtering
+  - @param "StartTimest" (optional.Int32) -  Start timestamp (seconds)
+  - @param "EndTimest" (optional.Int32) -  end timestamp (seconds)
+  - @param "Page" (optional.Int32) -  Page number, default 1
+  - @param "Size" (optional.Int32) -  Number of items per page, default 10
 
 @return []HodlerAirdropV4UserAirdropRecord
 */
@@ -1047,16 +1047,16 @@ type GetCandyDropActivityListV4Opts struct {
 }
 
 /*
-GetCandyDropActivityListV4 查询活动列表
-支持多维度筛选 CandyDrop 活动，每次查询返回列表排序的前十条数据。不需要登录。
+GetCandyDropActivityListV4 Query activity list
+Supports multi-dimensional filtering of CandyDrop activities, and each query returns the top ten data sorted by the list. No login required.
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param optional nil or *GetCandyDropActivityListV4Opts - Optional Parameters:
-  - @param "Status" (optional.String) -  活动状态筛选：ongoing(进行中)、upcoming(即将开始)、ended(已结束)，不传则返回全部
-  - @param "RuleName" (optional.String) -  任务类型筛选：spot(现货)、futures(合约)、deposit(充值)、invite(邀请)、trading_bot(交易机器人)、simple_earn(余币宝)、first_deposit(首笔入金)、alpha(Alpha)、flash_swap(闪兑)、tradfi(TradFi)、etf(ETF)
-  - @param "RegisterStatus" (optional.String) -  参与情况筛选：registered(已参与)、unregistered(未参与)，不传则返回全部
-  - @param "Currency" (optional.String) -  币种名称筛选
-  - @param "Limit" (optional.Int32) -  返回条数，默认10，最大30
-  - @param "Offset" (optional.Int32) -  偏移量，默认0
+  - @param "Status" (optional.String) -  Activity status filtering: ongoing (in progress), upcoming (about to start), ended (ended), if not passed, all will be returned
+  - @param "RuleName" (optional.String) -  Task type filtering: spot (spot), futures (contract), deposit (recharge), invite (invitation), trading_bot (trading robot), simple_earn (Yu Bibao), first_deposit (first deposit), alpha (Alpha), flash_swap (flash swap), tradfi (TradFi), etf (ETF)
+  - @param "RegisterStatus" (optional.String) -  Participation status screening: registered (already participated), unregistered (not participated), if not passed, all will be returned
+  - @param "Currency" (optional.String) -  Currency name filter
+  - @param "Limit" (optional.Int32) -  Number of items returned, default 10, maximum 30
+  - @param "Offset" (optional.Int32) -  Offset, default 0
 
 @return []CandyDropV4ActivityCd01
 */
@@ -1157,8 +1157,8 @@ func (a *LaunchApiService) GetCandyDropActivityListV4(ctx context.Context, local
 }
 
 /*
-RegisterCandyDropV4 报名参与活动
-报名参与特定 CandyDrop 活动。需要登录，需要 API Key 签名认证。
+RegisterCandyDropV4 Sign up for events
+Sign up for select CandyDrop events. Login is required and API Key signature authentication is required.
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param candyDropV4RegisterReqCd02
 
@@ -1257,12 +1257,12 @@ type GetCandyDropActivityRulesV4Opts struct {
 }
 
 /*
-GetCandyDropActivityRulesV4 查询活动规则
-查询特定活动的规则，包括奖池及对应任务数据。不需要登录。
+GetCandyDropActivityRulesV4 Query activity rules
+Query the rules of a specific activity, including prize pool and corresponding task data. No login required.
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param optional nil or *GetCandyDropActivityRulesV4Opts - Optional Parameters:
-  - @param "ActivityId" (optional.Int64) -  活动ID，与 currency 二选一，至少须传其一
-  - @param "Currency" (optional.String) -  项目/币种名称，与 activity_id 二选一，至少须传其一
+  - @param "ActivityId" (optional.Int64) -  Activity ID, choose one from currency, at least one of them must be passed
+  - @param "Currency" (optional.String) -  Project/currency name, choose one from activity_id, at least one of them must be passed
 
 @return CandyDropV4ActivityRulesCd03
 */
@@ -1357,12 +1357,12 @@ type GetCandyDropTaskProgressV4Opts struct {
 }
 
 /*
-GetCandyDropTaskProgressV4 查询任务完成进度
-查询进行中且已报名/参与的任务完成进度。需要登录。
+GetCandyDropTaskProgressV4 Query task completion progress
+Check the completion progress of tasks that are in progress and have been registered/participated. Login required.
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param optional nil or *GetCandyDropTaskProgressV4Opts - Optional Parameters:
-  - @param "ActivityId" (optional.Int64) -  活动ID，与 currency 二选一，至少须传其一
-  - @param "Currency" (optional.String) -  项目/币种名称，与 activity_id 二选一，至少须传其一
+  - @param "ActivityId" (optional.Int64) -  Activity ID, choose one from currency, at least one of them must be passed
+  - @param "Currency" (optional.String) -  Project/currency name, choose one from activity_id, at least one of them must be passed
 
 @return CandyDropV4TaskProgressCd04
 */
@@ -1467,16 +1467,16 @@ type GetCandyDropParticipationRecordsV4Opts struct {
 }
 
 /*
-GetCandyDropParticipationRecordsV4 查询参与记录
-查询用户的 CandyDrop 参与详情。需要登录。
+GetCandyDropParticipationRecordsV4 Query participation records
+Query the user&#39;s CandyDrop participation details. Login required.
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param optional nil or *GetCandyDropParticipationRecordsV4Opts - Optional Parameters:
-  - @param "Currency" (optional.String) -  币种名称筛选
-  - @param "Status" (optional.String) -  状态筛选：ongoing(进行中)、awaiting_draw(待开奖)、won(已中奖)、not_win(未中奖)
-  - @param "StartTime" (optional.Int64) -  开始时间（Unix 时间戳秒）
-  - @param "EndTime" (optional.Int64) -  结束时间（Unix 时间戳秒）
-  - @param "Page" (optional.Int32) -  页码，默认1
-  - @param "Limit" (optional.Int32) -  每页条数，默认10，最大30
+  - @param "Currency" (optional.String) -  Currency name filter
+  - @param "Status" (optional.String) -  Status filtering: ongoing (in progress), awaiting_draw (to be drawn), won (already won), not_win (not won)
+  - @param "StartTime" (optional.Int64) -  Start time (Unix timestamp seconds)
+  - @param "EndTime" (optional.Int64) -  End time (Unix timestamp seconds)
+  - @param "Page" (optional.Int32) -  Page number, default 1
+  - @param "Limit" (optional.Int32) -  Number of items per page, default 10, maximum 30
 
 @return []CandyDropV4ParticipationRecordCd05
 */
@@ -1592,15 +1592,15 @@ type GetCandyDropAirdropRecordsV4Opts struct {
 }
 
 /*
-GetCandyDropAirdropRecordsV4 查询空投记录
-查询用户的 CandyDrop 空投详情。需要登录。
+GetCandyDropAirdropRecordsV4 Query airdrop records
+Query the user&#39;s CandyDrop airdrop details. Login required.
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param optional nil or *GetCandyDropAirdropRecordsV4Opts - Optional Parameters:
-  - @param "Currency" (optional.String) -  币种名称筛选
-  - @param "StartTime" (optional.Int64) -  开始时间（Unix 时间戳秒）
-  - @param "EndTime" (optional.Int64) -  结束时间（Unix 时间戳秒）
-  - @param "Page" (optional.Int32) -  页码，默认1
-  - @param "Limit" (optional.Int32) -  每页条数，默认10，最大30
+  - @param "Currency" (optional.String) -  Currency name filter
+  - @param "StartTime" (optional.Int64) -  Start time (Unix timestamp seconds)
+  - @param "EndTime" (optional.Int64) -  End time (Unix timestamp seconds)
+  - @param "Page" (optional.Int32) -  Page number, default 1
+  - @param "Limit" (optional.Int32) -  Number of items per page, default 10, maximum 30
 
 @return []CandyDropV4AirdropRecordCd06
 */

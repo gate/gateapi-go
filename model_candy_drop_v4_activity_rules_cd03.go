@@ -10,14 +10,14 @@
 package gateapi
 
 type CandyDropV4ActivityRulesCd03 struct {
-	// 项目/币种名称
+	// Project/currency name
 	Currency string `json:"currency,omitempty"`
-	// 总奖池
+	// total prize pool
 	TotalRewards string `json:"total_rewards,omitempty"`
-	// 活动开始时间（UTC格式化）
+	// Event start time (UTC formatted)
 	StartTime string `json:"start_time,omitempty"`
-	// 活动结束时间（UTC格式化）
+	// Event end time (UTC format)
 	EndTime string `json:"end_time,omitempty"`
-	// 奖池列表
+	// Prize pool list
 	PrizePools []CandyDropV4PrizePoolCd03 `json:"prize_pools,omitempty"`
 }

@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**From** | [**[]CreateParam**](CreateParam.md) | 卖出侧列表，至少一项；每项为要换出的币种及数量 &#x60;amount&#x60;。 | 
-**To** | [**[]CreateParam**](CreateParam.md) | 目标侧列表，至少一项；每项为目标币种及**数量** &#x60;amount&#x60;（非比例）。 与 &#x60;OrderPreviewV1Req.to&#x60;（&#x60;PreviewToParam&#x60;，含 &#x60;ratio&#x60;）结构语义不同，勿混用。 | 
+**From** | [**[]CreateParam**](CreateParam.md) | Sell ​​side list, at least one item; each item is the currency and amount &#x60;amount&#x60; to be swapped out. | 
+**To** | [**[]CreateParam**](CreateParam.md) | Target side list, at least one item; each item is the target currency and **amount** &#x60;amount&#x60; (non-proportional). The structural semantics are different from &#x60;OrderPreviewV1Req.to&#x60; (&#x60;PreviewToParam&#x60;, including &#x60;ratio&#x60;), so do not mix them. | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

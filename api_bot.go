@@ -43,23 +43,23 @@ type GetAIHubStrategyRecommendOpts struct {
 }
 
 /*
-GetAIHubStrategyRecommend 获取 AIHub 策略推荐
+GetAIHubStrategyRecommend Get AIHub strategy recommendations
 discover 域唯一正式接口。  支持场景： - &#x60;top1&#x60; - &#x60;bundle&#x60; - &#x60;filter&#x60; - &#x60;refresh&#x60;  约束： - 主动推荐池仅包含 &#x60;spot_grid&#x60;、&#x60;futures_grid&#x60;、&#x60;spot_martingale&#x60; - 可返回但不主动推荐 &#x60;infinite_grid&#x60;、&#x60;margin_grid&#x60; - 不得返回 &#x60;contract_martingale&#x60;、&#x60;smart-position&#x60;、&#x60;spot-future-arbitrage&#x60; - &#x60;scene&#x3D;filter&#x60; 时只允许按 &#x60;market&#x60;、&#x60;backtest_apr_gte&#x60;、&#x60;max_drawdown_lte&#x60; 过滤 - &#x60;scene&#x3D;refresh&#x60; 通过 &#x60;refresh_recommendation_id&#x60; 承接刷新上下文；正式最小格式只要求 &#x60;strategy_type|market&#x60; - 若上游直接透传上一条推荐的 &#x60;recommendation_id&#x60;，其中第三段 &#x60;backtest_id&#x60; 当前会被忽略
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param optional nil or *GetAIHubStrategyRecommendOpts - Optional Parameters:
-  - @param "Market" (optional.String) -  交易对，例如 `BTC_USDT`
-  - @param "StrategyType" (optional.String) -  推荐目标策略类型；`contract_martingale` 不允许
-  - @param "Direction" (optional.String) -  行情方向
-  - @param "InvestAmount" (optional.String) -  投入金额，字符串透传
-  - @param "Scene" (optional.String) -  推荐场景；为空时 bot-service 可按实现逻辑自动推断
-  - @param "RefreshRecommendationId" (optional.String) -  推荐刷新上下文。`scene=refresh` 时使用；当 `scene` 为空但该字段存在时，bot-service 也会自动判定为 `refresh`。 正式最小格式为 `strategy_type|market`；若直接透传上一条推荐的 `recommendation_id`，第三段 `backtest_id` 会被忽略。
-  - @param "Limit" (optional.Int32) -  返回数量；`scene=filter` 时实际结果最多 10 条
-  - @param "MaxDrawdownLte" (optional.String) -  最大回撤上限
-  - @param "BacktestAprGte" (optional.String) -  回测年化下限
-  - @param "XGateServiceId" (optional.String) -  调用来源标识；如有需要由 APIv4 注入
-  - @param "XGateAppLang" (optional.String) -  语言上下文，例如 `zh-CN` / `en-US`
-  - @param "XRequestId" (optional.String) -  请求链路 ID；调用方可透传
-  - @param "XTraceId" (optional.String) -  trace header；可由 APIv4 统一生成
+  - @param "Market" (optional.String) -  Trading pair, such as `BTC_USDT`
+  - @param "StrategyType" (optional.String) -  Recommended target policy type; `contract_martingale` not allowed
+  - @param "Direction" (optional.String) -  Market direction
+  - @param "InvestAmount" (optional.String) -  Investment amount, string transparent transmission
+  - @param "Scene" (optional.String) -  Recommended scenario; when empty, bot-service can automatically infer according to the implementation logic.
+  - @param "RefreshRecommendationId" (optional.String) -  It is recommended to refresh the context. Used when `scene=refresh` is used; when `scene` is empty but the field exists, bot-service will also automatically determine as `refresh`. The official minimum format is `strategy_type|market`; if the `recommendation_id` of the previous recommendation is directly passed through, the third paragraph `backtest_id` will be ignored.
+  - @param "Limit" (optional.Int32) -  Return quantity; when `scene=filter` is used, the actual results are up to 10
+  - @param "MaxDrawdownLte" (optional.String) -  Maximum drawdown limit
+  - @param "BacktestAprGte" (optional.String) -  Backtest annualized lower limit
+  - @param "XGateServiceId" (optional.String) -  Call source identifier; injected by APIv4 if necessary
+  - @param "XGateAppLang" (optional.String) -  Language context, such as `zh-CN` / `en-US`
+  - @param "XRequestId" (optional.String) -  Request link ID; caller can transmit transparently
+  - @param "XTraceId" (optional.String) -  trace header; can be generated uniformly by APIv4
 
 @return AiHubDiscoverSuccessResponse
 */
@@ -195,15 +195,15 @@ type PostAIHubSpotGridCreateOpts struct {
 }
 
 /*
-PostAIHubSpotGridCreate 创建现货网格
-根据传入参数创建现货网格策略。
+PostAIHubSpotGridCreate Create spot grid
+Create a spot grid strategy based on the incoming parameters.
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param spotGridCreateRequest
   - @param optional nil or *PostAIHubSpotGridCreateOpts - Optional Parameters:
-  - @param "XGateServiceId" (optional.String) -  调用来源标识；如有需要由 APIv4 注入
-  - @param "XGateAppLang" (optional.String) -  语言上下文，例如 `zh-CN` / `en-US`
-  - @param "XRequestId" (optional.String) -  请求链路 ID；调用方可透传
-  - @param "XTraceId" (optional.String) -  trace header；可由 APIv4 统一生成
+  - @param "XGateServiceId" (optional.String) -  Call source identifier; injected by APIv4 if necessary
+  - @param "XGateAppLang" (optional.String) -  Language context, such as `zh-CN` / `en-US`
+  - @param "XRequestId" (optional.String) -  Request link ID; caller can transmit transparently
+  - @param "XTraceId" (optional.String) -  trace header; can be generated uniformly by APIv4
 
 @return AiHubCreateSuccessResponse
 */
@@ -314,15 +314,15 @@ type PostAIHubMarginGridCreateOpts struct {
 }
 
 /*
-PostAIHubMarginGridCreate 创建杠杆网格
-根据传入参数创建杠杆网格策略。
+PostAIHubMarginGridCreate Create a lever grid
+Create a leverage grid strategy based on the passed parameters.
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param marginGridCreateRequest
   - @param optional nil or *PostAIHubMarginGridCreateOpts - Optional Parameters:
-  - @param "XGateServiceId" (optional.String) -  调用来源标识；如有需要由 APIv4 注入
-  - @param "XGateAppLang" (optional.String) -  语言上下文，例如 `zh-CN` / `en-US`
-  - @param "XRequestId" (optional.String) -  请求链路 ID；调用方可透传
-  - @param "XTraceId" (optional.String) -  trace header；可由 APIv4 统一生成
+  - @param "XGateServiceId" (optional.String) -  Call source identifier; injected by APIv4 if necessary
+  - @param "XGateAppLang" (optional.String) -  Language context, such as `zh-CN` / `en-US`
+  - @param "XRequestId" (optional.String) -  Request link ID; caller can transmit transparently
+  - @param "XTraceId" (optional.String) -  trace header; can be generated uniformly by APIv4
 
 @return AiHubCreateSuccessResponse
 */
@@ -433,15 +433,15 @@ type PostAIHubInfiniteGridCreateOpts struct {
 }
 
 /*
-PostAIHubInfiniteGridCreate 创建无限网格
-根据传入参数创建无限网格策略。
+PostAIHubInfiniteGridCreate Create infinite grid
+Create an infinite grid strategy based on passed parameters.
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param infiniteGridCreateRequest
   - @param optional nil or *PostAIHubInfiniteGridCreateOpts - Optional Parameters:
-  - @param "XGateServiceId" (optional.String) -  调用来源标识；如有需要由 APIv4 注入
-  - @param "XGateAppLang" (optional.String) -  语言上下文，例如 `zh-CN` / `en-US`
-  - @param "XRequestId" (optional.String) -  请求链路 ID；调用方可透传
-  - @param "XTraceId" (optional.String) -  trace header；可由 APIv4 统一生成
+  - @param "XGateServiceId" (optional.String) -  Call source identifier; injected by APIv4 if necessary
+  - @param "XGateAppLang" (optional.String) -  Language context, such as `zh-CN` / `en-US`
+  - @param "XRequestId" (optional.String) -  Request link ID; caller can transmit transparently
+  - @param "XTraceId" (optional.String) -  trace header; can be generated uniformly by APIv4
 
 @return AiHubCreateSuccessResponse
 */
@@ -552,15 +552,15 @@ type PostAIHubFuturesGridCreateOpts struct {
 }
 
 /*
-PostAIHubFuturesGridCreate 创建合约网格
-根据传入参数创建合约网格策略。
+PostAIHubFuturesGridCreate Create a contract grid
+Create a contract grid strategy based on the incoming parameters.
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param futuresGridCreateRequest
   - @param optional nil or *PostAIHubFuturesGridCreateOpts - Optional Parameters:
-  - @param "XGateServiceId" (optional.String) -  调用来源标识；如有需要由 APIv4 注入
-  - @param "XGateAppLang" (optional.String) -  语言上下文，例如 `zh-CN` / `en-US`
-  - @param "XRequestId" (optional.String) -  请求链路 ID；调用方可透传
-  - @param "XTraceId" (optional.String) -  trace header；可由 APIv4 统一生成
+  - @param "XGateServiceId" (optional.String) -  Call source identifier; injected by APIv4 if necessary
+  - @param "XGateAppLang" (optional.String) -  Language context, such as `zh-CN` / `en-US`
+  - @param "XRequestId" (optional.String) -  Request link ID; caller can transmit transparently
+  - @param "XTraceId" (optional.String) -  trace header; can be generated uniformly by APIv4
 
 @return AiHubCreateSuccessResponse
 */
@@ -671,15 +671,15 @@ type PostAIHubSpotMartingaleCreateOpts struct {
 }
 
 /*
-PostAIHubSpotMartingaleCreate 创建现货马丁
-根据传入参数创建现货马丁策略。
+PostAIHubSpotMartingaleCreate Create Spot Martin
+Create a spot Martin strategy based on the passed parameters.
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param spotMartingaleCreateRequest
   - @param optional nil or *PostAIHubSpotMartingaleCreateOpts - Optional Parameters:
-  - @param "XGateServiceId" (optional.String) -  调用来源标识；如有需要由 APIv4 注入
-  - @param "XGateAppLang" (optional.String) -  语言上下文，例如 `zh-CN` / `en-US`
-  - @param "XRequestId" (optional.String) -  请求链路 ID；调用方可透传
-  - @param "XTraceId" (optional.String) -  trace header；可由 APIv4 统一生成
+  - @param "XGateServiceId" (optional.String) -  Call source identifier; injected by APIv4 if necessary
+  - @param "XGateAppLang" (optional.String) -  Language context, such as `zh-CN` / `en-US`
+  - @param "XRequestId" (optional.String) -  Request link ID; caller can transmit transparently
+  - @param "XTraceId" (optional.String) -  trace header; can be generated uniformly by APIv4
 
 @return AiHubCreateSuccessResponse
 */
@@ -790,15 +790,15 @@ type PostAIHubContractMartingaleCreateOpts struct {
 }
 
 /*
-PostAIHubContractMartingaleCreate 创建合约马丁
-根据传入参数创建合约马丁策略。
+PostAIHubContractMartingaleCreate Create contract martin
+Create a contract Martin strategy based on the input parameters.
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param contractMartingaleCreateRequest
   - @param optional nil or *PostAIHubContractMartingaleCreateOpts - Optional Parameters:
-  - @param "XGateServiceId" (optional.String) -  调用来源标识；如有需要由 APIv4 注入
-  - @param "XGateAppLang" (optional.String) -  语言上下文，例如 `zh-CN` / `en-US`
-  - @param "XRequestId" (optional.String) -  请求链路 ID；调用方可透传
-  - @param "XTraceId" (optional.String) -  trace header；可由 APIv4 统一生成
+  - @param "XGateServiceId" (optional.String) -  Call source identifier; injected by APIv4 if necessary
+  - @param "XGateAppLang" (optional.String) -  Language context, such as `zh-CN` / `en-US`
+  - @param "XRequestId" (optional.String) -  Request link ID; caller can transmit transparently
+  - @param "XTraceId" (optional.String) -  trace header; can be generated uniformly by APIv4
 
 @return AiHubCreateSuccessResponse
 */
@@ -913,18 +913,18 @@ type GetAIHubPortfolioRunningOpts struct {
 }
 
 /*
-GetAIHubPortfolioRunning 查询运行中策略列表
-查询当前用户运行中的 AIHub 策略列表，支持按策略类型、交易对和分页条件过滤。
+GetAIHubPortfolioRunning Query the list of running policies
+Query the list of AIHub strategies currently running by the user, and support filtering by strategy type, trading pair and paging conditions.
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param optional nil or *GetAIHubPortfolioRunningOpts - Optional Parameters:
-  - @param "StrategyType" (optional.String) -  按策略类型过滤
-  - @param "Market" (optional.String) -  按交易对过滤
-  - @param "Page" (optional.Int32) -  页码，默认 1
-  - @param "PageSize" (optional.Int32) -  分页大小，默认 20，最大 50
-  - @param "XGateServiceId" (optional.String) -  调用来源标识；如有需要由 APIv4 注入
-  - @param "XGateAppLang" (optional.String) -  语言上下文，例如 `zh-CN` / `en-US`
-  - @param "XRequestId" (optional.String) -  请求链路 ID；调用方可透传
-  - @param "XTraceId" (optional.String) -  trace header；可由 APIv4 统一生成
+  - @param "StrategyType" (optional.String) -  Filter by policy type
+  - @param "Market" (optional.String) -  Filter by trading pair
+  - @param "Page" (optional.Int32) -  Page number, default 1
+  - @param "PageSize" (optional.Int32) -  Paging size, default 20, maximum 50
+  - @param "XGateServiceId" (optional.String) -  Call source identifier; injected by APIv4 if necessary
+  - @param "XGateAppLang" (optional.String) -  Language context, such as `zh-CN` / `en-US`
+  - @param "XRequestId" (optional.String) -  Request link ID; caller can transmit transparently
+  - @param "XTraceId" (optional.String) -  trace header; can be generated uniformly by APIv4
 
 @return AiHubPortfolioRunningSuccessResponse
 */
@@ -1045,16 +1045,16 @@ type GetAIHubPortfolioDetailOpts struct {
 }
 
 /*
-GetAIHubPortfolioDetail 查询单策略详情
-请求中必须同时传 &#x60;strategy_id&#x60; 与 &#x60;strategy_type&#x60;，其中 &#x60;strategy_type&#x60; 用于按策略类型分发到底层详情实现。
+GetAIHubPortfolioDetail Query order policy details
+Both &#x60;strategy_id&#x60; and &#x60;strategy_type&#x60; must be passed in the request, where &#x60;strategy_type&#x60; is used to distribute to the underlying detailed implementation by strategy type.
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param strategyId 策略 ID
-  - @param strategyType 策略类型；用于底层详情分发
+  - @param strategyId Policy ID
+  - @param strategyType Policy type; used for underlying detail distribution
   - @param optional nil or *GetAIHubPortfolioDetailOpts - Optional Parameters:
-  - @param "XGateServiceId" (optional.String) -  调用来源标识；如有需要由 APIv4 注入
-  - @param "XGateAppLang" (optional.String) -  语言上下文，例如 `zh-CN` / `en-US`
-  - @param "XRequestId" (optional.String) -  请求链路 ID；调用方可透传
-  - @param "XTraceId" (optional.String) -  trace header；可由 APIv4 统一生成
+  - @param "XGateServiceId" (optional.String) -  Call source identifier; injected by APIv4 if necessary
+  - @param "XGateAppLang" (optional.String) -  Language context, such as `zh-CN` / `en-US`
+  - @param "XRequestId" (optional.String) -  Request link ID; caller can transmit transparently
+  - @param "XTraceId" (optional.String) -  trace header; can be generated uniformly by APIv4
 
 @return AiHubPortfolioDetailSuccessResponse
 */
@@ -1165,15 +1165,15 @@ type PostAIHubPortfolioStopOpts struct {
 }
 
 /*
-PostAIHubPortfolioStop 终止单个运行中策略
-单次请求只允许终止一个策略。 风险提示与二次确认由 OpenClaw 上层承担；本接口只负责执行 stop。
+PostAIHubPortfolioStop Terminate a single running policy
+Only one policy is allowed to be terminated per request. Risk warning and secondary confirmation are borne by the upper layer of OpenClaw; this interface is only responsible for executing stop.
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param aiHubPortfolioStopRequest
   - @param optional nil or *PostAIHubPortfolioStopOpts - Optional Parameters:
-  - @param "XGateServiceId" (optional.String) -  调用来源标识；如有需要由 APIv4 注入
-  - @param "XGateAppLang" (optional.String) -  语言上下文，例如 `zh-CN` / `en-US`
-  - @param "XRequestId" (optional.String) -  请求链路 ID；调用方可透传
-  - @param "XTraceId" (optional.String) -  trace header；可由 APIv4 统一生成
+  - @param "XGateServiceId" (optional.String) -  Call source identifier; injected by APIv4 if necessary
+  - @param "XGateAppLang" (optional.String) -  Language context, such as `zh-CN` / `en-US`
+  - @param "XRequestId" (optional.String) -  Request link ID; caller can transmit transparently
+  - @param "XTraceId" (optional.String) -  trace header; can be generated uniformly by APIv4
 
 @return AiHubPortfolioStopSuccessResponse
 */

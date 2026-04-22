@@ -9,7 +9,7 @@
 
 package gateapi
 
-// 运行中策略列表数据。
+// Running policy list data.
 type AiHubPortfolioRunningData struct {
 	Items    []AiHubPortfolioRunningItem `json:"items"`
 	Page     int32                       `json:"page"`

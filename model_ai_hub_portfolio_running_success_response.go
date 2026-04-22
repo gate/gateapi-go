@@ -9,7 +9,7 @@
 
 package gateapi
 
-// 查询运行中策略列表成功时的响应体。
+// The response body when querying the running policy list is successful.
 type AiHubPortfolioRunningSuccessResponse struct {
 	Code    int32                     `json:"code"`
 	Message string                    `json:"message"`

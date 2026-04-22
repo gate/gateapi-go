@@ -9,7 +9,7 @@
 
 package gateapi
 
-// 合约网格策略的创建参数。
+// Creation parameters for the contract grid strategy.
 type FuturesGridCreateParams struct {
 	Money              string           `json:"money"`
 	LowPrice           string           `json:"low_price"`

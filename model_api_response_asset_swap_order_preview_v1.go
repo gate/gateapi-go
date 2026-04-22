@@ -9,15 +9,15 @@
 
 package gateapi
 
-// 资产配置优化-预览统一响应
+// Asset allocation optimization-preview unified response
 type ApiResponseAssetSwapOrderPreviewV1 struct {
-	// 业务错误码，0 表示成功
+	// Business error code, 0 means success
 	Code int32 `json:"code"`
-	// 错误标识码，成功时为空字符串
+	// Error identification code, empty string on success
 	Label string `json:"label,omitempty"`
-	// 描述信息
+	// Description information
 	Message string `json:"message"`
-	// 成功时为预览结果，失败时为 null
+	// Preview result when successful, null when failed
 	Data *interface{} `json:"data"`
 	// Server timestamp (milliseconds)
 	Timestamp int64 `json:"timestamp"`

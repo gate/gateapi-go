@@ -1111,7 +1111,7 @@ type GetMultiCollateralCurrentRateOpts struct {
 GetMultiCollateralCurrentRate Query currency's current interest rate
 Query the current interest rate of the currency in the previous hour, the current interest rate is updated every hour
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param currencies Specify currency name query array, separated by commas, maximum 100 items
+  - @param currencies Specify currency name query array, separated by commas, maximum 100
   - @param optional nil or *GetMultiCollateralCurrentRateOpts - Optional Parameters:
   - @param "VipLevel" (optional.String) -  VIP level, defaults to 0 if not specified
 

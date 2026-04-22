@@ -9,7 +9,7 @@
 
 package gateapi
 
-// 合约马丁策略的创建参数。
+// The creation parameters of the contract Martin strategy.
 type ContractMartingaleCreateParams struct {
 	InvestAmount       string                      `json:"invest_amount"`
 	PriceDeviation     string                      `json:"price_deviation"`

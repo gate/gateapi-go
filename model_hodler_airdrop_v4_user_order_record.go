@@ -9,18 +9,18 @@
 
 package gateapi
 
-// 用户参与记录单项
+// User participation record single item
 type HodlerAirdropV4UserOrderRecord struct {
 	// Product ID
 	HodlerId string `json:"hodler_id"`
-	// 空投币种
+	// Airdrop currency
 	Asset string `json:"asset"`
-	// 有效持仓GT数量（参与活动时持有的GT平均数量）
+	// Effective number of GT positions (average number of GT held when participating in the event)
 	UserGtAvgAmount string `json:"user_gt_avg_amount,omitempty"`
-	// 基础空投金额，活动结束前为空字符串
+	// Basic airdrop amount, it will be an empty string before the end of the activity
 	ReceiveAmountBase string `json:"receive_amount_base,omitempty"`
-	// 额外空投金额（余币宝加成），活动结束前为空字符串
+	// Additional airdrop amount (Yubibao bonus), it will be an empty string before the end of the event
 	ReceiveAmountExt string `json:"receive_amount_ext,omitempty"`
-	// 活动结束时间，格式 Y-m-d H:i:s，UTC
+	// Event end time, format Y-m-d H:i:s, UTC
 	CloseTimest string `json:"close_timest"`
 }

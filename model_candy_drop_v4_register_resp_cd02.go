@@ -10,6 +10,6 @@
 package gateapi
 
 type CandyDropV4RegisterRespCd02 struct {
-	// 是否报名成功
+	// Whether the registration is successful
 	Success bool `json:"success,omitempty"`
 }

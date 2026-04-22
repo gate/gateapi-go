@@ -24,6 +24,6 @@ type PartnerDataAggregated struct {
 	TimeRangeDesc string `json:"time_range_desc"`
 	// Business Type
 	BusinessType int32 `json:"business_type"`
-	// Business type description. Allowed values: All, Spot, Futures, Alpha, Web3, Perps (DEX), Exchange All, Web3 All, TradFi
+	// Business type description; allowed values: All, Spot, Futures, Alpha, Web3, Perps (DEX), Exchange All, Web3 All, TradFi
 	BusinessTypeDesc string `json:"business_type_desc"`
 }

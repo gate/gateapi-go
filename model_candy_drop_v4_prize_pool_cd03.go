@@ -10,12 +10,12 @@
 package gateapi
 
 type CandyDropV4PrizePoolCd03 struct {
-	// 奖池类型
+	// Prize pool type
 	PrizePoolType int32 `json:"prize_pool_type,omitempty"`
-	// 奖池总额度
+	// Total prize pool amount
 	PrizeAll string `json:"prize_all,omitempty"`
-	// 每人瓜分上限
+	// Maximum share per person
 	PrizeLimit string `json:"prize_limit,omitempty"`
-	// 任务列表
+	// task list
 	Tasks []CandyDropV4TaskCd03 `json:"tasks,omitempty"`
 }

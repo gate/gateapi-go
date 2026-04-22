@@ -9,10 +9,10 @@
 
 package gateapi
 
-// 领取奖励结果
+// Get reward results
 type ApiResponseExSkillClaimRewardRespData struct {
-	// 是否为 m 选 n 奖池任务。为 true 时仅提示跳转，不实际发奖
+	// Whether to choose n prize pool tasks for m. When it is true, it only prompts a jump and does not actually issue prizes.
 	HasMNTask bool `json:"has_m_n_task,omitempty"`
-	// 卡券奖励全称。非卡券奖励或无法解析时为空字符串
+	// The full name of the card reward. It is an empty string when it is not a coupon reward or cannot be parsed.
 	CouponFullName string `json:"coupon_full_name,omitempty"`
 }

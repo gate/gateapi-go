@@ -9,15 +9,15 @@
 
 package gateapi
 
-// 现货网格策略的创建参数。
+// Creation parameters for the spot grid strategy.
 type SpotGridCreateParams struct {
-	// 投入金额
+	// Amount of investment
 	Money string `json:"money"`
 	// Range lower limit
 	LowPrice string `json:"low_price"`
 	// Range upper limit
 	HighPrice string `json:"high_price"`
-	// 网格数量
+	// Number of grids
 	GridNum            int32  `json:"grid_num"`
 	PriceType          int32  `json:"price_type"`
 	TriggerPrice       string `json:"trigger_price,omitempty"`

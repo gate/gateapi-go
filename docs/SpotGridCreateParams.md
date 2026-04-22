@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Money** | **string** | 投入金额 | 
+**Money** | **string** | Amount of investment | 
 **LowPrice** | **string** | Range lower limit | 
 **HighPrice** | **string** | Range upper limit | 
-**GridNum** | **int32** | 网格数量 | 
+**GridNum** | **int32** | Number of grids | 
 **PriceType** | **int32** |  | 
 **TriggerPrice** | **string** |  | [optional] 
 **StopProfit** | **string** |  | [optional] 

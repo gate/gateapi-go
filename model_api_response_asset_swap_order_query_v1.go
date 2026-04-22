@@ -9,15 +9,15 @@
 
 package gateapi
 
-// 资产配置优化-查询订单统一响应
+// Asset allocation optimization - unified response to query orders
 type ApiResponseAssetSwapOrderQueryV1 struct {
-	// 业务错误码，0 表示成功
+	// Business error code, 0 means success
 	Code int32 `json:"code"`
-	// 错误标识码，成功时为空字符串
+	// Error identification code, empty string on success
 	Label string `json:"label,omitempty"`
-	// 描述信息
+	// Description information
 	Message string `json:"message"`
-	// 成功时为订单详情，失败时为 null
+	// Order details on success, null on failure
 	Data *interface{} `json:"data"`
 	// Server timestamp (milliseconds)
 	Timestamp int64 `json:"timestamp"`
