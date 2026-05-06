@@ -1110,7 +1110,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **chain** | **optional.String**| Chain name | [default to ]
 **limit** | **optional.String**| Maximum number returned, up to 100 | [default to 50]
-**page** | **optional.Int32**| Page number | [default to 1]
+**page** | **optional.Int32**| page number | [default to 1]
 
 ### Example
 

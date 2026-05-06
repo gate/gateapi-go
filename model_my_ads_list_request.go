@@ -11,10 +11,10 @@ package gateapi
 
 // Get my ads list request
 type MyAdsListRequest struct {
-	// Cryptocurrency
+	// Crypto asset; omit to skip asset filter.
 	Asset string `json:"asset,omitempty"`
-	// Fiat currency
+	// Fiat currency; omit to skip fiat filter.
 	FiatUnit string `json:"fiat_unit,omitempty"`
-	// Buy/Sell
+	// Ad side: `buy` for buy-crypto ads, `sell` for sell-crypto ads; omit for all sides.
 	TradeType string `json:"trade_type,omitempty"`
 }

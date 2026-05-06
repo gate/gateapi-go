@@ -32,7 +32,7 @@ type ListCrossexRuleSymbolsOpts struct {
 }
 
 /*
-ListCrossexRuleSymbols [Public Interface] Query Trading Pair Information
+ListCrossexRuleSymbols 查询币对信息
 Query Trading Pair Information
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param optional nil or *ListCrossexRuleSymbolsOpts - Optional Parameters:
@@ -122,7 +122,7 @@ func (a *CrossExApiService) ListCrossexRuleSymbols(ctx context.Context, localVar
 }
 
 /*
-ListCrossexRuleRiskLimits [Public Interface] Query Risk Limit Information
+ListCrossexRuleRiskLimits 查询风险限额信息
 Query risk limit information for futures/margin trading pairs
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param symbols Trading Pair List, multiple separated by commas Example values: BINANCE_FUTURE_ADA_USDT,GATE_MARGIN_ADA_USDT
@@ -214,7 +214,7 @@ type ListCrossexTransferCoinsOpts struct {
 }
 
 /*
-ListCrossexTransferCoins [Public Interface] Query Supported Transfer Currencies
+ListCrossexTransferCoins 查询划转币种支持
 Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME &lt;EMAIL@ADDRESS&gt; Language: en Language-Team: en &lt;L@li.org&gt; Plural-Forms: nplurals&#x3D;2; plural&#x3D;(n !&#x3D;1) MIME-Version: 1.0 Content-Type: text/plain; charset&#x3D;utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param optional nil or *ListCrossexTransferCoinsOpts - Optional Parameters:
@@ -3111,11 +3111,12 @@ func (a *CrossExApiService) ListCrossexHistoryTrades(ctx context.Context, localV
 
 // ListCrossexAccountBookOpts Optional parameters for the method 'ListCrossexAccountBook'
 type ListCrossexAccountBookOpts struct {
-	Page  optional.Int32
-	Limit optional.Int32
-	Coin  optional.String
-	From  optional.Int32
-	To    optional.Int32
+	Page          optional.Int32
+	Limit         optional.Int32
+	Coin          optional.String
+	StatementType optional.String
+	From          optional.Int32
+	To            optional.Int32
 }
 
 /*
@@ -3126,6 +3127,7 @@ Rate Limit: 200 requests per 10 seconds
   - @param "Page" (optional.Int32) -  Page number
   - @param "Limit" (optional.Int32) -  Maximum number returned by list, max 1000
   - @param "Coin" (optional.String) -  Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME <EMAIL@ADDRESS> Language: en Language-Team: en <L@li.org> Plural-Forms: nplurals=2; plural=(n !=1) MIME-Version: 1.0 Content-Type: text/plain; charset=utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0
+  - @param "StatementType" (optional.String) -  Bill entry type.
   - @param "From" (optional.Int32) -  Start Millisecond Timestamp
   - @param "To" (optional.Int32) -  End Millisecond Timestamp
 
@@ -3155,6 +3157,9 @@ func (a *CrossExApiService) ListCrossexAccountBook(ctx context.Context, localVar
 	}
 	if localVarOptionals != nil && localVarOptionals.Coin.IsSet() {
 		localVarQueryParams.Add("coin", parameterToString(localVarOptionals.Coin.Value(), ""))
+	}
+	if localVarOptionals != nil && localVarOptionals.StatementType.IsSet() {
+		localVarQueryParams.Add("statement_type", parameterToString(localVarOptionals.StatementType.Value(), ""))
 	}
 	if localVarOptionals != nil && localVarOptionals.From.IsSet() {
 		localVarQueryParams.Add("from", parameterToString(localVarOptionals.From.Value(), ""))
@@ -3237,7 +3242,7 @@ type ListCrossexCoinDiscountRateOpts struct {
 }
 
 /*
-ListCrossexCoinDiscountRate Query currency discount rate (discount rate of margin currency in isolated exchange mode)
+ListCrossexCoinDiscountRate Query Currency Discount Rate
 Rate Limit: 200 requests per 10 seconds
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param optional nil or *ListCrossexCoinDiscountRateOpts - Optional Parameters:

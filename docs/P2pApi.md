@@ -648,7 +648,7 @@ func main() {
 
 ## P2pMerchantBooksPlaceBizPushOrder
 
-> map[string]interface{} P2pMerchantBooksPlaceBizPushOrder(ctx, placeBizPushOrder)
+> P2pMerchantBooksPlaceBizPushOrderResponse P2pMerchantBooksPlaceBizPushOrder(ctx, placeBizPushOrder)
 
 Publish ad order
 
@@ -700,7 +700,7 @@ func main() {
 
 ### Return type
 
-**map[string]interface{}**
+[**P2pMerchantBooksPlaceBizPushOrderResponse**](P2pMerchantBooksPlaceBizPushOrderResponse.md)
 
 ### Authorization
 
@@ -717,7 +717,7 @@ func main() {
 
 ## P2pMerchantBooksAdsUpdateStatus
 
-> P2pAdsUpdateStatusResponse P2pMerchantBooksAdsUpdateStatus(ctx, adsUpdateStatus, optional)
+> P2pAdsUpdateStatusResponse P2pMerchantBooksAdsUpdateStatus(ctx, adsUpdateStatus)
 
 Update ad status
 
@@ -727,15 +727,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **adsUpdateStatus** | [**AdsUpdateStatus**](AdsUpdateStatus.md)|  | 
-**optional** | **P2pMerchantBooksAdsUpdateStatusOpts** | optional parameters | nil if no parameters
-
-### Optional Parameters
-
-Optional parameters are passed through a pointer to a P2pMerchantBooksAdsUpdateStatusOpts struct
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**tradeType** | **optional.String**| Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME &lt;EMAIL@ADDRESS&gt; Language: en Language-Team: en &lt;L@li.org&gt; Plural-Forms: nplurals&#x3D;2; plural&#x3D;(n !&#x3D;1) MIME-Version: 1.0 Content-Type: text/plain; charset&#x3D;utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0  | 
 
 ### Example
 
@@ -762,7 +753,7 @@ func main() {
                             )
     adsUpdateStatus := gateapi.AdsUpdateStatus{} // AdsUpdateStatus - 
     
-    result, _, err := client.P2pApi.P2pMerchantBooksAdsUpdateStatus(ctx, adsUpdateStatus, nil)
+    result, _, err := client.P2pApi.P2pMerchantBooksAdsUpdateStatus(ctx, adsUpdateStatus)
     if err != nil {
         if e, ok := err.(gateapi.GateAPIError); ok {
             fmt.Printf("gate api error: %s\n", e.Error())

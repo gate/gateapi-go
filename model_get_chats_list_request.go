@@ -11,10 +11,10 @@ package gateapi
 
 // Get chat history request
 type GetChatsListRequest struct {
-	// Order ID
-	Txid int32 `json:"txid"`
-	// Pagination timestamp (forward)
+	// Order ID; omit or `0` to return the latest order with chat for the user.
+	Txid int32 `json:"txid,omitempty"`
+	// Timestamp of the last received message for backward incremental fetch; omit on first load.
 	Lastreceived int32 `json:"lastreceived,omitempty"`
-	// Pagination timestamp (backward)
+	// Timestamp of first received message for paging backward; omit on first load.
 	Firstreceived int32 `json:"firstreceived,omitempty"`
 }

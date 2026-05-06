@@ -10,58 +10,59 @@
 package gateapi
 
 type CrossexOrder struct {
+	// User ID
 	UserId string `json:"user_id"`
 	// Order ID
 	OrderId string `json:"order_id"`
-	// Customer-defined order ID
+	// Client-defined order ID.
 	Text string `json:"text"`
-	// Order State:  NEW: The order is legal and waiting to be sent to the exchange  OPEN: The order has been placed on the orderbook of the exchange  PARTIALLY_FILLED: The order has been partially completed  FILLED: The order has been fully executed  FAIL: The order verification in CrossEx did not pass. Please check the order reason  REJECT：The order was rejected by the exchange. Please check the order reason
+	// 订单状态：  NEW：订单已通过校验，等待发送到交易所  OPEN：订单已挂在交易所订单簿上  PARTIALLY_FILLED：订单已部分成交  FILLED：订单已完全成交  FAIL：CrossEx 内部校验未通过，请查看 reason 字段了解失败原因  REJECT：订单被交易所拒绝，请查看 reason 字段了解失败原因
 	State string `json:"state"`
-	// Trading pair unique identifier ,example: BINANCE_SPOT_BTC_USDT, BINANCE_FUTURE_BTC_USDT
+	// Unique trading pair identifiers, e.g. `BINANCE_SPOT_BTC_USDT`, `BINANCE_FUTURE_BTC_USDT`.
 	Symbol string `json:"symbol"`
-	// Side(BUY,SELL)
+	// Side (`BUY` buy / `SELL` sell).
 	Side string `json:"side"`
-	// Type(LIMIT, MARKET)
+	// Order type (`LIMIT` limit / `MARKET` market).
 	Type string `json:"type"`
-	// COMMON, LIQ, REDUCE, ADL
+	// Order attributes (`COMMON` normal / `LIQ` liquidation takeover / `REDUCE` liquidation reduction / `ADL` auto-deleverage).
 	Attribute string `json:"attribute"`
-	// Exchange type(BINANCE,OKX,GATE,BYBIT)
+	// Exchange type (`BINANCE` / `OKX` / `GATE` / `BYBIT`).
 	ExchangeType string `json:"exchange_type"`
-	// Business type(SPOT,FUTURE,MARGIN)
+	// Business type (`SPOT` Spot / `FUTURE` Futures / `MARGIN` Margin).
 	BusinessType string `json:"business_type"`
-	// Order base quantity
+	// Order quantity in the base currency.
 	Qty string `json:"qty"`
-	// Order quote quantity
+	// Order quantity in the quote currency.
 	QuoteQty string `json:"quote_qty"`
-	// Order price
+	// Order price.
 	Price string `json:"price"`
-	// Timeinforce (default GTC, enums:GTC,IOC,FOK,POC)
+	// Time in force (default `GTC`; enum: `GTC` / `IOC` / `FOK` / `POC`).
 	TimeInForce string `json:"time_in_force"`
-	// Executed quantity
+	// Filled base amount.
 	ExecutedQty string `json:"executed_qty"`
-	// Executed quote quantity
+	// Filled quote amount.
 	ExecutedAmount string `json:"executed_amount"`
-	// Average transaction price
+	// Average Filled Price
 	ExecutedAvgPrice string `json:"executed_avg_price"`
-	// Transaction fee coin
+	// Fee currency
 	FeeCoin string `json:"fee_coin"`
-	// Transaction fee amount
+	// Fee amount.
 	Fee string `json:"fee"`
-	// Reduce position orders only, \"true\" or \"false\"
+	// Reduce-only order (`\"true\"` or `\"false\"`).
 	ReduceOnly string `json:"reduce_only"`
-	// Order leverage
+	// Order leverage multiplier.
 	Leverage string `json:"leverage"`
-	// Fail message
+	// Failure reason description.
 	Reason string `json:"reason"`
-	// Last transaction quantity
+	// Base quantity of the latest fill.
 	LastExecutedQty string `json:"last_executed_qty"`
-	// Last transaction price
+	// Price of the latest fill.
 	LastExecutedPrice string `json:"last_executed_price"`
-	// Last transaction amount
+	// Quote amount of the latest fill.
 	LastExecutedAmount string `json:"last_executed_amount"`
-	// Position side(NONE/LONG/SHORT)
+	// Position side (`NONE` flat / `LONG` long / `SHORT` short).
 	PositionSide string `json:"position_side"`
-	// Create time
+	// Created time
 	CreateTime string `json:"create_time"`
 	// Update time
 	UpdateTime string `json:"update_time"`

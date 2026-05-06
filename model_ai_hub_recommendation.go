@@ -18,6 +18,6 @@ type AiHubRecommendation struct {
 	BacktestApr      string       `json:"backtest_apr,omitempty"`
 	MaxDrawdown      string       `json:"max_drawdown,omitempty"`
 	Summary          string       `json:"summary"`
-	// Recommended parameter preview; dynamic changes by strategy type
-	StrategyParamsPreview map[string]string `json:"strategy_params_preview,omitempty"`
+	// Recommended-parameter preview as JSON text (string-encoded so clients deserialize it consistently). The value is a serialized JSON object whose structure varies by strategy type; callers or upper-layer models must parse it.
+	StrategyParamsPreview string `json:"strategy_params_preview,omitempty"`
 }

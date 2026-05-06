@@ -16,11 +16,11 @@ type P2pMerchantUserInfo struct {
 	UserTimest string `json:"user_timest,omitempty"`
 	// Number of counterparties
 	CounterpartiesNum int32 `json:"counterparties_num,omitempty"`
-	// Whether email is verified
+	// Whether email is verified. `1`: yes; `0`: no.
 	EmailVerified string `json:"email_verified,omitempty"`
-	// Whether KYC verification is completed
+	// Whether KYC is completed. `1`: yes; `0`: no.
 	Verified string `json:"verified,omitempty"`
-	// Whether phone is bound
+	// Whether a phone number is bound. `1`: yes; `0`: no.
 	HasPhone string `json:"has_phone,omitempty"`
 	// Username
 	UserName string `json:"user_name,omitempty"`
@@ -42,11 +42,11 @@ type P2pMerchantUserInfo struct {
 	CompleteRateMonth float32 `json:"complete_rate_month,omitempty"`
 	// Buy order ratio in last 30 days
 	OrdersBuyRateMonth float32 `json:"orders_buy_rate_month,omitempty"`
-	// Whether blocked
+	// Whether the user is blocked. `1`: yes; `0`: no.
 	IsBlack int32 `json:"is_black,omitempty"`
-	// Whether following
+	// Whether you follow this user. `1`: yes; `0`: no.
 	IsFollow int32 `json:"is_follow,omitempty"`
-	// Whether traded with self
+	// Whether you have traded with this user before. `1`: yes; `0`: no.
 	HaveTraded int32 `json:"have_traded,omitempty"`
 	// Encrypted UID
 	BizUid string `json:"biz_uid,omitempty"`
@@ -58,10 +58,10 @@ type P2pMerchantUserInfo struct {
 	RegistrationDays int32 `json:"registration_days,omitempty"`
 	// Days since first trade
 	FirstTradeDays int32 `json:"first_trade_days,omitempty"`
-	// Whether margin replenishment is needed
+	// Whether additional margin is required. `1`: yes; `0`: no.
 	NeedReplenish int32                 `json:"need_replenish,omitempty"`
 	MerchantInfo  P2pMerchantMarketInfo `json:"merchant_info,omitempty"`
-	// Merchant online status
+	// Merchant online status: `1` online; `0` offline.
 	OnlineStatus int32 `json:"online_status,omitempty"`
 	// Merchant online status details
 	WorkHours *map[string]interface{} `json:"work_hours,omitempty"`

@@ -24,15 +24,15 @@ type P2pPaymentMethodAccount struct {
 	Bankcity string `json:"bankcity,omitempty"`
 	// Bank province
 	Bankprov string `json:"bankprov,omitempty"`
-	// Bank card number
+	// Bank card number or masked card number.
 	Bankaddr string `json:"bankaddr,omitempty"`
 	// Bank note
 	Bankdesc string `json:"bankdesc,omitempty"`
 	// Cardholder UID
-	HoldUid int32 `json:"holdUid,omitempty"`
+	HoldUid int32 `json:"hold_uid,omitempty"`
 	// Cardholder name
 	HoldUsername string `json:"hold_username,omitempty"`
-	// userfirst name
+	// User verified display name.
 	RealName string `json:"real_name,omitempty"`
 	// User's currently bound payment method (primary key ID)
 	Id string `json:"id,omitempty"`
@@ -44,7 +44,7 @@ type P2pPaymentMethodAccount struct {
 	File string `json:"file,omitempty"`
 	// Payment method file key
 	FileKey string `json:"file_key,omitempty"`
-	// Payment method name
+	// Payment account or masked payment account.
 	Account string `json:"account,omitempty"`
 	// Payment method note
 	Memo string `json:"memo,omitempty"`

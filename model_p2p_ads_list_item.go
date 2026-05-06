@@ -20,9 +20,9 @@ type P2pAdsListItem struct {
 	AdvNo int32 `json:"adv_no,omitempty"`
 	// Price
 	Price string `json:"price,omitempty"`
-	// Maximum Cryptocurrency Amount
+	// Maximum crypto size per trade.
 	MaxSingleTransAmount string `json:"max_single_trans_amount,omitempty"`
-	// Minimum Cryptocurrency Amount
+	// Minimum crypto size per trade.
 	MinSingleTransAmount string `json:"min_single_trans_amount,omitempty"`
 	// Advertiser Nickname
 	NickName string `json:"nick_name,omitempty"`

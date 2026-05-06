@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **Currency** | **string** | Currency changed | [optional] 
 **Change** | **string** | Amount changed. Positive value means transferring in, while negative out | [optional] 
 **Balance** | **string** | Balance after change | [optional] 
-**Type** | **string** | Account book type. Please refer to [account book type](#accountbook-type) for more detail | [optional] 
+**Type** | **string** | Account change type; deprecated (see &#x60;code&#x60; for account change type encoding) | [optional] 
 **Code** | **string** | Account change code, see [Asset Record Code] (Asset Record Code) | [optional] 
 **Text** | **string** | Additional information | [optional] 
 

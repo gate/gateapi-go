@@ -11,5 +11,6 @@ package gateapi
 
 // Get ad details request
 type AdsDetailRequest struct {
+	// Advertisement ID.
 	AdvNo string `json:"adv_no"`
 }

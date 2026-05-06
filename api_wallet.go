@@ -1500,7 +1500,7 @@ ListSavedAddress Query withdrawal address whitelist
   - @param optional nil or *ListSavedAddressOpts - Optional Parameters:
   - @param "Chain" (optional.String) -  Chain name
   - @param "Limit" (optional.String) -  Maximum number returned, up to 100
-  - @param "Page" (optional.Int32) -  Page number
+  - @param "Page" (optional.Int32) -  page number
 
 @return []SavedAddress
 */

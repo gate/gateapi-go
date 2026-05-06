@@ -16,8 +16,8 @@ type CrossexAccountBookRecord struct {
 	UserId string `json:"user_id"`
 	// Business ID
 	BusinessId string `json:"business_id"`
-	// Change type | `TRANSACTION` trade `TRADING_FEE` fee `FUNDING_FEE` futures funding fee `LIQUIDATION_FEE` liquidation fee `TRANSFER_IN` transfer in `TRANSFER_OUT` transfer out `BANKRUPT_COMPENSATION` bankruptcy compensation `AUTO_REPAY` margin position auto-repay
-	Type string `json:"type"`
+	// Bill entry type | `TRANSACTION` trade `TRADING_FEE` fee `FUNDING_FEE` funding `LIQUIDATION_FEE` liquidation `TRANSFER_IN` deposit `TRANSFER_OUT` withdrawal `BANKRUPT_COMPENSATION` bankruptcy subsidy `AUTO_REPAY` margin auto-repay
+	StatementType string `json:"statement_type"`
 	// Exchange
 	ExchangeType string `json:"exchange_type"`
 	// Currency

@@ -10,29 +10,29 @@
 package gateapi
 
 type P2pAdDetail struct {
-	// Price
+	// Advertisement price.
 	Rate string `json:"rate,omitempty"`
-	// Buy/Sell order
+	// Ad side: `buy` buy-crypto ad; `sell` sell-crypto ad.
 	Type string `json:"type,omitempty"`
-	// Cryptocurrency amount
+	// Remaining crypto amount on the ad.
 	Amount string `json:"amount,omitempty"`
-	// Minimum limit
+	// Minimum trade amount in `want_type`.
 	MinAmount string `json:"min_amount,omitempty"`
-	// Maximum limit
+	// Maximum trade amount priced in `want_type`.
 	MaxAmount string `json:"max_amount,omitempty"`
 	// Fiat amount
 	Total string `json:"total,omitempty"`
-	// Whether Alipay payment is supported
+	// Whether Alipay is supported. `1`: yes; `0`: no.
 	PayAli int32 `json:"pay_ali,omitempty"`
-	// Whether bank payment is supported
+	// Whether bank transfer is supported. `1`: yes; `0`: no.
 	PayBank int32 `json:"pay_bank,omitempty"`
-	// Whether PayPal payment is supported
+	// Whether PayPal is supported. `1`: yes; `0`: no.
 	PayPaypal int32 `json:"pay_paypal,omitempty"`
-	// Whether WeChat payment is supported
+	// Whether WeChat Pay is supported. `1`: yes; `0`: no.
 	PayWechat int32 `json:"pay_wechat,omitempty"`
 	// Payment method ID list
 	PayTypeNum string `json:"pay_type_num,omitempty"`
-	// Payment method list
+	// JSON map of payment type -> payment method ID.
 	PayTypeJson string `json:"pay_type_json,omitempty"`
 	// Locked amount
 	LockedAmount string `json:"locked_amount,omitempty"`
@@ -40,8 +40,8 @@ type P2pAdDetail struct {
 	Orderid int32 `json:"orderid,omitempty"`
 	// Created time
 	Timestamp int32 `json:"timestamp,omitempty"`
-	// Cryptocurrency type
-	CurrencyType string `json:"currencyType,omitempty"`
+	// Cryptocurrency symbol.
+	CurrencyType string `json:"currency_type,omitempty"`
 	// Fiat type
 	WantType string `json:"want_type,omitempty"`
 	// Hidden price
@@ -50,17 +50,15 @@ type P2pAdDetail struct {
 	TradeTips string `json:"trade_tips,omitempty"`
 	// Auto reply
 	AutoReply string `json:"auto_reply,omitempty"`
-	// Merchant-friendly order
-	NewHand string `json:"new_hand,omitempty"`
-	// Floating price reference ID: 1=Platform reference price, 3=Spot reference price (≤0 means fixed price, >0 means floating price)
+	// Floating reference: `1` platform; `2` Gate; `3` spot; `<= 0` means fixed price.
 	RateRefId int32 `json:"rate_ref_id,omitempty"`
 	// Floating ratio (absolute value)
 	RateOffset float32 `json:"rate_offset,omitempty"`
-	// Status
+	// Ad status: `OPEN` listed; `OFFLIN` delisted; `CLOSED` closed; `CANCEL` canceled.
 	Status string `json:"status,omitempty"`
-	// 0=Floating, 1=Fixed
+	// Price type: `0` floating; `1` fixed.
 	RateFixed int32 `json:"rate_fixed,omitempty"`
-	// 0=Upward float, 1=Downward float
+	// Floating direction: `0` markup; `1` markdown.
 	FloatTrend int32 `json:"float_trend,omitempty"`
 	// Timeout (minutes)
 	ExpireMin int32 `json:"expire_min,omitempty"`
@@ -68,10 +66,8 @@ type P2pAdDetail struct {
 	TierLimit int32 `json:"tier_limit,omitempty"`
 	// Registration time limit
 	RegTimeLimit int32 `json:"reg_time_limit,omitempty"`
-	// Do not trade with advertisers, advertiser limit: 0=No limit, 1=Limit
+	// Whether trading with the advertiser is restricted. `0`: no; `1`: yes.
 	AdvertisersLimit int32 `json:"advertisers_limit,omitempty"`
-	// kyclimit
-	VerifiedLimit int32 `json:"verified_limit,omitempty"`
 	// Minimum limit of completed orders
 	MinCompletedLimit int32 `json:"min_completed_limit,omitempty"`
 	// Maximum limit of completed orders
@@ -80,16 +76,12 @@ type P2pAdDetail struct {
 	UserOrdersLimit int32 `json:"user_orders_limit,omitempty"`
 	// 30-day completion rate limit
 	CompletedRateLimit float32 `json:"completed_rate_limit,omitempty"`
-	// KYC nationality restriction
-	UserCountryLimit int32 `json:"user_country_limit,omitempty"`
 	// Restricted nationality (Chinese)
 	LimitCountryCn string `json:"limit_country_cn,omitempty"`
 	// Restricted nationality (English)
 	LimitCountryEn string `json:"limit_country_en,omitempty"`
-	// Whether auto delegation
+	// Whether auto-delegation is enabled. `1`: yes; `0`: no.
 	IsHedge int32 `json:"is_hedge,omitempty"`
-	// Whether to hide payment method
+	// Whether payment methods are hidden. `1`: hidden; `0`: visible.
 	HidePayment int32 `json:"hide_payment,omitempty"`
-	// fee
-	Fee int32 `json:"fee,omitempty"`
 }

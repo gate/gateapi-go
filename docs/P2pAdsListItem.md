@@ -9,8 +9,8 @@ Name | Type | Description | Notes
 **FiatUnit** | **string** | Fiat currency | [optional] 
 **AdvNo** | **int32** | Ad ID | [optional] 
 **Price** | **string** | Price | [optional] 
-**MaxSingleTransAmount** | **string** | Maximum Cryptocurrency Amount | [optional] 
-**MinSingleTransAmount** | **string** | Minimum Cryptocurrency Amount | [optional] 
+**MaxSingleTransAmount** | **string** | Maximum crypto size per trade. | [optional] 
+**MinSingleTransAmount** | **string** | Minimum crypto size per trade. | [optional] 
 **NickName** | **string** | Advertiser Nickname | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

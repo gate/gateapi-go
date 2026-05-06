@@ -4,9 +4,9 @@ All URIs are relative to *https://api.gateio.ws/api/v4*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**ListCrossexRuleSymbols**](CrossExApi.md#ListCrossexRuleSymbols) | **Get** /crossex/rule/symbols | [Public Interface] Query Trading Pair Information
-[**ListCrossexRuleRiskLimits**](CrossExApi.md#ListCrossexRuleRiskLimits) | **Get** /crossex/rule/risk_limits | [Public Interface] Query Risk Limit Information
-[**ListCrossexTransferCoins**](CrossExApi.md#ListCrossexTransferCoins) | **Get** /crossex/transfers/coin | [Public Interface] Query Supported Transfer Currencies
+[**ListCrossexRuleSymbols**](CrossExApi.md#ListCrossexRuleSymbols) | **Get** /crossex/rule/symbols | 查询币对信息
+[**ListCrossexRuleRiskLimits**](CrossExApi.md#ListCrossexRuleRiskLimits) | **Get** /crossex/rule/risk_limits | 查询风险限额信息
+[**ListCrossexTransferCoins**](CrossExApi.md#ListCrossexTransferCoins) | **Get** /crossex/transfers/coin | 查询划转币种支持
 [**ListCrossexTransfers**](CrossExApi.md#ListCrossexTransfers) | **Get** /crossex/transfers | Query Fund Transfer History
 [**CreateCrossexTransfer**](CrossExApi.md#CreateCrossexTransfer) | **Post** /crossex/transfers | Fund Transfer
 [**CreateCrossexOrder**](CrossExApi.md#CreateCrossexOrder) | **Post** /crossex/orders | Create an order
@@ -34,14 +34,14 @@ Method | HTTP request | Description
 [**ListCrossexHistoryMarginInterests**](CrossExApi.md#ListCrossexHistoryMarginInterests) | **Get** /crossex/history_margin_interests | Query Leveraged Interest Deduction History
 [**ListCrossexHistoryTrades**](CrossExApi.md#ListCrossexHistoryTrades) | **Get** /crossex/history_trades | queryfilledhistory
 [**ListCrossexAccountBook**](CrossExApi.md#ListCrossexAccountBook) | **Get** /crossex/account_book | Query Account Asset Change History
-[**ListCrossexCoinDiscountRate**](CrossExApi.md#ListCrossexCoinDiscountRate) | **Get** /crossex/coin_discount_rate | Query currency discount rate (discount rate of margin currency in isolated exchange mode)
+[**ListCrossexCoinDiscountRate**](CrossExApi.md#ListCrossexCoinDiscountRate) | **Get** /crossex/coin_discount_rate | Query Currency Discount Rate
 
 
 ## ListCrossexRuleSymbols
 
 > []Symbol ListCrossexRuleSymbols(ctx, optional)
 
-[Public Interface] Query Trading Pair Information
+查询币对信息
 
 Query Trading Pair Information
 
@@ -113,7 +113,7 @@ No authorization required
 
 > []CrossexRiskLimit ListCrossexRuleRiskLimits(ctx, symbols)
 
-[Public Interface] Query Risk Limit Information
+查询风险限额信息
 
 Query risk limit information for futures/margin trading pairs
 
@@ -178,7 +178,7 @@ No authorization required
 
 > []CrossexTransferCoin ListCrossexTransferCoins(ctx, optional)
 
-[Public Interface] Query Supported Transfer Currencies
+查询划转币种支持
 
 Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME <EMAIL@ADDRESS> Language: en Language-Team: en <L@li.org> Plural-Forms: nplurals=2; plural=(n !=1) MIME-Version: 1.0 Content-Type: text/plain; charset=utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0 
 
@@ -2298,6 +2298,7 @@ Name | Type | Description  | Notes
 **page** | **optional.Int32**| Page number | 
 **limit** | **optional.Int32**| Maximum number returned by list, max 1000 | 
 **coin** | **optional.String**| Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME &lt;EMAIL@ADDRESS&gt; Language: en Language-Team: en &lt;L@li.org&gt; Plural-Forms: nplurals&#x3D;2; plural&#x3D;(n !&#x3D;1) MIME-Version: 1.0 Content-Type: text/plain; charset&#x3D;utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0  | 
+**statementType** | **optional.String**| Bill entry type. | 
 **from** | **optional.Int32**| Start Millisecond Timestamp | 
 **to** | **optional.Int32**| End Millisecond Timestamp | 
 
@@ -2360,7 +2361,7 @@ func main() {
 
 > []CrossexCoinDiscountRate ListCrossexCoinDiscountRate(ctx, optional)
 
-Query currency discount rate (discount rate of margin currency in isolated exchange mode)
+Query Currency Discount Rate
 
 Rate Limit: 200 requests per 10 seconds
 

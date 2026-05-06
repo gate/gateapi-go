@@ -13,8 +13,8 @@ package gateapi
 type SendChatMessageRequest struct {
 	// Order ID
 	Txid int32 `json:"txid"`
-	// 0=Text, 1=File (video or image), default is 0 if not provided
+	// Message type: `0` text; `1` file (image or video); defaults to `0`.
 	Type int32 `json:"type,omitempty"`
-	// Message content
+	// Message body. For `type=0`, plain text up to 500 characters; for `type=1`, pass the `file_key` returned by `upload_chat_file`.
 	Message string `json:"message"`
 }

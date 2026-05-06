@@ -877,16 +877,16 @@ P2pMerchantBooksPlaceBizPushOrder Publish ad order
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param placeBizPushOrder
 
-@return map[string]interface{}
+@return P2pMerchantBooksPlaceBizPushOrderResponse
 */
-func (a *P2pApiService) P2pMerchantBooksPlaceBizPushOrder(ctx context.Context, placeBizPushOrder PlaceBizPushOrder) (map[string]interface{}, *http.Response, error) {
+func (a *P2pApiService) P2pMerchantBooksPlaceBizPushOrder(ctx context.Context, placeBizPushOrder PlaceBizPushOrder) (P2pMerchantBooksPlaceBizPushOrderResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  map[string]interface{}
+		localVarReturnValue  P2pMerchantBooksPlaceBizPushOrderResponse
 	)
 
 	// create path and map variables
@@ -965,21 +965,14 @@ func (a *P2pApiService) P2pMerchantBooksPlaceBizPushOrder(ctx context.Context, p
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-// P2pMerchantBooksAdsUpdateStatusOpts Optional parameters for the method 'P2pMerchantBooksAdsUpdateStatus'
-type P2pMerchantBooksAdsUpdateStatusOpts struct {
-	TradeType optional.String
-}
-
 /*
 P2pMerchantBooksAdsUpdateStatus Update ad status
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param adsUpdateStatus
-  - @param optional nil or *P2pMerchantBooksAdsUpdateStatusOpts - Optional Parameters:
-  - @param "TradeType" (optional.String) -  Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME <EMAIL@ADDRESS> Language: en Language-Team: en <L@li.org> Plural-Forms: nplurals=2; plural=(n !=1) MIME-Version: 1.0 Content-Type: text/plain; charset=utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0
 
 @return P2pAdsUpdateStatusResponse
 */
-func (a *P2pApiService) P2pMerchantBooksAdsUpdateStatus(ctx context.Context, adsUpdateStatus AdsUpdateStatus, localVarOptionals *P2pMerchantBooksAdsUpdateStatusOpts) (P2pAdsUpdateStatusResponse, *http.Response, error) {
+func (a *P2pApiService) P2pMerchantBooksAdsUpdateStatus(ctx context.Context, adsUpdateStatus AdsUpdateStatus) (P2pAdsUpdateStatusResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -995,9 +988,6 @@ func (a *P2pApiService) P2pMerchantBooksAdsUpdateStatus(ctx context.Context, ads
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-	if localVarOptionals != nil && localVarOptionals.TradeType.IsSet() {
-		localVarQueryParams.Add("trade_type", parameterToString(localVarOptionals.TradeType.Value(), ""))
-	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
 

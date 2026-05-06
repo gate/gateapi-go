@@ -10,32 +10,32 @@
 package gateapi
 
 type Symbol struct {
-	// ExchangeType_BusinessType_Base_Counter
+	// Unique trading pair identifier in the form ExchangeType_BusinessType_Base_Counter.
 	Symbol string `json:"symbol"`
-	// BINANCE,OKX,GATE,BYBIT,CROSSEX
+	// Exchange type (`BINANCE` / `OKX` / `GATE` / `BYBIT` / `CROSSEX`).
 	ExchangeType string `json:"exchange_type"`
-	// SPOT, FUTURE, MARGIN
+	// Business type (`SPOT` Spot / `FUTURE` Futures / `MARGIN` Margin).
 	BusinessType string `json:"business_type"`
-	// live/suspend
+	// Status (`live` running / `suspend` paused).
 	State string `json:"state"`
-	// Minimum order quantity
+	// Minimum order size allowed by the contract
 	MinSize string `json:"min_size"`
-	// Minimum order value
+	// Minimum Order Value
 	MinNotional string `json:"min_notional"`
-	// Quantity step size
+	// Quantity Step
 	LotSize string `json:"lot_size"`
-	// Price step size
+	// Price Step
 	TickSize string `json:"tick_size"`
-	// Maximum number of pending orders
+	// maximumopen orderamount
 	MaxNumOrders string `json:"max_num_orders"`
-	// Maximum order quantity at market price
+	// Maximum Market Order Quantity
 	MaxMarketSize string `json:"max_market_size"`
-	// Maximum order quantity at limit price
+	// Maximum order quantity for limit orders.
 	MaxLimitSize string `json:"max_limit_size"`
-	// contract multiplier
+	// Contract Multiplier
 	ContractSize string `json:"contract_size"`
-	// Liquidation rate
+	// Liquidation Fee Rate
 	LiquidationFee string `json:"liquidation_fee"`
-	// Millisecond timestamp,0 is normal
+	// Millisecond timestamp; `0` means not delisted.
 	DelistTime string `json:"delist_time"`
 }

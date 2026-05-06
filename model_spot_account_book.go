@@ -20,7 +20,7 @@ type SpotAccountBook struct {
 	Change string `json:"change,omitempty"`
 	// Balance after change
 	Balance string `json:"balance,omitempty"`
-	// Account book type. Please refer to [account book type](#accountbook-type) for more detail
+	// Account change type; deprecated (see `code` for account change type encoding)
 	Type string `json:"type,omitempty"`
 	// Account change code, see [Asset Record Code] (Asset Record Code)
 	Code string `json:"code,omitempty"`

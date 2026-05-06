@@ -10,7 +10,7 @@
 package gateapi
 
 type P2pTransactionDetail struct {
-	// Whether sell order
+	// Whether the current user is the seller. `1`: yes; `0`: no.
 	IsSell int32 `json:"is_sell,omitempty"`
 	// Order ID
 	Txid int32 `json:"txid,omitempty"`
@@ -20,138 +20,90 @@ type P2pTransactionDetail struct {
 	Timest int32 `json:"timest,omitempty"`
 	// Payment deadline
 	LastPayTime int32 `json:"last_pay_time,omitempty"`
-	// Remaining payment time
+	// Seconds left to pay; `<= 0` means overdue.
 	RemainPayTime int32 `json:"remain_pay_time,omitempty"`
-	// Cryptocurrency type
-	CurrencyType string `json:"currencyType,omitempty"`
-	// Fiat currency type
+	// Cryptocurrency symbol.
+	CurrencyType string `json:"currency_type,omitempty"`
+	// Fiat currency
 	WantType string `json:"want_type,omitempty"`
-	// Price
+	// Fiat currency symbol
+	Symbol string `json:"symbol,omitempty"`
+	// Order price in `want_type` units.
 	Rate string `json:"rate,omitempty"`
-	// Size
+	// Order size in cryptocurrency.
 	Amount string `json:"amount,omitempty"`
-	// Fiat amount
+	// Total fiat amount of the order.
 	Total string `json:"total,omitempty"`
-	// Order Status
+	// Display status: `unpay` unpaid; `hide_payment` unpaid with payment info hidden; `paid` buyer paid; `unconfirmed` awaiting seller confirmation; `locked` locked; `finished` done; `cancel` canceled; `expired` expired; `bclosed` arbitration filled; `sclosed` arbitration canceled.
 	Status string `json:"status,omitempty"`
-	// Cancellation reason ID
+	// Cancel reason ID; empty string means none. Examples: `1` no longer want to buy; `2` cannot reach seller; `3` will not pay; `4` seller did not provide a real account; `6` price/amount mismatch; `9` other; `10` seller cannot release and refund issued; `11` terms not met; `12` seller payout account risk-controlled.
 	ReasonId string `json:"reason_id,omitempty"`
-	// Cancellation reason
+	// Cancel reason description.
 	ReasonDesc string `json:"reason_desc,omitempty"`
-	// Popup ID
-	ToastId int32 `json:"toast_id,omitempty"`
 	// Cancellation time
 	CancelTime string `json:"cancel_time,omitempty"`
-	// Whether seller confirmed the reason
-	SellerConfirm int32 `json:"seller_confirm,omitempty"`
-	// Whether in dispute
+	// Whether a dispute is active. `1`: yes; `0`: no.
 	InAppeal int32 `json:"in_appeal,omitempty"`
-	// Appeal time limit
+	// Earliest timestamp when a dispute may be opened.
 	DisputeTime int32 `json:"dispute_time,omitempty"`
-	// Whether order cancellation is allowed
+	// Whether cancellation is allowed. `1`: yes; `0`: no.
 	Cancelable int32 `json:"cancelable,omitempty"`
-	// Whether to hide payment method
+	// Whether payment methods are hidden. `1`: hidden; `0`: visible.
 	HidePayment int32 `json:"hide_payment,omitempty"`
 	// Trading terms
 	TradeTips string `json:"trade_tips,omitempty"`
-	// Whether to display bank
+	// Whether to show bank transfer details. `1`: show; `0`: hide.
 	ShowBank string `json:"show_bank,omitempty"`
 	// Bank name
 	Bankname string `json:"bankname,omitempty"`
 	// Bank branch name
 	Bankbranch string `json:"bankbranch,omitempty"`
-	// Bank ID
+	// Bank account or masked account.
 	Bankid string `json:"bankid,omitempty"`
 	// Bank cardholder name
 	BankHolderRealname string `json:"bank_holder_realname,omitempty"`
-	// Whether to display Alipay
+	// Whether to show Alipay details. `1`: show; `0`: hide.
 	ShowAli string `json:"show_ali,omitempty"`
 	// Alipay account name
 	Aliname string `json:"aliname,omitempty"`
-	// Whether Alipay QR code exists
+	// Whether an Alipay QR exists. `1`: yes; `0`: no.
 	IsAlicode int32 `json:"is_alicode,omitempty"`
-	// Whether to display WeChat
+	// Whether to show WeChat details. `1`: show; `0`: hide.
 	ShowWechat string `json:"show_wechat,omitempty"`
 	// WeChat account name
 	Wename string `json:"wename,omitempty"`
-	// Whether to display other payment methods
+	// Whether to show other payment methods. `1`: show; `0`: hide.
 	ShowOthers string `json:"show_others,omitempty"`
 	// Other payment methods
-	PayOthers []string `json:"pay_others,omitempty"`
-	// Payment type
+	PayOthers []P2pTransactionDetailPayOthers `json:"pay_others,omitempty"`
+	// Selected payment type for this order, e.g. `bank`, `alipay`, `wechat`, `paypal`, `swift`, `wu`.
 	SelPaytype string `json:"sel_paytype,omitempty"`
-	// Counterparty UID
+	// Counterparty crypto UID.
 	ItsUid string `json:"its_uid,omitempty"`
-	// Whether counterparty is Blue V
-	ItsIsBlueVip int32 `json:"its_is_blue_vip,omitempty"`
-	// Counterparty VIP tier
-	ItsTier int32 `json:"its_tier,omitempty"`
-	// Counterparty avatar
-	ItsAvatar string `json:"its_avatar,omitempty"`
 	// Counterparty nickname
 	ItsNickname string `json:"its_nickname,omitempty"`
-	// Counterparty username
+	// Counterparty real name or verified display name.
 	ItsRealname string `json:"its_realname,omitempty"`
-	// Whether following
-	IsFollow int32 `json:"is_follow,omitempty"`
-	// Whether blocked
-	IsBlack int32 `json:"is_black,omitempty"`
-	// Whether traded before
+	// Whether you traded with the counterparty before. `1`: yes; `0`: no.
 	HaveTraded int32 `json:"have_traded,omitempty"`
-	// Unread appeals
-	AppealUnread int32 `json:"appeal_unread,omitempty"`
-	// Whether appeal cancellation is allowed
+	// Whether the dispute can be withdrawn. `1`: allowed; `0`: not allowed.
 	AppealAllowCancel int32 `json:"appeal_allow_cancel,omitempty"`
-	// Appeal result (including pending appeals)
+	// Dispute outcome or in-dispute notice text.
 	AppealVerdictHasOpen string `json:"appeal_verdict_has_open,omitempty"`
-	// IM unread
+	// Unread chat message count.
 	ImUnread int32 `json:"im_unread,omitempty"`
-	// Review content
-	Message string `json:"message,omitempty"`
-	// Rating
-	Score string `json:"score,omitempty"`
 	// Payment voucher
 	PaymentVoucherUrl []string `json:"payment_voucher_url,omitempty"`
-	// Counterparty transaction volume
-	CompleteNumber int32 `json:"complete_number,omitempty"`
-	// Counterparty completion rate
-	CompleteRateMonth string `json:"complete_rate_month,omitempty"`
-	// Whether transaction record is verified
-	CheckJournalAccount bool `json:"check_journal_account,omitempty"`
-	// Whether to display transaction records
-	ShowJournalAccount bool `json:"show_journal_account,omitempty"`
-	// Whether margin is frozen
-	IsFreezeGuarantee int32 `json:"is_freeze_guarantee,omitempty"`
-	// Remaining USDT margin
-	UsdtLeftGuarantee string `json:"usdt_left_guarantee,omitempty"`
-	// Margin currency type
-	GuaranteeCurrType string `json:"guarantee_curr_type,omitempty"`
-	// Payment time
+	// Timestamp when the buyer confirmed payment.
 	TimestPaid int32 `json:"timest_paid,omitempty"`
-	// Order Status
-	State string `json:"state,omitempty"`
-	// Coin release switch configuration
-	ReleaseCoinSwitch int32 `json:"release_coin_switch,omitempty"`
-	// Username
+	// Current user's real name or verified display name.
 	OwnRealname string `json:"own_realname,omitempty"`
-	// Average confirmation time in last 30 days
-	ConfirmationUseTimeMonth int32 `json:"confirmation_use_time_month,omitempty"`
-	// Whether risk user
-	IsRiskUser int32 `json:"is_risk_user,omitempty"`
-	// Whether XT order
-	IsXt int32 `json:"is_xt,omitempty"`
-	// Order Type
+	// Order type: `1` standard; `2` partner; `3` flash swap; `4` Web3.
 	OrderType int32 `json:"order_type,omitempty"`
-	// Fiat currency symbol
-	Symbol string `json:"symbol,omitempty"`
-	// Whether to show confirm receipt during appeal
+	// Whether to show confirm-receipt during dispute. `1`: show; `0`: hide.
 	IsShowReceive int32 `json:"is_show_receive,omitempty"`
-	// Whether regular user
-	IsTaker int32 `json:"is_taker,omitempty"`
-	// Merchant online status
-	IsOnline int32 `json:"is_online,omitempty"`
 	// Whether to display seller contact information
 	ShowSellerContactInfo bool `json:"show_seller_contact_info,omitempty"`
-	// Payment methods supported by current order
+	// Supported payment method types for the order, e.g. `bank`, `alipay`, `wechat`, `paypal`, `swift`, `wu`.
 	SupportedPayTypes []string `json:"supported_pay_types,omitempty"`
 }

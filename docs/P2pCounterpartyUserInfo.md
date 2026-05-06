@@ -5,9 +5,9 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **UserTimest** | **string** | User registration time (formatted string) | [optional] 
-**EmailVerified** | **string** | Whether email is verified | [optional] 
-**Verified** | **string** | Whether KYC verification is completed | [optional] 
-**HasPhone** | **string** | Whether phone is bound | [optional] 
+**EmailVerified** | **string** | Whether email is verified. &#x60;1&#x60;: yes; &#x60;0&#x60;: no. | [optional] 
+**Verified** | **string** | Whether KYC is completed. &#x60;1&#x60;: yes; &#x60;0&#x60;: no. | [optional] 
+**HasPhone** | **string** | Whether a phone number is bound. &#x60;1&#x60;: yes; &#x60;0&#x60;: no. | [optional] 
 **UserName** | **string** | Username | [optional] 
 **UserNote** | **string** | User note information | [optional] 
 **CompleteTransactions** | **string** | Total completed orders | [optional] 
@@ -17,8 +17,8 @@ Name | Type | Description | Notes
 **CancelledUsedTimeMonth** | **string** | Cancellation time in last 30 days | [optional] 
 **CompleteTransactionsMonth** | **string** | Number of completed orders in last 30 days | [optional] 
 **CompleteRateMonth** | **float32** | Completion rate in last 30 days | [optional] 
-**IsFollow** | **int32** | Whether following | [optional] 
-**HaveTraded** | **int32** | Whether traded with self | [optional] 
+**IsFollow** | **int32** | Whether you follow this user. &#x60;1&#x60;: yes; &#x60;0&#x60;: no. | [optional] 
+**HaveTraded** | **int32** | Whether you have traded with this user before. &#x60;1&#x60;: yes; &#x60;0&#x60;: no. | [optional] 
 **BizUid** | **string** | Encrypted UID | [optional] 
 **RegistrationDays** | **int32** | Registration days | [optional] 
 **FirstTradeDays** | **int32** | Days since first trade | [optional] 

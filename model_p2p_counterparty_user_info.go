@@ -12,11 +12,11 @@ package gateapi
 type P2pCounterpartyUserInfo struct {
 	// User registration time (formatted string)
 	UserTimest string `json:"user_timest,omitempty"`
-	// Whether email is verified
+	// Whether email is verified. `1`: yes; `0`: no.
 	EmailVerified string `json:"email_verified,omitempty"`
-	// Whether KYC verification is completed
+	// Whether KYC is completed. `1`: yes; `0`: no.
 	Verified string `json:"verified,omitempty"`
-	// Whether phone is bound
+	// Whether a phone number is bound. `1`: yes; `0`: no.
 	HasPhone string `json:"has_phone,omitempty"`
 	// Username
 	UserName string `json:"user_name,omitempty"`
@@ -36,9 +36,9 @@ type P2pCounterpartyUserInfo struct {
 	CompleteTransactionsMonth string `json:"complete_transactions_month,omitempty"`
 	// Completion rate in last 30 days
 	CompleteRateMonth float32 `json:"complete_rate_month,omitempty"`
-	// Whether following
+	// Whether you follow this user. `1`: yes; `0`: no.
 	IsFollow int32 `json:"is_follow,omitempty"`
-	// Whether traded with self
+	// Whether you have traded with this user before. `1`: yes; `0`: no.
 	HaveTraded int32 `json:"have_traded,omitempty"`
 	// Encrypted UID
 	BizUid string `json:"biz_uid,omitempty"`

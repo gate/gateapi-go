@@ -11,6 +11,6 @@ package gateapi
 
 // Get counterparty user info request
 type GetCounterpartyUserInfoRequest struct {
-	// Counterparty UID (encrypted)
+	// Counterparty crypto UID from order list or detail field `its_uid`.
 	BizUid string `json:"biz_uid"`
 }

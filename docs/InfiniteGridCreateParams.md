@@ -7,8 +7,8 @@ Name | Type | Description | Notes
 **Money** | **string** |  | 
 **PriceFloor** | **string** | price floor | 
 **ProfitPerGrid** | **string** | Profit per square | 
-**GridNum** | **int32** |  | 
-**PriceType** | **int32** |  | 
+**GridNum** | **int32** | Optional; may be omitted like in the app. | [optional] 
+**PriceType** | **int32** | Optional. &#x60;0&#x60; arithmetic grid; &#x60;1&#x60; geometric; omit for server defaults. | [optional] 
 **TriggerPrice** | **string** |  | [optional] 
 **StopProfit** | **string** |  | [optional] 
 **StopLoss** | **string** |  | [optional] 

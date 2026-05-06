@@ -4,9 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Code** | **int32** |  | [optional] 
-**Message** | **string** |  | [optional] 
-**Timestamp** | **int32** |  | [optional] 
+**Timestamp** | **float32** | Response timestamp. | [optional] 
+**Method** | **string** | Placeholder for request method. | [optional] 
+**Code** | **int32** | Response code, 0 means success | [optional] 
+**Message** | **string** | Response message | [optional] 
+**Data** | [**map[string]interface{}**](.md) | Empty object on success. | [optional] 
+**Version** | **string** | API version. | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

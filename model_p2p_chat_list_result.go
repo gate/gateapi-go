@@ -18,8 +18,8 @@ type P2pChatListResult struct {
 	HasHistory bool `json:"has_history,omitempty"`
 	// Order ID
 	Txid int32 `json:"txid,omitempty"`
-	// Timestamp of the latest message
+	// Timestamp of the latest message.
 	SRVTM int32 `json:"SRVTM,omitempty"`
-	// Order Status
+	// Raw order status in DB; typical values: `OPEN`, `PAID`, `LOCKED`, `ACCEPT`, `BCLOSED`, `CANCEL`, `BECANCEL`, `SCLOSED`, `SCANCEL`.
 	OrderStatus string `json:"order_status,omitempty"`
 }

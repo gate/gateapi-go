@@ -11,58 +11,58 @@ package gateapi
 
 // Place ad order request
 type PlaceBizPushOrder struct {
-	// Cryptocurrency
+	// Cryptocurrency symbol.
 	CurrencyType string `json:"currencyType"`
 	// Fiat currency
 	ExchangeType string `json:"exchangeType"`
-	// Ad type: 0=Sell, 1=Buy, 2=Edit sell, 3=Edit buy
+	// Ad operation type. `0`: publish sell ad; `1`: publish buy ad; `2`: edit sell ad; `3`: edit buy ad.
 	Type string `json:"type"`
-	// Unit price
+	// Per-unit price in fixed-price mode.
 	UnitPrice string `json:"unitPrice"`
-	// Size
+	// Ad amount priced in `currencyType`.
 	Number string `json:"number"`
-	// Payment method
+	// Payment types, comma-separated; from pay type list `pay_type`, e.g. `bank`, `alipay`, `wechat`, `paypal`, `swift`, `wu`.
 	PayType string `json:"payType"`
-	// Payment method JSON string
+	// JSON map of payment type -> user's payment method ID.
 	PayTypeJson string `json:"pay_type_json,omitempty"`
-	// Price type: 0-Floating price, 1-Fixed price
+	// Price type: `0` floating; `1` fixed.
 	RateFixed string `json:"rateFixed,omitempty"`
-	// Ad ID when editing
+	// Pass ad ID when editing; omit or empty when publishing a new ad.
 	Oid string `json:"oid,omitempty"`
-	// Minimum transaction amount per order
+	// Minimum trade amount in `exchangeType`.
 	MinAmount string `json:"minAmount"`
-	// Maximum transaction amount per order
+	// Maximum amount per trade in `exchangeType` fiat units.
 	MaxAmount string `json:"maxAmount"`
-	// Order tier limit
+	// Minimum counterparty VIP level; `0` means no requirement.
 	TierLimit string `json:"tierLimit,omitempty"`
-	// Verification level limit
+	// Minimum counterparty verification level; `0` means no limit.
 	VerifiedLimit string `json:"verifiedLimit,omitempty"`
-	// Registration time limit
+	// Minimum counterparty account age in days; `0` means no limit.
 	RegTimeLimit string `json:"regTimeLimit,omitempty"`
-	// Advertiser restriction
+	// Whether trading with the advertiser is restricted. `0`: no; `1`: yes.
 	AdvertisersLimit string `json:"advertisersLimit,omitempty"`
-	// Whether to hide payment method: 1=Yes, 0=No
-	HidePayment string `json:"hide_payment,omitempty"`
-	// Ad expiration time (minutes)
+	// Payment timeout in minutes.
 	ExpireMin string `json:"expire_min,omitempty"`
-	// Trading terms
+	// Ad trading terms shown to the taker.
 	TradeTips string `json:"trade_tips,omitempty"`
-	// Auto reply
+	// Auto-reply message after order creation.
 	AutoReply string `json:"auto_reply,omitempty"`
-	// Minimum limit of completed orders
+	// Minimum completed orders for counterparty; `-1` unlimited.
 	MinCompletedLimit string `json:"min_completed_limit,omitempty"`
-	// Maximum limit of completed orders
+	// Maximum completed orders for counterparty; `-1` unlimited.
 	MaxCompletedLimit string `json:"max_completed_limit,omitempty"`
-	// 30-day completion rate limit
+	// Counterparty minimum 30-day completion rate; `-1` means no limit.
 	CompletedRateLimit string `json:"completed_rate_limit,omitempty"`
-	// KYC nationality restriction
+	// KYC nationality restriction; `-1` means no restriction.
 	UserCountryLimit string `json:"user_country_limit,omitempty"`
-	// Order count limit
+	// Maximum concurrent orders allowed for the counterparty. `-1`: unlimited.
 	UserOrderLimit string `json:"user_order_limit,omitempty"`
-	// Reference exchange rate ID
+	// Floating price reference. `1`: platform reference; `2`: Gate reference; `3`: spot reference.
 	RateReferenceId string `json:"rateReferenceId,omitempty"`
-	// Reference exchange rate offset
+	// Absolute floating offset ratio, e.g. `0.5` means 0.5%.
 	RateOffset string `json:"rateOffset,omitempty"`
-	// 444
+	// Floating direction: `0` markup; `1` markdown.
 	FloatTrend string `json:"float_trend,omitempty"`
+	// Team payee UID; optional for non-team merchants.
+	TeamPaymentUid string `json:"team_payment_uid,omitempty"`
 }

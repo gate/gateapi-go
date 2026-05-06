@@ -35,6 +35,7 @@ type CrossexAccount struct {
 	// Account Mode. CROSS_EXCHANGE: Cross-Exchange Mode; ISOLATED_EXCHANGE: Split-Exchange Mode
 	AccountMode string `json:"account_mode,omitempty"`
 	// Exchange Type. When account_mode is CROSS_EXCHANGE, it must be CROSSEX; otherwise, it is another exchange.
-	ExchangeType string                `json:"exchange_type,omitempty"`
-	Assets       []CrossexAccountAsset `json:"assets"`
+	ExchangeType string `json:"exchange_type,omitempty"`
+	// 资产列表，按交易所与币种维度返回各账户余额、保证金及盈亏明细
+	Assets []CrossexAccountAsset `json:"assets"`
 }
