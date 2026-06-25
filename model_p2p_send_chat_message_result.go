@@ -12,4 +12,14 @@ package gateapi
 type P2pSendChatMessageResult struct {
 	// Timestamp when message was successfully sent (current timestamp)
 	SRVTM int32 `json:"SRVTM,omitempty"`
+	// Order ID
+	Txid int32 `json:"txid,omitempty"`
+	// Chat ID, formatted as both parties' UIDs concatenated in ascending order
+	ConversationId string `json:"conversation_id,omitempty"`
+	// Message content type when risk control is hit. 0: text
+	MsgType int32 `json:"msg_type,omitempty"`
+	// Risk control display type. 1: off-platform traffic diversion risk; returned only when risk control is hit
+	RiskType int32 `json:"risk_type,omitempty"`
+	// Risk control prompt message; returned only when risk_type=1
+	ToastMsg string `json:"toast_msg,omitempty"`
 }

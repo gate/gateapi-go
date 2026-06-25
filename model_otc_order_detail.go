@@ -26,8 +26,10 @@ type OtcOrderDetail struct {
 	CryptoAmount string `json:"crypto_amount"`
 	// Exchange rate
 	Rate string `json:"rate"`
-	// Remark
+	// Transfer remark (mutually exclusive with reference_code; empty string when the deposit buy order has a reference code)
 	TransferRemark string `json:"transfer_remark"`
+	// Unique bank transfer reference code for deposit buy orders (SGB deposit scenario; mutually exclusive with transfer_remark)
+	ReferenceCode string `json:"reference_code,omitempty"`
 	// Status
 	Status   string `json:"status"`
 	DbStatus string `json:"db_status"`

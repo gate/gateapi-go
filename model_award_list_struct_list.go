@@ -22,7 +22,7 @@ type AwardListStructList struct {
 	Interest string `json:"interest"`
 	// fee
 	Fee string `json:"fee"`
-	// Status
+	// Status. 4 - success
 	Status int32 `json:"status"`
 	// Date
 	BonusDate string `json:"bonus_date"`

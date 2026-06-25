@@ -17,6 +17,12 @@ type Position struct {
 	Contract string `json:"contract,omitempty"`
 	// Position size
 	Size string `json:"size,omitempty"`
+	// The hedging status of the position under the Delta-neutral strategy. Including:  - `partial_hedged`: partially hedged - `full_hedged`: fully hedged
+	HedgeStatus string `json:"hedge_status,omitempty"`
+	// The hedged position size under the Delta-neutral strategy.
+	HedgedSize string `json:"hedged_size,omitempty"`
+	// The unhedged position size under the Delta-neutral strategy, calculated as `max(abs(size) - abs(hedged_size), 0)`.
+	UnhedgedSize string `json:"unhedged_size,omitempty"`
 	//  leverage for isolated margin. 0 means cross margin. For leverage of cross margin, please refer to `cross_leverage_limit`.
 	Leverage string `json:"leverage,omitempty"`
 	// Position risk limit

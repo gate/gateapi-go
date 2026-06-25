@@ -35,8 +35,10 @@ type OtcOrderListItem struct {
 	CryptoAmount string `json:"crypto_amount,omitempty"`
 	// Exchange rate
 	Rate string `json:"rate,omitempty"`
-	// Remark
+	// Transfer remark (mutually exclusive with reference_code; empty string when the deposit buy order has a reference code)
 	TransferRemark string `json:"transfer_remark,omitempty"`
+	// Unique bank transfer reference code for deposit buy orders (SGB deposit scenario)
+	ReferenceCode string `json:"reference_code,omitempty"`
 	// Bank account
 	GateBankAccountIban string `json:"gate_bank_account_iban,omitempty"`
 	// Promotion code

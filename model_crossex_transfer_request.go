@@ -15,9 +15,9 @@ type CrossexTransferRequest struct {
 	Coin string `json:"coin"`
 	// Transfer amount
 	Amount string `json:"amount"`
-	// Transfer-in account: CROSSEX_BINANCE, CROSSEX_OKX, CROSSEX_GATE, CROSSEX_BYBIT, CROSSEX, SPOT
+	// `from` receiving account (`CROSSEX_BINANCE`, `CROSSEX_OKX`, `CROSSEX_GATE`, `CROSSEX_BYBIT`, `CROSSEX_KRAKEN`, `CROSSEX_HYPERLIQUID`, `CROSSEX`, `SPOT`).
 	From string `json:"from"`
-	// Transfer-out account: CROSSEX_BINANCE, CROSSEX_OKX, CROSSEX_GATE, CROSSEX_BYBIT, CROSSEX, SPOT
+	// `to` debit account (funds withdrawn from): `CROSSEX_BINANCE`, `CROSSEX_OKX`, `CROSSEX_GATE`, `CROSSEX_BYBIT`, `CROSSEX_KRAKEN`, `CROSSEX_HYPERLIQUID`, `CROSSEX`, `SPOT`
 	To string `json:"to"`
 	// User-defined ID
 	Text string `json:"text,omitempty"`

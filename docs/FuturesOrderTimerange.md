@@ -34,6 +34,8 @@ Name | Type | Description | Notes
 **Pid** | **int64** | Position ID | [optional] 
 **MarketOrderSlipRatio** | **string** | Custom maximum slippage rate for market orders. If not provided, the default contract settings will be used | [optional] 
 **PosMarginMode** | **string** | Position Margin Mode isolated - Isolated Margin, cross - Cross Margin, only passed in simple split position mode | [optional] 
+**TpslTpTriggerPrice** | **string** | Take profit price | [optional] 
+**TpslSlTriggerPrice** | **string** | Stop loss price | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

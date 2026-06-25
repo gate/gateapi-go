@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **RewardCoin** | **string** | Reward currency | 
 **Interest** | **string** | Interest amount | 
 **Fee** | **string** | fee | 
-**Status** | **int32** | Status | 
+**Status** | **int32** | Status. 4 - success | 
 **BonusDate** | **string** | Date | 
 **ShouldBonusStamp** | **int32** | Scheduled distribution timestamp | 
 

@@ -105,4 +105,6 @@ type Contract struct {
 	ContractType string `json:"contract_type,omitempty"`
 	// Funding rate depth impact value
 	FundingImpactValue string `json:"funding_impact_value,omitempty"`
+	// Whether the newly launched contract activates mark price circuit breaker (If the platform intends to activate this mechanism for a newly launched contract market to prevent significant price fluctuations and excessive liquidations after launch, an advance announcement will be made).
+	EnableCircuitBreaker bool `json:"enable_circuit_breaker,omitempty"`
 }

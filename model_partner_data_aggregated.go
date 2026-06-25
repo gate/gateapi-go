@@ -10,15 +10,15 @@
 package gateapi
 
 type PartnerDataAggregated struct {
-	// 返佣金额，字符串格式保证精度  最多保留 6 位小数，去除尾零
+	// Rebate amount as a string for precision. Up to 6 decimal places; trailing zeros removed.
 	RebateAmount string `json:"rebate_amount"`
-	// 交易量，字符串格式保证精度  最多保留 6 位小数，去除尾零
+	// Trading volume as a string for precision. Up to 6 decimal places; trailing zeros removed.
 	TradeVolume string `json:"trade_volume"`
-	// 净手续费，字符串格式保证精度  最多保留 6 位小数，去除尾零
+	// Net fee as a string for precision. Up to 6 decimal places; trailing zeros removed.
 	NetFee string `json:"net_fee"`
 	// Customer count (invited users)
 	CustomerCount int32 `json:"customer_count"`
-	// 交易人数，字符串形式（与线上 JSON 序列化一致）  仅在 business_type=0（全部）时返回具体数值，其他业务类型返回 null
+	// Transaction participant count​ (string format, consistent with online JSON serialization) only returns a specific value when business_type=0(all), and returns nullfor other business types.
 	TradingUserCount *string `json:"trading_user_count"`
 	// Time range description
 	TimeRangeDesc string `json:"time_range_desc"`

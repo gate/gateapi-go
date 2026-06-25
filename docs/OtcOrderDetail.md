@@ -12,7 +12,8 @@ Name | Type | Description | Notes
 **CryptoCurrency** | **string** | Stablecoin | 
 **CryptoAmount** | **string** | Stablecoin amount | 
 **Rate** | **string** | Exchange rate | 
-**TransferRemark** | **string** | Remark | 
+**TransferRemark** | **string** | Transfer remark (mutually exclusive with reference_code; empty string when the deposit buy order has a reference code) | 
+**ReferenceCode** | **string** | Unique bank transfer reference code for deposit buy orders (SGB deposit scenario; mutually exclusive with transfer_remark) | [optional] 
 **Status** | **string** | Status | 
 **DbStatus** | **string** |  | 
 **CreateTime** | **string** | Created time | 

@@ -35,4 +35,6 @@ type FuturesPriceTriggeredOrder struct {
 	OrderType string `json:"order_type,omitempty"`
 	// Corresponding order ID for order take-profit/stop-loss orders
 	MeOrderId int64 `json:"me_order_id,omitempty"`
+	// Position margin mode: `isolated` (isolated margin) or `cross` (cross margin). Returned by the server in simple split-position mode; when writing, use only the values below.
+	PosMarginMode string `json:"pos_margin_mode,omitempty"`
 }

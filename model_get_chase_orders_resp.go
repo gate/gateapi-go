@@ -9,9 +9,6 @@
 
 package gateapi
 
-type OtcUserDefaultBankResponse struct {
-	Code      int32              `json:"code"`
-	Message   string             `json:"message"`
-	Data      OtcUserDefaultBank `json:"data"`
-	Timestamp int32              `json:"timestamp"`
+type GetChaseOrdersResp struct {
+	Orders []ChaseOrder `json:"orders,omitempty"`
 }

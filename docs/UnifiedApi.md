@@ -26,6 +26,10 @@ Method | HTTP request | Description
 [**ListUnifiedCurrencies**](UnifiedApi.md#ListUnifiedCurrencies) | **Get** /unified/currencies | List of loan currencies supported by unified account
 [**GetHistoryLoanRate**](UnifiedApi.md#GetHistoryLoanRate) | **Get** /unified/history_loan_rate | Get historical lending rates
 [**SetUnifiedCollateral**](UnifiedApi.md#SetUnifiedCollateral) | **Post** /unified/collateral_currencies | Set collateral currency
+[**GetEstimatedQuickRepayment**](UnifiedApi.md#GetEstimatedQuickRepayment) | **Get** /unified/estimated_quick_repayment | Estimated quick repayment details
+[**CreateQuickRepayment**](UnifiedApi.md#CreateQuickRepayment) | **Post** /unified/quick_repayment | Quick repayment
+[**GetUnifiedDeltaNeutral**](UnifiedApi.md#GetUnifiedDeltaNeutral) | **Get** /unified/delta_neutral | Query the account Delta-neutral strategy mode setting
+[**SetUnifiedDeltaNeutral**](UnifiedApi.md#SetUnifiedDeltaNeutral) | **Post** /unified/delta_neutral | Set the account Delta-neutral strategy mode
 
 
 ## ListUnifiedAccounts
@@ -1563,6 +1567,278 @@ func main() {
 ### Return type
 
 [**UnifiedCollateralRes**](UnifiedCollateralRes.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+## GetEstimatedQuickRepayment
+
+> QuickEstimatedRepayment GetEstimatedQuickRepayment(ctx, )
+
+Estimated quick repayment details
+
+Available for unified account cross-currency margin mode and portfolio margin mode
+
+### Required Parameters
+
+
+### Example
+
+```golang
+package main
+
+import (
+    "context"
+    "fmt"
+
+    "github.com/gate/gateapi-go/v7"
+)
+
+func main() {
+    client := gateapi.NewAPIClient(gateapi.NewConfiguration())
+    // uncomment the next line if your are testing against testnet
+    // client.ChangeBasePath("https://fx-api-testnet.gateio.ws/api/v4")
+    ctx := context.WithValue(context.Background(),
+                             gateapi.ContextGateAPIV4,
+                             gateapi.GateAPIV4{
+                                 Key:    "YOUR_API_KEY",
+                                 Secret: "YOUR_API_SECRET",
+                             }
+                            )
+    
+    result, _, err := client.UnifiedApi.GetEstimatedQuickRepayment(ctx)
+    if err != nil {
+        if e, ok := err.(gateapi.GateAPIError); ok {
+            fmt.Printf("gate api error: %s\n", e.Error())
+        } else {
+            fmt.Printf("generic error: %s\n", err.Error())
+        }
+    } else {
+        fmt.Println(result)
+    }
+}
+```
+
+
+### Return type
+
+[**QuickEstimatedRepayment**](QuickEstimatedRepayment.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+## CreateQuickRepayment
+
+> QuickRepaymentResponse CreateQuickRepayment(ctx, quickRepaymentRequest)
+
+Quick repayment
+
+Available for unified account cross-currency margin mode and portfolio margin mode. Use `GET /unified/estimated_quick_repayment` to query liabilities and pending repayment information.
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**quickRepaymentRequest** | [**QuickRepaymentRequest**](QuickRepaymentRequest.md)|  | 
+
+### Example
+
+```golang
+package main
+
+import (
+    "context"
+    "fmt"
+
+    "github.com/gate/gateapi-go/v7"
+)
+
+func main() {
+    client := gateapi.NewAPIClient(gateapi.NewConfiguration())
+    // uncomment the next line if your are testing against testnet
+    // client.ChangeBasePath("https://fx-api-testnet.gateio.ws/api/v4")
+    ctx := context.WithValue(context.Background(),
+                             gateapi.ContextGateAPIV4,
+                             gateapi.GateAPIV4{
+                                 Key:    "YOUR_API_KEY",
+                                 Secret: "YOUR_API_SECRET",
+                             }
+                            )
+    quickRepaymentRequest := gateapi.QuickRepaymentRequest{} // QuickRepaymentRequest - 
+    
+    result, _, err := client.UnifiedApi.CreateQuickRepayment(ctx, quickRepaymentRequest)
+    if err != nil {
+        if e, ok := err.(gateapi.GateAPIError); ok {
+            fmt.Printf("gate api error: %s\n", e.Error())
+        } else {
+            fmt.Printf("generic error: %s\n", err.Error())
+        }
+    } else {
+        fmt.Println(result)
+    }
+}
+```
+
+
+### Return type
+
+[**QuickRepaymentResponse**](QuickRepaymentResponse.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+## GetUnifiedDeltaNeutral
+
+> DeltaNeutralEnabled GetUnifiedDeltaNeutral(ctx, )
+
+Query the account Delta-neutral strategy mode setting
+
+### Required Parameters
+
+
+### Example
+
+```golang
+package main
+
+import (
+    "context"
+    "fmt"
+
+    "github.com/gate/gateapi-go/v7"
+)
+
+func main() {
+    client := gateapi.NewAPIClient(gateapi.NewConfiguration())
+    // uncomment the next line if your are testing against testnet
+    // client.ChangeBasePath("https://fx-api-testnet.gateio.ws/api/v4")
+    ctx := context.WithValue(context.Background(),
+                             gateapi.ContextGateAPIV4,
+                             gateapi.GateAPIV4{
+                                 Key:    "YOUR_API_KEY",
+                                 Secret: "YOUR_API_SECRET",
+                             }
+                            )
+    
+    result, _, err := client.UnifiedApi.GetUnifiedDeltaNeutral(ctx)
+    if err != nil {
+        if e, ok := err.(gateapi.GateAPIError); ok {
+            fmt.Printf("gate api error: %s\n", e.Error())
+        } else {
+            fmt.Printf("generic error: %s\n", err.Error())
+        }
+    } else {
+        fmt.Println(result)
+    }
+}
+```
+
+
+### Return type
+
+[**DeltaNeutralEnabled**](DeltaNeutralEnabled.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+## SetUnifiedDeltaNeutral
+
+> DeltaNeutralEnabled SetUnifiedDeltaNeutral(ctx, deltaNeutralEnabled)
+
+Set the account Delta-neutral strategy mode
+
+Enable or disable the account Delta-neutral strategy mode.  Requirements for enabling: VIP level >= 4 and the account is in cross-currency margin mode; otherwise 403 is returned. Returns the enabled status after the setting takes effect.
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**deltaNeutralEnabled** | [**DeltaNeutralEnabled**](DeltaNeutralEnabled.md)|  | 
+
+### Example
+
+```golang
+package main
+
+import (
+    "context"
+    "fmt"
+
+    "github.com/gate/gateapi-go/v7"
+)
+
+func main() {
+    client := gateapi.NewAPIClient(gateapi.NewConfiguration())
+    // uncomment the next line if your are testing against testnet
+    // client.ChangeBasePath("https://fx-api-testnet.gateio.ws/api/v4")
+    ctx := context.WithValue(context.Background(),
+                             gateapi.ContextGateAPIV4,
+                             gateapi.GateAPIV4{
+                                 Key:    "YOUR_API_KEY",
+                                 Secret: "YOUR_API_SECRET",
+                             }
+                            )
+    deltaNeutralEnabled := gateapi.DeltaNeutralEnabled{} // DeltaNeutralEnabled - 
+    
+    result, _, err := client.UnifiedApi.SetUnifiedDeltaNeutral(ctx, deltaNeutralEnabled)
+    if err != nil {
+        if e, ok := err.(gateapi.GateAPIError); ok {
+            fmt.Printf("gate api error: %s\n", e.Error())
+        } else {
+            fmt.Printf("generic error: %s\n", err.Error())
+        }
+    } else {
+        fmt.Println(result)
+    }
+}
+```
+
+
+### Return type
+
+[**DeltaNeutralEnabled**](DeltaNeutralEnabled.md)
 
 ### Authorization
 

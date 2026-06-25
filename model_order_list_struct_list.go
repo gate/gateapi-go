@@ -18,7 +18,7 @@ type OrderListStructList struct {
 	Amount string `json:"amount"`
 	// Type 0-Staking 1-Redemption
 	Type int32 `json:"type"`
-	// Status
+	// Status. 1 - success, 3 - delayed redemption in progress, 6 - redemption cancellation order
 	Status int32 `json:"status"`
 	// Redemption credit time
 	RedeemStamp int32 `json:"redeem_stamp"`

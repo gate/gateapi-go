@@ -1072,7 +1072,7 @@ func (a *RebateApiService) UserSubRelation(ctx context.Context, userIdList strin
 
 /*
 GetPartnerApplicationRecent Get recent partner application records
-获取当前用户最近的合伙人申请记录。  此接口返回用户最近 30 天内的申请记录，包括申请状态、审核信息、申请材料等详细信息。
+Get the current user&#39;s recent partner application records. This endpoint returns application records within the last 30 days, including application status, review information, application materials, and other details.
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 
 @return PartnerApplicationResponse
@@ -1163,7 +1163,7 @@ func (a *RebateApiService) GetPartnerApplicationRecent(ctx context.Context) (Par
 
 /*
 GetPartnerEligibility Check partner application eligibility
-检查当前用户是否有资格申请成为合伙人。  此接口会检查多个条件： - 账户状态（是否被封禁） - 是否为子账号 - 是否已经是合伙人 - KYC 认证状态 - 是否在其他代理商的邀请链下 - 是否在黑名单中 - 其他业务规则限制
+Check whether the current user is eligible to apply as a partner. This endpoint checks multiple conditions: account status (banned or not), whether it is a sub-account, whether already a partner, KYC verification status, whether under another agent&#39;s referral chain, whether on the blacklist, and other business rule restrictions
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 
 @return EligibilityResponse
@@ -1261,11 +1261,11 @@ type GetPartnerAgentDataAggregatedOpts struct {
 
 /*
 GetPartnerAgentDataAggregated Aggregated partner agent statistics
-查询指定时间范围内合伙人代理的数据聚合统计，包括返佣金额、交易量、净手续费、客户数和交易人数。  **注意事项：** - 交易人数 &#x60;trading_user_count&#x60; 仅在 &#x60;business_type&#x3D;0&#x60;（全部）时返回 - 时间参数使用 UTC+8 时区 - 如不传时间参数，默认查询近 7 天数据 - 仅限合伙人代理访问，子账号无权限
+Query aggregated partner-agent statistics for a time range, including rebate amount, trading volume, net fee, customer count, and trading user count. **Notes:** - &#x60;trading_user_count&#x60; is only returned when &#x60;business_type&#x3D;0&#x60; (All). - Time parameters use UTC+8. - If no time range is passed, the last 7 days are queried by default. - Partner agents only; sub-accounts are not allowed.
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param optional nil or *GetPartnerAgentDataAggregatedOpts - Optional Parameters:
-  - @param "StartDate" (optional.String) -  查询开始时间，格式：yyyy-mm-dd hh:ii:ss（UTC+8）  不传时默认为近 7 日开始时间
-  - @param "EndDate" (optional.String) -  查询结束时间，格式：yyyy-mm-dd hh:ii:ss（UTC+8）  不传时默认为近 7 日结束时间
+  - @param "StartDate" (optional.String) -  Query start time, format: yyyy-mm-dd hh:ii:ss (UTC+8). If omitted, defaults to the start of the last 7 days.
+  - @param "EndDate" (optional.String) -  Query end time, format: yyyy-mm-dd hh:ii:ss (UTC+8). If omitted, defaults to the end of the last 7 days.
   - @param "BusinessType" (optional.Int32) -  Business type filter: - 0: All (default) - 1: Spot - 2: Futures - 3: Alpha - 4: Web3 - 5: Perps (DEX) - 6: Exchange All - 7: Web3 All - 8: TradFi
 
 @return PartnerDataAggregatedResponse

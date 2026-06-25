@@ -14,8 +14,6 @@ type PlaceDualInvestmentOrder struct {
 	Id int32 `json:"id,omitempty"`
 	// Product ID
 	PlanId int32 `json:"plan_id,omitempty"`
-	// Units
-	Copies string `json:"copies,omitempty"`
 	// Investment Quantity
 	InvestAmount string `json:"invest_amount,omitempty"`
 	// Settlement Quantity

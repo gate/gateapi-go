@@ -34,6 +34,6 @@ type Currency struct {
 	TotalSupply string `json:"total_supply,omitempty"`
 	// Market cap
 	MarketCap string `json:"market_cap,omitempty"`
-	// 币种分类  - stocks: 股票 - metals: 金属 - indices: 指数 - forex: 外汇 - commodities: 大宗商品
+	// Currency categories - stocks: Stocks - metals: Metals - indices: Indices - forex: Forex - commodities: Commodities
 	Category []string `json:"category,omitempty"`
 }

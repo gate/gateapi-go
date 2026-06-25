@@ -24,5 +24,7 @@ type BatchAmendItem struct {
 	// Custom info during order amendment
 	AmendText string `json:"amend_text,omitempty"`
 	// Processing Mode: When placing an order, different fields are returned based on action_mode. This field is only valid during the request and is not included in the response result ACK: Asynchronous mode, only returns key order fields RESULT: No clearing information FULL: Full mode (default)
-	ActionMode string `json:"action_mode,omitempty"`
+	ActionMode string              `json:"action_mode,omitempty"`
+	StopProfit SpotOrderStopProfit `json:"stop_profit,omitempty"`
+	StopLoss   SpotOrderStopLoss   `json:"stop_loss,omitempty"`
 }

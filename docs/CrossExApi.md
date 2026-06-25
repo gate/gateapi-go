@@ -4,9 +4,9 @@ All URIs are relative to *https://api.gateio.ws/api/v4*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**ListCrossexRuleSymbols**](CrossExApi.md#ListCrossexRuleSymbols) | **Get** /crossex/rule/symbols | 查询币对信息
-[**ListCrossexRuleRiskLimits**](CrossExApi.md#ListCrossexRuleRiskLimits) | **Get** /crossex/rule/risk_limits | 查询风险限额信息
-[**ListCrossexTransferCoins**](CrossExApi.md#ListCrossexTransferCoins) | **Get** /crossex/transfers/coin | 查询划转币种支持
+[**ListCrossexRuleSymbols**](CrossExApi.md#ListCrossexRuleSymbols) | **Get** /crossex/rule/symbols | Query symbol information
+[**ListCrossexRuleRiskLimits**](CrossExApi.md#ListCrossexRuleRiskLimits) | **Get** /crossex/rule/risk_limits | Query risk limit information
+[**ListCrossexTransferCoins**](CrossExApi.md#ListCrossexTransferCoins) | **Get** /crossex/transfers/coin | Query supported transfer currencies
 [**ListCrossexTransfers**](CrossExApi.md#ListCrossexTransfers) | **Get** /crossex/transfers | Query Fund Transfer History
 [**CreateCrossexTransfer**](CrossExApi.md#CreateCrossexTransfer) | **Post** /crossex/transfers | Fund Transfer
 [**CreateCrossexOrder**](CrossExApi.md#CreateCrossexOrder) | **Post** /crossex/orders | Create an order
@@ -41,7 +41,7 @@ Method | HTTP request | Description
 
 > []Symbol ListCrossexRuleSymbols(ctx, optional)
 
-查询币对信息
+Query symbol information
 
 Query Trading Pair Information
 
@@ -58,7 +58,7 @@ Optional parameters are passed through a pointer to a ListCrossexRuleSymbolsOpts
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**symbols** | **optional.String**| 币对列表，多个以逗号分隔 示例值: BINANCE_FUTURE_ADA_USDT,OKX_FUTURE_ADA_USDT | 
+**symbols** | **optional.String**| List of trading pairs, comma-separated. Example: BINANCE_FUTURE_ADA_USDT,OKX_FUTURE_ADA_USDT | 
 
 ### Example
 
@@ -113,7 +113,7 @@ No authorization required
 
 > []CrossexRiskLimit ListCrossexRuleRiskLimits(ctx, symbols)
 
-查询风险限额信息
+Query risk limit information
 
 Query risk limit information for futures/margin trading pairs
 
@@ -178,7 +178,7 @@ No authorization required
 
 > []CrossexTransferCoin ListCrossexTransferCoins(ctx, optional)
 
-查询划转币种支持
+Query supported transfer currencies
 
 Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME <EMAIL@ADDRESS> Language: en Language-Team: en <L@li.org> Plural-Forms: nplurals=2; plural=(n !=1) MIME-Version: 1.0 Content-Type: text/plain; charset=utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0 
 
@@ -195,7 +195,7 @@ Optional parameters are passed through a pointer to a ListCrossexTransferCoinsOp
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**coin** | **optional.String**| Currency | 
+**coin** | **optional.String**| Query by specified currency name | 
 
 ### Example
 
@@ -335,7 +335,7 @@ func main() {
 
 Fund Transfer
 
-Rate limit: 10 requests per 10 seconds - In cross-exchange mode, when transferring USDT, either `from` or `to` must be `SPOT`, and the other side must be `CROSSEX`.   If `CROSSEX_${exchange_type}` (e.g. `CROSSEX_GATE`) is provided, it will be automatically treated as `CROSSEX`. - In isolated exchange mode, when transferring USDT, either `from` or `to` must be `CROSSEX_${exchange_type}`, and the other side must be `SPOT` or `CROSSEX_${exchange_type}`.   If `CROSSEX` is provided, it will be automatically treated as `CROSSEX_GATE`. - When transferring non-USDT assets to or from CrossEx, neither `from` nor `to` can be `CROSSEX`; `CROSSEX_${exchange_type}` must be explicitly specified. - When transferring non-USDT assets, transfers between `CROSSEX_{exchange_type}` accounts are supported, for example: from = `CROSSEX_BINANCE`, to = `CROSSEX_GATE`
+Rate limit: 10 requests per 10 seconds - In cross-exchange mode, when transferring USDT, either `from` or `to` must be `SPOT`, and the other side must be `CROSSEX`.   If `CROSSEX_${exchange_type}` (e.g. `CROSSEX_GATE`) is provided, it will be automatically treated as `CROSSEX`. - In isolated exchange mode, when transferring USDT, either `from` or `to` must be `CROSSEX_${exchange_type}`, and the other side must be `SPOT` or `CROSSEX_${exchange_type}`.   If `CROSSEX` is provided, it will be automatically treated as `CROSSEX_GATE`. - When transferring non-USDT assets to or from CrossEx, neither `from` nor `to` can be `CROSSEX`; `CROSSEX_${exchange_type}` must be explicitly specified. - When transferring non-USDT assets, transfers between `CROSSEX_{exchange_type}` accounts are supported, for example: from = `CROSSEX_BINANCE`, to = `CROSSEX_GATE` - When either side of the transfer is `CROSSEX_KRAKEN`, only USDT is supported for now. - When either side of the transfer is `CROSSEX_HYPERLIQUID`, the other side must be `SPOT`, and only USDC is supported.
 
 ### Required Parameters
 
@@ -884,7 +884,7 @@ Optional parameters are passed through a pointer to a GetCrossexAccountOpts stru
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**exchangeType** | **optional.String**| Exchange. Not required in cross-exchange mode; required in single-exchange mode (BINANCE/OKX/GATE/BYBIT) | 
+**exchangeType** | **optional.String**| Trading venue identifier. Omit in cross-exchange mode; required in isolated-per-venue mode (&#x60;BINANCE&#x60; / &#x60;OKX&#x60; / &#x60;GATE&#x60; / &#x60;BYBIT&#x60; / &#x60;KRAKEN&#x60; / &#x60;HYPERLIQUID&#x60;). | 
 
 ### Example
 
@@ -1430,7 +1430,7 @@ Optional parameters are passed through a pointer to a GetCrossexInterestRateOpts
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**coin** | **optional.String**| Currency | 
+**coin** | **optional.String**| Query by specified currency name | 
 **exchangeType** | **optional.String**| Exchange | 
 
 ### Example
@@ -1886,9 +1886,10 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **page** | **optional.Int32**| Page number | 
 **limit** | **optional.Int32**| Maximum number of records returned in a single list | 
-**symbol** | **optional.String**| Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME &lt;EMAIL@ADDRESS&gt; Language: en Language-Team: en &lt;L@li.org&gt; Plural-Forms: nplurals&#x3D;2; plural&#x3D;(n !&#x3D;1) MIME-Version: 1.0 Content-Type: text/plain; charset&#x3D;utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0  | 
+**symbol** | **optional.String**| Currency pair | 
 **from** | **optional.Int32**| Start Millisecond Timestamp | 
 **to** | **optional.Int32**| End Millisecond Timestamp | 
+**attributes** | **optional.String**| Order attributes (&#x60;COMMON&#x60; normal / &#x60;LIQ&#x60; liquidation takeover / &#x60;REDUCE&#x60; liquidation reduction / &#x60;ADL&#x60; auto-deleverage / &#x60;SETTLEMENT&#x60; delisting settlement). Multiple values, comma-separated. | 
 
 ### Example
 
@@ -1968,7 +1969,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **page** | **optional.Int32**| Page number | 
 **limit** | **optional.Int32**| Maximum number returned by list, max 1000 | 
-**symbol** | **optional.String**| Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME &lt;EMAIL@ADDRESS&gt; Language: en Language-Team: en &lt;L@li.org&gt; Plural-Forms: nplurals&#x3D;2; plural&#x3D;(n !&#x3D;1) MIME-Version: 1.0 Content-Type: text/plain; charset&#x3D;utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0  | 
+**symbol** | **optional.String**| Currency pair | 
 **from** | **optional.Int32**| Start Millisecond Timestamp | 
 **to** | **optional.Int32**| End Millisecond Timestamp | 
 
@@ -2050,7 +2051,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **page** | **optional.Int32**| Page number | 
 **limit** | **optional.Int32**| Maximum number returned by list, max 1000 | 
-**symbol** | **optional.String**| Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME &lt;EMAIL@ADDRESS&gt; Language: en Language-Team: en &lt;L@li.org&gt; Plural-Forms: nplurals&#x3D;2; plural&#x3D;(n !&#x3D;1) MIME-Version: 1.0 Content-Type: text/plain; charset&#x3D;utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0  | 
+**symbol** | **optional.String**| Currency pair | 
 **from** | **optional.Int32**| Start Millisecond Timestamp | 
 **to** | **optional.Int32**| End Millisecond Timestamp | 
 
@@ -2130,7 +2131,7 @@ Optional parameters are passed through a pointer to a ListCrossexHistoryMarginIn
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**symbol** | **optional.String**| Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME &lt;EMAIL@ADDRESS&gt; Language: en Language-Team: en &lt;L@li.org&gt; Plural-Forms: nplurals&#x3D;2; plural&#x3D;(n !&#x3D;1) MIME-Version: 1.0 Content-Type: text/plain; charset&#x3D;utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0  | 
+**symbol** | **optional.String**| Currency pair | 
 **from** | **optional.Int32**| Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME &lt;EMAIL@ADDRESS&gt; Language: en Language-Team: en &lt;L@li.org&gt; Plural-Forms: nplurals&#x3D;2; plural&#x3D;(n !&#x3D;1) MIME-Version: 1.0 Content-Type: text/plain; charset&#x3D;utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0  | 
 **to** | **optional.Int32**| Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME &lt;EMAIL@ADDRESS&gt; Language: en Language-Team: en &lt;L@li.org&gt; Plural-Forms: nplurals&#x3D;2; plural&#x3D;(n !&#x3D;1) MIME-Version: 1.0 Content-Type: text/plain; charset&#x3D;utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0  | 
 **page** | **optional.Int32**| Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME &lt;EMAIL@ADDRESS&gt; Language: en Language-Team: en &lt;L@li.org&gt; Plural-Forms: nplurals&#x3D;2; plural&#x3D;(n !&#x3D;1) MIME-Version: 1.0 Content-Type: text/plain; charset&#x3D;utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0  | 
@@ -2215,7 +2216,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **page** | **optional.Int32**| Page number | 
 **limit** | **optional.Int32**| Maximum number returned by list, max 1000 | 
-**symbol** | **optional.String**| Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME &lt;EMAIL@ADDRESS&gt; Language: en Language-Team: en &lt;L@li.org&gt; Plural-Forms: nplurals&#x3D;2; plural&#x3D;(n !&#x3D;1) MIME-Version: 1.0 Content-Type: text/plain; charset&#x3D;utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0  | 
+**symbol** | **optional.String**| Currency pair | 
 **from** | **optional.Int32**| Start Millisecond Timestamp | 
 **to** | **optional.Int32**| End Millisecond Timestamp | 
 
@@ -2297,8 +2298,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **page** | **optional.Int32**| Page number | 
 **limit** | **optional.Int32**| Maximum number returned by list, max 1000 | 
-**coin** | **optional.String**| Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME &lt;EMAIL@ADDRESS&gt; Language: en Language-Team: en &lt;L@li.org&gt; Plural-Forms: nplurals&#x3D;2; plural&#x3D;(n !&#x3D;1) MIME-Version: 1.0 Content-Type: text/plain; charset&#x3D;utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0  | 
-**statementType** | **optional.String**| Bill entry type. | 
+**coin** | **optional.String**| Query by specified currency name | 
+**statementType** | **optional.String**| Bill entry type. The filter accepts the same values returned in the response. | 
 **from** | **optional.Int32**| Start Millisecond Timestamp | 
 **to** | **optional.Int32**| End Millisecond Timestamp | 
 
@@ -2378,8 +2379,8 @@ Optional parameters are passed through a pointer to a ListCrossexCoinDiscountRat
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**coin** | **optional.String**| Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME &lt;EMAIL@ADDRESS&gt; Language: en Language-Team: en &lt;L@li.org&gt; Plural-Forms: nplurals&#x3D;2; plural&#x3D;(n !&#x3D;1) MIME-Version: 1.0 Content-Type: text/plain; charset&#x3D;utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0  | 
-**exchangeType** | **optional.String**| OKX/GATE/BINANCE/BYBIT | 
+**coin** | **optional.String**| Query by specified currency name | 
+**exchangeType** | **optional.String**| OKX/GATE/BINANCE/BYBIT/KRAKEN/HYPERLIQUID | 
 
 ### Example
 

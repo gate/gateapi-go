@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **Price** | **string** | New order price | [optional] 
 **AmendText** | **string** | Custom info during order amendment | [optional] 
 **Text** | **string** | Internal users can modify information in the text field. | [optional] 
+**ActionMode** | **string** | Processing Mode  When placing an order, different fields are returned based on the action_mode  - &#x60;ACK&#x60;: Asynchronous mode, returns only key order fields - &#x60;RESULT&#x60;: No clearing information - &#x60;FULL&#x60;: Full mode (default) | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

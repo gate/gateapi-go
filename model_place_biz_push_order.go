@@ -43,9 +43,9 @@ type PlaceBizPushOrder struct {
 	AdvertisersLimit string `json:"advertisersLimit,omitempty"`
 	// Payment timeout in minutes.
 	ExpireMin string `json:"expire_min,omitempty"`
-	// Ad trading terms shown to the taker.
+	// Advertisement trade terms displayed to ordering users; goes through off-platform traffic diversion risk control on submission, and when hit, the advertisement is not saved and code 70305102 is returned
 	TradeTips string `json:"trade_tips,omitempty"`
-	// Auto-reply message after order creation.
+	// Auto reply content after order creation; goes through off-platform traffic diversion risk control on submission, and when hit, the advertisement is not saved and code 70305102 is returned
 	AutoReply string `json:"auto_reply,omitempty"`
 	// Minimum completed orders for counterparty; `-1` unlimited.
 	MinCompletedLimit string `json:"min_completed_limit,omitempty"`

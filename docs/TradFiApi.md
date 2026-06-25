@@ -19,6 +19,7 @@ Method | HTTP request | Description
 [**UpdateOrder**](TradFiApi.md#UpdateOrder) | **Put** /tradfi/orders/{order_id} | Modify order
 [**DeleteOrder**](TradFiApi.md#DeleteOrder) | **Delete** /tradfi/orders/{order_id} | Cancel order
 [**QueryOrderHistoryList**](TradFiApi.md#QueryOrderHistoryList) | **Get** /tradfi/orders/history | Query historical order list
+[**QueryOrderLog**](TradFiApi.md#QueryOrderLog) | **Get** /tradfi/orders/log/{log_id} | Get order details by log ID
 [**QueryPositionList**](TradFiApi.md#QueryPositionList) | **Get** /tradfi/positions | Query active position list
 [**UpdatePosition**](TradFiApi.md#UpdatePosition) | **Put** /tradfi/positions/{position_id} | Modify position
 [**ClosePosition**](TradFiApi.md#ClosePosition) | **Post** /tradfi/positions/{position_id}/close | Close position
@@ -1044,6 +1045,75 @@ func main() {
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
+## QueryOrderLog
+
+> OrderLog QueryOrderLog(ctx, logId)
+
+Get order details by log ID
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**logId** | **int32**| log_id returned from the order placement API | 
+
+### Example
+
+```golang
+package main
+
+import (
+    "context"
+    "fmt"
+
+    "github.com/gate/gateapi-go/v7"
+)
+
+func main() {
+    client := gateapi.NewAPIClient(gateapi.NewConfiguration())
+    // uncomment the next line if your are testing against testnet
+    // client.ChangeBasePath("https://fx-api-testnet.gateio.ws/api/v4")
+    ctx := context.WithValue(context.Background(),
+                             gateapi.ContextGateAPIV4,
+                             gateapi.GateAPIV4{
+                                 Key:    "YOUR_API_KEY",
+                                 Secret: "YOUR_API_SECRET",
+                             }
+                            )
+    logId := 1223 // int32 - log_id returned from the order placement API
+    
+    result, _, err := client.TradFiApi.QueryOrderLog(ctx, logId)
+    if err != nil {
+        if e, ok := err.(gateapi.GateAPIError); ok {
+            fmt.Printf("gate api error: %s\n", e.Error())
+        } else {
+            fmt.Printf("generic error: %s\n", err.Error())
+        }
+    } else {
+        fmt.Println(result)
+    }
+}
+```
+
+
+### Return type
+
+[**OrderLog**](OrderLog.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
 ## QueryPositionList
 
 > PositionList QueryPositionList(ctx, )
@@ -1269,6 +1339,8 @@ Optional parameters are passed through a pointer to a QueryPositionHistoryListOp
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+**page** | **optional.Int64**| Page number; defaults to 1 if omitted. | 
+**pageSize** | **optional.Int64**| Page size; defaults to 10 if omitted. Maximum 100. | 
 **beginTime** | **optional.Int64**| Start Time (Unix Timestamp, seconds). The earliest queryable time is one month ago | 
 **endTime** | **optional.Int64**| End time (timestamp in seconds) | 
 **symbol** | **optional.String**| Trading symbol (e.g., EURUSD) | 

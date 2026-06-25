@@ -22,12 +22,16 @@ type ContractStat struct {
 	LongLiqAmount float64 `json:"long_liq_amount,omitempty"`
 	// Long liquidation volume (quote currency)
 	LongLiqUsd float64 `json:"long_liq_usd,omitempty"`
+	// Long liquidations in quote currency; USDT settlement: long_liq_size × multiplier × mark price
+	LongLiqUsdNew float64 `json:"long_liq_usd_new,omitempty"`
 	// Short liquidation size (contracts)
 	ShortLiqSize string `json:"short_liq_size,omitempty"`
 	// Short liquidation amount (base currency)
 	ShortLiqAmount float64 `json:"short_liq_amount,omitempty"`
 	// Short liquidation volume (quote currency)
 	ShortLiqUsd float64 `json:"short_liq_usd,omitempty"`
+	// Short liquidations in quote currency; USDT settlement: short_liq_size × multiplier × mark price
+	ShortLiqUsdNew float64 `json:"short_liq_usd_new,omitempty"`
 	// Total open interest size (contracts)
 	OpenInterest string `json:"open_interest,omitempty"`
 	// Total open interest volume (quote currency)
@@ -38,4 +42,20 @@ type ContractStat struct {
 	TopLsrSize string `json:"top_lsr_size,omitempty"`
 	// Mark price
 	MarkPrice float64 `json:"mark_price,omitempty"`
+	// Top long open interest (contracts)
+	TopLongSize string `json:"top_long_size,omitempty"`
+	// Top short open interest (contracts)
+	TopShortSize string `json:"top_short_size,omitempty"`
+	// Long taker trade volume (contracts)
+	LongTakerSize string `json:"long_taker_size,omitempty"`
+	// Short taker trade volume (contracts)
+	ShortTakerSize string `json:"short_taker_size,omitempty"`
+	// Number of top long accounts (large holders)
+	TopLongAccount int64 `json:"top_long_account,omitempty"`
+	// Number of top short accounts (large holders)
+	TopShortAccount int64 `json:"top_short_account,omitempty"`
+	// Number of users holding long positions
+	LongUsers string `json:"long_users,omitempty"`
+	// Number of users holding short positions
+	ShortUsers string `json:"short_users,omitempty"`
 }

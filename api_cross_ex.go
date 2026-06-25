@@ -32,11 +32,11 @@ type ListCrossexRuleSymbolsOpts struct {
 }
 
 /*
-ListCrossexRuleSymbols 查询币对信息
+ListCrossexRuleSymbols Query symbol information
 Query Trading Pair Information
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param optional nil or *ListCrossexRuleSymbolsOpts - Optional Parameters:
-  - @param "Symbols" (optional.String) -  币对列表，多个以逗号分隔 示例值: BINANCE_FUTURE_ADA_USDT,OKX_FUTURE_ADA_USDT
+  - @param "Symbols" (optional.String) -  List of trading pairs, comma-separated. Example: BINANCE_FUTURE_ADA_USDT,OKX_FUTURE_ADA_USDT
 
 @return []Symbol
 */
@@ -122,7 +122,7 @@ func (a *CrossExApiService) ListCrossexRuleSymbols(ctx context.Context, localVar
 }
 
 /*
-ListCrossexRuleRiskLimits 查询风险限额信息
+ListCrossexRuleRiskLimits Query risk limit information
 Query risk limit information for futures/margin trading pairs
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param symbols Trading Pair List, multiple separated by commas Example values: BINANCE_FUTURE_ADA_USDT,GATE_MARGIN_ADA_USDT
@@ -214,11 +214,11 @@ type ListCrossexTransferCoinsOpts struct {
 }
 
 /*
-ListCrossexTransferCoins 查询划转币种支持
+ListCrossexTransferCoins Query supported transfer currencies
 Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME &lt;EMAIL@ADDRESS&gt; Language: en Language-Team: en &lt;L@li.org&gt; Plural-Forms: nplurals&#x3D;2; plural&#x3D;(n !&#x3D;1) MIME-Version: 1.0 Content-Type: text/plain; charset&#x3D;utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param optional nil or *ListCrossexTransferCoinsOpts - Optional Parameters:
-  - @param "Coin" (optional.String) -  Currency
+  - @param "Coin" (optional.String) -  Query by specified currency name
 
 @return []CrossexTransferCoin
 */
@@ -436,7 +436,7 @@ type CreateCrossexTransferOpts struct {
 
 /*
 CreateCrossexTransfer Fund Transfer
-Rate limit: 10 requests per 10 seconds - In cross-exchange mode, when transferring USDT, either &#x60;from&#x60; or &#x60;to&#x60; must be &#x60;SPOT&#x60;, and the other side must be &#x60;CROSSEX&#x60;.   If &#x60;CROSSEX_${exchange_type}&#x60; (e.g. &#x60;CROSSEX_GATE&#x60;) is provided, it will be automatically treated as &#x60;CROSSEX&#x60;. - In isolated exchange mode, when transferring USDT, either &#x60;from&#x60; or &#x60;to&#x60; must be &#x60;CROSSEX_${exchange_type}&#x60;, and the other side must be &#x60;SPOT&#x60; or &#x60;CROSSEX_${exchange_type}&#x60;.   If &#x60;CROSSEX&#x60; is provided, it will be automatically treated as &#x60;CROSSEX_GATE&#x60;. - When transferring non-USDT assets to or from CrossEx, neither &#x60;from&#x60; nor &#x60;to&#x60; can be &#x60;CROSSEX&#x60;; &#x60;CROSSEX_${exchange_type}&#x60; must be explicitly specified. - When transferring non-USDT assets, transfers between &#x60;CROSSEX_{exchange_type}&#x60; accounts are supported, for example: from &#x3D; &#x60;CROSSEX_BINANCE&#x60;, to &#x3D; &#x60;CROSSEX_GATE&#x60;
+Rate limit: 10 requests per 10 seconds - In cross-exchange mode, when transferring USDT, either &#x60;from&#x60; or &#x60;to&#x60; must be &#x60;SPOT&#x60;, and the other side must be &#x60;CROSSEX&#x60;.   If &#x60;CROSSEX_${exchange_type}&#x60; (e.g. &#x60;CROSSEX_GATE&#x60;) is provided, it will be automatically treated as &#x60;CROSSEX&#x60;. - In isolated exchange mode, when transferring USDT, either &#x60;from&#x60; or &#x60;to&#x60; must be &#x60;CROSSEX_${exchange_type}&#x60;, and the other side must be &#x60;SPOT&#x60; or &#x60;CROSSEX_${exchange_type}&#x60;.   If &#x60;CROSSEX&#x60; is provided, it will be automatically treated as &#x60;CROSSEX_GATE&#x60;. - When transferring non-USDT assets to or from CrossEx, neither &#x60;from&#x60; nor &#x60;to&#x60; can be &#x60;CROSSEX&#x60;; &#x60;CROSSEX_${exchange_type}&#x60; must be explicitly specified. - When transferring non-USDT assets, transfers between &#x60;CROSSEX_{exchange_type}&#x60; accounts are supported, for example: from &#x3D; &#x60;CROSSEX_BINANCE&#x60;, to &#x3D; &#x60;CROSSEX_GATE&#x60; - When either side of the transfer is &#x60;CROSSEX_KRAKEN&#x60;, only USDT is supported for now. - When either side of the transfer is &#x60;CROSSEX_HYPERLIQUID&#x60;, the other side must be &#x60;SPOT&#x60;, and only USDC is supported.
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param optional nil or *CreateCrossexTransferOpts - Optional Parameters:
   - @param "CrossexTransferRequest" (optional.Interface of CrossexTransferRequest) -
@@ -1165,7 +1165,7 @@ GetCrossexAccount Query Account Assets
 Rate Limit: 200 requests per 10 seconds If 100% ≤ initial_margin_rate &lt; 110%, transferring out the margin currency is prohibited. If initial_margin_rate &lt; 100%, the system will automatically cancel orders; only closing positions is allowed, not opening new ones. If maintenance_margin_rate ≤ 100%, the system will force liquidation.
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param optional nil or *GetCrossexAccountOpts - Optional Parameters:
-  - @param "ExchangeType" (optional.String) -  Exchange. Not required in cross-exchange mode; required in single-exchange mode (BINANCE/OKX/GATE/BYBIT)
+  - @param "ExchangeType" (optional.String) -  Trading venue identifier. Omit in cross-exchange mode; required in isolated-per-venue mode (`BINANCE` / `OKX` / `GATE` / `BYBIT` / `KRAKEN` / `HYPERLIQUID`).
 
 @return CrossexAccount
 */
@@ -1897,7 +1897,7 @@ GetCrossexInterestRate Query margin asset interest rates
 Rate Limit: 200 requests per 10 seconds
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param optional nil or *GetCrossexInterestRateOpts - Optional Parameters:
-  - @param "Coin" (optional.String) -  Currency
+  - @param "Coin" (optional.String) -  Query by specified currency name
   - @param "ExchangeType" (optional.String) -  Exchange
 
 @return []CrossexInterestRate
@@ -2501,11 +2501,12 @@ func (a *CrossExApiService) ListCrossexOpenOrders(ctx context.Context, localVarO
 
 // ListCrossexHistoryOrdersOpts Optional parameters for the method 'ListCrossexHistoryOrders'
 type ListCrossexHistoryOrdersOpts struct {
-	Page   optional.Int32
-	Limit  optional.Int32
-	Symbol optional.String
-	From   optional.Int32
-	To     optional.Int32
+	Page       optional.Int32
+	Limit      optional.Int32
+	Symbol     optional.String
+	From       optional.Int32
+	To         optional.Int32
+	Attributes optional.String
 }
 
 /*
@@ -2515,9 +2516,10 @@ Rate Limit: 200 requests per 10 seconds
   - @param optional nil or *ListCrossexHistoryOrdersOpts - Optional Parameters:
   - @param "Page" (optional.Int32) -  Page number
   - @param "Limit" (optional.Int32) -  Maximum number of records returned in a single list
-  - @param "Symbol" (optional.String) -  Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME <EMAIL@ADDRESS> Language: en Language-Team: en <L@li.org> Plural-Forms: nplurals=2; plural=(n !=1) MIME-Version: 1.0 Content-Type: text/plain; charset=utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0
+  - @param "Symbol" (optional.String) -  Currency pair
   - @param "From" (optional.Int32) -  Start Millisecond Timestamp
   - @param "To" (optional.Int32) -  End Millisecond Timestamp
+  - @param "Attributes" (optional.String) -  Order attributes (`COMMON` normal / `LIQ` liquidation takeover / `REDUCE` liquidation reduction / `ADL` auto-deleverage / `SETTLEMENT` delisting settlement). Multiple values, comma-separated.
 
 @return []CrossexOrder
 */
@@ -2551,6 +2553,9 @@ func (a *CrossExApiService) ListCrossexHistoryOrders(ctx context.Context, localV
 	}
 	if localVarOptionals != nil && localVarOptionals.To.IsSet() {
 		localVarQueryParams.Add("to", parameterToString(localVarOptionals.To.Value(), ""))
+	}
+	if localVarOptionals != nil && localVarOptionals.Attributes.IsSet() {
+		localVarQueryParams.Add("attributes", parameterToString(localVarOptionals.Attributes.Value(), ""))
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -2636,7 +2641,7 @@ Rate Limit: 200 requests per 10 seconds
   - @param optional nil or *ListCrossexHistoryPositionsOpts - Optional Parameters:
   - @param "Page" (optional.Int32) -  Page number
   - @param "Limit" (optional.Int32) -  Maximum number returned by list, max 1000
-  - @param "Symbol" (optional.String) -  Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME <EMAIL@ADDRESS> Language: en Language-Team: en <L@li.org> Plural-Forms: nplurals=2; plural=(n !=1) MIME-Version: 1.0 Content-Type: text/plain; charset=utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0
+  - @param "Symbol" (optional.String) -  Currency pair
   - @param "From" (optional.Int32) -  Start Millisecond Timestamp
   - @param "To" (optional.Int32) -  End Millisecond Timestamp
 
@@ -2757,7 +2762,7 @@ Rate Limit: 200 requests per 10 seconds
   - @param optional nil or *ListCrossexHistoryMarginPositionsOpts - Optional Parameters:
   - @param "Page" (optional.Int32) -  Page number
   - @param "Limit" (optional.Int32) -  Maximum number returned by list, max 1000
-  - @param "Symbol" (optional.String) -  Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME <EMAIL@ADDRESS> Language: en Language-Team: en <L@li.org> Plural-Forms: nplurals=2; plural=(n !=1) MIME-Version: 1.0 Content-Type: text/plain; charset=utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0
+  - @param "Symbol" (optional.String) -  Currency pair
   - @param "From" (optional.Int32) -  Start Millisecond Timestamp
   - @param "To" (optional.Int32) -  End Millisecond Timestamp
 
@@ -2877,7 +2882,7 @@ ListCrossexHistoryMarginInterests Query Leveraged Interest Deduction History
 Rate Limit: 200 requests per 10 seconds
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param optional nil or *ListCrossexHistoryMarginInterestsOpts - Optional Parameters:
-  - @param "Symbol" (optional.String) -  Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME <EMAIL@ADDRESS> Language: en Language-Team: en <L@li.org> Plural-Forms: nplurals=2; plural=(n !=1) MIME-Version: 1.0 Content-Type: text/plain; charset=utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0
+  - @param "Symbol" (optional.String) -  Currency pair
   - @param "From" (optional.Int32) -  Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME <EMAIL@ADDRESS> Language: en Language-Team: en <L@li.org> Plural-Forms: nplurals=2; plural=(n !=1) MIME-Version: 1.0 Content-Type: text/plain; charset=utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0
   - @param "To" (optional.Int32) -  Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME <EMAIL@ADDRESS> Language: en Language-Team: en <L@li.org> Plural-Forms: nplurals=2; plural=(n !=1) MIME-Version: 1.0 Content-Type: text/plain; charset=utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0
   - @param "Page" (optional.Int32) -  Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME <EMAIL@ADDRESS> Language: en Language-Team: en <L@li.org> Plural-Forms: nplurals=2; plural=(n !=1) MIME-Version: 1.0 Content-Type: text/plain; charset=utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0
@@ -3004,7 +3009,7 @@ Rate Limit: 200 requests per 10 seconds
   - @param optional nil or *ListCrossexHistoryTradesOpts - Optional Parameters:
   - @param "Page" (optional.Int32) -  Page number
   - @param "Limit" (optional.Int32) -  Maximum number returned by list, max 1000
-  - @param "Symbol" (optional.String) -  Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME <EMAIL@ADDRESS> Language: en Language-Team: en <L@li.org> Plural-Forms: nplurals=2; plural=(n !=1) MIME-Version: 1.0 Content-Type: text/plain; charset=utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0
+  - @param "Symbol" (optional.String) -  Currency pair
   - @param "From" (optional.Int32) -  Start Millisecond Timestamp
   - @param "To" (optional.Int32) -  End Millisecond Timestamp
 
@@ -3126,8 +3131,8 @@ Rate Limit: 200 requests per 10 seconds
   - @param optional nil or *ListCrossexAccountBookOpts - Optional Parameters:
   - @param "Page" (optional.Int32) -  Page number
   - @param "Limit" (optional.Int32) -  Maximum number returned by list, max 1000
-  - @param "Coin" (optional.String) -  Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME <EMAIL@ADDRESS> Language: en Language-Team: en <L@li.org> Plural-Forms: nplurals=2; plural=(n !=1) MIME-Version: 1.0 Content-Type: text/plain; charset=utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0
-  - @param "StatementType" (optional.String) -  Bill entry type.
+  - @param "Coin" (optional.String) -  Query by specified currency name
+  - @param "StatementType" (optional.String) -  Bill entry type. The filter accepts the same values returned in the response.
   - @param "From" (optional.Int32) -  Start Millisecond Timestamp
   - @param "To" (optional.Int32) -  End Millisecond Timestamp
 
@@ -3246,8 +3251,8 @@ ListCrossexCoinDiscountRate Query Currency Discount Rate
 Rate Limit: 200 requests per 10 seconds
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param optional nil or *ListCrossexCoinDiscountRateOpts - Optional Parameters:
-  - @param "Coin" (optional.String) -  Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME <EMAIL@ADDRESS> Language: en Language-Team: en <L@li.org> Plural-Forms: nplurals=2; plural=(n !=1) MIME-Version: 1.0 Content-Type: text/plain; charset=utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0
-  - @param "ExchangeType" (optional.String) -  OKX/GATE/BINANCE/BYBIT
+  - @param "Coin" (optional.String) -  Query by specified currency name
+  - @param "ExchangeType" (optional.String) -  OKX/GATE/BINANCE/BYBIT/KRAKEN/HYPERLIQUID
 
 @return []CrossexCoinDiscountRate
 */

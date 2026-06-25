@@ -71,4 +71,8 @@ type FuturesOrderTimerange struct {
 	MarketOrderSlipRatio string `json:"market_order_slip_ratio,omitempty"`
 	// Position Margin Mode isolated - Isolated Margin, cross - Cross Margin, only passed in simple split position mode
 	PosMarginMode string `json:"pos_margin_mode,omitempty"`
+	// Take profit price
+	TpslTpTriggerPrice string `json:"tpsl_tp_trigger_price,omitempty"`
+	// Stop loss price
+	TpslSlTriggerPrice string `json:"tpsl_sl_trigger_price,omitempty"`
 }

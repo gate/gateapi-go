@@ -36,6 +36,6 @@ type CrossexAccount struct {
 	AccountMode string `json:"account_mode,omitempty"`
 	// Exchange Type. When account_mode is CROSS_EXCHANGE, it must be CROSSEX; otherwise, it is another exchange.
 	ExchangeType string `json:"exchange_type,omitempty"`
-	// 资产列表，按交易所与币种维度返回各账户余额、保证金及盈亏明细
+	// Asset list: grouped by exchange and currency, returning per-account balances, margin, and PnL details
 	Assets []CrossexAccountAsset `json:"assets"`
 }

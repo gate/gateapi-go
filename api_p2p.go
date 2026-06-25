@@ -315,6 +315,99 @@ func (a *P2pApiService) P2pMerchantAccountGetMyselfPayment(ctx context.Context, 
 }
 
 /*
+P2pMerchantAccountSetMerchantWorkHours Set merchant working status and custom working hours
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param setMerchantWorkHoursRequest
+
+@return P2pMerchantWorkHoursResponse
+*/
+func (a *P2pApiService) P2pMerchantAccountSetMerchantWorkHours(ctx context.Context, setMerchantWorkHoursRequest SetMerchantWorkHoursRequest) (P2pMerchantWorkHoursResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  P2pMerchantWorkHoursResponse
+	)
+
+	// create path and map variables
+	localVarPath := a.client.cfg.BasePath + "/p2p/merchant/account/set_merchant_work_hours"
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = &setMerchantWorkHoursRequest
+	if ctx == nil {
+		ctx = context.Background()
+	}
+	if ctx.Value(ContextGateAPIV4) == nil {
+		// for compatibility, set configuration key and secret to context if ContextGateAPIV4 value is not present
+		ctx = context.WithValue(ctx, ContextGateAPIV4, GateAPIV4{
+			Key:    a.client.cfg.Key,
+			Secret: a.client.cfg.Secret,
+		})
+	}
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(r)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status + ", " + string(localVarBody),
+		}
+		var gateErr GateAPIError
+		if e := a.client.decode(&gateErr, localVarBody, localVarHTTPResponse.Header.Get("Content-Type")); e == nil && gateErr.Label != "" {
+			gateErr.APIError = newErr
+			return localVarReturnValue, localVarHTTPResponse, gateErr
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+/*
 P2pMerchantTransactionGetPendingTransactionList Get pending orders
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param getPendingTransactionListRequest
@@ -874,6 +967,7 @@ func (a *P2pApiService) P2pMerchantTransactionCancel(ctx context.Context, cancel
 
 /*
 P2pMerchantBooksPlaceBizPushOrder Publish ad order
+When publishing or editing an advertisement, trade_tips and auto_reply go through off-platform traffic diversion risk control; when hit, the advertisement is not saved, and code 70305102 with data.risk_event is returned.
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param placeBizPushOrder
 
@@ -1446,6 +1540,7 @@ func (a *P2pApiService) P2pMerchantChatGetChatsList(ctx context.Context, getChat
 
 /*
 P2pMerchantChatSendChatMessage Send text message
+Text messages go through off-platform traffic diversion risk control. When hit, the API still returns code 0, and data contains risk_type&#x3D;1 and toast_msg.
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param sendChatMessageRequest
 

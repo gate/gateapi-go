@@ -18,7 +18,7 @@ Method | HTTP request | Description
 [**ListSubAccountMarginBalances**](WalletApi.md#ListSubAccountMarginBalances) | **Get** /wallet/sub_account_margin_balances | Query sub-account isolated margin account balance information
 [**ListSubAccountFuturesBalances**](WalletApi.md#ListSubAccountFuturesBalances) | **Get** /wallet/sub_account_futures_balances | Query sub-account perpetual futures account balance information
 [**ListSubAccountCrossMarginBalances**](WalletApi.md#ListSubAccountCrossMarginBalances) | **Get** /wallet/sub_account_cross_margin_balances | Query sub-account cross margin account balance information
-[**ListSavedAddress**](WalletApi.md#ListSavedAddress) | **Get** /wallet/saved_address | Query withdrawal address whitelist
+[**ListSavedAddress**](WalletApi.md#ListSavedAddress) | **Get** /wallet/saved_address | Query saved address
 [**GetTradeFee**](WalletApi.md#GetTradeFee) | **Get** /wallet/fee | Query personal trading fees
 [**GetTotalBalance**](WalletApi.md#GetTotalBalance) | **Get** /wallet/total_balance | Query personal account totals
 [**ListSmallBalance**](WalletApi.md#ListSmallBalance) | **Get** /wallet/small_balance | Get list of convertible small balance currencies
@@ -1090,16 +1090,15 @@ func main() {
 
 ## ListSavedAddress
 
-> []SavedAddress ListSavedAddress(ctx, currency, optional)
+> []SavedAddress ListSavedAddress(ctx, optional)
 
-Query withdrawal address whitelist
+Query saved address
 
 ### Required Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**currency** | **string**| Currency | 
 **optional** | **ListSavedAddressOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
@@ -1108,7 +1107,9 @@ Optional parameters are passed through a pointer to a ListSavedAddressOpts struc
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+**currency** | **optional.String**| Currency | 
 **chain** | **optional.String**| Chain name | [default to ]
+**verified** | **optional.String**| 1 means verified address, 0 means normal address, empty string means no limit | [default to ]
 **limit** | **optional.String**| Maximum number returned, up to 100 | [default to 50]
 **page** | **optional.Int32**| page number | [default to 1]
 
@@ -1135,9 +1136,8 @@ func main() {
                                  Secret: "YOUR_API_SECRET",
                              }
                             )
-    currency := "USDT" // string - Currency
     
-    result, _, err := client.WalletApi.ListSavedAddress(ctx, currency, nil)
+    result, _, err := client.WalletApi.ListSavedAddress(ctx, nil)
     if err != nil {
         if e, ok := err.(gateapi.GateAPIError); ok {
             fmt.Printf("gate api error: %s\n", e.Error())

@@ -128,6 +128,108 @@ func (a *FuturesApiService) ListFuturesContracts(ctx context.Context, settle str
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+// ListFuturesContractsAllOpts Optional parameters for the method 'ListFuturesContractsAll'
+type ListFuturesContractsAllOpts struct {
+	Limit  optional.Int32
+	Offset optional.Int32
+}
+
+/*
+ListFuturesContractsAll Query all contract information (including delisted)
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param settle Settle currency
+  - @param optional nil or *ListFuturesContractsAllOpts - Optional Parameters:
+  - @param "Limit" (optional.Int32) -  Maximum number of records returned in a single list
+  - @param "Offset" (optional.Int32) -  List offset, starting from 0
+
+@return []Contract
+*/
+func (a *FuturesApiService) ListFuturesContractsAll(ctx context.Context, settle string, localVarOptionals *ListFuturesContractsAllOpts) ([]Contract, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  []Contract
+	)
+
+	// create path and map variables
+	localVarPath := a.client.cfg.BasePath + "/futures/{settle}/contracts_all"
+	localVarPath = strings.Replace(localVarPath, "{"+"settle"+"}", url.QueryEscape(parameterToString(settle, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if localVarOptionals != nil && localVarOptionals.Limit.IsSet() {
+		localVarQueryParams.Add("limit", parameterToString(localVarOptionals.Limit.Value(), ""))
+	}
+	if localVarOptionals != nil && localVarOptionals.Offset.IsSet() {
+		localVarQueryParams.Add("offset", parameterToString(localVarOptionals.Offset.Value(), ""))
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if ctx == nil {
+		ctx = context.Background()
+	}
+	ctx = context.WithValue(ctx, ContextPublic, true)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(r)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status + ", " + string(localVarBody),
+		}
+		var gateErr GateAPIError
+		if e := a.client.decode(&gateErr, localVarBody, localVarHTTPResponse.Header.Get("Content-Type")); e == nil && gateErr.Label != "" {
+			gateErr.APIError = newErr
+			return localVarReturnValue, localVarHTTPResponse, gateErr
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 /*
 GetFuturesContract Query single contract information
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -3591,6 +3693,7 @@ func (a *FuturesApiService) CreateFuturesOrder(ctx context.Context, settle strin
 type CancelFuturesOrdersOpts struct {
 	XGateExptime      optional.String
 	Contract          optional.String
+	ActionMode        optional.String
 	Side              optional.String
 	ExcludeReduceOnly optional.Bool
 	Text              optional.String
@@ -3604,6 +3707,7 @@ Zero-fill orders cannot be retrieved 10 minutes after order cancellation
   - @param optional nil or *CancelFuturesOrdersOpts - Optional Parameters:
   - @param "XGateExptime" (optional.String) -  Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected
   - @param "Contract" (optional.String) -  Contract Identifier; if specified, only cancel pending orders related to this contract
+  - @param "ActionMode" (optional.String) -  Processing Mode  When placing an order, different fields are returned based on the action_mode  - `ACK`: Asynchronous mode, returns only key order fields - `RESULT`: No clearing information - `FULL`: Full mode (default)
   - @param "Side" (optional.String) -  Specify all buy orders or all sell orders, both are included if not specified. Set to bid to cancel all buy orders, set to ask to cancel all sell orders
   - @param "ExcludeReduceOnly" (optional.Bool) -  Whether to exclude reduce-only orders
   - @param "Text" (optional.String) -  Remark for order cancellation
@@ -3630,6 +3734,9 @@ func (a *FuturesApiService) CancelFuturesOrders(ctx context.Context, settle stri
 
 	if localVarOptionals != nil && localVarOptionals.Contract.IsSet() {
 		localVarQueryParams.Add("contract", parameterToString(localVarOptionals.Contract.Value(), ""))
+	}
+	if localVarOptionals != nil && localVarOptionals.ActionMode.IsSet() {
+		localVarQueryParams.Add("action_mode", parameterToString(localVarOptionals.ActionMode.Value(), ""))
 	}
 	if localVarOptionals != nil && localVarOptionals.Side.IsSet() {
 		localVarQueryParams.Add("side", parameterToString(localVarOptionals.Side.Value(), ""))
@@ -4150,6 +4257,7 @@ func (a *FuturesApiService) AmendFuturesOrder(ctx context.Context, settle string
 // CancelFuturesOrderOpts Optional parameters for the method 'CancelFuturesOrder'
 type CancelFuturesOrderOpts struct {
 	XGateExptime optional.String
+	ActionMode   optional.String
 }
 
 /*
@@ -4159,6 +4267,7 @@ CancelFuturesOrder Cancel single order
   - @param orderId The order ID returned when the order is created successfully, or the custom ID specified by the user when creating the order (i.e. the `text` field). When using the custom `text` field: 1. If the order was not filled and has been cancelled, after 60 seconds you cannot query the order by `text`; continuing to use `text` returns error ORDER_NOT_FOUND. 2. If the order was fully or partially filled, you can query the order by `text` indefinitely.
   - @param optional nil or *CancelFuturesOrderOpts - Optional Parameters:
   - @param "XGateExptime" (optional.String) -  Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected
+  - @param "ActionMode" (optional.String) -  Processing Mode  When placing an order, different fields are returned based on the action_mode  - `ACK`: Asynchronous mode, returns only key order fields - `RESULT`: No clearing information - `FULL`: Full mode (default)
 
 @return FuturesOrder
 */
@@ -4182,6 +4291,9 @@ func (a *FuturesApiService) CancelFuturesOrder(ctx context.Context, settle strin
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if localVarOptionals != nil && localVarOptionals.ActionMode.IsSet() {
+		localVarQueryParams.Add("action_mode", parameterToString(localVarOptionals.ActionMode.Value(), ""))
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -6252,6 +6364,534 @@ func (a *FuturesApiService) GetTrailOrderChangeLog(ctx context.Context, settle s
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+/*
+CreateChaseOrder Create a chase order
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param settle Settle currency
+  - @param createChaseOrderReq
+
+@return CreateChaseOrderResp
+*/
+func (a *FuturesApiService) CreateChaseOrder(ctx context.Context, settle string, createChaseOrderReq CreateChaseOrderReq) (CreateChaseOrderResp, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  CreateChaseOrderResp
+	)
+
+	// create path and map variables
+	localVarPath := a.client.cfg.BasePath + "/futures/{settle}/autoorder/v1/chase/create"
+	localVarPath = strings.Replace(localVarPath, "{"+"settle"+"}", url.QueryEscape(parameterToString(settle, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = &createChaseOrderReq
+	if ctx == nil {
+		ctx = context.Background()
+	}
+	if ctx.Value(ContextGateAPIV4) == nil {
+		// for compatibility, set configuration key and secret to context if ContextGateAPIV4 value is not present
+		ctx = context.WithValue(ctx, ContextGateAPIV4, GateAPIV4{
+			Key:    a.client.cfg.Key,
+			Secret: a.client.cfg.Secret,
+		})
+	}
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(r)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status + ", " + string(localVarBody),
+		}
+		var gateErr GateAPIError
+		if e := a.client.decode(&gateErr, localVarBody, localVarHTTPResponse.Header.Get("Content-Type")); e == nil && gateErr.Label != "" {
+			gateErr.APIError = newErr
+			return localVarReturnValue, localVarHTTPResponse, gateErr
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+/*
+StopChaseOrder Stop a chase order
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param settle Settle currency
+  - @param stopChaseOrderReq
+
+@return StopChaseOrderResp
+*/
+func (a *FuturesApiService) StopChaseOrder(ctx context.Context, settle string, stopChaseOrderReq StopChaseOrderReq) (StopChaseOrderResp, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  StopChaseOrderResp
+	)
+
+	// create path and map variables
+	localVarPath := a.client.cfg.BasePath + "/futures/{settle}/autoorder/v1/chase/stop"
+	localVarPath = strings.Replace(localVarPath, "{"+"settle"+"}", url.QueryEscape(parameterToString(settle, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = &stopChaseOrderReq
+	if ctx == nil {
+		ctx = context.Background()
+	}
+	if ctx.Value(ContextGateAPIV4) == nil {
+		// for compatibility, set configuration key and secret to context if ContextGateAPIV4 value is not present
+		ctx = context.WithValue(ctx, ContextGateAPIV4, GateAPIV4{
+			Key:    a.client.cfg.Key,
+			Secret: a.client.cfg.Secret,
+		})
+	}
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(r)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status + ", " + string(localVarBody),
+		}
+		var gateErr GateAPIError
+		if e := a.client.decode(&gateErr, localVarBody, localVarHTTPResponse.Header.Get("Content-Type")); e == nil && gateErr.Label != "" {
+			gateErr.APIError = newErr
+			return localVarReturnValue, localVarHTTPResponse, gateErr
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+/*
+StopAllChaseOrders Stop chase orders in batch
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param settle Settle currency
+  - @param stopAllChaseOrdersReq
+
+@return StopAllChaseOrdersResp
+*/
+func (a *FuturesApiService) StopAllChaseOrders(ctx context.Context, settle string, stopAllChaseOrdersReq StopAllChaseOrdersReq) (StopAllChaseOrdersResp, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  StopAllChaseOrdersResp
+	)
+
+	// create path and map variables
+	localVarPath := a.client.cfg.BasePath + "/futures/{settle}/autoorder/v1/chase/stop_all"
+	localVarPath = strings.Replace(localVarPath, "{"+"settle"+"}", url.QueryEscape(parameterToString(settle, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = &stopAllChaseOrdersReq
+	if ctx == nil {
+		ctx = context.Background()
+	}
+	if ctx.Value(ContextGateAPIV4) == nil {
+		// for compatibility, set configuration key and secret to context if ContextGateAPIV4 value is not present
+		ctx = context.WithValue(ctx, ContextGateAPIV4, GateAPIV4{
+			Key:    a.client.cfg.Key,
+			Secret: a.client.cfg.Secret,
+		})
+	}
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(r)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status + ", " + string(localVarBody),
+		}
+		var gateErr GateAPIError
+		if e := a.client.decode(&gateErr, localVarBody, localVarHTTPResponse.Header.Get("Content-Type")); e == nil && gateErr.Label != "" {
+			gateErr.APIError = newErr
+			return localVarReturnValue, localVarHTTPResponse, gateErr
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+// GetChaseOrdersOpts Optional parameters for the method 'GetChaseOrders'
+type GetChaseOrdersOpts struct {
+	Contract   optional.String
+	IsFinished optional.Bool
+	StartAt    optional.Int64
+	EndAt      optional.Int64
+	PageNum    optional.Int32
+	PageSize   optional.Int32
+	HideCancel optional.Bool
+	ReduceOnly optional.Int32
+	Side       optional.Int32
+}
+
+/*
+GetChaseOrders List chase orders
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param settle Settle currency
+  - @param sortBy Sort field: 1 ORDER_SORT_CREATED_AT, 2 ORDER_SORT_FINISHED_AT; cannot be 0
+  - @param optional nil or *GetChaseOrdersOpts - Optional Parameters:
+  - @param "Contract" (optional.String) -  Optional. When non-empty, must be a valid contract (validated against the market cache for the path settle); server-side converted to uppercase
+  - @param "IsFinished" (optional.Bool) -  true to query finished orders, false to query in-progress orders
+  - @param "StartAt" (optional.Int64) -  Lower time bound for the history list, paired with end_at. Required when is_finished is true
+  - @param "EndAt" (optional.Int64) -  Upper time bound for the history list, paired with start_at. Required when is_finished is true
+  - @param "PageNum" (optional.Int32) -  Page number, starting from 1
+  - @param "PageSize" (optional.Int32) -  Page size; must be between 1 and 100
+  - @param "HideCancel" (optional.Bool) -  When true, cancelled orders are hidden in the list
+  - @param "ReduceOnly" (optional.Int32) -  OptionalBool: 0 unknown, 1 true, 2 false; used to filter by reduce-only flag
+  - @param "Side" (optional.Int32) -  Filter by long/short side: 1 long, 2 short
+
+@return GetChaseOrdersResp
+*/
+func (a *FuturesApiService) GetChaseOrders(ctx context.Context, settle string, sortBy int32, localVarOptionals *GetChaseOrdersOpts) (GetChaseOrdersResp, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  GetChaseOrdersResp
+	)
+
+	// create path and map variables
+	localVarPath := a.client.cfg.BasePath + "/futures/{settle}/autoorder/v1/chase/list"
+	localVarPath = strings.Replace(localVarPath, "{"+"settle"+"}", url.QueryEscape(parameterToString(settle, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if localVarOptionals != nil && localVarOptionals.Contract.IsSet() {
+		localVarQueryParams.Add("contract", parameterToString(localVarOptionals.Contract.Value(), ""))
+	}
+	if localVarOptionals != nil && localVarOptionals.IsFinished.IsSet() {
+		localVarQueryParams.Add("is_finished", parameterToString(localVarOptionals.IsFinished.Value(), ""))
+	}
+	if localVarOptionals != nil && localVarOptionals.StartAt.IsSet() {
+		localVarQueryParams.Add("start_at", parameterToString(localVarOptionals.StartAt.Value(), ""))
+	}
+	if localVarOptionals != nil && localVarOptionals.EndAt.IsSet() {
+		localVarQueryParams.Add("end_at", parameterToString(localVarOptionals.EndAt.Value(), ""))
+	}
+	if localVarOptionals != nil && localVarOptionals.PageNum.IsSet() {
+		localVarQueryParams.Add("page_num", parameterToString(localVarOptionals.PageNum.Value(), ""))
+	}
+	if localVarOptionals != nil && localVarOptionals.PageSize.IsSet() {
+		localVarQueryParams.Add("page_size", parameterToString(localVarOptionals.PageSize.Value(), ""))
+	}
+	localVarQueryParams.Add("sort_by", parameterToString(sortBy, ""))
+	if localVarOptionals != nil && localVarOptionals.HideCancel.IsSet() {
+		localVarQueryParams.Add("hide_cancel", parameterToString(localVarOptionals.HideCancel.Value(), ""))
+	}
+	if localVarOptionals != nil && localVarOptionals.ReduceOnly.IsSet() {
+		localVarQueryParams.Add("reduce_only", parameterToString(localVarOptionals.ReduceOnly.Value(), ""))
+	}
+	if localVarOptionals != nil && localVarOptionals.Side.IsSet() {
+		localVarQueryParams.Add("side", parameterToString(localVarOptionals.Side.Value(), ""))
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if ctx == nil {
+		ctx = context.Background()
+	}
+	if ctx.Value(ContextGateAPIV4) == nil {
+		// for compatibility, set configuration key and secret to context if ContextGateAPIV4 value is not present
+		ctx = context.WithValue(ctx, ContextGateAPIV4, GateAPIV4{
+			Key:    a.client.cfg.Key,
+			Secret: a.client.cfg.Secret,
+		})
+	}
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(r)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status + ", " + string(localVarBody),
+		}
+		var gateErr GateAPIError
+		if e := a.client.decode(&gateErr, localVarBody, localVarHTTPResponse.Header.Get("Content-Type")); e == nil && gateErr.Label != "" {
+			gateErr.APIError = newErr
+			return localVarReturnValue, localVarHTTPResponse, gateErr
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+/*
+GetChaseOrderDetail Get chase order detail
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param settle Settle currency
+  - @param id Order ID, must be a non-zero positive integer
+
+@return GetChaseOrderDetailResp
+*/
+func (a *FuturesApiService) GetChaseOrderDetail(ctx context.Context, settle string, id string) (GetChaseOrderDetailResp, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  GetChaseOrderDetailResp
+	)
+
+	// create path and map variables
+	localVarPath := a.client.cfg.BasePath + "/futures/{settle}/autoorder/v1/chase/detail"
+	localVarPath = strings.Replace(localVarPath, "{"+"settle"+"}", url.QueryEscape(parameterToString(settle, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	localVarQueryParams.Add("id", parameterToString(id, ""))
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if ctx == nil {
+		ctx = context.Background()
+	}
+	if ctx.Value(ContextGateAPIV4) == nil {
+		// for compatibility, set configuration key and secret to context if ContextGateAPIV4 value is not present
+		ctx = context.WithValue(ctx, ContextGateAPIV4, GateAPIV4{
+			Key:    a.client.cfg.Key,
+			Secret: a.client.cfg.Secret,
+		})
+	}
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(r)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status + ", " + string(localVarBody),
+		}
+		var gateErr GateAPIError
+		if e := a.client.decode(&gateErr, localVarBody, localVarHTTPResponse.Header.Get("Content-Type")); e == nil && gateErr.Label != "" {
+			gateErr.APIError = newErr
+			return localVarReturnValue, localVarHTTPResponse, gateErr
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 // ListPriceTriggeredOrdersOpts Optional parameters for the method 'ListPriceTriggeredOrders'
 type ListPriceTriggeredOrdersOpts struct {
 	Contract optional.String
@@ -6762,12 +7402,11 @@ func (a *FuturesApiService) CancelPriceTriggeredOrder(ctx context.Context, settl
 UpdatePriceTriggeredOrder Modify a Single Auto Order
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param settle Settle currency
-  - @param orderId ID returned when order is successfully created
   - @param futuresUpdatePriceTriggeredOrder
 
 @return TriggerOrderResponse
 */
-func (a *FuturesApiService) UpdatePriceTriggeredOrder(ctx context.Context, settle string, orderId int64, futuresUpdatePriceTriggeredOrder FuturesUpdatePriceTriggeredOrder) (TriggerOrderResponse, *http.Response, error) {
+func (a *FuturesApiService) UpdatePriceTriggeredOrder(ctx context.Context, settle string, futuresUpdatePriceTriggeredOrder FuturesUpdatePriceTriggeredOrder) (TriggerOrderResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -6778,10 +7417,8 @@ func (a *FuturesApiService) UpdatePriceTriggeredOrder(ctx context.Context, settl
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/futures/{settle}/price_orders/amend/{order_id}"
+	localVarPath := a.client.cfg.BasePath + "/futures/{settle}/price_orders/amend"
 	localVarPath = strings.Replace(localVarPath, "{"+"settle"+"}", url.QueryEscape(parameterToString(settle, "")), -1)
-
-	localVarPath = strings.Replace(localVarPath, "{"+"order_id"+"}", url.QueryEscape(parameterToString(orderId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

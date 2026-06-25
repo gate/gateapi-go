@@ -71,4 +71,14 @@ type FuturesOrder struct {
 	MarketOrderSlipRatio string `json:"market_order_slip_ratio,omitempty"`
 	// Position Margin Mode isolated - Isolated Margin, cross - Cross Margin, only passed in simple split position mode
 	PosMarginMode string `json:"pos_margin_mode,omitempty"`
+	// Processing Mode  When placing an order, different fields are returned based on the action_mode  - `ACK`: Asynchronous mode, returns only key order fields - `RESULT`: No clearing information - `FULL`: Full mode (default)
+	ActionMode string `json:"action_mode,omitempty"`
+	// Take profit price
+	TpslTpTriggerPrice string `json:"tpsl_tp_trigger_price,omitempty"`
+	// Stop loss price
+	TpslSlTriggerPrice string `json:"tpsl_sl_trigger_price,omitempty"`
+	// Take profit BBO type
+	TpslTpBboType string `json:"tpsl_tp_bbo_type,omitempty"`
+	// Stop loss BBO type
+	TpslSlBboType string `json:"tpsl_sl_bbo_type,omitempty"`
 }

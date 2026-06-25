@@ -7,6 +7,7 @@ Method | HTTP request | Description
 [**P2pMerchantAccountGetUserInfo**](P2pApi.md#P2pMerchantAccountGetUserInfo) | **Post** /p2p/merchant/account/get_user_info | Get account information
 [**P2pMerchantAccountGetCounterpartyUserInfo**](P2pApi.md#P2pMerchantAccountGetCounterpartyUserInfo) | **Post** /p2p/merchant/account/get_counterparty_user_info | Get counterparty information
 [**P2pMerchantAccountGetMyselfPayment**](P2pApi.md#P2pMerchantAccountGetMyselfPayment) | **Post** /p2p/merchant/account/get_myself_payment | Get payment method list
+[**P2pMerchantAccountSetMerchantWorkHours**](P2pApi.md#P2pMerchantAccountSetMerchantWorkHours) | **Post** /p2p/merchant/account/set_merchant_work_hours | Set merchant working status and custom working hours
 [**P2pMerchantTransactionGetPendingTransactionList**](P2pApi.md#P2pMerchantTransactionGetPendingTransactionList) | **Post** /p2p/merchant/transaction/get_pending_transaction_list | Get pending orders
 [**P2pMerchantTransactionGetCompletedTransactionList**](P2pApi.md#P2pMerchantTransactionGetCompletedTransactionList) | **Post** /p2p/merchant/transaction/get_completed_transaction_list | Get all/historical orders
 [**P2pMerchantTransactionGetTransactionDetails**](P2pApi.md#P2pMerchantTransactionGetTransactionDetails) | **Post** /p2p/merchant/transaction/get_transaction_details | Query order details
@@ -218,6 +219,75 @@ func main() {
 ### Return type
 
 [**P2pPaymentMethodsResponse**](P2pPaymentMethodsResponse.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+## P2pMerchantAccountSetMerchantWorkHours
+
+> P2pMerchantWorkHoursResponse P2pMerchantAccountSetMerchantWorkHours(ctx, setMerchantWorkHoursRequest)
+
+Set merchant working status and custom working hours
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**setMerchantWorkHoursRequest** | [**SetMerchantWorkHoursRequest**](SetMerchantWorkHoursRequest.md)|  | 
+
+### Example
+
+```golang
+package main
+
+import (
+    "context"
+    "fmt"
+
+    "github.com/gate/gateapi-go/v7"
+)
+
+func main() {
+    client := gateapi.NewAPIClient(gateapi.NewConfiguration())
+    // uncomment the next line if your are testing against testnet
+    // client.ChangeBasePath("https://fx-api-testnet.gateio.ws/api/v4")
+    ctx := context.WithValue(context.Background(),
+                             gateapi.ContextGateAPIV4,
+                             gateapi.GateAPIV4{
+                                 Key:    "YOUR_API_KEY",
+                                 Secret: "YOUR_API_SECRET",
+                             }
+                            )
+    setMerchantWorkHoursRequest := gateapi.SetMerchantWorkHoursRequest{} // SetMerchantWorkHoursRequest - 
+    
+    result, _, err := client.P2pApi.P2pMerchantAccountSetMerchantWorkHours(ctx, setMerchantWorkHoursRequest)
+    if err != nil {
+        if e, ok := err.(gateapi.GateAPIError); ok {
+            fmt.Printf("gate api error: %s\n", e.Error())
+        } else {
+            fmt.Printf("generic error: %s\n", err.Error())
+        }
+    } else {
+        fmt.Println(result)
+    }
+}
+```
+
+
+### Return type
+
+[**P2pMerchantWorkHoursResponse**](P2pMerchantWorkHoursResponse.md)
 
 ### Authorization
 
@@ -652,6 +722,8 @@ func main() {
 
 Publish ad order
 
+When publishing or editing an advertisement, trade_tips and auto_reply go through off-platform traffic diversion risk control; when hit, the advertisement is not saved, and code 70305102 with data.risk_event is returned.
+
 ### Required Parameters
 
 Name | Type | Description  | Notes
@@ -1074,6 +1146,8 @@ func main() {
 > P2pSendChatMessageResponse P2pMerchantChatSendChatMessage(ctx, sendChatMessageRequest)
 
 Send text message
+
+Text messages go through off-platform traffic diversion risk control. When hit, the API still returns code 0, and data contains risk_type=1 and toast_msg.
 
 ### Required Parameters
 

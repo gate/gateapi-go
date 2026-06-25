@@ -1454,6 +1454,99 @@ func (a *TradFiApiService) QueryOrderHistoryList(ctx context.Context, localVarOp
 }
 
 /*
+QueryOrderLog Get order details by log ID
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param logId log_id returned from the order placement API
+
+@return OrderLog
+*/
+func (a *TradFiApiService) QueryOrderLog(ctx context.Context, logId int32) (OrderLog, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  OrderLog
+	)
+
+	// create path and map variables
+	localVarPath := a.client.cfg.BasePath + "/tradfi/orders/log/{log_id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"log_id"+"}", url.QueryEscape(parameterToString(logId, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if ctx == nil {
+		ctx = context.Background()
+	}
+	if ctx.Value(ContextGateAPIV4) == nil {
+		// for compatibility, set configuration key and secret to context if ContextGateAPIV4 value is not present
+		ctx = context.WithValue(ctx, ContextGateAPIV4, GateAPIV4{
+			Key:    a.client.cfg.Key,
+			Secret: a.client.cfg.Secret,
+		})
+	}
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(r)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status + ", " + string(localVarBody),
+		}
+		var gateErr GateAPIError
+		if e := a.client.decode(&gateErr, localVarBody, localVarHTTPResponse.Header.Get("Content-Type")); e == nil && gateErr.Label != "" {
+			gateErr.APIError = newErr
+			return localVarReturnValue, localVarHTTPResponse, gateErr
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+/*
 QueryPositionList Query active position list
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 
@@ -1737,6 +1830,8 @@ func (a *TradFiApiService) ClosePosition(ctx context.Context, positionId int32, 
 
 // QueryPositionHistoryListOpts Optional parameters for the method 'QueryPositionHistoryList'
 type QueryPositionHistoryListOpts struct {
+	Page        optional.Int64
+	PageSize    optional.Int64
 	BeginTime   optional.Int64
 	EndTime     optional.Int64
 	Symbol      optional.String
@@ -1747,6 +1842,8 @@ type QueryPositionHistoryListOpts struct {
 QueryPositionHistoryList Query historical position list
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param optional nil or *QueryPositionHistoryListOpts - Optional Parameters:
+  - @param "Page" (optional.Int64) -  Page number; defaults to 1 if omitted.
+  - @param "PageSize" (optional.Int64) -  Page size; defaults to 10 if omitted. Maximum 100.
   - @param "BeginTime" (optional.Int64) -  Start Time (Unix Timestamp, seconds). The earliest queryable time is one month ago
   - @param "EndTime" (optional.Int64) -  End time (timestamp in seconds)
   - @param "Symbol" (optional.String) -  Trading symbol (e.g., EURUSD)
@@ -1770,6 +1867,12 @@ func (a *TradFiApiService) QueryPositionHistoryList(ctx context.Context, localVa
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if localVarOptionals != nil && localVarOptionals.Page.IsSet() {
+		localVarQueryParams.Add("page", parameterToString(localVarOptionals.Page.Value(), ""))
+	}
+	if localVarOptionals != nil && localVarOptionals.PageSize.IsSet() {
+		localVarQueryParams.Add("page_size", parameterToString(localVarOptionals.PageSize.Value(), ""))
+	}
 	if localVarOptionals != nil && localVarOptionals.BeginTime.IsSet() {
 		localVarQueryParams.Add("begin_time", parameterToString(localVarOptionals.BeginTime.Value(), ""))
 	}

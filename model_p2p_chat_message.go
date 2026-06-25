@@ -31,4 +31,8 @@ type P2pChatMessage struct {
 	FileKey string `json:"file_key,omitempty"`
 	// File type: `image` for images, `video` for videos.
 	FileType string `json:"file_type,omitempty"`
+	// Risk control display type. 1: off-platform traffic diversion risk; returned when a text message hits risk control
+	RiskType int32 `json:"risk_type,omitempty"`
+	// Risk control prompt message; returned only when risk_type=1
+	ToastMsg string `json:"toast_msg,omitempty"`
 }

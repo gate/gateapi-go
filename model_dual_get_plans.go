@@ -22,18 +22,14 @@ type DualGetPlans struct {
 	ExercisePrice float64 `json:"exercise_price,omitempty"`
 	// Settlement time
 	DeliveryTime int32 `json:"delivery_time,omitempty"`
-	// Minimum share count
-	MinCopies int32 `json:"min_copies,omitempty"`
-	// Maximum share count
-	MaxCopies int32 `json:"max_copies,omitempty"`
-	// Value Per Unit (deprecated)
-	PerValue string `json:"per_value,omitempty"`
 	// Annual Yield
 	ApyDisplay string `json:"apy_display,omitempty"`
+	// Minimum investment amount
+	MinAmount string `json:"min_amount,omitempty"`
 	// Start Time
 	StartTime int32 `json:"start_time,omitempty"`
 	// End time
 	EndTime int32 `json:"end_time,omitempty"`
-	// 状态:  `NOTSTARTED`-未开始 `ONGOING`-进行中 `ENDED`-已结束
+	// Status:  `NOTSTARTED` - Not started `ONGOING` - In progress `ENDED` - Ended
 	Status string `json:"status,omitempty"`
 }

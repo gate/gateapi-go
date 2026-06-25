@@ -15,6 +15,7 @@ import (
 	"io/ioutil"
 	"net/http"
 	"net/url"
+	"os"
 )
 
 // Linger please
@@ -308,104 +309,13 @@ func (a *OTCApiService) CreateStableCoinOrder(ctx context.Context, otcStableCoin
 }
 
 /*
-GetUserDefaultBank Get user's default bank account information
-Get user&#39;s default bank account information for order placement
-  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-
-@return OtcUserDefaultBankResponse
-*/
-func (a *OTCApiService) GetUserDefaultBank(ctx context.Context) (OtcUserDefaultBankResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  OtcUserDefaultBankResponse
-	)
-
-	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/otc/get_user_def_bank"
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if ctx == nil {
-		ctx = context.Background()
-	}
-	if ctx.Value(ContextGateAPIV4) == nil {
-		// for compatibility, set configuration key and secret to context if ContextGateAPIV4 value is not present
-		ctx = context.WithValue(ctx, ContextGateAPIV4, GateAPIV4{
-			Key:    a.client.cfg.Key,
-			Secret: a.client.cfg.Secret,
-		})
-	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(r)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status + ", " + string(localVarBody),
-		}
-		var gateErr GateAPIError
-		if e := a.client.decode(&gateErr, localVarBody, localVarHTTPResponse.Header.Get("Content-Type")); e == nil && gateErr.Label != "" {
-			gateErr.APIError = newErr
-			return localVarReturnValue, localVarHTTPResponse, gateErr
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-/*
-GetBankList Get user bank card list
-Get user bank card list for selecting bank card when placing orders
+GetBankListInnerPath Get user bank card list
+Retrieve the user&#39;s bank card list, used to select a bank card when placing an order. **Default card**: refer to the list item field &#x60;is_default&#x60; (1&#x3D;default); there is no need to call the deprecated standalone \&quot;default bank card\&quot; endpoint. Corresponding Inner: &#x60;GET /bank_list&#x60; or &#x60;GET /bank/list&#x60;.
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 
 @return OtcBankListResponse
 */
-func (a *OTCApiService) GetBankList(ctx context.Context) (OtcBankListResponse, *http.Response, error) {
+func (a *OTCApiService) GetBankListInnerPath(ctx context.Context) (OtcBankListResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -416,7 +326,7 @@ func (a *OTCApiService) GetBankList(ctx context.Context) (OtcBankListResponse, *
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/otc/bank_list"
+	localVarPath := a.client.cfg.BasePath + "/otc/bank/list"
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
@@ -489,9 +399,642 @@ func (a *OTCApiService) GetBankList(ctx context.Context) (OtcBankListResponse, *
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+// CreateOtcBankOpts Optional parameters for the method 'CreateOtcBank'
+type CreateOtcBankOpts struct {
+	RemittanceLineNumber optional.String
+	AgentBankName        optional.String
+	AgentBankSwift       optional.String
+}
+
 /*
-MarkOtcOrderPaid Mark fiat order as paid
-Mark fiat order as paid
+CreateOtcBank Create bank card
+Bind a bank card. Under the Global entity, an account with a non-matching name may enter manual review (&#x60;status&#x60; pending) and require subsequent supplementary materials. Corresponding Inner: &#x60;POST /bank/create&#x60;. Fields and protocol are subject to the production form/gateway; in some environments &#x60;bank_account_name&#x60; is passed Base64-encoded, see the integration notes for details.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param bankAccountName
+  - @param bankName
+  - @param bankCountry
+  - @param bankAddress
+  - @param iban
+  - @param swift
+  - @param documentationFile Account-opening proof file (jpg/jpeg/png/pdf, etc.; single file ≤4MB — subject to production environment).
+  - @param optional nil or *CreateOtcBankOpts - Optional Parameters:
+  - @param "RemittanceLineNumber" (optional.String) -
+  - @param "AgentBankName" (optional.String) -
+  - @param "AgentBankSwift" (optional.String) -
+
+@return OtcBankCreateResponse
+*/
+func (a *OTCApiService) CreateOtcBank(ctx context.Context, bankAccountName string, bankName string, bankCountry string, bankAddress string, iban string, swift string, documentationFile *os.File, localVarOptionals *CreateOtcBankOpts) (OtcBankCreateResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  OtcBankCreateResponse
+	)
+
+	// create path and map variables
+	localVarPath := a.client.cfg.BasePath + "/otc/bank/create"
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"multipart/form-data"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	localVarFormParams.Add("bank_account_name", parameterToString(bankAccountName, ""))
+	localVarFormParams.Add("bank_name", parameterToString(bankName, ""))
+	localVarFormParams.Add("bank_country", parameterToString(bankCountry, ""))
+	localVarFormParams.Add("bank_address", parameterToString(bankAddress, ""))
+	localVarFormParams.Add("iban", parameterToString(iban, ""))
+	localVarFormParams.Add("swift", parameterToString(swift, ""))
+	if localVarOptionals != nil && localVarOptionals.RemittanceLineNumber.IsSet() {
+		localVarFormParams.Add("remittance_line_number", parameterToString(localVarOptionals.RemittanceLineNumber.Value(), ""))
+	}
+	if localVarOptionals != nil && localVarOptionals.AgentBankName.IsSet() {
+		localVarFormParams.Add("agent_bank_name", parameterToString(localVarOptionals.AgentBankName.Value(), ""))
+	}
+	if localVarOptionals != nil && localVarOptionals.AgentBankSwift.IsSet() {
+		localVarFormParams.Add("agent_bank_swift", parameterToString(localVarOptionals.AgentBankSwift.Value(), ""))
+	}
+	localVarFormFileName = "documentation_file"
+	localVarFile := documentationFile
+	if localVarFile != nil {
+		fbs, _ := ioutil.ReadAll(localVarFile)
+		localVarFileBytes = fbs
+		localVarFileName = localVarFile.Name()
+		localVarFile.Close()
+	}
+	if ctx == nil {
+		ctx = context.Background()
+	}
+	if ctx.Value(ContextGateAPIV4) == nil {
+		// for compatibility, set configuration key and secret to context if ContextGateAPIV4 value is not present
+		ctx = context.WithValue(ctx, ContextGateAPIV4, GateAPIV4{
+			Key:    a.client.cfg.Key,
+			Secret: a.client.cfg.Secret,
+		})
+	}
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(r)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status + ", " + string(localVarBody),
+		}
+		var gateErr GateAPIError
+		if e := a.client.decode(&gateErr, localVarBody, localVarHTTPResponse.Header.Get("Content-Type")); e == nil && gateErr.Label != "" {
+			gateErr.APIError = newErr
+			return localVarReturnValue, localVarHTTPResponse, gateErr
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+/*
+DeleteOtcBank Delete bank card
+Delete the specified bank card. Corresponds to Inner: &#x60;POST /bank/delete&#x60;.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param otcBankIdRequest
+
+@return OtcActionResponse
+*/
+func (a *OTCApiService) DeleteOtcBank(ctx context.Context, otcBankIdRequest OtcBankIdRequest) (OtcActionResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  OtcActionResponse
+	)
+
+	// create path and map variables
+	localVarPath := a.client.cfg.BasePath + "/otc/bank/delete"
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = &otcBankIdRequest
+	if ctx == nil {
+		ctx = context.Background()
+	}
+	if ctx.Value(ContextGateAPIV4) == nil {
+		// for compatibility, set configuration key and secret to context if ContextGateAPIV4 value is not present
+		ctx = context.WithValue(ctx, ContextGateAPIV4, GateAPIV4{
+			Key:    a.client.cfg.Key,
+			Secret: a.client.cfg.Secret,
+		})
+	}
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(r)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status + ", " + string(localVarBody),
+		}
+		var gateErr GateAPIError
+		if e := a.client.decode(&gateErr, localVarBody, localVarHTTPResponse.Header.Get("Content-Type")); e == nil && gateErr.Label != "" {
+			gateErr.APIError = newErr
+			return localVarReturnValue, localVarHTTPResponse, gateErr
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+/*
+SetDefaultOtcBank Set default bank card
+Set the specified bank card as default. Corresponds to Inner: &#x60;POST /bank/set_default&#x60;.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param otcBankIdRequest
+
+@return OtcActionResponse
+*/
+func (a *OTCApiService) SetDefaultOtcBank(ctx context.Context, otcBankIdRequest OtcBankIdRequest) (OtcActionResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  OtcActionResponse
+	)
+
+	// create path and map variables
+	localVarPath := a.client.cfg.BasePath + "/otc/bank/set_default"
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = &otcBankIdRequest
+	if ctx == nil {
+		ctx = context.Background()
+	}
+	if ctx.Value(ContextGateAPIV4) == nil {
+		// for compatibility, set configuration key and secret to context if ContextGateAPIV4 value is not present
+		ctx = context.WithValue(ctx, ContextGateAPIV4, GateAPIV4{
+			Key:    a.client.cfg.Key,
+			Secret: a.client.cfg.Secret,
+		})
+	}
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(r)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status + ", " + string(localVarBody),
+		}
+		var gateErr GateAPIError
+		if e := a.client.decode(&gateErr, localVarBody, localVarHTTPResponse.Header.Get("Content-Type")); e == nil && gateErr.Label != "" {
+			gateErr.APIError = newErr
+			return localVarReturnValue, localVarHTTPResponse, gateErr
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+/*
+GetOtcBankSupplementChecklist Query the checklist of materials to supplement for a bank card
+**①** &#x60;bank_id&#x60; must be specified: after verifying that the card belongs to the current user and its status allows supplementation, returns the items to be supplemented and whether each sub-item is required, based on the user&#39;s **passed professional verification type** (personal/enterprise). Corresponding Inner: &#x60;GET /bank/bank_supplement_checklist&#x60;.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param bankId Bank card ID (otc_rds / the id returned by the list endpoint).
+
+@return OtcBankSupplementChecklistResponse
+*/
+func (a *OTCApiService) GetOtcBankSupplementChecklist(ctx context.Context, bankId string) (OtcBankSupplementChecklistResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  OtcBankSupplementChecklistResponse
+	)
+
+	// create path and map variables
+	localVarPath := a.client.cfg.BasePath + "/otc/bank/bank_supplement_checklist"
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	localVarQueryParams.Add("bank_id", parameterToString(bankId, ""))
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if ctx == nil {
+		ctx = context.Background()
+	}
+	if ctx.Value(ContextGateAPIV4) == nil {
+		// for compatibility, set configuration key and secret to context if ContextGateAPIV4 value is not present
+		ctx = context.WithValue(ctx, ContextGateAPIV4, GateAPIV4{
+			Key:    a.client.cfg.Key,
+			Secret: a.client.cfg.Secret,
+		})
+	}
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(r)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status + ", " + string(localVarBody),
+		}
+		var gateErr GateAPIError
+		if e := a.client.decode(&gateErr, localVarBody, localVarHTTPResponse.Header.Get("Content-Type")); e == nil && gateErr.Label != "" {
+			gateErr.APIError = newErr
+			return localVarReturnValue, localVarHTTPResponse, gateErr
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+/*
+SubmitOtcBankPersonalSupplement Submit Bank Card Supplement Materials (Personal)
+**Personal professional verification (type&#x3D;1)** users submit non-same-person/supplementary materials. Must match &#x60;user_type&#x3D;personal&#x60; returned by &#x60;GET /otc/bank/bank_supplement_checklist?bank_id&#x3D;&#x60;, otherwise the request is rejected. **multipart/form-data** is recommended: each material item is a separate file field, with field names matching the checklist &#x60;code&#x60; (&#x60;id_document_front&#x60;, &#x60;id_document_back&#x60;, &#x60;address_proof&#x60;).
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param bankId
+  - @param idDocumentFront ID document front-side file content (multipart file field, binary/Base64)
+  - @param idDocumentBack ID document back-side file content (multipart file field, binary/Base64)
+  - @param addressProof Proof-of-address file content (multipart file field, binary/Base64)
+
+@return OtcActionResponse
+*/
+func (a *OTCApiService) SubmitOtcBankPersonalSupplement(ctx context.Context, bankId string, idDocumentFront string, idDocumentBack string, addressProof string) (OtcActionResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  OtcActionResponse
+	)
+
+	// create path and map variables
+	localVarPath := a.client.cfg.BasePath + "/otc/bank/personal/bank_supplement"
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"multipart/form-data"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	localVarFormParams.Add("bank_id", parameterToString(bankId, ""))
+	localVarFormParams.Add("id_document_front", parameterToString(idDocumentFront, ""))
+	localVarFormParams.Add("id_document_back", parameterToString(idDocumentBack, ""))
+	localVarFormParams.Add("address_proof", parameterToString(addressProof, ""))
+	if ctx == nil {
+		ctx = context.Background()
+	}
+	if ctx.Value(ContextGateAPIV4) == nil {
+		// for compatibility, set configuration key and secret to context if ContextGateAPIV4 value is not present
+		ctx = context.WithValue(ctx, ContextGateAPIV4, GateAPIV4{
+			Key:    a.client.cfg.Key,
+			Secret: a.client.cfg.Secret,
+		})
+	}
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(r)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status + ", " + string(localVarBody),
+		}
+		var gateErr GateAPIError
+		if e := a.client.decode(&gateErr, localVarBody, localVarHTTPResponse.Header.Get("Content-Type")); e == nil && gateErr.Label != "" {
+			gateErr.APIError = newErr
+			return localVarReturnValue, localVarHTTPResponse, gateErr
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+// SubmitOtcBankEnterpriseSupplementOpts Optional parameters for the method 'SubmitOtcBankEnterpriseSupplement'
+type SubmitOtcBankEnterpriseSupplementOpts struct {
+	Uid            optional.String
+	FundsStatement optional.String
+	Additional     optional.String
+}
+
+/*
+SubmitOtcBankEnterpriseSupplement Submit Bank Card Supplement Materials (Enterprise)
+**Enterprise professional verification (type&#x3D;2)** users submit supplementary materials. Must match &#x60;user_type&#x3D;enterprise&#x60; returned by the checklist. **multipart** file field names: &#x60;certificate&#x60;, &#x60;share_holders&#x60;, &#x60;passport&#x60;, &#x60;share_holding_structure&#x60;.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param bankId
+  - @param certificate Business license / registration certificate file content (multipart file field, binary/Base64)
+  - @param shareHolders Register of shareholders file content (multipart file field, binary/Base64)
+  - @param passport Legal representative / shareholder passport file content (multipart file field, binary/Base64)
+  - @param shareHoldingStructure Ownership structure chart file content (multipart file field, binary/Base64)
+  - @param optional nil or *SubmitOtcBankEnterpriseSupplementOpts - Optional Parameters:
+  - @param "Uid" (optional.String) -
+  - @param "FundsStatement" (optional.String) -  Proof-of-funds file content (multipart file field, binary/Base64, optional)
+  - @param "Additional" (optional.String) -  Other supplementary material file content (multipart file field, binary/Base64, optional)
+
+@return OtcActionResponse
+*/
+func (a *OTCApiService) SubmitOtcBankEnterpriseSupplement(ctx context.Context, bankId string, certificate string, shareHolders string, passport string, shareHoldingStructure string, localVarOptionals *SubmitOtcBankEnterpriseSupplementOpts) (OtcActionResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  OtcActionResponse
+	)
+
+	// create path and map variables
+	localVarPath := a.client.cfg.BasePath + "/otc/bank/enterprise/bank_supplement"
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"multipart/form-data"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if localVarOptionals != nil && localVarOptionals.Uid.IsSet() {
+		localVarFormParams.Add("uid", parameterToString(localVarOptionals.Uid.Value(), ""))
+	}
+	localVarFormParams.Add("bank_id", parameterToString(bankId, ""))
+	localVarFormParams.Add("certificate", parameterToString(certificate, ""))
+	localVarFormParams.Add("share_holders", parameterToString(shareHolders, ""))
+	localVarFormParams.Add("passport", parameterToString(passport, ""))
+	localVarFormParams.Add("share_holding_structure", parameterToString(shareHoldingStructure, ""))
+	if localVarOptionals != nil && localVarOptionals.FundsStatement.IsSet() {
+		localVarFormParams.Add("funds_statement", parameterToString(localVarOptionals.FundsStatement.Value(), ""))
+	}
+	if localVarOptionals != nil && localVarOptionals.Additional.IsSet() {
+		localVarFormParams.Add("additional", parameterToString(localVarOptionals.Additional.Value(), ""))
+	}
+	if ctx == nil {
+		ctx = context.Background()
+	}
+	if ctx.Value(ContextGateAPIV4) == nil {
+		// for compatibility, set configuration key and secret to context if ContextGateAPIV4 value is not present
+		ctx = context.WithValue(ctx, ContextGateAPIV4, GateAPIV4{
+			Key:    a.client.cfg.Key,
+			Secret: a.client.cfg.Secret,
+		})
+	}
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(r)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status + ", " + string(localVarBody),
+		}
+		var gateErr GateAPIError
+		if e := a.client.decode(&gateErr, localVarBody, localVarHTTPResponse.Header.Get("Content-Type")); e == nil && gateErr.Label != "" {
+			gateErr.APIError = newErr
+			return localVarReturnValue, localVarHTTPResponse, gateErr
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+/*
+MarkOtcOrderPaid Mark fiat order as paid (deposit confirmation)
+Mark a fiat buy order as paid (deposit confirmation). **The user&#39;s payment receipt must be uploaded**: &#x60;payment_receipt_file_key&#x60; is required; file format jpg / jpeg / png / pdf, single file no larger than 4MB (jointly validated by the server and gateway). The compatible field name &#x60;payment_receipt&#x60; is subject to the gateway/production environment. For the persisted field, see &#x60;otc_trade_record.payment_receipt_file_key&#x60;. The Pay Inner path is &#x60;POST .../pay/order_set_paid&#x60; (orders are usually associated via &#x60;client_order_id&#x60;); this OpenAPI path maps to Inner &#x60;POST /order/paid&#x60; and still uses &#x60;order_id&#x60; as the primary key—if the gateway unifies it to the merchant order number, the gateway documentation prevails.
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param otcMarkOrderPaidRequest
 

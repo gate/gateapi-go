@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **FiatAmount** | **string** | Fiat amount | 
 **PromotionCode** | **string** | Promotion code | [optional] 
 **QuoteToken** | **string** | Parameter returned by the quote API | 
-**BankId** | **string** | Bank card ID used for the order (retrieved via the default bank card API) | 
+**BankId** | **string** | The bank card ID used for placing the order; select it from the list returned by &#x60;GET /otc/bank_list&#x60; (or &#x60;GET /otc/bank/list&#x60;); the default card has &#x60;is_default&#x3D;1&#x60; | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

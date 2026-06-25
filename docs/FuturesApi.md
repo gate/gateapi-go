@@ -5,6 +5,7 @@ All URIs are relative to *https://api.gateio.ws/api/v4*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**ListFuturesContracts**](FuturesApi.md#ListFuturesContracts) | **Get** /futures/{settle}/contracts | Query all futures contracts
+[**ListFuturesContractsAll**](FuturesApi.md#ListFuturesContractsAll) | **Get** /futures/{settle}/contracts_all | Query all contract information (including delisted)
 [**GetFuturesContract**](FuturesApi.md#GetFuturesContract) | **Get** /futures/{settle}/contracts/{contract} | Query single contract information
 [**ListFuturesOrderBook**](FuturesApi.md#ListFuturesOrderBook) | **Get** /futures/{settle}/order_book | Query futures market depth information
 [**ListFuturesTrades**](FuturesApi.md#ListFuturesTrades) | **Get** /futures/{settle}/trades | Futures market transaction records
@@ -62,12 +63,17 @@ Method | HTTP request | Description
 [**GetTrailOrderDetail**](FuturesApi.md#GetTrailOrderDetail) | **Get** /futures/{settle}/autoorder/v1/trail/detail | Get trail order details
 [**UpdateTrailOrder**](FuturesApi.md#UpdateTrailOrder) | **Post** /futures/{settle}/autoorder/v1/trail/update | Update trail order
 [**GetTrailOrderChangeLog**](FuturesApi.md#GetTrailOrderChangeLog) | **Get** /futures/{settle}/autoorder/v1/trail/change_log | Get trail order user modification records
+[**CreateChaseOrder**](FuturesApi.md#CreateChaseOrder) | **Post** /futures/{settle}/autoorder/v1/chase/create | Create a chase order
+[**StopChaseOrder**](FuturesApi.md#StopChaseOrder) | **Post** /futures/{settle}/autoorder/v1/chase/stop | Stop a chase order
+[**StopAllChaseOrders**](FuturesApi.md#StopAllChaseOrders) | **Post** /futures/{settle}/autoorder/v1/chase/stop_all | Stop chase orders in batch
+[**GetChaseOrders**](FuturesApi.md#GetChaseOrders) | **Get** /futures/{settle}/autoorder/v1/chase/list | List chase orders
+[**GetChaseOrderDetail**](FuturesApi.md#GetChaseOrderDetail) | **Get** /futures/{settle}/autoorder/v1/chase/detail | Get chase order detail
 [**ListPriceTriggeredOrders**](FuturesApi.md#ListPriceTriggeredOrders) | **Get** /futures/{settle}/price_orders | Query auto order list
 [**CreatePriceTriggeredOrder**](FuturesApi.md#CreatePriceTriggeredOrder) | **Post** /futures/{settle}/price_orders | Create price-triggered order
 [**CancelPriceTriggeredOrderList**](FuturesApi.md#CancelPriceTriggeredOrderList) | **Delete** /futures/{settle}/price_orders | Cancel all auto orders
 [**GetPriceTriggeredOrder**](FuturesApi.md#GetPriceTriggeredOrder) | **Get** /futures/{settle}/price_orders/{order_id} | Query single auto order details
 [**CancelPriceTriggeredOrder**](FuturesApi.md#CancelPriceTriggeredOrder) | **Delete** /futures/{settle}/price_orders/{order_id} | Cancel single auto order
-[**UpdatePriceTriggeredOrder**](FuturesApi.md#UpdatePriceTriggeredOrder) | **Put** /futures/{settle}/price_orders/amend/{order_id} | Modify a Single Auto Order
+[**UpdatePriceTriggeredOrder**](FuturesApi.md#UpdatePriceTriggeredOrder) | **Put** /futures/{settle}/price_orders/amend | Modify a Single Auto Order
 
 
 ## ListFuturesContracts
@@ -113,6 +119,79 @@ func main() {
     settle := "usdt" // string - Settle currency
     
     result, _, err := client.FuturesApi.ListFuturesContracts(ctx, settle, nil)
+    if err != nil {
+        if e, ok := err.(gateapi.GateAPIError); ok {
+            fmt.Printf("gate api error: %s\n", e.Error())
+        } else {
+            fmt.Printf("generic error: %s\n", err.Error())
+        }
+    } else {
+        fmt.Println(result)
+    }
+}
+```
+
+
+### Return type
+
+[**[]Contract**](Contract.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+## ListFuturesContractsAll
+
+> []Contract ListFuturesContractsAll(ctx, settle, optional)
+
+Query all contract information (including delisted)
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**settle** | **string**| Settle currency | 
+**optional** | **ListFuturesContractsAllOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+
+Optional parameters are passed through a pointer to a ListFuturesContractsAllOpts struct
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**limit** | **optional.Int32**| Maximum number of records returned in a single list | [default to 100]
+**offset** | **optional.Int32**| List offset, starting from 0 | [default to 0]
+
+### Example
+
+```golang
+package main
+
+import (
+    "context"
+    "fmt"
+
+    "github.com/gate/gateapi-go/v7"
+)
+
+func main() {
+    client := gateapi.NewAPIClient(gateapi.NewConfiguration())
+    // uncomment the next line if your are testing against testnet
+    // client.ChangeBasePath("https://fx-api-testnet.gateio.ws/api/v4")
+    ctx := context.Background()
+    settle := "usdt" // string - Settle currency
+    
+    result, _, err := client.FuturesApi.ListFuturesContractsAll(ctx, settle, nil)
     if err != nil {
         if e, ok := err.(gateapi.GateAPIError); ok {
             fmt.Printf("gate api error: %s\n", e.Error())
@@ -2674,6 +2753,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **xGateExptime** | **optional.String**| Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected | 
 **contract** | **optional.String**| Contract Identifier; if specified, only cancel pending orders related to this contract | 
+**actionMode** | **optional.String**| Processing Mode  When placing an order, different fields are returned based on the action_mode  - &#x60;ACK&#x60;: Asynchronous mode, returns only key order fields - &#x60;RESULT&#x60;: No clearing information - &#x60;FULL&#x60;: Full mode (default) | 
 **side** | **optional.String**| Specify all buy orders or all sell orders, both are included if not specified. Set to bid to cancel all buy orders, set to ask to cancel all sell orders | 
 **excludeReduceOnly** | **optional.Bool**| Whether to exclude reduce-only orders | [default to false]
 **text** | **optional.String**| Remark for order cancellation | 
@@ -3075,6 +3155,7 @@ Optional parameters are passed through a pointer to a CancelFuturesOrderOpts str
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **xGateExptime** | **optional.String**| Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected | 
+**actionMode** | **optional.String**| Processing Mode  When placing an order, different fields are returned based on the action_mode  - &#x60;ACK&#x60;: Asynchronous mode, returns only key order fields - &#x60;RESULT&#x60;: No clearing information - &#x60;FULL&#x60;: Full mode (default) | 
 
 ### Example
 
@@ -4539,6 +4620,378 @@ func main() {
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
+## CreateChaseOrder
+
+> CreateChaseOrderResp CreateChaseOrder(ctx, settle, createChaseOrderReq)
+
+Create a chase order
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**settle** | **string**| Settle currency | 
+**createChaseOrderReq** | [**CreateChaseOrderReq**](CreateChaseOrderReq.md)|  | 
+
+### Example
+
+```golang
+package main
+
+import (
+    "context"
+    "fmt"
+
+    "github.com/gate/gateapi-go/v7"
+)
+
+func main() {
+    client := gateapi.NewAPIClient(gateapi.NewConfiguration())
+    // uncomment the next line if your are testing against testnet
+    // client.ChangeBasePath("https://fx-api-testnet.gateio.ws/api/v4")
+    ctx := context.WithValue(context.Background(),
+                             gateapi.ContextGateAPIV4,
+                             gateapi.GateAPIV4{
+                                 Key:    "YOUR_API_KEY",
+                                 Secret: "YOUR_API_SECRET",
+                             }
+                            )
+    settle := "usdt" // string - Settle currency
+    createChaseOrderReq := gateapi.CreateChaseOrderReq{} // CreateChaseOrderReq - 
+    
+    result, _, err := client.FuturesApi.CreateChaseOrder(ctx, settle, createChaseOrderReq)
+    if err != nil {
+        if e, ok := err.(gateapi.GateAPIError); ok {
+            fmt.Printf("gate api error: %s\n", e.Error())
+        } else {
+            fmt.Printf("generic error: %s\n", err.Error())
+        }
+    } else {
+        fmt.Println(result)
+    }
+}
+```
+
+
+### Return type
+
+[**CreateChaseOrderResp**](CreateChaseOrderResp.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+## StopChaseOrder
+
+> StopChaseOrderResp StopChaseOrder(ctx, settle, stopChaseOrderReq)
+
+Stop a chase order
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**settle** | **string**| Settle currency | 
+**stopChaseOrderReq** | [**StopChaseOrderReq**](StopChaseOrderReq.md)|  | 
+
+### Example
+
+```golang
+package main
+
+import (
+    "context"
+    "fmt"
+
+    "github.com/gate/gateapi-go/v7"
+)
+
+func main() {
+    client := gateapi.NewAPIClient(gateapi.NewConfiguration())
+    // uncomment the next line if your are testing against testnet
+    // client.ChangeBasePath("https://fx-api-testnet.gateio.ws/api/v4")
+    ctx := context.WithValue(context.Background(),
+                             gateapi.ContextGateAPIV4,
+                             gateapi.GateAPIV4{
+                                 Key:    "YOUR_API_KEY",
+                                 Secret: "YOUR_API_SECRET",
+                             }
+                            )
+    settle := "usdt" // string - Settle currency
+    stopChaseOrderReq := gateapi.StopChaseOrderReq{} // StopChaseOrderReq - 
+    
+    result, _, err := client.FuturesApi.StopChaseOrder(ctx, settle, stopChaseOrderReq)
+    if err != nil {
+        if e, ok := err.(gateapi.GateAPIError); ok {
+            fmt.Printf("gate api error: %s\n", e.Error())
+        } else {
+            fmt.Printf("generic error: %s\n", err.Error())
+        }
+    } else {
+        fmt.Println(result)
+    }
+}
+```
+
+
+### Return type
+
+[**StopChaseOrderResp**](StopChaseOrderResp.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+## StopAllChaseOrders
+
+> StopAllChaseOrdersResp StopAllChaseOrders(ctx, settle, stopAllChaseOrdersReq)
+
+Stop chase orders in batch
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**settle** | **string**| Settle currency | 
+**stopAllChaseOrdersReq** | [**StopAllChaseOrdersReq**](StopAllChaseOrdersReq.md)|  | 
+
+### Example
+
+```golang
+package main
+
+import (
+    "context"
+    "fmt"
+
+    "github.com/gate/gateapi-go/v7"
+)
+
+func main() {
+    client := gateapi.NewAPIClient(gateapi.NewConfiguration())
+    // uncomment the next line if your are testing against testnet
+    // client.ChangeBasePath("https://fx-api-testnet.gateio.ws/api/v4")
+    ctx := context.WithValue(context.Background(),
+                             gateapi.ContextGateAPIV4,
+                             gateapi.GateAPIV4{
+                                 Key:    "YOUR_API_KEY",
+                                 Secret: "YOUR_API_SECRET",
+                             }
+                            )
+    settle := "usdt" // string - Settle currency
+    stopAllChaseOrdersReq := gateapi.StopAllChaseOrdersReq{} // StopAllChaseOrdersReq - 
+    
+    result, _, err := client.FuturesApi.StopAllChaseOrders(ctx, settle, stopAllChaseOrdersReq)
+    if err != nil {
+        if e, ok := err.(gateapi.GateAPIError); ok {
+            fmt.Printf("gate api error: %s\n", e.Error())
+        } else {
+            fmt.Printf("generic error: %s\n", err.Error())
+        }
+    } else {
+        fmt.Println(result)
+    }
+}
+```
+
+
+### Return type
+
+[**StopAllChaseOrdersResp**](StopAllChaseOrdersResp.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+## GetChaseOrders
+
+> GetChaseOrdersResp GetChaseOrders(ctx, settle, sortBy, optional)
+
+List chase orders
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**settle** | **string**| Settle currency | 
+**sortBy** | **int32**| Sort field: 1 ORDER_SORT_CREATED_AT, 2 ORDER_SORT_FINISHED_AT; cannot be 0 | 
+**optional** | **GetChaseOrdersOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+
+Optional parameters are passed through a pointer to a GetChaseOrdersOpts struct
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**contract** | **optional.String**| Optional. When non-empty, must be a valid contract (validated against the market cache for the path settle); server-side converted to uppercase | 
+**isFinished** | **optional.Bool**| true to query finished orders, false to query in-progress orders | 
+**startAt** | **optional.Int64**| Lower time bound for the history list, paired with end_at. Required when is_finished is true | 
+**endAt** | **optional.Int64**| Upper time bound for the history list, paired with start_at. Required when is_finished is true | 
+**pageNum** | **optional.Int32**| Page number, starting from 1 | 
+**pageSize** | **optional.Int32**| Page size; must be between 1 and 100 | 
+**hideCancel** | **optional.Bool**| When true, cancelled orders are hidden in the list | 
+**reduceOnly** | **optional.Int32**| OptionalBool: 0 unknown, 1 true, 2 false; used to filter by reduce-only flag | 
+**side** | **optional.Int32**| Filter by long/short side: 1 long, 2 short | 
+
+### Example
+
+```golang
+package main
+
+import (
+    "context"
+    "fmt"
+
+    "github.com/gate/gateapi-go/v7"
+)
+
+func main() {
+    client := gateapi.NewAPIClient(gateapi.NewConfiguration())
+    // uncomment the next line if your are testing against testnet
+    // client.ChangeBasePath("https://fx-api-testnet.gateio.ws/api/v4")
+    ctx := context.WithValue(context.Background(),
+                             gateapi.ContextGateAPIV4,
+                             gateapi.GateAPIV4{
+                                 Key:    "YOUR_API_KEY",
+                                 Secret: "YOUR_API_SECRET",
+                             }
+                            )
+    settle := "usdt" // string - Settle currency
+    sortBy := 56 // int32 - Sort field: 1 ORDER_SORT_CREATED_AT, 2 ORDER_SORT_FINISHED_AT; cannot be 0
+    
+    result, _, err := client.FuturesApi.GetChaseOrders(ctx, settle, sortBy, nil)
+    if err != nil {
+        if e, ok := err.(gateapi.GateAPIError); ok {
+            fmt.Printf("gate api error: %s\n", e.Error())
+        } else {
+            fmt.Printf("generic error: %s\n", err.Error())
+        }
+    } else {
+        fmt.Println(result)
+    }
+}
+```
+
+
+### Return type
+
+[**GetChaseOrdersResp**](GetChaseOrdersResp.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+## GetChaseOrderDetail
+
+> GetChaseOrderDetailResp GetChaseOrderDetail(ctx, settle, id)
+
+Get chase order detail
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**settle** | **string**| Settle currency | 
+**id** | **string**| Order ID, must be a non-zero positive integer | 
+
+### Example
+
+```golang
+package main
+
+import (
+    "context"
+    "fmt"
+
+    "github.com/gate/gateapi-go/v7"
+)
+
+func main() {
+    client := gateapi.NewAPIClient(gateapi.NewConfiguration())
+    // uncomment the next line if your are testing against testnet
+    // client.ChangeBasePath("https://fx-api-testnet.gateio.ws/api/v4")
+    ctx := context.WithValue(context.Background(),
+                             gateapi.ContextGateAPIV4,
+                             gateapi.GateAPIV4{
+                                 Key:    "YOUR_API_KEY",
+                                 Secret: "YOUR_API_SECRET",
+                             }
+                            )
+    settle := "usdt" // string - Settle currency
+    id := "id_example" // string - Order ID, must be a non-zero positive integer
+    
+    result, _, err := client.FuturesApi.GetChaseOrderDetail(ctx, settle, id)
+    if err != nil {
+        if e, ok := err.(gateapi.GateAPIError); ok {
+            fmt.Printf("gate api error: %s\n", e.Error())
+        } else {
+            fmt.Printf("generic error: %s\n", err.Error())
+        }
+    } else {
+        fmt.Println(result)
+    }
+}
+```
+
+
+### Return type
+
+[**GetChaseOrderDetailResp**](GetChaseOrderDetailResp.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
 ## ListPriceTriggeredOrders
 
 > []FuturesPriceTriggeredOrder ListPriceTriggeredOrders(ctx, settle, status, optional)
@@ -4914,7 +5367,7 @@ func main() {
 
 ## UpdatePriceTriggeredOrder
 
-> TriggerOrderResponse UpdatePriceTriggeredOrder(ctx, settle, orderId, futuresUpdatePriceTriggeredOrder)
+> TriggerOrderResponse UpdatePriceTriggeredOrder(ctx, settle, futuresUpdatePriceTriggeredOrder)
 
 Modify a Single Auto Order
 
@@ -4924,7 +5377,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **settle** | **string**| Settle currency | 
-**orderId** | **int64**| ID returned when order is successfully created | 
 **futuresUpdatePriceTriggeredOrder** | [**FuturesUpdatePriceTriggeredOrder**](FuturesUpdatePriceTriggeredOrder.md)|  | 
 
 ### Example
@@ -4951,10 +5403,9 @@ func main() {
                              }
                             )
     settle := "usdt" // string - Settle currency
-    orderId := 56 // int64 - ID returned when order is successfully created
     futuresUpdatePriceTriggeredOrder := gateapi.FuturesUpdatePriceTriggeredOrder{} // FuturesUpdatePriceTriggeredOrder - 
     
-    result, _, err := client.FuturesApi.UpdatePriceTriggeredOrder(ctx, settle, orderId, futuresUpdatePriceTriggeredOrder)
+    result, _, err := client.FuturesApi.UpdatePriceTriggeredOrder(ctx, settle, futuresUpdatePriceTriggeredOrder)
     if err != nil {
         if e, ok := err.(gateapi.GateAPIError); ok {
             fmt.Printf("gate api error: %s\n", e.Error())

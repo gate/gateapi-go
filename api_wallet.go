@@ -1488,23 +1488,26 @@ func (a *WalletApiService) ListSubAccountCrossMarginBalances(ctx context.Context
 
 // ListSavedAddressOpts Optional parameters for the method 'ListSavedAddress'
 type ListSavedAddressOpts struct {
-	Chain optional.String
-	Limit optional.String
-	Page  optional.Int32
+	Currency optional.String
+	Chain    optional.String
+	Verified optional.String
+	Limit    optional.String
+	Page     optional.Int32
 }
 
 /*
-ListSavedAddress Query withdrawal address whitelist
+ListSavedAddress Query saved address
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param currency Currency
   - @param optional nil or *ListSavedAddressOpts - Optional Parameters:
+  - @param "Currency" (optional.String) -  Currency
   - @param "Chain" (optional.String) -  Chain name
+  - @param "Verified" (optional.String) -  1 means verified address, 0 means normal address, empty string means no limit
   - @param "Limit" (optional.String) -  Maximum number returned, up to 100
   - @param "Page" (optional.Int32) -  page number
 
 @return []SavedAddress
 */
-func (a *WalletApiService) ListSavedAddress(ctx context.Context, currency string, localVarOptionals *ListSavedAddressOpts) ([]SavedAddress, *http.Response, error) {
+func (a *WalletApiService) ListSavedAddress(ctx context.Context, localVarOptionals *ListSavedAddressOpts) ([]SavedAddress, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1520,9 +1523,14 @@ func (a *WalletApiService) ListSavedAddress(ctx context.Context, currency string
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-	localVarQueryParams.Add("currency", parameterToString(currency, ""))
+	if localVarOptionals != nil && localVarOptionals.Currency.IsSet() {
+		localVarQueryParams.Add("currency", parameterToString(localVarOptionals.Currency.Value(), ""))
+	}
 	if localVarOptionals != nil && localVarOptionals.Chain.IsSet() {
 		localVarQueryParams.Add("chain", parameterToString(localVarOptionals.Chain.Value(), ""))
+	}
+	if localVarOptionals != nil && localVarOptionals.Verified.IsSet() {
+		localVarQueryParams.Add("verified", parameterToString(localVarOptionals.Verified.Value(), ""))
 	}
 	if localVarOptionals != nil && localVarOptionals.Limit.IsSet() {
 		localVarQueryParams.Add("limit", parameterToString(localVarOptionals.Limit.Value(), ""))
