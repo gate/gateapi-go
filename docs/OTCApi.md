@@ -319,7 +319,7 @@ Name | Type | Description  | Notes
 **bankAddress** | **string**|  | 
 **iban** | **string**|  | 
 **swift** | **string**|  | 
-**documentationFile** | ***os.File*****os.File**| Account-opening proof file (jpg/jpeg/png/pdf, etc.; single file ≤4MB — subject to production environment). | 
+**documentationFile** | **string**| 开户证明文件内容（multipart 文件字段，二进制/Base64；jpg/jpeg/png/pdf 等，单文件≤4MB 以现网为准） | 
 **optional** | **CreateOtcBankOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
@@ -361,7 +361,7 @@ func main() {
     bankAddress := "bankAddress_example" // string - 
     iban := "iban_example" // string - 
     swift := "swift_example" // string - 
-    documentationFile := gateapi.*os.File{} // *os.File - Account-opening proof file (jpg/jpeg/png/pdf, etc.; single file ≤4MB — subject to production environment).
+    documentationFile := "documentationFile_example" // string - 开户证明文件内容（multipart 文件字段，二进制/Base64；jpg/jpeg/png/pdf 等，单文件≤4MB 以现网为准）
     
     result, _, err := client.OTCApi.CreateOtcBank(ctx, bankAccountName, bankName, bankCountry, bankAddress, iban, swift, documentationFile, nil)
     if err != nil {

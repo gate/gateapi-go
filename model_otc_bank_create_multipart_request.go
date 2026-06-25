@@ -9,10 +9,6 @@
 
 package gateapi
 
-import (
-	"os"
-)
-
 // Inner create-bank-card `multipart/form-data`. Use the form field `documentation_file` to upload the account-opening proof.
 type OtcBankCreateMultipartRequest struct {
 	BankAccountName      string `json:"bank_account_name"`
@@ -24,6 +20,6 @@ type OtcBankCreateMultipartRequest struct {
 	RemittanceLineNumber string `json:"remittance_line_number,omitempty"`
 	AgentBankName        string `json:"agent_bank_name,omitempty"`
 	AgentBankSwift       string `json:"agent_bank_swift,omitempty"`
-	// Account-opening proof file (jpg/jpeg/png/pdf, etc.; single file ≤4MB — subject to production environment).
-	DocumentationFile *os.File `json:"documentation_file"`
+	// 开户证明文件内容（multipart 文件字段，二进制/Base64；jpg/jpeg/png/pdf 等，单文件≤4MB 以现网为准）
+	DocumentationFile string `json:"documentation_file"`
 }

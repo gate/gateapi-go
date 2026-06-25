@@ -15,7 +15,6 @@ import (
 	"io/ioutil"
 	"net/http"
 	"net/url"
-	"os"
 )
 
 // Linger please
@@ -416,7 +415,7 @@ Bind a bank card. Under the Global entity, an account with a non-matching name m
   - @param bankAddress
   - @param iban
   - @param swift
-  - @param documentationFile Account-opening proof file (jpg/jpeg/png/pdf, etc.; single file ≤4MB — subject to production environment).
+  - @param documentationFile 开户证明文件内容（multipart 文件字段，二进制/Base64；jpg/jpeg/png/pdf 等，单文件≤4MB 以现网为准）
   - @param optional nil or *CreateOtcBankOpts - Optional Parameters:
   - @param "RemittanceLineNumber" (optional.String) -
   - @param "AgentBankName" (optional.String) -
@@ -424,7 +423,7 @@ Bind a bank card. Under the Global entity, an account with a non-matching name m
 
 @return OtcBankCreateResponse
 */
-func (a *OTCApiService) CreateOtcBank(ctx context.Context, bankAccountName string, bankName string, bankCountry string, bankAddress string, iban string, swift string, documentationFile *os.File, localVarOptionals *CreateOtcBankOpts) (OtcBankCreateResponse, *http.Response, error) {
+func (a *OTCApiService) CreateOtcBank(ctx context.Context, bankAccountName string, bankName string, bankCountry string, bankAddress string, iban string, swift string, documentationFile string, localVarOptionals *CreateOtcBankOpts) (OtcBankCreateResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -472,14 +471,7 @@ func (a *OTCApiService) CreateOtcBank(ctx context.Context, bankAccountName strin
 	if localVarOptionals != nil && localVarOptionals.AgentBankSwift.IsSet() {
 		localVarFormParams.Add("agent_bank_swift", parameterToString(localVarOptionals.AgentBankSwift.Value(), ""))
 	}
-	localVarFormFileName = "documentation_file"
-	localVarFile := documentationFile
-	if localVarFile != nil {
-		fbs, _ := ioutil.ReadAll(localVarFile)
-		localVarFileBytes = fbs
-		localVarFileName = localVarFile.Name()
-		localVarFile.Close()
-	}
+	localVarFormParams.Add("documentation_file", parameterToString(documentationFile, ""))
 	if ctx == nil {
 		ctx = context.Background()
 	}
