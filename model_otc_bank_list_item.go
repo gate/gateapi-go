@@ -10,7 +10,7 @@
 package gateapi
 
 type OtcBankListItem struct {
-	// Bank ID (required for order placement)
+	// Bank card ID (used when placing an order; the synonymous `bank_id` field has been consolidated into `id`)
 	Id string `json:"id"`
 	// Bank account name
 	BankAccountName string `json:"bank_account_name"`
@@ -20,10 +20,6 @@ type OtcBankListItem struct {
 	BankCountry string `json:"bank_country,omitempty"`
 	// Bank address
 	BankAddress string `json:"bank_address,omitempty"`
-	// Bank code
-	BankCode string `json:"bank_code,omitempty"`
-	// Branch code
-	BranchCode string `json:"branch_code,omitempty"`
 	// IBAN number
 	Iban string `json:"iban,omitempty"`
 	// SWIFT code
@@ -40,14 +36,6 @@ type OtcBankListItem struct {
 	UpdateTime string `json:"update_time,omitempty"`
 	// Status
 	Status string `json:"status,omitempty"`
-	// Document file type
-	DocumentationFileType string `json:"documentation_file_type,omitempty"`
-	// Remark
-	Memo string `json:"memo,omitempty"`
 	// Whether it is the default bank card. 1 - Yes, 0 - No
 	IsDefault int32 `json:"is_default,omitempty"`
-	// Bank ID
-	BankId string `json:"bank_id,omitempty"`
-	// Document file URL
-	DocumentationFileKeyUrl string `json:"documentation_file_key_url,omitempty"`
 }

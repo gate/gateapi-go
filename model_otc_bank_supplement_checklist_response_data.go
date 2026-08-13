@@ -10,7 +10,7 @@
 package gateapi
 
 type OtcBankSupplementChecklistResponseData struct {
-	// personal or enterprise
+	// `personal` or `enterprise`, matching the supplementary document submission type; `items[].description` describes the submission requirements for each item
 	UserType string                           `json:"user_type"`
 	Items    []OtcBankSupplementChecklistItem `json:"items"`
 }

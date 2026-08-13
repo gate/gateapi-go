@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**HighestPrice** | **string** | Highest price | [optional] 
-**LowestPrice** | **string** | Lowest price | [optional] 
+**HighestPrice** | **string** | High price | [optional] 
+**LowestPrice** | **string** | Low price | [optional] 
 **PriceChange** | **string** | Price change percentage (multiplied by 100) | [optional] 
 **PriceChangeAmount** | **string** | Price change amount | [optional] 
 **TodayOpenPrice** | **string** | Today&#39;s open price | [optional] 

@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **int64** | Record ID | 
-**Type** | **string** | type | 
+**Type** | **string** | Type | 
 **Money** | **string** | SourceCurrency | 
 **UserId** | **int64** | User ID | 
 **PlanId** | **int64** | Plan ID | 

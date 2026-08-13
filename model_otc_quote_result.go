@@ -32,4 +32,10 @@ type OtcQuoteResult struct {
 	OrderType string `json:"order_type"`
 	// Quote token required when placing an order
 	QuoteToken string `json:"quote_token"`
+	// Quote validity period (seconds)
+	ValidityPeriod string `json:"validity_period,omitempty"`
+	// Quote refresh limit
+	RefreshLimit int32 `json:"refresh_limit,omitempty"`
+	// Quote refresh limit message
+	RefreshLimitMsg string `json:"refresh_limit_msg,omitempty"`
 }

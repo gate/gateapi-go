@@ -12,12 +12,12 @@ Name | Type | Description | Notes
 **Side** | **string** | Side (&#x60;BUY&#x60; buy / &#x60;SELL&#x60; sell). | 
 **Type** | **string** | Order type (&#x60;LIMIT&#x60; limit / &#x60;MARKET&#x60; market). | 
 **Attribute** | **string** | Order attributes (&#x60;COMMON&#x60; normal / &#x60;LIQ&#x60; liquidation takeover / &#x60;REDUCE&#x60; liquidation reduction / &#x60;ADL&#x60; auto-deleverage / &#x60;SETTLEMENT&#x60; delisting settlement). | 
-**ExchangeType** | **string** | Venue bucket (&#x60;BINANCE&#x60; / &#x60;OKX&#x60; / &#x60;GATE&#x60; / &#x60;BYBIT&#x60; / &#x60;KRAKEN&#x60; / &#x60;HYPERLIQUID&#x60;). | 
+**ExchangeType** | **string** | Venue bucket (&#x60;BINANCE&#x60; / &#x60;OKX&#x60; / &#x60;GATE&#x60; / &#x60;BYBIT&#x60; / &#x60;KRAKEN&#x60; / &#x60;HYPERLIQUID&#x60; / &#x60;DERIBIT&#x60;). | 
 **BusinessType** | **string** | Business type (&#x60;SPOT&#x60; Spot / &#x60;FUTURE&#x60; Futures / &#x60;MARGIN&#x60; Margin). | 
 **Qty** | **string** | Order quantity in the base currency. | 
 **QuoteQty** | **string** | Order quantity in the quote currency. | 
 **Price** | **string** | Order price. | 
-**TimeInForce** | **string** | Time in force (default &#x60;GTC&#x60;; enum: &#x60;GTC&#x60; / &#x60;IOC&#x60; / &#x60;FOK&#x60; / &#x60;POC&#x60;). | 
+**TimeInForce** | **string** | Time-in-force policy (default: GTC; allowed values: GTC, IOC, FOK, POC, and RPI) | 
 **ExecutedQty** | **string** | Filled base amount. | 
 **ExecutedAmount** | **string** | Filled quote amount. | 
 **ExecutedAvgPrice** | **string** | Average Filled Price | 

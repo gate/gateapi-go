@@ -22,6 +22,6 @@ type FuturesLiqOrder struct {
 	OrderPrice string `json:"order_price,omitempty"`
 	// Liquidation order average taker price
 	FillPrice string `json:"fill_price,omitempty"`
-	// System liquidation order maker size
+	// Reserved field with no current business significance.
 	Left string `json:"left,omitempty"`
 }

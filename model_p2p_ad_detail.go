@@ -16,10 +16,18 @@ type P2pAdDetail struct {
 	Type string `json:"type,omitempty"`
 	// Remaining crypto amount on the ad.
 	Amount string `json:"amount,omitempty"`
-	// Minimum trade amount in `want_type`.
+	// Minimum quantity per order, denominated by currency_type
 	MinAmount string `json:"min_amount,omitempty"`
-	// Maximum trade amount priced in `want_type`.
+	// Maximum quantity per order, denominated by currency_type
 	MaxAmount string `json:"max_amount,omitempty"`
+	// Minimum trade amount in `want_type`.
+	FiatMinAmount string `json:"fiat_min_amount,omitempty"`
+	// Maximum trade amount priced in `want_type`.
+	FiatMaxAmount string `json:"fiat_max_amount,omitempty"`
+	// Trading limit unit. 0: crypto quantity, 1: fiat amount
+	LimitBasis int32 `json:"limit_basis,omitempty"`
+	// Trading limit unit label. crypto: crypto quantity, fiat: fiat amount
+	LimitBasisText string `json:"limit_basis_text,omitempty"`
 	// Fiat amount
 	Total string `json:"total,omitempty"`
 	// Whether Alipay is supported. `1`: yes; `0`: no.
@@ -68,6 +76,8 @@ type P2pAdDetail struct {
 	RegTimeLimit int32 `json:"reg_time_limit,omitempty"`
 	// Whether trading with the advertiser is restricted. `0`: no; `1`: yes.
 	AdvertisersLimit int32 `json:"advertisers_limit,omitempty"`
+	// Whether to restrict trading with Polymarket users. 0: no restriction, 1: restricted
+	PolymarketLimit int32 `json:"polymarket_limit,omitempty"`
 	// Minimum limit of completed orders
 	MinCompletedLimit int32 `json:"min_completed_limit,omitempty"`
 	// Maximum limit of completed orders

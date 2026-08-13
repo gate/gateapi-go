@@ -1358,7 +1358,7 @@ Optional parameters are passed through a pointer to a ListPositionsOpts struct
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **holding** | **optional.Bool**| Return only real positions - true, return all - false | 
-**limit** | **optional.Int32**| Maximum number of records returned in a single list | [default to 100]
+**limit** | **optional.Int32**| Maximum number of positions returned. If omitted, all current positions are returned by default; if provided, the value must be within [1,100]. | 
 **offset** | **optional.Int32**| List offset, starting from 0 | [default to 0]
 
 ### Example

@@ -21,9 +21,9 @@ type OrderLogData struct {
 	PriceType string `json:"price_type,omitempty"`
 	// Order status code (1=placed, 2=canceled, 3=partially filled, 4=filled, 5=rejected)
 	State int32 `json:"state,omitempty"`
-	// Order side (1=sell, 2=buy)
+	// Side (1=sell, 2=buy)
 	Side int32 `json:"side,omitempty"`
-	// Order volume
+	// Order quantity
 	Volume string `json:"volume,omitempty"`
 	// Average fill price
 	Price string `json:"price,omitempty"`

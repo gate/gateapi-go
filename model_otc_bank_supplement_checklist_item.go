@@ -9,11 +9,8 @@
 
 package gateapi
 
+// Supplementary document item
 type OtcBankSupplementChecklistItem struct {
-	// Material item code, corresponding to the top-level key of `relationship_proof`
-	Code string `json:"code"`
-	Zh   string `json:"zh,omitempty"`
-	En   string `json:"en,omitempty"`
-	// Whether required
-	Required bool `json:"required"`
+	// Supplementary document submission description
+	Description string `json:"description"`
 }

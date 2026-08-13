@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 **PeriodType** | **string** | Cycle type（e.g., monthly） | 
 **PeriodDay** | **int64** | Cycle day | 
 **PeriodHour** | **int64** | CycleHours | 
-**Portfolio** | [**[]AutoInvestPortfolioItem**](AutoInvestPortfolioItem.md) | InvestmentPortfolio | 
+**Portfolio** | [**[]AutoInvestPortfolioItem**](AutoInvestPortfolioItem.md) | Portfolio | 
 **NextTime** | **int64** | Next execution time (Unix timestamp) | 
 **Period** | **int64** | Executed periods | 
 **FundSource** | **string** | Fund source（spot/earn） | 

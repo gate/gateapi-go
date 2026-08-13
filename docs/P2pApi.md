@@ -4,6 +4,7 @@ All URIs are relative to *https://api.gateio.ws/api/v4*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**P2pMerchantQuerySpotBalance**](P2pApi.md#P2pMerchantQuerySpotBalance) | **Get** /spot/accounts | Query spot balance
 [**P2pMerchantAccountGetUserInfo**](P2pApi.md#P2pMerchantAccountGetUserInfo) | **Post** /p2p/merchant/account/get_user_info | Get account information
 [**P2pMerchantAccountGetCounterpartyUserInfo**](P2pApi.md#P2pMerchantAccountGetCounterpartyUserInfo) | **Post** /p2p/merchant/account/get_counterparty_user_info | Get counterparty information
 [**P2pMerchantAccountGetMyselfPayment**](P2pApi.md#P2pMerchantAccountGetMyselfPayment) | **Post** /p2p/merchant/account/get_myself_payment | Get payment method list
@@ -23,6 +24,72 @@ Method | HTTP request | Description
 [**P2pMerchantChatSendChatMessage**](P2pApi.md#P2pMerchantChatSendChatMessage) | **Post** /p2p/merchant/chat/send_chat_message | Send text message
 [**P2pMerchantChatUploadChatFile**](P2pApi.md#P2pMerchantChatUploadChatFile) | **Post** /p2p/merchant/chat/upload_chat_file | Upload chat file
 
+
+## P2pMerchantQuerySpotBalance
+
+> P2pMerchantQuerySpotBalance(ctx, )
+
+Query spot balance
+
+Use Spot API `GET /spot/accounts` to query spot account balance; this entry is for guidance only and does not define separate P2P Merchant request parameters or response body.
+
+### Required Parameters
+
+
+### Example
+
+```golang
+package main
+
+import (
+    "context"
+    "fmt"
+
+    "github.com/gate/gateapi-go/v7"
+)
+
+func main() {
+    client := gateapi.NewAPIClient(gateapi.NewConfiguration())
+    // uncomment the next line if your are testing against testnet
+    // client.ChangeBasePath("https://fx-api-testnet.gateio.ws/api/v4")
+    ctx := context.WithValue(context.Background(),
+                             gateapi.ContextGateAPIV4,
+                             gateapi.GateAPIV4{
+                                 Key:    "YOUR_API_KEY",
+                                 Secret: "YOUR_API_SECRET",
+                             }
+                            )
+    
+    result, _, err := client.P2pApi.P2pMerchantQuerySpotBalance(ctx)
+    if err != nil {
+        if e, ok := err.(gateapi.GateAPIError); ok {
+            fmt.Printf("gate api error: %s\n", e.Error())
+        } else {
+            fmt.Printf("generic error: %s\n", err.Error())
+        }
+    } else {
+        fmt.Println(result)
+    }
+}
+```
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
 ## P2pMerchantAccountGetUserInfo
 

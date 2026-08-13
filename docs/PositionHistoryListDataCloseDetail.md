@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **MarginLevel** | **string** | Margin ratio (multiplied by 100) | [optional] 
-**Margin** | **string** | Position margin | [optional] 
+**Margin** | **string** | Margin | [optional] 
 **Equity** | **string** | Net equity | [optional] 
 **StopOutLevel** | **string** | Liquidation ratio (multiplied by 100) | [optional] 
 

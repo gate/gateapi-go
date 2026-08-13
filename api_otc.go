@@ -215,7 +215,7 @@ func (a *OTCApiService) CreateOtcOrder(ctx context.Context, otcOrderRequest OtcO
 
 /*
 CreateStableCoinOrder Create stablecoin order
-Create stablecoin order
+Create a stablecoin order. All request body fields except &#x60;promotion_code&#x60; are required.
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param otcStableCoinOrderRequest
 
@@ -309,7 +309,7 @@ func (a *OTCApiService) CreateStableCoinOrder(ctx context.Context, otcStableCoin
 
 /*
 GetBankListInnerPath Get user bank card list
-Retrieve the user&#39;s bank card list, used to select a bank card when placing an order. **Default card**: refer to the list item field &#x60;is_default&#x60; (1&#x3D;default); there is no need to call the deprecated standalone \&quot;default bank card\&quot; endpoint. Corresponding Inner: &#x60;GET /bank_list&#x60; or &#x60;GET /bank/list&#x60;.
+List the user&#39;s bank cards for selecting a card when placing an order. **Default card**: use the &#x60;is_default&#x60; field in each list item (&#x60;1&#x60; indicates the default). The deprecated standalone default-bank-card endpoint is no longer required.
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 
 @return OtcBankListResponse
@@ -415,7 +415,7 @@ Bind a bank card. Under the Global entity, an account with a non-matching name m
   - @param bankAddress
   - @param iban
   - @param swift
-  - @param documentationFile 开户证明文件内容（multipart 文件字段，二进制/Base64；jpg/jpeg/png/pdf 等，单文件≤4MB 以现网为准）
+  - @param documentationFile Account opening proof file content (multipart file field, binary/Base64; jpg/jpeg/png/pdf, etc.; maximum 10 MB per file, subject to the live environment)
   - @param optional nil or *CreateOtcBankOpts - Optional Parameters:
   - @param "RemittanceLineNumber" (optional.String) -
   - @param "AgentBankName" (optional.String) -
@@ -713,7 +713,7 @@ func (a *OTCApiService) SetDefaultOtcBank(ctx context.Context, otcBankIdRequest 
 
 /*
 GetOtcBankSupplementChecklist Query the checklist of materials to supplement for a bank card
-**①** &#x60;bank_id&#x60; must be specified: after verifying that the card belongs to the current user and its status allows supplementation, returns the items to be supplemented and whether each sub-item is required, based on the user&#39;s **passed professional verification type** (personal/enterprise). Corresponding Inner: &#x60;GET /bank/bank_supplement_checklist&#x60;.
+**①** &#x60;bank_id&#x60; must be specified. After verifying that the card belongs to the current user and its status allows supplementary documents, the endpoint returns the required items based on the user&#39;s **approved advanced verification type** (personal/enterprise); each item&#39;s &#x60;description&#x60; states the submission requirements. Corresponding Inner endpoint: &#x60;GET /bank/bank_supplement_checklist&#x60;.
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param bankId Bank card ID (otc_rds / the id returned by the list endpoint).
 
@@ -1026,7 +1026,7 @@ func (a *OTCApiService) SubmitOtcBankEnterpriseSupplement(ctx context.Context, b
 
 /*
 MarkOtcOrderPaid Mark fiat order as paid (deposit confirmation)
-Mark a fiat buy order as paid (deposit confirmation). **The user&#39;s payment receipt must be uploaded**: &#x60;payment_receipt_file_key&#x60; is required; file format jpg / jpeg / png / pdf, single file no larger than 4MB (jointly validated by the server and gateway). The compatible field name &#x60;payment_receipt&#x60; is subject to the gateway/production environment. For the persisted field, see &#x60;otc_trade_record.payment_receipt_file_key&#x60;. The Pay Inner path is &#x60;POST .../pay/order_set_paid&#x60; (orders are usually associated via &#x60;client_order_id&#x60;); this OpenAPI path maps to Inner &#x60;POST /order/paid&#x60; and still uses &#x60;order_id&#x60; as the primary key—if the gateway unifies it to the merchant order number, the gateway documentation prevails.
+Mark a fiat BUY order as paid (deposit confirmation). **A user payment receipt must be uploaded**: &#x60;payment_receipt_file_key&#x60; is required; supported formats are jpg/jpeg/png/pdf, with a maximum size of 10 MB per file (validated jointly by the service and gateway). The compatibility field name &#x60;payment_receipt&#x60; is subject to the gateway/live environment. The persisted field is &#x60;otc_trade_record.payment_receipt_file_key&#x60;. The Pay Inner path is &#x60;POST .../pay/order_set_paid&#x60; (commonly associated by &#x60;client_order_id&#x60;); the Inner path corresponding to this OpenAPI endpoint, &#x60;POST /order/paid&#x60;, still primarily uses &#x60;order_id&#x60;. If the gateway standardizes on the merchant order ID, follow the gateway documentation.
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param otcMarkOrderPaidRequest
 
@@ -1233,7 +1233,7 @@ Query the fiat order list with filters such as type, currency, time range, and s
   - @param "CryptoCurrency" (optional.String) -  Digital currency
   - @param "StartTime" (optional.String) -  starttime   for example : 2025-09-09
   - @param "EndTime" (optional.String) -  endtime  for example :2025-09-09
-  - @param "Status" (optional.String) -  DONE: Completed CANCEL: Canceled PROCESSING: In Progress
+  - @param "Status" (optional.String) -  DONE: completed CANCEL: canceled PROCESSING: in progress DISBURSED: disbursed
   - @param "Pn" (optional.String) -  Page number
   - @param "Ps" (optional.String) -  Number of items per page
 

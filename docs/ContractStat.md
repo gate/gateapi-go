@@ -26,8 +26,8 @@ Name | Type | Description | Notes
 **ShortTakerSize** | **string** | Short taker trade volume (contracts) | [optional] 
 **TopLongAccount** | **int64** | Number of top long accounts (large holders) | [optional] 
 **TopShortAccount** | **int64** | Number of top short accounts (large holders) | [optional] 
-**LongUsers** | **string** | Number of users holding long positions | [optional] 
-**ShortUsers** | **string** | Number of users holding short positions | [optional] 
+**LongUsers** | **int64** | Number of users holding long positions | [optional] 
+**ShortUsers** | **int64** | Number of users holding short positions | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

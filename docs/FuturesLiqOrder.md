@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **OrderSize** | **string** | Number of forced liquidation orders | [optional] [readonly] 
 **OrderPrice** | **string** | Liquidation order price | [optional] [readonly] 
 **FillPrice** | **string** | Liquidation order average taker price | [optional] [readonly] 
-**Left** | **string** | System liquidation order maker size | [optional] [readonly] 
+**Left** | **string** | Reserved field with no current business significance. | [optional] [readonly] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

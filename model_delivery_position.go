@@ -27,7 +27,7 @@ type DeliveryPosition struct {
 	MaintenanceRate string `json:"maintenance_rate,omitempty"`
 	// Position value calculated in settlement currency
 	Value string `json:"value,omitempty"`
-	// Position margin
+	// Margin
 	Margin string `json:"margin,omitempty"`
 	// Entry price
 	EntryPrice string `json:"entry_price,omitempty"`

@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Mt5Uid** | **int32** | MT5 userID | [optional] 
-**Leverage** | **int32** | Position leverage | [optional] 
+**Leverage** | **int32** | Leverage multiplier | [optional] 
 **StopOutLevel** | **string** | Liquidation margin ratio | [optional] 
 **Status** | **int32** | Account status (1&#x3D;not opened, 2&#x3D;pending review, 3&#x3D;active) | [optional] 
 

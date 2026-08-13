@@ -9,7 +9,8 @@ Method | HTTP request | Description
 [**ListCrossexTransferCoins**](CrossExApi.md#ListCrossexTransferCoins) | **Get** /crossex/transfers/coin | Query supported transfer currencies
 [**ListCrossexTransfers**](CrossExApi.md#ListCrossexTransfers) | **Get** /crossex/transfers | Query Fund Transfer History
 [**CreateCrossexTransfer**](CrossExApi.md#CreateCrossexTransfer) | **Post** /crossex/transfers | Fund Transfer
-[**CreateCrossexOrder**](CrossExApi.md#CreateCrossexOrder) | **Post** /crossex/orders | Create an order
+[**CreateCrossexOrder**](CrossExApi.md#CreateCrossexOrder) | **Post** /crossex/orders | Create order
+[**CancelBatchCrossexOrders**](CrossExApi.md#CancelBatchCrossexOrders) | **Post** /crossex/batch_cancel_orders | Batch cancel orders
 [**GetCrossexOrder**](CrossExApi.md#GetCrossexOrder) | **Get** /crossex/orders/{order_id} | Query order details
 [**UpdateCrossexOrder**](CrossExApi.md#UpdateCrossexOrder) | **Put** /crossex/orders/{order_id} | Modify Order
 [**CancelCrossexOrder**](CrossExApi.md#CancelCrossexOrder) | **Delete** /crossex/orders/{order_id} | Cancel Order
@@ -22,19 +23,24 @@ Method | HTTP request | Description
 [**GetCrossexMarginPositionsLeverage**](CrossExApi.md#GetCrossexMarginPositionsLeverage) | **Get** /crossex/margin_positions/leverage | Query Leveraged Trading Pair Leverage Multiplier
 [**UpdateCrossexMarginPositionsLeverage**](CrossExApi.md#UpdateCrossexMarginPositionsLeverage) | **Post** /crossex/margin_positions/leverage | Modify Leveraged Trading Pair Leverage Multiplier
 [**CloseCrossexPosition**](CrossExApi.md#CloseCrossexPosition) | **Post** /crossex/position | Full Close Position
+[**GetCrossexPositionsMarginMode**](CrossExApi.md#GetCrossexPositionsMarginMode) | **Get** /crossex/positions/margin_mode | Get futures position margin mode
+[**UpdateCrossexPositionsMarginMode**](CrossExApi.md#UpdateCrossexPositionsMarginMode) | **Post** /crossex/positions/margin_mode | Update futures position margin mode
+[**UpdateCrossexPositionsMargin**](CrossExApi.md#UpdateCrossexPositionsMargin) | **Post** /crossex/positions/margin | Increase or decrease isolated margin
 [**GetCrossexInterestRate**](CrossExApi.md#GetCrossexInterestRate) | **Get** /crossex/interest_rate | Query margin asset interest rates
 [**GetCrossexFee**](CrossExApi.md#GetCrossexFee) | **Get** /crossex/fee | Query User Fee Rates
 [**ListCrossexPositions**](CrossExApi.md#ListCrossexPositions) | **Get** /crossex/positions | Query Contract Positions
 [**ListCrossexMarginPositions**](CrossExApi.md#ListCrossexMarginPositions) | **Get** /crossex/margin_positions | Query Leveraged Positions
 [**ListCrossexAdlRank**](CrossExApi.md#ListCrossexAdlRank) | **Get** /crossex/adl_rank | Query ADL Position Reduction Ranking
 [**ListCrossexOpenOrders**](CrossExApi.md#ListCrossexOpenOrders) | **Get** /crossex/open_orders | Query All Current Open Orders
-[**ListCrossexHistoryOrders**](CrossExApi.md#ListCrossexHistoryOrders) | **Get** /crossex/history_orders | queryorderhistory
+[**ListCrossexHistoryOrders**](CrossExApi.md#ListCrossexHistoryOrders) | **Get** /crossex/history_orders | Query order history
 [**ListCrossexHistoryPositions**](CrossExApi.md#ListCrossexHistoryPositions) | **Get** /crossex/history_positions | Query Contract Position History
 [**ListCrossexHistoryMarginPositions**](CrossExApi.md#ListCrossexHistoryMarginPositions) | **Get** /crossex/history_margin_positions | Query Leveraged Position History
 [**ListCrossexHistoryMarginInterests**](CrossExApi.md#ListCrossexHistoryMarginInterests) | **Get** /crossex/history_margin_interests | Query Leveraged Interest Deduction History
-[**ListCrossexHistoryTrades**](CrossExApi.md#ListCrossexHistoryTrades) | **Get** /crossex/history_trades | queryfilledhistory
+[**ListCrossexHistoryTrades**](CrossExApi.md#ListCrossexHistoryTrades) | **Get** /crossex/history_trades | Query filled history
 [**ListCrossexAccountBook**](CrossExApi.md#ListCrossexAccountBook) | **Get** /crossex/account_book | Query Account Asset Change History
 [**ListCrossexCoinDiscountRate**](CrossExApi.md#ListCrossexCoinDiscountRate) | **Get** /crossex/coin_discount_rate | Query Currency Discount Rate
+[**ListCrossexMarketTickers**](CrossExApi.md#ListCrossexMarketTickers) | **Get** /crossex/market/tickers | Get exchange tickers
+[**ListCrossexMarketFundingInfo**](CrossExApi.md#ListCrossexMarketFundingInfo) | **Get** /crossex/market/funding_info | Get exchange futures funding rate information
 
 
 ## ListCrossexRuleSymbols
@@ -180,7 +186,7 @@ No authorization required
 
 Query supported transfer currencies
 
-Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME <EMAIL@ADDRESS> Language: en Language-Team: en <L@li.org> Plural-Forms: nplurals=2; plural=(n !=1) MIME-Version: 1.0 Content-Type: text/plain; charset=utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0 
+`est_fee`: On-chain withdrawal fee. When a fund transfer involves an on-chain withdrawal, the exchange charges this fee. This value is for reference only; the actual fee charged by the exchange applies
 
 ### Required Parameters
 
@@ -411,7 +417,7 @@ func main() {
 
 > CrossexOrderActionResponse CreateCrossexOrder(ctx, optional)
 
-Create an order
+Create order
 
 Rate Limit: 100 requests per 10 seconds, maximum 1,000 open orders per user
 
@@ -471,6 +477,77 @@ func main() {
 ### Return type
 
 [**CrossexOrderActionResponse**](CrossexOrderActionResponse.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+## CancelBatchCrossexOrders
+
+> []CrossexBatchCancelOrderResponse CancelBatchCrossexOrders(ctx, crossexBatchCancelOrderRequest)
+
+Batch cancel orders
+
+Cancel multiple specified orders. Either order_id or text is required; if both are provided, order_id takes precedence. Rate limit: 100 requests per 10 seconds
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**crossexBatchCancelOrderRequest** | [**[]CrossexBatchCancelOrderRequest**](CrossexBatchCancelOrderRequest.md)|  | 
+
+### Example
+
+```golang
+package main
+
+import (
+    "context"
+    "fmt"
+
+    "github.com/gate/gateapi-go/v7"
+)
+
+func main() {
+    client := gateapi.NewAPIClient(gateapi.NewConfiguration())
+    // uncomment the next line if your are testing against testnet
+    // client.ChangeBasePath("https://fx-api-testnet.gateio.ws/api/v4")
+    ctx := context.WithValue(context.Background(),
+                             gateapi.ContextGateAPIV4,
+                             gateapi.GateAPIV4{
+                                 Key:    "YOUR_API_KEY",
+                                 Secret: "YOUR_API_SECRET",
+                             }
+                            )
+    crossexBatchCancelOrderRequest := []gateapi.CrossexBatchCancelOrderRequest{gateapi.CrossexBatchCancelOrderRequest{}} // []CrossexBatchCancelOrderRequest - 
+    
+    result, _, err := client.CrossExApi.CancelBatchCrossexOrders(ctx, crossexBatchCancelOrderRequest)
+    if err != nil {
+        if e, ok := err.(gateapi.GateAPIError); ok {
+            fmt.Printf("gate api error: %s\n", e.Error())
+        } else {
+            fmt.Printf("generic error: %s\n", err.Error())
+        }
+    } else {
+        fmt.Println(result)
+    }
+}
+```
+
+
+### Return type
+
+[**[]CrossexBatchCancelOrderResponse**](CrossexBatchCancelOrderResponse.md)
 
 ### Authorization
 
@@ -713,7 +790,7 @@ func main() {
 
 Flash Swap Inquiry
 
-Rate Limit: 100 requests per day
+Rate limit: 100 requests per day For HYPERLIQUID, swaps between `HYPERLIQUID_USDC` and `CROSSEX_USDT` are supported. Flash Swap in isolated exchange mode is not currently supported for HYPERLIQUID
 
 ### Required Parameters
 
@@ -884,7 +961,7 @@ Optional parameters are passed through a pointer to a GetCrossexAccountOpts stru
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**exchangeType** | **optional.String**| Trading venue identifier. Omit in cross-exchange mode; required in isolated-per-venue mode (&#x60;BINANCE&#x60; / &#x60;OKX&#x60; / &#x60;GATE&#x60; / &#x60;BYBIT&#x60; / &#x60;KRAKEN&#x60; / &#x60;HYPERLIQUID&#x60;). | 
+**exchangeType** | **optional.String**| Trading venue identifier. Omit in cross-exchange mode; required in isolated-per-venue mode (&#x60;BINANCE&#x60; / &#x60;OKX&#x60; / &#x60;GATE&#x60; / &#x60;BYBIT&#x60; / &#x60;KRAKEN&#x60; / &#x60;HYPERLIQUID&#x60; / &#x60;DERIBIT&#x60;). | 
 
 ### Example
 
@@ -1337,7 +1414,7 @@ func main() {
 
 Full Close Position
 
-Rate Limit: 100 requests per day. Automatic close-out rules. Supports closing FUTURE or MARGIN positions.  Prerequisites before using this interface: - No pending orders for the symbol exist in the current account. - When the system detects the position meets any of the following limits while prerequisites are met: - Less than or equal to the minimum notional amount (minNotional) - Less than or equal to the minimum order quantity (minSize)  After meeting the conditions, the system will automatically generate a close-out order and immediately fully close the position. This interface is used to avoid issues where orders are too small to be placed on the exchange, ensuring small positions can be closed smoothly when reaching the threshold.
+Rate limit: 100 requests per day. Automatic position-closing rules. FUTURE and MARGIN positions are supported.  Before using this endpoint, ensure that the following prerequisite is met: - There are no open orders for the symbol in the current account. - Once the prerequisite is met, the system checks whether the position meets either of the following conditions: - Less than the minimum notional amount (minNotional) - Less than the minimum order size (minSize)  When either condition is met, the system automatically creates a closing order and immediately closes the entire position. This endpoint prevents positions that are too small to be submitted to an exchange from becoming stranded and ensures that small positions can be closed when they fall below the threshold.
 
 ### Required Parameters
 
@@ -1395,6 +1472,233 @@ func main() {
 ### Return type
 
 [**CrossexOrderActionResponse**](CrossexOrderActionResponse.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+## GetCrossexPositionsMarginMode
+
+> CrossexMarginModeResponse GetCrossexPositionsMarginMode(ctx, symbol)
+
+Get futures position margin mode
+
+Rate Limit: 200 requests per 10 seconds
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**symbol** | **string**| Futures trading pair | 
+
+### Example
+
+```golang
+package main
+
+import (
+    "context"
+    "fmt"
+
+    "github.com/gate/gateapi-go/v7"
+)
+
+func main() {
+    client := gateapi.NewAPIClient(gateapi.NewConfiguration())
+    // uncomment the next line if your are testing against testnet
+    // client.ChangeBasePath("https://fx-api-testnet.gateio.ws/api/v4")
+    ctx := context.WithValue(context.Background(),
+                             gateapi.ContextGateAPIV4,
+                             gateapi.GateAPIV4{
+                                 Key:    "YOUR_API_KEY",
+                                 Secret: "YOUR_API_SECRET",
+                             }
+                            )
+    symbol := "HYPERLIQUID_FUTURE_CXMT_USDC" // string - Futures trading pair
+    
+    result, _, err := client.CrossExApi.GetCrossexPositionsMarginMode(ctx, symbol)
+    if err != nil {
+        if e, ok := err.(gateapi.GateAPIError); ok {
+            fmt.Printf("gate api error: %s\n", e.Error())
+        } else {
+            fmt.Printf("generic error: %s\n", err.Error())
+        }
+    } else {
+        fmt.Println(result)
+    }
+}
+```
+
+
+### Return type
+
+[**CrossexMarginModeResponse**](CrossexMarginModeResponse.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+## UpdateCrossexPositionsMarginMode
+
+> CrossexMarginModeResponse UpdateCrossexPositionsMarginMode(ctx, optional)
+
+Update futures position margin mode
+
+Rate limit: 100 requests per 10 seconds. Only Hyperliquid futures trading pairs are supported. The margin mode cannot be changed while open orders or positions exist
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**optional** | **UpdateCrossexPositionsMarginModeOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+
+Optional parameters are passed through a pointer to a UpdateCrossexPositionsMarginModeOpts struct
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**crossexMarginModeRequest** | [**optional.Interface of CrossexMarginModeRequest**](CrossexMarginModeRequest.md)|  | 
+
+### Example
+
+```golang
+package main
+
+import (
+    "context"
+    "fmt"
+
+    "github.com/gate/gateapi-go/v7"
+)
+
+func main() {
+    client := gateapi.NewAPIClient(gateapi.NewConfiguration())
+    // uncomment the next line if your are testing against testnet
+    // client.ChangeBasePath("https://fx-api-testnet.gateio.ws/api/v4")
+    ctx := context.WithValue(context.Background(),
+                             gateapi.ContextGateAPIV4,
+                             gateapi.GateAPIV4{
+                                 Key:    "YOUR_API_KEY",
+                                 Secret: "YOUR_API_SECRET",
+                             }
+                            )
+    
+    result, _, err := client.CrossExApi.UpdateCrossexPositionsMarginMode(ctx, nil)
+    if err != nil {
+        if e, ok := err.(gateapi.GateAPIError); ok {
+            fmt.Printf("gate api error: %s\n", e.Error())
+        } else {
+            fmt.Printf("generic error: %s\n", err.Error())
+        }
+    } else {
+        fmt.Println(result)
+    }
+}
+```
+
+
+### Return type
+
+[**CrossexMarginModeResponse**](CrossexMarginModeResponse.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+## UpdateCrossexPositionsMargin
+
+> CrossexIsolatedMarginResponse UpdateCrossexPositionsMargin(ctx, optional)
+
+Increase or decrease isolated margin
+
+Rate limit: 100 requests per 10 seconds. Only Hyperliquid isolated futures positions are supported. Positive values increase margin, while negative values decrease margin
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**optional** | **UpdateCrossexPositionsMarginOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+
+Optional parameters are passed through a pointer to a UpdateCrossexPositionsMarginOpts struct
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**crossexIsolatedMarginRequest** | [**optional.Interface of CrossexIsolatedMarginRequest**](CrossexIsolatedMarginRequest.md)|  | 
+
+### Example
+
+```golang
+package main
+
+import (
+    "context"
+    "fmt"
+
+    "github.com/gate/gateapi-go/v7"
+)
+
+func main() {
+    client := gateapi.NewAPIClient(gateapi.NewConfiguration())
+    // uncomment the next line if your are testing against testnet
+    // client.ChangeBasePath("https://fx-api-testnet.gateio.ws/api/v4")
+    ctx := context.WithValue(context.Background(),
+                             gateapi.ContextGateAPIV4,
+                             gateapi.GateAPIV4{
+                                 Key:    "YOUR_API_KEY",
+                                 Secret: "YOUR_API_SECRET",
+                             }
+                            )
+    
+    result, _, err := client.CrossExApi.UpdateCrossexPositionsMargin(ctx, nil)
+    if err != nil {
+        if e, ok := err.(gateapi.GateAPIError); ok {
+            fmt.Printf("gate api error: %s\n", e.Error())
+        } else {
+            fmt.Printf("generic error: %s\n", err.Error())
+        }
+    } else {
+        fmt.Println(result)
+    }
+}
+```
+
+
+### Return type
+
+[**CrossexIsolatedMarginResponse**](CrossexIsolatedMarginResponse.md)
 
 ### Authorization
 
@@ -1714,7 +2018,7 @@ func main() {
 
 ## ListCrossexAdlRank
 
-> []CrossexAdlRank ListCrossexAdlRank(ctx, symbol)
+> CrossexAdlRank ListCrossexAdlRank(ctx, symbol)
 
 Query ADL Position Reduction Ranking
 
@@ -1768,7 +2072,7 @@ func main() {
 
 ### Return type
 
-[**[]CrossexAdlRank**](CrossexAdlRank.md)
+[**CrossexAdlRank**](CrossexAdlRank.md)
 
 ### Authorization
 
@@ -1867,7 +2171,7 @@ func main() {
 
 > []CrossexOrder ListCrossexHistoryOrders(ctx, optional)
 
-queryorderhistory
+Query order history
 
 Rate Limit: 200 requests per 10 seconds
 
@@ -2197,7 +2501,7 @@ func main() {
 
 > []CrossexTrade ListCrossexHistoryTrades(ctx, optional)
 
-queryfilledhistory
+Query filled history
 
 Rate Limit: 200 requests per 10 seconds
 
@@ -2380,7 +2684,7 @@ Optional parameters are passed through a pointer to a ListCrossexCoinDiscountRat
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **coin** | **optional.String**| Query by specified currency name | 
-**exchangeType** | **optional.String**| OKX/GATE/BINANCE/BYBIT/KRAKEN/HYPERLIQUID | 
+**exchangeType** | **optional.String**| OKX/GATE/BINANCE/BYBIT/KRAKEN/HYPERLIQUID/DERIBIT | 
 
 ### Example
 
@@ -2423,6 +2727,162 @@ func main() {
 ### Return type
 
 [**[]CrossexCoinDiscountRate**](CrossexCoinDiscountRate.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+## ListCrossexMarketTickers
+
+> []InlineResponse2001 ListCrossexMarketTickers(ctx, optional)
+
+Get exchange tickers
+
+Rate limit: 1 request per second - Margin trading pairs cannot be passed directly as parameters. For example, `GATE_MARGIN_BTC_USDT` is invalid.
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**optional** | **ListCrossexMarketTickersOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+
+Optional parameters are passed through a pointer to a ListCrossexMarketTickersOpts struct
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**symbols** | **optional.String**| Trading Pair List, multiple separated by commas | 
+
+### Example
+
+```golang
+package main
+
+import (
+    "context"
+    "fmt"
+
+    "github.com/gate/gateapi-go/v7"
+)
+
+func main() {
+    client := gateapi.NewAPIClient(gateapi.NewConfiguration())
+    // uncomment the next line if your are testing against testnet
+    // client.ChangeBasePath("https://fx-api-testnet.gateio.ws/api/v4")
+    ctx := context.WithValue(context.Background(),
+                             gateapi.ContextGateAPIV4,
+                             gateapi.GateAPIV4{
+                                 Key:    "YOUR_API_KEY",
+                                 Secret: "YOUR_API_SECRET",
+                             }
+                            )
+    
+    result, _, err := client.CrossExApi.ListCrossexMarketTickers(ctx, nil)
+    if err != nil {
+        if e, ok := err.(gateapi.GateAPIError); ok {
+            fmt.Printf("gate api error: %s\n", e.Error())
+        } else {
+            fmt.Printf("generic error: %s\n", err.Error())
+        }
+    } else {
+        fmt.Println(result)
+    }
+}
+```
+
+
+### Return type
+
+[**[]InlineResponse2001**](inline_response_200_1.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+## ListCrossexMarketFundingInfo
+
+> []InlineResponse2002 ListCrossexMarketFundingInfo(ctx, optional)
+
+Get exchange futures funding rate information
+
+Rate limit: 1 request per second - For `Deribit`, `funding_rate` is the current real-time rate calculated over an 8-hour period.
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**optional** | **ListCrossexMarketFundingInfoOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+
+Optional parameters are passed through a pointer to a ListCrossexMarketFundingInfoOpts struct
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**symbols** | **optional.String**| Trading Pair List, multiple separated by commas | 
+
+### Example
+
+```golang
+package main
+
+import (
+    "context"
+    "fmt"
+
+    "github.com/gate/gateapi-go/v7"
+)
+
+func main() {
+    client := gateapi.NewAPIClient(gateapi.NewConfiguration())
+    // uncomment the next line if your are testing against testnet
+    // client.ChangeBasePath("https://fx-api-testnet.gateio.ws/api/v4")
+    ctx := context.WithValue(context.Background(),
+                             gateapi.ContextGateAPIV4,
+                             gateapi.GateAPIV4{
+                                 Key:    "YOUR_API_KEY",
+                                 Secret: "YOUR_API_SECRET",
+                             }
+                            )
+    
+    result, _, err := client.CrossExApi.ListCrossexMarketFundingInfo(ctx, nil)
+    if err != nil {
+        if e, ok := err.(gateapi.GateAPIError); ok {
+            fmt.Printf("gate api error: %s\n", e.Error())
+        } else {
+            fmt.Printf("generic error: %s\n", err.Error())
+        }
+    } else {
+        fmt.Println(result)
+    }
+}
+```
+
+
+### Return type
+
+[**[]InlineResponse2002**](inline_response_200_2.md)
 
 ### Authorization
 

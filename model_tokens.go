@@ -18,9 +18,9 @@ type Tokens struct {
 	Chain string `json:"chain,omitempty"`
 	// Contract Address
 	Address string `json:"address,omitempty"`
-	// Amount scale
+	// Quantity precision
 	AmountPrecision int32 `json:"amount_precision,omitempty"`
-	// Price scale
+	// Price precision
 	Precision int32 `json:"precision,omitempty"`
 	// Currency Trading Status - `1` : Normal trading - `2` : Suspended trading - `3` : Delisted
 	Status int32 `json:"status,omitempty"`

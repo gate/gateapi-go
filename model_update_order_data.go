@@ -17,7 +17,7 @@ type UpdateOrderData struct {
 	Symbol string `json:"symbol,omitempty"`
 	// Order status code
 	State string `json:"state,omitempty"`
-	// Order volume
+	// Order quantity
 	Volume string `json:"volume,omitempty"`
 	// Current price
 	Price string `json:"price,omitempty"`

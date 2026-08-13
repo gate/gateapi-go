@@ -33,7 +33,7 @@ type AutoInvestPlanDetail struct {
 	PeriodDay int64 `json:"period_day"`
 	// CycleHours
 	PeriodHour int64 `json:"period_hour"`
-	// InvestmentPortfolio
+	// Portfolio
 	Portfolio []AutoInvestPortfolioItem `json:"portfolio"`
 	// Next execution time (Unix timestamp)
 	NextTime int64 `json:"next_time"`

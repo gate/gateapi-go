@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **Borrowed** | **string** | Total borrowed value in USDT, i.e., the sum of all currencies&#39; &#x60;borrowed*price*discount&#x60; | [optional] 
 **BorrowedNet** | **string** | Total borrowed value in USDT * leverage factor | [optional] 
 **Net** | **string** | Total net assets in USDT | [optional] 
-**Leverage** | **string** | Position leverage | [optional] 
+**Leverage** | **string** | Leverage multiplier | [optional] 
 **Interest** | **string** | Total unpaid interest in USDT, i.e., the sum of all currencies&#39; &#x60;interest*price*discount&#x60; | [optional] 
 **Risk** | **string** | Risk rate. When it falls below 110%, liquidation will be triggered. Calculation formula: &#x60;total / (borrowed+interest)&#x60; | [optional] 
 **TotalInitialMargin** | **string** | Total initial margin | [optional] 

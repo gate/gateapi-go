@@ -16,9 +16,13 @@ type InlineResponse200 struct {
 	SpotMakerFee string `json:"spot_maker_fee"`
 	// spotTakerfee rate
 	SpotTakerFee string `json:"spot_taker_fee"`
+	// Spot RPI order maker fee rate
+	SpotRpiMakerFee string `json:"spot_rpi_maker_fee,omitempty"`
 	// contractMakerfee rate
 	FutureMakerFee string `json:"future_maker_fee"`
 	// contractTakerfee rate
-	FutureTakerFee string              `json:"future_taker_fee"`
-	SpecialFeeList []CrossexSpecialFee `json:"special_fee_list"`
+	FutureTakerFee string `json:"future_taker_fee"`
+	// Futures RPI order maker fee rate
+	FutureRpiMakerFee string              `json:"future_rpi_maker_fee,omitempty"`
+	SpecialFeeList    []CrossexSpecialFee `json:"special_fee_list"`
 }

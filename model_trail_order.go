@@ -87,6 +87,6 @@ type TrailOrder struct {
 	PositionMode string `json:"position_mode,omitempty"`
 	// Error label
 	ErrorLabel string `json:"error_label,omitempty"`
-	// leverage
+	// Leverage
 	Leverage string `json:"leverage,omitempty"`
 }

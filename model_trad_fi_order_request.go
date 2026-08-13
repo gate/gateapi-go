@@ -15,11 +15,11 @@ type TradFiOrderRequest struct {
 	Price string `json:"price"`
 	// Price type (trigger=trigger price, market=market price)
 	PriceType string `json:"price_type"`
-	// Order side (1=sell, 2=buy)
+	// Side (1=sell, 2=buy)
 	Side int32 `json:"side"`
 	// Trading symbol code
 	Symbol string `json:"symbol"`
-	// Order volume
+	// Order quantity
 	Volume string `json:"volume"`
 	// Take profit price (optional)
 	PriceTp string `json:"price_tp,omitempty"`

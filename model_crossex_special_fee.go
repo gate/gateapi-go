@@ -16,4 +16,6 @@ type CrossexSpecialFee struct {
 	TakerFeeRate string `json:"taker_fee_rate"`
 	// Maker fee rate
 	MakerFeeRate string `json:"maker_fee_rate"`
+	// RPI order maker fee rate
+	RpiFeeRate string `json:"rpi_fee_rate,omitempty"`
 }

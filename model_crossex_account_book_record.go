@@ -14,7 +14,7 @@ type CrossexAccountBookRecord struct {
 	Id string `json:"id"`
 	// User ID
 	UserId string `json:"user_id"`
-	// Business ID
+	// Business ID. Its meaning varies by `statement_type`. `TRANSACTION`: order ID. `TRADING_FEE`: order ID. `LIQUIDATION_FEE`: liquidation order ID. `FUNDING_FEE`: position ID and funding fee settlement time. For other types, it is a system-generated processing ID with no business meaning.
 	BusinessId string `json:"business_id"`
 	// Bill entry type. `TRANSACTION` trade `TRADING_FEE` fee `FUNDING_FEE` funding `LIQUIDATION_FEE` liquidation `TRANSFER_IN` deposit `TRANSFER_OUT` withdrawal `BANKRUPT_COMPENSATION` bankruptcy subsidy `AUTO_REPAY` margin auto-repay `INTEREST_ISOLATED` isolated-venue interest entry `ACCOUNT_MODE_CHANGE` account mode switch entry `KRAKEN_CONVERSION` conversion of other margin coins to cover a negative KRAKEN_USD balance `OTHER` other
 	StatementType string `json:"statement_type"`
@@ -22,6 +22,8 @@ type CrossexAccountBookRecord struct {
 	ExchangeType string `json:"exchange_type"`
 	// Currency
 	Coin string `json:"coin"`
+	// Trading Pair
+	Symbol string `json:"symbol,omitempty"`
 	// Change amount (positive indicates transfer in; negative indicates transfer out)
 	Change string `json:"change"`
 	// Balance after change

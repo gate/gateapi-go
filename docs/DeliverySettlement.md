@@ -6,9 +6,9 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Time** | **int64** | Liquidation time | [optional] [readonly] 
 **Contract** | **string** | Futures contract | [optional] [readonly] 
-**Leverage** | **string** | Position leverage | [optional] [readonly] 
+**Leverage** | **string** | Leverage multiplier | [optional] [readonly] 
 **Size** | **int64** | Position size | [optional] [readonly] 
-**Margin** | **string** | Position margin | [optional] [readonly] 
+**Margin** | **string** | Margin | [optional] [readonly] 
 **EntryPrice** | **string** | Average entry price | [optional] [readonly] 
 **SettlePrice** | **string** | Settled price | [optional] [readonly] 
 **Profit** | **string** | Profit | [optional] [readonly] 

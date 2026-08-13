@@ -63,9 +63,9 @@ type DeliveryContract struct {
 	RiskLimitStep string `json:"risk_limit_step,omitempty"`
 	// Maximum risk limit the contract allowed
 	RiskLimitMax string `json:"risk_limit_max,omitempty"`
-	// Minimum order size allowed by the contract
+	// Minimum order quantity
 	OrderSizeMin int64 `json:"order_size_min,omitempty"`
-	// Maximum order size allowed by the contract
+	// Maximum order quantity
 	OrderSizeMax int64 `json:"order_size_max,omitempty"`
 	// Maximum allowed deviation between order price and current mark price. The order price `order_price` must satisfy the following condition:      abs(order_price - mark_price) <= mark_price * order_price_deviate
 	OrderPriceDeviate string `json:"order_price_deviate,omitempty"`

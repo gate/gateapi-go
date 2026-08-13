@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **int64** | Order ID | 
-**Type** | **string** | type | 
+**Type** | **string** | Type | 
 **Amount** | **string** | Size | 
 **PlanId** | **int64** | Plan ID | 
 **Side** | **int64** | direction | 

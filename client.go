@@ -59,6 +59,8 @@ type APIClient struct {
 
 	BotApi *BotApiService
 
+	CFDApi *CFDApiService
+
 	CouponApi *CouponApiService
 
 	CrossExApi *CrossExApiService
@@ -72,8 +74,6 @@ type APIClient struct {
 	FlashSwapApi *FlashSwapApiService
 
 	FuturesApi *FuturesApiService
-
-	LaunchApi *LaunchApiService
 
 	MarginApi *MarginApiService
 
@@ -93,9 +93,9 @@ type APIClient struct {
 
 	SquareApi *SquareApiService
 
-	SubAccountApi *SubAccountApiService
+	StockApi *StockApiService
 
-	TradFiApi *TradFiApiService
+	SubAccountApi *SubAccountApiService
 
 	UnifiedApi *UnifiedApiService
 
@@ -127,6 +127,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.AlphaApi = (*AlphaApiService)(&c.common)
 	c.AssetswapApi = (*AssetswapApiService)(&c.common)
 	c.BotApi = (*BotApiService)(&c.common)
+	c.CFDApi = (*CFDApiService)(&c.common)
 	c.CouponApi = (*CouponApiService)(&c.common)
 	c.CrossExApi = (*CrossExApiService)(&c.common)
 	c.DeliveryApi = (*DeliveryApiService)(&c.common)
@@ -134,7 +135,6 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.EarnUniApi = (*EarnUniApiService)(&c.common)
 	c.FlashSwapApi = (*FlashSwapApiService)(&c.common)
 	c.FuturesApi = (*FuturesApiService)(&c.common)
-	c.LaunchApi = (*LaunchApiService)(&c.common)
 	c.MarginApi = (*MarginApiService)(&c.common)
 	c.MarginUniApi = (*MarginUniApiService)(&c.common)
 	c.MultiCollateralLoanApi = (*MultiCollateralLoanApiService)(&c.common)
@@ -144,8 +144,8 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.RebateApi = (*RebateApiService)(&c.common)
 	c.SpotApi = (*SpotApiService)(&c.common)
 	c.SquareApi = (*SquareApiService)(&c.common)
+	c.StockApi = (*StockApiService)(&c.common)
 	c.SubAccountApi = (*SubAccountApiService)(&c.common)
-	c.TradFiApi = (*TradFiApiService)(&c.common)
 	c.UnifiedApi = (*UnifiedApiService)(&c.common)
 	c.WalletApi = (*WalletApiService)(&c.common)
 	c.WelfareApi = (*WelfareApiService)(&c.common)

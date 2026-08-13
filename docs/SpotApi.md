@@ -14,13 +14,12 @@ Method | HTTP request | Description
 [**ListCandlesticks**](SpotApi.md#ListCandlesticks) | **Get** /spot/candlesticks | Market K-line chart
 [**GetFee**](SpotApi.md#GetFee) | **Get** /spot/fee | Query account fee rates
 [**GetBatchSpotFee**](SpotApi.md#GetBatchSpotFee) | **Get** /spot/batch_fee | Batch query account fee rates
-[**ListSpotAccounts**](SpotApi.md#ListSpotAccounts) | **Get** /spot/accounts | List spot trading accounts
 [**ListSpotAccountBook**](SpotApi.md#ListSpotAccountBook) | **Get** /spot/account_book | Query spot account transaction history
 [**CreateBatchOrders**](SpotApi.md#CreateBatchOrders) | **Post** /spot/batch_orders | Batch place orders
 [**ListAllOpenOrders**](SpotApi.md#ListAllOpenOrders) | **Get** /spot/open_orders | List all open orders
 [**CreateCrossLiquidateOrder**](SpotApi.md#CreateCrossLiquidateOrder) | **Post** /spot/cross_liquidate_orders | Close position when cross-currency is disabled
 [**ListOrders**](SpotApi.md#ListOrders) | **Get** /spot/orders | List orders
-[**CreateOrder**](SpotApi.md#CreateOrder) | **Post** /spot/orders | Create an order
+[**CreateOrder**](SpotApi.md#CreateOrder) | **Post** /spot/orders | Create order
 [**CancelOrders**](SpotApi.md#CancelOrders) | **Delete** /spot/orders | Cancel all &#x60;open&#x60; orders in specified currency pair
 [**CancelBatchOrders**](SpotApi.md#CancelBatchOrders) | **Post** /spot/cancel_batch_orders | Cancel batch orders by specified ID list
 [**GetOrder**](SpotApi.md#GetOrder) | **Get** /spot/orders/{order_id} | Query single order details
@@ -36,6 +35,11 @@ Method | HTTP request | Description
 [**CancelSpotPriceTriggeredOrderList**](SpotApi.md#CancelSpotPriceTriggeredOrderList) | **Delete** /spot/price_orders | Cancel all auto orders
 [**GetSpotPriceTriggeredOrder**](SpotApi.md#GetSpotPriceTriggeredOrder) | **Get** /spot/price_orders/{order_id} | Query single auto order details
 [**CancelSpotPriceTriggeredOrder**](SpotApi.md#CancelSpotPriceTriggeredOrder) | **Delete** /spot/price_orders/{order_id} | Cancel single auto order
+[**ListSpotPovOrders**](SpotApi.md#ListSpotPovOrders) | **Get** /spot/pov_orders | List Spot POV orders
+[**CreateSpotPovOrder**](SpotApi.md#CreateSpotPovOrder) | **Post** /spot/pov_orders | Create a Spot POV order
+[**CancelSpotPovOrders**](SpotApi.md#CancelSpotPovOrders) | **Post** /spot/pov_orders/cancel | Cancel Spot POV orders
+[**GetSpotPovOrder**](SpotApi.md#GetSpotPovOrder) | **Get** /spot/pov_orders/{order_id} | Query Spot POV order details
+[**CancelSpotPovOrder**](SpotApi.md#CancelSpotPovOrder) | **Post** /spot/pov_orders/{order_id}/cancel | Cancel a Spot POV order
 
 
 ## ListCurrencies
@@ -734,82 +738,6 @@ func main() {
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-## ListSpotAccounts
-
-> []SpotAccount ListSpotAccounts(ctx, optional)
-
-List spot trading accounts
-
-### Required Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**optional** | **ListSpotAccountsOpts** | optional parameters | nil if no parameters
-
-### Optional Parameters
-
-Optional parameters are passed through a pointer to a ListSpotAccountsOpts struct
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**currency** | **optional.String**| Query by specified currency name | 
-
-### Example
-
-```golang
-package main
-
-import (
-    "context"
-    "fmt"
-
-    "github.com/gate/gateapi-go/v7"
-)
-
-func main() {
-    client := gateapi.NewAPIClient(gateapi.NewConfiguration())
-    // uncomment the next line if your are testing against testnet
-    // client.ChangeBasePath("https://fx-api-testnet.gateio.ws/api/v4")
-    ctx := context.WithValue(context.Background(),
-                             gateapi.ContextGateAPIV4,
-                             gateapi.GateAPIV4{
-                                 Key:    "YOUR_API_KEY",
-                                 Secret: "YOUR_API_SECRET",
-                             }
-                            )
-    
-    result, _, err := client.SpotApi.ListSpotAccounts(ctx, nil)
-    if err != nil {
-        if e, ok := err.(gateapi.GateAPIError); ok {
-            fmt.Printf("gate api error: %s\n", e.Error())
-        } else {
-            fmt.Printf("generic error: %s\n", err.Error())
-        }
-    } else {
-        fmt.Println(result)
-    }
-}
-```
-
-
-### Return type
-
-[**[]SpotAccount**](SpotAccount.md)
-
-### Authorization
-
-[apiv4](../README.md#apiv4)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
 ## ListSpotAccountBook
 
 > []SpotAccountBook ListSpotAccountBook(ctx, optional)
@@ -1216,7 +1144,7 @@ func main() {
 
 > Order CreateOrder(ctx, order, optional)
 
-Create an order
+Create order
 
 Supports spot, margin, leverage, and cross-margin leverage orders. Use different accounts through the `account` field. Default is `spot`, which means using the spot account to place orders. If the user has a `unified` account, the default is to place orders with the unified account.  When using leveraged account trading (i.e., when `account` is set to `margin`), you can set `auto_borrow` to `true`. In case of insufficient account balance, the system will automatically execute `POST /margin/uni/loans` to borrow the insufficient amount. Whether assets obtained after leveraged order execution are automatically used to repay borrowing orders of the isolated margin account depends on the automatic repayment settings of the user's isolated margin account. Account automatic repayment settings can be queried and set through `/margin/auto_repay`.  When using unified account trading (i.e., when `account` is set to `unified`), `auto_borrow` can also be enabled to realize automatic borrowing of insufficient amounts. However, unlike the isolated margin account, whether unified account orders are automatically repaid depends on the `auto_repay` setting when placing the order. This setting only applies to the current order, meaning only assets obtained after order execution will be used to repay borrowing orders of the cross-margin account. Unified account ordering currently supports enabling both `auto_borrow` and `auto_repay` simultaneously.  Auto repayment will be triggered when the order ends, i.e., when `status` is `cancelled` or `closed`.  **Order Status**  The order status in pending orders is `open`, which remains `open` until all quantity is filled. If fully filled, the order ends and status becomes `closed`. If the order is cancelled before all transactions are completed, regardless of partial fills, the status will become `cancelled`.  **Iceberg Orders**  `iceberg` is used to set the displayed quantity of iceberg orders and does not support complete hiding. Note that hidden portions are charged according to the taker's fee rate.  **Self-Trade Prevention**  Set `stp_act` to determine the self-trade prevention strategy to use
 
@@ -2427,6 +2355,370 @@ func main() {
 ### Return type
 
 [**SpotPriceTriggeredOrder**](SpotPriceTriggeredOrder.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+## ListSpotPovOrders
+
+> []SpotPovOrder ListSpotPovOrders(ctx, status, optional)
+
+List Spot POV orders
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**status** | **string**| Order status. Defaults to open  - open: Active orders - finished: Finished orders | [default to open]
+**optional** | **ListSpotPovOrdersOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+
+Optional parameters are passed through a pointer to a ListSpotPovOrdersOpts struct
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**currencyPair** | **optional.String**| Currency pair | 
+**side** | **optional.String**| Specify all bids or all asks, both included if not specified | 
+**page** | **optional.Int32**| Page number, up to 100 | [default to 1]
+**limit** | **optional.Int32**| Maximum number of records returned in a single list | [default to 100]
+
+### Example
+
+```golang
+package main
+
+import (
+    "context"
+    "fmt"
+
+    "github.com/gate/gateapi-go/v7"
+)
+
+func main() {
+    client := gateapi.NewAPIClient(gateapi.NewConfiguration())
+    // uncomment the next line if your are testing against testnet
+    // client.ChangeBasePath("https://fx-api-testnet.gateio.ws/api/v4")
+    ctx := context.WithValue(context.Background(),
+                             gateapi.ContextGateAPIV4,
+                             gateapi.GateAPIV4{
+                                 Key:    "YOUR_API_KEY",
+                                 Secret: "YOUR_API_SECRET",
+                             }
+                            )
+    status := open // string - Order status. Defaults to open  - open: Active orders - finished: Finished orders
+    
+    result, _, err := client.SpotApi.ListSpotPovOrders(ctx, status, nil)
+    if err != nil {
+        if e, ok := err.(gateapi.GateAPIError); ok {
+            fmt.Printf("gate api error: %s\n", e.Error())
+        } else {
+            fmt.Printf("generic error: %s\n", err.Error())
+        }
+    } else {
+        fmt.Println(result)
+    }
+}
+```
+
+
+### Return type
+
+[**[]SpotPovOrder**](SpotPovOrder.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+## CreateSpotPovOrder
+
+> SpotPovOrder CreateSpotPovOrder(ctx, spotPovOrderCreator)
+
+Create a Spot POV order
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**spotPovOrderCreator** | [**SpotPovOrderCreator**](SpotPovOrderCreator.md)|  | 
+
+### Example
+
+```golang
+package main
+
+import (
+    "context"
+    "fmt"
+
+    "github.com/gate/gateapi-go/v7"
+)
+
+func main() {
+    client := gateapi.NewAPIClient(gateapi.NewConfiguration())
+    // uncomment the next line if your are testing against testnet
+    // client.ChangeBasePath("https://fx-api-testnet.gateio.ws/api/v4")
+    ctx := context.WithValue(context.Background(),
+                             gateapi.ContextGateAPIV4,
+                             gateapi.GateAPIV4{
+                                 Key:    "YOUR_API_KEY",
+                                 Secret: "YOUR_API_SECRET",
+                             }
+                            )
+    spotPovOrderCreator := gateapi.SpotPovOrderCreator{} // SpotPovOrderCreator - 
+    
+    result, _, err := client.SpotApi.CreateSpotPovOrder(ctx, spotPovOrderCreator)
+    if err != nil {
+        if e, ok := err.(gateapi.GateAPIError); ok {
+            fmt.Printf("gate api error: %s\n", e.Error())
+        } else {
+            fmt.Printf("generic error: %s\n", err.Error())
+        }
+    } else {
+        fmt.Println(result)
+    }
+}
+```
+
+
+### Return type
+
+[**SpotPovOrder**](SpotPovOrder.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+## CancelSpotPovOrders
+
+> []SpotPovOrder CancelSpotPovOrders(ctx, optional)
+
+Cancel Spot POV orders
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**optional** | **CancelSpotPovOrdersOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+
+Optional parameters are passed through a pointer to a CancelSpotPovOrdersOpts struct
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**currencyPair** | **optional.String**| Currency pair | 
+
+### Example
+
+```golang
+package main
+
+import (
+    "context"
+    "fmt"
+
+    "github.com/gate/gateapi-go/v7"
+)
+
+func main() {
+    client := gateapi.NewAPIClient(gateapi.NewConfiguration())
+    // uncomment the next line if your are testing against testnet
+    // client.ChangeBasePath("https://fx-api-testnet.gateio.ws/api/v4")
+    ctx := context.WithValue(context.Background(),
+                             gateapi.ContextGateAPIV4,
+                             gateapi.GateAPIV4{
+                                 Key:    "YOUR_API_KEY",
+                                 Secret: "YOUR_API_SECRET",
+                             }
+                            )
+    
+    result, _, err := client.SpotApi.CancelSpotPovOrders(ctx, nil)
+    if err != nil {
+        if e, ok := err.(gateapi.GateAPIError); ok {
+            fmt.Printf("gate api error: %s\n", e.Error())
+        } else {
+            fmt.Printf("generic error: %s\n", err.Error())
+        }
+    } else {
+        fmt.Println(result)
+    }
+}
+```
+
+
+### Return type
+
+[**[]SpotPovOrder**](SpotPovOrder.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+## GetSpotPovOrder
+
+> SpotPovOrder GetSpotPovOrder(ctx, orderId)
+
+Query Spot POV order details
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**orderId** | **string**| The order ID returned after successful creation, or the custom ID specified by the user in the &#x60;text&#x60; field. | 
+
+### Example
+
+```golang
+package main
+
+import (
+    "context"
+    "fmt"
+
+    "github.com/gate/gateapi-go/v7"
+)
+
+func main() {
+    client := gateapi.NewAPIClient(gateapi.NewConfiguration())
+    // uncomment the next line if your are testing against testnet
+    // client.ChangeBasePath("https://fx-api-testnet.gateio.ws/api/v4")
+    ctx := context.WithValue(context.Background(),
+                             gateapi.ContextGateAPIV4,
+                             gateapi.GateAPIV4{
+                                 Key:    "YOUR_API_KEY",
+                                 Secret: "YOUR_API_SECRET",
+                             }
+                            )
+    orderId := "12345" // string - The order ID returned after successful creation, or the custom ID specified by the user in the `text` field.
+    
+    result, _, err := client.SpotApi.GetSpotPovOrder(ctx, orderId)
+    if err != nil {
+        if e, ok := err.(gateapi.GateAPIError); ok {
+            fmt.Printf("gate api error: %s\n", e.Error())
+        } else {
+            fmt.Printf("generic error: %s\n", err.Error())
+        }
+    } else {
+        fmt.Println(result)
+    }
+}
+```
+
+
+### Return type
+
+[**SpotPovOrder**](SpotPovOrder.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+## CancelSpotPovOrder
+
+> SpotPovOrder CancelSpotPovOrder(ctx, orderId)
+
+Cancel a Spot POV order
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**orderId** | **string**| The order ID returned after successful creation, or the custom ID specified by the user in the &#x60;text&#x60; field. | 
+
+### Example
+
+```golang
+package main
+
+import (
+    "context"
+    "fmt"
+
+    "github.com/gate/gateapi-go/v7"
+)
+
+func main() {
+    client := gateapi.NewAPIClient(gateapi.NewConfiguration())
+    // uncomment the next line if your are testing against testnet
+    // client.ChangeBasePath("https://fx-api-testnet.gateio.ws/api/v4")
+    ctx := context.WithValue(context.Background(),
+                             gateapi.ContextGateAPIV4,
+                             gateapi.GateAPIV4{
+                                 Key:    "YOUR_API_KEY",
+                                 Secret: "YOUR_API_SECRET",
+                             }
+                            )
+    orderId := "12345" // string - The order ID returned after successful creation, or the custom ID specified by the user in the `text` field.
+    
+    result, _, err := client.SpotApi.CancelSpotPovOrder(ctx, orderId)
+    if err != nil {
+        if e, ok := err.(gateapi.GateAPIError); ok {
+            fmt.Printf("gate api error: %s\n", e.Error())
+        } else {
+            fmt.Printf("generic error: %s\n", err.Error())
+        }
+    } else {
+        fmt.Println(result)
+    }
+}
+```
+
+
+### Return type
+
+[**SpotPovOrder**](SpotPovOrder.md)
 
 ### Authorization
 

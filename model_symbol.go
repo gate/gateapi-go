@@ -12,13 +12,13 @@ package gateapi
 type Symbol struct {
 	// Unique trading pair identifier in the form ExchangeType_BusinessType_Base_Counter.
 	Symbol string `json:"symbol"`
-	// Venue bucket (`BINANCE` / `OKX` / `GATE` / `BYBIT` / `KRAKEN` / `HYPERLIQUID`).
+	// Venue bucket (`BINANCE` / `OKX` / `GATE` / `BYBIT` / `KRAKEN` / `HYPERLIQUID` / `DERIBIT`).
 	ExchangeType string `json:"exchange_type"`
 	// Business type (`SPOT` Spot / `FUTURE` Futures / `MARGIN` Margin).
 	BusinessType string `json:"business_type"`
 	// Status (`live` running / `suspend` paused).
 	State string `json:"state"`
-	// Minimum order size allowed by the contract
+	// Minimum order quantity
 	MinSize string `json:"min_size"`
 	// Minimum Order Value
 	MinNotional string `json:"min_notional"`
@@ -32,10 +32,12 @@ type Symbol struct {
 	MaxMarketSize string `json:"max_market_size"`
 	// Maximum order quantity for limit orders.
 	MaxLimitSize string `json:"max_limit_size"`
-	// Contract Multiplier
+	// Contract multiplier (deprecated; quantity is used uniformly)
 	ContractSize string `json:"contract_size"`
 	// Liquidation Fee Rate
 	LiquidationFee string `json:"liquidation_fee"`
 	// Millisecond timestamp; `0` means not delisted.
 	DelistTime string `json:"delist_time"`
+	// Whether RPI order placement is supported (true if supported; false otherwise)
+	SupportRpi string `json:"support_rpi,omitempty"`
 }

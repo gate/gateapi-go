@@ -18,6 +18,6 @@ type MarginTiers struct {
 	LowerLimit string `json:"lower_limit,omitempty"`
 	// Upper limit, `` indicates greater than (the last tier)
 	UpperLimit string `json:"upper_limit,omitempty"`
-	// Position leverage
+	// Leverage multiplier
 	Leverage string `json:"leverage,omitempty"`
 }

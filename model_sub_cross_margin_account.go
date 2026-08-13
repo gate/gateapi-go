@@ -23,7 +23,7 @@ type SubCrossMarginAccount struct {
 	BorrowedNet string `json:"borrowed_net,omitempty"`
 	// Total net assets in USDT
 	Net string `json:"net,omitempty"`
-	// Position leverage
+	// Leverage multiplier
 	Leverage string `json:"leverage,omitempty"`
 	// Total unpaid interest in USDT, i.e., the sum of all currencies' `interest*price*discount`
 	Interest string `json:"interest,omitempty"`

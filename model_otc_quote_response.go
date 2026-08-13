@@ -13,4 +13,6 @@ type OtcQuoteResponse struct {
 	Code    int32          `json:"code"`
 	Message string         `json:"message"`
 	Data    OtcQuoteResult `json:"data"`
+	// Server Unix timestamp in seconds
+	Timestamp int32 `json:"timestamp"`
 }

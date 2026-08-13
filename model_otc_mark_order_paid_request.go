@@ -15,7 +15,7 @@ type OtcMarkOrderPaidRequest struct {
 	OrderId string `json:"order_id"`
 	// Client order ID (used by some gateway/Inner Pay paths, optional)
 	ClientOrderId string `json:"client_order_id,omitempty"`
-	// User payment receipt: **required**. Stored as a file_key. Single file; jpg/jpeg/png/pdf; ≤4MB.
+	// User payment receipt: **required**. Stored as a file_key. One file; jpg/jpeg/png/pdf; maximum 10 MB.
 	PaymentReceiptFileKey string `json:"payment_receipt_file_key"`
 	// Alias compatible with `payment_receipt_file_key` (depends on the gateway's external field name)
 	PaymentReceipt string `json:"payment_receipt,omitempty"`

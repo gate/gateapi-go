@@ -16,7 +16,7 @@ type TransactionListDataList struct {
 	Type string `json:"type,omitempty"`
 	// Transaction Type Description
 	TypeDesc string `json:"type_desc,omitempty"`
-	// Change Quantity
+	// Change amount
 	Change string `json:"change,omitempty"`
 	// Current Balance
 	Balance string `json:"balance,omitempty"`

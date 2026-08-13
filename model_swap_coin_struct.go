@@ -28,7 +28,7 @@ type SwapCoinStruct struct {
 	ExchangeRate string `json:"exchange_rate,omitempty"`
 	// Redemption Amount
 	ExchangeAmount string `json:"exchange_amount,omitempty"`
-	// UpdateTimestamp
+	// Update timestamp
 	UpdateStamp int32 `json:"updateStamp,omitempty"`
 	// Transaction timestamp
 	CreateStamp int32 `json:"createStamp,omitempty"`

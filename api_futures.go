@@ -1833,7 +1833,7 @@ ListPositions Get user position list
   - @param settle Settle currency
   - @param optional nil or *ListPositionsOpts - Optional Parameters:
   - @param "Holding" (optional.Bool) -  Return only real positions - true, return all - false
-  - @param "Limit" (optional.Int32) -  Maximum number of records returned in a single list
+  - @param "Limit" (optional.Int32) -  Maximum number of positions returned. If omitted, all current positions are returned by default; if provided, the value must be within [1,100].
   - @param "Offset" (optional.Int32) -  List offset, starting from 0
 
 @return []Position

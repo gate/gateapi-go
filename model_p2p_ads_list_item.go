@@ -20,10 +20,22 @@ type P2pAdsListItem struct {
 	AdvNo int32 `json:"adv_no,omitempty"`
 	// Price
 	Price string `json:"price,omitempty"`
+	// Remaining tradable crypto quantity
+	SurplusAmount string `json:"surplus_amount,omitempty"`
 	// Maximum crypto size per trade.
 	MaxSingleTransAmount string `json:"max_single_trans_amount,omitempty"`
 	// Minimum crypto size per trade.
 	MinSingleTransAmount string `json:"min_single_trans_amount,omitempty"`
+	// Minimum fiat amount per order
+	FiatMinAmount string `json:"fiat_min_amount,omitempty"`
+	// Maximum fiat amount per order
+	FiatMaxAmount string `json:"fiat_max_amount,omitempty"`
+	// Trading limit unit. 0: crypto quantity, 1: fiat amount
+	LimitBasis int32 `json:"limit_basis,omitempty"`
+	// Trading limit unit label. crypto: crypto quantity, fiat: fiat amount
+	LimitBasisText string `json:"limit_basis_text,omitempty"`
+	// Supported payment methods list
+	TradeMethods []P2pAdsListTradeMethod `json:"trade_methods,omitempty"`
 	// Advertiser Nickname
 	NickName string `json:"nick_name,omitempty"`
 }

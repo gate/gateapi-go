@@ -169,7 +169,7 @@ func main() {
 
 Create stablecoin order
 
-Create stablecoin order
+Create a stablecoin order. All request body fields except `promotion_code` are required.
 
 ### Required Parameters
 
@@ -240,7 +240,7 @@ func main() {
 
 Get user bank card list
 
-Retrieve the user's bank card list, used to select a bank card when placing an order. **Default card**: refer to the list item field `is_default` (1=default); there is no need to call the deprecated standalone \"default bank card\" endpoint. Corresponding Inner: `GET /bank_list` or `GET /bank/list`.
+List the user's bank cards for selecting a card when placing an order. **Default card**: use the `is_default` field in each list item (`1` indicates the default). The deprecated standalone default-bank-card endpoint is no longer required.
 
 ### Required Parameters
 
@@ -319,7 +319,7 @@ Name | Type | Description  | Notes
 **bankAddress** | **string**|  | 
 **iban** | **string**|  | 
 **swift** | **string**|  | 
-**documentationFile** | **string**| 开户证明文件内容（multipart 文件字段，二进制/Base64；jpg/jpeg/png/pdf 等，单文件≤4MB 以现网为准） | 
+**documentationFile** | **string**| Account opening proof file content (multipart file field, binary/Base64; jpg/jpeg/png/pdf, etc.; maximum 10 MB per file, subject to the live environment) | 
 **optional** | **CreateOtcBankOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
@@ -361,7 +361,7 @@ func main() {
     bankAddress := "bankAddress_example" // string - 
     iban := "iban_example" // string - 
     swift := "swift_example" // string - 
-    documentationFile := "documentationFile_example" // string - 开户证明文件内容（multipart 文件字段，二进制/Base64；jpg/jpeg/png/pdf 等，单文件≤4MB 以现网为准）
+    documentationFile := "documentationFile_example" // string - Account opening proof file content (multipart file field, binary/Base64; jpg/jpeg/png/pdf, etc.; maximum 10 MB per file, subject to the live environment)
     
     result, _, err := client.OTCApi.CreateOtcBank(ctx, bankAccountName, bankName, bankCountry, bankAddress, iban, swift, documentationFile, nil)
     if err != nil {
@@ -542,7 +542,7 @@ func main() {
 
 Query the checklist of materials to supplement for a bank card
 
-**①** `bank_id` must be specified: after verifying that the card belongs to the current user and its status allows supplementation, returns the items to be supplemented and whether each sub-item is required, based on the user's **passed professional verification type** (personal/enterprise). Corresponding Inner: `GET /bank/bank_supplement_checklist`.
+**①** `bank_id` must be specified. After verifying that the card belongs to the current user and its status allows supplementary documents, the endpoint returns the required items based on the user's **approved advanced verification type** (personal/enterprise); each item's `description` states the submission requirements. Corresponding Inner endpoint: `GET /bank/bank_supplement_checklist`.
 
 ### Required Parameters
 
@@ -780,7 +780,7 @@ func main() {
 
 Mark fiat order as paid (deposit confirmation)
 
-Mark a fiat buy order as paid (deposit confirmation). **The user's payment receipt must be uploaded**: `payment_receipt_file_key` is required; file format jpg / jpeg / png / pdf, single file no larger than 4MB (jointly validated by the server and gateway). The compatible field name `payment_receipt` is subject to the gateway/production environment. For the persisted field, see `otc_trade_record.payment_receipt_file_key`. The Pay Inner path is `POST .../pay/order_set_paid` (orders are usually associated via `client_order_id`); this OpenAPI path maps to Inner `POST /order/paid` and still uses `order_id` as the primary key—if the gateway unifies it to the merchant order number, the gateway documentation prevails.
+Mark a fiat BUY order as paid (deposit confirmation). **A user payment receipt must be uploaded**: `payment_receipt_file_key` is required; supported formats are jpg/jpeg/png/pdf, with a maximum size of 10 MB per file (validated jointly by the service and gateway). The compatibility field name `payment_receipt` is subject to the gateway/live environment. The persisted field is `otc_trade_record.payment_receipt_file_key`. The Pay Inner path is `POST .../pay/order_set_paid` (commonly associated by `client_order_id`); the Inner path corresponding to this OpenAPI endpoint, `POST /order/paid`, still primarily uses `order_id`. If the gateway standardizes on the merchant order ID, follow the gateway documentation.
 
 ### Required Parameters
 
@@ -942,7 +942,7 @@ Name | Type | Description  | Notes
 **cryptoCurrency** | **optional.String**| Digital currency | 
 **startTime** | **optional.String**| starttime   for example : 2025-09-09 | 
 **endTime** | **optional.String**| endtime  for example :2025-09-09 | 
-**status** | **optional.String**| DONE: Completed CANCEL: Canceled PROCESSING: In Progress | 
+**status** | **optional.String**| DONE: completed CANCEL: canceled PROCESSING: in progress DISBURSED: disbursed | 
 **pn** | **optional.String**| Page number | 
 **ps** | **optional.String**| Number of items per page | 
 

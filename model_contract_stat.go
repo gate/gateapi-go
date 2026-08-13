@@ -55,7 +55,7 @@ type ContractStat struct {
 	// Number of top short accounts (large holders)
 	TopShortAccount int64 `json:"top_short_account,omitempty"`
 	// Number of users holding long positions
-	LongUsers string `json:"long_users,omitempty"`
+	LongUsers int64 `json:"long_users,omitempty"`
 	// Number of users holding short positions
-	ShortUsers string `json:"short_users,omitempty"`
+	ShortUsers int64 `json:"short_users,omitempty"`
 }

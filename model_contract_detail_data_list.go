@@ -25,7 +25,7 @@ type ContractDetailDataList struct {
 	MaxOrderVolume string `json:"max_order_volume,omitempty"`
 	// Minimum Order Volume
 	MinOrderVolume string `json:"min_order_volume,omitempty"`
-	// Position leverage
+	// Leverage multiplier
 	Leverage string `json:"leverage,omitempty"`
 	// Price precision (decimal places)
 	PricePrecision int32 `json:"price_precision,omitempty"`

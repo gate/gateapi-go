@@ -34,7 +34,7 @@ type FlashSwapMultiCurrencyOrder struct {
 	BuyAmountShow string `json:"buy_amount_show,omitempty"`
 	// Exchange price
 	Price string `json:"price,omitempty"`
-	// Order Status
+	// Order status
 	Status int32 `json:"status,omitempty"`
 	// Quote ID
 	QuoteId string `json:"quote_id,omitempty"`

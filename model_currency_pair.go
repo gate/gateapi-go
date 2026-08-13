@@ -31,9 +31,9 @@ type CurrencyPair struct {
 	MaxBaseAmount string `json:"max_base_amount,omitempty"`
 	// Maximum amount of quote currency to trade, `null` means no limit
 	MaxQuoteAmount string `json:"max_quote_amount,omitempty"`
-	// Amount scale
+	// Quantity precision
 	AmountPrecision int32 `json:"amount_precision,omitempty"`
-	// Price scale
+	// Price precision
 	Precision int32 `json:"precision,omitempty"`
 	// Trading status  - untradable: cannot be traded - buyable: can be bought - sellable: can be sold - tradable: can be bought and sold
 	TradeStatus string `json:"trade_status,omitempty"`
@@ -55,8 +55,8 @@ type CurrencyPair struct {
 	DownRate string `json:"down_rate,omitempty"`
 	// Maximum supported slippage ratio for Spot Market Order Placement, calculated based on the latest market price at the time of order placement as the benchmark (Example: 0.03 means 3%)
 	Slippage string `json:"slippage,omitempty"`
-	// Maximum Market Order Quantity
+	// Maximum market order quantity. `null` or `0` means no limit
 	MarketOrderMaxStock string `json:"market_order_max_stock,omitempty"`
-	// Maximum Market Order Amount
+	// Maximum market order amount. `null` or `0` means no limit
 	MarketOrderMaxMoney string `json:"market_order_max_money,omitempty"`
 }

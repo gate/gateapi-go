@@ -15,6 +15,9 @@ Name | Type | Description | Notes
 **Side** | **string** | Quote method | 
 **OrderType** | **string** | Order type: FIAT (fiat) / STABLE (stablecoin) | 
 **QuoteToken** | **string** | Quote token required when placing an order | 
+**ValidityPeriod** | **string** | Quote validity period (seconds) | [optional] 
+**RefreshLimit** | **int32** | Quote refresh limit | [optional] 
+**RefreshLimitMsg** | **string** | Quote refresh limit message | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

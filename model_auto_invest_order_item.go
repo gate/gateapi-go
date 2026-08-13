@@ -13,7 +13,7 @@ package gateapi
 type AutoInvestOrderItem struct {
 	// Order ID
 	Id int64 `json:"id"`
-	// type
+	// Type
 	Type string `json:"type"`
 	// Size
 	Amount string `json:"amount"`

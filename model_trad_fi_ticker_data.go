@@ -11,9 +11,9 @@ package gateapi
 
 // Response data
 type TradFiTickerData struct {
-	// Highest price
+	// High price
 	HighestPrice string `json:"highest_price,omitempty"`
-	// Lowest price
+	// Low price
 	LowestPrice string `json:"lowest_price,omitempty"`
 	// Price change percentage (multiplied by 100)
 	PriceChange string `json:"price_change,omitempty"`

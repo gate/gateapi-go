@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **RiskLimit** | **string** | Position risk limit | [optional] 
 **LeverageMax** | **string** | the maximum permissible leverage given to the current positon value: the higher positon value, the lower maximum permissible leverage | [optional] [readonly] 
 **MaintenanceRate** | **string** | The maintenance margin rate of the first tier of risk limit sheet | [optional] [readonly] 
-**Margin** | **string** | Position margin | [optional] 
+**Margin** | **string** | Margin | [optional] 
 **LiqPrice** | **string** | Liquidation price | [optional] [readonly] 
 **RealisedPnl** | **string** | Realized PnL | [optional] [readonly] 
 **HistoryPnl** | **string** | Total realized PnL from closed positions | [optional] [readonly] 

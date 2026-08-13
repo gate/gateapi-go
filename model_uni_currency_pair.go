@@ -17,6 +17,6 @@ type UniCurrencyPair struct {
 	BaseMinBorrowAmount string `json:"base_min_borrow_amount,omitempty"`
 	// Minimum borrow amount of quote currency
 	QuoteMinBorrowAmount string `json:"quote_min_borrow_amount,omitempty"`
-	// Position leverage
+	// Leverage multiplier
 	Leverage string `json:"leverage,omitempty"`
 }

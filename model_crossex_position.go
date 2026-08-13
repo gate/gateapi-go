@@ -20,6 +20,10 @@ type CrossexPosition struct {
 	PositionSide string `json:"position_side,omitempty"`
 	// Initial Margin
 	InitialMargin string `json:"initial_margin,omitempty"`
+	// Isolated margin. It is 0 in cross margin mode and applies only to isolated margin positions
+	IsolatedMargin string `json:"isolated_margin,omitempty"`
+	// Margin mode (CROSS/ISOLATED)
+	MarginMode string `json:"margin_mode,omitempty"`
 	// Maintenance margin
 	MaintenanceMargin string `json:"maintenance_margin,omitempty"`
 	// Position Quantity
@@ -32,6 +36,8 @@ type CrossexPosition struct {
 	UpnlRate string `json:"upnl_rate,omitempty"`
 	// Position Average Entry Price
 	EntryPrice string `json:"entry_price,omitempty"`
+	// Liquidation price. It is 0 in cross margin mode and applies only to isolated margin positions; 0 in isolated margin mode means the position will not be liquidated
+	LiqPrice string `json:"liq_price,omitempty"`
 	// Mark price
 	MarkPrice string `json:"mark_price,omitempty"`
 	// Position Leverage
@@ -42,7 +48,7 @@ type CrossexPosition struct {
 	RiskLimit string `json:"risk_limit,omitempty"`
 	// Position Fee
 	Fee string `json:"fee,omitempty"`
-	// Position Funding Fee
+	// Accumulated position funding fee. A positive value indicates a gain, while a negative value indicates a loss.
 	FundingFee string `json:"funding_fee,omitempty"`
 	// Position funding fee collection time (0 indicates it has not been collected yet)
 	FundingTime string `json:"funding_time,omitempty"`

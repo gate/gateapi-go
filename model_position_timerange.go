@@ -23,7 +23,7 @@ type PositionTimerange struct {
 	LeverageMax string `json:"leverage_max,omitempty"`
 	// The maintenance margin rate of the first tier of risk limit sheet
 	MaintenanceRate string `json:"maintenance_rate,omitempty"`
-	// Position margin
+	// Margin
 	Margin string `json:"margin,omitempty"`
 	// Liquidation price
 	LiqPrice string `json:"liq_price,omitempty"`

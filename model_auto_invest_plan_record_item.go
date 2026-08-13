@@ -13,7 +13,7 @@ package gateapi
 type AutoInvestPlanRecordItem struct {
 	// Record ID
 	Id int64 `json:"id"`
-	// type
+	// Type
 	Type string `json:"type"`
 	// SourceCurrency
 	Money string `json:"money"`

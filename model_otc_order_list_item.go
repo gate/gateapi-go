@@ -18,29 +18,22 @@ type OtcOrderListItem struct {
 	OrderId string `json:"order_id,omitempty"`
 	// Trade number
 	TradeNo string `json:"trade_no,omitempty"`
-	// Quote direction buy/sell/all
+	// BUY deposit / SELL withdrawal
 	Type string `json:"type,omitempty"`
-	// Order Status
-	Status   string `json:"status,omitempty"`
-	DbStatus string `json:"db_status,omitempty"`
-	// Fiat type
+	// Order status
+	Status string `json:"status,omitempty"`
+	// Fiat currency
 	FiatCurrency     string                       `json:"fiat_currency,omitempty"`
 	FiatCurrencyInfo OtcOrderListFiatCurrencyInfo `json:"fiat_currency_info,omitempty"`
 	// Fiat amount
 	FiatAmount string `json:"fiat_amount,omitempty"`
-	// Stablecoin
+	// Digital currency
 	CryptoCurrency     string                         `json:"crypto_currency,omitempty"`
 	CryptoCurrencyInfo OtcOrderListCryptoCurrencyInfo `json:"crypto_currency_info,omitempty"`
-	// Stablecoin amount
+	// Cryptocurrency amount
 	CryptoAmount string `json:"crypto_amount,omitempty"`
 	// Exchange rate
 	Rate string `json:"rate,omitempty"`
-	// Transfer remark (mutually exclusive with reference_code; empty string when the deposit buy order has a reference code)
-	TransferRemark string `json:"transfer_remark,omitempty"`
-	// Unique bank transfer reference code for deposit buy orders (SGB deposit scenario)
-	ReferenceCode string `json:"reference_code,omitempty"`
-	// Bank account
-	GateBankAccountIban string `json:"gate_bank_account_iban,omitempty"`
 	// Promotion code
 	PromotionCode string `json:"promotion_code,omitempty"`
 }

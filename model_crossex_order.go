@@ -26,7 +26,7 @@ type CrossexOrder struct {
 	Type string `json:"type"`
 	// Order attributes (`COMMON` normal / `LIQ` liquidation takeover / `REDUCE` liquidation reduction / `ADL` auto-deleverage / `SETTLEMENT` delisting settlement).
 	Attribute string `json:"attribute"`
-	// Venue bucket (`BINANCE` / `OKX` / `GATE` / `BYBIT` / `KRAKEN` / `HYPERLIQUID`).
+	// Venue bucket (`BINANCE` / `OKX` / `GATE` / `BYBIT` / `KRAKEN` / `HYPERLIQUID` / `DERIBIT`).
 	ExchangeType string `json:"exchange_type"`
 	// Business type (`SPOT` Spot / `FUTURE` Futures / `MARGIN` Margin).
 	BusinessType string `json:"business_type"`
@@ -36,7 +36,7 @@ type CrossexOrder struct {
 	QuoteQty string `json:"quote_qty"`
 	// Order price.
 	Price string `json:"price"`
-	// Time in force (default `GTC`; enum: `GTC` / `IOC` / `FOK` / `POC`).
+	// Time-in-force policy (default: GTC; allowed values: GTC, IOC, FOK, POC, and RPI)
 	TimeInForce string `json:"time_in_force"`
 	// Filled base amount.
 	ExecutedQty string `json:"executed_qty"`

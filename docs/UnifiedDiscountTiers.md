@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **Discount** | **string** | Discount | [optional] 
 **LowerLimit** | **string** | Lower limit | [optional] 
 **UpperLimit** | **string** | Upper limit, + indicates positive infinity | [optional] 
-**Leverage** | **string** | Position leverage | [optional] 
+**Leverage** | **string** | Leverage multiplier | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

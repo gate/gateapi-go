@@ -16,10 +16,14 @@ type OtcStableCoinOrderListItem struct {
 	TradeNo string `json:"trade_no,omitempty"`
 	// Payment currency
 	PayCoin string `json:"pay_coin,omitempty"`
+	// Payment currency icon
+	PayIcon string `json:"pay_icon,omitempty"`
 	// Payment amount
 	PayAmount string `json:"pay_amount,omitempty"`
 	// Received currency
 	GetCoin string `json:"get_coin,omitempty"`
+	// Received currency icon
+	GetIcon string `json:"get_icon,omitempty"`
 	// Received amount
 	GetAmount string `json:"get_amount,omitempty"`
 	// Exchange rate
@@ -28,7 +32,7 @@ type OtcStableCoinOrderListItem struct {
 	RateReci string `json:"rate_reci,omitempty"`
 	// PROCESSING: in progress / DONE: completed / FAILED: failed
 	Status string `json:"status,omitempty"`
-	// timetimestamp
+	// Created time
 	CreateTimest int32 `json:"create_timest,omitempty"`
 	// Created time
 	CreateTime string `json:"create_time,omitempty"`

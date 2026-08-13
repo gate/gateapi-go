@@ -21,18 +21,24 @@ type PlaceBizPushOrder struct {
 	UnitPrice string `json:"unitPrice"`
 	// Ad amount priced in `currencyType`.
 	Number string `json:"number"`
-	// Payment types, comma-separated; from pay type list `pay_type`, e.g. `bank`, `alipay`, `wechat`, `paypal`, `swift`, `wu`.
+	// Payment types enabled for the ad, comma-separated; values can be obtained from `pay_type` in the payment method list, e.g. `bank`, `alipay`, `wechat`, `paypal`, `swift`, `wu`. `pay_type_json` uses the types in this field as keys to specify the corresponding payment accounts.
 	PayType string `json:"payType"`
-	// JSON map of payment type -> user's payment method ID.
+	// JSON string of specific payment accounts corresponding to `payType`. Each key is a payment type listed in `payType`, and each value is the current user's payment method ID for that type. For example, when `payType` is `bank,swift`, this field can be {\"bank\":\"10001\",\"swift\":\"10002\"}.
 	PayTypeJson string `json:"pay_type_json,omitempty"`
 	// Price type: `0` floating; `1` fixed.
 	RateFixed string `json:"rateFixed,omitempty"`
 	// Pass ad ID when editing; omit or empty when publishing a new ad.
 	Oid string `json:"oid,omitempty"`
-	// Minimum trade amount in `exchangeType`.
-	MinAmount string `json:"minAmount"`
-	// Maximum amount per trade in `exchangeType` fiat units.
-	MaxAmount string `json:"maxAmount"`
+	// Minimum quantity per order, denominated by currencyType; required when limitBasis is not passed or is 0
+	MinAmount string `json:"minAmount,omitempty"`
+	// Maximum quantity per order, denominated by currencyType; required when limitBasis is not passed or is 0
+	MaxAmount string `json:"maxAmount,omitempty"`
+	// Trading limit unit. 0: by crypto quantity, 1: by fiat amount; defaults to 0 when not passed for a new ad. The limit unit of an existing ad cannot be changed when editing; a fiat-limit ad must keep passing 1 when edited
+	LimitBasis int32 `json:"limitBasis,omitempty"`
+	// Minimum amount per order, denominated by exchangeType; required when limitBasis is 1
+	FiatMinAmount string `json:"fiatMinAmount,omitempty"`
+	// Maximum amount per order, denominated by exchangeType; required when limitBasis is 1, and must not exceed the total fiat value of the ad quantity converted at the price
+	FiatMaxAmount string `json:"fiatMaxAmount,omitempty"`
 	// Minimum counterparty VIP level; `0` means no requirement.
 	TierLimit string `json:"tierLimit,omitempty"`
 	// Minimum counterparty verification level; `0` means no limit.
@@ -41,6 +47,8 @@ type PlaceBizPushOrder struct {
 	RegTimeLimit string `json:"regTimeLimit,omitempty"`
 	// Whether trading with the advertiser is restricted. `0`: no; `1`: yes.
 	AdvertisersLimit string `json:"advertisersLimit,omitempty"`
+	// Whether to restrict trading with Polymarket users. 0: no restriction, 1: restricted
+	PolymarketLimit int32 `json:"polymarket_limit,omitempty"`
 	// Payment timeout in minutes.
 	ExpireMin string `json:"expire_min,omitempty"`
 	// Advertisement trade terms displayed to ordering users; goes through off-platform traffic diversion risk control on submission, and when hit, the advertisement is not saved and code 70305102 is returned

@@ -13,7 +13,7 @@ package gateapi
 type PositionHistoryListDataCloseDetail struct {
 	// Margin ratio (multiplied by 100)
 	MarginLevel string `json:"margin_level,omitempty"`
-	// Position margin
+	// Margin
 	Margin string `json:"margin,omitempty"`
 	// Net equity
 	Equity string `json:"equity,omitempty"`

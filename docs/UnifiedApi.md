@@ -20,6 +20,7 @@ Method | HTTP request | Description
 [**ListCurrencyDiscountTiers**](UnifiedApi.md#ListCurrencyDiscountTiers) | **Get** /unified/currency_discount_tiers | Query unified account tiered
 [**ListLoanMarginTiers**](UnifiedApi.md#ListLoanMarginTiers) | **Get** /unified/loan_margin_tiers | Query unified account tiered loan margin
 [**CalculatePortfolioMargin**](UnifiedApi.md#CalculatePortfolioMargin) | **Post** /unified/portfolio_calculator | Portfolio margin calculator
+[**SetUserLeverage**](UnifiedApi.md#SetUserLeverage) | **Post** /unified/leverage/user_setting | Set leverage for all of the user&#39;s borrowed currencies
 [**GetUserLeverageCurrencyConfig**](UnifiedApi.md#GetUserLeverageCurrencyConfig) | **Get** /unified/leverage/user_currency_config | Maximum and minimum currency leverage that can be set
 [**GetUserLeverageCurrencySetting**](UnifiedApi.md#GetUserLeverageCurrencySetting) | **Get** /unified/leverage/user_currency_setting | Get user currency leverage
 [**SetUserLeverageCurrencySetting**](UnifiedApi.md#SetUserLeverageCurrencySetting) | **Post** /unified/leverage/user_currency_setting | Set loan currency leverage
@@ -1142,6 +1143,77 @@ func main() {
 ### Authorization
 
 No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+## SetUserLeverage
+
+> []LeverageFailedCurrencies SetUserLeverage(ctx, userLeverageSetting)
+
+Set leverage for all of the user's borrowed currencies
+
+Note the following: - Leverage cannot be changed for currencies with outstanding loans. - A leverage value above a currency's limit is capped at that limit. - Failures are not rolled back and affect only the currencies that failed. For example, if USDT has an outstanding loan, only the USDT leverage remains unchanged.
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**userLeverageSetting** | [**UserLeverageSetting**](UserLeverageSetting.md)|  | 
+
+### Example
+
+```golang
+package main
+
+import (
+    "context"
+    "fmt"
+
+    "github.com/gate/gateapi-go/v7"
+)
+
+func main() {
+    client := gateapi.NewAPIClient(gateapi.NewConfiguration())
+    // uncomment the next line if your are testing against testnet
+    // client.ChangeBasePath("https://fx-api-testnet.gateio.ws/api/v4")
+    ctx := context.WithValue(context.Background(),
+                             gateapi.ContextGateAPIV4,
+                             gateapi.GateAPIV4{
+                                 Key:    "YOUR_API_KEY",
+                                 Secret: "YOUR_API_SECRET",
+                             }
+                            )
+    userLeverageSetting := gateapi.UserLeverageSetting{} // UserLeverageSetting - 
+    
+    result, _, err := client.UnifiedApi.SetUserLeverage(ctx, userLeverageSetting)
+    if err != nil {
+        if e, ok := err.(gateapi.GateAPIError); ok {
+            fmt.Printf("gate api error: %s\n", e.Error())
+        } else {
+            fmt.Printf("generic error: %s\n", err.Error())
+        }
+    } else {
+        fmt.Println(result)
+    }
+}
+```
+
+
+### Return type
+
+[**[]LeverageFailedCurrencies**](LeverageFailedCurrencies.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
 
 ### HTTP request headers
 

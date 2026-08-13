@@ -15,7 +15,7 @@ type OrderListDataList struct {
 	OrderId int32 `json:"order_id,omitempty"`
 	// Currency pair
 	Symbol string `json:"symbol,omitempty"`
-	// Trading symbol description
+	// Symbol description
 	SymbolDesc string `json:"symbol_desc,omitempty"`
 	// Trade type (market=market price, trigger=trigger price)
 	PriceType string `json:"price_type,omitempty"`
@@ -25,9 +25,9 @@ type OrderListDataList struct {
 	StateDesc string `json:"state_desc,omitempty"`
 	// Is completed (0=shown in active order list, 1=not shown in active list)
 	Finished int32 `json:"finished,omitempty"`
-	// Order side (1=sell, 2=buy)
+	// Side (1=sell, 2=buy)
 	Side int32 `json:"side,omitempty"`
-	// Order volume
+	// Order quantity
 	Volume string `json:"volume,omitempty"`
 	// Trigger price
 	Price string `json:"price,omitempty"`

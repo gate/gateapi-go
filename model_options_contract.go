@@ -41,9 +41,9 @@ type OptionsContract struct {
 	OrderPriceRound string `json:"order_price_round,omitempty"`
 	// Minimum mark price increment
 	MarkPriceRound string `json:"mark_price_round,omitempty"`
-	// Minimum order size allowed by the contract
+	// Minimum order quantity
 	OrderSizeMin int64 `json:"order_size_min,omitempty"`
-	// Maximum order size allowed by the contract
+	// Maximum order quantity
 	OrderSizeMax int64 `json:"order_size_max,omitempty"`
 	// Deprecated
 	OrderPriceDeviate string `json:"order_price_deviate,omitempty"`

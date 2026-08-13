@@ -14,11 +14,11 @@ type DeliverySettlement struct {
 	Time int64 `json:"time,omitempty"`
 	// Futures contract
 	Contract string `json:"contract,omitempty"`
-	// Position leverage
+	// Leverage multiplier
 	Leverage string `json:"leverage,omitempty"`
 	// Position size
 	Size int64 `json:"size,omitempty"`
-	// Position margin
+	// Margin
 	Margin string `json:"margin,omitempty"`
 	// Average entry price
 	EntryPrice string `json:"entry_price,omitempty"`

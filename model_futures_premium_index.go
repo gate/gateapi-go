@@ -15,9 +15,9 @@ type FuturesPremiumIndex struct {
 	T float64 `json:"t,omitempty"`
 	// Close price
 	C string `json:"c,omitempty"`
-	// Highest price
+	// High price
 	H string `json:"h,omitempty"`
-	// Lowest price
+	// Low price
 	L string `json:"l,omitempty"`
 	// Open price
 	O string `json:"o,omitempty"`

@@ -14,8 +14,8 @@ Name | Type | Description | Notes
 **MinQuoteAmount** | **string** | Minimum amount of quote currency to trade, &#x60;null&#x60; means no limit | [optional] 
 **MaxBaseAmount** | **string** | Maximum amount of base currency to trade, &#x60;null&#x60; means no limit | [optional] 
 **MaxQuoteAmount** | **string** | Maximum amount of quote currency to trade, &#x60;null&#x60; means no limit | [optional] 
-**AmountPrecision** | **int32** | Amount scale | [optional] 
-**Precision** | **int32** | Price scale | [optional] 
+**AmountPrecision** | **int32** | Quantity precision | [optional] 
+**Precision** | **int32** | Price precision | [optional] 
 **TradeStatus** | **string** | Trading status  - untradable: cannot be traded - buyable: can be bought - sellable: can be sold - tradable: can be bought and sold | [optional] 
 **SellStart** | **int64** | Sell start unix timestamp in seconds | [optional] 
 **BuyStart** | **int64** | Buy start unix timestamp in seconds | [optional] 
@@ -26,8 +26,8 @@ Name | Type | Description | Notes
 **UpRate** | **string** | Maximum Quote Rise Percentage | [optional] 
 **DownRate** | **string** | Maximum Quote Decline Percentage | [optional] 
 **Slippage** | **string** | Maximum supported slippage ratio for Spot Market Order Placement, calculated based on the latest market price at the time of order placement as the benchmark (Example: 0.03 means 3%) | [optional] 
-**MarketOrderMaxStock** | **string** | Maximum Market Order Quantity | [optional] 
-**MarketOrderMaxMoney** | **string** | Maximum Market Order Amount | [optional] 
+**MarketOrderMaxStock** | **string** | Maximum market order quantity. &#x60;null&#x60; or &#x60;0&#x60; means no limit | [optional] 
+**MarketOrderMaxMoney** | **string** | Maximum market order amount. &#x60;null&#x60; or &#x60;0&#x60; means no limit | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
