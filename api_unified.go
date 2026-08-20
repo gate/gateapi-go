@@ -33,7 +33,7 @@ type ListUnifiedAccountsOpts struct {
 
 /*
 ListUnifiedAccounts Get unified account information
-The assets of each currency in the account will be adjusted according to their liquidity, defined by corresponding adjustment coefficients, and then uniformly converted to USD to calculate the total asset value and position value of the account.  For specific formulas, please refer to [Margin Formula](#margin-formula)
+The assets of each currency in the account are assigned adjustment coefficients according to their liquidity and uniformly converted to USD to calculate the account&#39;s asset and position values.  For details, see [Margin Formula](https://www.gate.com/help/unified-account/risk_control_mechanism/33018).
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param optional nil or *ListUnifiedAccountsOpts - Optional Parameters:
   - @param "Currency" (optional.String) -  Query by specified currency name

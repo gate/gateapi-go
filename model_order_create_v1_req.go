@@ -11,7 +11,7 @@ package gateapi
 
 // Asset allocation optimization order request. **The array elements of `from` and `to` are both `CreateParam`, and the fields are `asset` + `amount`. ** There is no `ratio` field; if you copy parameters from the preview interface, you must convert the `to[].ratio` in the preview into the `to[].amount` required for placing an order (according to the product agreement, usually based on the order details returned by the preview, etc.). The `ratio` string cannot be directly reused as `amount`.
 type OrderCreateV1Req struct {
-	// Sell ​​side list, at least one item; each item is the currency and amount `amount` to be swapped out.
+	// Sell side list, at least one item; each item is the currency and amount `amount` to be swapped out.
 	From []CreateParam `json:"from"`
 	// Target side list, at least one item; each item is the target currency and **amount** `amount` (non-proportional). The structural semantics are different from `OrderPreviewV1Req.to` (`PreviewToParam`, including `ratio`), so do not mix them.
 	To []CreateParam `json:"to"`

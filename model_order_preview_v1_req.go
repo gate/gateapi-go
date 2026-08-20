@@ -11,7 +11,7 @@ package gateapi
 
 // Asset allocation optimization **preview** request. `from` is the selling quantity; `to` is the target currency and **distribution ratio ratio** (not the absolute quantity). Please use `OrderCreateV1Req` to place a formal order, and its `to` is `amount`.
 type OrderPreviewV1Req struct {
-	// Sell ​​side; each item is the currency + the swap amount `amount` (string decimal).
+	// Sell side; each item is the currency + the swap amount `amount` (string decimal).
 	From []PreviewFromParam `json:"from"`
 	// Target side; each item is currency + **ratio** `ratio` (string decimal, such as `0.5`). Typical source: `GET /asset-swap/config` → `recommend_v2` `schemes[].name` / `schemes[].ratio` of the strategy under a certain group.
 	To []PreviewToParam `json:"to"`

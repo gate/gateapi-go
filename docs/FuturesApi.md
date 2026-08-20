@@ -7,6 +7,7 @@ Method | HTTP request | Description
 [**ListFuturesContracts**](FuturesApi.md#ListFuturesContracts) | **Get** /futures/{settle}/contracts | Query all futures contracts
 [**ListFuturesContractsAll**](FuturesApi.md#ListFuturesContractsAll) | **Get** /futures/{settle}/contracts_all | Query all contract information (including delisted)
 [**GetFuturesContract**](FuturesApi.md#GetFuturesContract) | **Get** /futures/{settle}/contracts/{contract} | Query single contract information
+[**ListFuturesADLRiskStates**](FuturesApi.md#ListFuturesADLRiskStates) | **Get** /futures/{settle}/adl_risk_states | List market-level ADL risk states
 [**ListFuturesOrderBook**](FuturesApi.md#ListFuturesOrderBook) | **Get** /futures/{settle}/order_book | Query futures market depth information
 [**ListFuturesTrades**](FuturesApi.md#ListFuturesTrades) | **Get** /futures/{settle}/trades | Futures market transaction records
 [**ListFuturesCandlesticks**](FuturesApi.md#ListFuturesCandlesticks) | **Get** /futures/{settle}/candlesticks | Futures market K-line chart
@@ -87,7 +88,7 @@ Query all futures contracts
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**settle** | **string**| Settle currency | 
+**settle** | **string**| Perpetual futures settlement currency | 
 **optional** | **ListFuturesContractsOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
@@ -116,7 +117,7 @@ func main() {
     // uncomment the next line if your are testing against testnet
     // client.ChangeBasePath("https://fx-api-testnet.gateio.ws/api/v4")
     ctx := context.Background()
-    settle := "usdt" // string - Settle currency
+    settle := "usdt" // string - Perpetual futures settlement currency
     
     result, _, err := client.FuturesApi.ListFuturesContracts(ctx, settle, nil)
     if err != nil {
@@ -160,7 +161,7 @@ Query all contract information (including delisted)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**settle** | **string**| Settle currency | 
+**settle** | **string**| Perpetual futures settlement currency | 
 **optional** | **ListFuturesContractsAllOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
@@ -189,7 +190,7 @@ func main() {
     // uncomment the next line if your are testing against testnet
     // client.ChangeBasePath("https://fx-api-testnet.gateio.ws/api/v4")
     ctx := context.Background()
-    settle := "usdt" // string - Settle currency
+    settle := "usdt" // string - Perpetual futures settlement currency
     
     result, _, err := client.FuturesApi.ListFuturesContractsAll(ctx, settle, nil)
     if err != nil {
@@ -233,7 +234,7 @@ Query single contract information
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**settle** | **string**| Settle currency | 
+**settle** | **string**| Perpetual futures settlement currency | 
 **contract** | **string**| Futures contract | 
 
 ### Example
@@ -253,7 +254,7 @@ func main() {
     // uncomment the next line if your are testing against testnet
     // client.ChangeBasePath("https://fx-api-testnet.gateio.ws/api/v4")
     ctx := context.Background()
-    settle := "usdt" // string - Settle currency
+    settle := "usdt" // string - Perpetual futures settlement currency
     contract := "BTC_USDT" // string - Futures contract
     
     result, _, err := client.FuturesApi.GetFuturesContract(ctx, settle, contract)
@@ -287,6 +288,71 @@ No authorization required
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
+## ListFuturesADLRiskStates
+
+> FuturesAdlRiskStates ListFuturesADLRiskStates(ctx, settle)
+
+List market-level ADL risk states
+
+List the current ADL risk states of all futures markets for the specified settlement currency
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**settle** | **string**| Perpetual futures settlement currency | 
+
+### Example
+
+```golang
+package main
+
+import (
+    "context"
+    "fmt"
+
+    "github.com/gate/gateapi-go/v7"
+)
+
+func main() {
+    client := gateapi.NewAPIClient(gateapi.NewConfiguration())
+    // uncomment the next line if your are testing against testnet
+    // client.ChangeBasePath("https://fx-api-testnet.gateio.ws/api/v4")
+    ctx := context.Background()
+    settle := "usdt" // string - Perpetual futures settlement currency
+    
+    result, _, err := client.FuturesApi.ListFuturesADLRiskStates(ctx, settle)
+    if err != nil {
+        if e, ok := err.(gateapi.GateAPIError); ok {
+            fmt.Printf("gate api error: %s\n", e.Error())
+        } else {
+            fmt.Printf("generic error: %s\n", err.Error())
+        }
+    } else {
+        fmt.Println(result)
+    }
+}
+```
+
+
+### Return type
+
+[**FuturesAdlRiskStates**](FuturesADLRiskStates.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
 ## ListFuturesOrderBook
 
 > FuturesOrderBook ListFuturesOrderBook(ctx, settle, contract, optional)
@@ -300,7 +366,7 @@ Bids will be sorted by price from high to low, while asks sorted reversely
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**settle** | **string**| Settle currency | 
+**settle** | **string**| Perpetual futures settlement currency | 
 **contract** | **string**| Futures contract | 
 **optional** | **ListFuturesOrderBookOpts** | optional parameters | nil if no parameters
 
@@ -331,7 +397,7 @@ func main() {
     // uncomment the next line if your are testing against testnet
     // client.ChangeBasePath("https://fx-api-testnet.gateio.ws/api/v4")
     ctx := context.Background()
-    settle := "usdt" // string - Settle currency
+    settle := "usdt" // string - Perpetual futures settlement currency
     contract := "BTC_USDT" // string - Futures contract
     
     result, _, err := client.FuturesApi.ListFuturesOrderBook(ctx, settle, contract, nil)
@@ -376,7 +442,7 @@ Futures market transaction records
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**settle** | **string**| Settle currency | 
+**settle** | **string**| Perpetual futures settlement currency | 
 **contract** | **string**| Futures contract | 
 **optional** | **ListFuturesTradesOpts** | optional parameters | nil if no parameters
 
@@ -409,7 +475,7 @@ func main() {
     // uncomment the next line if your are testing against testnet
     // client.ChangeBasePath("https://fx-api-testnet.gateio.ws/api/v4")
     ctx := context.Background()
-    settle := "usdt" // string - Settle currency
+    settle := "usdt" // string - Perpetual futures settlement currency
     contract := "BTC_USDT" // string - Futures contract
     
     result, _, err := client.FuturesApi.ListFuturesTrades(ctx, settle, contract, nil)
@@ -456,7 +522,7 @@ Return specified contract candlesticks. If prefix `contract` with `mark_`, the c
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**settle** | **string**| Settle currency | 
+**settle** | **string**| Perpetual futures settlement currency | 
 **contract** | **string**| Futures contract | 
 **optional** | **ListFuturesCandlesticksOpts** | optional parameters | nil if no parameters
 
@@ -489,7 +555,7 @@ func main() {
     // uncomment the next line if your are testing against testnet
     // client.ChangeBasePath("https://fx-api-testnet.gateio.ws/api/v4")
     ctx := context.Background()
-    settle := "usdt" // string - Settle currency
+    settle := "usdt" // string - Perpetual futures settlement currency
     contract := "BTC_USDT" // string - Futures contract
     
     result, _, err := client.FuturesApi.ListFuturesCandlesticks(ctx, settle, contract, nil)
@@ -536,7 +602,7 @@ K-line chart data returns a maximum of 1000 points per request. When specifying 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**settle** | **string**| Settle currency | 
+**settle** | **string**| Perpetual futures settlement currency | 
 **contract** | **string**| Futures contract | 
 **optional** | **ListFuturesPremiumIndexOpts** | optional parameters | nil if no parameters
 
@@ -568,7 +634,7 @@ func main() {
     // uncomment the next line if your are testing against testnet
     // client.ChangeBasePath("https://fx-api-testnet.gateio.ws/api/v4")
     ctx := context.Background()
-    settle := "usdt" // string - Settle currency
+    settle := "usdt" // string - Perpetual futures settlement currency
     contract := "BTC_USDT" // string - Futures contract
     
     result, _, err := client.FuturesApi.ListFuturesPremiumIndex(ctx, settle, contract, nil)
@@ -613,7 +679,7 @@ Get all futures trading statistics
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**settle** | **string**| Settle currency | 
+**settle** | **string**| Perpetual futures settlement currency | 
 **optional** | **ListFuturesTickersOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
@@ -641,7 +707,7 @@ func main() {
     // uncomment the next line if your are testing against testnet
     // client.ChangeBasePath("https://fx-api-testnet.gateio.ws/api/v4")
     ctx := context.Background()
-    settle := "usdt" // string - Settle currency
+    settle := "usdt" // string - Perpetual futures settlement currency
     
     result, _, err := client.FuturesApi.ListFuturesTickers(ctx, settle, nil)
     if err != nil {
@@ -685,7 +751,7 @@ Futures market historical funding rate
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**settle** | **string**| Settle currency | 
+**settle** | **string**| Perpetual futures settlement currency | 
 **contract** | **string**| Futures contract | 
 **optional** | **ListFuturesFundingRateHistoryOpts** | optional parameters | nil if no parameters
 
@@ -716,7 +782,7 @@ func main() {
     // uncomment the next line if your are testing against testnet
     // client.ChangeBasePath("https://fx-api-testnet.gateio.ws/api/v4")
     ctx := context.Background()
-    settle := "usdt" // string - Settle currency
+    settle := "usdt" // string - Perpetual futures settlement currency
     contract := "BTC_USDT" // string - Futures contract
     
     result, _, err := client.FuturesApi.ListFuturesFundingRateHistory(ctx, settle, contract, nil)
@@ -761,7 +827,7 @@ Batch Query Historical Funding Rate Data for Perpetual Contracts
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**settle** | **string**| Settle currency | 
+**settle** | **string**| Perpetual futures settlement currency | 
 **batchFundingRatesRequest** | [**BatchFundingRatesRequest**](BatchFundingRatesRequest.md)|  | 
 
 ### Example
@@ -781,7 +847,7 @@ func main() {
     // uncomment the next line if your are testing against testnet
     // client.ChangeBasePath("https://fx-api-testnet.gateio.ws/api/v4")
     ctx := context.Background()
-    settle := "usdt" // string - Settle currency
+    settle := "usdt" // string - Perpetual futures settlement currency
     batchFundingRatesRequest := gateapi.BatchFundingRatesRequest{} // BatchFundingRatesRequest - 
     
     result, _, err := client.FuturesApi.ListBatchFuturesFundingRates(ctx, settle, batchFundingRatesRequest)
@@ -826,7 +892,7 @@ Futures market insurance fund history
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**settle** | **string**| Settle currency | 
+**settle** | **string**| Perpetual futures settlement currency | 
 **optional** | **ListFuturesInsuranceLedgerOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
@@ -854,7 +920,7 @@ func main() {
     // uncomment the next line if your are testing against testnet
     // client.ChangeBasePath("https://fx-api-testnet.gateio.ws/api/v4")
     ctx := context.Background()
-    settle := "usdt" // string - Settle currency
+    settle := "usdt" // string - Perpetual futures settlement currency
     
     result, _, err := client.FuturesApi.ListFuturesInsuranceLedger(ctx, settle, nil)
     if err != nil {
@@ -898,7 +964,7 @@ Futures statistics
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**settle** | **string**| Settle currency | 
+**settle** | **string**| Perpetual futures settlement currency | 
 **contract** | **string**| Futures contract | 
 **optional** | **ListContractStatsOpts** | optional parameters | nil if no parameters
 
@@ -929,7 +995,7 @@ func main() {
     // uncomment the next line if your are testing against testnet
     // client.ChangeBasePath("https://fx-api-testnet.gateio.ws/api/v4")
     ctx := context.Background()
-    settle := "usdt" // string - Settle currency
+    settle := "usdt" // string - Perpetual futures settlement currency
     contract := "BTC_USDT" // string - Futures contract
     
     result, _, err := client.FuturesApi.ListContractStats(ctx, settle, contract, nil)
@@ -974,7 +1040,7 @@ Query index constituents
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**settle** | **string**| Settle currency | 
+**settle** | **string**| Perpetual futures settlement currency | 
 **index** | **string**| Index name | 
 
 ### Example
@@ -994,7 +1060,7 @@ func main() {
     // uncomment the next line if your are testing against testnet
     // client.ChangeBasePath("https://fx-api-testnet.gateio.ws/api/v4")
     ctx := context.Background()
-    settle := "usdt" // string - Settle currency
+    settle := "usdt" // string - Perpetual futures settlement currency
     index := "BTC_USDT" // string - Index name
     
     result, _, err := client.FuturesApi.GetIndexConstituents(ctx, settle, index)
@@ -1041,7 +1107,7 @@ The time interval between from and to is maximum 3600. Some private fields are n
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**settle** | **string**| Settle currency | 
+**settle** | **string**| Perpetual futures settlement currency | 
 **optional** | **ListLiquidatedOrdersOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
@@ -1072,7 +1138,7 @@ func main() {
     // uncomment the next line if your are testing against testnet
     // client.ChangeBasePath("https://fx-api-testnet.gateio.ws/api/v4")
     ctx := context.Background()
-    settle := "usdt" // string - Settle currency
+    settle := "usdt" // string - Perpetual futures settlement currency
     
     result, _, err := client.FuturesApi.ListLiquidatedOrders(ctx, settle, nil)
     if err != nil {
@@ -1118,7 +1184,7 @@ When the 'contract' parameter is not passed, the default is to query the risk li
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**settle** | **string**| Settle currency | 
+**settle** | **string**| Perpetual futures settlement currency | 
 **optional** | **ListFuturesRiskLimitTiersOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
@@ -1148,7 +1214,7 @@ func main() {
     // uncomment the next line if your are testing against testnet
     // client.ChangeBasePath("https://fx-api-testnet.gateio.ws/api/v4")
     ctx := context.Background()
-    settle := "usdt" // string - Settle currency
+    settle := "usdt" // string - Perpetual futures settlement currency
     
     result, _, err := client.FuturesApi.ListFuturesRiskLimitTiers(ctx, settle, nil)
     if err != nil {
@@ -1194,7 +1260,7 @@ Query account information for classic future account and unified account
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**settle** | **string**| Settle currency | 
+**settle** | **string**| Perpetual futures settlement currency | 
 
 ### Example
 
@@ -1219,7 +1285,7 @@ func main() {
                                  Secret: "YOUR_API_SECRET",
                              }
                             )
-    settle := "usdt" // string - Settle currency
+    settle := "usdt" // string - Perpetual futures settlement currency
     
     result, _, err := client.FuturesApi.ListFuturesAccounts(ctx, settle)
     if err != nil {
@@ -1265,7 +1331,7 @@ If the contract field is passed, only records containing this field after 2023-1
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**settle** | **string**| Settle currency | 
+**settle** | **string**| Perpetual futures settlement currency | 
 **optional** | **ListFuturesAccountBookOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
@@ -1304,7 +1370,7 @@ func main() {
                                  Secret: "YOUR_API_SECRET",
                              }
                             )
-    settle := "usdt" // string - Settle currency
+    settle := "usdt" // string - Perpetual futures settlement currency
     
     result, _, err := client.FuturesApi.ListFuturesAccountBook(ctx, settle, nil)
     if err != nil {
@@ -1348,7 +1414,7 @@ Get user position list
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**settle** | **string**| Settle currency | 
+**settle** | **string**| Perpetual futures settlement currency | 
 **optional** | **ListPositionsOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
@@ -1384,7 +1450,7 @@ func main() {
                                  Secret: "YOUR_API_SECRET",
                              }
                             )
-    settle := "usdt" // string - Settle currency
+    settle := "usdt" // string - Perpetual futures settlement currency
     
     result, _, err := client.FuturesApi.ListPositions(ctx, settle, nil)
     if err != nil {
@@ -1428,7 +1494,7 @@ Get user's historical position information list by time
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**settle** | **string**| Settle currency | 
+**settle** | **string**| Perpetual futures settlement currency | 
 **contract** | **string**| Futures contract | 
 **optional** | **ListPositionsTimerangeOpts** | optional parameters | nil if no parameters
 
@@ -1466,7 +1532,7 @@ func main() {
                                  Secret: "YOUR_API_SECRET",
                              }
                             )
-    settle := "usdt" // string - Settle currency
+    settle := "usdt" // string - Perpetual futures settlement currency
     contract := "BTC_USDT" // string - Futures contract
     
     result, _, err := client.FuturesApi.ListPositionsTimerange(ctx, settle, contract, nil)
@@ -1513,7 +1579,7 @@ Get single position information from a contract. If you hold two postions in one
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**settle** | **string**| Settle currency | 
+**settle** | **string**| Perpetual futures settlement currency | 
 **contract** | **string**| Futures contract | 
 
 ### Example
@@ -1539,7 +1605,7 @@ func main() {
                                  Secret: "YOUR_API_SECRET",
                              }
                             )
-    settle := "usdt" // string - Settle currency
+    settle := "usdt" // string - Perpetual futures settlement currency
     contract := "BTC_USDT" // string - Futures contract
     
     result, _, err := client.FuturesApi.GetPosition(ctx, settle, contract)
@@ -1586,7 +1652,7 @@ Get Leverage Information for Specified Mode
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**settle** | **string**| Settle currency | 
+**settle** | **string**| Perpetual futures settlement currency | 
 **contract** | **string**| Futures contract | 
 **posMarginMode** | **string**| Position Margin Mode, required for split position mode, values: isolated/cross. | 
 **dualSide** | **string**| dual_long - Long, dual_short - Short | 
@@ -1614,7 +1680,7 @@ func main() {
                                  Secret: "YOUR_API_SECRET",
                              }
                             )
-    settle := "usdt" // string - Settle currency
+    settle := "usdt" // string - Perpetual futures settlement currency
     contract := "BTC_USDT" // string - Futures contract
     posMarginMode := "isolated" // string - Position Margin Mode, required for split position mode, values: isolated/cross.
     dualSide := "dual_long" // string - dual_long - Long, dual_short - Short
@@ -1663,7 +1729,7 @@ Under the new risk limit rules(https://www.gate.com/en/help/futures/futures-logi
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**settle** | **string**| Settle currency | 
+**settle** | **string**| Perpetual futures settlement currency | 
 **contract** | **string**| Futures contract | 
 **change** | **string**| Margin change amount, positive number increases, negative number decreases | 
 
@@ -1690,7 +1756,7 @@ func main() {
                                  Secret: "YOUR_API_SECRET",
                              }
                             )
-    settle := "usdt" // string - Settle currency
+    settle := "usdt" // string - Perpetual futures settlement currency
     contract := "BTC_USDT" // string - Futures contract
     change := "0.01" // string - Margin change amount, positive number increases, negative number decreases
     
@@ -1738,7 +1804,7 @@ Update position leverage
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**settle** | **string**| Settle currency | 
+**settle** | **string**| Perpetual futures settlement currency | 
 **contract** | **string**| Futures contract | 
 **leverage** | **string**| Set the leverage for isolated margin. When setting isolated margin leverage, the &#x60;cross_leverage_limit&#x60;  must be empty. | 
 **optional** | **UpdatePositionLeverageOpts** | optional parameters | nil if no parameters
@@ -1775,7 +1841,7 @@ func main() {
                                  Secret: "YOUR_API_SECRET",
                              }
                             )
-    settle := "usdt" // string - Settle currency
+    settle := "usdt" // string - Perpetual futures settlement currency
     contract := "BTC_USDT" // string - Futures contract
     leverage := "10" // string - Set the leverage for isolated margin. When setting isolated margin leverage, the `cross_leverage_limit`  must be empty.
     
@@ -1823,7 +1889,7 @@ To simplify the complex logic of the leverage interface, added a new interface f
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**settle** | **string**| Settle currency | 
+**settle** | **string**| Perpetual futures settlement currency | 
 **contract** | **string**| Futures contract | 
 **leverage** | **string**| Position Leverage Multiple | 
 **marginMode** | **string**| Margin Mode isolated/cross | 
@@ -1860,7 +1926,7 @@ func main() {
                                  Secret: "YOUR_API_SECRET",
                              }
                             )
-    settle := "usdt" // string - Settle currency
+    settle := "usdt" // string - Perpetual futures settlement currency
     contract := "BTC_USDT" // string - Futures contract
     leverage := "10" // string - Position Leverage Multiple
     marginMode := "cross" // string - Margin Mode isolated/cross
@@ -1907,7 +1973,7 @@ Switch Position Margin Mode
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**settle** | **string**| Settle currency | 
+**settle** | **string**| Perpetual futures settlement currency | 
 **futuresPositionCrossMode** | [**FuturesPositionCrossMode**](FuturesPositionCrossMode.md)|  | 
 
 ### Example
@@ -1933,7 +1999,7 @@ func main() {
                                  Secret: "YOUR_API_SECRET",
                              }
                             )
-    settle := "usdt" // string - Settle currency
+    settle := "usdt" // string - Perpetual futures settlement currency
     futuresPositionCrossMode := gateapi.FuturesPositionCrossMode{} // FuturesPositionCrossMode - 
     
     result, _, err := client.FuturesApi.UpdatePositionCrossMode(ctx, settle, futuresPositionCrossMode)
@@ -1978,7 +2044,7 @@ Switch Between Cross and Isolated Margin Modes Under Hedge Mode
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**settle** | **string**| Settle currency | 
+**settle** | **string**| Perpetual futures settlement currency | 
 **updateDualCompPositionCrossModeRequest** | [**UpdateDualCompPositionCrossModeRequest**](UpdateDualCompPositionCrossModeRequest.md)|  | 
 
 ### Example
@@ -2004,7 +2070,7 @@ func main() {
                                  Secret: "YOUR_API_SECRET",
                              }
                             )
-    settle := "usdt" // string - Settle currency
+    settle := "usdt" // string - Perpetual futures settlement currency
     updateDualCompPositionCrossModeRequest := gateapi.UpdateDualCompPositionCrossModeRequest{} // UpdateDualCompPositionCrossModeRequest - 
     
     result, _, err := client.FuturesApi.UpdateDualCompPositionCrossMode(ctx, settle, updateDualCompPositionCrossModeRequest)
@@ -2051,7 +2117,7 @@ Under the new risk limit rules(https://www.gate.com/en/help/futures/futures-logi
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**settle** | **string**| Settle currency | 
+**settle** | **string**| Perpetual futures settlement currency | 
 **contract** | **string**| Futures contract | 
 **riskLimit** | **string**| New risk limit value | 
 
@@ -2078,7 +2144,7 @@ func main() {
                                  Secret: "YOUR_API_SECRET",
                              }
                             )
-    settle := "usdt" // string - Settle currency
+    settle := "usdt" // string - Perpetual futures settlement currency
     contract := "BTC_USDT" // string - Futures contract
     riskLimit := "1000000" // string - New risk limit value
     
@@ -2126,7 +2192,7 @@ The prerequisite for changing mode is that all positions have no holdings and no
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**settle** | **string**| Settle currency | 
+**settle** | **string**| Perpetual futures settlement currency | 
 **dualMode** | **bool**| Whether to enable Hedge Mode | 
 
 ### Example
@@ -2152,7 +2218,7 @@ func main() {
                                  Secret: "YOUR_API_SECRET",
                              }
                             )
-    settle := "usdt" // string - Settle currency
+    settle := "usdt" // string - Perpetual futures settlement currency
     dualMode := true // bool - Whether to enable Hedge Mode
     
     result, _, err := client.FuturesApi.SetDualMode(ctx, settle, dualMode)
@@ -2199,7 +2265,7 @@ The prerequisite for changing mode is that all positions have no holdings and no
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**settle** | **string**| Settle currency | 
+**settle** | **string**| Perpetual futures settlement currency | 
 **positionMode** | **string**| Optional Values: single, dual, dual_plus, representing Single Direction, Dual Direction, Split Position respectively | 
 
 ### Example
@@ -2225,7 +2291,7 @@ func main() {
                                  Secret: "YOUR_API_SECRET",
                              }
                             )
-    settle := "usdt" // string - Settle currency
+    settle := "usdt" // string - Perpetual futures settlement currency
     positionMode := "dual_plus" // string - Optional Values: single, dual, dual_plus, representing Single Direction, Dual Direction, Split Position respectively
     
     result, _, err := client.FuturesApi.SetPositionMode(ctx, settle, positionMode)
@@ -2270,7 +2336,7 @@ Get position information in Hedge Mode
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**settle** | **string**| Settle currency | 
+**settle** | **string**| Perpetual futures settlement currency | 
 **contract** | **string**| Futures contract | 
 
 ### Example
@@ -2296,7 +2362,7 @@ func main() {
                                  Secret: "YOUR_API_SECRET",
                              }
                             )
-    settle := "usdt" // string - Settle currency
+    settle := "usdt" // string - Perpetual futures settlement currency
     contract := "BTC_USDT" // string - Futures contract
     
     result, _, err := client.FuturesApi.GetDualModePosition(ctx, settle, contract)
@@ -2341,7 +2407,7 @@ Update position margin in Hedge Mode
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**settle** | **string**| Settle currency | 
+**settle** | **string**| Perpetual futures settlement currency | 
 **contract** | **string**| Futures contract | 
 **change** | **string**| Margin change amount, positive number increases, negative number decreases | 
 **dualSide** | **string**| Long or short position | 
@@ -2369,7 +2435,7 @@ func main() {
                                  Secret: "YOUR_API_SECRET",
                              }
                             )
-    settle := "usdt" // string - Settle currency
+    settle := "usdt" // string - Perpetual futures settlement currency
     contract := "BTC_USDT" // string - Futures contract
     change := "0.01" // string - Margin change amount, positive number increases, negative number decreases
     dualSide := "dual_long" // string - Long or short position
@@ -2416,7 +2482,7 @@ Update position leverage in Hedge Mode
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**settle** | **string**| Settle currency | 
+**settle** | **string**| Perpetual futures settlement currency | 
 **contract** | **string**| Futures contract | 
 **leverage** | **string**| New position leverage | 
 **optional** | **UpdateDualModePositionLeverageOpts** | optional parameters | nil if no parameters
@@ -2452,7 +2518,7 @@ func main() {
                                  Secret: "YOUR_API_SECRET",
                              }
                             )
-    settle := "usdt" // string - Settle currency
+    settle := "usdt" // string - Perpetual futures settlement currency
     contract := "BTC_USDT" // string - Futures contract
     leverage := "10" // string - New position leverage
     
@@ -2500,7 +2566,7 @@ Under the new risk limit rules(https://www.gate.com/en/help/futures/futures-logi
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**settle** | **string**| Settle currency | 
+**settle** | **string**| Perpetual futures settlement currency | 
 **contract** | **string**| Futures contract | 
 **riskLimit** | **string**| New risk limit value | 
 
@@ -2527,7 +2593,7 @@ func main() {
                                  Secret: "YOUR_API_SECRET",
                              }
                             )
-    settle := "usdt" // string - Settle currency
+    settle := "usdt" // string - Perpetual futures settlement currency
     contract := "BTC_USDT" // string - Futures contract
     riskLimit := "1000000" // string - New risk limit value
     
@@ -2575,7 +2641,7 @@ Query futures order list
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**settle** | **string**| Settle currency | 
+**settle** | **string**| Perpetual futures settlement currency | 
 **status** | **string**| Query order list based on status | 
 **optional** | **ListFuturesOrdersOpts** | optional parameters | nil if no parameters
 
@@ -2613,7 +2679,7 @@ func main() {
                                  Secret: "YOUR_API_SECRET",
                              }
                             )
-    settle := "usdt" // string - Settle currency
+    settle := "usdt" // string - Perpetual futures settlement currency
     status := "open" // string - Query order list based on status
     
     result, _, err := client.FuturesApi.ListFuturesOrders(ctx, settle, status, nil)
@@ -2660,7 +2726,7 @@ Place futures order
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**settle** | **string**| Settle currency | 
+**settle** | **string**| Perpetual futures settlement currency | 
 **futuresOrder** | [**FuturesOrder**](FuturesOrder.md)|  | 
 **optional** | **CreateFuturesOrderOpts** | optional parameters | nil if no parameters
 
@@ -2695,7 +2761,7 @@ func main() {
                                  Secret: "YOUR_API_SECRET",
                              }
                             )
-    settle := "usdt" // string - Settle currency
+    settle := "usdt" // string - Perpetual futures settlement currency
     futuresOrder := gateapi.FuturesOrder{} // FuturesOrder - 
     
     result, _, err := client.FuturesApi.CreateFuturesOrder(ctx, settle, futuresOrder, nil)
@@ -2742,7 +2808,7 @@ Zero-fill orders cannot be retrieved 10 minutes after order cancellation
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**settle** | **string**| Settle currency | 
+**settle** | **string**| Perpetual futures settlement currency | 
 **optional** | **CancelFuturesOrdersOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
@@ -2781,7 +2847,7 @@ func main() {
                                  Secret: "YOUR_API_SECRET",
                              }
                             )
-    settle := "usdt" // string - Settle currency
+    settle := "usdt" // string - Perpetual futures settlement currency
     
     result, _, err := client.FuturesApi.CancelFuturesOrders(ctx, settle, nil)
     if err != nil {
@@ -2825,7 +2891,7 @@ Query futures order list by time range
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**settle** | **string**| Settle currency | 
+**settle** | **string**| Perpetual futures settlement currency | 
 **optional** | **GetOrdersWithTimeRangeOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
@@ -2863,7 +2929,7 @@ func main() {
                                  Secret: "YOUR_API_SECRET",
                              }
                             )
-    settle := "usdt" // string - Settle currency
+    settle := "usdt" // string - Perpetual futures settlement currency
     
     result, _, err := client.FuturesApi.GetOrdersWithTimeRange(ctx, settle, nil)
     if err != nil {
@@ -2909,7 +2975,7 @@ Place batch futures orders
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**settle** | **string**| Settle currency | 
+**settle** | **string**| Perpetual futures settlement currency | 
 **futuresOrder** | [**[]FuturesOrder**](FuturesOrder.md)|  | 
 **optional** | **CreateBatchFuturesOrderOpts** | optional parameters | nil if no parameters
 
@@ -2944,7 +3010,7 @@ func main() {
                                  Secret: "YOUR_API_SECRET",
                              }
                             )
-    settle := "usdt" // string - Settle currency
+    settle := "usdt" // string - Perpetual futures settlement currency
     futuresOrder := []gateapi.FuturesOrder{gateapi.FuturesOrder{}} // []FuturesOrder - 
     
     result, _, err := client.FuturesApi.CreateBatchFuturesOrder(ctx, settle, futuresOrder, nil)
@@ -2991,7 +3057,7 @@ Query single order details
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**settle** | **string**| Settle currency | 
+**settle** | **string**| Perpetual futures settlement currency | 
 **orderId** | **string**| The order ID returned when the order is created successfully, or the custom ID specified by the user when creating the order (i.e. the &#x60;text&#x60; field). When using the custom &#x60;text&#x60; field: 1. If the order was not filled and has been cancelled, after 60 seconds you cannot query the order by &#x60;text&#x60;; continuing to use &#x60;text&#x60; returns error ORDER_NOT_FOUND. 2. If the order was fully or partially filled, you can query the order by &#x60;text&#x60; indefinitely. | 
 
 ### Example
@@ -3017,7 +3083,7 @@ func main() {
                                  Secret: "YOUR_API_SECRET",
                              }
                             )
-    settle := "usdt" // string - Settle currency
+    settle := "usdt" // string - Perpetual futures settlement currency
     orderId := "12345" // string - The order ID returned when the order is created successfully, or the custom ID specified by the user when creating the order (i.e. the `text` field). When using the custom `text` field: 1. If the order was not filled and has been cancelled, after 60 seconds you cannot query the order by `text`; continuing to use `text` returns error ORDER_NOT_FOUND. 2. If the order was fully or partially filled, you can query the order by `text` indefinitely.
     
     result, _, err := client.FuturesApi.GetFuturesOrder(ctx, settle, orderId)
@@ -3062,7 +3128,7 @@ Amend single order
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**settle** | **string**| Settle currency | 
+**settle** | **string**| Perpetual futures settlement currency | 
 **orderId** | **string**| The order ID returned when the order is created successfully, or the custom ID specified by the user when creating the order (i.e. the &#x60;text&#x60; field). When using the custom &#x60;text&#x60; field: 1. If the order was not filled and has been cancelled, after 60 seconds you cannot query the order by &#x60;text&#x60;; continuing to use &#x60;text&#x60; returns error ORDER_NOT_FOUND. 2. If the order was fully or partially filled, you can query the order by &#x60;text&#x60; indefinitely. | 
 **futuresOrderAmendment** | [**FuturesOrderAmendment**](FuturesOrderAmendment.md)|  | 
 **optional** | **AmendFuturesOrderOpts** | optional parameters | nil if no parameters
@@ -3098,7 +3164,7 @@ func main() {
                                  Secret: "YOUR_API_SECRET",
                              }
                             )
-    settle := "usdt" // string - Settle currency
+    settle := "usdt" // string - Perpetual futures settlement currency
     orderId := "12345" // string - The order ID returned when the order is created successfully, or the custom ID specified by the user when creating the order (i.e. the `text` field). When using the custom `text` field: 1. If the order was not filled and has been cancelled, after 60 seconds you cannot query the order by `text`; continuing to use `text` returns error ORDER_NOT_FOUND. 2. If the order was fully or partially filled, you can query the order by `text` indefinitely.
     futuresOrderAmendment := gateapi.FuturesOrderAmendment{} // FuturesOrderAmendment - 
     
@@ -3144,7 +3210,7 @@ Cancel single order
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**settle** | **string**| Settle currency | 
+**settle** | **string**| Perpetual futures settlement currency | 
 **orderId** | **string**| The order ID returned when the order is created successfully, or the custom ID specified by the user when creating the order (i.e. the &#x60;text&#x60; field). When using the custom &#x60;text&#x60; field: 1. If the order was not filled and has been cancelled, after 60 seconds you cannot query the order by &#x60;text&#x60;; continuing to use &#x60;text&#x60; returns error ORDER_NOT_FOUND. 2. If the order was fully or partially filled, you can query the order by &#x60;text&#x60; indefinitely. | 
 **optional** | **CancelFuturesOrderOpts** | optional parameters | nil if no parameters
 
@@ -3180,7 +3246,7 @@ func main() {
                                  Secret: "YOUR_API_SECRET",
                              }
                             )
-    settle := "usdt" // string - Settle currency
+    settle := "usdt" // string - Perpetual futures settlement currency
     orderId := "12345" // string - The order ID returned when the order is created successfully, or the custom ID specified by the user when creating the order (i.e. the `text` field). When using the custom `text` field: 1. If the order was not filled and has been cancelled, after 60 seconds you cannot query the order by `text`; continuing to use `text` returns error ORDER_NOT_FOUND. 2. If the order was fully or partially filled, you can query the order by `text` indefinitely.
     
     result, _, err := client.FuturesApi.CancelFuturesOrder(ctx, settle, orderId, nil)
@@ -3227,7 +3293,7 @@ By default, only supports querying data within 6 months. For older data, use `GE
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**settle** | **string**| Settle currency | 
+**settle** | **string**| Perpetual futures settlement currency | 
 **optional** | **GetMyTradesOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
@@ -3265,7 +3331,7 @@ func main() {
                                  Secret: "YOUR_API_SECRET",
                              }
                             )
-    settle := "usdt" // string - Settle currency
+    settle := "usdt" // string - Perpetual futures settlement currency
     
     result, _, err := client.FuturesApi.GetMyTrades(ctx, settle, nil)
     if err != nil {
@@ -3309,7 +3375,7 @@ Query personal trading records by time range
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**settle** | **string**| Settle currency | 
+**settle** | **string**| Perpetual futures settlement currency | 
 **optional** | **GetMyTradesWithTimeRangeOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
@@ -3348,7 +3414,7 @@ func main() {
                                  Secret: "YOUR_API_SECRET",
                              }
                             )
-    settle := "usdt" // string - Settle currency
+    settle := "usdt" // string - Perpetual futures settlement currency
     
     result, _, err := client.FuturesApi.GetMyTradesWithTimeRange(ctx, settle, nil)
     if err != nil {
@@ -3392,7 +3458,7 @@ Query position close history
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**settle** | **string**| Settle currency | 
+**settle** | **string**| Perpetual futures settlement currency | 
 **optional** | **ListPositionCloseOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
@@ -3432,7 +3498,7 @@ func main() {
                                  Secret: "YOUR_API_SECRET",
                              }
                             )
-    settle := "usdt" // string - Settle currency
+    settle := "usdt" // string - Perpetual futures settlement currency
     
     result, _, err := client.FuturesApi.ListPositionClose(ctx, settle, nil)
     if err != nil {
@@ -3476,7 +3542,7 @@ Query liquidation history
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**settle** | **string**| Settle currency | 
+**settle** | **string**| Perpetual futures settlement currency | 
 **optional** | **ListLiquidatesOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
@@ -3515,7 +3581,7 @@ func main() {
                                  Secret: "YOUR_API_SECRET",
                              }
                             )
-    settle := "usdt" // string - Settle currency
+    settle := "usdt" // string - Perpetual futures settlement currency
     
     result, _, err := client.FuturesApi.ListLiquidates(ctx, settle, nil)
     if err != nil {
@@ -3559,7 +3625,7 @@ Query ADL auto-deleveraging order information
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**settle** | **string**| Settle currency | 
+**settle** | **string**| Perpetual futures settlement currency | 
 **optional** | **ListAutoDeleveragesOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
@@ -3598,7 +3664,7 @@ func main() {
                                  Secret: "YOUR_API_SECRET",
                              }
                             )
-    settle := "usdt" // string - Settle currency
+    settle := "usdt" // string - Perpetual futures settlement currency
     
     result, _, err := client.FuturesApi.ListAutoDeleverages(ctx, settle, nil)
     if err != nil {
@@ -3644,7 +3710,7 @@ Heartbeat detection for contract orders: When the user-set `timeout` time is rea
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**settle** | **string**| Settle currency | 
+**settle** | **string**| Perpetual futures settlement currency | 
 **countdownCancelAllFuturesTask** | [**CountdownCancelAllFuturesTask**](CountdownCancelAllFuturesTask.md)|  | 
 
 ### Example
@@ -3670,7 +3736,7 @@ func main() {
                                  Secret: "YOUR_API_SECRET",
                              }
                             )
-    settle := "usdt" // string - Settle currency
+    settle := "usdt" // string - Perpetual futures settlement currency
     countdownCancelAllFuturesTask := gateapi.CountdownCancelAllFuturesTask{} // CountdownCancelAllFuturesTask - 
     
     result, _, err := client.FuturesApi.CountdownCancelAllFutures(ctx, settle, countdownCancelAllFuturesTask)
@@ -3715,7 +3781,7 @@ Query futures market trading fee rates
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**settle** | **string**| Settle currency | 
+**settle** | **string**| Perpetual futures settlement currency | 
 **optional** | **GetFuturesFeeOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
@@ -3749,7 +3815,7 @@ func main() {
                                  Secret: "YOUR_API_SECRET",
                              }
                             )
-    settle := "usdt" // string - Settle currency
+    settle := "usdt" // string - Perpetual futures settlement currency
     
     result, _, err := client.FuturesApi.GetFuturesFee(ctx, settle, nil)
     if err != nil {
@@ -3795,7 +3861,7 @@ Multiple different order IDs can be specified. A maximum of 20 records can be ca
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**settle** | **string**| Settle currency | 
+**settle** | **string**| Perpetual futures settlement currency | 
 **requestBody** | [**[]string**](string.md)|  | 
 **optional** | **CancelBatchFutureOrdersOpts** | optional parameters | nil if no parameters
 
@@ -3830,7 +3896,7 @@ func main() {
                                  Secret: "YOUR_API_SECRET",
                              }
                             )
-    settle := "usdt" // string - Settle currency
+    settle := "usdt" // string - Perpetual futures settlement currency
     requestBody := []string{"[\"1\",\"2\",\"3\"]"} // []string - 
     
     result, _, err := client.FuturesApi.CancelBatchFutureOrders(ctx, settle, requestBody, nil)
@@ -3877,7 +3943,7 @@ Multiple different order IDs can be specified. A maximum of 10 orders can be mod
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**settle** | **string**| Settle currency | 
+**settle** | **string**| Perpetual futures settlement currency | 
 **batchAmendOrderReq** | [**[]BatchAmendOrderReq**](BatchAmendOrderReq.md)|  | 
 **optional** | **AmendBatchFutureOrdersOpts** | optional parameters | nil if no parameters
 
@@ -3912,7 +3978,7 @@ func main() {
                                  Secret: "YOUR_API_SECRET",
                              }
                             )
-    settle := "usdt" // string - Settle currency
+    settle := "usdt" // string - Perpetual futures settlement currency
     batchAmendOrderReq := []gateapi.BatchAmendOrderReq{gateapi.BatchAmendOrderReq{}} // []BatchAmendOrderReq - 
     
     result, _, err := client.FuturesApi.AmendBatchFutureOrders(ctx, settle, batchAmendOrderReq, nil)
@@ -3959,7 +4025,7 @@ Just pass table_id
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**settle** | **string**| Settle currency | 
+**settle** | **string**| Perpetual futures settlement currency | 
 **tableId** | **string**| Risk limit table ID | 
 
 ### Example
@@ -3979,7 +4045,7 @@ func main() {
     // uncomment the next line if your are testing against testnet
     // client.ChangeBasePath("https://fx-api-testnet.gateio.ws/api/v4")
     ctx := context.Background()
-    settle := "usdt" // string - Settle currency
+    settle := "usdt" // string - Perpetual futures settlement currency
     tableId := "CYBER_USDT_20241122" // string - Risk limit table ID
     
     result, _, err := client.FuturesApi.GetFuturesRiskLimitTable(ctx, settle, tableId)
@@ -4026,7 +4092,7 @@ Compared to the futures trading order placement interface (futures/{settle}/orde
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**settle** | **string**| Settle currency | 
+**settle** | **string**| Perpetual futures settlement currency | 
 **futuresBboOrder** | [**FuturesBboOrder**](FuturesBboOrder.md)|  | 
 **optional** | **CreateFuturesBBOOrderOpts** | optional parameters | nil if no parameters
 
@@ -4061,7 +4127,7 @@ func main() {
                                  Secret: "YOUR_API_SECRET",
                              }
                             )
-    settle := "usdt" // string - Settle currency
+    settle := "usdt" // string - Perpetual futures settlement currency
     futuresBboOrder := gateapi.FuturesBboOrder{} // FuturesBboOrder - 
     
     result, _, err := client.FuturesApi.CreateFuturesBBOOrder(ctx, settle, futuresBboOrder, nil)
@@ -4106,7 +4172,7 @@ Create trail order
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**settle** | **string**| Settle currency | 
+**settle** | **string**| Perpetual futures settlement currency | 
 **createTrailOrder** | [**CreateTrailOrder**](CreateTrailOrder.md)|  | 
 
 ### Example
@@ -4132,7 +4198,7 @@ func main() {
                                  Secret: "YOUR_API_SECRET",
                              }
                             )
-    settle := "usdt" // string - Settle currency
+    settle := "usdt" // string - Perpetual futures settlement currency
     createTrailOrder := gateapi.CreateTrailOrder{} // CreateTrailOrder - 
     
     result, _, err := client.FuturesApi.CreateTrailOrder(ctx, settle, createTrailOrder)
@@ -4177,7 +4243,7 @@ Terminate trail order
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**settle** | **string**| Settle currency | 
+**settle** | **string**| Perpetual futures settlement currency | 
 **stopTrailOrder** | [**StopTrailOrder**](StopTrailOrder.md)|  | 
 
 ### Example
@@ -4203,7 +4269,7 @@ func main() {
                                  Secret: "YOUR_API_SECRET",
                              }
                             )
-    settle := "usdt" // string - Settle currency
+    settle := "usdt" // string - Perpetual futures settlement currency
     stopTrailOrder := gateapi.StopTrailOrder{} // StopTrailOrder - 
     
     result, _, err := client.FuturesApi.StopTrailOrder(ctx, settle, stopTrailOrder)
@@ -4248,7 +4314,7 @@ Batch terminate trail orders
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**settle** | **string**| Settle currency | 
+**settle** | **string**| Perpetual futures settlement currency | 
 **stopAllTrailOrders** | [**StopAllTrailOrders**](StopAllTrailOrders.md)|  | 
 
 ### Example
@@ -4274,7 +4340,7 @@ func main() {
                                  Secret: "YOUR_API_SECRET",
                              }
                             )
-    settle := "usdt" // string - Settle currency
+    settle := "usdt" // string - Perpetual futures settlement currency
     stopAllTrailOrders := gateapi.StopAllTrailOrders{} // StopAllTrailOrders - 
     
     result, _, err := client.FuturesApi.StopAllTrailOrders(ctx, settle, stopAllTrailOrders)
@@ -4319,7 +4385,7 @@ Get trail order list
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**settle** | **string**| Settle currency | 
+**settle** | **string**| Perpetual futures settlement currency | 
 **optional** | **GetTrailOrdersOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
@@ -4364,7 +4430,7 @@ func main() {
                                  Secret: "YOUR_API_SECRET",
                              }
                             )
-    settle := "usdt" // string - Settle currency
+    settle := "usdt" // string - Perpetual futures settlement currency
     
     result, _, err := client.FuturesApi.GetTrailOrders(ctx, settle, nil)
     if err != nil {
@@ -4408,7 +4474,7 @@ Get trail order details
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**settle** | **string**| Settle currency | 
+**settle** | **string**| Perpetual futures settlement currency | 
 **id** | **int64**| Order ID | 
 
 ### Example
@@ -4434,7 +4500,7 @@ func main() {
                                  Secret: "YOUR_API_SECRET",
                              }
                             )
-    settle := "usdt" // string - Settle currency
+    settle := "usdt" // string - Perpetual futures settlement currency
     id := 56 // int64 - Order ID
     
     result, _, err := client.FuturesApi.GetTrailOrderDetail(ctx, settle, id)
@@ -4479,7 +4545,7 @@ Update trail order
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**settle** | **string**| Settle currency | 
+**settle** | **string**| Perpetual futures settlement currency | 
 **updateTrailOrder** | [**UpdateTrailOrder**](UpdateTrailOrder.md)|  | 
 
 ### Example
@@ -4505,7 +4571,7 @@ func main() {
                                  Secret: "YOUR_API_SECRET",
                              }
                             )
-    settle := "usdt" // string - Settle currency
+    settle := "usdt" // string - Perpetual futures settlement currency
     updateTrailOrder := gateapi.UpdateTrailOrder{} // UpdateTrailOrder - 
     
     result, _, err := client.FuturesApi.UpdateTrailOrder(ctx, settle, updateTrailOrder)
@@ -4550,7 +4616,7 @@ Get trail order user modification records
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**settle** | **string**| Settle currency | 
+**settle** | **string**| Perpetual futures settlement currency | 
 **id** | **int64**| Order ID | 
 **optional** | **GetTrailOrderChangeLogOpts** | optional parameters | nil if no parameters
 
@@ -4586,7 +4652,7 @@ func main() {
                                  Secret: "YOUR_API_SECRET",
                              }
                             )
-    settle := "usdt" // string - Settle currency
+    settle := "usdt" // string - Perpetual futures settlement currency
     id := 56 // int64 - Order ID
     
     result, _, err := client.FuturesApi.GetTrailOrderChangeLog(ctx, settle, id, nil)
@@ -4631,7 +4697,7 @@ Create a chase order
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**settle** | **string**| Settle currency | 
+**settle** | **string**| Perpetual futures settlement currency | 
 **createChaseOrderReq** | [**CreateChaseOrderReq**](CreateChaseOrderReq.md)|  | 
 
 ### Example
@@ -4657,7 +4723,7 @@ func main() {
                                  Secret: "YOUR_API_SECRET",
                              }
                             )
-    settle := "usdt" // string - Settle currency
+    settle := "usdt" // string - Perpetual futures settlement currency
     createChaseOrderReq := gateapi.CreateChaseOrderReq{} // CreateChaseOrderReq - 
     
     result, _, err := client.FuturesApi.CreateChaseOrder(ctx, settle, createChaseOrderReq)
@@ -4702,7 +4768,7 @@ Stop a chase order
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**settle** | **string**| Settle currency | 
+**settle** | **string**| Perpetual futures settlement currency | 
 **stopChaseOrderReq** | [**StopChaseOrderReq**](StopChaseOrderReq.md)|  | 
 
 ### Example
@@ -4728,7 +4794,7 @@ func main() {
                                  Secret: "YOUR_API_SECRET",
                              }
                             )
-    settle := "usdt" // string - Settle currency
+    settle := "usdt" // string - Perpetual futures settlement currency
     stopChaseOrderReq := gateapi.StopChaseOrderReq{} // StopChaseOrderReq - 
     
     result, _, err := client.FuturesApi.StopChaseOrder(ctx, settle, stopChaseOrderReq)
@@ -4773,7 +4839,7 @@ Stop chase orders in batch
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**settle** | **string**| Settle currency | 
+**settle** | **string**| Perpetual futures settlement currency | 
 **stopAllChaseOrdersReq** | [**StopAllChaseOrdersReq**](StopAllChaseOrdersReq.md)|  | 
 
 ### Example
@@ -4799,7 +4865,7 @@ func main() {
                                  Secret: "YOUR_API_SECRET",
                              }
                             )
-    settle := "usdt" // string - Settle currency
+    settle := "usdt" // string - Perpetual futures settlement currency
     stopAllChaseOrdersReq := gateapi.StopAllChaseOrdersReq{} // StopAllChaseOrdersReq - 
     
     result, _, err := client.FuturesApi.StopAllChaseOrders(ctx, settle, stopAllChaseOrdersReq)
@@ -4844,7 +4910,7 @@ List chase orders
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**settle** | **string**| Settle currency | 
+**settle** | **string**| Perpetual futures settlement currency | 
 **sortBy** | **int32**| Sort field: 1 ORDER_SORT_CREATED_AT, 2 ORDER_SORT_FINISHED_AT; cannot be 0 | 
 **optional** | **GetChaseOrdersOpts** | optional parameters | nil if no parameters
 
@@ -4887,7 +4953,7 @@ func main() {
                                  Secret: "YOUR_API_SECRET",
                              }
                             )
-    settle := "usdt" // string - Settle currency
+    settle := "usdt" // string - Perpetual futures settlement currency
     sortBy := 56 // int32 - Sort field: 1 ORDER_SORT_CREATED_AT, 2 ORDER_SORT_FINISHED_AT; cannot be 0
     
     result, _, err := client.FuturesApi.GetChaseOrders(ctx, settle, sortBy, nil)
@@ -4932,7 +4998,7 @@ Get chase order detail
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**settle** | **string**| Settle currency | 
+**settle** | **string**| Perpetual futures settlement currency | 
 **id** | **string**| Order ID, must be a non-zero positive integer | 
 
 ### Example
@@ -4958,7 +5024,7 @@ func main() {
                                  Secret: "YOUR_API_SECRET",
                              }
                             )
-    settle := "usdt" // string - Settle currency
+    settle := "usdt" // string - Perpetual futures settlement currency
     id := "id_example" // string - Order ID, must be a non-zero positive integer
     
     result, _, err := client.FuturesApi.GetChaseOrderDetail(ctx, settle, id)
@@ -5003,7 +5069,7 @@ Query auto order list
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**settle** | **string**| Settle currency | 
+**settle** | **string**| Perpetual futures settlement currency | 
 **status** | **string**| Query order list based on status | 
 **optional** | **ListPriceTriggeredOrdersOpts** | optional parameters | nil if no parameters
 
@@ -5040,7 +5106,7 @@ func main() {
                                  Secret: "YOUR_API_SECRET",
                              }
                             )
-    settle := "usdt" // string - Settle currency
+    settle := "usdt" // string - Perpetual futures settlement currency
     status := "status_example" // string - Query order list based on status
     
     result, _, err := client.FuturesApi.ListPriceTriggeredOrders(ctx, settle, status, nil)
@@ -5085,7 +5151,7 @@ Create price-triggered order
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**settle** | **string**| Settle currency | 
+**settle** | **string**| Perpetual futures settlement currency | 
 **futuresPriceTriggeredOrder** | [**FuturesPriceTriggeredOrder**](FuturesPriceTriggeredOrder.md)|  | 
 
 ### Example
@@ -5111,7 +5177,7 @@ func main() {
                                  Secret: "YOUR_API_SECRET",
                              }
                             )
-    settle := "usdt" // string - Settle currency
+    settle := "usdt" // string - Perpetual futures settlement currency
     futuresPriceTriggeredOrder := gateapi.FuturesPriceTriggeredOrder{} // FuturesPriceTriggeredOrder - 
     
     result, _, err := client.FuturesApi.CreatePriceTriggeredOrder(ctx, settle, futuresPriceTriggeredOrder)
@@ -5156,7 +5222,7 @@ Cancel all auto orders
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**settle** | **string**| Settle currency | 
+**settle** | **string**| Perpetual futures settlement currency | 
 **optional** | **CancelPriceTriggeredOrderListOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
@@ -5190,7 +5256,7 @@ func main() {
                                  Secret: "YOUR_API_SECRET",
                              }
                             )
-    settle := "usdt" // string - Settle currency
+    settle := "usdt" // string - Perpetual futures settlement currency
     
     result, _, err := client.FuturesApi.CancelPriceTriggeredOrderList(ctx, settle, nil)
     if err != nil {
@@ -5234,7 +5300,7 @@ Query single auto order details
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**settle** | **string**| Settle currency | 
+**settle** | **string**| Perpetual futures settlement currency | 
 **orderId** | **int64**| ID returned when order is successfully created | 
 
 ### Example
@@ -5260,7 +5326,7 @@ func main() {
                                  Secret: "YOUR_API_SECRET",
                              }
                             )
-    settle := "usdt" // string - Settle currency
+    settle := "usdt" // string - Perpetual futures settlement currency
     orderId := 56 // int64 - ID returned when order is successfully created
     
     result, _, err := client.FuturesApi.GetPriceTriggeredOrder(ctx, settle, orderId)
@@ -5305,7 +5371,7 @@ Cancel single auto order
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**settle** | **string**| Settle currency | 
+**settle** | **string**| Perpetual futures settlement currency | 
 **orderId** | **int64**| ID returned when order is successfully created | 
 
 ### Example
@@ -5331,7 +5397,7 @@ func main() {
                                  Secret: "YOUR_API_SECRET",
                              }
                             )
-    settle := "usdt" // string - Settle currency
+    settle := "usdt" // string - Perpetual futures settlement currency
     orderId := 56 // int64 - ID returned when order is successfully created
     
     result, _, err := client.FuturesApi.CancelPriceTriggeredOrder(ctx, settle, orderId)
@@ -5376,7 +5442,7 @@ Modify a Single Auto Order
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**settle** | **string**| Settle currency | 
+**settle** | **string**| Perpetual futures settlement currency | 
 **futuresUpdatePriceTriggeredOrder** | [**FuturesUpdatePriceTriggeredOrder**](FuturesUpdatePriceTriggeredOrder.md)|  | 
 
 ### Example
@@ -5402,7 +5468,7 @@ func main() {
                                  Secret: "YOUR_API_SECRET",
                              }
                             )
-    settle := "usdt" // string - Settle currency
+    settle := "usdt" // string - Perpetual futures settlement currency
     futuresUpdatePriceTriggeredOrder := gateapi.FuturesUpdatePriceTriggeredOrder{} // FuturesUpdatePriceTriggeredOrder - 
     
     result, _, err := client.FuturesApi.UpdatePriceTriggeredOrder(ctx, settle, futuresUpdatePriceTriggeredOrder)

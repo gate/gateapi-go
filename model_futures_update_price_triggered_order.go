@@ -11,7 +11,7 @@ package gateapi
 
 // Modify Price Order Details
 type FuturesUpdatePriceTriggeredOrder struct {
-	// Settlement Currency (e.g., USDT, BTC)
+	// Perpetual futures settlement currency, e.g. usdt, btc, usd1
 	Settle string `json:"settle,omitempty"`
 	// ID of the Pending Take-Profit/Stop-Loss Trigger Order
 	OrderId int64 `json:"order_id"`

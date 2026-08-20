@@ -8,6 +8,8 @@ Name | Type | Description | Notes
 **BaseMinBorrowAmount** | **string** | Minimum borrow amount of base currency | [optional] [readonly] 
 **QuoteMinBorrowAmount** | **string** | Minimum borrow amount of quote currency | [optional] [readonly] 
 **Leverage** | **string** | Leverage multiplier | [optional] [readonly] 
+**Status** | **string** | Status  - enabled: Enabled - disabled: Disabled | [optional] 
+**DelistedTime** | **float32** | Delisting Time | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

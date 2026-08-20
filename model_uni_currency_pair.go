@@ -19,4 +19,8 @@ type UniCurrencyPair struct {
 	QuoteMinBorrowAmount string `json:"quote_min_borrow_amount,omitempty"`
 	// Leverage multiplier
 	Leverage string `json:"leverage,omitempty"`
+	// Status  - enabled: Enabled - disabled: Disabled
+	Status string `json:"status,omitempty"`
+	// Delisting Time
+	DelistedTime float32 `json:"delisted_time,omitempty"`
 }

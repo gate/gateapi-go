@@ -35,7 +35,7 @@ type ListFuturesContractsOpts struct {
 /*
 ListFuturesContracts Query all futures contracts
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param settle Settle currency
+  - @param settle Perpetual futures settlement currency
   - @param optional nil or *ListFuturesContractsOpts - Optional Parameters:
   - @param "Limit" (optional.Int32) -  Maximum number of records returned in a single list
   - @param "Offset" (optional.Int32) -  List offset, starting from 0
@@ -137,7 +137,7 @@ type ListFuturesContractsAllOpts struct {
 /*
 ListFuturesContractsAll Query all contract information (including delisted)
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param settle Settle currency
+  - @param settle Perpetual futures settlement currency
   - @param optional nil or *ListFuturesContractsAllOpts - Optional Parameters:
   - @param "Limit" (optional.Int32) -  Maximum number of records returned in a single list
   - @param "Offset" (optional.Int32) -  List offset, starting from 0
@@ -233,7 +233,7 @@ func (a *FuturesApiService) ListFuturesContractsAll(ctx context.Context, settle 
 /*
 GetFuturesContract Query single contract information
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param settle Settle currency
+  - @param settle Perpetual futures settlement currency
   - @param contract Futures contract
 
 @return Contract
@@ -320,6 +320,94 @@ func (a *FuturesApiService) GetFuturesContract(ctx context.Context, settle strin
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+/*
+ListFuturesADLRiskStates List market-level ADL risk states
+List the current ADL risk states of all futures markets for the specified settlement currency
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param settle Perpetual futures settlement currency
+
+@return FuturesAdlRiskStates
+*/
+func (a *FuturesApiService) ListFuturesADLRiskStates(ctx context.Context, settle string) (FuturesAdlRiskStates, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  FuturesAdlRiskStates
+	)
+
+	// create path and map variables
+	localVarPath := a.client.cfg.BasePath + "/futures/{settle}/adl_risk_states"
+	localVarPath = strings.Replace(localVarPath, "{"+"settle"+"}", url.QueryEscape(parameterToString(settle, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if ctx == nil {
+		ctx = context.Background()
+	}
+	ctx = context.WithValue(ctx, ContextPublic, true)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(r)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status + ", " + string(localVarBody),
+		}
+		var gateErr GateAPIError
+		if e := a.client.decode(&gateErr, localVarBody, localVarHTTPResponse.Header.Get("Content-Type")); e == nil && gateErr.Label != "" {
+			gateErr.APIError = newErr
+			return localVarReturnValue, localVarHTTPResponse, gateErr
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 // ListFuturesOrderBookOpts Optional parameters for the method 'ListFuturesOrderBook'
 type ListFuturesOrderBookOpts struct {
 	Interval optional.String
@@ -331,7 +419,7 @@ type ListFuturesOrderBookOpts struct {
 ListFuturesOrderBook Query futures market depth information
 Bids will be sorted by price from high to low, while asks sorted reversely
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param settle Settle currency
+  - @param settle Perpetual futures settlement currency
   - @param contract Futures contract
   - @param optional nil or *ListFuturesOrderBookOpts - Optional Parameters:
   - @param "Interval" (optional.String) -  Price precision for merged depth. 0 means no merging. If not specified, defaults to 0
@@ -442,7 +530,7 @@ type ListFuturesTradesOpts struct {
 /*
 ListFuturesTrades Futures market transaction records
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param settle Settle currency
+  - @param settle Perpetual futures settlement currency
   - @param contract Futures contract
   - @param optional nil or *ListFuturesTradesOpts - Optional Parameters:
   - @param "Limit" (optional.Int32) -  Maximum number of records returned in a single list
@@ -562,7 +650,7 @@ type ListFuturesCandlesticksOpts struct {
 ListFuturesCandlesticks Futures market K-line chart
 Return specified contract candlesticks. If prefix &#x60;contract&#x60; with &#x60;mark_&#x60;, the contract&#39;s mark price candlesticks are returned; if prefix with &#x60;index_&#x60;, index price candlesticks will be returned.  Maximum of 2000 points are returned in one query. Be sure not to exceed the limit when specifying &#x60;from&#x60;, &#x60;to&#x60; and &#x60;interval&#x60;
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param settle Settle currency
+  - @param settle Perpetual futures settlement currency
   - @param contract Futures contract
   - @param optional nil or *ListFuturesCandlesticksOpts - Optional Parameters:
   - @param "From" (optional.Int64) -  Start time of candlesticks, formatted in Unix timestamp in seconds. Default to`to - 100 * interval` if not specified
@@ -681,7 +769,7 @@ type ListFuturesPremiumIndexOpts struct {
 ListFuturesPremiumIndex Premium Index K-line chart
 K-line chart data returns a maximum of 1000 points per request. When specifying from, to, and interval, ensure the number of points is not excessive
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param settle Settle currency
+  - @param settle Perpetual futures settlement currency
   - @param contract Futures contract
   - @param optional nil or *ListFuturesPremiumIndexOpts - Optional Parameters:
   - @param "From" (optional.Int64) -  Start time of candlesticks, formatted in Unix timestamp in seconds. Default to`to - 100 * interval` if not specified
@@ -792,7 +880,7 @@ type ListFuturesTickersOpts struct {
 /*
 ListFuturesTickers Get all futures trading statistics
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param settle Settle currency
+  - @param settle Perpetual futures settlement currency
   - @param optional nil or *ListFuturesTickersOpts - Optional Parameters:
   - @param "Contract" (optional.String) -  Futures contract, return related data only if specified
 
@@ -891,7 +979,7 @@ type ListFuturesFundingRateHistoryOpts struct {
 /*
 ListFuturesFundingRateHistory Futures market historical funding rate
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param settle Settle currency
+  - @param settle Perpetual futures settlement currency
   - @param contract Futures contract
   - @param optional nil or *ListFuturesFundingRateHistoryOpts - Optional Parameters:
   - @param "Limit" (optional.Int32) -  Maximum number of records returned in a single list
@@ -993,7 +1081,7 @@ func (a *FuturesApiService) ListFuturesFundingRateHistory(ctx context.Context, s
 /*
 ListBatchFuturesFundingRates Batch Query Historical Funding Rate Data for Perpetual Contracts
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param settle Settle currency
+  - @param settle Perpetual futures settlement currency
   - @param batchFundingRatesRequest
 
 @return []BatchFundingRatesResponse
@@ -1088,7 +1176,7 @@ type ListFuturesInsuranceLedgerOpts struct {
 /*
 ListFuturesInsuranceLedger Futures market insurance fund history
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param settle Settle currency
+  - @param settle Perpetual futures settlement currency
   - @param optional nil or *ListFuturesInsuranceLedgerOpts - Optional Parameters:
   - @param "Limit" (optional.Int32) -  Maximum number of records returned in a single list
 
@@ -1187,7 +1275,7 @@ type ListContractStatsOpts struct {
 /*
 ListContractStats Futures statistics
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param settle Settle currency
+  - @param settle Perpetual futures settlement currency
   - @param contract Futures contract
   - @param optional nil or *ListContractStatsOpts - Optional Parameters:
   - @param "From" (optional.Int64) -  Start timestamp
@@ -1289,7 +1377,7 @@ func (a *FuturesApiService) ListContractStats(ctx context.Context, settle string
 /*
 GetIndexConstituents Query index constituents
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param settle Settle currency
+  - @param settle Perpetual futures settlement currency
   - @param index Index name
 
 @return FuturesIndexConstituents
@@ -1388,7 +1476,7 @@ type ListLiquidatedOrdersOpts struct {
 ListLiquidatedOrders Query liquidation order history
 The time interval between from and to is maximum 3600. Some private fields are not returned by public interfaces, refer to field descriptions for details
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param settle Settle currency
+  - @param settle Perpetual futures settlement currency
   - @param optional nil or *ListLiquidatedOrdersOpts - Optional Parameters:
   - @param "Contract" (optional.String) -  Futures contract, return related data only if specified
   - @param "From" (optional.Int64) -  Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit)
@@ -1500,7 +1588,7 @@ type ListFuturesRiskLimitTiersOpts struct {
 ListFuturesRiskLimitTiers Query risk limit tiers
 When the &#39;contract&#39; parameter is not passed, the default is to query the risk limits for the top 100 markets. &#39;Limit&#39; and &#39;offset&#39; correspond to pagination queries at the market level, not to the length of the returned array. This only takes effect when the contract parameter is empty.
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param settle Settle currency
+  - @param settle Perpetual futures settlement currency
   - @param optional nil or *ListFuturesRiskLimitTiersOpts - Optional Parameters:
   - @param "Contract" (optional.String) -  Futures contract, return related data only if specified
   - @param "Limit" (optional.Int32) -  Maximum number of records returned in a single list
@@ -1601,7 +1689,7 @@ func (a *FuturesApiService) ListFuturesRiskLimitTiers(ctx context.Context, settl
 ListFuturesAccounts Get futures account
 Query account information for classic future account and unified account
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param settle Settle currency
+  - @param settle Perpetual futures settlement currency
 
 @return FuturesAccount
 */
@@ -1705,7 +1793,7 @@ type ListFuturesAccountBookOpts struct {
 ListFuturesAccountBook Query futures account change history
 If the contract field is passed, only records containing this field after 2023-10-30 can be filtered。
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param settle Settle currency
+  - @param settle Perpetual futures settlement currency
   - @param optional nil or *ListFuturesAccountBookOpts - Optional Parameters:
   - @param "Contract" (optional.String) -  Futures contract, return related data only if specified
   - @param "Limit" (optional.Int32) -  Maximum number of records returned in a single list
@@ -1830,7 +1918,7 @@ type ListPositionsOpts struct {
 /*
 ListPositions Get user position list
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param settle Settle currency
+  - @param settle Perpetual futures settlement currency
   - @param optional nil or *ListPositionsOpts - Optional Parameters:
   - @param "Holding" (optional.Bool) -  Return only real positions - true, return all - false
   - @param "Limit" (optional.Int32) -  Maximum number of positions returned. If omitted, all current positions are returned by default; if provided, the value must be within [1,100].
@@ -1944,7 +2032,7 @@ type ListPositionsTimerangeOpts struct {
 /*
 ListPositionsTimerange Get user's historical position information list by time
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param settle Settle currency
+  - @param settle Perpetual futures settlement currency
   - @param contract Futures contract
   - @param optional nil or *ListPositionsTimerangeOpts - Optional Parameters:
   - @param "From" (optional.Int64) -  Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit)
@@ -2057,7 +2145,7 @@ func (a *FuturesApiService) ListPositionsTimerange(ctx context.Context, settle s
 GetPosition Get single position information
 Get single position information from a contract. If you hold two postions in one contract market, please use this API: /futures/{settle}/dual_comp/positions/{contract}
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param settle Settle currency
+  - @param settle Perpetual futures settlement currency
   - @param contract Futures contract
 
 @return Position
@@ -2154,7 +2242,7 @@ func (a *FuturesApiService) GetPosition(ctx context.Context, settle string, cont
 GetLeverage Get Leverage Information for Specified Mode
 Get Leverage Information for Specified Mode
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param settle Settle currency
+  - @param settle Perpetual futures settlement currency
   - @param contract Futures contract
   - @param posMarginMode Position Margin Mode, required for split position mode, values: isolated/cross.
   - @param dualSide dual_long - Long, dual_short - Short
@@ -2255,7 +2343,7 @@ func (a *FuturesApiService) GetLeverage(ctx context.Context, settle string, cont
 UpdatePositionMargin Update position margin
 Under the new risk limit rules(https://www.gate.com/en/help/futures/futures-logic/22162), the position limit is related to the leverage you set; a lower leverage will result in a higher position limit. Please use the leverage adjustment api to adjust the position limit.
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param settle Settle currency
+  - @param settle Perpetual futures settlement currency
   - @param contract Futures contract
   - @param change Margin change amount, positive number increases, negative number decreases
 
@@ -2360,7 +2448,7 @@ type UpdatePositionLeverageOpts struct {
 UpdatePositionLeverage Update position leverage
 ⚠️ Position Mode Switching Rules:  - leverage ≠ 0: Isolated Margin Mode (Regardless of whether cross_leverage_limit is filled, this parameter will be ignored) - leverage &#x3D; 0: Cross Margin Mode (Use cross_leverage_limit to set the leverage multiple)  Examples: - Set isolated margin with 10x leverage: leverage&#x3D;10 - Set cross margin with 10x leverage: leverage&#x3D;0&amp;cross_leverage_limit&#x3D;10 - leverage&#x3D;5&amp;cross_leverage_limit&#x3D;10 → Result: Isolated margin with 5x leverage (cross_leverage_limit is ignored)  ⚠️ Warning: Incorrect settings may cause unexpected position mode switching, affecting risk management.
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param settle Settle currency
+  - @param settle Perpetual futures settlement currency
   - @param contract Futures contract
   - @param leverage Set the leverage for isolated margin. When setting isolated margin leverage, the `cross_leverage_limit`  must be empty.
   - @param optional nil or *UpdatePositionLeverageOpts - Optional Parameters:
@@ -2473,7 +2561,7 @@ type UpdateContractPositionLeverageOpts struct {
 UpdateContractPositionLeverage Update Leverage for Specified Mode
 To simplify the complex logic of the leverage interface, added a new interface for modifying leverage
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param settle Settle currency
+  - @param settle Perpetual futures settlement currency
   - @param contract Futures contract
   - @param leverage Position Leverage Multiple
   - @param marginMode Margin Mode isolated/cross
@@ -2578,7 +2666,7 @@ func (a *FuturesApiService) UpdateContractPositionLeverage(ctx context.Context, 
 /*
 UpdatePositionCrossMode Switch Position Margin Mode
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param settle Settle currency
+  - @param settle Perpetual futures settlement currency
   - @param futuresPositionCrossMode
 
 @return Position
@@ -2674,7 +2762,7 @@ func (a *FuturesApiService) UpdatePositionCrossMode(ctx context.Context, settle 
 /*
 UpdateDualCompPositionCrossMode Switch Between Cross and Isolated Margin Modes Under Hedge Mode
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param settle Settle currency
+  - @param settle Perpetual futures settlement currency
   - @param updateDualCompPositionCrossModeRequest
 
 @return []Position
@@ -2771,7 +2859,7 @@ func (a *FuturesApiService) UpdateDualCompPositionCrossMode(ctx context.Context,
 UpdatePositionRiskLimit Update position risk limit
 Under the new risk limit rules(https://www.gate.com/en/help/futures/futures-logic/22162), the position limit is related to the leverage you set; a lower leverage will result in a higher position limit. Please use the leverage adjustment api to adjust the position limit.
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param settle Settle currency
+  - @param settle Perpetual futures settlement currency
   - @param contract Futures contract
   - @param riskLimit New risk limit value
 
@@ -2870,7 +2958,7 @@ func (a *FuturesApiService) UpdatePositionRiskLimit(ctx context.Context, settle 
 SetDualMode Set position mode
 The prerequisite for changing mode is that all positions have no holdings and no pending orders
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param settle Settle currency
+  - @param settle Perpetual futures settlement currency
   - @param dualMode Whether to enable Hedge Mode
 
 @return FuturesAccount
@@ -2966,7 +3054,7 @@ func (a *FuturesApiService) SetDualMode(ctx context.Context, settle string, dual
 SetPositionMode Set Position Holding Mode, replacing the dual_mode interface
 The prerequisite for changing mode is that all positions have no holdings and no pending orders
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param settle Settle currency
+  - @param settle Perpetual futures settlement currency
   - @param positionMode Optional Values: single, dual, dual_plus, representing Single Direction, Dual Direction, Split Position respectively
 
 @return FuturesAccount
@@ -3061,7 +3149,7 @@ func (a *FuturesApiService) SetPositionMode(ctx context.Context, settle string, 
 /*
 GetDualModePosition Get position information in Hedge Mode
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param settle Settle currency
+  - @param settle Perpetual futures settlement currency
   - @param contract Futures contract
 
 @return []Position
@@ -3157,7 +3245,7 @@ func (a *FuturesApiService) GetDualModePosition(ctx context.Context, settle stri
 /*
 UpdateDualModePositionMargin Update position margin in Hedge Mode
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param settle Settle currency
+  - @param settle Perpetual futures settlement currency
   - @param contract Futures contract
   - @param change Margin change amount, positive number increases, negative number decreases
   - @param dualSide Long or short position
@@ -3262,7 +3350,7 @@ type UpdateDualModePositionLeverageOpts struct {
 /*
 UpdateDualModePositionLeverage Update position leverage in Hedge Mode
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param settle Settle currency
+  - @param settle Perpetual futures settlement currency
   - @param contract Futures contract
   - @param leverage New position leverage
   - @param optional nil or *UpdateDualModePositionLeverageOpts - Optional Parameters:
@@ -3366,7 +3454,7 @@ func (a *FuturesApiService) UpdateDualModePositionLeverage(ctx context.Context, 
 UpdateDualModePositionRiskLimit Update position risk limit in Hedge Mode
 Under the new risk limit rules(https://www.gate.com/en/help/futures/futures-logic/22162), the position limit is related to the leverage you set; a lower leverage will result in a higher position limit. Please use the leverage adjustment api to adjust the position limit.
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param settle Settle currency
+  - @param settle Perpetual futures settlement currency
   - @param contract Futures contract
   - @param riskLimit New risk limit value
 
@@ -3473,7 +3561,7 @@ type ListFuturesOrdersOpts struct {
 ListFuturesOrders Query futures order list
 - Zero-fill order cannot be retrieved for 10 minutes after cancellation - Historical orders, by default, only data within the past 6 months is supported.  If you need to query data for a longer period, please use &#x60;GET /futures/{settle}/orders_timerange&#x60;.
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param settle Settle currency
+  - @param settle Perpetual futures settlement currency
   - @param status Query order list based on status
   - @param optional nil or *ListFuturesOrdersOpts - Optional Parameters:
   - @param "Contract" (optional.String) -  Futures contract, return related data only if specified
@@ -3591,7 +3679,7 @@ type CreateFuturesOrderOpts struct {
 CreateFuturesOrder Place futures order
 - When placing an order, the number of contracts is specified &#x60;size&#x60;, not the number of coins. The number of coins corresponding to each contract is returned in the contract details interface &#x60;quanto_multiplier&#x60; - 0 The order that was completed cannot be obtained after 10 minutes of withdrawal, and the order will be mentioned that the order does not exist - Setting &#x60;reduce_only&#x60; to &#x60;true&#x60; can prevent the position from being penetrated when reducing the position - In single-position mode, if you need to close the position, you need to set &#x60;size&#x60; to 0 and &#x60;close&#x60; to &#x60;true&#x60; - In dual warehouse mode,   - Reduce position: reduce_only&#x3D;true, size is a positive number that indicates short position, negative number that indicates long position  - Add number that indicates adding long positions, and negative numbers indicate adding short positions  - Close position: size&#x3D;0, set the direction of closing position according to auto_size, and set &#x60;reduce_only&#x60; to true  at the same time - reduce_only: Make sure to only perform position reduction operations to prevent increased positions - Set &#x60;stp_act&#x60; to determine the use of a strategy that restricts user transactions. For detailed usage, refer to the body parameter &#x60;stp_act&#x60;
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param settle Settle currency
+  - @param settle Perpetual futures settlement currency
   - @param futuresOrder
   - @param optional nil or *CreateFuturesOrderOpts - Optional Parameters:
   - @param "XGateExptime" (optional.String) -  Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected
@@ -3703,7 +3791,7 @@ type CancelFuturesOrdersOpts struct {
 CancelFuturesOrders Cancel all orders with 'open' status
 Zero-fill orders cannot be retrieved 10 minutes after order cancellation
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param settle Settle currency
+  - @param settle Perpetual futures settlement currency
   - @param optional nil or *CancelFuturesOrdersOpts - Optional Parameters:
   - @param "XGateExptime" (optional.String) -  Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected
   - @param "Contract" (optional.String) -  Contract Identifier; if specified, only cancel pending orders related to this contract
@@ -3830,7 +3918,7 @@ type GetOrdersWithTimeRangeOpts struct {
 /*
 GetOrdersWithTimeRange Query futures order list by time range
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param settle Settle currency
+  - @param settle Perpetual futures settlement currency
   - @param optional nil or *GetOrdersWithTimeRangeOpts - Optional Parameters:
   - @param "Contract" (optional.String) -  Futures contract, return related data only if specified
   - @param "From" (optional.Int64) -  Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit)
@@ -3950,7 +4038,7 @@ type CreateBatchFuturesOrderOpts struct {
 CreateBatchFuturesOrder Place batch futures orders
 - Up to 10 orders per request - If any of the order&#39;s parameters are missing or in the wrong format, all of them will not be executed, and a http status 400 error will be returned directly - If the parameters are checked and passed, all are executed. Even if there is a business logic error in the middle (such as insufficient funds), it will not affect other execution orders - The returned result is in array format, and the order corresponds to the orders in the request body - In the returned result, the &#x60;succeeded&#x60; field of type bool indicates whether the execution was successful or not - If the execution is successful, the normal order content is included; if the execution fails, the &#x60;label&#x60; field is included to indicate the cause of the error - In the rate limiting, each order is counted individually
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param settle Settle currency
+  - @param settle Perpetual futures settlement currency
   - @param futuresOrder
   - @param optional nil or *CreateBatchFuturesOrderOpts - Optional Parameters:
   - @param "XGateExptime" (optional.String) -  Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected
@@ -4052,7 +4140,7 @@ func (a *FuturesApiService) CreateBatchFuturesOrder(ctx context.Context, settle 
 GetFuturesOrder Query single order details
 - Zero-fill order cannot be retrieved for 10 minutes after cancellation - Historical orders, by default, only data within the past 6 months is supported.
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param settle Settle currency
+  - @param settle Perpetual futures settlement currency
   - @param orderId The order ID returned when the order is created successfully, or the custom ID specified by the user when creating the order (i.e. the `text` field). When using the custom `text` field: 1. If the order was not filled and has been cancelled, after 60 seconds you cannot query the order by `text`; continuing to use `text` returns error ORDER_NOT_FOUND. 2. If the order was fully or partially filled, you can query the order by `text` indefinitely.
 
 @return FuturesOrder
@@ -4153,7 +4241,7 @@ type AmendFuturesOrderOpts struct {
 /*
 AmendFuturesOrder Amend single order
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param settle Settle currency
+  - @param settle Perpetual futures settlement currency
   - @param orderId The order ID returned when the order is created successfully, or the custom ID specified by the user when creating the order (i.e. the `text` field). When using the custom `text` field: 1. If the order was not filled and has been cancelled, after 60 seconds you cannot query the order by `text`; continuing to use `text` returns error ORDER_NOT_FOUND. 2. If the order was fully or partially filled, you can query the order by `text` indefinitely.
   - @param futuresOrderAmendment
   - @param optional nil or *AmendFuturesOrderOpts - Optional Parameters:
@@ -4263,7 +4351,7 @@ type CancelFuturesOrderOpts struct {
 /*
 CancelFuturesOrder Cancel single order
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param settle Settle currency
+  - @param settle Perpetual futures settlement currency
   - @param orderId The order ID returned when the order is created successfully, or the custom ID specified by the user when creating the order (i.e. the `text` field). When using the custom `text` field: 1. If the order was not filled and has been cancelled, after 60 seconds you cannot query the order by `text`; continuing to use `text` returns error ORDER_NOT_FOUND. 2. If the order was fully or partially filled, you can query the order by `text` indefinitely.
   - @param optional nil or *CancelFuturesOrderOpts - Optional Parameters:
   - @param "XGateExptime" (optional.String) -  Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected
@@ -4378,7 +4466,7 @@ type GetMyTradesOpts struct {
 GetMyTrades Query personal trading records
 By default, only supports querying data within 6 months. For older data, use &#x60;GET /futures/{settle}/my_trades_timerange&#x60;
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param settle Settle currency
+  - @param settle Perpetual futures settlement currency
   - @param optional nil or *GetMyTradesOpts - Optional Parameters:
   - @param "Contract" (optional.String) -  Futures contract, return related data only if specified
   - @param "Order" (optional.Int64) -  Futures order ID, return related data only if specified
@@ -4502,7 +4590,7 @@ type GetMyTradesWithTimeRangeOpts struct {
 /*
 GetMyTradesWithTimeRange Query personal trading records by time range
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param settle Settle currency
+  - @param settle Perpetual futures settlement currency
   - @param optional nil or *GetMyTradesWithTimeRangeOpts - Optional Parameters:
   - @param "Contract" (optional.String) -  Futures contract, return related data only if specified
   - @param "From" (optional.Int64) -  Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit)
@@ -4631,7 +4719,7 @@ type ListPositionCloseOpts struct {
 /*
 ListPositionClose Query position close history
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param settle Settle currency
+  - @param settle Perpetual futures settlement currency
   - @param optional nil or *ListPositionCloseOpts - Optional Parameters:
   - @param "Contract" (optional.String) -  Futures contract, return related data only if specified
   - @param "Limit" (optional.Int32) -  Maximum number of records returned in a single list
@@ -4763,7 +4851,7 @@ type ListLiquidatesOpts struct {
 /*
 ListLiquidates Query liquidation history
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param settle Settle currency
+  - @param settle Perpetual futures settlement currency
   - @param optional nil or *ListLiquidatesOpts - Optional Parameters:
   - @param "Contract" (optional.String) -  Futures contract, return related data only if specified
   - @param "Limit" (optional.Int32) -  Maximum number of records returned in a single list
@@ -4891,7 +4979,7 @@ type ListAutoDeleveragesOpts struct {
 /*
 ListAutoDeleverages Query ADL auto-deleveraging order information
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param settle Settle currency
+  - @param settle Perpetual futures settlement currency
   - @param optional nil or *ListAutoDeleveragesOpts - Optional Parameters:
   - @param "Contract" (optional.String) -  Futures contract, return related data only if specified
   - @param "Limit" (optional.Int32) -  Maximum number of records returned in a single list
@@ -5010,7 +5098,7 @@ func (a *FuturesApiService) ListAutoDeleverages(ctx context.Context, settle stri
 CountdownCancelAllFutures Countdown cancel orders
 Heartbeat detection for contract orders: When the user-set &#x60;timeout&#x60; time is reached, if neither the existing countdown is canceled nor a new countdown is set, the relevant contract orders will be automatically canceled. This API can be called repeatedly to or cancel the countdown. Usage example: Repeatedly call this API at 30-second intervals, setting the &#x60;timeout&#x60; to 30 (seconds) each time. If this API is not called again within 30 seconds, all open orders on your specified &#x60;market&#x60; will be automatically canceled. If the &#x60;timeout&#x60; is set to 0 within 30 seconds, the countdown timer will terminate, and the automatic order cancellation function will be disabled.
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param settle Settle currency
+  - @param settle Perpetual futures settlement currency
   - @param countdownCancelAllFuturesTask
 
 @return TriggerTime
@@ -5111,7 +5199,7 @@ type GetFuturesFeeOpts struct {
 /*
 GetFuturesFee Query futures market trading fee rates
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param settle Settle currency
+  - @param settle Perpetual futures settlement currency
   - @param optional nil or *GetFuturesFeeOpts - Optional Parameters:
   - @param "Contract" (optional.String) -  Futures contract, return related data only if specified
 
@@ -5215,7 +5303,7 @@ type CancelBatchFutureOrdersOpts struct {
 CancelBatchFutureOrders Cancel batch orders by specified ID list
 Multiple different order IDs can be specified. A maximum of 20 records can be cancelled in one request
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param settle Settle currency
+  - @param settle Perpetual futures settlement currency
   - @param requestBody
   - @param optional nil or *CancelBatchFutureOrdersOpts - Optional Parameters:
   - @param "XGateExptime" (optional.String) -  Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected
@@ -5322,7 +5410,7 @@ type AmendBatchFutureOrdersOpts struct {
 AmendBatchFutureOrders Batch modify orders by specified IDs
 Multiple different order IDs can be specified. A maximum of 10 orders can be modified in one request
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param settle Settle currency
+  - @param settle Perpetual futures settlement currency
   - @param batchAmendOrderReq
   - @param optional nil or *AmendBatchFutureOrdersOpts - Optional Parameters:
   - @param "XGateExptime" (optional.String) -  Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected
@@ -5424,7 +5512,7 @@ func (a *FuturesApiService) AmendBatchFutureOrders(ctx context.Context, settle s
 GetFuturesRiskLimitTable Query risk limit table by table_id
 Just pass table_id
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param settle Settle currency
+  - @param settle Perpetual futures settlement currency
   - @param tableId Risk limit table ID
 
 @return []FuturesRiskLimitTier
@@ -5519,7 +5607,7 @@ type CreateFuturesBBOOrderOpts struct {
 CreateFuturesBBOOrder Level-based BBO Contract Order Placement
 Compared to the futures trading order placement interface (futures/{settle}/orders), it adds the &#x60;level&#x60; and &#x60;direction&#x60; parameters.
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param settle Settle currency
+  - @param settle Perpetual futures settlement currency
   - @param futuresBboOrder
   - @param optional nil or *CreateFuturesBBOOrderOpts - Optional Parameters:
   - @param "XGateExptime" (optional.String) -  Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected
@@ -5620,7 +5708,7 @@ func (a *FuturesApiService) CreateFuturesBBOOrder(ctx context.Context, settle st
 /*
 CreateTrailOrder Create trail order
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param settle Settle currency
+  - @param settle Perpetual futures settlement currency
   - @param createTrailOrder
 
 @return CreateTrailOrderResponse
@@ -5716,7 +5804,7 @@ func (a *FuturesApiService) CreateTrailOrder(ctx context.Context, settle string,
 /*
 StopTrailOrder Terminate trail order
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param settle Settle currency
+  - @param settle Perpetual futures settlement currency
   - @param stopTrailOrder
 
 @return TrailOrderResponse
@@ -5812,7 +5900,7 @@ func (a *FuturesApiService) StopTrailOrder(ctx context.Context, settle string, s
 /*
 StopAllTrailOrders Batch terminate trail orders
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param settle Settle currency
+  - @param settle Perpetual futures settlement currency
   - @param stopAllTrailOrders
 
 @return TrailOrderListResponse
@@ -5924,7 +6012,7 @@ type GetTrailOrdersOpts struct {
 /*
 GetTrailOrders Get trail order list
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param settle Settle currency
+  - @param settle Perpetual futures settlement currency
   - @param optional nil or *GetTrailOrdersOpts - Optional Parameters:
   - @param "Contract" (optional.String) -  Contract name
   - @param "IsFinished" (optional.Bool) -  Whether historical order
@@ -6066,7 +6154,7 @@ func (a *FuturesApiService) GetTrailOrders(ctx context.Context, settle string, l
 /*
 GetTrailOrderDetail Get trail order details
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param settle Settle currency
+  - @param settle Perpetual futures settlement currency
   - @param id Order ID
 
 @return TrailOrderDetailResponse
@@ -6161,7 +6249,7 @@ func (a *FuturesApiService) GetTrailOrderDetail(ctx context.Context, settle stri
 /*
 UpdateTrailOrder Update trail order
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param settle Settle currency
+  - @param settle Perpetual futures settlement currency
   - @param updateTrailOrder
 
 @return TrailOrderResponse
@@ -6263,7 +6351,7 @@ type GetTrailOrderChangeLogOpts struct {
 /*
 GetTrailOrderChangeLog Get trail order user modification records
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param settle Settle currency
+  - @param settle Perpetual futures settlement currency
   - @param id Order ID
   - @param optional nil or *GetTrailOrderChangeLogOpts - Optional Parameters:
   - @param "PageNum" (optional.Int32) -  Page number, starting from 1
@@ -6367,7 +6455,7 @@ func (a *FuturesApiService) GetTrailOrderChangeLog(ctx context.Context, settle s
 /*
 CreateChaseOrder Create a chase order
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param settle Settle currency
+  - @param settle Perpetual futures settlement currency
   - @param createChaseOrderReq
 
 @return CreateChaseOrderResp
@@ -6463,7 +6551,7 @@ func (a *FuturesApiService) CreateChaseOrder(ctx context.Context, settle string,
 /*
 StopChaseOrder Stop a chase order
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param settle Settle currency
+  - @param settle Perpetual futures settlement currency
   - @param stopChaseOrderReq
 
 @return StopChaseOrderResp
@@ -6559,7 +6647,7 @@ func (a *FuturesApiService) StopChaseOrder(ctx context.Context, settle string, s
 /*
 StopAllChaseOrders Stop chase orders in batch
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param settle Settle currency
+  - @param settle Perpetual futures settlement currency
   - @param stopAllChaseOrdersReq
 
 @return StopAllChaseOrdersResp
@@ -6668,7 +6756,7 @@ type GetChaseOrdersOpts struct {
 /*
 GetChaseOrders List chase orders
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param settle Settle currency
+  - @param settle Perpetual futures settlement currency
   - @param sortBy Sort field: 1 ORDER_SORT_CREATED_AT, 2 ORDER_SORT_FINISHED_AT; cannot be 0
   - @param optional nil or *GetChaseOrdersOpts - Optional Parameters:
   - @param "Contract" (optional.String) -  Optional. When non-empty, must be a valid contract (validated against the market cache for the path settle); server-side converted to uppercase
@@ -6800,7 +6888,7 @@ func (a *FuturesApiService) GetChaseOrders(ctx context.Context, settle string, s
 /*
 GetChaseOrderDetail Get chase order detail
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param settle Settle currency
+  - @param settle Perpetual futures settlement currency
   - @param id Order ID, must be a non-zero positive integer
 
 @return GetChaseOrderDetailResp
@@ -6902,7 +6990,7 @@ type ListPriceTriggeredOrdersOpts struct {
 /*
 ListPriceTriggeredOrders Query auto order list
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param settle Settle currency
+  - @param settle Perpetual futures settlement currency
   - @param status Query order list based on status
   - @param optional nil or *ListPriceTriggeredOrdersOpts - Optional Parameters:
   - @param "Contract" (optional.String) -  Futures contract, return related data only if specified
@@ -7010,7 +7098,7 @@ func (a *FuturesApiService) ListPriceTriggeredOrders(ctx context.Context, settle
 /*
 CreatePriceTriggeredOrder Create price-triggered order
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param settle Settle currency
+  - @param settle Perpetual futures settlement currency
   - @param futuresPriceTriggeredOrder
 
 @return TriggerOrderResponse
@@ -7111,7 +7199,7 @@ type CancelPriceTriggeredOrderListOpts struct {
 /*
 CancelPriceTriggeredOrderList Cancel all auto orders
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param settle Settle currency
+  - @param settle Perpetual futures settlement currency
   - @param optional nil or *CancelPriceTriggeredOrderListOpts - Optional Parameters:
   - @param "Contract" (optional.String) -  Futures contract, return related data only if specified
 
@@ -7209,7 +7297,7 @@ func (a *FuturesApiService) CancelPriceTriggeredOrderList(ctx context.Context, s
 /*
 GetPriceTriggeredOrder Query single auto order details
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param settle Settle currency
+  - @param settle Perpetual futures settlement currency
   - @param orderId ID returned when order is successfully created
 
 @return FuturesPriceTriggeredOrder
@@ -7305,7 +7393,7 @@ func (a *FuturesApiService) GetPriceTriggeredOrder(ctx context.Context, settle s
 /*
 CancelPriceTriggeredOrder Cancel single auto order
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param settle Settle currency
+  - @param settle Perpetual futures settlement currency
   - @param orderId ID returned when order is successfully created
 
 @return FuturesPriceTriggeredOrder
@@ -7401,7 +7489,7 @@ func (a *FuturesApiService) CancelPriceTriggeredOrder(ctx context.Context, settl
 /*
 UpdatePriceTriggeredOrder Modify a Single Auto Order
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param settle Settle currency
+  - @param settle Perpetual futures settlement currency
   - @param futuresUpdatePriceTriggeredOrder
 
 @return TriggerOrderResponse

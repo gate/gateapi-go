@@ -18,7 +18,7 @@ type PartnerDataAggregated struct {
 	NetFee string `json:"net_fee"`
 	// Customer count (invited users)
 	CustomerCount int32 `json:"customer_count"`
-	// Transaction participant count​ (string format, consistent with online JSON serialization) only returns a specific value when business_type=0(all), and returns nullfor other business types.
+	// Transaction participant count (string format, consistent with online JSON serialization) only returns a specific value when business_type=0(all), and returns nullfor other business types.
 	TradingUserCount *string `json:"trading_user_count"`
 	// Time range description
 	TimeRangeDesc string `json:"time_range_desc"`
