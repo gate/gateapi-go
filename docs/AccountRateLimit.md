@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Tier** | **string** | Frequency limit level (For detailed frequency limit rules, see [Transaction ratio frequency limit](#rate-limit-based-on-fill-ratio)) | [optional] 
+**Tier** | **string** | Frequency limit level (For detailed frequency limit rules, see [Transaction ratio frequency limit](#rate-limit-based-on-fill-ratio)) | [optional] [readonly] 
 **Ratio** | **string** | Fill rate | [optional] 
-**MainRatio** | **string** | Total fill ratio of main account | [optional] 
-**UpdatedAt** | **string** | Update time | [optional] 
+**MainRatio** | **string** | Total fill ratio of main account | [optional] [readonly] 
+**UpdatedAt** | **string** | Update time | [optional] [readonly] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

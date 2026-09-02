@@ -40,4 +40,6 @@ type Symbol struct {
 	DelistTime string `json:"delist_time"`
 	// Whether RPI order placement is supported (true if supported; false otherwise)
 	SupportRpi string `json:"support_rpi,omitempty"`
+	// Whether cross-margin order placement is supported (true if supported; false otherwise)
+	SupportCross string `json:"support_cross,omitempty"`
 }

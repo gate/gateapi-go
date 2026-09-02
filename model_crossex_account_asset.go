@@ -20,18 +20,18 @@ type CrossexAccountAsset struct {
 	Balance string `json:"balance,omitempty"`
 	// Unrealized P&L
 	Upnl string `json:"upnl,omitempty"`
-	// Equity (only USDT has a value; other assets are 0)
+	// Net margin equity for the currency
 	Equity string `json:"equity,omitempty"`
-	// Futures initial margin (only USDT has a value; other assets are 0)
+	// Currency-specific futures initial margin. This value is populated for futures settlement currencies (USDT/USDC/USD)
 	FuturesInitialMargin string `json:"futures_initial_margin,omitempty"`
-	// Futures maintenance margin (only USDT has a value; other assets are 0)
+	// Currency-specific futures maintenance margin. This value is populated for futures settlement currencies (USDT/USDC/USD)
 	FuturesMaintenanceMargin string `json:"futures_maintenance_margin,omitempty"`
-	// Margin trading initial margin (only USDT has a value; other assets are 0)
+	// Currency-specific margin trading initial margin. This value is populated for margin or futures settlement currencies (USDT/USDC/USD)
 	BorrowingInitialMargin string `json:"borrowing_initial_margin"`
-	// Margin trading maintenance margin (only USDT has a value; other assets are 0)
+	// Currency-specific margin trading maintenance margin. This value is populated for margin or futures settlement currencies (USDT/USDC/USD)
 	BorrowingMaintenanceMargin string `json:"borrowing_maintenance_margin"`
 	// Available Balance
 	AvailableBalance string `json:"available_balance,omitempty"`
-	// Liabilities (only meaningful in isolated exchange mode; always 0 in cross-exchange mode)
+	// Liability for the currency. This value is populated only for USDT, USDC, or USD
 	Liability string `json:"liability,omitempty"`
 }

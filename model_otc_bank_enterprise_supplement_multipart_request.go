@@ -11,18 +11,4 @@ package gateapi
 
 // Enterprise supplement `multipart/form-data`. File field names: `certificate`, `share_holders`, `passport`, `share_holding_structure`; optional `funds_statement`, `additional`. Optional string field `relationship_proof` (JSON) is merged into the request.
 type OtcBankEnterpriseSupplementMultipartRequest struct {
-	Uid    string `json:"uid,omitempty"`
-	BankId string `json:"bank_id"`
-	// Business license / registration certificate file content (multipart file field, binary/Base64)
-	Certificate string `json:"certificate"`
-	// Register of shareholders file content (multipart file field, binary/Base64)
-	ShareHolders string `json:"share_holders"`
-	// Legal representative / shareholder passport file content (multipart file field, binary/Base64)
-	Passport string `json:"passport"`
-	// Ownership structure chart file content (multipart file field, binary/Base64)
-	ShareHoldingStructure string `json:"share_holding_structure"`
-	// Proof-of-funds file content (multipart file field, binary/Base64, optional)
-	FundsStatement string `json:"funds_statement,omitempty"`
-	// Other supplementary material file content (multipart file field, binary/Base64, optional)
-	Additional string `json:"additional,omitempty"`
 }

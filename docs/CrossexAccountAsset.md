@@ -9,13 +9,13 @@ Name | Type | Description | Notes
 **ExchangeType** | **string** | Exchange | [optional] 
 **Balance** | **string** | Balance | [optional] 
 **Upnl** | **string** | Unrealized P&amp;L | [optional] 
-**Equity** | **string** | Equity (only USDT has a value; other assets are 0) | [optional] 
-**FuturesInitialMargin** | **string** | Futures initial margin (only USDT has a value; other assets are 0) | [optional] 
-**FuturesMaintenanceMargin** | **string** | Futures maintenance margin (only USDT has a value; other assets are 0) | [optional] 
-**BorrowingInitialMargin** | **string** | Margin trading initial margin (only USDT has a value; other assets are 0) | 
-**BorrowingMaintenanceMargin** | **string** | Margin trading maintenance margin (only USDT has a value; other assets are 0) | 
+**Equity** | **string** | Net margin equity for the currency | [optional] 
+**FuturesInitialMargin** | **string** | Currency-specific futures initial margin. This value is populated for futures settlement currencies (USDT/USDC/USD) | [optional] 
+**FuturesMaintenanceMargin** | **string** | Currency-specific futures maintenance margin. This value is populated for futures settlement currencies (USDT/USDC/USD) | [optional] 
+**BorrowingInitialMargin** | **string** | Currency-specific margin trading initial margin. This value is populated for margin or futures settlement currencies (USDT/USDC/USD) | 
+**BorrowingMaintenanceMargin** | **string** | Currency-specific margin trading maintenance margin. This value is populated for margin or futures settlement currencies (USDT/USDC/USD) | 
 **AvailableBalance** | **string** | Available Balance | [optional] 
-**Liability** | **string** | Liabilities (only meaningful in isolated exchange mode; always 0 in cross-exchange mode) | [optional] 
+**Liability** | **string** | Liability for the currency. This value is populated only for USDT, USDC, or USD | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

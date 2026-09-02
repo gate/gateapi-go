@@ -21,7 +21,7 @@ type CrossexOrderRequest struct {
 	Type string `json:"type,omitempty"`
 	// Defaults to GTC. Supported values: `GTC`, `IOC`, `FOK`, `POC`, and `RPI` `GTC`: GoodTillCancelled `IOC`: ImmediateOrCancelled `FOK`: FillOrKill `POC`: PendingOrCancelled or PostOnly `RPI`: Retail Price Improvement
 	TimeInForce string `json:"time_in_force,omitempty"`
-	// Order quantity (required unless spot market buy)
+	// Order quantity (required unless spot or margin market buy)
 	Qty string `json:"qty,omitempty"`
 	// Limit Order Price (Required for Limit Orders)
 	Price string `json:"price,omitempty"`

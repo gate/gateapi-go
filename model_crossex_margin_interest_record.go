@@ -11,7 +11,7 @@ package gateapi
 
 type CrossexMarginInterestRecord struct {
 	// User ID
-	UserId string `json:"userId"`
+	UserId string `json:"user_id"`
 	// Trading Pair
 	Symbol string `json:"symbol"`
 	// Interest Deduction ID
@@ -26,7 +26,7 @@ type CrossexMarginInterestRecord struct {
 	Interest string `json:"interest"`
 	// interest rate
 	InterestRate string `json:"interest_rate"`
-	// Interest deduction type (`PERIODIC_POSITION` hourly interest on position, `PERIODIC_OPEN_ORDER` hourly interest on open orders, `IMMEDIATE_OPEN_ORDER` interest charged on order placement, `PERIODIC_ISOLATED` hourly interest on debt)
+	// Interest deduction type `PERIODIC_POSITION`: hourly interest charged on positions `PERIODIC_OPEN_ORDER`: hourly interest charged on open orders `IMMEDIATE_OPEN_ORDER`: interest charged when an order is placed `PERIODIC_ISOLATED`: hourly interest charged on liabilities
 	InterestType string `json:"interest_type"`
 	// Created time
 	CreateTime string `json:"create_time"`

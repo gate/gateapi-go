@@ -11,11 +11,11 @@ package gateapi
 
 // Flash Swap Quote Request Body
 type CrossexConvertQuoteRequest struct {
-	// Exchange Type
+	// Exchange type Currently supports only BINANCE, OKX, GATE, BYBIT, HYPERLIQUID, and KRAKEN
 	ExchangeType string `json:"exchange_type"`
 	// Asset Sold
 	FromCoin string `json:"from_coin"`
-	// Asset name to buy (OKX and GATE only allow BTC, ETH, USDT; BN only allows USDT)
+	// Asset to receive OKX and GATE only support conversion to BTC, ETH, or USDT BYBIT and BINANCE only support conversion to USDT HYPERLIQUID only supports conversion to USDT or USDC KRAKEN only supports conversion to USDT
 	ToCoin string `json:"to_coin"`
 	// Amount to sell
 	FromAmount string `json:"from_amount"`

@@ -27,6 +27,7 @@ type P2pApiService service
 
 /*
 P2pMerchantAccountGetUserInfo Get account information
+To query the spot account balance, use the Spot API &#x60;GET /spot/accounts&#x60;.
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 
 @return P2pMerchantUserInfoResponse

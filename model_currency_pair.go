@@ -21,6 +21,8 @@ type CurrencyPair struct {
 	Quote string `json:"quote,omitempty"`
 	// Quote currency name
 	QuoteName string `json:"quote_name,omitempty"`
+	// Quote currencies supported by the unified market; null means that the market does not support unified quote currencies
+	TradeQuotes *[]string `json:"trade_quotes,omitempty"`
 	// Trading fee rate(deprecated)
 	Fee string `json:"fee,omitempty"`
 	// Minimum amount of base currency to trade, `null` means no limit

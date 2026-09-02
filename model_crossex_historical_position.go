@@ -44,6 +44,8 @@ type CrossexHistoricalPosition struct {
 	PositionMode string `json:"position_mode,omitempty"`
 	// Leverage at Close
 	Leverage string `json:"leverage,omitempty"`
+	// Margin mode (CROSS/ISOLATED)
+	MarginMode string `json:"margin_mode,omitempty"`
 	// Business Type
 	BusinessType string `json:"business_type"`
 	// Created time

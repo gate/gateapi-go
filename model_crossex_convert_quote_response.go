@@ -22,6 +22,6 @@ type CrossexConvertQuoteResponse struct {
 	FromAmount string `json:"from_amount"`
 	// Amount to buy
 	ToAmount string `json:"to_amount"`
-	// Price
+	// Quoted price
 	Price string `json:"price"`
 }

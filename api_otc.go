@@ -403,11 +403,14 @@ type CreateOtcBankOpts struct {
 	RemittanceLineNumber optional.String
 	AgentBankName        optional.String
 	AgentBankSwift       optional.String
+	DocumentationFile    optional.String
+	DocumentationFileKey optional.String
+	FileType             optional.String
 }
 
 /*
 CreateOtcBank Create bank card
-Bind a bank card. Under the Global entity, an account with a non-matching name may enter manual review (&#x60;status&#x60; pending) and require subsequent supplementary materials. Corresponding Inner: &#x60;POST /bank/create&#x60;. Fields and protocol are subject to the production form/gateway; in some environments &#x60;bank_account_name&#x60; is passed Base64-encoded, see the integration notes for details.
+Bind a bank card. Under the Global entity, non-same-name accounts may enter manual review (&#x60;status&#x60; pending) and require supplementary materials later. Corresponds to Inner: &#x60;POST /bank/create&#x60;. Fields and protocol follow the live form/gateway; &#x60;bank_account_name&#x60; may be Base64-encoded in some environments—see integration notes.  Account-opening proof supports two methods (choose one):  1. **Pre-upload (recommended)**: call &#x60;POST /otc/upload/pre_upload&#x60; (&#x60;scene&#x3D;bank&#x60;) to obtain a temporary-bucket Policy and upload directly to S3, then pass &#x60;documentation_file_key&#x60; + &#x60;file_type&#x60; in this endpoint; 2. **Multipart direct upload**: pass the &#x60;documentation_file&#x60; file field; the server writes directly to the production bucket.  When using pre-upload, the server validates object existence and that the uid in the &#x60;file_key&#x60; path matches the caller; after validation, the object is moved to the production bucket and persisted. Cross-user references return &#x60;Invalid parameters file_key&#x60;; incomplete direct upload returns &#x60;Invalid parameters file not uploaded&#x60;.
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param bankAccountName
   - @param bankName
@@ -415,15 +418,17 @@ Bind a bank card. Under the Global entity, an account with a non-matching name m
   - @param bankAddress
   - @param iban
   - @param swift
-  - @param documentationFile Account opening proof file content (multipart file field, binary/Base64; jpg/jpeg/png/pdf, etc.; maximum 10 MB per file, subject to the live environment)
   - @param optional nil or *CreateOtcBankOpts - Optional Parameters:
   - @param "RemittanceLineNumber" (optional.String) -
   - @param "AgentBankName" (optional.String) -
   - @param "AgentBankSwift" (optional.String) -
+  - @param "DocumentationFile" (optional.String) -  Multipart direct upload; mutually exclusive with documentation_file_key
+  - @param "DocumentationFileKey" (optional.String) -  Pre-upload mode; file_key returned by pre_upload (plaintext or base64 accepted)
+  - @param "FileType" (optional.String) -  Required when using documentation_file_key; plaintext MIME or its base64
 
 @return OtcBankCreateResponse
 */
-func (a *OTCApiService) CreateOtcBank(ctx context.Context, bankAccountName string, bankName string, bankCountry string, bankAddress string, iban string, swift string, documentationFile string, localVarOptionals *CreateOtcBankOpts) (OtcBankCreateResponse, *http.Response, error) {
+func (a *OTCApiService) CreateOtcBank(ctx context.Context, bankAccountName string, bankName string, bankCountry string, bankAddress string, iban string, swift string, localVarOptionals *CreateOtcBankOpts) (OtcBankCreateResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -471,7 +476,15 @@ func (a *OTCApiService) CreateOtcBank(ctx context.Context, bankAccountName strin
 	if localVarOptionals != nil && localVarOptionals.AgentBankSwift.IsSet() {
 		localVarFormParams.Add("agent_bank_swift", parameterToString(localVarOptionals.AgentBankSwift.Value(), ""))
 	}
-	localVarFormParams.Add("documentation_file", parameterToString(documentationFile, ""))
+	if localVarOptionals != nil && localVarOptionals.DocumentationFile.IsSet() {
+		localVarFormParams.Add("documentation_file", parameterToString(localVarOptionals.DocumentationFile.Value(), ""))
+	}
+	if localVarOptionals != nil && localVarOptionals.DocumentationFileKey.IsSet() {
+		localVarFormParams.Add("documentation_file_key", parameterToString(localVarOptionals.DocumentationFileKey.Value(), ""))
+	}
+	if localVarOptionals != nil && localVarOptionals.FileType.IsSet() {
+		localVarFormParams.Add("file_type", parameterToString(localVarOptionals.FileType.Value(), ""))
+	}
 	if ctx == nil {
 		ctx = context.Background()
 	}
@@ -804,18 +817,28 @@ func (a *OTCApiService) GetOtcBankSupplementChecklist(ctx context.Context, bankI
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+// SubmitOtcBankPersonalSupplementOpts Optional parameters for the method 'SubmitOtcBankPersonalSupplement'
+type SubmitOtcBankPersonalSupplementOpts struct {
+	IdDocumentFront   optional.String
+	IdDocumentBack    optional.String
+	AddressProof      optional.String
+	RelationshipProof optional.String
+}
+
 /*
 SubmitOtcBankPersonalSupplement Submit Bank Card Supplement Materials (Personal)
-**Personal professional verification (type&#x3D;1)** users submit non-same-person/supplementary materials. Must match &#x60;user_type&#x3D;personal&#x60; returned by &#x60;GET /otc/bank/bank_supplement_checklist?bank_id&#x3D;&#x60;, otherwise the request is rejected. **multipart/form-data** is recommended: each material item is a separate file field, with field names matching the checklist &#x60;code&#x60; (&#x60;id_document_front&#x60;, &#x60;id_document_back&#x60;, &#x60;address_proof&#x60;).
+**Personal professional verification (type&#x3D;1)** users submit non-same-person/supplementary materials. Must match &#x60;user_type&#x3D;personal&#x60; from &#x60;GET /otc/bank/bank_supplement_checklist?bank_id&#x3D;&#x60;; otherwise rejected.  Two submission methods (can be mixed):  1. **Pre-upload (recommended)**: call &#x60;POST /otc/upload/pre_upload&#x60; (&#x60;scene&#x3D;bank&#x60;) to upload to the temporary bucket, then fill file items by category in the &#x60;relationship_proof&#x60; JSON; pass **&#x60;key&#x60; as plaintext** object path (&#x60;base64_decode(pre_upload.file_key)&#x60;, e.g. &#x60;otc_temp/{uid}/bank/xxx.png&#x60;), and &#x60;file_type&#x60; as plaintext MIME; the server base64-encodes before persistence—do not pass base64 &#x60;file_key&#x60; directly; 2. **Multipart direct upload**: one file field per material item; field names match checklist &#x60;code&#x60; (&#x60;id_document_front&#x60;, &#x60;id_document_back&#x60;, &#x60;address_proof&#x60;).
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param bankId
-  - @param idDocumentFront ID document front-side file content (multipart file field, binary/Base64)
-  - @param idDocumentBack ID document back-side file content (multipart file field, binary/Base64)
-  - @param addressProof Proof-of-address file content (multipart file field, binary/Base64)
+  - @param optional nil or *SubmitOtcBankPersonalSupplementOpts - Optional Parameters:
+  - @param "IdDocumentFront" (optional.String) -  ID document front-side file content (multipart file field, binary/Base64)
+  - @param "IdDocumentBack" (optional.String) -  ID document back-side file content (multipart file field, binary/Base64)
+  - @param "AddressProof" (optional.String) -  Proof-of-address file content (multipart file field, binary/Base64)
+  - @param "RelationshipProof" (optional.String) -  Optional. JSON string of relationship_proof.
 
 @return OtcActionResponse
 */
-func (a *OTCApiService) SubmitOtcBankPersonalSupplement(ctx context.Context, bankId string, idDocumentFront string, idDocumentBack string, addressProof string) (OtcActionResponse, *http.Response, error) {
+func (a *OTCApiService) SubmitOtcBankPersonalSupplement(ctx context.Context, bankId string, localVarOptionals *SubmitOtcBankPersonalSupplementOpts) (OtcActionResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -849,9 +872,18 @@ func (a *OTCApiService) SubmitOtcBankPersonalSupplement(ctx context.Context, ban
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	localVarFormParams.Add("bank_id", parameterToString(bankId, ""))
-	localVarFormParams.Add("id_document_front", parameterToString(idDocumentFront, ""))
-	localVarFormParams.Add("id_document_back", parameterToString(idDocumentBack, ""))
-	localVarFormParams.Add("address_proof", parameterToString(addressProof, ""))
+	if localVarOptionals != nil && localVarOptionals.IdDocumentFront.IsSet() {
+		localVarFormParams.Add("id_document_front", parameterToString(localVarOptionals.IdDocumentFront.Value(), ""))
+	}
+	if localVarOptionals != nil && localVarOptionals.IdDocumentBack.IsSet() {
+		localVarFormParams.Add("id_document_back", parameterToString(localVarOptionals.IdDocumentBack.Value(), ""))
+	}
+	if localVarOptionals != nil && localVarOptionals.AddressProof.IsSet() {
+		localVarFormParams.Add("address_proof", parameterToString(localVarOptionals.AddressProof.Value(), ""))
+	}
+	if localVarOptionals != nil && localVarOptionals.RelationshipProof.IsSet() {
+		localVarFormParams.Add("relationship_proof", parameterToString(localVarOptionals.RelationshipProof.Value(), ""))
+	}
 	if ctx == nil {
 		ctx = context.Background()
 	}
@@ -905,28 +937,34 @@ func (a *OTCApiService) SubmitOtcBankPersonalSupplement(ctx context.Context, ban
 
 // SubmitOtcBankEnterpriseSupplementOpts Optional parameters for the method 'SubmitOtcBankEnterpriseSupplement'
 type SubmitOtcBankEnterpriseSupplementOpts struct {
-	Uid            optional.String
-	FundsStatement optional.String
-	Additional     optional.String
+	Uid                   optional.String
+	Certificate           optional.String
+	ShareHolders          optional.String
+	Passport              optional.String
+	ShareHoldingStructure optional.String
+	FundsStatement        optional.String
+	Additional            optional.String
+	RelationshipProof     optional.String
 }
 
 /*
 SubmitOtcBankEnterpriseSupplement Submit Bank Card Supplement Materials (Enterprise)
-**Enterprise professional verification (type&#x3D;2)** users submit supplementary materials. Must match &#x60;user_type&#x3D;enterprise&#x60; returned by the checklist. **multipart** file field names: &#x60;certificate&#x60;, &#x60;share_holders&#x60;, &#x60;passport&#x60;, &#x60;share_holding_structure&#x60;.
+**Enterprise professional verification (type&#x3D;2)** users submit supplementary materials. Must match &#x60;user_type&#x3D;enterprise&#x60; from the checklist.  Two submission methods (can be mixed):  1. **Pre-upload (recommended)**: call &#x60;POST /otc/upload/pre_upload&#x60; (&#x60;scene&#x3D;bank&#x60;), fill file items by category in &#x60;relationship_proof&#x60;; pass **&#x60;key&#x60; as plaintext** object path (&#x60;base64_decode(pre_upload.file_key)&#x60;), and &#x60;file_type&#x60; as plaintext MIME; 2. **Multipart direct upload**: file field names &#x60;certificate&#x60;, &#x60;share_holders&#x60;, &#x60;passport&#x60;, &#x60;share_holding_structure&#x60;; optional &#x60;funds_statement&#x60;, &#x60;additional&#x60;.
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param bankId
-  - @param certificate Business license / registration certificate file content (multipart file field, binary/Base64)
-  - @param shareHolders Register of shareholders file content (multipart file field, binary/Base64)
-  - @param passport Legal representative / shareholder passport file content (multipart file field, binary/Base64)
-  - @param shareHoldingStructure Ownership structure chart file content (multipart file field, binary/Base64)
   - @param optional nil or *SubmitOtcBankEnterpriseSupplementOpts - Optional Parameters:
   - @param "Uid" (optional.String) -
+  - @param "Certificate" (optional.String) -  Business license / registration certificate file content (multipart file field, binary/Base64)
+  - @param "ShareHolders" (optional.String) -  Register of shareholders file content (multipart file field, binary/Base64)
+  - @param "Passport" (optional.String) -  Legal representative / shareholder passport file content (multipart file field, binary/Base64)
+  - @param "ShareHoldingStructure" (optional.String) -  Ownership structure chart file content (multipart file field, binary/Base64)
   - @param "FundsStatement" (optional.String) -  Proof-of-funds file content (multipart file field, binary/Base64, optional)
   - @param "Additional" (optional.String) -  Other supplementary material file content (multipart file field, binary/Base64, optional)
+  - @param "RelationshipProof" (optional.String) -  Optional. JSON string of relationship_proof.
 
 @return OtcActionResponse
 */
-func (a *OTCApiService) SubmitOtcBankEnterpriseSupplement(ctx context.Context, bankId string, certificate string, shareHolders string, passport string, shareHoldingStructure string, localVarOptionals *SubmitOtcBankEnterpriseSupplementOpts) (OtcActionResponse, *http.Response, error) {
+func (a *OTCApiService) SubmitOtcBankEnterpriseSupplement(ctx context.Context, bankId string, localVarOptionals *SubmitOtcBankEnterpriseSupplementOpts) (OtcActionResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -963,15 +1001,26 @@ func (a *OTCApiService) SubmitOtcBankEnterpriseSupplement(ctx context.Context, b
 		localVarFormParams.Add("uid", parameterToString(localVarOptionals.Uid.Value(), ""))
 	}
 	localVarFormParams.Add("bank_id", parameterToString(bankId, ""))
-	localVarFormParams.Add("certificate", parameterToString(certificate, ""))
-	localVarFormParams.Add("share_holders", parameterToString(shareHolders, ""))
-	localVarFormParams.Add("passport", parameterToString(passport, ""))
-	localVarFormParams.Add("share_holding_structure", parameterToString(shareHoldingStructure, ""))
+	if localVarOptionals != nil && localVarOptionals.Certificate.IsSet() {
+		localVarFormParams.Add("certificate", parameterToString(localVarOptionals.Certificate.Value(), ""))
+	}
+	if localVarOptionals != nil && localVarOptionals.ShareHolders.IsSet() {
+		localVarFormParams.Add("share_holders", parameterToString(localVarOptionals.ShareHolders.Value(), ""))
+	}
+	if localVarOptionals != nil && localVarOptionals.Passport.IsSet() {
+		localVarFormParams.Add("passport", parameterToString(localVarOptionals.Passport.Value(), ""))
+	}
+	if localVarOptionals != nil && localVarOptionals.ShareHoldingStructure.IsSet() {
+		localVarFormParams.Add("share_holding_structure", parameterToString(localVarOptionals.ShareHoldingStructure.Value(), ""))
+	}
 	if localVarOptionals != nil && localVarOptionals.FundsStatement.IsSet() {
 		localVarFormParams.Add("funds_statement", parameterToString(localVarOptionals.FundsStatement.Value(), ""))
 	}
 	if localVarOptionals != nil && localVarOptionals.Additional.IsSet() {
 		localVarFormParams.Add("additional", parameterToString(localVarOptionals.Additional.Value(), ""))
+	}
+	if localVarOptionals != nil && localVarOptionals.RelationshipProof.IsSet() {
+		localVarFormParams.Add("relationship_proof", parameterToString(localVarOptionals.RelationshipProof.Value(), ""))
 	}
 	if ctx == nil {
 		ctx = context.Background()
@@ -1025,8 +1074,102 @@ func (a *OTCApiService) SubmitOtcBankEnterpriseSupplement(ctx context.Context, b
 }
 
 /*
+CreateOtcUploadPreUpload Pre-upload file (temporary bucket)
+After selecting a file, the client calls this endpoint first to obtain a temporary-bucket POST Policy and &#x60;file_key&#x60;; then upload directly to S3 using the returned &#x60;url&#x60; and &#x60;fields&#x60; (success HTTP 204); finally, in business submit endpoints (e.g. &#x60;POST /otc/order/paid&#x60;, &#x60;POST /otc/bank/create&#x60;), pass the **same base64 &#x60;file_key&#x60; unchanged** (do not decode). The server validates ownership and object existence, then moves to the production bucket and persists. Unsubmitted files remain in the temporary bucket and are reclaimed by lifecycle rules.  Corresponds to Inner: &#x60;POST /upload/pre_upload&#x60;.  **&#x60;content_type&#x60; must be sent as base64** (plaintext containing &#x60;/&#x60; may be blocked by the gateway). Only the following MIME types are supported:  | MIME | base64 | Extension | | --- | --- | --- | | image/png | aW1hZ2UvcG5n | .png | | image/jpeg | aW1hZ2UvanBlZw&#x3D;&#x3D; | .jpeg | | image/jpg | aW1hZ2UvanBn | .jpg | | application/pdf | YXBwbGljYXRpb24vcGRm | .pdf |  **&#x60;scene&#x60; mapping to downstream endpoints**:  | scene | Typical use | | --- | --- | | general | Fiat buy payment receipt (&#x60;payment_receipt_file_key&#x60; in &#x60;POST /otc/order/paid&#x60;) | | bank | Add card, bank card supplementary materials | | assessment | Professional verification materials | | credit | Credit limit increase materials |  **Credential validity**: response &#x60;expires_in&#x60; is **5400 seconds (90 minutes)**; &#x60;fields.Policy&#x60; &#x60;expiration&#x60; matches it. Complete the S3 direct upload within this window; after expiry, call this endpoint again for a new credential.  **File size**: the S3 POST Policy enforces &#x60;content-length-range&#x60; **1 byte ~ 10MB** (10485760 bytes). Uploads exceeding the limit are rejected by S3; all &#x60;scene&#x60; values share this limit.  **Direct S3 upload**: &#x60;url&#x60; is the upload address; send each key-value pair in &#x60;fields&#x60; unchanged as form-data; the &#x60;file&#x60; field must be last. Object path is generated as &#x60;otc_temp/{uid}/{scene}/{unique filename}&#x60;; uid is taken from the login session.  This endpoint returns &#x60;content type is required.&#x60; when &#x60;content_type&#x60; is missing. Ownership and object-existence checks for &#x60;file_key&#x60; are performed by the subsequent business submission endpoint.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param otcUploadPreUploadRequest
+
+@return OtcUploadPreUploadResponse
+*/
+func (a *OTCApiService) CreateOtcUploadPreUpload(ctx context.Context, otcUploadPreUploadRequest OtcUploadPreUploadRequest) (OtcUploadPreUploadResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  OtcUploadPreUploadResponse
+	)
+
+	// create path and map variables
+	localVarPath := a.client.cfg.BasePath + "/otc/upload/pre_upload"
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = &otcUploadPreUploadRequest
+	if ctx == nil {
+		ctx = context.Background()
+	}
+	if ctx.Value(ContextGateAPIV4) == nil {
+		// for compatibility, set configuration key and secret to context if ContextGateAPIV4 value is not present
+		ctx = context.WithValue(ctx, ContextGateAPIV4, GateAPIV4{
+			Key:    a.client.cfg.Key,
+			Secret: a.client.cfg.Secret,
+		})
+	}
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(r)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status + ", " + string(localVarBody),
+		}
+		var gateErr GateAPIError
+		if e := a.client.decode(&gateErr, localVarBody, localVarHTTPResponse.Header.Get("Content-Type")); e == nil && gateErr.Label != "" {
+			gateErr.APIError = newErr
+			return localVarReturnValue, localVarHTTPResponse, gateErr
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+/*
 MarkOtcOrderPaid Mark fiat order as paid (deposit confirmation)
-Mark a fiat BUY order as paid (deposit confirmation). **A user payment receipt must be uploaded**: &#x60;payment_receipt_file_key&#x60; is required; supported formats are jpg/jpeg/png/pdf, with a maximum size of 10 MB per file (validated jointly by the service and gateway). The compatibility field name &#x60;payment_receipt&#x60; is subject to the gateway/live environment. The persisted field is &#x60;otc_trade_record.payment_receipt_file_key&#x60;. The Pay Inner path is &#x60;POST .../pay/order_set_paid&#x60; (commonly associated by &#x60;client_order_id&#x60;); the Inner path corresponding to this OpenAPI endpoint, &#x60;POST /order/paid&#x60;, still primarily uses &#x60;order_id&#x60;. If the gateway standardizes on the merchant order ID, follow the gateway documentation.
+Mark a fiat buy order as paid (deposit confirmation). **A user payment receipt must be uploaded**: &#x60;payment_receipt_file_key&#x60; is required; supported formats are jpg / jpeg / png / pdf, with a maximum size of 10 MB per file (validated jointly by the service and gateway). The compatible field name &#x60;payment_receipt&#x60; depends on the gateway and production contract. The persisted field is &#x60;otc_trade_record.payment_receipt_file_key&#x60;. The Pay Inner path is &#x60;POST .../pay/order_set_paid&#x60; (which commonly identifies orders by &#x60;client_order_id&#x60;); the Inner path corresponding to this OpenAPI operation, &#x60;POST /order/paid&#x60;, still primarily uses &#x60;order_id&#x60;. If the gateway standardizes on the merchant order ID, follow the gateway documentation.  **Recommended pre-upload flow**: first call &#x60;POST /otc/upload/pre_upload&#x60; (&#x60;scene&#x3D;general&#x60;) and upload directly to the temporary bucket, then pass the returned **base64 &#x60;file_key&#x60; unchanged** (do not decode) to this endpoint. The service validates the uid and object existence before moving the object to the production bucket. A cross-user key returns &#x60;Invalid parameters file_key&#x60;; an object that has not been uploaded returns &#x60;Invalid parameters file not uploaded&#x60;. The legacy flow using a base64 key for an object uploaded directly to the production bucket remains supported.
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param otcMarkOrderPaidRequest
 

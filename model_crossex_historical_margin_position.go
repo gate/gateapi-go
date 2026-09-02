@@ -38,7 +38,7 @@ type CrossexHistoricalMarginPosition struct {
 	PositionSide string `json:"position_side,omitempty"`
 	// Leverage at Close
 	Leverage string `json:"leverage,omitempty"`
-	// Total Deducted Interest
+	// Accumulated position interest
 	Interest string `json:"interest"`
 	// Position Business Type
 	BusinessType string `json:"business_type"`

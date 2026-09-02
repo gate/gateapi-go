@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 **LiqFee** | **string** | Liquidation Fee | [optional] 
 **PositionSide** | **string** | Position Direction Before Close | [optional] 
 **Leverage** | **string** | Leverage at Close | [optional] 
-**Interest** | **string** | Total Deducted Interest | 
+**Interest** | **string** | Accumulated position interest | 
 **BusinessType** | **string** | Position Business Type | 
 **CreateTime** | **string** | Created time | [optional] 
 **UpdateTime** | **string** | Update time | [optional] 

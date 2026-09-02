@@ -29,6 +29,8 @@ type Order struct {
 	Status string `json:"status,omitempty"`
 	// Currency pair
 	CurrencyPair string `json:"currency_pair"`
+	// Actual quote currency used for the trade; can be specified only in a unified market
+	TradeQuote string `json:"trade_quote,omitempty"`
 	// Order Type   - limit : Limit Order - market : Market Order
 	Type string `json:"type,omitempty"`
 	// Account type, spot - spot account, margin - leveraged account, unified - unified account

@@ -9,17 +9,6 @@
 
 package gateapi
 
-// Inner create-bank-card `multipart/form-data`. Use the form field `documentation_file` to upload the account-opening proof.
+// Inner create-bank-card `multipart/form-data`. Account-opening proof file (choose one):  - **Pre-upload**: `documentation_file_key` + `file_type` (call `POST /otc/upload/pre_upload` first, `scene=bank`); - **Multipart direct upload**: `documentation_file` file field.
 type OtcBankCreateMultipartRequest struct {
-	BankAccountName      string `json:"bank_account_name"`
-	BankName             string `json:"bank_name"`
-	BankCountry          string `json:"bank_country"`
-	BankAddress          string `json:"bank_address"`
-	Iban                 string `json:"iban"`
-	Swift                string `json:"swift"`
-	RemittanceLineNumber string `json:"remittance_line_number,omitempty"`
-	AgentBankName        string `json:"agent_bank_name,omitempty"`
-	AgentBankSwift       string `json:"agent_bank_swift,omitempty"`
-	// Account opening proof file content (multipart file field, binary/Base64; jpg/jpeg/png/pdf, etc.; maximum 10 MB per file, subject to the live environment)
-	DocumentationFile string `json:"documentation_file"`
 }

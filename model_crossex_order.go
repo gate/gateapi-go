@@ -16,7 +16,7 @@ type CrossexOrder struct {
 	OrderId string `json:"order_id"`
 	// Client-defined order ID.
 	Text string `json:"text"`
-	// Order status:  NEW: Validated and queued to be sent to the exchange.  OPEN: Resting on the exchange order book.  PARTIALLY_FILLED: Partially filled.  FILLED: Fully filled.  FAIL: CrossEx internal validation failed; see the `reason` field for details.  REJECT: Rejected by the exchange; see the `reason` field for details.
+	// Order status: `NEW`: validated locally, pending submission to the exchange `OPEN`: resting on the exchange order book `PARTIALLY_FILLED`: partially filled `FILLED`: fully filled `FAIL`: CrossEx validation failed; see `reason` `REJECT`: rejected by the exchange; see `reason` `CANCELLED`: cancelled
 	State string `json:"state"`
 	// Unique trading pair identifiers, e.g. `BINANCE_SPOT_BTC_USDT`, `BINANCE_FUTURE_BTC_USDT`.
 	Symbol string `json:"symbol"`
@@ -28,7 +28,7 @@ type CrossexOrder struct {
 	Attribute string `json:"attribute"`
 	// Venue bucket (`BINANCE` / `OKX` / `GATE` / `BYBIT` / `KRAKEN` / `HYPERLIQUID` / `DERIBIT`).
 	ExchangeType string `json:"exchange_type"`
-	// Business type (`SPOT` Spot / `FUTURE` Futures / `MARGIN` Margin).
+	// Business type (`SPOT` Spot / `FUTURE` Futures / `MARGIN` Margin / `CONVERT` Flash Swap).
 	BusinessType string `json:"business_type"`
 	// Order quantity in the base currency.
 	Qty string `json:"qty"`
@@ -60,7 +60,7 @@ type CrossexOrder struct {
 	LastExecutedPrice string `json:"last_executed_price"`
 	// Quote amount of the latest fill.
 	LastExecutedAmount string `json:"last_executed_amount"`
-	// Position side (`NONE` flat / `LONG` long / `SHORT` short).
+	// Position side (`NONE` one-way position / `LONG` long / `SHORT` short)
 	PositionSide string `json:"position_side"`
 	// Created time
 	CreateTime string `json:"create_time"`

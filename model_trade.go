@@ -44,4 +44,6 @@ type Trade struct {
 	Text string `json:"text,omitempty"`
 	// Total Executed Value
 	Deal string `json:"deal,omitempty"`
+	// Actual quote currency used for the trade
+	TradeQuote string `json:"trade_quote,omitempty"`
 }

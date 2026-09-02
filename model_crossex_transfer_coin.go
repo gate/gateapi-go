@@ -12,7 +12,7 @@ package gateapi
 type CrossexTransferCoin struct {
 	// Currency
 	Coin string `json:"coin"`
-	// Minimum Transfer Quantity (including estimated fees)
+	// Minimum transfer amount (estimated fee included)
 	MinTransAmount float32 `json:"min_trans_amount"`
 	// Estimated Fee
 	EstFee float32 `json:"est_fee"`

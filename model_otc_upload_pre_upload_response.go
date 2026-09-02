@@ -9,13 +9,12 @@
 
 package gateapi
 
-type InlineResponse2002 struct {
-	// Currency
-	Symbol string `json:"symbol"`
-	// Funding rate
-	FundingRate string `json:"funding_rate"`
-	// Funding interval (in seconds)
-	FundingInterval string `json:"funding_interval"`
-	// Next funding time (Unix timestamp in milliseconds)
-	FundingTime string `json:"funding_time"`
+type OtcUploadPreUploadResponse struct {
+	// 0 success; 10010400 parameter error
+	Code int32 `json:"code"`
+	// Response message
+	Message string                 `json:"message"`
+	Data    OtcUploadPreUploadData `json:"data"`
+	// Response timestamp (in seconds)
+	Timestamp int32 `json:"timestamp"`
 }
