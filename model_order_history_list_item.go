@@ -10,13 +10,17 @@
 package gateapi
 
 type OrderHistoryListItem struct {
+	// Order ID
 	OrderId string `json:"order_id,omitempty"`
-	Symbol  string `json:"symbol,omitempty"`
-	// Exchange, supports us, hk, and kr
-	Exchange      string `json:"exchange,omitempty"`
+	// Symbol
+	Symbol string `json:"symbol,omitempty"`
+	// Exchange, supports us, hk, kr, and jp
+	Exchange string `json:"exchange,omitempty"`
+	// Quote currency
 	QuoteCurrency string `json:"quote_currency,omitempty"`
 	// Quote currency to USD exchange rate
-	FxRate     string `json:"fx_rate,omitempty"`
+	FxRate string `json:"fx_rate,omitempty"`
+	// Symbol description
 	SymbolDesc string `json:"symbol_desc,omitempty"`
 	// Price type (market = market order, limit = limit order)
 	PriceType string `json:"price_type,omitempty"`
@@ -30,13 +34,19 @@ type OrderHistoryListItem struct {
 	// Side (1=sell, 2=buy)
 	Side int32 `json:"side,omitempty"`
 	// Time in force. - day: Day order.
-	TimeInForce  string  `json:"time_in_force,omitempty"`
-	Volume       string  `json:"volume,omitempty"`
-	FillVolume   string  `json:"fill_volume,omitempty"`
-	Price        string  `json:"price,omitempty"`
+	TimeInForce string `json:"time_in_force,omitempty"`
+	// Order quantity
+	Volume string `json:"volume,omitempty"`
+	// Trading size
+	FillVolume string `json:"fill_volume,omitempty"`
+	// Order price
+	Price string `json:"price,omitempty"`
+	// Average fill price
 	AvgFillPrice *string `json:"avg_fill_price,omitempty"`
 	// fee
 	Commission string `json:"commission,omitempty"`
-	TimeSetup  int64  `json:"time_setup,omitempty"`
-	TimeDone   int64  `json:"time_done,omitempty"`
+	// Order creation time (Unix timestamp, seconds)
+	TimeSetup int64 `json:"time_setup,omitempty"`
+	// Order completion time (Unix timestamp in seconds)
+	TimeDone int64 `json:"time_done,omitempty"`
 }

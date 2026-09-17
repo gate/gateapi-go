@@ -12,7 +12,7 @@ package gateapi
 type PositionListItem struct {
 	// Symbol
 	Symbol string `json:"symbol,omitempty"`
-	// Exchange, supports us, hk, and kr
+	// Exchange, supports us, hk, kr, and jp
 	Exchange string `json:"exchange,omitempty"`
 	// Quote currency
 	QuoteCurrency string `json:"quote_currency,omitempty"`
@@ -22,7 +22,8 @@ type PositionListItem struct {
 	FxRate string `json:"fx_rate,omitempty"`
 	// Trading status. - pre_market: Pre-market. - open: Regular trading session. - post_market: Post-market. - closed: Market closed. - gt_lp: GT LP session.
 	TradeStatus string `json:"trade_status,omitempty"`
-	SymbolDesc  string `json:"symbol_desc,omitempty"`
+	// Symbol description
+	SymbolDesc string `json:"symbol_desc,omitempty"`
 	// Position P&L
 	PositionPnl string `json:"position_pnl,omitempty"`
 	// Today's P&L
@@ -52,15 +53,23 @@ type PositionListItem struct {
 	// Latest price
 	LastPrice string `json:"last_price,omitempty"`
 	// Extended hours latest price
-	ExtendedLastPrice   *string `json:"extended_last_price,omitempty"`
-	MaxOrderVolume      string  `json:"max_order_volume,omitempty"`
-	StepOrderVolume     string  `json:"step_order_volume,omitempty"`
-	MinOrderVolume      string  `json:"min_order_volume,omitempty"`
-	PricePrecision      int32   `json:"price_precision,omitempty"`
-	PriceProtection     string  `json:"price_protection,omitempty"`
-	SellPriceProtection string  `json:"sell_price_protection,omitempty"`
-	BuyPriceProtection  string  `json:"buy_price_protection,omitempty"`
+	ExtendedLastPrice *string `json:"extended_last_price,omitempty"`
+	// Maximum order quantity
+	MaxOrderVolume string `json:"max_order_volume,omitempty"`
+	// Order step size
+	StepOrderVolume string `json:"step_order_volume,omitempty"`
+	// Minimum order quantity
+	MinOrderVolume string `json:"min_order_volume,omitempty"`
+	// Price precision
+	PricePrecision int32 `json:"price_precision,omitempty"`
+	// Price protection range
+	PriceProtection string `json:"price_protection,omitempty"`
+	// Sell price protection rate
+	SellPriceProtection string `json:"sell_price_protection,omitempty"`
+	// Buy price protection rate
+	BuyPriceProtection string `json:"buy_price_protection,omitempty"`
 	// Fee Rate
 	CommissionRate string `json:"commission_rate,omitempty"`
-	SlippageRate   string `json:"slippage_rate,omitempty"`
+	// Slippage
+	SlippageRate string `json:"slippage_rate,omitempty"`
 }

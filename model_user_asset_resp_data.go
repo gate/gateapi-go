@@ -23,6 +23,4 @@ type UserAssetRespData struct {
 	MarginFree string `json:"margin_free,omitempty"`
 	// Unrealized PNL
 	UnrealizedPnl string `json:"unrealized_pnl,omitempty"`
-	// MT5 userID
-	Mt5Uid string `json:"mt5_uid,omitempty"`
 }

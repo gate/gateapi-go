@@ -12,7 +12,7 @@ package gateapi
 type SymbolListItem struct {
 	// Symbol
 	Symbol string `json:"symbol,omitempty"`
-	// Exchange, supports us, hk, and kr
+	// Exchange, supports us, hk, kr, and jp
 	Exchange string `json:"exchange,omitempty"`
 	// Exchange description
 	ExchangeDesc string `json:"exchange_desc,omitempty"`
@@ -24,8 +24,10 @@ type SymbolListItem struct {
 	FxRate string `json:"fx_rate,omitempty"`
 	// Symbol description
 	SymbolDesc string `json:"symbol_desc,omitempty"`
-	// Category
+	// Symbol category. - CS: Common stock. - ETF: Exchange-traded funds. - ADRC, ADR: Depositary receipts for foreign companies listed in the U.S. - ETV: Exchange-traded products. - PFD: Preferred stock. - ETS: Exchange-traded securities. - ETN: Exchange-traded notes. - FUND: Funds.
 	Category string `json:"category,omitempty"`
+	// Asset type. - STOCK: Stock. - ETF: Exchange-traded fund.
+	AssetType string `json:"asset_type,omitempty"`
 	// Trading status. - pre_market: Pre-market. - open: Regular trading session. - post_market: Post-market. - closed: Market closed. - gt_lp: GT LP session.
 	TradeStatus string `json:"trade_status,omitempty"`
 	// Current session trading mode. - 0: Trading disabled. - 1: Buy only. - 2: Sell only. - 4: Buy and sell supported.

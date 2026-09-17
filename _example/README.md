@@ -1,44 +1,56 @@
-# Example Application
+# Go SDK examples
 
-This is a demo application using `gateapi` to show how Gate APIv4 works. 
-Instead of running it, it is recommended to read the source code to get a general idea of
-how this SDK is used. However, you can modify this code directly to implement your own logic.
+These examples target the **current public Go SDK**. Their authoritative source is
+`codegen/demos/gate/go/` in GateAPIv4; generation copies it into `_example/`.
+Change this source and regenerate rather than editing generated files.
 
-## Build
+- `spot` demonstrates a limit buy, quote-balance validation and cancellation of the
+  newly created order if it remains open.
+- `futures` demonstrates leverage, a collateral-shortfall transfer, cancellation
+  limited to `BTC_USDT`, and a market IOC order. Decimal-string sizes are preserved;
+  negative sizes do not produce negative collateral amounts.
+- `margin` uses `/margin/uni/currency_pairs`, `/margin/uni/loans` and
+  `/margin/uni/borrowable` to borrow and immediately repay. Removed P2P lending
+  methods are not emulated. It requires an exclusively used demo account, existing
+  collateral and a small quote balance to pay accrued interest. Do not run another
+  trader against that account concurrently: repay-all operates on pair/currency,
+  not a unique loan ID. Existing debt is rejected before borrowing.
 
-```bash
-# change into your $GOPATH
-cd $GOPATH
+One public SDK client owns authentication and a 10-second HTTP timeout; the complete
+run has a one-minute deadline. Writes are never retried automatically. If a transfer,
+order or borrow times out, inspect its history before rerunning. A repayment failure
+reports the affected market/currency for manual recovery; a successful borrow is not
+transactionally rolled back by the API.
 
-# create a new application
-mkdir gateapi-demo && cd gateapi-demo
+## Build and verify without trading
 
-# install required dependency
-go mod init
-go get github.com/gate/gateapi-go/v7
-go get github.com/shopspring/decimal
+From the generated **public SDK root**, run:
 
-# build the demo application
-go build
+```sh
+# _example is excluded by Go's ./... pattern; install its existing decimal dependency explicitly.
+go get github.com/shopspring/decimal@v1.4.0
+# Compile and test both the SDK and the example directory. Tests use only local HTTP mocks.
+go vet ./... ./_example
+go test ./... ./_example
+go test -race ./_example
+go build -o /tmp/gateapi-demo ./_example
 ```
 
-## Run
+The mock tests cover decimal quantities, signed futures size, positive collateral,
+transfer shortfalls, contract/pair cancellation filters, quote/base units, current
+borrow/repay request fields, existing debt, empty results, invalid input, write
+failure, cancellation and deadlines. They do not prove live account permissions or
+exchange availability. Do not treat these examples as a production trading strategy.
 
-**READ THIS BEFORE YOU RUN ANYTHING**
+## Run deliberately
 
-**This application is shown for demo only. It will try to use your input API key and secret to
-trade, lend and borrow, etc. Make sure you know exactly what it does before running it.**
+Running the binary performs real account operations. Existing flags are unchanged;
+Go flags must precede the positional demo name. No new configuration is required.
 
-```bash
-# run futures demo against TestNet
-./gateapi-demo futures -k <YOUR_TESTNET_API_KEY> -s <YOUR_TESTNET_API_SECRET> -u fx-api-testnet.gateio.ws
-
-# run futures demo against real trading
-./gateapi-demo futures -k <YOUR_API_KEY> -s <YOUR_API_SECRET>
-
-# run spot demo
-./gateapi-demo spot -k <YOUR_API_KEY> -s <YOUR_API_SECRET>
-
-# run margin demo
-./gateapi-demo margin -k <YOUR_API_KEY> -s <YOUR_API_SECRET>
+```sh
+# Futures testnet: fund the account first. Replace placeholders with testnet credentials.
+/tmp/gateapi-demo -k <api-key> -s <api-secret> -u fx-api-testnet.gateio.ws futures
+# Spot and margin default to the public production base URL; use a dedicated account.
+/tmp/gateapi-demo -k <api-key> -s <api-secret> spot
+/tmp/gateapi-demo -k <api-key> -s <api-secret> margin
 ```

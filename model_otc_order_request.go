@@ -29,4 +29,6 @@ type OtcOrderRequest struct {
 	QuoteToken string `json:"quote_token"`
 	// Bank card ID used to place the order. Select one from the list returned by `GET /otc/bank/list`; the default card has `is_default=1`.
 	BankId string `json:"bank_id"`
+	// Name used for the remittance. Allowed values depend on the user type: Corporate users: YOU (remit in your company's name), GATE (remit in Gate's name), RECIPIENT (remit in the recipient's name); Individual users: GATE (remit in Gate's name), PERSON (remit in the user's own name).
+	ReceiveType string `json:"receive_type,omitempty"`
 }

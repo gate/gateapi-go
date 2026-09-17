@@ -10,7 +10,7 @@
 package gateapi
 
 type ExchangesDataList struct {
-	// Trading market, supports us, hk, and kr
+	// Trading market, supports us, hk, kr, and jp
 	Exchange string `json:"exchange,omitempty"`
 	// Market display name
 	ExchangeDesc string `json:"exchange_desc,omitempty"`

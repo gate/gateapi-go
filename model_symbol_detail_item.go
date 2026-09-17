@@ -10,29 +10,48 @@
 package gateapi
 
 type SymbolDetailItem struct {
+	// Symbol
 	Symbol string `json:"symbol,omitempty"`
-	// Exchange, supports us, hk, and kr
-	Exchange               string `json:"exchange,omitempty"`
-	ExchangeDesc           string `json:"exchange_desc,omitempty"`
-	QuoteCurrency          string `json:"quote_currency,omitempty"`
-	QuoteCurrencyPrecision int32  `json:"quote_currency_precision,omitempty"`
+	// Exchange, supports us, hk, kr, and jp
+	Exchange string `json:"exchange,omitempty"`
+	// Exchange description
+	ExchangeDesc string `json:"exchange_desc,omitempty"`
+	// Quote currency
+	QuoteCurrency string `json:"quote_currency,omitempty"`
+	// Quote currency precision
+	QuoteCurrencyPrecision int32 `json:"quote_currency_precision,omitempty"`
 	// Quote currency to USD exchange rate
-	FxRate             string `json:"fx_rate,omitempty"`
-	SymbolDesc         string `json:"symbol_desc,omitempty"`
-	Category           string `json:"category,omitempty"`
+	FxRate string `json:"fx_rate,omitempty"`
+	// Symbol description
+	SymbolDesc string `json:"symbol_desc,omitempty"`
+	// Symbol category. - CS: Common stock. - ETF: Exchange-traded funds. - ADRC, ADR: Depositary receipts for foreign companies listed in the U.S. - ETV: Exchange-traded products. - PFD: Preferred stock. - ETS: Exchange-traded securities. - ETN: Exchange-traded notes. - FUND: Funds.
+	Category string `json:"category,omitempty"`
+	// Asset type. - STOCK: Stock. - ETF: Exchange-traded fund.
+	AssetType string `json:"asset_type,omitempty"`
+	// Settlement currency
 	SettlementCurrency string `json:"settlement_currency,omitempty"`
-	MaxOrderVolume     string `json:"max_order_volume,omitempty"`
-	StepOrderVolume    string `json:"step_order_volume,omitempty"`
-	MinOrderVolume     string `json:"min_order_volume,omitempty"`
+	// Maximum order quantity
+	MaxOrderVolume string `json:"max_order_volume,omitempty"`
+	// Order step size
+	StepOrderVolume string `json:"step_order_volume,omitempty"`
+	// Minimum order quantity
+	MinOrderVolume string `json:"min_order_volume,omitempty"`
 	// Price precision
-	PricePrecision      int32  `json:"price_precision,omitempty"`
-	VolumePrecision     int32  `json:"volume_precision,omitempty"`
-	IsIpo               bool   `json:"is_ipo,omitempty"`
-	IpoPrice            string `json:"ipo_price,omitempty"`
-	PriceProtection     string `json:"price_protection,omitempty"`
+	PricePrecision int32 `json:"price_precision,omitempty"`
+	// Quantity precision
+	VolumePrecision int32 `json:"volume_precision,omitempty"`
+	// Whether it is an IPO symbol
+	IsIpo bool `json:"is_ipo,omitempty"`
+	// IPO price
+	IpoPrice string `json:"ipo_price,omitempty"`
+	// Price protection range
+	PriceProtection string `json:"price_protection,omitempty"`
+	// Sell price protection rate
 	SellPriceProtection string `json:"sell_price_protection,omitempty"`
-	BuyPriceProtection  string `json:"buy_price_protection,omitempty"`
-	SlippageRate        string `json:"slippage_rate,omitempty"`
+	// Buy price protection rate
+	BuyPriceProtection string `json:"buy_price_protection,omitempty"`
+	// Slippage
+	SlippageRate string `json:"slippage_rate,omitempty"`
 	// Fee Rate
 	CommissionRate string `json:"commission_rate,omitempty"`
 	// Trading status. - pre_market: Pre-market. - open: Regular trading session. - post_market: Post-market. - closed: Market closed. - gt_lp: GT LP session.
@@ -40,7 +59,9 @@ type SymbolDetailItem struct {
 	// Current session trading mode. - 0: Trading disabled. - 1: Buy only. - 2: Sell only. - 4: Buy and sell supported.
 	TradeMode int32 `json:"trade_mode,omitempty"`
 	// Order fill timing (1=immediate, 2=after pre-market opens, 3=after regular session opens)
-	OrderFillTiming int32                         `json:"order_fill_timing,omitempty"`
-	SymbolDescs     []SymbolDetailItemSymbolDescs `json:"symbol_descs,omitempty"`
-	IconLink        string                        `json:"icon_link,omitempty"`
+	OrderFillTiming int32 `json:"order_fill_timing,omitempty"`
+	// Multilingual symbol description
+	SymbolDescs []SymbolDetailItemSymbolDescs `json:"symbol_descs,omitempty"`
+	// Icon URL
+	IconLink string `json:"icon_link,omitempty"`
 }

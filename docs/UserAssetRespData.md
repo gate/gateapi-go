@@ -10,7 +10,6 @@ Name | Type | Description | Notes
 **Margin** | **string** | Used margin | [optional] 
 **MarginFree** | **string** | Available Margin | [optional] 
 **UnrealizedPnl** | **string** | Unrealized PNL | [optional] 
-**Mt5Uid** | **string** | MT5 userID | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

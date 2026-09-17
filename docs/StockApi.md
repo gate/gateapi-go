@@ -123,7 +123,7 @@ Optional parameters are passed through a pointer to a QueryStockSymbolsOpts stru
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **symbols** | **optional.String**| Symbol list, multiple separated by commas | 
-**exchange** | **optional.String**| Exchange, supports us, hk, and kr | 
+**exchange** | **optional.String**| Exchange, supports us, hk, kr, and jp | 
 **withDescI18n** | **optional.Bool**| Whether to return multilingual symbol description | 
 **page** | **optional.Int32**| Page number, defaults to 1 | 
 **pageSize** | **optional.Int32**| Page size, defaults to 10, max 500; server caps at 500 | 
@@ -199,7 +199,7 @@ Optional parameters are passed through a pointer to a QueryStockSymbolDetailOpts
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **symbols** | **optional.String**| Symbol list, multiple separated by commas | 
-**exchange** | **optional.String**| Exchange, supports us, hk, and kr | 
+**exchange** | **optional.String**| Exchange, supports us, hk, kr, and jp | 
 **page** | **optional.Int32**| Page number, defaults to 1 | 
 **pageSize** | **optional.Int32**| Page size, defaults to 10, max 500; server caps at 500 | 
 
@@ -784,7 +784,7 @@ Name | Type | Description  | Notes
 **pnlCalcType** | **optional.Int32**| PnL calculation cost type. Defaults to average cost price when omitted (1 &#x3D; average cost price, 2 &#x3D; diluted cost price) | 
 **pnlCalcPrice** | **optional.Int32**| PnL calculation price type. Defaults to intraday price when omitted (1 &#x3D; intraday price, 2 &#x3D; latest extended-hours price) | 
 **symbol** | **optional.String**| Symbol | 
-**exchange** | **optional.String**| Exchange, supports us, hk, and kr | 
+**exchange** | **optional.String**| Exchange, supports us, hk, kr, and jp | 
 
 ### Example
 

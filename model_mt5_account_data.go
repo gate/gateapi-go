@@ -11,8 +11,6 @@ package gateapi
 
 // Response data
 type Mt5AccountData struct {
-	// MT5 userID
-	Mt5Uid int32 `json:"mt5_uid,omitempty"`
 	// Leverage multiplier
 	Leverage int32 `json:"leverage,omitempty"`
 	// Liquidation margin ratio

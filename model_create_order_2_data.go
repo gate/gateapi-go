@@ -11,6 +11,6 @@ package gateapi
 
 // Order result
 type CreateOrder2Data struct {
-	// Queue Task ID (not task ID)
+	// Queue Task ID (not order ID)
 	Id string `json:"id,omitempty"`
 }

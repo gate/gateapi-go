@@ -17,7 +17,7 @@ type TradFiOrderRequest struct {
 	PriceType string `json:"price_type"`
 	// Side (1=sell, 2=buy)
 	Side int32 `json:"side"`
-	// Trading symbol code
+	// Base trading symbol code
 	Symbol string `json:"symbol"`
 	// Order quantity
 	Volume string `json:"volume"`
@@ -25,4 +25,6 @@ type TradFiOrderRequest struct {
 	PriceTp string `json:"price_tp,omitempty"`
 	// Stop loss price (optional)
 	PriceSl string `json:"price_sl,omitempty"`
+	// Leverage multiplier (must be one of the leverage multipliers allowed for the symbol in the trading symbol details response)
+	Leverage int32 `json:"leverage,omitempty"`
 }

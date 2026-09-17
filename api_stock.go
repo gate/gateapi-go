@@ -147,7 +147,7 @@ Rate limit: 5 qps.
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param optional nil or *QueryStockSymbolsOpts - Optional Parameters:
   - @param "Symbols" (optional.String) -  Symbol list, multiple separated by commas
-  - @param "Exchange" (optional.String) -  Exchange, supports us, hk, and kr
+  - @param "Exchange" (optional.String) -  Exchange, supports us, hk, kr, and jp
   - @param "WithDescI18n" (optional.Bool) -  Whether to return multilingual symbol description
   - @param "Page" (optional.Int32) -  Page number, defaults to 1
   - @param "PageSize" (optional.Int32) -  Page size, defaults to 10, max 500; server caps at 500
@@ -261,7 +261,7 @@ Rate limit: 5 qps.
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param optional nil or *QueryStockSymbolDetailOpts - Optional Parameters:
   - @param "Symbols" (optional.String) -  Symbol list, multiple separated by commas
-  - @param "Exchange" (optional.String) -  Exchange, supports us, hk, and kr
+  - @param "Exchange" (optional.String) -  Exchange, supports us, hk, kr, and jp
   - @param "Page" (optional.Int32) -  Page number, defaults to 1
   - @param "PageSize" (optional.Int32) -  Page size, defaults to 10, max 500; server caps at 500
 
@@ -1069,7 +1069,7 @@ Rate limit: 5 qps.
   - @param "PnlCalcType" (optional.Int32) -  PnL calculation cost type. Defaults to average cost price when omitted (1 = average cost price, 2 = diluted cost price)
   - @param "PnlCalcPrice" (optional.Int32) -  PnL calculation price type. Defaults to intraday price when omitted (1 = intraday price, 2 = latest extended-hours price)
   - @param "Symbol" (optional.String) -  Symbol
-  - @param "Exchange" (optional.String) -  Exchange, supports us, hk, and kr
+  - @param "Exchange" (optional.String) -  Exchange, supports us, hk, kr, and jp
 
 @return PositionList2
 */

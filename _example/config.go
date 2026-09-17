@@ -5,6 +5,7 @@ import (
 	"strings"
 )
 
+// RunConfig contains the existing command-line credentials and endpoint selection.
 type RunConfig struct {
 	ApiKey     string
 	ApiSecret  string
@@ -12,14 +13,17 @@ type RunConfig struct {
 	UseTestNet bool
 }
 
+// NewRunConfig normalizes the endpoint without dereferencing an omitted host.
 func NewRunConfig(apiKey string, apiSecret string, hostUsed *string) (*RunConfig, error) {
 	config := &RunConfig{
 		ApiKey:     apiKey,
 		ApiSecret:  apiSecret,
 		UseTestNet: false,
-		BaseUrl:    *hostUsed,
 	}
-	if hostUsed == nil || *hostUsed == "" {
+	if hostUsed != nil {
+		config.BaseUrl = *hostUsed
+	}
+	if config.BaseUrl == "" {
 		config.BaseUrl = "https://api.gateio.ws/api/v4"
 	}
 	if !strings.HasPrefix(config.BaseUrl, "http") {

@@ -5,12 +5,12 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Symbol** | **string** | Symbol | [optional] 
-**Exchange** | **string** | Exchange, supports us, hk, and kr | [optional] 
+**Exchange** | **string** | Exchange, supports us, hk, kr, and jp | [optional] 
 **QuoteCurrency** | **string** | Quote currency | [optional] 
 **QuoteCurrencyPrecision** | **int32** | Quote currency precision | [optional] 
 **FxRate** | **string** | Quote currency to USD exchange rate | [optional] 
 **TradeStatus** | **string** | Trading status. - pre_market: Pre-market. - open: Regular trading session. - post_market: Post-market. - closed: Market closed. - gt_lp: GT LP session. | [optional] 
-**SymbolDesc** | **string** |  | [optional] 
+**SymbolDesc** | **string** | Symbol description | [optional] 
 **PositionPnl** | **string** | Position P&amp;L | [optional] 
 **TodayPnl** | **string** | Today&#39;s P&amp;L | [optional] 
 **PnlRate** | **string** | Yield | [optional] 
@@ -26,15 +26,15 @@ Name | Type | Description | Notes
 **DilutedCostPrice** | **string** | Diluted cost price | [optional] 
 **LastPrice** | **string** | Latest price | [optional] 
 **ExtendedLastPrice** | Pointer to **string** | Extended hours latest price | [optional] 
-**MaxOrderVolume** | **string** |  | [optional] 
-**StepOrderVolume** | **string** |  | [optional] 
-**MinOrderVolume** | **string** |  | [optional] 
-**PricePrecision** | **int32** |  | [optional] 
-**PriceProtection** | **string** |  | [optional] 
-**SellPriceProtection** | **string** |  | [optional] 
-**BuyPriceProtection** | **string** |  | [optional] 
+**MaxOrderVolume** | **string** | Maximum order quantity | [optional] 
+**StepOrderVolume** | **string** | Order step size | [optional] 
+**MinOrderVolume** | **string** | Minimum order quantity | [optional] 
+**PricePrecision** | **int32** | Price precision | [optional] 
+**PriceProtection** | **string** | Price protection range | [optional] 
+**SellPriceProtection** | **string** | Sell price protection rate | [optional] 
+**BuyPriceProtection** | **string** | Buy price protection rate | [optional] 
 **CommissionRate** | **string** | Fee Rate | [optional] 
-**SlippageRate** | **string** |  | [optional] 
+**SlippageRate** | **string** | Slippage | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -14,7 +14,7 @@ type OrderListItem struct {
 	OrderId string `json:"order_id,omitempty"`
 	// Symbol
 	Symbol string `json:"symbol,omitempty"`
-	// Exchange, supports us, hk, and kr
+	// Exchange, supports us, hk, kr, and jp
 	Exchange string `json:"exchange,omitempty"`
 	// Quote currency
 	QuoteCurrency string `json:"quote_currency,omitempty"`

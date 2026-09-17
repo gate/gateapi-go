@@ -1,60 +1,69 @@
 package main
 
 import (
+	"context"
 	"flag"
 	"fmt"
+	"github.com/gate/gateapi-go/v7"
 	"log"
-	"math/rand"
+	"net/http"
 	"os"
 	"time"
-
-	"github.com/gate/gateapi-go/v7"
 )
 
 var logger = log.New(flag.CommandLine.Output(), "", log.LstdFlags)
 
-func panicGateError(err error) {
-	if e, ok := err.(gateapi.GateAPIError); ok {
-		log.Fatal(fmt.Sprintf("Gate API error, label: %s, message: %s", e.Label, e.Message))
+// run owns the public SDK client and deadlines; demos reuse its transport and authentication.
+func run(config *RunConfig, demos []string) error {
+	for _, demo := range demos {
+		if demo != "spot" && demo != "margin" && demo != "futures" {
+			return fmt.Errorf("unknown demo %q: use spot, margin or futures", demo)
+		}
 	}
-	log.Fatal(err)
+	cfg := gateapi.NewConfiguration()
+	cfg.BasePath = config.BaseUrl
+	cfg.HTTPClient = &http.Client{Timeout: 10 * time.Second}
+	defer cfg.HTTPClient.CloseIdleConnections()
+	client := gateapi.NewAPIClient(cfg)
+	ctx, cancel := context.WithTimeout(context.Background(), time.Minute)
+	defer cancel()
+	// Public request signing is driven by the SDK context, not its legacy Key/Secret fields.
+	ctx = context.WithValue(ctx, gateapi.ContextGateAPIV4, gateapi.GateAPIV4{Key: config.ApiKey, Secret: config.ApiSecret})
+	for _, demo := range demos {
+		var err error
+		switch demo {
+		case "spot":
+			err = SpotDemo(ctx, client)
+		case "margin":
+			err = MarginDemo(ctx, client)
+		case "futures":
+			err = FuturesDemo(ctx, client, config.UseTestNet)
+		}
+		if err != nil {
+			return fmt.Errorf("%s demo stopped: %v", demo, err)
+		}
+	}
+	return nil
 }
 
 func main() {
-	var key, secret, baseUrl string
+	var key, secret, baseURL string
 	flag.StringVar(&key, "k", "", "Gate APIv4 key")
 	flag.StringVar(&secret, "s", "", "Gate APIv4 secret")
-	flag.StringVar(&baseUrl, "u", "", "API based URL used")
+	flag.StringVar(&baseURL, "u", "", "API base URL")
 	flag.Parse()
-
-	usage := fmt.Sprintf("Usage: %s -k <api-key> -s <api-secret> <spot|margin|futures>", os.Args[0])
-
-	if key == "" || secret == "" {
-		logger.Println(usage)
+	if key == "" || secret == "" || flag.NArg() == 0 {
+		logger.Printf("Usage: %s -k <api-key> -s <api-secret> [-u <base-url>] <spot|margin|futures>", os.Args[0])
 		flag.PrintDefaults()
 		os.Exit(1)
 	}
-	if flag.NArg() < 1 {
-		logger.Println(usage)
-		flag.PrintDefaults()
-		os.Exit(1)
+	config, err := NewRunConfig(key, secret, &baseURL)
+	if err == nil {
+		err = run(config, flag.Args())
 	}
-
-	runConfig, err := NewRunConfig(key, secret, &baseUrl)
 	if err != nil {
-		logger.Fatal(err)
-	}
-	rand.Seed(time.Now().Unix())
-	for _, demo := range flag.Args() {
-		switch demo {
-		case "spot":
-			SpotDemo(runConfig)
-		case "margin":
-			MarginDemo(runConfig)
-		case "futures":
-			FuturesDemo(runConfig)
-		default:
-			logger.Fatal("Invalid demo provided. Available: spot, margin or futures")
-		}
+		// run returns first so its deferred cancellation and transport cleanup always execute.
+		logger.Print(err)
+		os.Exit(1)
 	}
 }

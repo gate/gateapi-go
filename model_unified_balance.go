@@ -32,7 +32,7 @@ type UnifiedBalance struct {
 	Funding string `json:"funding,omitempty"`
 	// Funding version
 	FundingVersion string `json:"funding_version,omitempty"`
-	// Full margin balance is valid in single currency margin mode, and is 0 in other modes such as cross currency margin/combined margin mode
+	// Full margin balance is available in both single-currency and multi-currency margin modes, and is 0 in portfolio margin mode.
 	CrossBalance string `json:"cross_balance,omitempty"`
 	// Futures isolated balance, effective in single-currency and multi-currency margin mode, 0 in portfolio margin mode
 	IsoBalance string `json:"iso_balance,omitempty"`

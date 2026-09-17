@@ -12,7 +12,7 @@ package gateapi
 type Symbol struct {
 	// Unique trading pair identifier in the form ExchangeType_BusinessType_Base_Counter.
 	Symbol string `json:"symbol"`
-	// Venue bucket (`BINANCE` / `OKX` / `GATE` / `BYBIT` / `KRAKEN` / `HYPERLIQUID` / `DERIBIT`).
+	// Venue bucket (`BINANCE` / `OKX` / `GATE` / `BYBIT` / `KRAKEN` / `HYPERLIQUID` / `DERIBIT` / `LIGHTER`).
 	ExchangeType string `json:"exchange_type"`
 	// Business type (`SPOT` Spot / `FUTURE` Futures / `MARGIN` Margin).
 	BusinessType string `json:"business_type"`

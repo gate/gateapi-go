@@ -14,6 +14,4 @@ type CreateUserRespData struct {
 	Status int32 `json:"status,omitempty"`
 	// Leverage
 	Leverage int32 `json:"leverage,omitempty"`
-	// mt5uid
-	Mt5Uid string `json:"mt5_uid,omitempty"`
 }

@@ -19,7 +19,7 @@ type TradFiSpotOrderRequest struct {
 	Side int32 `json:"side"`
 	// Price type (market = market order, limit = limit order)
 	PriceType string `json:"price_type"`
-	// Trading session. Limit orders support only All, while market orders support only Regular.
+	// Trading session. Limit orders support only all, while market orders support only regular.
 	TradingSession string `json:"trading_session"`
 	// Time in force. - day: Day order.
 	TimeInForce string `json:"time_in_force"`

@@ -55,6 +55,8 @@ type APIClient struct {
 
 	AlphaApi *AlphaApiService
 
+	AnnouncementApi *AnnouncementApiService
+
 	AssetswapApi *AssetswapApiService
 
 	BotApi *BotApiService
@@ -125,6 +127,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.AccountApi = (*AccountApiService)(&c.common)
 	c.ActivityApi = (*ActivityApiService)(&c.common)
 	c.AlphaApi = (*AlphaApiService)(&c.common)
+	c.AnnouncementApi = (*AnnouncementApiService)(&c.common)
 	c.AssetswapApi = (*AssetswapApiService)(&c.common)
 	c.BotApi = (*BotApiService)(&c.common)
 	c.CFDApi = (*CFDApiService)(&c.common)
