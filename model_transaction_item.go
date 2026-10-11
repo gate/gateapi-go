@@ -20,7 +20,7 @@ type TransactionItem struct {
 	Type string `json:"type,omitempty"`
 	// Transaction type description
 	TypeDesc string `json:"type_desc,omitempty"`
-	// Change amount
+	// Change amount. A positive value means a credit, and a negative value means a debit.
 	Change string `json:"change,omitempty"`
 	// Balance after change
 	Balance string `json:"balance,omitempty"`

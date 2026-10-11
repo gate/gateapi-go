@@ -30,7 +30,7 @@ type SymbolListItem struct {
 	AssetType string `json:"asset_type,omitempty"`
 	// Trading status. - pre_market: Pre-market. - open: Regular trading session. - post_market: Post-market. - closed: Market closed. - gt_lp: GT LP session.
 	TradeStatus string `json:"trade_status,omitempty"`
-	// Current session trading mode. - 0: Trading disabled. - 1: Buy only. - 2: Sell only. - 4: Buy and sell supported.
+	// Current session trading mode. - 0: Trading disabled. - 1: Buy only. - 2: Sell only. - 4: Buy and sell supported. - 5: LP trading suspended (manual suspension). - 6: LP trading suspended (strategy exception). - 7: LP trading suspended (stock halt). - 8: LP trading suspended (stock circuit breaker halt).
 	TradeMode int32 `json:"trade_mode,omitempty"`
 	// Order fill timing (1=immediate, 2=after pre-market opens, 3=after regular session opens)
 	OrderFillTiming int32 `json:"order_fill_timing,omitempty"`

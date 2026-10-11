@@ -24,12 +24,12 @@ type OrderHistoryListItem struct {
 	SymbolDesc string `json:"symbol_desc,omitempty"`
 	// Price type (market = market order, limit = limit order)
 	PriceType string `json:"price_type,omitempty"`
-	// Order status
+	// Order status. - 0: Unknown. - 1: New order; the order has been validated and is waiting to be processed. - 2: Partially filled. - 3: Filled. - 4: Canceled. - 5: Order rejected. - 6: Cancellation rejected. - 7: Order update succeeded. - 8: Order update rejected.
 	Status int32 `json:"status,omitempty"`
 	// Order status description
 	StatusDesc   string                            `json:"status_desc,omitempty"`
 	StatusDetail *OrderHistoryListItemStatusDetail `json:"status_detail,omitempty"`
-	// Order completion reason
+	// Order completion reason. - 0: Unknown. - 1: No quote found. - 2: No match found. - 3: Trigger price exceeded. - 4: Order value exceeds the limit. - 5: Unknown rejection. - 6: Unknown cancellation. - 7: Canceled by user. - 8: Canceled after the order time in force expired. - 9: Trading is not supported in the current session. - 13: Canceled due to corporate action.
 	FinishAs int32 `json:"finish_as,omitempty"`
 	// Side (1=sell, 2=buy)
 	Side int32 `json:"side,omitempty"`

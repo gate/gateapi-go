@@ -9,13 +9,13 @@
 
 package gateapi
 
-// Transfer request parameters
+// Fund transfer request parameters. Transfer in means moving funds from the spot account to the stock account; transfer out means moving funds from the stock account to the spot account.
 type TradFiSpotTransactionRequest struct {
 	// Asset, USDT only
 	Asset string `json:"asset"`
-	// Change amount
+	// Change amount, must be greater than 0
 	Change string `json:"change"`
-	// Transaction type (deposit=deposit, withdraw=withdrawal)
+	// Transaction type. deposit transfers funds from the spot account to the stock account; withdraw transfers funds from the stock account to the spot account.
 	Type string `json:"type"`
 	// Business idempotent ID
 	RefId string `json:"ref_id"`

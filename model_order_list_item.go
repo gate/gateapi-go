@@ -24,13 +24,13 @@ type OrderListItem struct {
 	SymbolDesc string `json:"symbol_desc,omitempty"`
 	// Trading status. - pre_market: Pre-market. - open: Regular trading session. - post_market: Post-market. - closed: Market closed. - gt_lp: GT LP session.
 	TradeStatus string `json:"trade_status,omitempty"`
-	// Current session trading mode. - 0: Trading disabled. - 1: Buy only. - 2: Sell only. - 4: Buy and sell supported.
+	// Current session trading mode. - 0: Trading disabled. - 1: Buy only. - 2: Sell only. - 4: Buy and sell supported. - 5: LP trading suspended (manual suspension). - 6: LP trading suspended (strategy exception). - 7: LP trading suspended (stock halt). - 8: LP trading suspended (stock circuit breaker halt).
 	TradeMode int32 `json:"trade_mode,omitempty"`
 	// Price type (market = market order, limit = limit order)
 	PriceType string `json:"price_type,omitempty"`
 	// Side (1=sell, 2=buy)
 	Side int32 `json:"side,omitempty"`
-	// Order status
+	// Order status. - 0: Unknown. - 1: New order; the order has been validated and is waiting to be processed. - 2: Partially filled. - 3: Filled. - 4: Canceled. - 5: Order rejected. - 6: Cancellation rejected. - 7: Order update succeeded. - 8: Order update rejected.
 	Status int32 `json:"status,omitempty"`
 	// Order quantity
 	Volume string `json:"volume,omitempty"`

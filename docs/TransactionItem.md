@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **SymbolDisplay** | **string** | Symbol display name | [optional] 
 **Type** | **string** | Transaction type. - deposit: Funds transfer in. - withdraw: Funds transfer out. - fee: Trading fee. - dividend: Dividend payout. - sell: Stock sale credit. - buy: Stock purchase debit. - award: Airdrop reward. - stock_transfer_in: Stock transfer in. - stock_transfer_out: Stock transfer out. | [optional] 
 **TypeDesc** | **string** | Transaction type description | [optional] 
-**Change** | **string** | Change amount | [optional] 
+**Change** | **string** | Change amount. A positive value means a credit, and a negative value means a debit. | [optional] 
 **Balance** | **string** | Balance after change | [optional] 
 **RefId** | **string** | Business idempotent ID | [optional] 
 **Time** | **int64** | Unix timestamp (seconds) | [optional] 
