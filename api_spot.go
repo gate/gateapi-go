@@ -576,6 +576,113 @@ func (a *SpotApiService) ListOrderBook(ctx context.Context, currencyPair string,
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+// ListSpotRpiOrderBookOpts Optional parameters for the method 'ListSpotRpiOrderBook'
+type ListSpotRpiOrderBookOpts struct {
+	Interval optional.String
+	Limit    optional.Int32
+	WithId   optional.Bool
+}
+
+/*
+ListSpotRpiOrderBook Get the RPI order book
+Get the RPI order book, with bids sorted by descending price and asks by ascending price.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param currencyPair Currency pair
+  - @param optional nil or *ListSpotRpiOrderBookOpts - Optional Parameters:
+  - @param "Interval" (optional.String) -  Price precision for merged depth. 0 means no merging. If not specified, defaults to 0
+  - @param "Limit" (optional.Int32) -  Number of depth levels
+  - @param "WithId" (optional.Bool) -  Return order book update ID
+
+@return OrderBook
+*/
+func (a *SpotApiService) ListSpotRpiOrderBook(ctx context.Context, currencyPair string, localVarOptionals *ListSpotRpiOrderBookOpts) (OrderBook, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  OrderBook
+	)
+
+	// create path and map variables
+	localVarPath := a.client.cfg.BasePath + "/spot/rpi_order_book"
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	localVarQueryParams.Add("currency_pair", parameterToString(currencyPair, ""))
+	if localVarOptionals != nil && localVarOptionals.Interval.IsSet() {
+		localVarQueryParams.Add("interval", parameterToString(localVarOptionals.Interval.Value(), ""))
+	}
+	if localVarOptionals != nil && localVarOptionals.Limit.IsSet() {
+		localVarQueryParams.Add("limit", parameterToString(localVarOptionals.Limit.Value(), ""))
+	}
+	if localVarOptionals != nil && localVarOptionals.WithId.IsSet() {
+		localVarQueryParams.Add("with_id", parameterToString(localVarOptionals.WithId.Value(), ""))
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if ctx == nil {
+		ctx = context.Background()
+	}
+	ctx = context.WithValue(ctx, ContextPublic, true)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(r)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status + ", " + string(localVarBody),
+		}
+		var gateErr GateAPIError
+		if e := a.client.decode(&gateErr, localVarBody, localVarHTTPResponse.Header.Get("Content-Type")); e == nil && gateErr.Label != "" {
+			gateErr.APIError = newErr
+			return localVarReturnValue, localVarHTTPResponse, gateErr
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 // ListTradesOpts Optional parameters for the method 'ListTrades'
 type ListTradesOpts struct {
 	Limit   optional.Int32

@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**GetFuturesContract**](FuturesApi.md#GetFuturesContract) | **Get** /futures/{settle}/contracts/{contract} | Query single contract information
 [**ListFuturesADLRiskStates**](FuturesApi.md#ListFuturesADLRiskStates) | **Get** /futures/{settle}/adl_risk_states | List market-level ADL risk states
 [**ListFuturesOrderBook**](FuturesApi.md#ListFuturesOrderBook) | **Get** /futures/{settle}/order_book | Query futures market depth information
+[**ListFuturesRPIOrderBook**](FuturesApi.md#ListFuturesRPIOrderBook) | **Get** /futures/{settle}/rpi_order_book | Query futures RPI order book
 [**ListFuturesTrades**](FuturesApi.md#ListFuturesTrades) | **Get** /futures/{settle}/trades | Futures market transaction records
 [**ListFuturesCandlesticks**](FuturesApi.md#ListFuturesCandlesticks) | **Get** /futures/{settle}/candlesticks | Futures market K-line chart
 [**ListFuturesPremiumIndex**](FuturesApi.md#ListFuturesPremiumIndex) | **Get** /futures/{settle}/premium_index | Premium Index K-line chart
@@ -74,7 +75,7 @@ Method | HTTP request | Description
 [**CancelPriceTriggeredOrderList**](FuturesApi.md#CancelPriceTriggeredOrderList) | **Delete** /futures/{settle}/price_orders | Cancel all auto orders
 [**GetPriceTriggeredOrder**](FuturesApi.md#GetPriceTriggeredOrder) | **Get** /futures/{settle}/price_orders/{order_id} | Query single auto order details
 [**CancelPriceTriggeredOrder**](FuturesApi.md#CancelPriceTriggeredOrder) | **Delete** /futures/{settle}/price_orders/{order_id} | Cancel single auto order
-[**UpdatePriceTriggeredOrder**](FuturesApi.md#UpdatePriceTriggeredOrder) | **Put** /futures/{settle}/price_orders/amend | Modify a Single Auto Order
+[**UpdatePriceTriggeredOrder**](FuturesApi.md#UpdatePriceTriggeredOrder) | **Put** /futures/{settle}/price_orders/amend/{order_id} | Modify a Single Auto Order
 
 
 ## ListFuturesContracts
@@ -401,6 +402,84 @@ func main() {
     contract := "BTC_USDT" // string - Futures contract
     
     result, _, err := client.FuturesApi.ListFuturesOrderBook(ctx, settle, contract, nil)
+    if err != nil {
+        if e, ok := err.(gateapi.GateAPIError); ok {
+            fmt.Printf("gate api error: %s\n", e.Error())
+        } else {
+            fmt.Printf("generic error: %s\n", err.Error())
+        }
+    } else {
+        fmt.Println(result)
+    }
+}
+```
+
+
+### Return type
+
+[**FuturesOrderBook**](FuturesOrderBook.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+## ListFuturesRPIOrderBook
+
+> FuturesOrderBook ListFuturesRPIOrderBook(ctx, settle, contract, optional)
+
+Query futures RPI order book
+
+Bids will be sorted by price from high to low, while asks sorted reversely
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**settle** | **string**| Perpetual futures settlement currency | 
+**contract** | **string**| Futures contract | 
+**optional** | **ListFuturesRPIOrderBookOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+
+Optional parameters are passed through a pointer to a ListFuturesRPIOrderBookOpts struct
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**interval** | **optional.String**| Price precision for merged depth. 0 means no merging. If not specified, defaults to 0 | [default to 0]
+**limit** | **optional.Int32**| Number of depth levels | [default to 10]
+**withId** | **optional.Bool**| Whether to return depth update ID. This ID increments by 1 each time the depth changes | [default to false]
+
+### Example
+
+```golang
+package main
+
+import (
+    "context"
+    "fmt"
+
+    "github.com/gate/gateapi-go/v7"
+)
+
+func main() {
+    client := gateapi.NewAPIClient(gateapi.NewConfiguration())
+    // uncomment the next line if your are testing against testnet
+    // client.ChangeBasePath("https://fx-api-testnet.gateio.ws/api/v4")
+    ctx := context.Background()
+    settle := "usdt" // string - Perpetual futures settlement currency
+    contract := "BTC_USDT" // string - Futures contract
+    
+    result, _, err := client.FuturesApi.ListFuturesRPIOrderBook(ctx, settle, contract, nil)
     if err != nil {
         if e, ok := err.(gateapi.GateAPIError); ok {
             fmt.Printf("gate api error: %s\n", e.Error())
@@ -5433,7 +5512,7 @@ func main() {
 
 ## UpdatePriceTriggeredOrder
 
-> TriggerOrderResponse UpdatePriceTriggeredOrder(ctx, settle, futuresUpdatePriceTriggeredOrder)
+> TriggerOrderResponse UpdatePriceTriggeredOrder(ctx, settle, orderId, futuresUpdatePriceTriggeredOrder)
 
 Modify a Single Auto Order
 
@@ -5443,6 +5522,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **settle** | **string**| Perpetual futures settlement currency | 
+**orderId** | **string**| ID returned when order is successfully created | 
 **futuresUpdatePriceTriggeredOrder** | [**FuturesUpdatePriceTriggeredOrder**](FuturesUpdatePriceTriggeredOrder.md)|  | 
 
 ### Example
@@ -5469,9 +5549,10 @@ func main() {
                              }
                             )
     settle := "usdt" // string - Perpetual futures settlement currency
+    orderId := "2110911746238578688" // string - ID returned when order is successfully created
     futuresUpdatePriceTriggeredOrder := gateapi.FuturesUpdatePriceTriggeredOrder{} // FuturesUpdatePriceTriggeredOrder - 
     
-    result, _, err := client.FuturesApi.UpdatePriceTriggeredOrder(ctx, settle, futuresUpdatePriceTriggeredOrder)
+    result, _, err := client.FuturesApi.UpdatePriceTriggeredOrder(ctx, settle, orderId, futuresUpdatePriceTriggeredOrder)
     if err != nil {
         if e, ok := err.(gateapi.GateAPIError); ok {
             fmt.Printf("gate api error: %s\n", e.Error())

@@ -29,6 +29,7 @@ Method | HTTP request | Description
 [**GetCrossexInterestRate**](CrossExApi.md#GetCrossexInterestRate) | **Get** /crossex/interest_rate | Query margin asset interest rates
 [**GetCrossexFee**](CrossExApi.md#GetCrossexFee) | **Get** /crossex/fee | Query User Fee Rates
 [**ListCrossexPositions**](CrossExApi.md#ListCrossexPositions) | **Get** /crossex/positions | Query Contract Positions
+[**ListCrossexSecurityPositions**](CrossExApi.md#ListCrossexSecurityPositions) | **Get** /crossex/security_positions | List security positions
 [**ListCrossexMarginPositions**](CrossExApi.md#ListCrossexMarginPositions) | **Get** /crossex/margin_positions | Query Leveraged Positions
 [**ListCrossexAdlRank**](CrossExApi.md#ListCrossexAdlRank) | **Get** /crossex/adl_rank | Query ADL Position Reduction Ranking
 [**ListCrossexOpenOrders**](CrossExApi.md#ListCrossexOpenOrders) | **Get** /crossex/open_orders | Query All Current Open Orders
@@ -49,7 +50,7 @@ Method | HTTP request | Description
 
 Query symbol information
 
-Query Trading Pair Information
+List trading pair information. Stock and ETF symbols use `{market}_{business_type}_{security_code}_USDT`, for example `US_STOCK_AAPL_USDT`, `HK_STOCK_00700_USDT`, or `US_ETF_SPY_USDT`.
 
 ### Required Parameters
 
@@ -64,7 +65,7 @@ Optional parameters are passed through a pointer to a ListCrossexRuleSymbolsOpts
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**symbols** | **optional.String**| List of trading pairs, comma-separated. Example: BINANCE_FUTURE_ADA_USDT,OKX_FUTURE_ADA_USDT | 
+**symbols** | **optional.String**| Comma-separated list of trading pairs Example: BINANCE_FUTURE_ADA_USDT,OKX_FUTURE_ADA_USDT,US_STOCK_AAPL_USDT | 
 
 ### Example
 
@@ -419,7 +420,7 @@ func main() {
 
 Create order
 
-Rate Limit: 100 requests per 10 seconds, maximum 1,000 open orders per user
+Rate limit: 100 requests per 10 seconds; each user may have up to 1,000 open orders. Stocks and ETFs have an additional per-user limit of one request per second and support only cross-exchange account mode and GTC. Stock and ETF orders must use qty; quote_qty is not supported. Stock and ETF order prices use the listing market currency: USD for US markets, HKD for Hong Kong, KRW for South Korea, and JPY for Japan.
 
 ### Required Parameters
 
@@ -1923,6 +1924,85 @@ func main() {
 ### Return type
 
 [**[]CrossexPosition**](CrossexPosition.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+## ListCrossexSecurityPositions
+
+> []CrossexSecurityPosition ListCrossexSecurityPositions(ctx, optional)
+
+List security positions
+
+List stock and ETF positions. Rate limit: 200 requests per 10 seconds. Prices, position values, and unrealized profit and loss use the listing market currency: USD for US markets, HKD for Hong Kong, KRW for South Korea, and JPY for Japan.
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**optional** | **ListCrossexSecurityPositionsOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+
+Optional parameters are passed through a pointer to a ListCrossexSecurityPositionsOpts struct
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**symbol** | **optional.String**| Stock or ETF trading pair | 
+**exchangeType** | **optional.String**| Stock market (US/HK/KR/JP) | 
+
+### Example
+
+```golang
+package main
+
+import (
+    "context"
+    "fmt"
+
+    "github.com/gate/gateapi-go/v7"
+)
+
+func main() {
+    client := gateapi.NewAPIClient(gateapi.NewConfiguration())
+    // uncomment the next line if your are testing against testnet
+    // client.ChangeBasePath("https://fx-api-testnet.gateio.ws/api/v4")
+    ctx := context.WithValue(context.Background(),
+                             gateapi.ContextGateAPIV4,
+                             gateapi.GateAPIV4{
+                                 Key:    "YOUR_API_KEY",
+                                 Secret: "YOUR_API_SECRET",
+                             }
+                            )
+    
+    result, _, err := client.CrossExApi.ListCrossexSecurityPositions(ctx, nil)
+    if err != nil {
+        if e, ok := err.(gateapi.GateAPIError); ok {
+            fmt.Printf("gate api error: %s\n", e.Error())
+        } else {
+            fmt.Printf("generic error: %s\n", err.Error())
+        }
+    } else {
+        fmt.Println(result)
+    }
+}
+```
+
+
+### Return type
+
+[**[]CrossexSecurityPosition**](CrossexSecurityPosition.md)
 
 ### Authorization
 

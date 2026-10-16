@@ -14,6 +14,8 @@ type DualGetPlans struct {
 	Id int32 `json:"id,omitempty"`
 	// Product Name
 	InstrumentName string `json:"instrument_name,omitempty"`
+	// `call`: sell high; `put`: buy low
+	Type string `json:"type,omitempty"`
 	// Investment Token
 	InvestCurrency string `json:"invest_currency,omitempty"`
 	// Strike Token

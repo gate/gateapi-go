@@ -14,5 +14,5 @@ type OtcOrderListResult struct {
 	Ps      int32              `json:"ps"`
 	TotalPn int32              `json:"total_pn"`
 	Count   int32              `json:"count"`
-	List    []OtcOrderListItem `json:"list"`
+	Lists   []OtcOrderListItem `json:"lists"`
 }

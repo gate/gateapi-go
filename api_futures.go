@@ -518,6 +518,116 @@ func (a *FuturesApiService) ListFuturesOrderBook(ctx context.Context, settle str
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+// ListFuturesRPIOrderBookOpts Optional parameters for the method 'ListFuturesRPIOrderBook'
+type ListFuturesRPIOrderBookOpts struct {
+	Interval optional.String
+	Limit    optional.Int32
+	WithId   optional.Bool
+}
+
+/*
+ListFuturesRPIOrderBook Query futures RPI order book
+Bids will be sorted by price from high to low, while asks sorted reversely
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param settle Perpetual futures settlement currency
+  - @param contract Futures contract
+  - @param optional nil or *ListFuturesRPIOrderBookOpts - Optional Parameters:
+  - @param "Interval" (optional.String) -  Price precision for merged depth. 0 means no merging. If not specified, defaults to 0
+  - @param "Limit" (optional.Int32) -  Number of depth levels
+  - @param "WithId" (optional.Bool) -  Whether to return depth update ID. This ID increments by 1 each time the depth changes
+
+@return FuturesOrderBook
+*/
+func (a *FuturesApiService) ListFuturesRPIOrderBook(ctx context.Context, settle string, contract string, localVarOptionals *ListFuturesRPIOrderBookOpts) (FuturesOrderBook, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  FuturesOrderBook
+	)
+
+	// create path and map variables
+	localVarPath := a.client.cfg.BasePath + "/futures/{settle}/rpi_order_book"
+	localVarPath = strings.Replace(localVarPath, "{"+"settle"+"}", url.QueryEscape(parameterToString(settle, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	localVarQueryParams.Add("contract", parameterToString(contract, ""))
+	if localVarOptionals != nil && localVarOptionals.Interval.IsSet() {
+		localVarQueryParams.Add("interval", parameterToString(localVarOptionals.Interval.Value(), ""))
+	}
+	if localVarOptionals != nil && localVarOptionals.Limit.IsSet() {
+		localVarQueryParams.Add("limit", parameterToString(localVarOptionals.Limit.Value(), ""))
+	}
+	if localVarOptionals != nil && localVarOptionals.WithId.IsSet() {
+		localVarQueryParams.Add("with_id", parameterToString(localVarOptionals.WithId.Value(), ""))
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if ctx == nil {
+		ctx = context.Background()
+	}
+	ctx = context.WithValue(ctx, ContextPublic, true)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(r)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status + ", " + string(localVarBody),
+		}
+		var gateErr GateAPIError
+		if e := a.client.decode(&gateErr, localVarBody, localVarHTTPResponse.Header.Get("Content-Type")); e == nil && gateErr.Label != "" {
+			gateErr.APIError = newErr
+			return localVarReturnValue, localVarHTTPResponse, gateErr
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 // ListFuturesTradesOpts Optional parameters for the method 'ListFuturesTrades'
 type ListFuturesTradesOpts struct {
 	Limit  optional.Int32
@@ -7490,11 +7600,12 @@ func (a *FuturesApiService) CancelPriceTriggeredOrder(ctx context.Context, settl
 UpdatePriceTriggeredOrder Modify a Single Auto Order
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param settle Perpetual futures settlement currency
+  - @param orderId ID returned when order is successfully created
   - @param futuresUpdatePriceTriggeredOrder
 
 @return TriggerOrderResponse
 */
-func (a *FuturesApiService) UpdatePriceTriggeredOrder(ctx context.Context, settle string, futuresUpdatePriceTriggeredOrder FuturesUpdatePriceTriggeredOrder) (TriggerOrderResponse, *http.Response, error) {
+func (a *FuturesApiService) UpdatePriceTriggeredOrder(ctx context.Context, settle string, orderId string, futuresUpdatePriceTriggeredOrder FuturesUpdatePriceTriggeredOrder) (TriggerOrderResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -7505,8 +7616,10 @@ func (a *FuturesApiService) UpdatePriceTriggeredOrder(ctx context.Context, settl
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/futures/{settle}/price_orders/amend"
+	localVarPath := a.client.cfg.BasePath + "/futures/{settle}/price_orders/amend/{order_id}"
 	localVarPath = strings.Replace(localVarPath, "{"+"settle"+"}", url.QueryEscape(parameterToString(settle, "")), -1)
+
+	localVarPath = strings.Replace(localVarPath, "{"+"order_id"+"}", url.QueryEscape(parameterToString(orderId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

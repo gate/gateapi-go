@@ -14,7 +14,7 @@ type OrderHistoryListItem struct {
 	OrderId string `json:"order_id,omitempty"`
 	// Symbol
 	Symbol string `json:"symbol,omitempty"`
-	// Exchange, supports us, hk, kr, and jp
+	// Exchange. - us: US stocks. - hk: Hong Kong stocks. - kr: Korean stocks. - jp: Japanese stocks.
 	Exchange string `json:"exchange,omitempty"`
 	// Quote currency
 	QuoteCurrency string `json:"quote_currency,omitempty"`

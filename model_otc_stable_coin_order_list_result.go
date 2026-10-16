@@ -14,5 +14,5 @@ type OtcStableCoinOrderListResult struct {
 	PageSize   int32                        `json:"page_size"`
 	PageNumber int32                        `json:"page_number"`
 	TotalPage  int32                        `json:"total_page"`
-	List       []OtcStableCoinOrderListItem `json:"list"`
+	Lists      []OtcStableCoinOrderListItem `json:"lists"`
 }

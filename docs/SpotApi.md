@@ -10,6 +10,7 @@ Method | HTTP request | Description
 [**GetCurrencyPair**](SpotApi.md#GetCurrencyPair) | **Get** /spot/currency_pairs/{currency_pair} | Query single currency pair details
 [**ListTickers**](SpotApi.md#ListTickers) | **Get** /spot/tickers | Get currency pair ticker information
 [**ListOrderBook**](SpotApi.md#ListOrderBook) | **Get** /spot/order_book | Get market depth information
+[**ListSpotRpiOrderBook**](SpotApi.md#ListSpotRpiOrderBook) | **Get** /spot/rpi_order_book | Get the RPI order book
 [**ListTrades**](SpotApi.md#ListTrades) | **Get** /spot/trades | Query market transaction records
 [**ListCandlesticks**](SpotApi.md#ListCandlesticks) | **Get** /spot/candlesticks | Market K-line chart
 [**GetFee**](SpotApi.md#GetFee) | **Get** /spot/fee | Query account fee rates
@@ -406,6 +407,82 @@ func main() {
     currencyPair := "BTC_USDT" // string - Currency pair
     
     result, _, err := client.SpotApi.ListOrderBook(ctx, currencyPair, nil)
+    if err != nil {
+        if e, ok := err.(gateapi.GateAPIError); ok {
+            fmt.Printf("gate api error: %s\n", e.Error())
+        } else {
+            fmt.Printf("generic error: %s\n", err.Error())
+        }
+    } else {
+        fmt.Println(result)
+    }
+}
+```
+
+
+### Return type
+
+[**OrderBook**](OrderBook.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+## ListSpotRpiOrderBook
+
+> OrderBook ListSpotRpiOrderBook(ctx, currencyPair, optional)
+
+Get the RPI order book
+
+Get the RPI order book, with bids sorted by descending price and asks by ascending price.
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**currencyPair** | **string**| Currency pair | 
+**optional** | **ListSpotRpiOrderBookOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+
+Optional parameters are passed through a pointer to a ListSpotRpiOrderBookOpts struct
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**interval** | **optional.String**| Price precision for merged depth. 0 means no merging. If not specified, defaults to 0 | [default to 0]
+**limit** | **optional.Int32**| Number of depth levels | [default to 10]
+**withId** | **optional.Bool**| Return order book update ID | [default to false]
+
+### Example
+
+```golang
+package main
+
+import (
+    "context"
+    "fmt"
+
+    "github.com/gate/gateapi-go/v7"
+)
+
+func main() {
+    client := gateapi.NewAPIClient(gateapi.NewConfiguration())
+    // uncomment the next line if your are testing against testnet
+    // client.ChangeBasePath("https://fx-api-testnet.gateio.ws/api/v4")
+    ctx := context.Background()
+    currencyPair := "BTC_USDT" // string - Currency pair
+    
+    result, _, err := client.SpotApi.ListSpotRpiOrderBook(ctx, currencyPair, nil)
     if err != nil {
         if e, ok := err.(gateapi.GateAPIError); ok {
             fmt.Printf("gate api error: %s\n", e.Error())

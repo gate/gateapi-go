@@ -86,7 +86,7 @@ type BatchOrder struct {
 	// How the order finished:  - open: Pending processing - filled: Fully filled - cancelled: Cancelled by user - liquidate_cancelled: Cancelled by liquidation - small: Order size too small - depth_not_enough: Cancelled due to insufficient order book depth - trader_not_enough: Cancelled due to insufficient counterparty liquidity - ioc: Not filled immediately because time-in-force is IOC - poc: Post-only requirement not met because time-in-force is set to poc (maker-only); rejected after being detected as taker - fok: Not fully filled immediately because time-in-force is FOK - stp: Cancelled due to self-trade prevention - price_protect_cancelled: Cancelled due to price protection - unknown: Unknown
 	FinishAs string `json:"finish_as,omitempty"`
 	// Maximum supported slippage ratio for Spot Market Order Placement, calculated based on the latest market price at the time of order placement as the benchmark (Example: 0.03 means 3%)
-	Slippage   string              `json:"slippage,omitempty"`
-	StopProfit SpotOrderStopProfit `json:"stop_profit,omitempty"`
-	StopLoss   SpotOrderStopLoss   `json:"stop_loss,omitempty"`
+	Slippage   string                   `json:"slippage,omitempty"`
+	StopProfit PatchSpotOrderStopProfit `json:"stop_profit,omitempty"`
+	StopLoss   PatchSpotOrderStopLoss   `json:"stop_loss,omitempty"`
 }

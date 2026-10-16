@@ -33,10 +33,10 @@ type ListCrossexRuleSymbolsOpts struct {
 
 /*
 ListCrossexRuleSymbols Query symbol information
-Query Trading Pair Information
+List trading pair information. Stock and ETF symbols use &#x60;{market}_{business_type}_{security_code}_USDT&#x60;, for example &#x60;US_STOCK_AAPL_USDT&#x60;, &#x60;HK_STOCK_00700_USDT&#x60;, or &#x60;US_ETF_SPY_USDT&#x60;.
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param optional nil or *ListCrossexRuleSymbolsOpts - Optional Parameters:
-  - @param "Symbols" (optional.String) -  List of trading pairs, comma-separated. Example: BINANCE_FUTURE_ADA_USDT,OKX_FUTURE_ADA_USDT
+  - @param "Symbols" (optional.String) -  Comma-separated list of trading pairs Example: BINANCE_FUTURE_ADA_USDT,OKX_FUTURE_ADA_USDT,US_STOCK_AAPL_USDT
 
 @return []Symbol
 */
@@ -543,7 +543,7 @@ type CreateCrossexOrderOpts struct {
 
 /*
 CreateCrossexOrder Create order
-Rate Limit: 100 requests per 10 seconds, maximum 1,000 open orders per user
+Rate limit: 100 requests per 10 seconds; each user may have up to 1,000 open orders. Stocks and ETFs have an additional per-user limit of one request per second and support only cross-exchange account mode and GTC. Stock and ETF orders must use qty; quote_qty is not supported. Stock and ETF order prices use the listing market currency: USD for US markets, HKD for Hong Kong, KRW for South Korea, and JPY for Japan.
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param optional nil or *CreateCrossexOrderOpts - Optional Parameters:
   - @param "CrossexOrderRequest" (optional.Interface of CrossexOrderRequest) -
@@ -2512,6 +2512,112 @@ func (a *CrossExApiService) ListCrossexPositions(ctx context.Context, localVarOp
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/crossex/positions"
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if localVarOptionals != nil && localVarOptionals.Symbol.IsSet() {
+		localVarQueryParams.Add("symbol", parameterToString(localVarOptionals.Symbol.Value(), ""))
+	}
+	if localVarOptionals != nil && localVarOptionals.ExchangeType.IsSet() {
+		localVarQueryParams.Add("exchange_type", parameterToString(localVarOptionals.ExchangeType.Value(), ""))
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if ctx == nil {
+		ctx = context.Background()
+	}
+	if ctx.Value(ContextGateAPIV4) == nil {
+		// for compatibility, set configuration key and secret to context if ContextGateAPIV4 value is not present
+		ctx = context.WithValue(ctx, ContextGateAPIV4, GateAPIV4{
+			Key:    a.client.cfg.Key,
+			Secret: a.client.cfg.Secret,
+		})
+	}
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(r)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status + ", " + string(localVarBody),
+		}
+		var gateErr GateAPIError
+		if e := a.client.decode(&gateErr, localVarBody, localVarHTTPResponse.Header.Get("Content-Type")); e == nil && gateErr.Label != "" {
+			gateErr.APIError = newErr
+			return localVarReturnValue, localVarHTTPResponse, gateErr
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+// ListCrossexSecurityPositionsOpts Optional parameters for the method 'ListCrossexSecurityPositions'
+type ListCrossexSecurityPositionsOpts struct {
+	Symbol       optional.String
+	ExchangeType optional.String
+}
+
+/*
+ListCrossexSecurityPositions List security positions
+List stock and ETF positions. Rate limit: 200 requests per 10 seconds. Prices, position values, and unrealized profit and loss use the listing market currency: USD for US markets, HKD for Hong Kong, KRW for South Korea, and JPY for Japan.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param optional nil or *ListCrossexSecurityPositionsOpts - Optional Parameters:
+  - @param "Symbol" (optional.String) -  Stock or ETF trading pair
+  - @param "ExchangeType" (optional.String) -  Stock market (US/HK/KR/JP)
+
+@return []CrossexSecurityPosition
+*/
+func (a *CrossExApiService) ListCrossexSecurityPositions(ctx context.Context, localVarOptionals *ListCrossexSecurityPositionsOpts) ([]CrossexSecurityPosition, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  []CrossexSecurityPosition
+	)
+
+	// create path and map variables
+	localVarPath := a.client.cfg.BasePath + "/crossex/security_positions"
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}

@@ -26,23 +26,23 @@ type CrossexOrder struct {
 	Type string `json:"type"`
 	// Order attributes (`COMMON` normal / `LIQ` liquidation takeover / `REDUCE` liquidation reduction / `ADL` auto-deleverage / `SETTLEMENT` delisting settlement).
 	Attribute string `json:"attribute"`
-	// Venue bucket (`BINANCE` / `OKX` / `GATE` / `BYBIT` / `KRAKEN` / `HYPERLIQUID` / `DERIBIT` / `LIGHTER`).
+	// Exchange type (BINANCE / OKX / GATE / BYBIT / KRAKEN / HYPERLIQUID / DERIBIT / LIGHTER). Stocks and ETFs return the listing market (US / HK / KR / JP)
 	ExchangeType string `json:"exchange_type"`
-	// Business type (`SPOT` Spot / `FUTURE` Futures / `MARGIN` Margin / `CONVERT` Flash Swap).
+	// Business type (SPOT: spot / FUTURE: futures / MARGIN: margin / CONVERT: flash swap / STOCK: stocks / ETF: exchange-traded funds)
 	BusinessType string `json:"business_type"`
 	// Order quantity in the base currency.
 	Qty string `json:"qty"`
 	// Order quantity in the quote currency.
 	QuoteQty string `json:"quote_qty"`
-	// Order price.
+	// Order price. Stocks and ETFs use the listing market currency (USD/HKD/KRW/JPY)
 	Price string `json:"price"`
 	// Time-in-force policy (default: GTC; allowed values: GTC, IOC, FOK, POC, and RPI)
 	TimeInForce string `json:"time_in_force"`
 	// Filled base amount.
 	ExecutedQty string `json:"executed_qty"`
-	// Filled quote amount.
+	// Filled amount in the quote currency. Stocks and ETFs use the listing market currency (USD/HKD/KRW/JPY)
 	ExecutedAmount string `json:"executed_amount"`
-	// Average Filled Price
+	// Average fill price. Stocks and ETFs use the listing market currency (USD/HKD/KRW/JPY)
 	ExecutedAvgPrice string `json:"executed_avg_price"`
 	// Fee currency
 	FeeCoin string `json:"fee_coin"`
@@ -56,9 +56,9 @@ type CrossexOrder struct {
 	Reason string `json:"reason"`
 	// Base quantity of the latest fill.
 	LastExecutedQty string `json:"last_executed_qty"`
-	// Price of the latest fill.
+	// Price of the latest fill. Stocks and ETFs use the listing market currency (USD/HKD/KRW/JPY)
 	LastExecutedPrice string `json:"last_executed_price"`
-	// Quote amount of the latest fill.
+	// Amount of the latest fill. Stocks and ETFs use the listing market currency (USD/HKD/KRW/JPY)
 	LastExecutedAmount string `json:"last_executed_amount"`
 	// Position side (`NONE` one-way position / `LONG` long / `SHORT` short)
 	PositionSide string `json:"position_side"`

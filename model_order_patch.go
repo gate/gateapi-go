@@ -22,7 +22,9 @@ type OrderPatch struct {
 	// Custom info during order amendment
 	AmendText string `json:"amend_text,omitempty"`
 	// Processing Mode: When placing an order, different fields are returned based on action_mode. This field is only valid during the request and is not included in the response result ACK: Asynchronous mode, only returns key order fields RESULT: No clearing information FULL: Full mode (default)
-	ActionMode string              `json:"action_mode,omitempty"`
-	StopProfit SpotOrderStopProfit `json:"stop_profit,omitempty"`
-	StopLoss   SpotOrderStopLoss   `json:"stop_loss,omitempty"`
+	ActionMode string `json:"action_mode,omitempty"`
+	// Preserve nil as JSON null; an explicit empty object has a different meaning.
+	StopProfit *SpotOrderStopProfit `json:"stop_profit"`
+	// Preserve nil as JSON null; an explicit empty object has a different meaning.
+	StopLoss *SpotOrderStopLoss `json:"stop_loss"`
 }

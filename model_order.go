@@ -86,7 +86,9 @@ type Order struct {
 	// Processing Mode: When placing an order, different fields are returned based on action_mode. This field is only valid during the request and is not included in the response result ACK: Asynchronous mode, only returns key order fields RESULT: No clearing information FULL: Full mode (default)
 	ActionMode string `json:"action_mode,omitempty"`
 	// Maximum supported slippage ratio for Spot Market Order Placement, calculated based on the latest market price at the time of order placement as the benchmark (Example: 0.03 means 3%)
-	Slippage   string              `json:"slippage,omitempty"`
-	StopProfit SpotOrderStopProfit `json:"stop_profit,omitempty"`
-	StopLoss   SpotOrderStopLoss   `json:"stop_loss,omitempty"`
+	Slippage string `json:"slippage,omitempty"`
+	// Preserve nil as JSON null; an explicit empty object has a different meaning.
+	StopProfit *SpotOrderStopProfit `json:"stop_profit"`
+	// Preserve nil as JSON null; an explicit empty object has a different meaning.
+	StopLoss *SpotOrderStopLoss `json:"stop_loss"`
 }

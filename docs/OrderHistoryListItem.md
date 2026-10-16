@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **OrderId** | **string** | Order ID | [optional] 
 **Symbol** | **string** | Symbol | [optional] 
-**Exchange** | **string** | Exchange, supports us, hk, kr, and jp | [optional] 
+**Exchange** | **string** | Exchange. - us: US stocks. - hk: Hong Kong stocks. - kr: Korean stocks. - jp: Japanese stocks. | [optional] 
 **QuoteCurrency** | **string** | Quote currency | [optional] 
 **FxRate** | **string** | Quote currency to USD exchange rate | [optional] 
 **SymbolDesc** | **string** | Symbol description | [optional] 

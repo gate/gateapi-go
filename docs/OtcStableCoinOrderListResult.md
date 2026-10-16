@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **PageSize** | **int32** |  | 
 **PageNumber** | **int32** |  | 
 **TotalPage** | **int32** |  | 
-**List** | [**[]OtcStableCoinOrderListItem**](OtcStableCoinOrderListItem.md) |  | 
+**Lists** | [**[]OtcStableCoinOrderListItem**](OtcStableCoinOrderListItem.md) |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

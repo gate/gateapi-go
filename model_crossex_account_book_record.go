@@ -16,7 +16,7 @@ type CrossexAccountBookRecord struct {
 	UserId string `json:"user_id"`
 	// Business ID. Its meaning varies by `statement_type`. TRANSACTION: order ID TRADING_FEE: order ID LIQUIDATION_FEE: liquidation order ID FUNDING_FEE: position ID and funding fee settlement time For other types, it is a system-generated processing ID with no business meaning
 	BusinessId string `json:"business_id"`
-	// Account book entry type `TRANSACTION`: trade `TRADING_FEE`: trading fee `FUNDING_FEE`: futures funding fee `LIQUIDATION_FEE`: liquidation fee `TRANSFER_IN`: transfer in `TRANSFER_OUT`: transfer out `BANKRUPT_COMPENSATION`: bankruptcy compensation `AUTO_REPAY`: automatic repayment of margin position liabilities `INTEREST_ISOLATED`: interest entry `ACCOUNT_MODE_CHANGE`: balance change caused by an account mode switch `KRAKEN_CONVERSION`: conversion of other margin currencies to cover a negative KRAKEN_USD balance `OTHER`: other
+	// Account book transaction type `TRANSACTION`: Trade `TRADING_FEE`: Trading fee `FUNDING_FEE`: Futures funding fee `LIQUIDATION_FEE`: Liquidation fee `TRANSFER_IN`: Incoming transfer `TRANSFER_OUT`: Outgoing transfer `BANKRUPT_COMPENSATION`: Bankruptcy compensation `AUTO_REPAY`: Automatic margin liability repayment `INTEREST_ISOLATED`: Interest transaction `ACCOUNT_MODE_CHANGE`: Funds movement on account mode change `KRAKEN_CONVERSION`: Conversion of other collateral currencies to cover a negative KRAKEN_USD balance `SECURITY_DIVIDEND`: Stock or ETF dividend payout `SECURITY_CORPORATE_ACTION`: Stock or ETF split or reverse split `OTHER`: Other
 	StatementType string `json:"statement_type"`
 	// Exchange
 	ExchangeType string `json:"exchange_type"`

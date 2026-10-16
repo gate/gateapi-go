@@ -42,8 +42,8 @@ Name | Type | Description | Notes
 **FinishAs** | **string** | How the order finished:  - open: Pending processing - filled: Fully filled - cancelled: Cancelled by user - liquidate_cancelled: Cancelled by liquidation - small: Order size too small - depth_not_enough: Cancelled due to insufficient order book depth - trader_not_enough: Cancelled due to insufficient counterparty liquidity - ioc: Not filled immediately because time-in-force is IOC - poc: Post-only requirement not met because time-in-force is set to poc (maker-only); rejected after being detected as taker - fok: Not fully filled immediately because time-in-force is FOK - stp: Cancelled due to self-trade prevention - price_protect_cancelled: Cancelled due to price protection - unknown: Unknown | [optional] [readonly] 
 **ActionMode** | **string** | Processing Mode: When placing an order, different fields are returned based on action_mode. This field is only valid during the request and is not included in the response result ACK: Asynchronous mode, only returns key order fields RESULT: No clearing information FULL: Full mode (default) | [optional] 
 **Slippage** | **string** | Maximum supported slippage ratio for Spot Market Order Placement, calculated based on the latest market price at the time of order placement as the benchmark (Example: 0.03 means 3%) | [optional] 
-**StopProfit** | [**SpotOrderStopProfit**](SpotOrderStopProfit.md) |  | [optional] 
-**StopLoss** | [**SpotOrderStopLoss**](SpotOrderStopLoss.md) |  | [optional] 
+**StopProfit** | Pointer to [**SpotOrderStopProfit**](SpotOrderStopProfit.md) |  | [optional] 
+**StopLoss** | Pointer to [**SpotOrderStopLoss**](SpotOrderStopLoss.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

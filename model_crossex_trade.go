@@ -28,7 +28,7 @@ type CrossexTrade struct {
 	Side string `json:"side,omitempty"`
 	// Trading size
 	Qty string `json:"qty,omitempty"`
-	// Fill Price
+	// Fill price. Stocks and ETFs use the listing market currency (USD/HKD/KRW/JPY)
 	Price string `json:"price,omitempty"`
 	// fee
 	Fee string `json:"fee,omitempty"`

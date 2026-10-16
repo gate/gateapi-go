@@ -12,7 +12,7 @@ package gateapi
 type PositionListItem struct {
 	// Symbol
 	Symbol string `json:"symbol,omitempty"`
-	// Exchange, supports us, hk, kr, and jp
+	// Exchange. - us: US stocks. - hk: Hong Kong stocks. - kr: Korean stocks. - jp: Japanese stocks.
 	Exchange string `json:"exchange,omitempty"`
 	// Quote currency
 	QuoteCurrency string `json:"quote_currency,omitempty"`
@@ -20,7 +20,7 @@ type PositionListItem struct {
 	QuoteCurrencyPrecision int32 `json:"quote_currency_precision,omitempty"`
 	// Quote currency to USD exchange rate
 	FxRate string `json:"fx_rate,omitempty"`
-	// Trading status. - pre_market: Pre-market. - open: Regular trading session. - post_market: Post-market. - closed: Market closed. - gt_lp: GT LP session.
+	// Trading status. - pre_market: Pre-market. - open: Regular trading session. - post_market: Post-market.
 	TradeStatus string `json:"trade_status,omitempty"`
 	// Symbol description
 	SymbolDesc string `json:"symbol_desc,omitempty"`
