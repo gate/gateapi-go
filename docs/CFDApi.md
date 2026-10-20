@@ -915,7 +915,7 @@ Modify order
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**orderId** | **int32**| Order ID | 
+**orderId** | **int64**| Order ID | 
 **tradFiOrderUpdateRequest** | [**TradFiOrderUpdateRequest**](TradFiOrderUpdateRequest.md)|  | 
 
 ### Example
@@ -941,7 +941,7 @@ func main() {
                                  Secret: "YOUR_API_SECRET",
                              }
                             )
-    orderId := 1223 // int32 - Order ID
+    orderId := 1223 // int64 - Order ID
     tradFiOrderUpdateRequest := gateapi.TradFiOrderUpdateRequest{} // TradFiOrderUpdateRequest - 
     
     result, _, err := client.CFDApi.UpdateOrder(ctx, orderId, tradFiOrderUpdateRequest)
@@ -986,7 +986,7 @@ Cancel order
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**orderId** | **int32**| Order ID | 
+**orderId** | **int64**| Order ID | 
 
 ### Example
 
@@ -1011,7 +1011,7 @@ func main() {
                                  Secret: "YOUR_API_SECRET",
                              }
                             )
-    orderId := 1223 // int32 - Order ID
+    orderId := 1223 // int64 - Order ID
     
     result, _, err := client.CFDApi.DeleteOrder(ctx, orderId)
     if err != nil {
@@ -1134,7 +1134,7 @@ Get order details by log ID
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**logId** | **int32**| log_id returned from the order placement API | 
+**logId** | **int64**| log_id returned from the order placement API | 
 
 ### Example
 
@@ -1159,7 +1159,7 @@ func main() {
                                  Secret: "YOUR_API_SECRET",
                              }
                             )
-    logId := 1223 // int32 - log_id returned from the order placement API
+    logId := 1223 // int64 - log_id returned from the order placement API
     
     result, _, err := client.CFDApi.QueryOrderLog(ctx, logId)
     if err != nil {
@@ -1267,7 +1267,7 @@ Modify position
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**positionId** | **int32**| Position ID | 
+**positionId** | **int64**| Position ID | 
 **tradFiPositionUpdateRequest** | [**TradFiPositionUpdateRequest**](TradFiPositionUpdateRequest.md)|  | 
 
 ### Example
@@ -1293,7 +1293,7 @@ func main() {
                                  Secret: "YOUR_API_SECRET",
                              }
                             )
-    positionId := 1223 // int32 - Position ID
+    positionId := 1223 // int64 - Position ID
     tradFiPositionUpdateRequest := gateapi.TradFiPositionUpdateRequest{} // TradFiPositionUpdateRequest - 
     
     result, _, err := client.CFDApi.UpdatePosition(ctx, positionId, tradFiPositionUpdateRequest)
@@ -1338,7 +1338,7 @@ Close position
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**positionId** | **int32**| Position ID | 
+**positionId** | **int64**| Position ID | 
 **tradFiClosePositionRequest** | [**TradFiClosePositionRequest**](TradFiClosePositionRequest.md)|  | 
 
 ### Example
@@ -1364,7 +1364,7 @@ func main() {
                                  Secret: "YOUR_API_SECRET",
                              }
                             )
-    positionId := 1223 // int32 - Position ID
+    positionId := 1223 // int64 - Position ID
     tradFiClosePositionRequest := gateapi.TradFiClosePositionRequest{} // TradFiClosePositionRequest - 
     
     result, _, err := client.CFDApi.ClosePosition(ctx, positionId, tradFiClosePositionRequest)

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**PositionId** | **int32** | Position ID | [optional] 
+**PositionId** | **int64** | Position ID | [optional] 
 **Symbol** | **string** | Trading market code | [optional] 
 **SymbolDesc** | **string** | Market description | [optional] 
 **Margin** | **string** | Used margin | [optional] 

@@ -1262,7 +1262,7 @@ UpdateOrder Modify order
 
 @return UpdateOrder
 */
-func (a *CFDApiService) UpdateOrder(ctx context.Context, orderId int32, tradFiOrderUpdateRequest TradFiOrderUpdateRequest) (UpdateOrder, *http.Response, error) {
+func (a *CFDApiService) UpdateOrder(ctx context.Context, orderId int64, tradFiOrderUpdateRequest TradFiOrderUpdateRequest) (UpdateOrder, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -1357,7 +1357,7 @@ DeleteOrder Cancel order
 
 @return map[string]interface{}
 */
-func (a *CFDApiService) DeleteOrder(ctx context.Context, orderId int32) (map[string]interface{}, *http.Response, error) {
+func (a *CFDApiService) DeleteOrder(ctx context.Context, orderId int64) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -1565,7 +1565,7 @@ QueryOrderLog Get order details by log ID
 
 @return OrderLog
 */
-func (a *CFDApiService) QueryOrderLog(ctx context.Context, logId int32) (OrderLog, *http.Response, error) {
+func (a *CFDApiService) QueryOrderLog(ctx context.Context, logId int64) (OrderLog, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1749,7 +1749,7 @@ UpdatePosition Modify position
 
 @return UpdatePosition
 */
-func (a *CFDApiService) UpdatePosition(ctx context.Context, positionId int32, tradFiPositionUpdateRequest TradFiPositionUpdateRequest) (UpdatePosition, *http.Response, error) {
+func (a *CFDApiService) UpdatePosition(ctx context.Context, positionId int64, tradFiPositionUpdateRequest TradFiPositionUpdateRequest) (UpdatePosition, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -1845,7 +1845,7 @@ ClosePosition Close position
 
 @return DeletePosition
 */
-func (a *CFDApiService) ClosePosition(ctx context.Context, positionId int32, tradFiClosePositionRequest TradFiClosePositionRequest) (DeletePosition, *http.Response, error) {
+func (a *CFDApiService) ClosePosition(ctx context.Context, positionId int64, tradFiClosePositionRequest TradFiClosePositionRequest) (DeletePosition, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}

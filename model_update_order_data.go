@@ -12,7 +12,7 @@ package gateapi
 // Response data
 type UpdateOrderData struct {
 	// Order ID
-	OrderId int32 `json:"order_id,omitempty"`
+	OrderId int64 `json:"order_id,omitempty"`
 	// Currency pair
 	Symbol string `json:"symbol,omitempty"`
 	// Order status code

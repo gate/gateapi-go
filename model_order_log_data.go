@@ -12,9 +12,9 @@ package gateapi
 // Response data
 type OrderLogData struct {
 	// Order ID
-	OrderId int32 `json:"order_id,omitempty"`
+	OrderId int64 `json:"order_id,omitempty"`
 	// logID
-	LogId int32 `json:"log_id,omitempty"`
+	LogId int64 `json:"log_id,omitempty"`
 	// Trading pair of the order
 	Symbol string `json:"symbol,omitempty"`
 	// Trade type (market=market price, trigger=trigger price)

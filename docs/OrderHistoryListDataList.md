@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**OrderId** | **int32** | Order ID | [optional] 
+**OrderId** | **int64** | Order ID | [optional] 
 **Symbol** | **string** | Currency pair | [optional] 
 **SymbolDesc** | **string** | Symbol description | [optional] 
 **PriceType** | **string** | Trade type (market&#x3D;market price, trigger&#x3D;trigger price) | [optional] 

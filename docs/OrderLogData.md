@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**OrderId** | **int32** | Order ID | [optional] 
-**LogId** | **int32** | logID | [optional] 
+**OrderId** | **int64** | Order ID | [optional] 
+**LogId** | **int64** | logID | [optional] 
 **Symbol** | **string** | Trading pair of the order | [optional] 
 **PriceType** | **string** | Trade type (market&#x3D;market price, trigger&#x3D;trigger price) | [optional] 
 **State** | **int32** | Order status code (1&#x3D;placed, 2&#x3D;canceled, 3&#x3D;partially filled, 4&#x3D;filled, 5&#x3D;rejected) | [optional] 

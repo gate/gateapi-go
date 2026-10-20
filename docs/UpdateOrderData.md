@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**OrderId** | **int32** | Order ID | [optional] 
+**OrderId** | **int64** | Order ID | [optional] 
 **Symbol** | **string** | Currency pair | [optional] 
 **State** | **string** | Order status code | [optional] 
 **Volume** | **string** | Order quantity | [optional] 

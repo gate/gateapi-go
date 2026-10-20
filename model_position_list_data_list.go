@@ -12,7 +12,7 @@ package gateapi
 // Position information
 type PositionListDataList struct {
 	// Position ID
-	PositionId int32 `json:"position_id,omitempty"`
+	PositionId int64 `json:"position_id,omitempty"`
 	// Trading market code
 	Symbol string `json:"symbol,omitempty"`
 	// Market description
