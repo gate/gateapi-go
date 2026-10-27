@@ -11,18 +11,25 @@ package gateapi
 
 // Risk control prompt event for advertisement content
 type P2pMerchantBooksPlaceBizPushOrderResponseDataRiskEvent struct {
+
 	// Prompt display type
 	Type string `json:"type,omitempty"`
+
 	// Risk control prompt title
 	Title string `json:"title,omitempty"`
+
 	// Risk control prompt message generated based on the field that hit risk control
 	Msg string `json:"msg,omitempty"`
+
 	// Available actions; advertisement content risk control only returns the close action
 	Action []P2pMerchantBooksPlaceBizPushOrderResponseDataRiskEventAction `json:"action,omitempty"`
+
 	// Advertisement content field that hit risk control
 	ContentRiskType string `json:"content_risk_type,omitempty"`
+
 	// Prompt message returned when the trade terms hit risk control
 	TradeTips string `json:"trade_tips,omitempty"`
+
 	// Prompt message returned when the auto reply hits risk control
 	AutoReply string `json:"auto_reply,omitempty"`
 }

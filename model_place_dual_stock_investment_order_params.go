@@ -11,16 +11,22 @@ package gateapi
 
 // Stock dual investment order request
 type PlaceDualStockInvestmentOrderParams struct {
+
 	// Product ID
 	PlanId string `json:"plan_id"`
+
 	// Subscription amount
 	Amount string `json:"amount"`
+
 	// Order custom information. Users can set custom ID with this field. Custom fields must meet the following conditions:  1. Must start with `t-` 2. Excluding `t-`, length cannot exceed 28 bytes 3. Can only contain numbers, letters, underscore(_), hyphen(-) or dot(.)
 	Text string `json:"text,omitempty"`
+
 	// Whether to use the spot account to fund a buy-low (put) subscription. `1` selects the account; omitted or other values leave it unselected.
 	HitSpot int32 `json:"hit_spot,omitempty"`
+
 	// Whether to use the stock account to fund a buy-low (put) subscription. `1` selects the account; omitted or other values leave it unselected.
 	HitStock int32 `json:"hit_stock,omitempty"`
+
 	// Whether to use the Simple Earn account to fund a buy-low (put) subscription. `1` selects the account; omitted or other values leave it unselected.
 	HitSimple int32 `json:"hit_simple,omitempty"`
 }

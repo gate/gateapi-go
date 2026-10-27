@@ -11,18 +11,25 @@ package gateapi
 
 // Response data
 type UpdateOrderData struct {
+
 	// Order ID
 	OrderId int64 `json:"order_id,omitempty"`
+
 	// Currency pair
 	Symbol string `json:"symbol,omitempty"`
+
 	// Order status code
 	State string `json:"state,omitempty"`
+
 	// Order quantity
 	Volume string `json:"volume,omitempty"`
+
 	// Current price
 	Price string `json:"price,omitempty"`
+
 	// Current take profit price
 	PriceTp string `json:"price_tp,omitempty"`
+
 	// Current stop loss price
 	PriceSl string `json:"price_sl,omitempty"`
 }

@@ -10,11 +10,15 @@
 package gateapi
 
 type CreateEarnFixedTermLendResponse struct {
+
 	// Return code, 0 means success
 	Code int32 `json:"code,omitempty"`
+
 	// Response message
-	Message string                              `json:"message,omitempty"`
-	Data    CreateEarnFixedTermLendResponseData `json:"data,omitempty"`
+	Message string `json:"message,omitempty"`
+
+	Data CreateEarnFixedTermLendResponseData `json:"data,omitempty"`
+
 	// Response timestamp (in seconds)
 	Timestamp int32 `json:"timestamp,omitempty"`
 }

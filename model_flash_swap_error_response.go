@@ -10,8 +10,10 @@
 package gateapi
 
 type FlashSwapErrorResponse struct {
+
 	// Error code
 	Code int32 `json:"code"`
+
 	// Error message
 	Message string `json:"message"`
 }

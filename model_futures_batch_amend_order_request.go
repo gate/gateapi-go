@@ -11,16 +11,22 @@ package gateapi
 
 // Modify contract order parameters
 type FuturesBatchAmendOrderRequest struct {
+
 	// Order id, order_id and text must contain at least one
 	OrderId int64 `json:"order_id,omitempty"`
+
 	// User-defined order text, at least one of order_id and text must be passed
 	Text string `json:"text,omitempty"`
+
 	// New order size, including filled size. - If less than or equal to the filled quantity, the order will be cancelled. - The new order side must be identical to the original one. - Close order size cannot be modified. - For reduce-only orders, increasing the size may cancel other reduce-only orders. - If the price is not modified, decreasing the size will not affect the depth queue, while increasing the size will place it at the end of the current price level.
 	Size string `json:"size,omitempty"`
+
 	// New order price
 	Price string `json:"price,omitempty"`
+
 	// Custom info during order amendment
 	AmendText string `json:"amend_text,omitempty"`
+
 	// Processing Mode  When placing an order, different fields are returned based on the action_mode  - `ACK`: Asynchronous mode, returns only key order fields - `RESULT`: No clearing information - `FULL`: Full mode (default)
 	ActionMode string `json:"action_mode,omitempty"`
 }

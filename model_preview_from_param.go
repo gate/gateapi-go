@@ -11,8 +11,10 @@ package gateapi
 
 // Preview the selling side of the request: currency + quantity. The semantics are similar to `CreateParam` on the `from` side (both `asset` + `amount`).
 type PreviewFromParam struct {
+
 	// The currency symbol to be swapped out.
 	Asset string `json:"asset"`
+
 	// The currency swap quantity, decimal string.
 	Amount string `json:"amount"`
 }

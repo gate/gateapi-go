@@ -11,8 +11,11 @@ package gateapi
 
 // Get the response body when the strategy recommendation is successful.
 type AiHubDiscoverSuccessResponse struct {
-	Code    int32             `json:"code"`
-	Message string            `json:"message"`
-	Data    AiHubDiscoverData `json:"data"`
-	TraceId string            `json:"trace_id"`
+	Code int32 `json:"code"`
+
+	Message string `json:"message"`
+
+	Data AiHubDiscoverData `json:"data"`
+
+	TraceId string `json:"trace_id"`
 }

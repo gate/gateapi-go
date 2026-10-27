@@ -11,14 +11,22 @@ package gateapi
 
 // A single record in the list of running policies.
 type AiHubPortfolioRunningItem struct {
-	StrategyId   string       `json:"strategy_id"`
+	StrategyId string `json:"strategy_id"`
+
 	StrategyType StrategyType `json:"strategy_type"`
-	StrategyName string       `json:"strategy_name"`
-	Market       string       `json:"market"`
-	Status       string       `json:"status"`
-	Pnl          string       `json:"pnl,omitempty"`
-	PnlRate      string       `json:"pnl_rate,omitempty"`
-	InvestAmount string       `json:"invest_amount,omitempty"`
+
+	StrategyName string `json:"strategy_name"`
+
+	Market string `json:"market"`
+
+	Status string `json:"status"`
+
+	Pnl string `json:"pnl,omitempty"`
+
+	PnlRate string `json:"pnl_rate,omitempty"`
+
+	InvestAmount string `json:"invest_amount,omitempty"`
+
 	// Created time
 	CreatedAt string `json:"created_at,omitempty"`
 }

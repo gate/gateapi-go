@@ -11,22 +11,31 @@ package gateapi
 
 // Modify Price Order Details
 type FuturesUpdatePriceTriggeredOrder struct {
+
 	// Perpetual futures settlement currency, e.g. usdt, btc, usd1
 	Settle string `json:"settle,omitempty"`
+
 	// ID of the Pending Take-Profit/Stop-Loss Trigger Order
 	OrderId int64 `json:"order_id"`
+
 	// Modified Contract Quantity. Full Close: 0; Partial Close: Positive/Negative values indicate direction (consistent with the creation interface logic).
 	Size int64 `json:"size,omitempty"`
+
 	// Same as `size`; used for decimal contract size. When both `size` and `amount` are provided, `amount` takes precedence.
 	Amount string `json:"amount,omitempty"`
+
 	// Represents the modified trading price. A value of 0 indicates a market order.
 	Price string `json:"price,omitempty"`
+
 	// Modified Trigger Price
 	TriggerPrice string `json:"trigger_price,omitempty"`
+
 	// Reference price type. 0 - Latest trade price, 1 - Mark price, 2 - Index price
 	PriceType int32 `json:"price_type,omitempty"`
+
 	// One-way Mode: auto_size is not required Hedge Mode partial closing (size≠0): auto_size is not required Hedge Mode full closing (size=0): auto_size must be set, close_long for closing long positions, close_short for closing short positions
 	AutoSize string `json:"auto_size,omitempty"`
+
 	// When fully closing a position in single-position mode, close must be set to true to execute the close operation. When partially closing a position in single-position mode or in dual-position mode, close can be left unset or set to false.
 	Close bool `json:"close,omitempty"`
 }

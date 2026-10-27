@@ -10,8 +10,11 @@
 package gateapi
 
 type CreateOrderDetail struct {
-	Asset      string `json:"asset"`
-	IconUrl    string `json:"icon_url"`
-	Amount     string `json:"amount"`
+	Asset string `json:"asset"`
+
+	IconUrl string `json:"icon_url"`
+
+	Amount string `json:"amount"`
+
 	AmountShow string `json:"amount_show"`
 }

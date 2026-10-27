@@ -10,7 +10,9 @@
 package gateapi
 
 type ContractDetail struct {
+
 	// Server timestamp (milliseconds)
-	Timestamp int64              `json:"timestamp,omitempty"`
-	Data      ContractDetailData `json:"data,omitempty"`
+	Timestamp int64 `json:"timestamp,omitempty"`
+
+	Data ContractDetailData `json:"data,omitempty"`
 }

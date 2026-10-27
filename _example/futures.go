@@ -13,7 +13,7 @@ import (
 // FuturesDemo demonstrates current string-sized futures orders using one governed SDK client.
 func FuturesDemo(ctx context.Context, client *gateapi.APIClient, useTestNet bool) error {
 	settle, contract, leverage := "usdt", "BTC_USDT", "3"
-	position, _, err := client.FuturesApi.GetPosition(ctx, settle, contract)
+	position, _, err := demoGetPosition(ctx, client, settle, contract)
 	if err != nil {
 		return fmt.Errorf("get position: %v", err)
 	}

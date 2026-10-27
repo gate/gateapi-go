@@ -11,16 +11,22 @@ package gateapi
 
 // Response data
 type UserAssetRespData struct {
+
 	// Account equity
 	Equity string `json:"equity,omitempty"`
+
 	// Margin level (percentage)
 	MarginLevel string `json:"margin_level,omitempty"`
+
 	// Account Balance
 	Balance string `json:"balance,omitempty"`
+
 	// Used margin
 	Margin string `json:"margin,omitempty"`
+
 	// Available Margin
 	MarginFree string `json:"margin_free,omitempty"`
+
 	// Unrealized PNL
 	UnrealizedPnl string `json:"unrealized_pnl,omitempty"`
 }

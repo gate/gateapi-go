@@ -10,28 +10,40 @@
 package gateapi
 
 type SpotFee struct {
+
 	// User ID
 	UserId int64 `json:"user_id,omitempty"`
+
 	// taker fee rate
 	TakerFee string `json:"taker_fee,omitempty"`
+
 	// maker fee rate
 	MakerFee string `json:"maker_fee,omitempty"`
+
 	// RPI MM maker fee rate
 	RpiMakerFee string `json:"rpi_maker_fee,omitempty"`
+
 	// Whether GT deduction discount is enabled
 	GtDiscount bool `json:"gt_discount,omitempty"`
+
 	// Taker fee rate if using GT deduction. It will be 0 if GT deduction is disabled
 	GtTakerFee string `json:"gt_taker_fee,omitempty"`
+
 	// Maker fee rate with GT deduction. Returns 0 if GT deduction is disabled
 	GtMakerFee string `json:"gt_maker_fee,omitempty"`
+
 	// Loan fee rate of margin lending
 	LoanFee string `json:"loan_fee,omitempty"`
+
 	// Point card type: 0 - Original version, 1 - New version since 202009
 	PointType string `json:"point_type,omitempty"`
+
 	// Currency pair
 	CurrencyPair string `json:"currency_pair,omitempty"`
+
 	// Deduction types for rates, 1 - GT deduction, 2 - Point card deduction, 3 - VIP rates
 	DebitFee int32 `json:"debit_fee,omitempty"`
+
 	// RPI MM Level
 	RpiMm int32 `json:"rpi_mm,omitempty"`
 }

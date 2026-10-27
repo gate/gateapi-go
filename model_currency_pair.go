@@ -11,54 +11,79 @@ package gateapi
 
 // Spot currency pair
 type CurrencyPair struct {
+
 	// Currency pair
 	Id string `json:"id,omitempty"`
+
 	// Base currency
 	Base string `json:"base,omitempty"`
+
 	// Base currency name
 	BaseName string `json:"base_name,omitempty"`
+
 	// Quote currency
 	Quote string `json:"quote,omitempty"`
+
 	// Quote currency name
 	QuoteName string `json:"quote_name,omitempty"`
+
 	// Quote currencies supported by the unified market; null means that the market does not support unified quote currencies
 	TradeQuotes *[]string `json:"trade_quotes,omitempty"`
+
 	// Trading fee rate(deprecated)
 	Fee string `json:"fee,omitempty"`
+
 	// Minimum amount of base currency to trade, `null` means no limit
 	MinBaseAmount string `json:"min_base_amount,omitempty"`
+
 	// Minimum amount of quote currency to trade, `null` means no limit
 	MinQuoteAmount string `json:"min_quote_amount,omitempty"`
+
 	// Maximum amount of base currency to trade, `null` means no limit
 	MaxBaseAmount string `json:"max_base_amount,omitempty"`
+
 	// Maximum amount of quote currency to trade, `null` means no limit
 	MaxQuoteAmount string `json:"max_quote_amount,omitempty"`
+
 	// Quantity precision
 	AmountPrecision int32 `json:"amount_precision,omitempty"`
+
 	// Price precision
 	Precision int32 `json:"precision,omitempty"`
+
 	// Trading status  - untradable: cannot be traded - buyable: can be bought - sellable: can be sold - tradable: can be bought and sold
 	TradeStatus string `json:"trade_status,omitempty"`
+
 	// Sell start unix timestamp in seconds
 	SellStart int64 `json:"sell_start,omitempty"`
+
 	// Buy start unix timestamp in seconds
 	BuyStart int64 `json:"buy_start,omitempty"`
+
 	// Expected time to remove the shelves, Unix timestamp in seconds
 	DelistingTime int64 `json:"delisting_time,omitempty"`
+
 	// Trading pair type, normal: normal, premarket: pre-market
 	Type string `json:"type,omitempty"`
+
 	// Transaction link
 	TradeUrl string `json:"trade_url,omitempty"`
+
 	// Whether the trading pair is in ST risk assessment, false - No, true - Yes
 	StTag bool `json:"st_tag,omitempty"`
+
 	// Maximum Quote Rise Percentage
 	UpRate string `json:"up_rate,omitempty"`
+
 	// Maximum Quote Decline Percentage
 	DownRate string `json:"down_rate,omitempty"`
+
 	// Maximum supported slippage ratio for Spot Market Order Placement, calculated based on the latest market price at the time of order placement as the benchmark (Example: 0.03 means 3%)
 	Slippage string `json:"slippage,omitempty"`
+
 	// Maximum market order quantity. `null` or `0` means no limit
 	MarketOrderMaxStock string `json:"market_order_max_stock,omitempty"`
+
 	// Maximum market order amount. `null` or `0` means no limit
 	MarketOrderMaxMoney string `json:"market_order_max_money,omitempty"`
 }

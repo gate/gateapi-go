@@ -10,6 +10,7 @@
 package gateapi
 
 type DebitFee struct {
+
 	// Whether GT fee deduction is enabled
 	Enabled bool `json:"enabled"`
 }

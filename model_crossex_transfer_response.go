@@ -10,8 +10,10 @@
 package gateapi
 
 type CrossexTransferResponse struct {
+
 	// Order ID
 	TxId string `json:"tx_id"`
+
 	// User-defined Order ID
 	Text string `json:"text"`
 }

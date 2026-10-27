@@ -10,12 +10,16 @@
 package gateapi
 
 type ExchangesDataList struct {
+
 	// Trading market. - us: US stocks. - hk: Hong Kong stocks. - kr: Korean stocks. - jp: Japanese stocks.
 	Exchange string `json:"exchange,omitempty"`
+
 	// Market display name
 	ExchangeDesc string `json:"exchange_desc,omitempty"`
+
 	// Market icon
 	IconLink string `json:"icon_link,omitempty"`
+
 	// Whether stock transfer is supported
 	SupportTransfer bool `json:"support_transfer,omitempty"`
 }

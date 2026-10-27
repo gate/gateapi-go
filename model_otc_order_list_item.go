@@ -10,30 +10,44 @@
 package gateapi
 
 type OtcOrderListItem struct {
+
 	// Current time
 	Time string `json:"time,omitempty"`
+
 	// Current timestamp
 	Timestamp int32 `json:"timestamp,omitempty"`
+
 	// orderId
 	OrderId string `json:"order_id,omitempty"`
+
 	// Trade number
 	TradeNo string `json:"trade_no,omitempty"`
+
 	// BUY deposit / SELL withdrawal
 	Type string `json:"type,omitempty"`
+
 	// Order status
 	Status string `json:"status,omitempty"`
+
 	// Fiat currency
-	FiatCurrency     string                       `json:"fiat_currency,omitempty"`
+	FiatCurrency string `json:"fiat_currency,omitempty"`
+
 	FiatCurrencyInfo OtcOrderListFiatCurrencyInfo `json:"fiat_currency_info,omitempty"`
+
 	// Fiat amount
 	FiatAmount string `json:"fiat_amount,omitempty"`
+
 	// Digital currency
-	CryptoCurrency     string                         `json:"crypto_currency,omitempty"`
+	CryptoCurrency string `json:"crypto_currency,omitempty"`
+
 	CryptoCurrencyInfo OtcOrderListCryptoCurrencyInfo `json:"crypto_currency_info,omitempty"`
+
 	// Cryptocurrency amount
 	CryptoAmount string `json:"crypto_amount,omitempty"`
+
 	// Exchange rate
 	Rate string `json:"rate,omitempty"`
+
 	// Promotion code
 	PromotionCode string `json:"promotion_code,omitempty"`
 }

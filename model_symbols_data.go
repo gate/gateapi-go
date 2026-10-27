@@ -11,6 +11,7 @@ package gateapi
 
 // Response data
 type SymbolsData struct {
+
 	// Trading symbol list
 	List []SymbolsDataList `json:"list,omitempty"`
 }

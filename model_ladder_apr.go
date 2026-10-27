@@ -10,10 +10,13 @@
 package gateapi
 
 type LadderApr struct {
+
 	// Annualized interest rate
 	Apr string `json:"apr"`
+
 	// Range lower limit
 	Left string `json:"left"`
+
 	// Range upper limit
 	Right string `json:"right"`
 }

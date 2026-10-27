@@ -11,8 +11,10 @@ package gateapi
 
 // **For preview only** `OrderPreviewV1Req.to`. Target currency + **ratio ratio**. **Forbidden** is confused with the order `CreateParam`: the `to` of the order must be **`amount`**, and there is no `ratio` field.
 type PreviewToParam struct {
+
 	// Target currency symbol; often corresponds to `recommend_v2.*[].schemes[].name` in config.
 	Asset string `json:"asset"`
+
 	// The weight ratio of the target currency in the portfolio, **decimal string** (such as `0.2`, `0.5`). Often consistent with the `schemes[].ratio` of a strategy under `recommend_v2` of `GET /asset-swap/config`.
 	Ratio string `json:"ratio"`
 }

@@ -10,12 +10,16 @@
 package gateapi
 
 type CreateEarnFixedTermPreRedeemResponse struct {
+
 	// Return code, 0 means success
 	Code int32 `json:"code,omitempty"`
+
 	// Response message
 	Message string `json:"message,omitempty"`
+
 	// Redemption result (empty object on success)
 	Data map[string]interface{} `json:"data,omitempty"`
+
 	// Response timestamp (in seconds)
 	Timestamp int32 `json:"timestamp,omitempty"`
 }

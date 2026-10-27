@@ -10,32 +10,46 @@
 package gateapi
 
 type CrossexAccount struct {
+
 	// User ID
 	UserId string `json:"user_id"`
+
 	// Available Margin
 	AvailableMargin string `json:"available_margin"`
+
 	// marginbalance
 	MarginBalance string `json:"margin_balance"`
+
 	// Initial Margin
 	InitialMargin string `json:"initial_margin"`
+
 	// Maintenance margin
 	MaintenanceMargin string `json:"maintenance_margin"`
+
 	// Initial margin rate
 	InitialMarginRate string `json:"initial_margin_rate"`
+
 	// Maintenance margin rate
 	MaintenanceMarginRate string `json:"maintenance_margin_rate"`
+
 	// Contract Position Mode
 	PositionMode string `json:"position_mode"`
+
 	// Account limit
 	AccountLimit string `json:"account_limit,omitempty"`
+
 	// Created time
 	CreateTime string `json:"create_time"`
+
 	// Update time
 	UpdateTime string `json:"update_time"`
+
 	// Account Mode. CROSS_EXCHANGE: Cross-Exchange Mode; ISOLATED_EXCHANGE: Split-Exchange Mode
 	AccountMode string `json:"account_mode,omitempty"`
+
 	// Exchange Type. When account_mode is CROSS_EXCHANGE, it must be CROSSEX; otherwise, it is another exchange.
 	ExchangeType string `json:"exchange_type,omitempty"`
+
 	// Asset list: grouped by exchange and currency, returning per-account balances, margin, and PnL details
 	Assets []CrossexAccountAsset `json:"assets"`
 }

@@ -10,6 +10,7 @@
 package gateapi
 
 type OtcBankIdRequest struct {
+
 	// Bank card ID
 	BankId string `json:"bank_id"`
 }

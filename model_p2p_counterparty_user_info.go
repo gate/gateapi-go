@@ -10,42 +10,61 @@
 package gateapi
 
 type P2pCounterpartyUserInfo struct {
+
 	// User registration time (formatted string)
 	UserTimest string `json:"user_timest,omitempty"`
+
 	// Whether email is verified. `1`: yes; `0`: no.
 	EmailVerified string `json:"email_verified,omitempty"`
+
 	// Whether KYC is completed. `1`: yes; `0`: no.
 	Verified string `json:"verified,omitempty"`
+
 	// Whether a phone number is bound. `1`: yes; `0`: no.
 	HasPhone string `json:"has_phone,omitempty"`
+
 	// Username
 	UserName string `json:"user_name,omitempty"`
+
 	// User note information
 	UserNote string `json:"user_note,omitempty"`
+
 	// Total completed orders
 	CompleteTransactions string `json:"complete_transactions,omitempty"`
+
 	// Number of completed buy orders
 	PaidTransactions string `json:"paid_transactions,omitempty"`
+
 	// Number of completed sell orders
 	AcceptedTransactions string `json:"accepted_transactions,omitempty"`
+
 	// Average time to confirm receipt
 	TransactionsUsedTime string `json:"transactions_used_time,omitempty"`
+
 	// Cancellation time in last 30 days
 	CancelledUsedTimeMonth string `json:"cancelled_used_time_month,omitempty"`
+
 	// Number of completed orders in last 30 days
 	CompleteTransactionsMonth string `json:"complete_transactions_month,omitempty"`
+
 	// Completion rate in last 30 days
 	CompleteRateMonth float32 `json:"complete_rate_month,omitempty"`
+
 	// Whether you follow this user. `1`: yes; `0`: no.
 	IsFollow int32 `json:"is_follow,omitempty"`
+
 	// Whether you have traded with this user before. `1`: yes; `0`: no.
 	HaveTraded int32 `json:"have_traded,omitempty"`
+
 	// Encrypted UID
 	BizUid string `json:"biz_uid,omitempty"`
+
 	// Registration days
 	RegistrationDays int32 `json:"registration_days,omitempty"`
+
 	// Days since first trade
 	FirstTradeDays int32 `json:"first_trade_days,omitempty"`
+
 	// Single user or composite user
 	TradeVersatile bool `json:"trade_versatile,omitempty"`
 }

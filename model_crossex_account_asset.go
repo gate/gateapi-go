@@ -10,28 +10,40 @@
 package gateapi
 
 type CrossexAccountAsset struct {
+
 	// User ID
 	UserId string `json:"user_id,omitempty"`
+
 	// Currency
 	Coin string `json:"coin,omitempty"`
+
 	// Exchange
 	ExchangeType string `json:"exchange_type,omitempty"`
+
 	// Balance
 	Balance string `json:"balance,omitempty"`
+
 	// Unrealized P&L
 	Upnl string `json:"upnl,omitempty"`
+
 	// Net margin equity for the currency
 	Equity string `json:"equity,omitempty"`
+
 	// Currency-specific futures initial margin. This value is populated for futures settlement currencies (USDT/USDC/USD)
 	FuturesInitialMargin string `json:"futures_initial_margin,omitempty"`
+
 	// Currency-specific futures maintenance margin. This value is populated for futures settlement currencies (USDT/USDC/USD)
 	FuturesMaintenanceMargin string `json:"futures_maintenance_margin,omitempty"`
+
 	// Currency-specific margin trading initial margin. This value is populated for margin or futures settlement currencies (USDT/USDC/USD)
 	BorrowingInitialMargin string `json:"borrowing_initial_margin"`
+
 	// Currency-specific margin trading maintenance margin. This value is populated for margin or futures settlement currencies (USDT/USDC/USD)
 	BorrowingMaintenanceMargin string `json:"borrowing_maintenance_margin"`
+
 	// Available Balance
 	AvailableBalance string `json:"available_balance,omitempty"`
+
 	// Liability for the currency. This value is populated only for USDT, USDC, or USD
 	Liability string `json:"liability,omitempty"`
 }

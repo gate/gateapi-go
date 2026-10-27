@@ -10,11 +10,17 @@
 package gateapi
 
 type EvaluateItem struct {
-	Asset            string `json:"asset"`
-	AssetFullName    string `json:"asset_full_name"`
-	AssetIconUrl     string `json:"asset_icon_url"`
-	Available        string `json:"available"`
-	AvailableShow    string `json:"available_show"`
-	EvaluateUsdt     string `json:"evaluate_usdt"`
+	Asset string `json:"asset"`
+
+	AssetFullName string `json:"asset_full_name"`
+
+	AssetIconUrl string `json:"asset_icon_url"`
+
+	Available string `json:"available"`
+
+	AvailableShow string `json:"available_show"`
+
+	EvaluateUsdt string `json:"evaluate_usdt"`
+
 	EvaluateUsdtShow string `json:"evaluate_usdt_show"`
 }

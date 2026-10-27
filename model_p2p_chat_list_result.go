@@ -10,16 +10,22 @@
 package gateapi
 
 type P2pChatListResult struct {
+
 	// Message List
 	Messages []P2pChatMessage `json:"messages,omitempty"`
+
 	// Payment tip (displayed on homepage only)
 	Memo string `json:"memo,omitempty"`
+
 	// Whether historical records exist
 	HasHistory bool `json:"has_history,omitempty"`
+
 	// Order ID
 	Txid int32 `json:"txid,omitempty"`
+
 	// Timestamp of the latest message.
 	SRVTM int32 `json:"SRVTM,omitempty"`
+
 	// Raw order status in DB; typical values: `OPEN`, `PAID`, `LOCKED`, `ACCEPT`, `BCLOSED`, `CANCEL`, `BECANCEL`, `SCLOSED`, `SCANCEL`.
 	OrderStatus string `json:"order_status,omitempty"`
 }

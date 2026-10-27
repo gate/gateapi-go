@@ -10,8 +10,11 @@
 package gateapi
 
 type OtcBankSupplementChecklistResponse struct {
-	Code      int32                                  `json:"code"`
-	Message   string                                 `json:"message"`
-	Data      OtcBankSupplementChecklistResponseData `json:"data"`
-	Timestamp int32                                  `json:"timestamp,omitempty"`
+	Code int32 `json:"code"`
+
+	Message string `json:"message"`
+
+	Data OtcBankSupplementChecklistResponseData `json:"data"`
+
+	Timestamp int32 `json:"timestamp,omitempty"`
 }

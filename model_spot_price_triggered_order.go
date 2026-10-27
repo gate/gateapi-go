@@ -11,22 +11,31 @@ package gateapi
 
 // Spot price order details
 type SpotPriceTriggeredOrder struct {
-	Trigger SpotPriceTrigger  `json:"trigger"`
-	Put     SpotPricePutOrder `json:"put"`
+	Trigger SpotPriceTrigger `json:"trigger"`
+
+	Put SpotPricePutOrder `json:"put"`
+
 	// Auto order ID
 	Id int64 `json:"id,omitempty"`
+
 	// User ID
 	User int32 `json:"user,omitempty"`
+
 	// Market
 	Market string `json:"market"`
+
 	// Created time
 	Ctime int64 `json:"ctime,omitempty"`
+
 	// End time
 	Ftime int64 `json:"ftime,omitempty"`
+
 	// ID of the order created after trigger
 	FiredOrderId int64 `json:"fired_order_id,omitempty"`
+
 	// Status  - open: Running - cancelled: Manually cancelled - finish: Successfully completed - failed: Failed to execute - expired: Expired
 	Status string `json:"status,omitempty"`
+
 	// Additional description of how the order was completed
 	Reason string `json:"reason,omitempty"`
 }

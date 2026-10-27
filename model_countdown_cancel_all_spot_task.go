@@ -11,8 +11,10 @@ package gateapi
 
 // Countdown cancel task details
 type CountdownCancelAllSpotTask struct {
+
 	// Countdown time in seconds At least 5 seconds, 0 means cancel countdown
 	Timeout int32 `json:"timeout"`
+
 	// Currency pair
 	CurrencyPair string `json:"currency_pair,omitempty"`
 }

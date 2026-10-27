@@ -10,7 +10,9 @@
 package gateapi
 
 type OtcStableCoinOrderListResponse struct {
-	Code    int32                        `json:"code"`
-	Message string                       `json:"message"`
-	Data    OtcStableCoinOrderListResult `json:"data"`
+	Code int32 `json:"code"`
+
+	Message string `json:"message"`
+
+	Data OtcStableCoinOrderListResult `json:"data"`
 }

@@ -11,6 +11,7 @@ package gateapi
 
 // Unified account borrowing and repayment response result
 type UnifiedLoanResult struct {
+
 	// Transaction ID
 	TranId int64 `json:"tran_id,omitempty"`
 }

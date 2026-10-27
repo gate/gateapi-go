@@ -10,8 +10,10 @@
 package gateapi
 
 type QuickEstimatedRepayment struct {
+
 	// Liability currencies
 	DebtCurrencies []UnifiedQuickRepayDebtItem `json:"debt_currencies,omitempty"`
+
 	// Currencies available for repayment
 	AvailableCurrencies []UnifiedQuickRepayAvailableItem `json:"available_currencies,omitempty"`
 }

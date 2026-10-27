@@ -11,40 +11,58 @@ package gateapi
 
 // Replay video information (has value when content_type=video)
 type ListLiveReplayResponseDataVideo struct {
+
 	// Video ID
 	Id string `json:"id,omitempty"`
+
 	// Live stream ID
 	StreamId string `json:"stream_id,omitempty"`
+
 	// Video Title
 	Title string `json:"title,omitempty"`
+
 	// Author avatar URL
 	Avatar string `json:"avatar,omitempty"`
+
 	// Author nickname
 	Nick string `json:"nick,omitempty"`
+
 	// Author English nickname
 	NickEn string `json:"nick_en,omitempty"`
+
 	// Cover image URL
 	Cover string `json:"cover,omitempty"`
+
 	// Viewer count
 	Watched int32 `json:"watched,omitempty"`
+
 	// Whether subscription is required
 	SubscriptionRequired bool `json:"subscription_required,omitempty"`
+
 	// Whether the current user has subscribed
 	HasSubscribed bool `json:"has_subscribed,omitempty"`
+
 	// Video duration (in seconds)
 	Duration int32 `json:"duration,omitempty"`
+
 	// Sort weight
 	Weight int32 `json:"weight,omitempty"`
+
 	// Square user ID
 	MomentsUid string `json:"moments_uid,omitempty"`
+
 	// Session ID
 	SessionId string `json:"session_id,omitempty"`
+
 	// End time format
 	EndedAtFormat string `json:"ended_at_format,omitempty"`
+
 	// End time type
 	EndedAtType int32 `json:"ended_at_type,omitempty"`
+
 	// Author level
 	Tier int32 `json:"tier,omitempty"`
+
 	// Tag
 	Tag *string `json:"tag,omitempty"`
 }

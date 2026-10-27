@@ -11,20 +11,28 @@ package gateapi
 
 // Spot order details
 type OrderPatch struct {
+
 	// Currency pair
 	CurrencyPair string `json:"currency_pair,omitempty"`
+
 	// Specify query account
 	Account string `json:"account,omitempty"`
+
 	// Trading quantity. Either `amount` or `price` must be specified
 	Amount string `json:"amount,omitempty"`
+
 	// Trading price. Either `amount` or `price` must be specified
 	Price string `json:"price,omitempty"`
+
 	// Custom info during order amendment
 	AmendText string `json:"amend_text,omitempty"`
+
 	// Processing Mode: When placing an order, different fields are returned based on action_mode. This field is only valid during the request and is not included in the response result ACK: Asynchronous mode, only returns key order fields RESULT: No clearing information FULL: Full mode (default)
 	ActionMode string `json:"action_mode,omitempty"`
+
 	// Preserve nil as JSON null; an explicit empty object has a different meaning.
 	StopProfit *SpotOrderStopProfit `json:"stop_profit"`
+
 	// Preserve nil as JSON null; an explicit empty object has a different meaning.
 	StopLoss *SpotOrderStopLoss `json:"stop_loss"`
 }

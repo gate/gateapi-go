@@ -11,8 +11,10 @@ package gateapi
 
 // error response body format when status code is non-2xx
 type GateErrorResponse struct {
+
 	// Error label
 	Label string `json:"label,omitempty"`
+
 	// Detailed error message
 	Message string `json:"message,omitempty"`
 }

@@ -11,12 +11,16 @@ package gateapi
 
 // Request body for marking a fiat order as paid (deposit confirmation). Must include the user's payment receipt (consistent with §3.2).  **`payment_receipt_file_key` is required**; the order primary key for this path is `order_id`. When accessed via the Pay gateway using `client_order_id`, the gateway's rewritten field prevails.
 type OtcMarkOrderPaidRequest struct {
+
 	// Order ID
 	OrderId string `json:"order_id"`
+
 	// Client order ID (used by some gateway/Inner Pay paths, optional)
 	ClientOrderId string `json:"client_order_id,omitempty"`
+
 	// User payment receipt: **required**. Recommended: call `POST /otc/upload/pre_upload` (`scene=general`) to upload to the temporary bucket, then pass the returned **base64 file_key unchanged** (do not decode); the server moves to the production bucket and persists. Still compatible with legacy production-bucket base64 keys. Single file; jpg/jpeg/png/pdf; ≤10MB.
 	PaymentReceiptFileKey string `json:"payment_receipt_file_key"`
+
 	// Alias compatible with `payment_receipt_file_key` (depends on the gateway's external field name)
 	PaymentReceipt string `json:"payment_receipt,omitempty"`
 }

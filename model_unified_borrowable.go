@@ -11,8 +11,10 @@ package gateapi
 
 // Maximum borrowable amount for unified account
 type UnifiedBorrowable struct {
+
 	// Currency detail
 	Currency string `json:"currency,omitempty"`
+
 	// Max borrowable amount
 	Amount string `json:"amount,omitempty"`
 }

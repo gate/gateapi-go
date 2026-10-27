@@ -11,8 +11,10 @@ package gateapi
 
 // Business data
 type FlashSwapMultiCurrencyManyToOneOrderPreviewRespData struct {
+
 	// Preview order list
 	Orders []FlashSwapMultiCurrencyPreviewOrder `json:"orders"`
+
 	// Total amount received
 	TotalAcquireAmount string `json:"total_acquire_amount"`
 }

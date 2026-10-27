@@ -10,10 +10,13 @@
 package gateapi
 
 type Eligibility struct {
+
 	// Whether eligible for application
 	Eligible bool `json:"eligible"`
+
 	// List of ineligibility reason descriptions
 	BlockReasons []string `json:"block_reasons"`
+
 	// List of ineligibility reason codes
 	BlockReasonCodes []string `json:"block_reason_codes"`
 }

@@ -10,7 +10,9 @@
 package gateapi
 
 type OtcActionResponse struct {
-	Code      int32  `json:"code"`
-	Message   string `json:"message"`
-	Timestamp int32  `json:"timestamp"`
+	Code int32 `json:"code"`
+
+	Message string `json:"message"`
+
+	Timestamp int32 `json:"timestamp"`
 }

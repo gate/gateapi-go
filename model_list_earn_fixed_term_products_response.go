@@ -10,11 +10,15 @@
 package gateapi
 
 type ListEarnFixedTermProductsResponse struct {
+
 	// Return code, 0 means success
 	Code int32 `json:"code"`
+
 	// Response message
-	Message string                                `json:"message"`
-	Data    ListEarnFixedTermProductsResponseData `json:"data"`
+	Message string `json:"message"`
+
+	Data ListEarnFixedTermProductsResponseData `json:"data"`
+
 	// Response timestamp (in seconds)
 	Timestamp int32 `json:"timestamp"`
 }

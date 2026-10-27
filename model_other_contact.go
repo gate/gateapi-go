@@ -11,8 +11,10 @@ package gateapi
 
 // Other contact information
 type OtherContact struct {
+
 	// Contact type
 	Type int32 `json:"type,omitempty"`
+
 	// Contact value
 	Value string `json:"value,omitempty"`
 }

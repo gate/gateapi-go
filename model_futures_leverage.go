@@ -11,6 +11,7 @@ package gateapi
 
 // Return result includes Lever field
 type FuturesLeverage struct {
+
 	// Leverage
 	Lever string `json:"Lever,omitempty"`
 }

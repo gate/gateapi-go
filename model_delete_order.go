@@ -10,7 +10,9 @@
 package gateapi
 
 type DeleteOrder struct {
+
 	// Returns empty object on success
-	Data      map[string]interface{} `json:"data,omitempty"`
-	Timestamp int64                  `json:"timestamp,omitempty"`
+	Data map[string]interface{} `json:"data,omitempty"`
+
+	Timestamp int64 `json:"timestamp,omitempty"`
 }

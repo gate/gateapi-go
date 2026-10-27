@@ -11,14 +11,19 @@ package gateapi
 
 // Query Asset Flow Return
 type AccountBookResponse struct {
+
 	// Order ID
 	Id int64 `json:"id,omitempty"`
+
 	// Operation timestamp
 	Time int64 `json:"time,omitempty"`
+
 	// Currency name
 	Currency string `json:"currency,omitempty"`
+
 	// Change amount
 	Change string `json:"change,omitempty"`
+
 	// Balance after change
 	Balance string `json:"balance,omitempty"`
 }

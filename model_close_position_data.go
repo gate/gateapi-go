@@ -10,6 +10,7 @@
 package gateapi
 
 type ClosePositionData struct {
+
 	// Close order ID
 	OrderId int64 `json:"order_id,omitempty"`
 }

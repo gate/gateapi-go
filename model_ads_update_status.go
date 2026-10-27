@@ -11,8 +11,10 @@ package gateapi
 
 // Ad status update request
 type AdsUpdateStatus struct {
+
 	// Advertisement ID.
 	AdvNo int32 `json:"adv_no"`
+
 	// Ad status. `1`: listed; `3`: delisted; `4`: closed.
 	AdvStatus int32 `json:"adv_status"`
 }

@@ -11,14 +11,19 @@ package gateapi
 
 // Asset allocation optimization-unified response to valuation
 type ApiResponseAssetSwapEvaluate struct {
+
 	// Business error code, 0 means success
 	Code int32 `json:"code"`
+
 	// Error identification code, empty string on success
 	Label string `json:"label,omitempty"`
+
 	// Description information
 	Message string `json:"message"`
+
 	// Estimated paginated data on success, null on failure
-	Data *interface{} `json:"data"`
+	Data *EvaluateResp `json:"data"`
+
 	// Server timestamp (milliseconds)
 	Timestamp int64 `json:"timestamp"`
 }

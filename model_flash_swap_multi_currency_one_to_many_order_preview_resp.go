@@ -10,11 +10,15 @@
 package gateapi
 
 type FlashSwapMultiCurrencyOneToManyOrderPreviewResp struct {
+
 	// Response code, 0 means success
 	Code int32 `json:"code"`
+
 	// Response message
-	Message string                                              `json:"message"`
-	Data    FlashSwapMultiCurrencyOneToManyOrderPreviewRespData `json:"data"`
+	Message string `json:"message"`
+
+	Data FlashSwapMultiCurrencyOneToManyOrderPreviewRespData `json:"data"`
+
 	// Response timestamp (milliseconds)
 	Timestamp int64 `json:"timestamp,omitempty"`
 }

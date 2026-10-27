@@ -10,7 +10,9 @@
 package gateapi
 
 type Klines struct {
+
 	// Server timestamp (milliseconds)
-	Timestamp int64      `json:"timestamp,omitempty"`
-	Data      KlinesData `json:"data,omitempty"`
+	Timestamp int64 `json:"timestamp,omitempty"`
+
+	Data KlinesData `json:"data,omitempty"`
 }

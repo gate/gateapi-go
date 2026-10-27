@@ -10,22 +10,31 @@
 package gateapi
 
 type DeliverySettlement struct {
+
 	// Liquidation time
 	Time int64 `json:"time,omitempty"`
+
 	// Futures contract
 	Contract string `json:"contract,omitempty"`
+
 	// Leverage multiplier
 	Leverage string `json:"leverage,omitempty"`
+
 	// Position size
 	Size int64 `json:"size,omitempty"`
+
 	// Margin
 	Margin string `json:"margin,omitempty"`
+
 	// Average entry price
 	EntryPrice string `json:"entry_price,omitempty"`
+
 	// Settled price
 	SettlePrice string `json:"settle_price,omitempty"`
+
 	// Profit
 	Profit string `json:"profit,omitempty"`
+
 	// Fee deducted
 	Fee string `json:"fee,omitempty"`
 }

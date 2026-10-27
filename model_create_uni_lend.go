@@ -11,12 +11,16 @@ package gateapi
 
 // Create lending or redemption
 type CreateUniLend struct {
+
 	// Currency name
 	Currency string `json:"currency"`
+
 	// Amount to deposit into lending pool
 	Amount string `json:"amount"`
+
 	// Operation type: lend - Lend, redeem - Redeem
 	Type string `json:"type"`
+
 	// Minimum interest rate. If set too high, lending may fail and no interest will be earned. Required for lending operations.
 	MinRate string `json:"min_rate,omitempty"`
 }

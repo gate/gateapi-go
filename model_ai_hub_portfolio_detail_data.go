@@ -11,12 +11,19 @@ package gateapi
 
 // Policy details data.
 type AiHubPortfolioDetailData struct {
-	StrategyId    string                  `json:"strategy_id"`
-	StrategyType  StrategyType            `json:"strategy_type"`
-	Market        string                  `json:"market"`
-	Status        string                  `json:"status"`
-	BaseInfo      AiHubPortfolioBaseInfo  `json:"base_info"`
-	Metrics       AiHubPortfolioMetrics   `json:"metrics"`
-	Position      *AiHubPortfolioPosition `json:"position,omitempty"`
-	StopSupported bool                    `json:"stop_supported"`
+	StrategyId string `json:"strategy_id"`
+
+	StrategyType StrategyType `json:"strategy_type"`
+
+	Market string `json:"market"`
+
+	Status string `json:"status"`
+
+	BaseInfo AiHubPortfolioBaseInfo `json:"base_info"`
+
+	Metrics AiHubPortfolioMetrics `json:"metrics"`
+
+	Position *AiHubPortfolioPosition `json:"position,omitempty"`
+
+	StopSupported bool `json:"stop_supported"`
 }

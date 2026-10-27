@@ -10,6 +10,7 @@
 package gateapi
 
 type Symbols2 struct {
-	Data      Symbols2Data `json:"data,omitempty"`
-	Timestamp int64        `json:"timestamp,omitempty"`
+	Data Symbols2Data `json:"data,omitempty"`
+
+	Timestamp int64 `json:"timestamp,omitempty"`
 }

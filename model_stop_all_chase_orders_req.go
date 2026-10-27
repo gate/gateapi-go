@@ -11,10 +11,13 @@ package gateapi
 
 // Request body for stopping chase orders in batch
 type StopAllChaseOrdersReq struct {
+
 	// Optional contract name
 	Contract string `json:"contract,omitempty"`
+
 	// Overridden by the path parameter
 	Settle string `json:"settle,omitempty"`
+
 	// Optional margin mode
 	PosMarginMode string `json:"pos_margin_mode,omitempty"`
 }

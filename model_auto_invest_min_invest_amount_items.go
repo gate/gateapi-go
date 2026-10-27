@@ -10,8 +10,10 @@
 package gateapi
 
 type AutoInvestMinInvestAmountItems struct {
+
 	// Currency
 	Asset string `json:"asset"`
+
 	// Ratio，e.g.100
 	Ratio string `json:"ratio"`
 }

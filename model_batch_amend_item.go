@@ -11,22 +11,31 @@ package gateapi
 
 // Order information that needs to be modified
 type BatchAmendItem struct {
+
 	// The order ID returned upon successful creation or the custom ID specified by the user during creation (i.e., the 'text' field)
 	OrderId string `json:"order_id"`
+
 	// Currency pair
 	CurrencyPair string `json:"currency_pair"`
+
 	// Default spot, unified account and warehouse-by-store leverage account
 	Account string `json:"account,omitempty"`
+
 	// Trading Quantity. Only one of `amount` or `price` can be specified
 	Amount string `json:"amount,omitempty"`
+
 	// Trading Price. Only one of `amount` or `price` can be specified
 	Price string `json:"price,omitempty"`
+
 	// Custom info during order amendment
 	AmendText string `json:"amend_text,omitempty"`
+
 	// Processing Mode: When placing an order, different fields are returned based on action_mode. This field is only valid during the request and is not included in the response result ACK: Asynchronous mode, only returns key order fields RESULT: No clearing information FULL: Full mode (default)
 	ActionMode string `json:"action_mode,omitempty"`
+
 	// Preserve nil as JSON null; an explicit empty object has a different meaning.
 	StopProfit *SpotOrderStopProfit `json:"stop_profit"`
+
 	// Preserve nil as JSON null; an explicit empty object has a different meaning.
 	StopLoss *SpotOrderStopLoss `json:"stop_loss"`
 }

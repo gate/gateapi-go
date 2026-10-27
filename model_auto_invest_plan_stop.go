@@ -11,6 +11,7 @@ package gateapi
 
 // StopAuto invest planRequest
 type AutoInvestPlanStop struct {
+
 	// Plan ID
 	PlanId int64 `json:"plan_id"`
 }

@@ -10,8 +10,11 @@
 package gateapi
 
 type OtcBankListResponse struct {
-	Code      int32             `json:"code"`
-	Message   string            `json:"message"`
-	Data      OtcBankListResult `json:"data"`
-	Timestamp int32             `json:"timestamp"`
+	Code int32 `json:"code"`
+
+	Message string `json:"message"`
+
+	Data OtcBankListResult `json:"data"`
+
+	Timestamp int32 `json:"timestamp"`
 }

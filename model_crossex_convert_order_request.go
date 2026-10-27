@@ -11,6 +11,7 @@ package gateapi
 
 // Flash Swap Transaction Request Body
 type CrossexConvertOrderRequest struct {
+
 	// Inquiry ID
 	QuoteId string `json:"quote_id"`
 }

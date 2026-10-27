@@ -47,16 +47,16 @@ Record query time range cannot exceed 30 days
   - @param "Limit" (optional.Int32) -  Maximum number of records returned in a single list
   - @param "Offset" (optional.Int32) -  List offset, starting from 0
 
-@return []AgencyTransactionHistory
+@return AgencyTransactionHistory
 */
-func (a *RebateApiService) AgencyTransactionHistory(ctx context.Context, localVarOptionals *AgencyTransactionHistoryOpts) ([]AgencyTransactionHistory, *http.Response, error) {
+func (a *RebateApiService) AgencyTransactionHistory(ctx context.Context, localVarOptionals *AgencyTransactionHistoryOpts) (AgencyTransactionHistory, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  []AgencyTransactionHistory
+		localVarReturnValue  AgencyTransactionHistory
 	)
 
 	// create path and map variables
@@ -175,16 +175,16 @@ Record query time range cannot exceed 30 days
   - @param "Limit" (optional.Int32) -  Maximum number of records returned in a single list
   - @param "Offset" (optional.Int32) -  List offset, starting from 0
 
-@return []AgencyCommissionHistory
+@return AgencyCommissionHistory
 */
-func (a *RebateApiService) AgencyCommissionsHistory(ctx context.Context, localVarOptionals *AgencyCommissionsHistoryOpts) ([]AgencyCommissionHistory, *http.Response, error) {
+func (a *RebateApiService) AgencyCommissionsHistory(ctx context.Context, localVarOptionals *AgencyCommissionsHistoryOpts) (AgencyCommissionHistory, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  []AgencyCommissionHistory
+		localVarReturnValue  AgencyCommissionHistory
 	)
 
 	// create path and map variables
@@ -665,16 +665,16 @@ Record query time range cannot exceed 30 days
   - @param "From" (optional.Int64) -  Start time of the query record. If not specified, defaults to 30 days before the current time
   - @param "To" (optional.Int64) -  End timestamp for the query, defaults to current time if not specified
 
-@return []BrokerCommission
+@return BrokerCommission
 */
-func (a *RebateApiService) RebateBrokerCommissionHistory(ctx context.Context, localVarOptionals *RebateBrokerCommissionHistoryOpts) ([]BrokerCommission, *http.Response, error) {
+func (a *RebateApiService) RebateBrokerCommissionHistory(ctx context.Context, localVarOptionals *RebateBrokerCommissionHistoryOpts) (BrokerCommission, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  []BrokerCommission
+		localVarReturnValue  BrokerCommission
 	)
 
 	// create path and map variables
@@ -786,16 +786,16 @@ Record query time range cannot exceed 30 days
   - @param "From" (optional.Int64) -  Start time of the query record. If not specified, defaults to 30 days before the current time
   - @param "To" (optional.Int64) -  End timestamp for the query, defaults to current time if not specified
 
-@return []BrokerTransactionHistory
+@return BrokerTransactionHistory
 */
-func (a *RebateApiService) RebateBrokerTransactionHistory(ctx context.Context, localVarOptionals *RebateBrokerTransactionHistoryOpts) ([]BrokerTransactionHistory, *http.Response, error) {
+func (a *RebateApiService) RebateBrokerTransactionHistory(ctx context.Context, localVarOptionals *RebateBrokerTransactionHistoryOpts) (BrokerTransactionHistory, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  []BrokerTransactionHistory
+		localVarReturnValue  BrokerTransactionHistory
 	)
 
 	// create path and map variables
@@ -891,16 +891,16 @@ func (a *RebateApiService) RebateBrokerTransactionHistory(ctx context.Context, l
 RebateUserInfo User obtains rebate information
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 
-@return []RebateUserInfo
+@return RebateUserInfo
 */
-func (a *RebateApiService) RebateUserInfo(ctx context.Context) ([]RebateUserInfo, *http.Response, error) {
+func (a *RebateApiService) RebateUserInfo(ctx context.Context) (RebateUserInfo, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  []RebateUserInfo
+		localVarReturnValue  RebateUserInfo
 	)
 
 	// create path and map variables

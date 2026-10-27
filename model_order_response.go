@@ -11,30 +11,43 @@ package gateapi
 
 // Order response
 type OrderResponse struct {
+
 	// Order ID
 	OrderId string `json:"order_id,omitempty"`
+
 	// Transaction Hash
 	TxHash string `json:"tx_hash,omitempty"`
+
 	// Buy or sell orders - buy - sell
 	Side string `json:"side,omitempty"`
+
 	// Amount (USDT)
 	UsdtAmount string `json:"usdt_amount,omitempty"`
+
 	// Token
 	Currency string `json:"currency,omitempty"`
+
 	// Token amount
 	CurrencyAmount string `json:"currency_amount,omitempty"`
+
 	// Order Status - `0` : All - `1` : Processing - `2` : Successful - `3` : Failed - `4` : Cancelled - `5` : Buy order placed but transfer not completed - `6` : Order cancelled but transfer not completed
 	Status int32 `json:"status,omitempty"`
+
 	// Trading mode affects slippage selection - `speed` : Smart mode - `custom` : Custom mode, uses `slippage` parameter
 	GasMode string `json:"gas_mode,omitempty"`
+
 	// Blockchain
 	Chain string `json:"chain,omitempty"`
+
 	// Gas Fee (USDT-based)
 	GasFee string `json:"gas_fee,omitempty"`
+
 	// Trading Fee (USDT-based)
 	TransactionFee string `json:"transaction_fee,omitempty"`
+
 	// Failure reason (if applicable)
 	FailedReason string `json:"failed_reason,omitempty"`
+
 	// Creation timestamp
 	CreateTime int64 `json:"create_time,omitempty"`
 }

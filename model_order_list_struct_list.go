@@ -10,22 +10,31 @@
 package gateapi
 
 type OrderListStructList struct {
+
 	// Product ID
 	Pid int32 `json:"pid"`
+
 	// Staked and redeemed currencies
 	Coin string `json:"coin"`
+
 	// Amount
 	Amount string `json:"amount"`
+
 	// Type 0-Staking 1-Redemption
 	Type int32 `json:"type"`
+
 	// Status. 1 - success, 3 - delayed redemption in progress, 6 - redemption cancellation order
 	Status int32 `json:"status"`
+
 	// Redemption credit time
 	RedeemStamp int32 `json:"redeem_stamp"`
+
 	// Order time
 	CreateStamp int32 `json:"createStamp"`
+
 	// Exchange rate
 	ExchangeAmount string `json:"exchange_amount"`
+
 	// fee
 	Fee string `json:"fee"`
 }

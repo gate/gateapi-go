@@ -11,8 +11,10 @@ package gateapi
 
 // Modify order request parameters
 type TradFiSpotOrderUpdateRequest struct {
+
 	// Modified order quantity
 	Volume string `json:"volume"`
+
 	// Modified order price
 	Price string `json:"price"`
 }

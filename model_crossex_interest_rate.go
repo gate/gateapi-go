@@ -10,12 +10,16 @@
 package gateapi
 
 type CrossexInterestRate struct {
+
 	// Currency
 	Coin string `json:"coin"`
+
 	// Exchange
 	ExchangeType string `json:"exchange_type"`
+
 	// Hourly Interest Rate
 	HourInterestRate string `json:"hour_interest_rate"`
+
 	// Millisecond Timestamp
 	Time string `json:"time"`
 }

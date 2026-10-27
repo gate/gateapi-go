@@ -10,6 +10,7 @@
 package gateapi
 
 type OtcBankListResult struct {
+
 	// Bank card list
 	Lists []OtcBankListItem `json:"lists"`
 }

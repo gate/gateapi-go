@@ -10,20 +10,28 @@
 package gateapi
 
 type CrossexSecurityPosition struct {
+
 	// User ID
 	UserId string `json:"user_id"`
+
 	// Stock or ETF trading pair
 	Symbol string `json:"symbol"`
+
 	// Latest price in the listing market currency
 	Price string `json:"price"`
+
 	// Position cost price in the listing market currency
 	EntryPrice string `json:"entry_price"`
+
 	// Diluted cost price in the listing market currency
 	DilutedCostPrice string `json:"diluted_cost_price"`
+
 	// Unrealized profit and loss in the listing market currency
 	Upnl string `json:"upnl"`
+
 	// Position size
 	PositionQty string `json:"position_qty"`
+
 	// Position value in the listing market currency
 	PositionValue string `json:"position_value"`
 }

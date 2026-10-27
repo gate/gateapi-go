@@ -11,6 +11,7 @@ package gateapi
 
 // Response data
 type SymbolCommissionsData struct {
+
 	// List of symbol commission rates
 	List []SymbolCommissionsDataList `json:"list,omitempty"`
 }

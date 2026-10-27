@@ -10,9 +10,13 @@
 package gateapi
 
 type OtcOrderListResult struct {
-	Pn      int32              `json:"pn"`
-	Ps      int32              `json:"ps"`
-	TotalPn int32              `json:"total_pn"`
-	Count   int32              `json:"count"`
-	Lists   []OtcOrderListItem `json:"lists"`
+	Pn int32 `json:"pn"`
+
+	Ps int32 `json:"ps"`
+
+	TotalPn int32 `json:"total_pn"`
+
+	Count int32 `json:"count"`
+
+	Lists []OtcOrderListItem `json:"lists"`
 }

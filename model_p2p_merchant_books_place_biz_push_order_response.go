@@ -10,15 +10,21 @@
 package gateapi
 
 type P2pMerchantBooksPlaceBizPushOrderResponse struct {
+
 	// Response timestamp.
 	Timestamp float32 `json:"timestamp,omitempty"`
+
 	// Placeholder for request method.
 	Method string `json:"method,omitempty"`
+
 	// Response code. 0 means success; 70305102 means the advertisement trade terms or auto reply hit off-platform traffic diversion risk control
 	Code int32 `json:"code,omitempty"`
+
 	// Response message
-	Message string                                        `json:"message,omitempty"`
-	Data    P2pMerchantBooksPlaceBizPushOrderResponseData `json:"data,omitempty"`
+	Message string `json:"message,omitempty"`
+
+	Data P2pMerchantBooksPlaceBizPushOrderResponseData `json:"data,omitempty"`
+
 	// API version.
 	Version string `json:"version,omitempty"`
 }

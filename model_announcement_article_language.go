@@ -11,8 +11,10 @@ package gateapi
 
 // Announcement article language
 type AnnouncementArticleLanguage struct {
+
 	// Language code, for example \"cn\".
 	Code string `json:"code"`
+
 	// Language name
 	Name string `json:"name"`
 }

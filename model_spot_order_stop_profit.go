@@ -11,8 +11,10 @@ package gateapi
 
 // Take profit for limit orders. Pass {} to cancel take profit; pass null to leave take profit unchanged.
 type SpotOrderStopProfit struct {
+
 	// Take profit trigger price When `side == \"buy\"`, `trigger_price` must be greater than `price` When `side == \"sell\"`, `trigger_price` must be less than `price`
 	TriggerPrice string `json:"trigger_price,omitempty"`
+
 	// Take profit order price
 	OrderPrice string `json:"order_price,omitempty"`
 }

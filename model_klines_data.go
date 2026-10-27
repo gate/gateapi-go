@@ -11,6 +11,7 @@ package gateapi
 
 // Response data
 type KlinesData struct {
+
 	// Kline data list
 	List []KlinesDataList `json:"list,omitempty"`
 }

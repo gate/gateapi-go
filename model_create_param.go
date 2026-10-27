@@ -11,8 +11,10 @@ package gateapi
 
 // **For order only**. Represents a currency and its **amount** on a certain side (`from` or `to`). Used with `OrderCreateV1Req`; **Don't** be used with `to` of the preview interface (preview `to` uses `PreviewToParam.ratio`).
 type CreateParam struct {
+
 	// Currency symbol, consistent with `GET /asset-swap/asset/list` and business support scope.
 	Asset string `json:"asset"`
+
 	// The quantity of this currency on this side, **decimal string** (non-scientific notation). `from` represents the selling quantity, and `to` represents the target side quantity. Different from preview interface `to[].ratio`.
 	Amount string `json:"amount"`
 }

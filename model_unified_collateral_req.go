@@ -10,10 +10,13 @@
 package gateapi
 
 type UnifiedCollateralReq struct {
+
 	// User-set collateral mode: 0(all)-All currencies as collateral, 1(custom)-Custom currencies as collateral. When collateral_type is 0(all), enable_list and disable_list parameters are invalid
 	CollateralType int32 `json:"collateral_type,omitempty"`
+
 	// Currency list, where collateral_type=1(custom) indicates the addition logic
 	EnableList []string `json:"enable_list,omitempty"`
+
 	// Disable list, indicating the disable logic
 	DisableList []string `json:"disable_list,omitempty"`
 }

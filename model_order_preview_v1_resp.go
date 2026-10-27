@@ -10,6 +10,7 @@
 package gateapi
 
 type OrderPreviewV1Resp struct {
-	Order          PreviewOrder `json:"order"`
-	TransactionFee string       `json:"transaction_fee"`
+	Order PreviewOrder `json:"order"`
+
+	TransactionFee string `json:"transaction_fee"`
 }

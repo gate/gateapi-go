@@ -10,7 +10,9 @@
 package gateapi
 
 type ConvertCurrenciesV2Item struct {
-	IconUrl  string `json:"icon_url,omitempty"`
-	Name     string `json:"name"`
-	Priority int32  `json:"priority"`
+	IconUrl string `json:"icon_url,omitempty"`
+
+	Name string `json:"name"`
+
+	Priority int32 `json:"priority"`
 }

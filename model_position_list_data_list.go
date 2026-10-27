@@ -11,22 +11,31 @@ package gateapi
 
 // Position information
 type PositionListDataList struct {
+
 	// Position ID
 	PositionId int64 `json:"position_id,omitempty"`
+
 	// Trading market code
 	Symbol string `json:"symbol,omitempty"`
+
 	// Market description
 	SymbolDesc string `json:"symbol_desc,omitempty"`
+
 	// Used margin
 	Margin string `json:"margin,omitempty"`
+
 	// Unrealized PNL
 	UnrealizedPnl string `json:"unrealized_pnl,omitempty"`
+
 	// Unrealized return rate
 	UnrealizedPnlRate string `json:"unrealized_pnl_rate,omitempty"`
+
 	// Position size
 	Volume string `json:"volume,omitempty"`
+
 	// Average Opening Price
 	PriceOpen string `json:"price_open,omitempty"`
+
 	// Position direction (Long=long position, Short=short position)
 	PositionDir string `json:"position_dir,omitempty"`
 }

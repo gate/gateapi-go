@@ -11,10 +11,13 @@ package gateapi
 
 // Update auto invest plan request
 type AutoInvestPlanUpdate struct {
+
 	// Plan ID
 	PlanId int64 `json:"plan_id"`
+
 	// Fund source Spotspot or Flexible Savingsearn，Default spot
 	FundSource string `json:"fund_source,omitempty"`
+
 	// Fund Flow Direction Spotauto_invest or Flexible Savingsearn，Default auto_invest
 	FundFlow string `json:"fund_flow,omitempty"`
 }

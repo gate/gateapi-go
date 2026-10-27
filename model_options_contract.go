@@ -11,54 +11,79 @@ package gateapi
 
 // Options contract details
 type OptionsContract struct {
+
 	// Options contract name
 	Name string `json:"name,omitempty"`
+
 	// Expiry periods include day, week, and month.
 	Tag string `json:"tag,omitempty"`
+
 	// Created time
 	CreateTime float64 `json:"create_time,omitempty"`
+
 	// Expiration time
 	ExpirationTime float64 `json:"expiration_time,omitempty"`
+
 	// `true` means call options, `false` means put options
 	IsCall bool `json:"is_call,omitempty"`
+
 	// The option contract multiplier indicates how many units of the underlying asset the face value of one contract represents.
 	Multiplier string `json:"multiplier,omitempty"`
+
 	// Underlying
 	Underlying string `json:"underlying,omitempty"`
+
 	// The forward futures price corresponding to the delivery date
 	UnderlyingPrice string `json:"underlying_price,omitempty"`
+
 	// Last trading price
 	LastPrice string `json:"last_price,omitempty"`
+
 	// Current mark price (quote currency)
 	MarkPrice string `json:"mark_price,omitempty"`
+
 	// Current index price (quote currency)
 	IndexPrice string `json:"index_price,omitempty"`
+
 	// Maker fee rate, negative values indicate rebates
 	MakerFeeRate string `json:"maker_fee_rate,omitempty"`
+
 	// Taker fee rate
 	TakerFeeRate string `json:"taker_fee_rate,omitempty"`
+
 	// Minimum order price increment
 	OrderPriceRound string `json:"order_price_round,omitempty"`
+
 	// Minimum mark price increment
 	MarkPriceRound string `json:"mark_price_round,omitempty"`
+
 	// Minimum order quantity
 	OrderSizeMin int64 `json:"order_size_min,omitempty"`
+
 	// Maximum order quantity
 	OrderSizeMax int64 `json:"order_size_max,omitempty"`
+
 	// Deprecated
 	OrderPriceDeviate string `json:"order_price_deviate,omitempty"`
+
 	// Trading fee discount for referred users
 	RefDiscountRate string `json:"ref_discount_rate,omitempty"`
+
 	// Commission rate for referrers
 	RefRebateRate string `json:"ref_rebate_rate,omitempty"`
+
 	// Orderbook update ID
 	OrderbookId int64 `json:"orderbook_id,omitempty"`
+
 	// Deprecated
 	TradeId int64 `json:"trade_id,omitempty"`
+
 	// Historical cumulative trading volume
 	TradeSize int64 `json:"trade_size,omitempty"`
+
 	// Current total long position size
 	PositionSize int64 `json:"position_size,omitempty"`
+
 	// The maximum number of open orders each user can place in this order book.
 	OrdersLimit int32 `json:"orders_limit,omitempty"`
 }

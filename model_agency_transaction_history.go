@@ -10,10 +10,13 @@
 package gateapi
 
 type AgencyTransactionHistory struct {
+
 	// Currency pair
 	CurrencyPair string `json:"currency_pair,omitempty"`
+
 	// Total
 	Total int64 `json:"total,omitempty"`
+
 	// List of transaction history
 	List []AgencyTransaction `json:"list,omitempty"`
 }

@@ -11,10 +11,13 @@ package gateapi
 
 // Change Account Request Body
 type CrossexAccountUpdateRequest struct {
+
 	// Futures position mode (SINGLE/DUAL)
 	PositionMode string `json:"position_mode,omitempty"`
+
 	// Account mode (CROSS_EXCHANGE/ISOLATED_EXCHANGE, default: CROSS_EXCHANGE)
 	AccountMode string `json:"account_mode,omitempty"`
+
 	// Exchange (`BINANCE` / `OKX` / `GATE` / `BYBIT` / `KRAKEN` / `HYPERLIQUID` / `DERIBIT` / `LIGHTER` / `CROSSEX`). When account mode is `ISOLATED_EXCHANGE`, the exchange must be specified to adjust futures position mode.
 	ExchangeType string `json:"exchange_type,omitempty"`
 }

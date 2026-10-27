@@ -10,18 +10,25 @@
 package gateapi
 
 type FuturesLiqOrder struct {
+
 	// Liquidation time
 	Time int64 `json:"time,omitempty"`
+
 	// Futures contract
 	Contract string `json:"contract,omitempty"`
+
 	// User position size
 	Size string `json:"size,omitempty"`
+
 	// Number of forced liquidation orders
 	OrderSize string `json:"order_size,omitempty"`
+
 	// Liquidation order price
 	OrderPrice string `json:"order_price,omitempty"`
+
 	// Liquidation order average taker price
 	FillPrice string `json:"fill_price,omitempty"`
+
 	// Reserved field with no current business significance.
 	Left string `json:"left,omitempty"`
 }

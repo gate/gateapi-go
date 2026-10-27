@@ -10,10 +10,13 @@
 package gateapi
 
 type SubUserMode struct {
+
 	// User ID
 	UserId int64 `json:"user_id,omitempty"`
+
 	// Whether it is a unified account
 	IsUnified bool `json:"is_unified,omitempty"`
+
 	// Unified account mode: - `classic`: Classic account mode - `multi_currency`: Cross-currency margin mode - `portfolio`: Portfolio margin mode - `single_currency`: Single-currency margin mode
 	Mode string `json:"mode,omitempty"`
 }

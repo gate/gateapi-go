@@ -10,7 +10,9 @@
 package gateapi
 
 type PreviewOrderDetail struct {
-	Asset      string `json:"asset"`
-	Amount     string `json:"amount"`
+	Asset string `json:"asset"`
+
+	Amount string `json:"amount"`
+
 	AmountShow string `json:"amount_show"`
 }

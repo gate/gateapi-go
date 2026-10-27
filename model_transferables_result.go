@@ -11,8 +11,10 @@ package gateapi
 
 // Batch query unified account maximum transferable results
 type TransferablesResult struct {
+
 	// Currency detail
 	Currency string `json:"currency,omitempty"`
+
 	// Maximum transferable amount
 	Amount string `json:"amount,omitempty"`
 }

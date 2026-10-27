@@ -11,10 +11,13 @@ package gateapi
 
 // Response data
 type Mt5AccountData struct {
+
 	// Leverage multiplier
 	Leverage int32 `json:"leverage,omitempty"`
+
 	// Liquidation margin ratio
 	StopOutLevel string `json:"stop_out_level,omitempty"`
+
 	// Account status (1=not opened, 2=pending review, 3=active)
 	Status int32 `json:"status,omitempty"`
 }

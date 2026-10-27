@@ -11,7 +11,9 @@ package gateapi
 
 // Order modification result
 type UpdateOrder struct {
+
 	// Server timestamp (milliseconds)
-	Timestamp int64           `json:"timestamp,omitempty"`
-	Data      UpdateOrderData `json:"data,omitempty"`
+	Timestamp int64 `json:"timestamp,omitempty"`
+
+	Data UpdateOrderData `json:"data,omitempty"`
 }

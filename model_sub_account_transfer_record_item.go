@@ -10,24 +10,34 @@
 package gateapi
 
 type SubAccountTransferRecordItem struct {
+
 	// Transfer timestamp
 	Timest string `json:"timest,omitempty"`
+
 	// Main account user ID
 	Uid string `json:"uid,omitempty"`
+
 	// Sub account user ID
 	SubAccount string `json:"sub_account"`
+
 	// Target sub-account trading account: spot - spot account, futures - perpetual contract account, delivery - delivery contract account, options - options account
 	SubAccountType string `json:"sub_account_type,omitempty"`
+
 	// Transfer currency name
 	Currency string `json:"currency"`
+
 	// Transfer Amount
 	Amount string `json:"amount"`
+
 	// Transfer direction: to - transfer into sub-account, from - transfer out from sub-account
 	Direction string `json:"direction"`
+
 	// Source of the transfer operation
 	Source string `json:"source,omitempty"`
+
 	// Customer-defined ID to prevent duplicate transfers. Can be a combination of letters (case-sensitive), numbers, hyphens '-', and underscores '_'. Can be pure letters or pure numbers with length between 1-64 characters
 	ClientOrderId string `json:"client_order_id,omitempty"`
+
 	// Sub-account transfer record status, currently only 'success'
 	Status string `json:"status,omitempty"`
 }

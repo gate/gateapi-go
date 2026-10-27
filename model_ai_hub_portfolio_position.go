@@ -11,10 +11,15 @@ package gateapi
 
 // Strategy detail position info; fields returned depend on strategy type.
 type AiHubPortfolioPosition struct {
-	Amount        string `json:"amount,omitempty"`
-	EntryPrice    string `json:"entry_price,omitempty"`
-	QuoteAmount   string `json:"quote_amount,omitempty"`
+	Amount string `json:"amount,omitempty"`
+
+	EntryPrice string `json:"entry_price,omitempty"`
+
+	QuoteAmount string `json:"quote_amount,omitempty"`
+
 	PositionValue string `json:"position_value,omitempty"`
-	Margin        string `json:"margin,omitempty"`
-	Side          string `json:"side,omitempty"`
+
+	Margin string `json:"margin,omitempty"`
+
+	Side string `json:"side,omitempty"`
 }

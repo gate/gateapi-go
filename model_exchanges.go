@@ -10,6 +10,7 @@
 package gateapi
 
 type Exchanges struct {
-	Data      ExchangesData `json:"data,omitempty"`
-	Timestamp int64         `json:"timestamp,omitempty"`
+	Data ExchangesData `json:"data,omitempty"`
+
+	Timestamp int64 `json:"timestamp,omitempty"`
 }

@@ -10,16 +10,22 @@
 package gateapi
 
 type RepayCurrencyRes struct {
+
 	// Whether the repayment was successful
 	Succeeded bool `json:"succeeded,omitempty"`
+
 	// Error identifier for failed operations; empty when successful
 	Label string `json:"label,omitempty"`
+
 	// Error description for failed operations; empty when successful
 	Message string `json:"message,omitempty"`
+
 	// Repayment currency
 	Currency string `json:"currency,omitempty"`
+
 	// Principal
 	RepaidPrincipal string `json:"repaid_principal,omitempty"`
+
 	// Principal
 	RepaidInterest string `json:"repaid_interest,omitempty"`
 }

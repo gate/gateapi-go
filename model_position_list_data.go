@@ -11,6 +11,7 @@ package gateapi
 
 // Response data
 type PositionListData struct {
+
 	// Position information
 	List []PositionListDataList `json:"list,omitempty"`
 }

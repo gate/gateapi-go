@@ -10,6 +10,7 @@
 package gateapi
 
 type ListLiveReplayResponseData struct {
+
 	// Live stream/replay list
 	List []ListLiveReplayResponseDataList `json:"list,omitempty"`
 }

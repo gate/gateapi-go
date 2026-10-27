@@ -11,18 +11,25 @@ package gateapi
 
 // Order cancellation result
 type CancelOrderResult struct {
+
 	// Order currency pair
 	CurrencyPair string `json:"currency_pair,omitempty"`
+
 	// Order ID
 	Id string `json:"id,omitempty"`
+
 	// Custom order information
 	Text string `json:"text,omitempty"`
+
 	// Whether cancellation succeeded
 	Succeeded bool `json:"succeeded,omitempty"`
+
 	// Error label when failed to cancel the order; emtpy if succeeded
 	Label string `json:"label,omitempty"`
+
 	// Error description when cancellation fails, empty if successful
 	Message string `json:"message,omitempty"`
+
 	// Default is empty (deprecated)
 	Account string `json:"account,omitempty"`
 }

@@ -11,14 +11,19 @@ package gateapi
 
 // Auto invest planListPaginatedResponse
 type AutoInvestPlanListInfoResp struct {
+
 	// page number
 	Page int64 `json:"page"`
+
 	// Items per page
 	PageSize int64 `json:"page_size"`
+
 	// Total pages
 	PageCount int64 `json:"page_count"`
+
 	// Total entries
 	TotalCount int64 `json:"total_count"`
+
 	// PlanList
 	List []AutoInvestPlanDetail `json:"list"`
 }

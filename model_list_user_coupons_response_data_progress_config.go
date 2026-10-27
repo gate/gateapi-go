@@ -11,12 +11,16 @@ package gateapi
 
 // Progress bar configuration. All fields are empty strings when has_progress is false
 type ListUserCouponsResponseDataProgressConfig struct {
+
 	// Total Required Amount
 	TotalBalance string `json:"total_balance,omitempty"`
+
 	// Used Amount
 	CurrentUsed string `json:"current_used,omitempty"`
+
 	// Amount achieved (note: field name is spelled as achived)
 	CurrentAchived string `json:"current_achived,omitempty"`
+
 	// Progress unit (e.g., 'USDT')
 	Currency string `json:"currency,omitempty"`
 }

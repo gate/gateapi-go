@@ -10,6 +10,7 @@
 package gateapi
 
 type UserSubRelation struct {
+
 	// Subordinate relationship list
 	List []UserSub `json:"list,omitempty"`
 }

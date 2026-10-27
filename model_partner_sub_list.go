@@ -10,8 +10,10 @@
 package gateapi
 
 type PartnerSubList struct {
+
 	// Total
 	Total int64 `json:"total,omitempty"`
+
 	// Subordinate list
 	List []PartnerSub `json:"list,omitempty"`
 }

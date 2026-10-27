@@ -10,8 +10,10 @@
 package gateapi
 
 type FuturesAdlRiskState struct {
+
 	// Market ADL risk state
 	State string `json:"state"`
+
 	// State calculation time, as a Unix timestamp in milliseconds
 	CalculatedAtMs int64 `json:"calculated_at_ms"`
 }

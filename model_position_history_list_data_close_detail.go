@@ -11,12 +11,16 @@ package gateapi
 
 // Liquidation details (null for normal close)
 type PositionHistoryListDataCloseDetail struct {
+
 	// Margin ratio (multiplied by 100)
 	MarginLevel string `json:"margin_level,omitempty"`
+
 	// Margin
 	Margin string `json:"margin,omitempty"`
+
 	// Net equity
 	Equity string `json:"equity,omitempty"`
+
 	// Liquidation ratio (multiplied by 100)
 	StopOutLevel string `json:"stop_out_level,omitempty"`
 }

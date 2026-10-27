@@ -11,14 +11,19 @@ package gateapi
 
 // Asset allocation optimization - unified response to orders
 type ApiResponseAssetSwapOrderCreateV1 struct {
+
 	// Business error code, 0 means success
 	Code int32 `json:"code"`
+
 	// Error identification code, empty string on success
 	Label string `json:"label,omitempty"`
+
 	// Description information
 	Message string `json:"message"`
+
 	// It is the order result when successful, and null when it fails.
-	Data *interface{} `json:"data"`
+	Data *OrderCreateV1Resp `json:"data"`
+
 	// Server timestamp (milliseconds)
 	Timestamp int64 `json:"timestamp"`
 }

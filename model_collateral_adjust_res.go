@@ -11,8 +11,10 @@ package gateapi
 
 // Multi-collateral adjustment result
 type CollateralAdjustRes struct {
+
 	// Order ID
 	OrderId int64 `json:"order_id,omitempty"`
+
 	// Collateral currency information
 	CollateralCurrencies []CollateralCurrencyRes `json:"collateral_currencies,omitempty"`
 }

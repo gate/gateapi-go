@@ -11,8 +11,10 @@ package gateapi
 
 // Product list data
 type ListEarnFixedTermProductsResponseData struct {
+
 	// Product list
 	List []FixedTermProduct `json:"list"`
+
 	// Total Records
 	Total int32 `json:"total"`
 }

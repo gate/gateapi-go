@@ -10,14 +10,19 @@
 package gateapi
 
 type OrderBook struct {
+
 	// Order book ID, which is updated whenever the order book is changed. Valid only when `with_id` is set to `true`
 	Id int64 `json:"id,omitempty"`
+
 	// The timestamp of the response data being generated (in milliseconds)
 	Current int64 `json:"current,omitempty"`
+
 	// The timestamp of when the orderbook last changed (in milliseconds)
 	Update int64 `json:"update,omitempty"`
+
 	// Ask Depth
 	Asks [][]string `json:"asks"`
+
 	// Bid Depth
 	Bids [][]string `json:"bids"`
 }

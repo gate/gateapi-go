@@ -11,8 +11,10 @@ package gateapi
 
 // Spot
 type MockSpotBalance struct {
+
 	// Currency name
 	Currency string `json:"currency"`
+
 	// Currency equity, where equity = balance - borrowed, represents the net delta exposure of your spot positions
 	Equity string `json:"equity"`
 }

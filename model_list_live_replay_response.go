@@ -10,13 +10,18 @@
 package gateapi
 
 type ListLiveReplayResponse struct {
+
 	// Status code, 200 = success
 	Code int32 `json:"code,omitempty"`
+
 	// Status label
 	Label string `json:"label,omitempty"`
+
 	// Status message
 	Message string `json:"message,omitempty"`
+
 	// Request ID
-	RequestId string                     `json:"request_id,omitempty"`
-	Data      ListLiveReplayResponseData `json:"data,omitempty"`
+	RequestId string `json:"request_id,omitempty"`
+
+	Data ListLiveReplayResponseData `json:"data,omitempty"`
 }

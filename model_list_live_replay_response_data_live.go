@@ -11,27 +11,39 @@ package gateapi
 
 // Live stream information (has value when content_type=streaming)
 type ListLiveReplayResponseDataLive struct {
+
 	// Live ID
 	Id string `json:"id,omitempty"`
+
 	// Anchor User ID
 	Uid string `json:"uid,omitempty"`
+
 	// Chat group ID
 	ChatGroupId string `json:"chat_group_id,omitempty"`
+
 	// Live room name
 	Name string `json:"name,omitempty"`
+
 	// Cover image URL
 	Cover string `json:"cover,omitempty"`
+
 	// Broadcast start time (Unix timestamp string)
 	StartedAt string `json:"started_at,omitempty"`
+
 	// Whether subscription is required
 	SubscriptionRequired bool `json:"subscription_required,omitempty"`
+
 	// Popularity weight
 	HotWeight int32 `json:"hot_weight,omitempty"`
+
 	// Live stream type
 	LiveType int32 `json:"live_type,omitempty"`
+
 	// Session ID
-	SessionId string                             `json:"session_id,omitempty"`
-	Host      ListLiveReplayResponseDataLiveHost `json:"host,omitempty"`
+	SessionId string `json:"session_id,omitempty"`
+
+	Host ListLiveReplayResponseDataLiveHost `json:"host,omitempty"`
+
 	// Live stream status (e.g., streaming)
 	Status string `json:"status,omitempty"`
 }

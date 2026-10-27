@@ -10,10 +10,13 @@
 package gateapi
 
 type Symbols2Data struct {
+
 	// Total quantity
 	Total int64 `json:"total,omitempty"`
+
 	// Total pages
 	TotalPage int32 `json:"total_page,omitempty"`
+
 	// Symbol list
 	List []SymbolListItem `json:"list,omitempty"`
 }

@@ -10,12 +10,16 @@
 package gateapi
 
 type InlineResponse2002 struct {
+
 	// Currency
 	Symbol string `json:"symbol"`
+
 	// Funding rate
 	FundingRate string `json:"funding_rate"`
+
 	// Funding interval (in seconds)
 	FundingInterval string `json:"funding_interval"`
+
 	// Next funding time (Unix timestamp in milliseconds)
 	FundingTime string `json:"funding_time"`
 }

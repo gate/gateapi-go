@@ -11,48 +11,70 @@ package gateapi
 
 // contractBBOorderdetails
 type FuturesBboOrder struct {
+
 	// Futures contract
 	Contract string `json:"contract"`
+
 	// Required. Trading quantity. Positive for buy, negative for sell. Set to 0 for close position orders.
 	Size int64 `json:"size"`
+
 	// Direction: 'sell' fetches the bid side, 'buy' fetches the ask side.
 	Direction string `json:"direction"`
+
 	// Display size for iceberg orders. 0 for non-iceberg orders. Note that hidden portions are charged taker fees.
 	Iceberg int64 `json:"iceberg,omitempty"`
+
 	// Level: maximum 20 levels
 	Level int64 `json:"level"`
+
 	// Set as `true` to close the position, with `size` set to 0
 	Close bool `json:"close,omitempty"`
+
 	// Is the order to close position
 	IsClose bool `json:"is_close,omitempty"`
+
 	// Set as `true` to be reduce-only order
 	ReduceOnly bool `json:"reduce_only,omitempty"`
+
 	// Is the order reduce-only
 	IsReduceOnly bool `json:"is_reduce_only,omitempty"`
+
 	// Is the order for liquidation
 	IsLiq bool `json:"is_liq,omitempty"`
+
 	// Time in force  - gtc: GoodTillCancelled - ioc: ImmediateOrCancelled, taker only - poc: PendingOrCancelled, makes a post-only order that always enjoys a maker fee - fok: FillOrKill, fill either completely or none
 	Tif string `json:"tif,omitempty"`
+
 	// Unfilled quantity
 	Left int64 `json:"left,omitempty"`
+
 	// Fill price
 	FillPrice string `json:"fill_price,omitempty"`
+
 	// Order Custom Information: Users can set custom IDs via this field. Custom fields must meet the following conditions:  1. Must start with `t-` 2. Excluding `t-`, length cannot exceed 28 bytes 3. Content can only contain numbers, letters, underscores (_), hyphens (-), or dots (.)  In addition to user custom information, the following are internal reserved fields identifying order sources:  - web: Web - api: API Call - app: Mobile App - auto_deleveraging: Auto-Deleveraging - liquidation: Forced Liquidation of Legacy Classic Mode Positions - liq-xxx: a. Forced liquidation of New Classic Mode positions, including isolated margin, single-direction cross margin, and non-hedged dual-direction cross margin positions. b. Forced liquidation of isolated margin positions in Unified Account Single-Currency Margin Mode - hedge-liq-xxx: Forced liquidation of hedged portions in New Classic Mode dual-direction cross margin (simultaneous closing of long and short positions) - pm_liquidate: Forced liquidation in Unified Account Cross-Currency Margin Mode - comb_margin_liquidate: Forced liquidation in Unified Account Portfolio Margin Mode - scm_liquidate: Forced liquidation of positions in Unified Account Single-Currency Margin Mode - insurance: Insurance
 	Text string `json:"text,omitempty"`
+
 	// Taker fee
 	Tkfr string `json:"tkfr,omitempty"`
+
 	// Maker fee
 	Mkfr string `json:"mkfr,omitempty"`
+
 	// Referrer user ID
 	Refu int32 `json:"refu,omitempty"`
+
 	// Set side to close dual-mode position. `close_long` closes the long side; while `close_short` the short one. Note `size` also needs to be set to 0
 	AutoSize string `json:"auto_size,omitempty"`
+
 	// Orders between users in the same `stp_id` group are not allowed to be self-traded  1. If the `stp_id` of two orders being matched is non-zero and equal, they will not be executed. Instead, the corresponding strategy will be executed based on the `stp_act` of the taker. 2. `stp_id` returns `0` by default for orders that have not been set for `STP group`
 	StpId int32 `json:"stp_id,omitempty"`
+
 	// Self-Trading Prevention Action. Users can use this field to set self-trade prevention strategies  1. After users join the `STP Group`, they can pass `stp_act` to limit the user's self-trade prevention strategy. If `stp_act` is not passed, the default is `cn` strategy. 2. When the user does not join the `STP group`, an error will be returned when passing the `stp_act` parameter. 3. If the user did not use `stp_act` when placing the order, `stp_act` will return '-'  - cn: Cancel newest, cancel new orders and keep old ones - co: Cancel oldest, cancel old orders and keep new ones - cb: Cancel both, both old and new orders will be cancelled
 	StpAct string `json:"stp_act,omitempty"`
+
 	// The custom data that the user remarked when amending the order
 	AmendText string `json:"amend_text,omitempty"`
+
 	// Position ID
 	Pid int64 `json:"pid,omitempty"`
 }

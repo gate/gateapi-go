@@ -11,16 +11,22 @@ package gateapi
 
 // Accounts available to transfer:  - `spot`: spot account - `margin`: margin account - `futures`: perpetual futures account - `delivery`: delivery futures account - `options`: options account
 type Transfer struct {
+
 	// Transfer currency name. For contract accounts, `currency` can be set to `POINT` (points) or supported settlement currencies (e.g., `BTC`, `USDT`)
 	Currency string `json:"currency"`
+
 	// Account to transfer from
 	From string `json:"from"`
+
 	// Account to transfer to
 	To string `json:"to"`
+
 	// Transfer Amount, supports up to 8 decimal places, must be greater than 0
 	Amount string `json:"amount"`
+
 	// Margin trading pair. Required when transferring to or from margin account
 	CurrencyPair string `json:"currency_pair,omitempty"`
+
 	// Contract settlement currency. Required when transferring to or from contract account
 	Settle string `json:"settle,omitempty"`
 }

@@ -11,7 +11,9 @@ package gateapi
 
 // QueryAvailableInvestmentMinimumAmountRequest
 type AutoInvestMinInvestAmount struct {
+
 	// Currency, optional: USDT or BTC
-	Money string                           `json:"money"`
+	Money string `json:"money"`
+
 	Items []AutoInvestMinInvestAmountItems `json:"items"`
 }

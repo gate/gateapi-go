@@ -11,12 +11,16 @@ package gateapi
 
 // Business data
 type FlashSwapMultiCurrencyManyToOneOrderCreateRespData struct {
+
 	// Order list
 	Orders []FlashSwapMultiCurrencyOrder `json:"orders"`
+
 	// Account Mode
 	AccountMode int32 `json:"account_mode"`
+
 	// Exchange timestamp (in milliseconds)
 	ExchangeTimeMs int64 `json:"exchange_time_ms"`
+
 	// Total amount received
 	TotalAcquireAmount string `json:"total_acquire_amount"`
 }

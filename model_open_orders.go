@@ -10,9 +10,12 @@
 package gateapi
 
 type OpenOrders struct {
+
 	// Currency pair
 	CurrencyPair string `json:"currency_pair,omitempty"`
+
 	// Total number of open orders for this trading pair on the current page
-	Total  int32   `json:"total,omitempty"`
+	Total int32 `json:"total,omitempty"`
+
 	Orders []Order `json:"orders,omitempty"`
 }

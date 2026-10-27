@@ -10,7 +10,9 @@
 package gateapi
 
 type PositionHistoryList struct {
+
 	// Server timestamp (milliseconds)
-	Timestamp int64                   `json:"timestamp,omitempty"`
-	Data      PositionHistoryListData `json:"data,omitempty"`
+	Timestamp int64 `json:"timestamp,omitempty"`
+
+	Data PositionHistoryListData `json:"data,omitempty"`
 }

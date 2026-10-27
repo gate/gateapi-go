@@ -11,7 +11,9 @@ package gateapi
 
 // Create the request body for the spot grid policy.
 type SpotGridCreateRequest struct {
-	StrategyType string               `json:"strategy_type"`
-	Market       string               `json:"market"`
+	StrategyType string `json:"strategy_type"`
+
+	Market string `json:"market"`
+
 	CreateParams SpotGridCreateParams `json:"create_params"`
 }

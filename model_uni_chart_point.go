@@ -10,6 +10,7 @@
 package gateapi
 
 type UniChartPoint struct {
-	Time  int64  `json:"time,omitempty"`
+	Time int64 `json:"time,omitempty"`
+
 	Value string `json:"value,omitempty"`
 }

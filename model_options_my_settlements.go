@@ -10,22 +10,31 @@
 package gateapi
 
 type OptionsMySettlements struct {
+
 	// Settlement time
 	Time float64 `json:"time,omitempty"`
+
 	// Underlying
 	Underlying string `json:"underlying,omitempty"`
+
 	// Options contract name
 	Contract string `json:"contract,omitempty"`
+
 	// Strike price (quote currency)
 	StrikePrice string `json:"strike_price,omitempty"`
+
 	// Settlement price (quote currency)
 	SettlePrice string `json:"settle_price,omitempty"`
+
 	// Settlement size
 	Size int64 `json:"size,omitempty"`
+
 	// Settlement profit (quote currency)
 	SettleProfit string `json:"settle_profit,omitempty"`
+
 	// Settlement fee (quote currency)
 	Fee string `json:"fee,omitempty"`
+
 	// Accumulated profit and loss from opening positions, including premium, fees, settlement profit, etc. (quote currency)
 	RealisedPnl string `json:"realised_pnl,omitempty"`
 }

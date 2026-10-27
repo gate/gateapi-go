@@ -11,8 +11,10 @@ package gateapi
 
 // Order Modification Request Body
 type CrossexOrderUpdateRequest struct {
+
 	// modify amount
 	Qty string `json:"qty,omitempty"`
+
 	// modify price
 	Price string `json:"price,omitempty"`
 }

@@ -11,16 +11,22 @@ package gateapi
 
 // Currency pair of the loan
 type UniCurrencyPair struct {
+
 	// Currency pair
 	CurrencyPair string `json:"currency_pair,omitempty"`
+
 	// Minimum borrow amount of base currency
 	BaseMinBorrowAmount string `json:"base_min_borrow_amount,omitempty"`
+
 	// Minimum borrow amount of quote currency
 	QuoteMinBorrowAmount string `json:"quote_min_borrow_amount,omitempty"`
+
 	// Leverage multiplier
 	Leverage string `json:"leverage,omitempty"`
+
 	// Status  - enabled: Enabled - disabled: Disabled
 	Status string `json:"status,omitempty"`
+
 	// Delisting Time
 	DelistedTime float32 `json:"delisted_time,omitempty"`
 }

@@ -10,32 +10,46 @@
 package gateapi
 
 type OtcBankListItem struct {
+
 	// Bank card ID (used when placing an order; the synonymous `bank_id` field has been consolidated into `id`)
 	Id string `json:"id"`
+
 	// Bank account name
 	BankAccountName string `json:"bank_account_name"`
+
 	// Bank name
 	BankName string `json:"bank_name"`
+
 	// Bank country
 	BankCountry string `json:"bank_country,omitempty"`
+
 	// Bank address
 	BankAddress string `json:"bank_address,omitempty"`
+
 	// IBAN number
 	Iban string `json:"iban,omitempty"`
+
 	// SWIFT code
 	Swift string `json:"swift,omitempty"`
+
 	// Remittance routing number
 	RemittanceLineNumber string `json:"remittance_line_number,omitempty"`
+
 	// Correspondent bank name
 	AgentBankName string `json:"agent_bank_name,omitempty"`
+
 	// Correspondent bank SWIFT code
 	AgentBankSwift string `json:"agent_bank_swift,omitempty"`
+
 	// Submission time
 	SubmitTime string `json:"submit_time,omitempty"`
+
 	// Update time
 	UpdateTime string `json:"update_time,omitempty"`
+
 	// Status
 	Status string `json:"status,omitempty"`
+
 	// Whether it is the default bank card. 1 - Yes, 0 - No
 	IsDefault int32 `json:"is_default,omitempty"`
 }

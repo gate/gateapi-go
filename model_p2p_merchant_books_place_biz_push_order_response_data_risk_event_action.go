@@ -10,12 +10,16 @@
 package gateapi
 
 type P2pMerchantBooksPlaceBizPushOrderResponseDataRiskEventAction struct {
+
 	// Action type
 	ActionType string `json:"action_type,omitempty"`
+
 	// Action button text
 	Title string `json:"title,omitempty"`
+
 	// Whether it is the primary action. 0: no
 	Mainly int32 `json:"mainly,omitempty"`
+
 	// Additional data of the action; empty object for the close action
 	ActionData map[string]interface{} `json:"action_data,omitempty"`
 }

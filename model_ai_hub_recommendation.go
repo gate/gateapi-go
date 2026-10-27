@@ -11,13 +11,20 @@ package gateapi
 
 // A single piece of strategy recommendation information.
 type AiHubRecommendation struct {
-	RecommendationId string       `json:"recommendation_id"`
-	Market           string       `json:"market"`
-	StrategyType     StrategyType `json:"strategy_type"`
-	StrategyName     string       `json:"strategy_name"`
-	BacktestApr      string       `json:"backtest_apr,omitempty"`
-	MaxDrawdown      string       `json:"max_drawdown,omitempty"`
-	Summary          string       `json:"summary"`
+	RecommendationId string `json:"recommendation_id"`
+
+	Market string `json:"market"`
+
+	StrategyType StrategyType `json:"strategy_type"`
+
+	StrategyName string `json:"strategy_name"`
+
+	BacktestApr string `json:"backtest_apr,omitempty"`
+
+	MaxDrawdown string `json:"max_drawdown,omitempty"`
+
+	Summary string `json:"summary"`
+
 	// Recommended-parameter preview as JSON text (string-encoded so clients deserialize it consistently). The value is a serialized JSON object whose structure varies by strategy type; callers or upper-layer models must parse it.
 	StrategyParamsPreview string `json:"strategy_params_preview,omitempty"`
 }

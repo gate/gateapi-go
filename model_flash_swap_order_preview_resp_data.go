@@ -11,28 +11,40 @@ package gateapi
 
 // Business data
 type FlashSwapOrderPreviewRespData struct {
+
 	// Quote ID, valid for one minute
 	QuoteId string `json:"quote_id,omitempty"`
+
 	// Hedge type
 	HedgeType int32 `json:"hedge_type,omitempty"`
+
 	// Currency to sell
 	SellAsset string `json:"sell_asset,omitempty"`
+
 	// Sell amount
 	SellAmount string `json:"sell_amount,omitempty"`
+
 	// Sell amount display value
 	SellAmountShow string `json:"sell_amount_show,omitempty"`
+
 	// Currency to buy
 	BuyAsset string `json:"buy_asset,omitempty"`
+
 	// Buy amount
 	BuyAmount string `json:"buy_amount,omitempty"`
+
 	// Buy amount display value
 	BuyAmountShow string `json:"buy_amount_show,omitempty"`
+
 	// Exchange price
 	Price string `json:"price,omitempty"`
+
 	// Spread percentage
 	PriceDiff string `json:"price_diff,omitempty"`
+
 	// Reverse price
 	ReversePrice string `json:"reverse_price,omitempty"`
+
 	// Quote expiration timestamp (in seconds)
 	ValidTimestamp int64 `json:"valid_timestamp,omitempty"`
 }

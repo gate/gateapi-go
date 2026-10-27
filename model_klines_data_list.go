@@ -11,14 +11,19 @@ package gateapi
 
 // Single kline data
 type KlinesDataList struct {
+
 	// Open price
 	O string `json:"o,omitempty"`
+
 	// Close price
 	C string `json:"c,omitempty"`
+
 	// High price
 	H string `json:"h,omitempty"`
+
 	// Low price
 	L string `json:"l,omitempty"`
+
 	// Timestamp (Unix seconds)
 	T int64 `json:"t,omitempty"`
 }

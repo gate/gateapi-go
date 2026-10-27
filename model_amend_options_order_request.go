@@ -11,10 +11,13 @@ package gateapi
 
 // Order Modification Request Body
 type AmendOptionsOrderRequest struct {
+
 	// Options contract name
 	Contract string `json:"contract"`
+
 	// Order Price
 	Price string `json:"price"`
+
 	// Trade amount
 	Size int64 `json:"size"`
 }

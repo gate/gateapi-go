@@ -10,6 +10,7 @@
 package gateapi
 
 type P2pUploadChatFileResult struct {
+
 	// File key
 	FileKey string `json:"file_key,omitempty"`
 }

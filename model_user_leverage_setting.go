@@ -11,6 +11,7 @@ package gateapi
 
 // User leverage settings
 type UserLeverageSetting struct {
+
 	// Leverage. Values exceeding a currency's leverage limit are capped at that limit.
 	Leverage string `json:"leverage,omitempty"`
 }

@@ -10,8 +10,10 @@
 package gateapi
 
 type PartnerCommissionHistory struct {
+
 	// Total
 	Total int64 `json:"total,omitempty"`
+
 	// List of commission history
 	List []AgencyCommission `json:"list,omitempty"`
 }

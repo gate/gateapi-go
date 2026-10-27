@@ -10,10 +10,13 @@
 package gateapi
 
 type StpGroupUser struct {
+
 	// User ID
 	UserId int64 `json:"user_id,omitempty"`
+
 	// STP Group ID
 	StpId int64 `json:"stp_id,omitempty"`
+
 	// Created time
 	CreateTime int64 `json:"create_time,omitempty"`
 }

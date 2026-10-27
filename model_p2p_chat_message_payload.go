@@ -10,46 +10,67 @@
 package gateapi
 
 type P2pChatMessagePayload struct {
+
 	// Order status when sending a message. Typical values: `OPEN`, `PAID`, `LOCKED`, `ACCEPT`, `BCLOSED`, `CANCEL`, `BECANCEL`, `SCLOSED`, `SCANCEL`.
 	Status string `json:"status,omitempty"`
+
 	// Message content
 	Text string `json:"text,omitempty"`
+
 	// Payment voucher
 	PaymentVoucher []string `json:"payment_voucher,omitempty"`
+
 	// Cancel reason ID. `1` no longer want to buy; `2` cannot reach seller; `3` will not pay; `4` seller account not real; `5` payout account issue; `6` price mismatch; `7` mutually agreed cancel; `8` poor communication; `9` other; `10` seller cannot release with refund; `11` terms not met; `12` seller payout risk-controlled.
 	ReasonId int32 `json:"reason_id,omitempty"`
+
 	// Cancellation reason popup
 	ToastId int32 `json:"toast_id,omitempty"`
+
 	// Cancel reason description.
 	ReasonMemo string `json:"reason_memo,omitempty"`
+
 	// Cancellation time
 	CancelTime int32 `json:"cancel_time,omitempty"`
+
 	// Seller confirmation of cancel reason: `0` pending; `1` confirmed; `2` rejected.
 	SellerConfirm int32 `json:"seller_confirm,omitempty"`
+
 	// Payment method information ID
 	Id string `json:"id,omitempty"`
+
 	// Payment method description
 	AccountDes string `json:"account_des,omitempty"`
+
 	// Payment method type
 	PayType string `json:"pay_type,omitempty"`
+
 	// Payment method file link
 	File string `json:"file,omitempty"`
+
 	// Payment method file key
 	FileKey string `json:"file_key,omitempty"`
+
 	// Payment account or masked payment account.
 	Account string `json:"account,omitempty"`
+
 	// Payment method note
 	Memo string `json:"memo,omitempty"`
+
 	// Payment method code
 	Code string `json:"code,omitempty"`
+
 	// Payment method additional note
 	MemoExt string `json:"memo_ext,omitempty"`
+
 	// Payment method tip
 	TradeTips string `json:"trade_tips,omitempty"`
+
 	// Payment method username
 	RealName string `json:"real_name,omitempty"`
+
 	// Whether the payment method was deleted. `1`: deleted; `0`: not deleted.
 	IsDelete int32 `json:"is_delete,omitempty"`
+
 	// Payment method full name
 	PayName string `json:"pay_name,omitempty"`
 }

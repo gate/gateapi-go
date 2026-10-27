@@ -10,14 +10,19 @@
 package gateapi
 
 type FuturesOrderAmendment struct {
+
 	// New order size, including filled part.  - If new size is less than or equal to filled size, the order will be cancelled. - Order side must be identical to the original one. - Close order size cannot be changed. - For reduce only orders, increasing size may leads to other reduce only orders being cancelled. - If price is not changed, decreasing size will not change its precedence in order book, while increasing will move it to the last at current price.
 	Size string `json:"size,omitempty"`
+
 	// New order price
 	Price string `json:"price,omitempty"`
+
 	// Custom info during order amendment
 	AmendText string `json:"amend_text,omitempty"`
+
 	// Internal users can modify information in the text field.
 	Text string `json:"text,omitempty"`
+
 	// Processing Mode  When placing an order, different fields are returned based on the action_mode  - `ACK`: Asynchronous mode, returns only key order fields - `RESULT`: No clearing information - `FULL`: Full mode (default)
 	ActionMode string `json:"action_mode,omitempty"`
 }

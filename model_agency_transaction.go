@@ -10,22 +10,31 @@
 package gateapi
 
 type AgencyTransaction struct {
+
 	// Transaction Time. (unix timestamp)
 	TransactionTime int64 `json:"transaction_time,omitempty"`
+
 	// User ID
 	UserId int64 `json:"user_id,omitempty"`
+
 	// Group name
 	GroupName string `json:"group_name,omitempty"`
+
 	// Fee
 	Fee string `json:"fee,omitempty"`
+
 	// Fee currency
 	FeeAsset string `json:"fee_asset,omitempty"`
+
 	// Currency pair
 	CurrencyPair string `json:"currency_pair,omitempty"`
+
 	// Transaction amount
 	Amount string `json:"amount,omitempty"`
+
 	// Transaction amount currency
 	AmountAsset string `json:"amount_asset,omitempty"`
+
 	// Commission source: SPOT - Spot commission, FUTURES - Futures commission
 	Source string `json:"source,omitempty"`
 }

@@ -10,8 +10,10 @@
 package gateapi
 
 type StopAllTrailOrders struct {
+
 	// Contract name
 	Contract string `json:"contract,omitempty"`
+
 	// Associated position, if provided, only cancel orders associated with this position, 1-long, 2-short
 	RelatedPosition int32 `json:"related_position,omitempty"`
 }

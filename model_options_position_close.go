@@ -10,16 +10,22 @@
 package gateapi
 
 type OptionsPositionClose struct {
+
 	// Position close time
 	Time float64 `json:"time,omitempty"`
+
 	// Options contract name
 	Contract string `json:"contract,omitempty"`
+
 	// Position side  - `long`: Long position - `short`: Short position
 	Side string `json:"side,omitempty"`
+
 	// PnL
 	Pnl string `json:"pnl,omitempty"`
+
 	// Source of close order. See `order.text` field for specific values
 	Text string `json:"text,omitempty"`
+
 	// Settlement size
 	SettleSize string `json:"settle_size,omitempty"`
 }

@@ -11,8 +11,11 @@ package gateapi
 
 // Running policy list data.
 type AiHubPortfolioRunningData struct {
-	Items    []AiHubPortfolioRunningItem `json:"items"`
-	Page     int32                       `json:"page"`
-	PageSize int32                       `json:"page_size"`
-	Total    int32                       `json:"total"`
+	Items []AiHubPortfolioRunningItem `json:"items"`
+
+	Page int32 `json:"page"`
+
+	PageSize int32 `json:"page_size"`
+
+	Total int32 `json:"total"`
 }

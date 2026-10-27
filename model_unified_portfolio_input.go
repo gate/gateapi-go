@@ -11,18 +11,25 @@ package gateapi
 
 // Portfolio margin calculator input
 type UnifiedPortfolioInput struct {
+
 	// Spot
 	SpotBalances []MockSpotBalance `json:"spot_balances,omitempty"`
+
 	// Spot orders
 	SpotOrders []MockSpotOrder `json:"spot_orders,omitempty"`
+
 	// Futures positions
 	FuturesPositions []MockFuturesPosition `json:"futures_positions,omitempty"`
+
 	// Futures order
 	FuturesOrders []MockFuturesOrder `json:"futures_orders,omitempty"`
+
 	// Options positions
 	OptionsPositions []MockOptionsPosition `json:"options_positions,omitempty"`
+
 	// Option orders
 	OptionsOrders []MockOptionsOrder `json:"options_orders,omitempty"`
+
 	// Whether to enable spot hedging
 	SpotHedge bool `json:"spot_hedge,omitempty"`
 }

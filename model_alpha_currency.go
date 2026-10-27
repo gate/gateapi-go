@@ -10,18 +10,25 @@
 package gateapi
 
 type AlphaCurrency struct {
+
 	// Currency symbol
 	Currency string `json:"currency,omitempty"`
+
 	// Currency name
 	Name string `json:"name,omitempty"`
+
 	// The main chain corresponding to the coin
 	Chain string `json:"chain,omitempty"`
+
 	// Contract Address
 	Address string `json:"address,omitempty"`
+
 	// Quantity precision
 	AmountPrecision int32 `json:"amount_precision,omitempty"`
+
 	// Price precision
 	Precision int32 `json:"precision,omitempty"`
+
 	// Currency Trading Status - `1` : Normal trading - `2` : Suspended trading - `3` : Delisted
 	Status int32 `json:"status,omitempty"`
 }

@@ -10,26 +10,37 @@
 package gateapi
 
 type FuturesInitialOrder struct {
+
 	// Futures contract
 	Contract string `json:"contract"`
+
 	// Represents the number of contracts that need to be closed, full closing: size=0 Partial closing: plan-close-short-position size>0  Partial closing: plan-close-long-position size<0
 	Size int64 `json:"size,omitempty"`
+
 	// Same as `size`; used for decimal contract size. When both `size` and `amount` are provided, `amount` takes precedence.
 	Amount string `json:"amount,omitempty"`
+
 	// Order price. Set to 0 to use market price
 	Price string `json:"price"`
+
 	// When fully closing a position in single-position mode, close must be set to true to execute the close operation. When partially closing a position in single-position mode or in dual-position mode, close can be left unset or set to false.
 	Close bool `json:"close,omitempty"`
+
 	// Time in force strategy, default is gtc, market orders currently only support ioc mode  - gtc: GoodTillCancelled - ioc: ImmediateOrCancelled
 	Tif string `json:"tif,omitempty"`
+
 	// The source of the order, including: - web: Web - api: API call - app: Mobile app
 	Text string `json:"text,omitempty"`
+
 	// When set to true, perform automatic position reduction operation. Set to true to ensure that the order will not open a new position, and is only used to close or reduce positions
 	ReduceOnly bool `json:"reduce_only,omitempty"`
+
 	// One-way Mode: auto_size is not required Hedge Mode full closing (size=0): auto_size must be set, close_long for closing long positions, close_short for closing short positions Hedge Mode partial closing (size≠0): auto_size is not required
 	AutoSize string `json:"auto_size,omitempty"`
+
 	// Is the order reduce-only
 	IsReduceOnly bool `json:"is_reduce_only,omitempty"`
+
 	// Is the order to close position
 	IsClose bool `json:"is_close,omitempty"`
 }

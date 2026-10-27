@@ -10,8 +10,10 @@
 package gateapi
 
 type SymbolDetailItemSymbolDescs struct {
+
 	// Language
 	Lang string `json:"lang,omitempty"`
+
 	// Localized description
 	Value string `json:"value,omitempty"`
 }

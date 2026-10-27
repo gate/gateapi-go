@@ -1,6 +1,6 @@
 # Go SDK examples
 
-These examples target the **current public Go SDK**. Their authoritative source is
+These examples target the **SDK variant generated alongside them**. Their authoritative source is
 `codegen/demos/gate/go/` in GateAPIv4; generation copies it into `_example/`.
 Change this source and regenerate rather than editing generated files.
 
@@ -16,7 +16,7 @@ Change this source and regenerate rather than editing generated files.
   trader against that account concurrently: repay-all operates on pair/currency,
   not a unique loan ID. Existing debt is rejected before borrowing.
 
-One public SDK client owns authentication and a 10-second HTTP timeout; the complete
+One SDK client owns authentication and a 10-second HTTP timeout; the complete
 run has a one-minute deadline. Writes are never retried automatically. If a transfer,
 order or borrow times out, inspect its history before rerunning. A repayment failure
 reports the affected market/currency for manual recovery; a successful borrow is not
@@ -24,17 +24,29 @@ transactionally rolled back by the API.
 
 ## Build and verify without trading
 
-From the generated **public SDK root**, run:
+From the generated SDK root, compile the library first and bind the example to
+that exact local SDK for verification. The example has its own dependency module;
+the library module and its Go 1.12 declaration remain unchanged. The temporary
+`replace` is restored on exit and must never be committed or published.
 
 ```sh
-# _example is excluded by Go's ./... pattern; install its existing decimal dependency explicitly.
-go get github.com/shopspring/decimal@v1.4.0
-# Compile and test both the SDK and the example directory. Tests use only local HTTP mocks.
-go vet ./... ./_example
-go test ./... ./_example
-go test -race ./_example
-go build -o /tmp/gateapi-demo ./_example
+# Check the library without adding example-only dependencies.
+go vet ./... && go test ./...
+(
+  cd _example
+  cp go.mod go.mod.verify-backup
+  trap 'mv go.mod.verify-backup go.mod' EXIT
+  # Validate this unpublished candidate, rather than fetching an older remote SDK.
+  GOWORK=off go mod edit -replace="$(awk '/^module / {print $2}' ../go.mod)=../"
+  GOWORK=off go vet ./... && GOWORK=off go test -race ./... && GOWORK=off go build -o /tmp/gateapi-demo .
+)
 ```
+
+The public and filtered variants use API key/secret signing. The complete internal
+variant imports its own generated module and requires the trusted gateway's
+`ContextAPIKey` through `runWithContext`; its mock test shows that integration.
+The internal CLI rejects public key/secret credentials before making any request.
+It does not reinterpret an API key as an internal user identity.
 
 The mock tests cover decimal quantities, signed futures size, positive collateral,
 transfer shortfalls, contract/pair cancellation filters, quote/base units, current

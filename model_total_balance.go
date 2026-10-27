@@ -12,6 +12,7 @@ package gateapi
 // User's total balance information
 type TotalBalance struct {
 	Total AccountBalance `json:"total,omitempty"`
+
 	// Total Balances of All Accounts  - cross_margin: Cross Margin Account - spot: Spot Account - finance: Finance Account - margin: Margin Account - quant: Quantitative Account - futures: Futures Account (Perpetual Contracts) - delivery: Delivery Account (Delivery Contracts) - warrant: Warrant Account - cbbc: CBBC Account (Covered Bull/Bear Contract) - meme_box: Alpha Account - options: Options Account - payment: Payment Account
 	Details map[string]AccountBalance `json:"details,omitempty"`
 }

@@ -10,10 +10,13 @@
 package gateapi
 
 type MarginTransferable struct {
+
 	// Currency detail
 	Currency string `json:"currency,omitempty"`
+
 	// Currency pair
 	CurrencyPair string `json:"currency_pair,omitempty"`
+
 	// Max transferable amount
 	Amount string `json:"amount,omitempty"`
 }

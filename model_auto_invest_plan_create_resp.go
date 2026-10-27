@@ -11,22 +11,31 @@ package gateapi
 
 // Create auto invest planResponse
 type AutoInvestPlanCreateResp struct {
+
 	// Plan ID
 	Id int64 `json:"id"`
+
 	// Per PeriodAuto InvestAmount
 	Amount string `json:"amount,omitempty"`
+
 	// Quote currency
 	Money string `json:"money,omitempty"`
+
 	// Next execution time
 	NextTime int64 `json:"next_time,omitempty"`
+
 	// Cycle type
 	PeriodType string `json:"period_type,omitempty"`
+
 	// Cycle day
 	PeriodDay int64 `json:"period_day,omitempty"`
+
 	// CycleHours
 	PeriodHour int64 `json:"period_hour,omitempty"`
+
 	// Fund Flow Direction
 	FundFlow string `json:"fund_flow,omitempty"`
+
 	// Fund source
 	FundSource string `json:"fund_source,omitempty"`
 }

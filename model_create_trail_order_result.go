@@ -10,6 +10,7 @@
 package gateapi
 
 type CreateTrailOrderResult struct {
+
 	// Order ID
 	Id string `json:"id,omitempty"`
 }

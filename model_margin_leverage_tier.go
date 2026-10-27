@@ -11,10 +11,13 @@ package gateapi
 
 // Market gradient information
 type MarginLeverageTier struct {
+
 	// Maximum borrowing limit. Determined by the leverage you set; the lower the leverage, the larger the borrowing limit.
 	UpperLimit string `json:"upper_limit,omitempty"`
+
 	// Maintenance margin rate.Under tiered margin requirements(https://www.gate.com/en/help/trade/margin-trading/42357), the maintenance margin rate is a composite value.
 	Mmr string `json:"mmr,omitempty"`
+
 	// the maximum permissible leverage given to the current debt level; the higher the debt level, the lower the maximum leverage.
 	Leverage string `json:"leverage,omitempty"`
 }

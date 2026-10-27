@@ -10,16 +10,22 @@
 package gateapi
 
 type P2pTransactionActionResponse struct {
+
 	// Response timestamp.
 	Timestamp float32 `json:"timestamp,omitempty"`
+
 	// Placeholder for request method.
 	Method string `json:"method,omitempty"`
+
 	// Response code, 0 means success
 	Code int32 `json:"code,omitempty"`
+
 	// Response message
 	Message string `json:"message,omitempty"`
+
 	// Empty object on success.
 	Data map[string]interface{} `json:"data,omitempty"`
+
 	// API version.
 	Version string `json:"version,omitempty"`
 }

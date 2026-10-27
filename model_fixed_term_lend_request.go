@@ -11,18 +11,25 @@ package gateapi
 
 // Subscription request
 type FixedTermLendRequest struct {
+
 	// Product ID
 	ProductId int32 `json:"product_id"`
+
 	// Subscription amount
 	Amount string `json:"amount"`
+
 	// Annual interest rate
 	YearRate string `json:"year_rate,omitempty"`
+
 	// Auto-renewal status: 0 for disabled, 1 for enabled
 	ReinvestStatus int32 `json:"reinvest_status,omitempty"`
+
 	// Redemption payout account type: 1 for spot account
 	RedeemAccountType int32 `json:"redeem_account_type,omitempty"`
+
 	// Interest rate boost coupon ID, 0 means not used
 	FinancialRateId int32 `json:"financial_rate_id,omitempty"`
+
 	// Sub-business type
 	SubBusiness int32 `json:"sub_business,omitempty"`
 }

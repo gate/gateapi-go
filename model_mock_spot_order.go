@@ -11,14 +11,19 @@ package gateapi
 
 // Spot orders
 type MockSpotOrder struct {
+
 	// Market
 	CurrencyPairs string `json:"currency_pairs"`
+
 	// Price
 	OrderPrice string `json:"order_price"`
+
 	// Initial order quantity for spot trading pairs, not involved in actual calculation.
 	Count string `json:"count,omitempty"`
+
 	// Unfilled quantity, involved in actual calculation
 	Left string `json:"left"`
+
 	// Order type, sell - sell order, buy - buy order
 	Type string `json:"type"`
 }

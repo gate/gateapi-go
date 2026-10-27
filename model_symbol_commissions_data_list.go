@@ -11,10 +11,13 @@ package gateapi
 
 // Symbol commission rate
 type SymbolCommissionsDataList struct {
+
 	// Category code
 	CategoryCode string `json:"category_code,omitempty"`
+
 	// Trading symbol code
 	Symbol string `json:"symbol,omitempty"`
+
 	// Commission rate per lot
 	FeePerLot string `json:"fee_per_lot,omitempty"`
 }

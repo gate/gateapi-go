@@ -10,12 +10,16 @@
 package gateapi
 
 type UserSub struct {
+
 	// User ID
 	Uid int64 `json:"uid,omitempty"`
+
 	// User's system affiliation (partner/referral). Empty means not belonging to any system
 	Belong string `json:"belong,omitempty"`
+
 	// Type (0-Not in system 1-Direct subordinate agent 2-Indirect subordinate agent 3-Direct direct customer 4-Indirect direct customer 5-Regular user)
 	Type int64 `json:"type,omitempty"`
+
 	// Inviter user ID
 	RefUid int64 `json:"ref_uid,omitempty"`
 }

@@ -10,6 +10,7 @@
 package gateapi
 
 type TransactionList2 struct {
-	Data      TransactionList2Data `json:"data,omitempty"`
-	Timestamp int64                `json:"timestamp,omitempty"`
+	Data TransactionList2Data `json:"data,omitempty"`
+
+	Timestamp int64 `json:"timestamp,omitempty"`
 }

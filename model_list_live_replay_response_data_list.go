@@ -10,8 +10,11 @@
 package gateapi
 
 type ListLiveReplayResponseDataList struct {
+
 	// Content type: streaming = live broadcast, video = replay video
-	ContentType string                          `json:"content_type,omitempty"`
-	Live        ListLiveReplayResponseDataLive  `json:"live,omitempty"`
-	Video       ListLiveReplayResponseDataVideo `json:"video,omitempty"`
+	ContentType string `json:"content_type,omitempty"`
+
+	Live ListLiveReplayResponseDataLive `json:"live,omitempty"`
+
+	Video ListLiveReplayResponseDataVideo `json:"video,omitempty"`
 }

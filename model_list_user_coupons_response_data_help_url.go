@@ -11,8 +11,10 @@ package gateapi
 
 // Help Center Link
 type ListUserCouponsResponseDataHelpUrl struct {
+
 	// Web Help Link
 	Web string `json:"web,omitempty"`
+
 	// App Help Link
 	App string `json:"app,omitempty"`
 }

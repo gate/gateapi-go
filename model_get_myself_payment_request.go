@@ -11,6 +11,7 @@ package gateapi
 
 // Get payment method list request
 type GetMyselfPaymentRequest struct {
+
 	// Fiat currency; omit to return all available payment methods.
 	Fiat string `json:"fiat,omitempty"`
 }

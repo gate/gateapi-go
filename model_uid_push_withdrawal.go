@@ -10,10 +10,13 @@
 package gateapi
 
 type UidPushWithdrawal struct {
+
 	// Recipient UID
 	ReceiveUid int64 `json:"receive_uid"`
+
 	// Currency name
 	Currency string `json:"currency"`
+
 	// Transfer amount
 	Amount string `json:"amount"`
 }

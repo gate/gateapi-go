@@ -11,14 +11,19 @@ package gateapi
 
 // Asset allocation optimization-preview unified response
 type ApiResponseAssetSwapOrderPreviewV1 struct {
+
 	// Business error code, 0 means success
 	Code int32 `json:"code"`
+
 	// Error identification code, empty string on success
 	Label string `json:"label,omitempty"`
+
 	// Description information
 	Message string `json:"message"`
+
 	// Preview result when successful, null when failed
-	Data *interface{} `json:"data"`
+	Data *OrderPreviewV1Resp `json:"data"`
+
 	// Server timestamp (milliseconds)
 	Timestamp int64 `json:"timestamp"`
 }

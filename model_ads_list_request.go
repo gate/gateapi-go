@@ -11,10 +11,13 @@ package gateapi
 
 // Get market ads list request
 type AdsListRequest struct {
+
 	// Cryptocurrency symbol.
 	Asset string `json:"asset"`
+
 	// Fiat currency
 	FiatUnit string `json:"fiat_unit"`
+
 	// Ad side: `buy` buy-crypto ad; `sell` sell-crypto ad.
 	TradeType string `json:"trade_type"`
 }

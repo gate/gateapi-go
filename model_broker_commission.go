@@ -10,8 +10,10 @@
 package gateapi
 
 type BrokerCommission struct {
+
 	// Total
 	Total int64 `json:"total,omitempty"`
+
 	// List of commission history
 	List []BrokerCommissionItem `json:"list,omitempty"`
 }

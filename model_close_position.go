@@ -10,6 +10,7 @@
 package gateapi
 
 type ClosePosition struct {
-	Data      ClosePositionData `json:"data,omitempty"`
-	Timestamp int64             `json:"timestamp,omitempty"`
+	Data ClosePositionData `json:"data,omitempty"`
+
+	Timestamp int64 `json:"timestamp,omitempty"`
 }

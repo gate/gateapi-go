@@ -11,6 +11,7 @@ package gateapi
 
 // Response data
 type OrderHistoryListData struct {
+
 	// Historical order list
 	List []OrderHistoryListDataList `json:"list,omitempty"`
 }

@@ -10,11 +10,15 @@
 package gateapi
 
 type P2pPaymentMethodGroup struct {
+
 	// Payment method type
 	PayType string `json:"pay_type,omitempty"`
+
 	// Payment method name
 	PayName string `json:"pay_name,omitempty"`
+
 	// User's currently bound payment method (primary key ID)
-	Ids  []int32                   `json:"ids,omitempty"`
+	Ids []int32 `json:"ids,omitempty"`
+
 	List []P2pPaymentMethodAccount `json:"list,omitempty"`
 }

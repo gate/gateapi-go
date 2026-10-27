@@ -11,36 +11,52 @@ package gateapi
 
 // Response data
 type TradFiTickerData struct {
+
 	// High price
 	HighestPrice string `json:"highest_price,omitempty"`
+
 	// Low price
 	LowestPrice string `json:"lowest_price,omitempty"`
+
 	// Price change percentage (multiplied by 100)
 	PriceChange string `json:"price_change,omitempty"`
+
 	// Price change amount
 	PriceChangeAmount string `json:"price_change_amount,omitempty"`
+
 	// Today's open price
 	TodayOpenPrice string `json:"today_open_price,omitempty"`
+
 	// Previous close price
 	LastTodayClosePrice string `json:"last_today_close_price,omitempty"`
+
 	// Last trading price
 	LastPrice string `json:"last_price,omitempty"`
+
 	// Bid price
 	BidPrice string `json:"bid_price,omitempty"`
+
 	// Ask price
 	AskPrice string `json:"ask_price,omitempty"`
+
 	// Is favorited
 	Favorite bool `json:"favorite,omitempty"`
+
 	// Trading status (open=tradable, closed=non-tradable)
 	Status string `json:"status,omitempty"`
+
 	// Close time (Unix timestamp in seconds)
 	CloseTime int64 `json:"close_time,omitempty"`
+
 	// Open time (Unix timestamp in seconds)
 	OpenTime int64 `json:"open_time,omitempty"`
+
 	// Next open time (0 means none)
 	NextOpenTime int64 `json:"next_open_time,omitempty"`
+
 	// Trading mode code
 	TradeMode string `json:"trade_mode,omitempty"`
+
 	// Category name
 	CategoryName string `json:"category_name,omitempty"`
 }

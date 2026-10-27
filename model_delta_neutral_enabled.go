@@ -10,6 +10,7 @@
 package gateapi
 
 type DeltaNeutralEnabled struct {
+
 	// Whether to enable the account Delta-neutral strategy mode
 	Enabled bool `json:"enabled"`
 }

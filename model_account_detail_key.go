@@ -11,6 +11,7 @@ package gateapi
 
 // API Key details
 type AccountDetailKey struct {
+
 	// Mode: 1 - Classic mode, 2 - Legacy unified mode
 	Mode int32 `json:"mode,omitempty"`
 }

@@ -10,82 +10,121 @@
 package gateapi
 
 type P2pMyAd struct {
+
 	// Ad side: `buy` buy-crypto ad; `sell` sell-crypto ad.
 	Type string `json:"type,omitempty"`
+
 	// Price
 	Rate string `json:"rate,omitempty"`
+
 	// Original price
 	OriginalRate string `json:"original_rate,omitempty"`
+
 	// Remaining crypto amount on the ad.
 	Amount string `json:"amount,omitempty"`
+
 	// Remaining fiat amount of ad
 	Total string `json:"total,omitempty"`
+
 	// Single order limit range (cryptocurrency)
 	LimitTotal string `json:"limit_total,omitempty"`
+
 	// Single order limit range (fiat)
 	LimitFiat string `json:"limit_fiat,omitempty"`
+
 	// Minimum quantity per order
 	MinAmount string `json:"min_amount,omitempty"`
+
 	// Maximum quantity per order
 	MaxAmount string `json:"max_amount,omitempty"`
+
 	// Payment method ID list
 	PayTypeNum string `json:"pay_type_num,omitempty"`
+
 	// JSON map of payment type -> payment method ID.
 	PayTypeJson string `json:"pay_type_json,omitempty"`
+
 	// Ad expiration time (minutes)
 	ExpireMin string `json:"expire_min,omitempty"`
+
 	// VIP limit
 	TierLimit string `json:"tier_limit,omitempty"`
+
 	// Whether trading with the advertiser is restricted. `0`: no; `1`: yes.
 	AdvertisersLimit int32 `json:"advertisers_limit,omitempty"`
+
 	// Registration time limit
 	RegTimeLimit int32 `json:"reg_time_limit,omitempty"`
+
 	// KYC level limit
 	VerifiedLimit int32 `json:"verified_limit,omitempty"`
+
 	// Minimum limit of completed orders by counterparty
 	MinCompletedLimit int32 `json:"min_completed_limit,omitempty"`
+
 	// Maximum limit of completed orders by counterparty
 	MaxCompletedLimit int32 `json:"max_completed_limit,omitempty"`
+
 	// KYC nationality restriction
 	UserCountryLimit int32 `json:"user_country_limit,omitempty"`
+
 	// 30-day completion rate limit
 	CompletedRateLimit float32 `json:"completed_rate_limit,omitempty"`
+
 	// Maximum order limit for counterparty
 	UserOrdersLimit int32 `json:"user_orders_limit,omitempty"`
+
 	// Whether payment methods are hidden. `1`: hidden; `0`: visible.
 	HidePayment string `json:"hide_payment,omitempty"`
+
 	// Cryptocurrency symbol.
 	CurrencyType string `json:"currencyType,omitempty"`
+
 	// Fiat currency
 	WantType string `json:"want_type,omitempty"`
+
 	// Trading terms
 	TradeTips string `json:"trade_tips,omitempty"`
+
 	// Special ad type. `0` normal; `1` newcomer guide; `2` newcomer discount; `3` featured promo; `4` KOL ad; `5` coupon ad.
 	NewHand int32 `json:"new_hand,omitempty"`
+
 	// Advertisement ID.
 	Id string `json:"id,omitempty"`
+
 	// Ad status: `OPEN` listed; `OFFLIN` delisted; `CLOSED` closed; `CANCEL` canceled.
 	Status string `json:"status,omitempty"`
+
 	// Ad frozen amount
 	LockedAmount string `json:"locked_amount,omitempty"`
+
 	// Hidden price
 	HideRate string `json:"hide_rate,omitempty"`
+
 	// Whether the ad timed out. `1`: timed out; `0`: not yet.
 	IsOutTime int32 `json:"is_out_time,omitempty"`
+
 	// Floating reference: `1` platform; `2` Gate; `3` spot; `<= 0` means fixed price.
 	RateRefId int32 `json:"rate_ref_id,omitempty"`
+
 	// Floating ratio
 	RateOffset string `json:"rate_offset,omitempty"`
+
 	// Price type: `0` floating; `1` fixed.
 	RateFixed int32 `json:"rate_fixed,omitempty"`
+
 	// Floating direction: `0` markup; `1` markdown.
 	FloatTrend int32 `json:"float_trend,omitempty"`
+
 	// Whether the ad had a disputed trade. `1`: yes; `0`: no.
 	InDispute int32 `json:"in_dispute,omitempty"`
+
 	// Auto reply data
 	AutoReply string `json:"auto_reply,omitempty"`
+
 	// Ad creation time
 	Timestamp int32 `json:"timestamp,omitempty"`
+
 	// Whether auto-delegation is enabled. `1`: yes; `0`: no.
 	IsHedge int32 `json:"is_hedge,omitempty"`
 }

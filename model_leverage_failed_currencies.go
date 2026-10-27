@@ -11,8 +11,10 @@ package gateapi
 
 // List of currencies for which the leverage update failed
 type LeverageFailedCurrencies struct {
+
 	// Currency for which the update failed
 	Currency string `json:"currency,omitempty"`
+
 	// Reason the leverage update failed
 	Reason string `json:"reason,omitempty"`
 }

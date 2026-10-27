@@ -11,5 +11,6 @@ package gateapi
 
 type OtcOrderListCryptoCurrencyInfo struct {
 	Name string `json:"name"`
+
 	Icon string `json:"icon"`
 }

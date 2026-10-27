@@ -10,43 +10,63 @@
 package gateapi
 
 type OrderHistoryListItem struct {
+
 	// Order ID
 	OrderId string `json:"order_id,omitempty"`
+
 	// Symbol
 	Symbol string `json:"symbol,omitempty"`
+
 	// Exchange. - us: US stocks. - hk: Hong Kong stocks. - kr: Korean stocks. - jp: Japanese stocks.
 	Exchange string `json:"exchange,omitempty"`
+
 	// Quote currency
 	QuoteCurrency string `json:"quote_currency,omitempty"`
+
 	// Quote currency to USD exchange rate
 	FxRate string `json:"fx_rate,omitempty"`
+
 	// Symbol description
 	SymbolDesc string `json:"symbol_desc,omitempty"`
+
 	// Price type (market = market order, limit = limit order)
 	PriceType string `json:"price_type,omitempty"`
+
 	// Order status. - 0: Unknown. - 1: New order; the order has been validated and is waiting to be processed. - 2: Partially filled. - 3: Filled. - 4: Canceled. - 5: Order rejected. - 6: Cancellation rejected. - 7: Order update succeeded. - 8: Order update rejected.
 	Status int32 `json:"status,omitempty"`
+
 	// Order status description
-	StatusDesc   string                            `json:"status_desc,omitempty"`
+	StatusDesc string `json:"status_desc,omitempty"`
+
 	StatusDetail *OrderHistoryListItemStatusDetail `json:"status_detail,omitempty"`
+
 	// Order completion reason. - 0: Unknown. - 1: No quote found. - 2: No match found. - 3: Trigger price exceeded. - 4: Order value exceeds the limit. - 5: Unknown rejection. - 6: Unknown cancellation. - 7: Canceled by user. - 8: Canceled after the order time in force expired. - 9: Trading is not supported in the current session. - 13: Canceled due to corporate action.
 	FinishAs int32 `json:"finish_as,omitempty"`
+
 	// Side (1=sell, 2=buy)
 	Side int32 `json:"side,omitempty"`
+
 	// Time in force. - day: Day order.
 	TimeInForce string `json:"time_in_force,omitempty"`
+
 	// Order quantity
 	Volume string `json:"volume,omitempty"`
+
 	// Trading size
 	FillVolume string `json:"fill_volume,omitempty"`
+
 	// Order price
 	Price string `json:"price,omitempty"`
+
 	// Average fill price
 	AvgFillPrice *string `json:"avg_fill_price,omitempty"`
+
 	// fee
 	Commission string `json:"commission,omitempty"`
+
 	// Order creation time (Unix timestamp, seconds)
 	TimeSetup int64 `json:"time_setup,omitempty"`
+
 	// Order completion time (Unix timestamp in seconds)
 	TimeDone int64 `json:"time_done,omitempty"`
 }

@@ -11,10 +11,13 @@ package gateapi
 
 // Countdown cancel task details
 type CountdownCancelAllOptionsTask struct {
+
 	// Countdown time in seconds At least 5 seconds, 0 means cancel countdown
 	Timeout int32 `json:"timeout"`
+
 	// Options contract name
 	Contract string `json:"contract,omitempty"`
+
 	// Underlying
 	Underlying string `json:"underlying,omitempty"`
 }

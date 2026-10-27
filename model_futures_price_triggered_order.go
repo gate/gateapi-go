@@ -12,29 +12,42 @@ package gateapi
 // Futures price-triggered order details
 type FuturesPriceTriggeredOrder struct {
 	Initial FuturesInitialOrder `json:"initial"`
+
 	Trigger FuturesPriceTrigger `json:"trigger"`
+
 	// Auto order ID
 	Id int64 `json:"id,omitempty"`
+
 	// String form of the auto order ID; the same order as numeric `id`, as the decimal string of `id` to avoid int64 precision loss in JavaScript and similar environments. Prefer this field to display the order ID or when a string unique identifier is needed; one-to-one with `id`. Same meaning as the field of the same name in futures price-trigger REST APIs and in `futures.orders` / `futures.autoorders` WebSocket pushes.
 	IdString string `json:"id_string,omitempty"`
+
 	// User ID
 	User int32 `json:"user,omitempty"`
+
 	// Created time
 	CreateTime float64 `json:"create_time,omitempty"`
+
 	// End time
 	FinishTime float64 `json:"finish_time,omitempty"`
+
 	// ID of the order created after trigger
 	TradeId int64 `json:"trade_id,omitempty"`
+
 	// Order status  - `open`: Active - `finished`: Finished - `inactive`: Inactive, only applies to order take-profit/stop-loss - `invalid`: Invalid, only applies to order take-profit/stop-loss
 	Status string `json:"status,omitempty"`
+
 	// Finish status: cancelled - Cancelled; succeeded - Succeeded; failed - Failed; expired - Expired
 	FinishAs string `json:"finish_as,omitempty"`
+
 	// Additional description of how the order was completed
 	Reason string `json:"reason,omitempty"`
+
 	// Types of take-profit and stop-loss orders, including:  - `close-long-order`: Order take-profit/stop-loss, close long position - `close-short-order`: Order take-profit/stop-loss, close short position - `close-long-position`: Position take-profit/stop-loss, used to close all long positions - `close-short-position`: Position take-profit/stop-loss, used to close all short positions - `plan-close-long-position`: Position plan take-profit/stop-loss, used to close all or partial long positions - `plan-close-short-position`: Position plan take-profit/stop-loss, used to close all or partial short positions  The two types of order take-profit/stop-loss are read-only and cannot be passed in requests
 	OrderType string `json:"order_type,omitempty"`
+
 	// Corresponding order ID for order take-profit/stop-loss orders
 	MeOrderId int64 `json:"me_order_id,omitempty"`
+
 	// Position margin mode: `isolated` (isolated margin) or `cross` (cross margin). Returned by the server in simple split-position mode; when writing, use only the values below.
 	PosMarginMode string `json:"pos_margin_mode,omitempty"`
 }

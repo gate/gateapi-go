@@ -11,14 +11,19 @@ package gateapi
 
 // Borrow or repay
 type UnifiedLoan struct {
+
 	// Currency
 	Currency string `json:"currency"`
+
 	// Type: `borrow` - borrow, `repay` - repay
 	Type string `json:"type"`
+
 	// Borrow or repayment amount
 	Amount string `json:"amount"`
+
 	// Full repayment, only used for repayment operations. When set to `true`, overrides `amount` and directly repays the full amount
 	RepaidAll bool `json:"repaid_all,omitempty"`
+
 	// User defined custom ID
 	Text string `json:"text,omitempty"`
 }

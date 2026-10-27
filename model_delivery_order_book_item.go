@@ -10,8 +10,10 @@
 package gateapi
 
 type DeliveryOrderBookItem struct {
+
 	// Price (quote currency)
 	P string `json:"p,omitempty"`
+
 	// Size
 	S int64 `json:"s,omitempty"`
 }

@@ -10,11 +10,15 @@
 package gateapi
 
 type ListSquareAiSearchResponse struct {
+
 	// Status code, 0 = success
 	Code int32 `json:"code,omitempty"`
+
 	// Error identifier code. Empty string on success, machine-readable error label on error
 	Label string `json:"label,omitempty"`
+
 	// Status message
-	Msg  string                         `json:"msg,omitempty"`
+	Msg string `json:"msg,omitempty"`
+
 	Data ListSquareAiSearchResponseData `json:"data,omitempty"`
 }

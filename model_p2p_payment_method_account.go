@@ -10,48 +10,70 @@
 package gateapi
 
 type P2pPaymentMethodAccount struct {
+
 	// useruID
 	Uid int32 `json:"uid,omitempty"`
+
 	// User's currently bound payment method (primary key ID)
 	Bankid string `json:"bankid,omitempty"`
+
 	// Cardholder UID
 	Nickname int32 `json:"nickname,omitempty"`
+
 	// Bank name
 	Bankname string `json:"bankname,omitempty"`
+
 	// Bank branch name
 	Bankbranch string `json:"bankbranch,omitempty"`
+
 	// Bank city
 	Bankcity string `json:"bankcity,omitempty"`
+
 	// Bank province
 	Bankprov string `json:"bankprov,omitempty"`
+
 	// Bank card number or masked card number.
 	Bankaddr string `json:"bankaddr,omitempty"`
+
 	// Bank note
 	Bankdesc string `json:"bankdesc,omitempty"`
+
 	// Cardholder UID
 	HoldUid int32 `json:"hold_uid,omitempty"`
+
 	// Cardholder name
 	HoldUsername string `json:"hold_username,omitempty"`
+
 	// User verified display name.
 	RealName string `json:"real_name,omitempty"`
+
 	// User's currently bound payment method (primary key ID)
 	Id string `json:"id,omitempty"`
+
 	// Payment method description
 	AccountDes string `json:"account_des,omitempty"`
+
 	// Payment method type
 	PayType string `json:"pay_type,omitempty"`
+
 	// Payment method file link
 	File string `json:"file,omitempty"`
+
 	// Payment method file key
 	FileKey string `json:"file_key,omitempty"`
+
 	// Payment account or masked payment account.
 	Account string `json:"account,omitempty"`
+
 	// Payment method note
 	Memo string `json:"memo,omitempty"`
+
 	// Payment method code
 	Code string `json:"code,omitempty"`
+
 	// Payment method additional note
 	MemoExt string `json:"memo_ext,omitempty"`
+
 	// Payment method transaction information
 	TradeTips string `json:"trade_tips,omitempty"`
 }

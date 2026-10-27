@@ -10,12 +10,16 @@
 package gateapi
 
 type DualGetBalance struct {
+
 	// User Assets in USDT Equivalent
 	UserAssetUsdt string `json:"user_asset_usdt,omitempty"`
+
 	// User Assets in BTC Equivalent
 	UserAssetBtc string `json:"user_asset_btc,omitempty"`
+
 	// Total User Interest in USDT Equivalent
 	UserTotalInterestUsdt string `json:"user_total_interest_usdt,omitempty"`
+
 	// Total User Interest in BTC Equivalent
 	UserTotalInterestBtc string `json:"user_total_interest_btc,omitempty"`
 }

@@ -10,6 +10,7 @@
 package gateapi
 
 type P2pAdsUpdateStatusResult struct {
+
 	// Ad status after update: `1` listed; `3` delisted; `4` closed.
 	Status int32 `json:"status,omitempty"`
 }

@@ -11,20 +11,28 @@ package gateapi
 
 // Response data
 type OrderLogData struct {
+
 	// Order ID
 	OrderId int64 `json:"order_id,omitempty"`
+
 	// logID
 	LogId int64 `json:"log_id,omitempty"`
+
 	// Trading pair of the order
 	Symbol string `json:"symbol,omitempty"`
+
 	// Trade type (market=market price, trigger=trigger price)
 	PriceType string `json:"price_type,omitempty"`
+
 	// Order status code (1=placed, 2=canceled, 3=partially filled, 4=filled, 5=rejected)
 	State int32 `json:"state,omitempty"`
+
 	// Side (1=sell, 2=buy)
 	Side int32 `json:"side,omitempty"`
+
 	// Order quantity
 	Volume string `json:"volume,omitempty"`
+
 	// Average fill price
 	Price string `json:"price,omitempty"`
 }

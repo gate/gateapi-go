@@ -11,100 +11,148 @@ package gateapi
 
 // Futures contract details
 type Contract struct {
+
 	// Futures contract
 	Name string `json:"name,omitempty"`
+
 	// Contract type: inverse - inverse contract, direct - direct contract
 	Type string `json:"type,omitempty"`
+
 	// The contract multiplier indicates how many units of the underlying asset the face value of one contract represents.
 	QuantoMultiplier string `json:"quanto_multiplier,omitempty"`
+
 	// Minimum leverage
 	LeverageMin string `json:"leverage_min,omitempty"`
+
 	// Maximum leverage
 	LeverageMax string `json:"leverage_max,omitempty"`
+
 	// The maintenance margin rate of the first tier of risk limit sheet
 	MaintenanceRate string `json:"maintenance_rate,omitempty"`
+
 	// Deprecated
 	MarkType string `json:"mark_type,omitempty"`
+
 	// Current mark price
 	MarkPrice string `json:"mark_price,omitempty"`
+
 	// Current index price
 	IndexPrice string `json:"index_price,omitempty"`
+
 	// Last trading price
 	LastPrice string `json:"last_price,omitempty"`
+
 	// Maker fee rate, negative values indicate rebates
 	MakerFeeRate string `json:"maker_fee_rate,omitempty"`
+
 	// Taker fee rate
 	TakerFeeRate string `json:"taker_fee_rate,omitempty"`
+
 	// Minimum order price increment
 	OrderPriceRound string `json:"order_price_round,omitempty"`
+
 	// Minimum mark price increment
 	MarkPriceRound string `json:"mark_price_round,omitempty"`
+
 	// Current funding rate
 	FundingRate string `json:"funding_rate,omitempty"`
+
 	// Funding application interval, unit in seconds
 	FundingInterval int32 `json:"funding_interval,omitempty"`
+
 	// Next funding time
 	FundingNextApply float64 `json:"funding_next_apply,omitempty"`
+
 	// Base risk limit (deprecated)
 	RiskLimitBase string `json:"risk_limit_base,omitempty"`
+
 	// Interest rate parameter used in funding rate and premium-related calculations for perpetual contracts. Returned as a string decimal ratio (e.g. `0.0003`), same convention as `funding_rate` (ratio, not percent).
 	InterestRate string `json:"interest_rate,omitempty"`
+
 	// Risk limit adjustment step (deprecated)
 	RiskLimitStep string `json:"risk_limit_step,omitempty"`
+
 	// Maximum risk limit allowed by the contract (deprecated). It is recommended to use /futures/{settle}/risk_limit_tiers to query risk limits
 	RiskLimitMax string `json:"risk_limit_max,omitempty"`
+
 	// Minimum order quantity
 	OrderSizeMin string `json:"order_size_min,omitempty"`
+
 	// Whether decimal string type is supported for contract lot size. When this field is set to `true`, it indicates that the contract supports decimal lot sizes (i.e., the `size` field can use a decimal string type); when set to `false`, it indicates that the contract does not support decimal lot sizes (i.e., the `size` field can only use an integer type).
 	EnableDecimal bool `json:"enable_decimal,omitempty"`
+
 	// Maximum order quantity
 	OrderSizeMax string `json:"order_size_max,omitempty"`
+
 	// Maximum allowed deviation between order price and current mark price. The order price `order_price` must satisfy the following condition:      abs(order_price - mark_price) <= mark_price * order_price_deviate
 	OrderPriceDeviate string `json:"order_price_deviate,omitempty"`
+
 	// Trading fee discount for referred users
 	RefDiscountRate string `json:"ref_discount_rate,omitempty"`
+
 	// Commission rate for referrers
 	RefRebateRate string `json:"ref_rebate_rate,omitempty"`
+
 	// Orderbook update ID
 	OrderbookId int64 `json:"orderbook_id,omitempty"`
+
 	// Current trade ID
 	TradeId int64 `json:"trade_id,omitempty"`
+
 	// Historical cumulative trading volume
 	TradeSize string `json:"trade_size,omitempty"`
+
 	// Current total long position size
 	PositionSize string `json:"position_size,omitempty"`
+
 	// Last configuration update time
 	ConfigChangeTime float64 `json:"config_change_time,omitempty"`
+
 	// `in_delisting=true` and position_size>0 indicates the contract is in delisting transition period `in_delisting=true` and position_size=0 indicates the contract is delisted
 	InDelisting bool `json:"in_delisting,omitempty"`
+
 	// Maximum number of pending orders
 	OrdersLimit int32 `json:"orders_limit,omitempty"`
+
 	// Whether bonus is enabled
 	EnableBonus bool `json:"enable_bonus,omitempty"`
+
 	// Whether portfolio margin account is enabled
 	EnableCredit bool `json:"enable_credit,omitempty"`
+
 	// Created time of the contract
 	CreateTime float64 `json:"create_time,omitempty"`
+
 	// Deprecated
 	FundingCapRatio string `json:"funding_cap_ratio,omitempty"`
+
 	// Contract status types include: prelaunch (pre-launch), trading (active), delisting (delisting), delisted (delisted), circuit_breaker (circuit breaker)
 	Status string `json:"status,omitempty"`
+
 	// Contract expiry timestamp
 	LaunchTime int64 `json:"launch_time,omitempty"`
+
 	// Timestamp when contract enters reduce-only state
 	DelistingTime int64 `json:"delisting_time,omitempty"`
+
 	// Contract delisting time
 	DelistedTime int64 `json:"delisted_time,omitempty"`
+
 	// The maximum slippage allowed for market orders, with the slippage rate calculated based on the latest market price
 	MarketOrderSlipRatio string `json:"market_order_slip_ratio,omitempty"`
+
 	// The maximum number of contracts supported for market orders, with a default value of 0. When the default value is used, the maximum number of contracts is limited by the `order_size_max` field
 	MarketOrderSizeMax string `json:"market_order_size_max,omitempty"`
+
 	// Upper and lower limits of funding rate
 	FundingRateLimit string `json:"funding_rate_limit,omitempty"`
+
 	// Contract classification type, e.g. stocks, metals, indices, forex, commodities, etc.
 	ContractType string `json:"contract_type,omitempty"`
+
 	// Funding rate depth impact value
 	FundingImpactValue string `json:"funding_impact_value,omitempty"`
+
 	// Whether the newly launched contract activates mark price circuit breaker (If the platform intends to activate this mechanism for a newly launched contract market to prevent significant price fluctuations and excessive liquidations after launch, an advance announcement will be made).
 	EnableCircuitBreaker bool `json:"enable_circuit_breaker,omitempty"`
 }

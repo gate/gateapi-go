@@ -10,14 +10,19 @@
 package gateapi
 
 type AlphaTicker struct {
+
 	// Currency symbol
 	Currency string `json:"currency,omitempty"`
+
 	// Last trading price
 	Last string `json:"last,omitempty"`
+
 	// 24h price change percentage (negative for decrease, e.g., -7.45)
 	Change string `json:"change,omitempty"`
+
 	// 24h Trading Volume (USDT)
 	Volume string `json:"volume,omitempty"`
+
 	// Current Token Market Cap
 	MarketCap string `json:"market_cap,omitempty"`
 }

@@ -20,7 +20,7 @@ Method | HTTP request | Description
 
 ## AgencyTransactionHistory
 
-> []AgencyTransactionHistory AgencyTransactionHistory(ctx, optional)
+> AgencyTransactionHistory AgencyTransactionHistory(ctx, optional)
 
 Broker obtains transaction history of recommended users
 
@@ -86,7 +86,7 @@ func main() {
 
 ### Return type
 
-[**[]AgencyTransactionHistory**](AgencyTransactionHistory.md)
+[**AgencyTransactionHistory**](AgencyTransactionHistory.md)
 
 ### Authorization
 
@@ -103,7 +103,7 @@ func main() {
 
 ## AgencyCommissionsHistory
 
-> []AgencyCommissionHistory AgencyCommissionsHistory(ctx, optional)
+> AgencyCommissionHistory AgencyCommissionsHistory(ctx, optional)
 
 Broker obtains rebate history of recommended users
 
@@ -170,7 +170,7 @@ func main() {
 
 ### Return type
 
-[**[]AgencyCommissionHistory**](AgencyCommissionHistory.md)
+[**AgencyCommissionHistory**](AgencyCommissionHistory.md)
 
 ### Authorization
 
@@ -433,7 +433,7 @@ func main() {
 
 ## RebateBrokerCommissionHistory
 
-> []BrokerCommission RebateBrokerCommissionHistory(ctx, optional)
+> BrokerCommission RebateBrokerCommissionHistory(ctx, optional)
 
 Broker obtains user's rebate records
 
@@ -498,7 +498,7 @@ func main() {
 
 ### Return type
 
-[**[]BrokerCommission**](BrokerCommission.md)
+[**BrokerCommission**](BrokerCommission.md)
 
 ### Authorization
 
@@ -515,7 +515,7 @@ func main() {
 
 ## RebateBrokerTransactionHistory
 
-> []BrokerTransactionHistory RebateBrokerTransactionHistory(ctx, optional)
+> BrokerTransactionHistory RebateBrokerTransactionHistory(ctx, optional)
 
 Broker obtains user's trading history
 
@@ -580,7 +580,7 @@ func main() {
 
 ### Return type
 
-[**[]BrokerTransactionHistory**](BrokerTransactionHistory.md)
+[**BrokerTransactionHistory**](BrokerTransactionHistory.md)
 
 ### Authorization
 
@@ -597,7 +597,7 @@ func main() {
 
 ## RebateUserInfo
 
-> []RebateUserInfo RebateUserInfo(ctx, )
+> RebateUserInfo RebateUserInfo(ctx, )
 
 User obtains rebate information
 
@@ -644,7 +644,7 @@ func main() {
 
 ### Return type
 
-[**[]RebateUserInfo**](RebateUserInfo.md)
+[**RebateUserInfo**](RebateUserInfo.md)
 
 ### Authorization
 

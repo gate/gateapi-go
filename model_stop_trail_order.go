@@ -10,8 +10,10 @@
 package gateapi
 
 type StopTrailOrder struct {
+
 	// Order ID, if ID is specified, text is not needed
 	Id int64 `json:"id,omitempty"`
+
 	// Custom text, if ID is not specified, terminate based on user_id and text
 	Text string `json:"text,omitempty"`
 }

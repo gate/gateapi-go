@@ -10,8 +10,10 @@
 package gateapi
 
 type OtcOrderListFiatCurrencyInfo struct {
+
 	// Name
 	Name string `json:"name"`
+
 	// Image
 	Icon string `json:"icon"`
 }

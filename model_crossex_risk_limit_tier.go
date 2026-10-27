@@ -10,16 +10,22 @@
 package gateapi
 
 type CrossexRiskLimitTier struct {
+
 	// Minimum risk limit value
 	MinRiskLimitValue string `json:"min_risk_limit_value"`
+
 	// Maximum risk limit value
 	MaxRiskLimitValue string `json:"max_risk_limit_value"`
+
 	// Quick-calculation amount
 	QuickCalAmount string `json:"quick_cal_amount"`
+
 	// Maximum leverage
 	LeverageMax string `json:"leverage_max"`
+
 	// Maintenance margin rate
 	MaintenanceRate string `json:"maintenance_rate"`
+
 	// Tier
 	Tier string `json:"tier"`
 }

@@ -11,8 +11,10 @@ package gateapi
 
 // Leverage multiplier for borrowing currency
 type UnifiedLeverageSetting struct {
+
 	// Currency name
 	Currency string `json:"currency"`
+
 	// Multiplier
 	Leverage string `json:"leverage"`
 }

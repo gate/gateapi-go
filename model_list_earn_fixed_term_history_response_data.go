@@ -11,6 +11,7 @@ package gateapi
 
 type ListEarnFixedTermHistoryResponseData struct {
 	List []FixedTermHistoryRecord `json:"list,omitempty"`
+
 	// Total Records
 	Total int32 `json:"total,omitempty"`
 }

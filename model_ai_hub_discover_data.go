@@ -11,8 +11,10 @@ package gateapi
 
 // Strategy recommendation result data.
 type AiHubDiscoverData struct {
-	Scene           DiscoverScene         `json:"scene"`
+	Scene DiscoverScene `json:"scene"`
+
 	Recommendations []AiHubRecommendation `json:"recommendations"`
+
 	// Filter conditions not supported in this issue
 	UnsupportedFilters []string `json:"unsupported_filters"`
 }

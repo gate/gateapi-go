@@ -11,66 +11,97 @@ package gateapi
 
 // Place ad order request
 type PlaceBizPushOrder struct {
+
 	// Cryptocurrency symbol.
 	CurrencyType string `json:"currencyType"`
+
 	// Fiat currency
 	ExchangeType string `json:"exchangeType"`
+
 	// Ad operation type. `0`: publish sell ad; `1`: publish buy ad; `2`: edit sell ad; `3`: edit buy ad.
 	Type string `json:"type"`
+
 	// Per-unit price in fixed-price mode.
 	UnitPrice string `json:"unitPrice"`
+
 	// Ad amount priced in `currencyType`.
 	Number string `json:"number"`
+
 	// Payment types enabled for the ad, comma-separated; values can be obtained from `pay_type` in the payment method list, e.g. `bank`, `alipay`, `wechat`, `paypal`, `swift`, `wu`. `pay_type_json` uses the types in this field as keys to specify the corresponding payment accounts.
 	PayType string `json:"payType"`
+
 	// JSON string of specific payment accounts corresponding to `payType`. Each key is a payment type listed in `payType`, and each value is the current user's payment method ID for that type. For example, when `payType` is `bank,swift`, this field can be {\"bank\":\"10001\",\"swift\":\"10002\"}.
 	PayTypeJson string `json:"pay_type_json,omitempty"`
+
 	// Price type: `0` floating; `1` fixed.
 	RateFixed string `json:"rateFixed,omitempty"`
+
 	// Pass ad ID when editing; omit or empty when publishing a new ad.
 	Oid string `json:"oid,omitempty"`
+
 	// Minimum quantity per order, denominated by currencyType; required when limitBasis is not passed or is 0
 	MinAmount string `json:"minAmount,omitempty"`
+
 	// Maximum quantity per order, denominated by currencyType; required when limitBasis is not passed or is 0
 	MaxAmount string `json:"maxAmount,omitempty"`
+
 	// Trading limit unit. 0: by crypto quantity, 1: by fiat amount; defaults to 0 when not passed for a new ad. The limit unit of an existing ad cannot be changed when editing; a fiat-limit ad must keep passing 1 when edited
 	LimitBasis int32 `json:"limitBasis,omitempty"`
+
 	// Minimum amount per order, denominated by exchangeType; required when limitBasis is 1
 	FiatMinAmount string `json:"fiatMinAmount,omitempty"`
+
 	// Maximum amount per order, denominated by exchangeType; required when limitBasis is 1, and must not exceed the total fiat value of the ad quantity converted at the price
 	FiatMaxAmount string `json:"fiatMaxAmount,omitempty"`
+
 	// Minimum counterparty VIP level; `0` means no requirement.
 	TierLimit string `json:"tierLimit,omitempty"`
+
 	// Minimum counterparty verification level; `0` means no limit.
 	VerifiedLimit string `json:"verifiedLimit,omitempty"`
+
 	// Minimum counterparty account age in days; `0` means no limit.
 	RegTimeLimit string `json:"regTimeLimit,omitempty"`
+
 	// Whether trading with the advertiser is restricted. `0`: no; `1`: yes.
 	AdvertisersLimit string `json:"advertisersLimit,omitempty"`
+
 	// Whether to restrict trading with Polymarket users. 0: no restriction, 1: restricted
 	PolymarketLimit int32 `json:"polymarket_limit,omitempty"`
+
 	// Payment timeout in minutes.
 	ExpireMin string `json:"expire_min,omitempty"`
+
 	// Advertisement trade terms displayed to ordering users; goes through off-platform traffic diversion risk control on submission, and when hit, the advertisement is not saved and code 70305102 is returned
 	TradeTips string `json:"trade_tips,omitempty"`
+
 	// Auto reply content after order creation; goes through off-platform traffic diversion risk control on submission, and when hit, the advertisement is not saved and code 70305102 is returned
 	AutoReply string `json:"auto_reply,omitempty"`
+
 	// Minimum completed orders for counterparty; `-1` unlimited.
 	MinCompletedLimit string `json:"min_completed_limit,omitempty"`
+
 	// Maximum completed orders for counterparty; `-1` unlimited.
 	MaxCompletedLimit string `json:"max_completed_limit,omitempty"`
+
 	// Counterparty minimum 30-day completion rate; `-1` means no limit.
 	CompletedRateLimit string `json:"completed_rate_limit,omitempty"`
+
 	// KYC nationality restriction; `-1` means no restriction.
 	UserCountryLimit string `json:"user_country_limit,omitempty"`
+
 	// Maximum concurrent orders allowed for the counterparty. `-1`: unlimited.
 	UserOrderLimit string `json:"user_order_limit,omitempty"`
+
 	// Floating price reference. `1`: platform reference; `2`: Gate reference; `3`: spot reference.
 	RateReferenceId string `json:"rateReferenceId,omitempty"`
+
 	// Absolute floating offset ratio, e.g. `0.5` means 0.5%.
 	RateOffset string `json:"rateOffset,omitempty"`
+
 	// Floating direction: `0` markup; `1` markdown.
 	FloatTrend string `json:"float_trend,omitempty"`
+
 	// Team payee UID; optional for non-team merchants.
 	TeamPaymentUid string `json:"team_payment_uid,omitempty"`
 }

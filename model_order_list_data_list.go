@@ -11,30 +11,43 @@ package gateapi
 
 // Order detail
 type OrderListDataList struct {
+
 	// Order ID
 	OrderId int64 `json:"order_id,omitempty"`
+
 	// Currency pair
 	Symbol string `json:"symbol,omitempty"`
+
 	// Symbol description
 	SymbolDesc string `json:"symbol_desc,omitempty"`
+
 	// Trade type (market=market price, trigger=trigger price)
 	PriceType string `json:"price_type,omitempty"`
+
 	// Order status code
 	State int32 `json:"state,omitempty"`
+
 	// Order status description
 	StateDesc string `json:"state_desc,omitempty"`
+
 	// Is completed (0=shown in active order list, 1=not shown in active list)
 	Finished int32 `json:"finished,omitempty"`
+
 	// Side (1=sell, 2=buy)
 	Side int32 `json:"side,omitempty"`
+
 	// Order quantity
 	Volume string `json:"volume,omitempty"`
+
 	// Trigger price
 	Price string `json:"price,omitempty"`
+
 	// Take profit price
 	PriceTp string `json:"price_tp,omitempty"`
+
 	// Stop loss price
 	PriceSl string `json:"price_sl,omitempty"`
+
 	// Order time (Unix timestamp in seconds)
 	TimeSetup int64 `json:"time_setup,omitempty"`
 }

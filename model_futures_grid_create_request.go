@@ -11,7 +11,9 @@ package gateapi
 
 // Create the request body of the contract grid strategy.
 type FuturesGridCreateRequest struct {
-	StrategyType string                  `json:"strategy_type"`
-	Market       string                  `json:"market"`
+	StrategyType string `json:"strategy_type"`
+
+	Market string `json:"market"`
+
 	CreateParams FuturesGridCreateParams `json:"create_params"`
 }

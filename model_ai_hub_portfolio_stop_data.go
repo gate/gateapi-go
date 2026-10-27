@@ -11,9 +11,12 @@ package gateapi
 
 // The result information returned after the termination strategy is successful.
 type AiHubPortfolioStopData struct {
-	StrategyId   string       `json:"strategy_id"`
+	StrategyId string `json:"strategy_id"`
+
 	StrategyType StrategyType `json:"strategy_type"`
+
 	// The current implementation returns `stopping`
-	Status        string `json:"status"`
+	Status string `json:"status"`
+
 	ResultMessage string `json:"result_message"`
 }

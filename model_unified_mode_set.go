@@ -10,7 +10,9 @@
 package gateapi
 
 type UnifiedModeSet struct {
+
 	// Unified account mode:  - `classic`: Classic account mode - `multi_currency`: Cross-currency margin mode - `portfolio`: Portfolio margin mode - `single_currency`: Single-currency margin mode
-	Mode     string          `json:"mode"`
+	Mode string `json:"mode"`
+
 	Settings UnifiedSettings `json:"settings,omitempty"`
 }

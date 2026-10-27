@@ -10,12 +10,16 @@
 package gateapi
 
 type FlashSwapMultiCurrencyPreviewParam struct {
+
 	// Currency to sell
 	SellAsset string `json:"sell_asset"`
+
 	// Sell amount
 	SellAmount string `json:"sell_amount,omitempty"`
+
 	// Currency to buy
 	BuyAsset string `json:"buy_asset"`
+
 	// Buy amount
 	BuyAmount string `json:"buy_amount,omitempty"`
 }

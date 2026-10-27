@@ -10,8 +10,10 @@
 package gateapi
 
 type OrderBookPrice struct {
+
 	// Price
 	P string `json:"p,omitempty"`
+
 	// Whether it is the user's own order
 	UserOrder bool `json:"user_order,omitempty"`
 }

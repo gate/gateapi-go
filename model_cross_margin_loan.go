@@ -10,24 +10,34 @@
 package gateapi
 
 type CrossMarginLoan struct {
+
 	// Loan record ID
 	Id string `json:"id,omitempty"`
+
 	// Creation timestamp, in milliseconds
 	CreateTime int64 `json:"create_time,omitempty"`
+
 	// Update timestamp, in milliseconds
 	UpdateTime int64 `json:"update_time,omitempty"`
+
 	// Currency name
 	Currency string `json:"currency"`
+
 	// Borrowed amount
 	Amount string `json:"amount"`
+
 	// User defined custom ID
 	Text string `json:"text,omitempty"`
+
 	// Deprecated. Currently, all statuses have been set to 2.  Borrow loan status, which includes:  - 1: failed to borrow - 2: borrowed but not repaid - 3: repayment complete
 	Status int32 `json:"status,omitempty"`
+
 	// Repaid amount
 	Repaid string `json:"repaid,omitempty"`
+
 	// Repaid interest
 	RepaidInterest string `json:"repaid_interest,omitempty"`
+
 	// Unpaid interest
 	UnpaidInterest string `json:"unpaid_interest,omitempty"`
 }

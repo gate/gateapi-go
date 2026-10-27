@@ -11,10 +11,13 @@ package gateapi
 
 // Close position request parameters
 type TradFiSpotClosePositionRequest struct {
+
 	// Symbol
 	Symbol string `json:"symbol"`
+
 	// Close quantity; required for partial close
 	CloseVolume string `json:"close_volume,omitempty"`
+
 	// Close type (1=partial close, 2=close all)
 	CloseType int32 `json:"close_type"`
 }

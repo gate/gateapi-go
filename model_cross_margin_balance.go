@@ -10,12 +10,16 @@
 package gateapi
 
 type CrossMarginBalance struct {
+
 	// Available balance
 	Available string `json:"available,omitempty"`
+
 	// Locked balance
 	Freeze string `json:"freeze,omitempty"`
+
 	// Borrowed balance
 	Borrowed string `json:"borrowed,omitempty"`
+
 	// Unpaid interest
 	Interest string `json:"interest,omitempty"`
 }

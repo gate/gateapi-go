@@ -10,8 +10,10 @@
 package gateapi
 
 type GetUserIdentityError struct {
+
 	// Error identifier code
 	Label string `json:"label,omitempty"`
+
 	// Error details
 	Message string `json:"message,omitempty"`
 }

@@ -11,14 +11,19 @@ package gateapi
 
 // Streamer information
 type ListLiveReplayResponseDataLiveHost struct {
+
 	// Streamer ID
 	Id string `json:"id,omitempty"`
+
 	// Streamer nickname
 	Name string `json:"name,omitempty"`
+
 	// Streamer avatar URL
 	Avatar string `json:"avatar,omitempty"`
+
 	// Follower count
 	Fans int32 `json:"fans,omitempty"`
+
 	// Streamer level
 	Tier int32 `json:"tier,omitempty"`
 }

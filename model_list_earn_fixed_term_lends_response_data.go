@@ -11,8 +11,10 @@ package gateapi
 
 // Subscription order list data
 type ListEarnFixedTermLendsResponseData struct {
+
 	// Subscription order list
 	List []FixedTermLendOrder `json:"list"`
+
 	// Total Records
 	Total int32 `json:"total"`
 }

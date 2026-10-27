@@ -11,10 +11,13 @@ package gateapi
 
 // Request body for stopping a chase order
 type StopChaseOrderReq struct {
+
 	// Order ID. Either id or text must be provided
 	Id string `json:"id,omitempty"`
+
 	// Custom text. Required only when id is 0 or omitted
 	Text string `json:"text,omitempty"`
+
 	// Overridden by the path parameter
 	Settle string `json:"settle,omitempty"`
 }

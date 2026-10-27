@@ -11,18 +11,25 @@ package gateapi
 
 // Multi-Collateral adjustment record
 type MultiCollateralRecord struct {
+
 	// Order ID
 	OrderId int64 `json:"order_id,omitempty"`
+
 	// Collateral record ID
 	RecordId int64 `json:"record_id,omitempty"`
+
 	// Collateral ratio before adjustment
 	BeforeLtv string `json:"before_ltv,omitempty"`
+
 	// Collateral ratio before adjustment
 	AfterLtv string `json:"after_ltv,omitempty"`
+
 	// Operation time, timestamp in seconds
 	OperateTime int64 `json:"operate_time,omitempty"`
+
 	// Borrowing Currency List
 	BorrowCurrencies []MultiCollateralRecordCurrency `json:"borrow_currencies,omitempty"`
+
 	// Collateral Currency List
 	CollateralCurrencies []MultiCollateralRecordCurrency `json:"collateral_currencies,omitempty"`
 }

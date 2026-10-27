@@ -11,11 +11,15 @@ package gateapi
 
 // Pre-upload credentials and S3 direct-upload parameters
 type OtcUploadPreUploadData struct {
+
 	// Base64 temporary object path; pass back **unchanged** on business submit—do not decode
 	FileKey string `json:"file_key"`
+
 	// S3 direct upload URL
-	Url    string                         `json:"url"`
+	Url string `json:"url"`
+
 	Fields OtcUploadPreUploadPolicyFields `json:"fields"`
+
 	// Policy validity period in seconds; currently 5400 (90 minutes); aligns with `expiration` in `fields.Policy`; call this endpoint again after expiry
 	ExpiresIn int32 `json:"expires_in"`
 }

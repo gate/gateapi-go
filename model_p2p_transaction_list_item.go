@@ -10,51 +10,75 @@
 package gateapi
 
 type P2pTransactionListItem struct {
+
 	// Order side from current user's view. `1`: buy; `0`: sell.
 	TypeBuy int32 `json:"type_buy,omitempty"`
+
 	// Creation time of order
 	Timest string `json:"timest,omitempty"`
+
 	// Order expiration time
 	TimestExpire string `json:"timest_expire,omitempty"`
+
 	// Order creation timestamp
 	Timestamp int32 `json:"timestamp,omitempty"`
+
 	// Order price in fiat currency.
 	Rate string `json:"rate,omitempty"`
+
 	// Order size in cryptocurrency.
 	Amount string `json:"amount,omitempty"`
+
 	// Total fiat amount of the order.
 	Total string `json:"total,omitempty"`
+
 	// Order ID
 	Txid int32 `json:"txid,omitempty"`
+
 	// Display status: `unpay` awaiting payment; `paid` buyer paid; `unconfirmed` awaiting seller confirmation; `locked` locked; `finished` completed; `cancel` canceled; `expired` expired; `bclosed` arbitration filled; `sclosed` arbitration canceled.
 	Status string `json:"status,omitempty"`
+
 	// Counterparty real name or verified display name.
 	ItsRealname string `json:"its_realname,omitempty"`
+
 	// Counterparty crypto UID.
 	ItsUid string `json:"its_uid,omitempty"`
+
 	// Counterparty nickname
 	ItsNick string `json:"its_nick,omitempty"`
+
 	// Seller real name or verified display name.
 	SellerRealname string `json:"seller_realname,omitempty"`
+
 	// Buyer real name or verified display name.
 	BuyerRealname string `json:"buyer_realname,omitempty"`
+
 	// Whether the order can be canceled. `1`: yes; `0`: no.
 	Cancelable int32 `json:"cancelable,omitempty"`
+
 	// Cryptocurrency symbol.
 	CurrencyType string `json:"currency_type,omitempty"`
+
 	// Fiat currency
 	WantType string `json:"want_type,omitempty"`
+
 	// Whether payment methods are hidden. `1`: hidden; `0`: visible.
 	HidePayment int32 `json:"hide_payment,omitempty"`
+
 	// Selected payment type for this order, e.g. `bank`, `alipay`, `wechat`, `paypal`, `swift`, `wu`.
 	SelPaytype string `json:"sel_paytype,omitempty"`
+
 	// Other payment method details; may appear on historical orders.
 	PayOthers []P2pTransactionListResultPayOthers `json:"pay_others,omitempty"`
+
 	// Countdown seconds for the current order.
 	CdTime int32 `json:"cd_time,omitempty"`
+
 	// Order type: `1` standard; `2` partner; `3` flash swap; `4` Web3.
 	OrderType int32 `json:"order_type,omitempty"`
+
 	// Order tags
-	OrderTag    []string                  `json:"order_tag,omitempty"`
+	OrderTag []string `json:"order_tag,omitempty"`
+
 	ConvertInfo P2pTransactionConvertInfo `json:"convert_info,omitempty"`
 }

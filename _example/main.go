@@ -13,8 +13,17 @@ import (
 
 var logger = log.New(flag.CommandLine.Output(), "", log.LstdFlags)
 
-// run owns the public SDK client and deadlines; demos reuse its transport and authentication.
+// run preserves the public/filtered CLI and delegates authentication to the generated variant.
 func run(config *RunConfig, demos []string) error {
+	ctx, err := demoAuthentication(context.Background(), config)
+	if err != nil {
+		return err
+	}
+	return runWithContext(ctx, config, demos)
+}
+
+// runWithContext lets trusted internal callers supply identity without inventing a new CLI option.
+func runWithContext(parent context.Context, config *RunConfig, demos []string) error {
 	for _, demo := range demos {
 		if demo != "spot" && demo != "margin" && demo != "futures" {
 			return fmt.Errorf("unknown demo %q: use spot, margin or futures", demo)
@@ -25,10 +34,8 @@ func run(config *RunConfig, demos []string) error {
 	cfg.HTTPClient = &http.Client{Timeout: 10 * time.Second}
 	defer cfg.HTTPClient.CloseIdleConnections()
 	client := gateapi.NewAPIClient(cfg)
-	ctx, cancel := context.WithTimeout(context.Background(), time.Minute)
+	ctx, cancel := context.WithTimeout(parent, time.Minute)
 	defer cancel()
-	// Public request signing is driven by the SDK context, not its legacy Key/Secret fields.
-	ctx = context.WithValue(ctx, gateapi.ContextGateAPIV4, gateapi.GateAPIV4{Key: config.ApiKey, Secret: config.ApiSecret})
 	for _, demo := range demos {
 		var err error
 		switch demo {

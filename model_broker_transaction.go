@@ -10,23 +10,33 @@
 package gateapi
 
 type BrokerTransaction struct {
+
 	// Transaction Time. (unix timestamp)
 	TransactionTime int64 `json:"transaction_time,omitempty"`
+
 	// User ID
 	UserId int64 `json:"user_id,omitempty"`
+
 	// Group name
 	GroupName string `json:"group_name,omitempty"`
+
 	// Fee amount (USDT)
 	Fee string `json:"fee,omitempty"`
+
 	// Currency pair
 	CurrencyPair string `json:"currency_pair,omitempty"`
+
 	// Transaction amount
 	Amount string `json:"amount,omitempty"`
+
 	// Fee currency
 	FeeAsset string `json:"fee_asset,omitempty"`
+
 	// Commission transaction type: Spot, Futures, Options, Alpha、TradFi
-	Source        string                        `json:"source,omitempty"`
+	Source string `json:"source,omitempty"`
+
 	SubBrokerInfo BrokerCommissionSubBrokerInfo `json:"sub_broker_info,omitempty"`
+
 	// Alpha contract address
 	AlphaContractAddr string `json:"alpha_contract_addr,omitempty"`
 }

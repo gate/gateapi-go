@@ -10,12 +10,16 @@
 package gateapi
 
 type TradFiSpotError struct {
+
 	// Business error label
 	Label string `json:"label,omitempty"`
+
 	// Error message
 	Message string `json:"message,omitempty"`
+
 	// Error additional data
 	Data *map[string]interface{} `json:"data,omitempty"`
+
 	// Server timestamp (milliseconds)
 	Timestamp int64 `json:"timestamp,omitempty"`
 }

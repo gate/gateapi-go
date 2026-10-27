@@ -11,8 +11,10 @@ package gateapi
 
 // Borrowing and collateral currencies supported for Multi-Collateral
 type MultiCollateralCurrency struct {
+
 	// List of supported borrowing currencies
 	LoanCurrencies []MultiLoanItem `json:"loan_currencies,omitempty"`
+
 	// List of supported collateral currencies
 	CollateralCurrencies []MultiCollateralItem `json:"collateral_currencies,omitempty"`
 }

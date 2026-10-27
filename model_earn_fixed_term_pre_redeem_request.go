@@ -10,6 +10,7 @@
 package gateapi
 
 type EarnFixedTermPreRedeemRequest struct {
+
 	// Order ID
 	OrderId string `json:"order_id"`
 }

@@ -11,6 +11,7 @@ package gateapi
 
 // Response data
 type ContractDetailData struct {
+
 	// Contract Details List
 	List []ContractDetailDataList `json:"list,omitempty"`
 }

@@ -10,38 +10,55 @@
 package gateapi
 
 type Symbol struct {
+
 	// Unique trading pair identifier in the format ExchangeType_BusinessType_Base_Counter. Stocks and ETFs use the market as ExchangeType (US/HK/KR/JP) and STOCK or ETF as the business type, for example US_STOCK_AAPL_USDT, HK_STOCK_00700_USDT, or US_ETF_SPY_USDT.
 	Symbol string `json:"symbol"`
+
 	// Exchange type (BINANCE / OKX / GATE / BYBIT / KRAKEN / HYPERLIQUID / DERIBIT / LIGHTER). Stocks and ETFs return the listing market (US / HK / KR / JP)
 	ExchangeType string `json:"exchange_type"`
+
 	// Business type (SPOT: spot / FUTURE: futures / MARGIN: margin / STOCK: stocks / ETF: exchange-traded funds)
 	BusinessType string `json:"business_type"`
+
 	// Status (`live` running / `suspend` paused).
 	State string `json:"state"`
+
 	// Minimum order quantity
 	MinSize string `json:"min_size"`
+
 	// Minimum Order Value
 	MinNotional string `json:"min_notional"`
+
 	// Quantity Step
 	LotSize string `json:"lot_size"`
+
 	// Price Step
 	TickSize string `json:"tick_size"`
+
 	// maximumopen orderamount
 	MaxNumOrders string `json:"max_num_orders"`
+
 	// Maximum Market Order Quantity
 	MaxMarketSize string `json:"max_market_size"`
+
 	// Maximum order quantity for limit orders.
 	MaxLimitSize string `json:"max_limit_size"`
+
 	// Contract multiplier (deprecated; quantity is used uniformly)
 	ContractSize string `json:"contract_size"`
+
 	// Liquidation Fee Rate
 	LiquidationFee string `json:"liquidation_fee"`
+
 	// Millisecond timestamp; `0` means not delisted.
 	DelistTime string `json:"delist_time"`
+
 	// Whether RPI order placement is supported (true if supported; false otherwise)
 	SupportRpi string `json:"support_rpi,omitempty"`
+
 	// Whether cross-margin order placement is supported (true if supported; false otherwise)
 	SupportCross string `json:"support_cross,omitempty"`
+
 	// Tag information. Hyperliquid returns DEX information, stocks and ETFs return the security description, and other businesses return an empty string
 	Tag string `json:"tag"`
 }

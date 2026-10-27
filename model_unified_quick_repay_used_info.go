@@ -11,8 +11,10 @@ package gateapi
 
 // Repayment details
 type UnifiedQuickRepayUsedInfo struct {
+
 	// Currency name
 	Currency string `json:"currency"`
+
 	// Amount converted
 	Used string `json:"used"`
 }

@@ -11,18 +11,25 @@ package gateapi
 
 // Interest Deduction Record
 type UniLoanInterestRecord struct {
+
 	// Currency name
 	Currency string `json:"currency,omitempty"`
+
 	// Currency pair
 	CurrencyPair string `json:"currency_pair,omitempty"`
+
 	// Actual Rate
 	ActualRate string `json:"actual_rate,omitempty"`
+
 	// Interest
 	Interest string `json:"interest,omitempty"`
+
 	// Status: 0 - fail, 1 - success
 	Status int32 `json:"status,omitempty"`
+
 	// Loan Type margin: margin borrowing
 	Type string `json:"type,omitempty"`
+
 	// Created time
 	CreateTime int64 `json:"create_time,omitempty"`
 }

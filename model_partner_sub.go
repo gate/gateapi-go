@@ -10,10 +10,13 @@
 package gateapi
 
 type PartnerSub struct {
+
 	// User ID
 	UserId int64 `json:"user_id,omitempty"`
+
 	// Time when user joined the system, Unix timestamp in seconds
 	UserJoinTime int64 `json:"user_join_time,omitempty"`
+
 	// Type (1-Sub-agent 2-Indirect direct customer 3-Direct direct customer)
 	Type int64 `json:"type,omitempty"`
 }

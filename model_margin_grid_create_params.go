@@ -11,16 +11,27 @@ package gateapi
 
 // Creation parameters for the Leverage Grid strategy.
 type MarginGridCreateParams struct {
-	Money              string           `json:"money"`
-	LowPrice           string           `json:"low_price"`
-	HighPrice          string           `json:"high_price"`
-	GridNum            int32            `json:"grid_num"`
-	PriceType          int32            `json:"price_type"`
-	Leverage           string           `json:"leverage"`
-	Direction          FuturesDirection `json:"direction,omitempty"`
-	TriggerPrice       string           `json:"trigger_price,omitempty"`
-	StopProfit         string           `json:"stop_profit,omitempty"`
-	StopLoss           string           `json:"stop_loss,omitempty"`
-	ProfitSharingRatio string           `json:"profit_sharing_ratio,omitempty"`
-	IsUseBase          bool             `json:"is_use_base,omitempty"`
+	Money string `json:"money"`
+
+	LowPrice string `json:"low_price"`
+
+	HighPrice string `json:"high_price"`
+
+	GridNum int32 `json:"grid_num"`
+
+	PriceType int32 `json:"price_type"`
+
+	Leverage string `json:"leverage"`
+
+	Direction FuturesDirection `json:"direction,omitempty"`
+
+	TriggerPrice string `json:"trigger_price,omitempty"`
+
+	StopProfit string `json:"stop_profit,omitempty"`
+
+	StopLoss string `json:"stop_loss,omitempty"`
+
+	ProfitSharingRatio string `json:"profit_sharing_ratio,omitempty"`
+
+	IsUseBase bool `json:"is_use_base,omitempty"`
 }

@@ -10,10 +10,13 @@
 package gateapi
 
 type ErrCodeMsg struct {
+
 	// Error code
 	Code int32 `json:"code"`
+
 	// Error message
 	Message string `json:"message"`
+
 	// Additional information
 	Extra map[string]interface{} `json:"extra"`
 }

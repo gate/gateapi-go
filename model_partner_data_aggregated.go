@@ -10,20 +10,28 @@
 package gateapi
 
 type PartnerDataAggregated struct {
+
 	// Rebate amount as a string for precision. Up to 6 decimal places; trailing zeros removed.
 	RebateAmount string `json:"rebate_amount"`
+
 	// Trading volume as a string for precision. Up to 6 decimal places; trailing zeros removed.
 	TradeVolume string `json:"trade_volume"`
+
 	// Net fee as a string for precision. Up to 6 decimal places; trailing zeros removed.
 	NetFee string `json:"net_fee"`
+
 	// Customer count (invited users)
 	CustomerCount int32 `json:"customer_count"`
+
 	// Transaction participant count (string format, consistent with online JSON serialization) only returns a specific value when business_type=0(all), and returns nullfor other business types.
 	TradingUserCount *string `json:"trading_user_count"`
+
 	// Time range description
 	TimeRangeDesc string `json:"time_range_desc"`
+
 	// Business Type
 	BusinessType int32 `json:"business_type"`
+
 	// Business type description; allowed values: All, Spot, Futures, Alpha, Web3, Perps (DEX), Exchange All, Web3 All, TradFi
 	BusinessTypeDesc string `json:"business_type_desc"`
 }

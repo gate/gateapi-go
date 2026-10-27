@@ -10,8 +10,10 @@
 package gateapi
 
 type FuturesPositionCrossMode struct {
+
 	// Cross/isolated margin mode. ISOLATED - isolated margin, CROSS - cross margin
 	Mode string `json:"mode"`
+
 	// Futures market
 	Contract string `json:"contract"`
 }

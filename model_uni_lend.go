@@ -11,24 +11,34 @@ package gateapi
 
 // Loan record
 type UniLend struct {
+
 	// Currency
 	Currency string `json:"currency,omitempty"`
+
 	// Current amount
 	CurrentAmount string `json:"current_amount,omitempty"`
+
 	// Total Lending Amount
 	Amount string `json:"amount,omitempty"`
+
 	// Lent Amount
 	LentAmount string `json:"lent_amount,omitempty"`
+
 	// Pending Redemption Amount
 	FrozenAmount string `json:"frozen_amount,omitempty"`
+
 	// Minimum interest rate
 	MinRate string `json:"min_rate,omitempty"`
+
 	// Interest status: interest_dividend - Normal dividend, interest_reinvest - Interest reinvestment
 	InterestStatus string `json:"interest_status,omitempty"`
+
 	// Non-reinvested Amount
 	ReinvestLeftAmount string `json:"reinvest_left_amount,omitempty"`
+
 	// Lending Order Creation Time
 	CreateTime int64 `json:"create_time,omitempty"`
+
 	// Lending Order Last Update Time
 	UpdateTime int64 `json:"update_time,omitempty"`
 }

@@ -10,11 +10,15 @@
 package gateapi
 
 type OtcUploadPreUploadResponse struct {
+
 	// 0 success; 10010400 parameter error
 	Code int32 `json:"code"`
+
 	// Response message
-	Message string                 `json:"message"`
-	Data    OtcUploadPreUploadData `json:"data"`
+	Message string `json:"message"`
+
+	Data OtcUploadPreUploadData `json:"data"`
+
 	// Response timestamp (in seconds)
 	Timestamp int32 `json:"timestamp"`
 }

@@ -10,8 +10,10 @@
 package gateapi
 
 type InsuranceRecord struct {
+
 	// Unix timestamp in seconds
 	T int64 `json:"t,omitempty"`
+
 	// Insurance balance
 	B string `json:"b,omitempty"`
 }

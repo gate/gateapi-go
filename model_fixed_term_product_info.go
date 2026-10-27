@@ -11,14 +11,19 @@ package gateapi
 
 // Product configuration
 type FixedTermProductInfo struct {
+
 	// Whether early redemption is supported: 0 for not supported, 1 for supported
 	PreRedeem int32 `json:"pre_redeem"`
+
 	// Whether auto-renewal is supported: 0 for not supported, 1 for supported
 	Reinvest int32 `json:"reinvest"`
+
 	// Redemption payout account type
 	RedeemAccount int32 `json:"redeem_account"`
+
 	// Minimum VIP level requirement, 0 means no restriction
 	MinVip int32 `json:"min_vip"`
+
 	// Maximum VIP level requirement, 0 means no restriction
 	MaxVip int32 `json:"max_vip"`
 }

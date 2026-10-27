@@ -10,29 +10,42 @@
 package gateapi
 
 type P2pChatMessage struct {
+
 	// Whether the current user is the seller. `1`: yes; `0`: no.
 	IsSell int32 `json:"is_sell,omitempty"`
+
 	// Message type: `0` text; `1` file; `2` template; `3` order-share; `4` payment-share; `5` status update.
 	MsgType int32 `json:"msg_type,omitempty"`
+
 	// Message content; for file messages, usually URL or file key.
 	Msg string `json:"msg,omitempty"`
+
 	// Message sender username
 	Username string `json:"username,omitempty"`
+
 	// Message timestamp
-	Timest int32                 `json:"timest,omitempty"`
+	Timest int32 `json:"timest,omitempty"`
+
 	MsgObj P2pChatMessagePayload `json:"msg_obj,omitempty"`
+
 	// Sender's crypto UID; system messages may use `System` or an empty string.
 	Uid string `json:"uid,omitempty"`
+
 	// Display type: `1` file message; `2` system message.
 	Type int32 `json:"type,omitempty"`
+
 	// File link
 	Pic string `json:"pic,omitempty"`
+
 	// File key
 	FileKey string `json:"file_key,omitempty"`
+
 	// File type: `image` for images, `video` for videos.
 	FileType string `json:"file_type,omitempty"`
+
 	// Risk control display type. 1: off-platform traffic diversion risk; returned when a text message hits risk control
 	RiskType int32 `json:"risk_type,omitempty"`
+
 	// Risk control prompt message; returned only when risk_type=1
 	ToastMsg string `json:"toast_msg,omitempty"`
 }

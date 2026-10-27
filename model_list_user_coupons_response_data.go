@@ -11,8 +11,10 @@ package gateapi
 
 // Returned when code=0; empty object {} otherwise
 type ListUserCouponsResponseData struct {
+
 	// Whether there is a next page. `true` means more data is available. Pass the `id` of the last record as `last_id` and `expire_time_order_by` as `expire_time` in the next request
 	NextPage bool `json:"next_page,omitempty"`
+
 	// Coupon object array, see field details below
 	List []ListUserCouponsResponseDataList `json:"list,omitempty"`
 }

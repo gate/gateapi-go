@@ -11,8 +11,10 @@ package gateapi
 
 // Order status details
 type OrderHistoryListItemStatusDetail struct {
+
 	// Status title
 	Title string `json:"title,omitempty"`
+
 	// Status message
 	Message string `json:"message,omitempty"`
 }

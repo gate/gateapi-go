@@ -10,6 +10,7 @@
 package gateapi
 
 type SystemTime struct {
+
 	// Server current time(ms)
 	ServerTime int64 `json:"server_time,omitempty"`
 }

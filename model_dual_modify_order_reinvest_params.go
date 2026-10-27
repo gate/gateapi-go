@@ -11,10 +11,13 @@ package gateapi
 
 // Dual-currency order reinvest modification request
 type DualModifyOrderReinvestParams struct {
+
 	// Order ID
 	OrderId int64 `json:"order_id,omitempty"`
+
 	// `0` — off; `1` — on
 	Status int32 `json:"status,omitempty"`
+
 	// Effective duration in seconds; default 1 day (86400)
 	EffectiveTimeDuration int64 `json:"effective_time_duration,omitempty"`
 }

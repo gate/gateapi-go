@@ -11,13 +11,18 @@ package gateapi
 
 // PlanExecutionRecordPaginatedResponse
 type AutoInvestPlanRecordsResp struct {
+
 	// page number
 	Page int64 `json:"page"`
+
 	// Items per page
 	PageSize int64 `json:"page_size"`
+
 	// TotalPage number
 	TotalPage int64 `json:"total_page"`
+
 	// Total entries
-	Total int64                      `json:"total"`
-	List  []AutoInvestPlanRecordItem `json:"list"`
+	Total int64 `json:"total"`
+
+	List []AutoInvestPlanRecordItem `json:"list"`
 }

@@ -10,60 +10,88 @@
 package gateapi
 
 type CrossexOrder struct {
+
 	// User ID
 	UserId string `json:"user_id"`
+
 	// Order ID
 	OrderId string `json:"order_id"`
+
 	// Client-defined order ID.
 	Text string `json:"text"`
+
 	// Order status: `NEW`: validated locally, pending submission to the exchange `OPEN`: resting on the exchange order book `PARTIALLY_FILLED`: partially filled `FILLED`: fully filled `FAIL`: CrossEx validation failed; see `reason` `REJECT`: rejected by the exchange; see `reason` `CANCELLED`: cancelled
 	State string `json:"state"`
+
 	// Unique trading pair identifiers, e.g. `BINANCE_SPOT_BTC_USDT`, `BINANCE_FUTURE_BTC_USDT`.
 	Symbol string `json:"symbol"`
+
 	// Side (`BUY` buy / `SELL` sell).
 	Side string `json:"side"`
+
 	// Order type (`LIMIT` limit / `MARKET` market).
 	Type string `json:"type"`
+
 	// Order attributes (`COMMON` normal / `LIQ` liquidation takeover / `REDUCE` liquidation reduction / `ADL` auto-deleverage / `SETTLEMENT` delisting settlement).
 	Attribute string `json:"attribute"`
+
 	// Exchange type (BINANCE / OKX / GATE / BYBIT / KRAKEN / HYPERLIQUID / DERIBIT / LIGHTER). Stocks and ETFs return the listing market (US / HK / KR / JP)
 	ExchangeType string `json:"exchange_type"`
+
 	// Business type (SPOT: spot / FUTURE: futures / MARGIN: margin / CONVERT: flash swap / STOCK: stocks / ETF: exchange-traded funds)
 	BusinessType string `json:"business_type"`
+
 	// Order quantity in the base currency.
 	Qty string `json:"qty"`
+
 	// Order quantity in the quote currency.
 	QuoteQty string `json:"quote_qty"`
+
 	// Order price. Stocks and ETFs use the listing market currency (USD/HKD/KRW/JPY)
 	Price string `json:"price"`
+
 	// Time-in-force policy (default: GTC; allowed values: GTC, IOC, FOK, POC, and RPI)
 	TimeInForce string `json:"time_in_force"`
+
 	// Filled base amount.
 	ExecutedQty string `json:"executed_qty"`
+
 	// Filled amount in the quote currency. Stocks and ETFs use the listing market currency (USD/HKD/KRW/JPY)
 	ExecutedAmount string `json:"executed_amount"`
+
 	// Average fill price. Stocks and ETFs use the listing market currency (USD/HKD/KRW/JPY)
 	ExecutedAvgPrice string `json:"executed_avg_price"`
+
 	// Fee currency
 	FeeCoin string `json:"fee_coin"`
+
 	// Fee amount.
 	Fee string `json:"fee"`
+
 	// Reduce-only order (`\"true\"` or `\"false\"`).
 	ReduceOnly string `json:"reduce_only"`
+
 	// Order leverage multiplier.
 	Leverage string `json:"leverage"`
+
 	// Failure reason description.
 	Reason string `json:"reason"`
+
 	// Base quantity of the latest fill.
 	LastExecutedQty string `json:"last_executed_qty"`
+
 	// Price of the latest fill. Stocks and ETFs use the listing market currency (USD/HKD/KRW/JPY)
 	LastExecutedPrice string `json:"last_executed_price"`
+
 	// Amount of the latest fill. Stocks and ETFs use the listing market currency (USD/HKD/KRW/JPY)
 	LastExecutedAmount string `json:"last_executed_amount"`
+
 	// Position side (`NONE` one-way position / `LONG` long / `SHORT` short)
 	PositionSide string `json:"position_side"`
+
 	// Created time
 	CreateTime string `json:"create_time"`
+
 	// Update time
 	UpdateTime string `json:"update_time"`
 }

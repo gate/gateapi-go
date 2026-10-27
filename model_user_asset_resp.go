@@ -10,7 +10,9 @@
 package gateapi
 
 type UserAssetResp struct {
+
 	// Server timestamp (milliseconds)
-	Timestamp int64             `json:"timestamp,omitempty"`
-	Data      UserAssetRespData `json:"data,omitempty"`
+	Timestamp int64 `json:"timestamp,omitempty"`
+
+	Data UserAssetRespData `json:"data,omitempty"`
 }

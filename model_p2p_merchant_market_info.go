@@ -11,6 +11,7 @@ package gateapi
 
 // Markets where user can place orders
 type P2pMerchantMarketInfo struct {
-	Type   string `json:"type,omitempty"`
+	Type string `json:"type,omitempty"`
+
 	Market string `json:"market,omitempty"`
 }

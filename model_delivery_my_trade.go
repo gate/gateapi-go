@@ -10,26 +10,37 @@
 package gateapi
 
 type DeliveryMyTrade struct {
+
 	// Fill ID
 	Id int64 `json:"id,omitempty"`
+
 	// Fill Time
 	CreateTime float64 `json:"create_time,omitempty"`
+
 	// Futures contract
 	Contract string `json:"contract,omitempty"`
+
 	// Related order ID
 	OrderId string `json:"order_id,omitempty"`
+
 	// Trading size
 	Size int64 `json:"size,omitempty"`
+
 	// Number of closed positions:  close_size=0 && size＞0 Open long position close_size=0 && size＜0 Open short position close_size>0 && size>0 && size <= close_size Close short position close_size>0 && size>0 && size > close_size Close short position and open long position close_size<0 && size<0 && size >= close_size Close long position close_size<0 && size<0 && size < close_size Close long position and open short position
 	CloseSize int64 `json:"close_size,omitempty"`
+
 	// Fill Price
 	Price string `json:"price,omitempty"`
+
 	// Trade role. taker - taker, maker - maker
 	Role string `json:"role,omitempty"`
+
 	// Order custom information
 	Text string `json:"text,omitempty"`
+
 	// Trade fee
 	Fee string `json:"fee,omitempty"`
+
 	// Points used to deduct trade fee
 	PointFee string `json:"point_fee,omitempty"`
 }

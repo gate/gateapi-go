@@ -11,18 +11,25 @@ package gateapi
 
 // Currency Quota
 type CurrencyQuota struct {
+
 	// Currency
 	Currency string `json:"currency,omitempty"`
+
 	// Currency Index Price
 	IndexPrice string `json:"index_price,omitempty"`
+
 	// Minimum borrowing/collateral limit for the currency
 	MinQuota string `json:"min_quota,omitempty"`
+
 	// Remaining currency limit for `borrow/collateral` (when input parameter `type` is `borrow`, represents current currency)
 	LeftQuota string `json:"left_quota,omitempty"`
+
 	// Remaining currency limit converted to USDT (when input parameter `type` is `borrow`, represents current currency)
 	LeftQuoteUsdt string `json:"left_quote_usdt,omitempty"`
+
 	// Remaining `borrow/collateral` limit for fixed-term currency
 	LeftQuotaFixed string `json:"left_quota_fixed,omitempty"`
+
 	// Remaining currency limit for fixed-term currency converted to USDT
 	LeftQuoteUsdtFixed string `json:"left_quote_usdt_fixed,omitempty"`
 }

@@ -10,8 +10,10 @@
 package gateapi
 
 type CrossexMarginModeResponse struct {
+
 	// Futures trading pair
 	Symbol string `json:"symbol"`
+
 	// Margin mode (CROSS/ISOLATED)
 	MarginMode string `json:"margin_mode"`
 }

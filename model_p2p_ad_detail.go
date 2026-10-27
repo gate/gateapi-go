@@ -10,88 +10,130 @@
 package gateapi
 
 type P2pAdDetail struct {
+
 	// Advertisement price.
 	Rate string `json:"rate,omitempty"`
+
 	// Ad side: `buy` buy-crypto ad; `sell` sell-crypto ad.
 	Type string `json:"type,omitempty"`
+
 	// Remaining crypto amount on the ad.
 	Amount string `json:"amount,omitempty"`
+
 	// Minimum quantity per order, denominated by currency_type
 	MinAmount string `json:"min_amount,omitempty"`
+
 	// Maximum quantity per order, denominated by currency_type
 	MaxAmount string `json:"max_amount,omitempty"`
+
 	// Minimum trade amount in `want_type`.
 	FiatMinAmount string `json:"fiat_min_amount,omitempty"`
+
 	// Maximum trade amount priced in `want_type`.
 	FiatMaxAmount string `json:"fiat_max_amount,omitempty"`
+
 	// Trading limit unit. 0: crypto quantity, 1: fiat amount
 	LimitBasis int32 `json:"limit_basis,omitempty"`
+
 	// Trading limit unit label. crypto: crypto quantity, fiat: fiat amount
 	LimitBasisText string `json:"limit_basis_text,omitempty"`
+
 	// Fiat amount
 	Total string `json:"total,omitempty"`
+
 	// Whether Alipay is supported. `1`: yes; `0`: no.
 	PayAli int32 `json:"pay_ali,omitempty"`
+
 	// Whether bank transfer is supported. `1`: yes; `0`: no.
 	PayBank int32 `json:"pay_bank,omitempty"`
+
 	// Whether PayPal is supported. `1`: yes; `0`: no.
 	PayPaypal int32 `json:"pay_paypal,omitempty"`
+
 	// Whether WeChat Pay is supported. `1`: yes; `0`: no.
 	PayWechat int32 `json:"pay_wechat,omitempty"`
+
 	// Payment method ID list
 	PayTypeNum string `json:"pay_type_num,omitempty"`
+
 	// JSON map of payment type -> payment method ID.
 	PayTypeJson string `json:"pay_type_json,omitempty"`
+
 	// Locked amount
 	LockedAmount string `json:"locked_amount,omitempty"`
+
 	// Order ID
 	Orderid int32 `json:"orderid,omitempty"`
+
 	// Created time
 	Timestamp int32 `json:"timestamp,omitempty"`
+
 	// Cryptocurrency symbol.
 	CurrencyType string `json:"currency_type,omitempty"`
+
 	// Fiat type
 	WantType string `json:"want_type,omitempty"`
+
 	// Hidden price
 	HideRate string `json:"hide_rate,omitempty"`
+
 	// Trading terms
 	TradeTips string `json:"trade_tips,omitempty"`
+
 	// Auto reply
 	AutoReply string `json:"auto_reply,omitempty"`
+
 	// Floating reference: `1` platform; `2` Gate; `3` spot; `<= 0` means fixed price.
 	RateRefId int32 `json:"rate_ref_id,omitempty"`
+
 	// Floating ratio (absolute value)
 	RateOffset float32 `json:"rate_offset,omitempty"`
+
 	// Ad status: `OPEN` listed; `OFFLIN` delisted; `CLOSED` closed; `CANCEL` canceled.
 	Status string `json:"status,omitempty"`
+
 	// Price type: `0` floating; `1` fixed.
 	RateFixed int32 `json:"rate_fixed,omitempty"`
+
 	// Floating direction: `0` markup; `1` markdown.
 	FloatTrend int32 `json:"float_trend,omitempty"`
+
 	// Timeout (minutes)
 	ExpireMin int32 `json:"expire_min,omitempty"`
+
 	// Tier limit
 	TierLimit int32 `json:"tier_limit,omitempty"`
+
 	// Registration time limit
 	RegTimeLimit int32 `json:"reg_time_limit,omitempty"`
+
 	// Whether trading with the advertiser is restricted. `0`: no; `1`: yes.
 	AdvertisersLimit int32 `json:"advertisers_limit,omitempty"`
+
 	// Whether to restrict trading with Polymarket users. 0: no restriction, 1: restricted
 	PolymarketLimit int32 `json:"polymarket_limit,omitempty"`
+
 	// Minimum limit of completed orders
 	MinCompletedLimit int32 `json:"min_completed_limit,omitempty"`
+
 	// Maximum limit of completed orders
 	MaxCompletedLimit int32 `json:"max_completed_limit,omitempty"`
+
 	// Order count limit
 	UserOrdersLimit int32 `json:"user_orders_limit,omitempty"`
+
 	// 30-day completion rate limit
 	CompletedRateLimit float32 `json:"completed_rate_limit,omitempty"`
+
 	// Restricted nationality (Chinese)
 	LimitCountryCn string `json:"limit_country_cn,omitempty"`
+
 	// Restricted nationality (English)
 	LimitCountryEn string `json:"limit_country_en,omitempty"`
+
 	// Whether auto-delegation is enabled. `1`: yes; `0`: no.
 	IsHedge int32 `json:"is_hedge,omitempty"`
+
 	// Whether payment methods are hidden. `1`: hidden; `0`: visible.
 	HidePayment int32 `json:"hide_payment,omitempty"`
 }

@@ -11,14 +11,19 @@ package gateapi
 
 // Spot liquidation order details
 type LiquidateOrder struct {
+
 	// Order custom information. Users can set custom ID with this field. Custom fields must meet the following conditions:  1. Must start with `t-` 2. Excluding `t-`, length cannot exceed 28 bytes 3. Can only contain numbers, letters, underscore(_), hyphen(-) or dot(.)
 	Text string `json:"text,omitempty"`
+
 	// Currency pair
 	CurrencyPair string `json:"currency_pair"`
+
 	// Trade amount
 	Amount string `json:"amount"`
+
 	// Order price
 	Price string `json:"price"`
+
 	// Processing mode:  Different fields are returned when placing an order based on action_mode. This field is only valid during the request and is not included in the response `ACK`: Asynchronous mode, only returns key order fields `RESULT`: No liquidation information `FULL`: Full mode (default)
 	ActionMode string `json:"action_mode,omitempty"`
 }

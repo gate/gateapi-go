@@ -11,6 +11,7 @@ package gateapi
 
 type UserAssetResp2 struct {
 	Data UserAssetResp2Data `json:"data,omitempty"`
+
 	// Server timestamp (milliseconds)
 	Timestamp int64 `json:"timestamp,omitempty"`
 }

@@ -10,66 +10,97 @@
 package gateapi
 
 type PositionListItem struct {
+
 	// Symbol
 	Symbol string `json:"symbol,omitempty"`
+
 	// Exchange. - us: US stocks. - hk: Hong Kong stocks. - kr: Korean stocks. - jp: Japanese stocks.
 	Exchange string `json:"exchange,omitempty"`
+
 	// Quote currency
 	QuoteCurrency string `json:"quote_currency,omitempty"`
+
 	// Quote currency precision
 	QuoteCurrencyPrecision int32 `json:"quote_currency_precision,omitempty"`
+
 	// Quote currency to USD exchange rate
 	FxRate string `json:"fx_rate,omitempty"`
+
 	// Trading status. - pre_market: Pre-market. - open: Regular trading session. - post_market: Post-market.
 	TradeStatus string `json:"trade_status,omitempty"`
+
 	// Symbol description
 	SymbolDesc string `json:"symbol_desc,omitempty"`
+
 	// Position P&L
 	PositionPnl string `json:"position_pnl,omitempty"`
+
 	// Today's P&L
 	TodayPnl string `json:"today_pnl,omitempty"`
+
 	// Yield
 	PnlRate string `json:"pnl_rate,omitempty"`
+
 	// Today's sales amount
 	TodaySellAmount string `json:"today_sell_amount,omitempty"`
+
 	// Today's purchase amount
 	TodayBuyAmount string `json:"today_buy_amount,omitempty"`
+
 	// Today's sell volume
 	TodaySellVolume string `json:"today_sell_volume,omitempty"`
+
 	// Today's buy volume
 	TodayBuyVolume string `json:"today_buy_volume,omitempty"`
+
 	// Previous close position quantity
 	YesterdayVolume string `json:"yesterday_volume,omitempty"`
+
 	// Position quantity
 	Volume string `json:"volume,omitempty"`
+
 	// Available position quantity
 	Available string `json:"available,omitempty"`
+
 	// Stock transfer in progress quantity
 	TransferOutPendingQty string `json:"transfer_out_pending_qty,omitempty"`
+
 	// Cost price
 	AvgCostPrice string `json:"avg_cost_price,omitempty"`
+
 	// Diluted cost price
 	DilutedCostPrice string `json:"diluted_cost_price,omitempty"`
+
 	// Latest price
 	LastPrice string `json:"last_price,omitempty"`
+
 	// Extended hours latest price
 	ExtendedLastPrice *string `json:"extended_last_price,omitempty"`
+
 	// Maximum order quantity
 	MaxOrderVolume string `json:"max_order_volume,omitempty"`
+
 	// Order step size
 	StepOrderVolume string `json:"step_order_volume,omitempty"`
+
 	// Minimum order quantity
 	MinOrderVolume string `json:"min_order_volume,omitempty"`
+
 	// Price precision
 	PricePrecision int32 `json:"price_precision,omitempty"`
+
 	// Price protection range
 	PriceProtection string `json:"price_protection,omitempty"`
+
 	// Sell price protection rate
 	SellPriceProtection string `json:"sell_price_protection,omitempty"`
+
 	// Buy price protection rate
 	BuyPriceProtection string `json:"buy_price_protection,omitempty"`
+
 	// Fee Rate
 	CommissionRate string `json:"commission_rate,omitempty"`
+
 	// Slippage
 	SlippageRate string `json:"slippage_rate,omitempty"`
 }

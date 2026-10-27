@@ -10,10 +10,13 @@
 package gateapi
 
 type UnifiedRiskUnits struct {
+
 	// User ID
 	UserId int64 `json:"user_id,omitempty"`
+
 	// Spot hedging status: true - enabled, false - disabled
 	SpotHedge bool `json:"spot_hedge,omitempty"`
+
 	// Risk unit
 	RiskUnits []RiskUnits `json:"risk_units,omitempty"`
 }

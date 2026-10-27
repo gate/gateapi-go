@@ -10,6 +10,7 @@
 package gateapi
 
 type AutoRepaySetting struct {
+
 	// Auto repayment status: `on` - enabled, `off` - disabled
 	Status string `json:"status,omitempty"`
 }

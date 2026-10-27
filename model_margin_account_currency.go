@@ -11,14 +11,19 @@ package gateapi
 
 // Currency account information
 type MarginAccountCurrency struct {
+
 	// Currency name
 	Currency string `json:"currency,omitempty"`
+
 	// Amount available for margin trading, available = margin + borrowed
 	Available string `json:"available,omitempty"`
+
 	// Frozen funds, such as amounts already placed in margin market for order trading
 	Locked string `json:"locked,omitempty"`
+
 	// Borrowed funds
 	Borrowed string `json:"borrowed,omitempty"`
+
 	// Unpaid interest
 	Interest string `json:"interest,omitempty"`
 }

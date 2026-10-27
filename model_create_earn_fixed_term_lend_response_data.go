@@ -11,6 +11,7 @@ package gateapi
 
 // Subscription result
 type CreateEarnFixedTermLendResponseData struct {
+
 	// Subscription order ID
 	OrderId int64 `json:"order_id,omitempty"`
 }

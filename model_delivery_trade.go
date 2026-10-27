@@ -10,18 +10,25 @@
 package gateapi
 
 type DeliveryTrade struct {
+
 	// Fill ID
 	Id int64 `json:"id,omitempty"`
+
 	// Fill Time
 	CreateTime float64 `json:"create_time,omitempty"`
+
 	// Trade time, with millisecond precision to 3 decimal places
 	CreateTimeMs float64 `json:"create_time_ms,omitempty"`
+
 	// Futures contract
 	Contract string `json:"contract,omitempty"`
+
 	// Trading size
 	Size int64 `json:"size,omitempty"`
+
 	// Trade price (quote currency)
 	Price string `json:"price,omitempty"`
+
 	// Deprecated
 	IsInternal bool `json:"is_internal,omitempty"`
 }

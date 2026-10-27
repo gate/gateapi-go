@@ -10,60 +10,88 @@
 package gateapi
 
 type OtcOrderDetail struct {
+
 	// Order ID
 	OrderId string `json:"order_id"`
+
 	// User ID
 	Uid string `json:"uid"`
+
 	// Order Type
 	Type string `json:"type"`
+
 	// Fiat currency
 	FiatCurrency string `json:"fiat_currency"`
+
 	// Fiat amount
 	FiatAmount string `json:"fiat_amount"`
+
 	// Digital currency
 	CryptoCurrency string `json:"crypto_currency"`
+
 	// Cryptocurrency amount
 	CryptoAmount string `json:"crypto_amount"`
+
 	// Exchange rate
 	Rate string `json:"rate"`
+
 	// User payment/receiving name
 	BankAccountName string `json:"bank_account_name,omitempty"`
+
 	// User payment/receiving bank name
 	BankName string `json:"bank_name,omitempty"`
+
 	// User payment/receiving bank country
 	BankCountry string `json:"bank_country,omitempty"`
+
 	// User payment/receiving bank address
 	BankAddress string `json:"bank_address,omitempty"`
+
 	// User payment/receiving bank account number/IBAN
 	BankAccountNumberIban string `json:"bank_account_number_iban,omitempty"`
+
 	// User payment/receiving bank SWIFT code
 	SwiftCode string `json:"swift_code,omitempty"`
+
 	// User payment/receiving intermediary bank name
 	IntermediateBankName string `json:"intermediate_bank_name,omitempty"`
+
 	// User payment/receiving intermediary bank SWIFT code
 	IntermediaryBankSwiftCode string `json:"intermediary_bank_swift_code,omitempty"`
+
 	// Gate beneficiary name, shown for BUY only
 	GateBankAccountName string `json:"gate_bank_account_name,omitempty"`
+
 	// Gate beneficiary bank name, shown for BUY only
 	GateBankName string `json:"gate_bank_name,omitempty"`
+
 	// Gate beneficiary bank country, shown for BUY only
 	GateBankCountry string `json:"gate_bank_country,omitempty"`
+
 	// Gate beneficiary bank address, shown for BUY only
 	GateBankAddress string `json:"gate_bank_address,omitempty"`
+
 	// Gate beneficiary bank account number/IBAN, shown for BUY only
 	GateBankAccountNumberIban string `json:"gate_bank_account_number_iban,omitempty"`
+
 	// Gate beneficiary bank SWIFT code, shown for BUY only
 	GateSwiftCode string `json:"gate_swift_code,omitempty"`
+
 	// Gate beneficiary intermediary bank name, shown for BUY only
 	GateIntermediaryBankName string `json:"gate_intermediary_bank_name,omitempty"`
+
 	// Gate beneficiary intermediary bank SWIFT code, shown for BUY only
 	GateIntermediaryBankSwiftCode string `json:"gate_intermediary_bank_swift_code,omitempty"`
+
 	// Transfer remark (mutually exclusive with `gate_reference_code`; empty when a BUY deposit order has a reference code), shown for BUY only
 	GateTransferRemark string `json:"gate_transfer_remark,omitempty"`
+
 	// Be sure to include the reference code when making the transfer so that your order can be processed promptly. (Mutually exclusive with `gate_transfer_remark`.)
 	GateReferenceCode string `json:"gate_reference_code,omitempty"`
+
 	// Status
 	Status string `json:"status"`
+
 	// Created time
 	CreateTime string `json:"create_time"`
 }

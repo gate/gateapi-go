@@ -11,8 +11,10 @@ package gateapi
 
 // Close position request parameters
 type TradFiClosePositionRequest struct {
+
 	// Close Type Description: - 1: Partial Close (close_volume is required) - 2: Full Close (close_volume is not required)
 	CloseType int32 `json:"close_type"`
+
 	// Close Volume Description: - Required when close_type = 1 - Ignored when close_type = 2
 	CloseVolume *string `json:"close_volume,omitempty"`
 }

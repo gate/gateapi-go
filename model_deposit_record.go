@@ -10,24 +10,34 @@
 package gateapi
 
 type DepositRecord struct {
+
 	// Record ID
 	Id string `json:"id,omitempty"`
+
 	// Hash record of the withdrawal
 	Txid string `json:"txid,omitempty"`
+
 	// Operation time
 	Timestamp string `json:"timestamp,omitempty"`
+
 	// Token amount
 	Amount string `json:"amount"`
+
 	// Currency name
 	Currency string `json:"currency"`
+
 	// Withdrawal address. Required for withdrawals
 	Address string `json:"address,omitempty"`
+
 	// Additional remarks with regards to the withdrawal
 	Memo string `json:"memo,omitempty"`
+
 	// Transaction Status  - BLOCKED: Deposit Blocked - DEP_CREDITED: Deposit Credited, Withdrawal Pending Unlock - DONE: Funds Credited to Spot Account - INVALID: Invalid Transaction - MANUAL: Manual Review Required - PEND: Processing - REVIEW: Under Compliance Review - TRACK: Tracking Block Confirmations, Pending Spot Account Credit
 	Status string `json:"status,omitempty"`
+
 	// Blocked deposit refund status. This field is returned only when the deposit record has a blocked deposit refund record with a non-empty refund status. Not returned when there is no refund record or the refund status is empty - REFUNDING: Refund in progress - REFUNDED: Refund completed - REFUND_FAILED: Refund failed - REJECTED: Refund rejected
 	RefundStatus string `json:"refund_status,omitempty"`
+
 	// Name of the chain used in withdrawals
 	Chain string `json:"chain"`
 }

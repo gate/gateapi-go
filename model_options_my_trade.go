@@ -10,20 +10,28 @@
 package gateapi
 
 type OptionsMyTrade struct {
+
 	// Fill ID
 	Id int64 `json:"id,omitempty"`
+
 	// Fill Time
 	CreateTime float64 `json:"create_time,omitempty"`
+
 	// Options contract name
 	Contract string `json:"contract,omitempty"`
+
 	// Related order ID
 	OrderId int32 `json:"order_id,omitempty"`
+
 	// Trading size
 	Size int64 `json:"size,omitempty"`
+
 	// Trade price (quote currency)
 	Price string `json:"price,omitempty"`
+
 	// The forward futures price corresponding to the delivery date
 	UnderlyingPrice string `json:"underlying_price,omitempty"`
+
 	// Trade role. taker - taker, maker - maker
 	Role string `json:"role,omitempty"`
 }

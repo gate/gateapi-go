@@ -11,6 +11,7 @@ package gateapi
 
 // Unified account collateral mode settings response
 type UnifiedCollateralRes struct {
+
 	// Whether the setting was successful
 	IsSuccess bool `json:"is_success,omitempty"`
 }

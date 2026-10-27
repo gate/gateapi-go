@@ -10,6 +10,7 @@
 package gateapi
 
 type UpdateOrder2 struct {
-	Data      UpdateOrder2Data `json:"data,omitempty"`
-	Timestamp int64            `json:"timestamp,omitempty"`
+	Data UpdateOrder2Data `json:"data,omitempty"`
+
+	Timestamp int64 `json:"timestamp,omitempty"`
 }

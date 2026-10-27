@@ -10,34 +10,49 @@
 package gateapi
 
 type SwapCoinStruct struct {
+
 	// Order ID
 	Id int32 `json:"id,omitempty"`
+
 	// Product ID
 	Pid int32 `json:"pid,omitempty"`
+
 	// User ID
 	Uid int32 `json:"uid,omitempty"`
+
 	// Currency
 	Coin string `json:"coin,omitempty"`
+
 	// Type 0-Staking 1-Redemption
 	Type int32 `json:"type,omitempty"`
+
 	// SubType
 	Subtype string `json:"subtype,omitempty"`
+
 	// Amount
 	Amount string `json:"amount,omitempty"`
+
 	// Exchange ratio
 	ExchangeRate string `json:"exchange_rate,omitempty"`
+
 	// Redemption Amount
 	ExchangeAmount string `json:"exchange_amount,omitempty"`
+
 	// Update timestamp
 	UpdateStamp int32 `json:"updateStamp,omitempty"`
+
 	// Transaction timestamp
 	CreateStamp int32 `json:"createStamp,omitempty"`
+
 	// status 1-success
 	Status int32 `json:"status,omitempty"`
+
 	// DEFI Protocol Type
 	ProtocolType int32 `json:"protocol_type,omitempty"`
+
 	// Reference ID
 	ClientOrderId string `json:"client_order_id,omitempty"`
+
 	// Order Origin
 	Source string `json:"source,omitempty"`
 }

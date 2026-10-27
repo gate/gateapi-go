@@ -10,6 +10,7 @@
 package gateapi
 
 type P2pMerchantWorkHours struct {
+
 	// Merchant's current working status. 0: normal resting, 1: normal working, 2: custom resting, 3: custom working
 	WorkStatus int32 `json:"work_status,omitempty"`
 }

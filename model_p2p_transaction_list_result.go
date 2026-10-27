@@ -11,10 +11,13 @@ package gateapi
 
 type P2pTransactionListResult struct {
 	List []P2pTransactionListItem `json:"list,omitempty"`
+
 	// Countdown time
 	TransTime []P2pTransactionTimeMarker `json:"trans_time,omitempty"`
+
 	// Number of orders
 	Count int32 `json:"count,omitempty"`
+
 	// Export count
 	ExportedNum int32 `json:"exported_num,omitempty"`
 }

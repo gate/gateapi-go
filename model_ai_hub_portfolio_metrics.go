@@ -11,17 +11,29 @@ package gateapi
 
 // Strategy detail metrics; fields returned depend on strategy type.
 type AiHubPortfolioMetrics struct {
-	GridProfit                string `json:"grid_profit,omitempty"`
-	FloatingPnl               string `json:"floating_pnl,omitempty"`
-	ArbitrageCount            int64  `json:"arbitrage_count,omitempty"`
-	PriceRange                string `json:"price_range,omitempty"`
-	GridCount                 int64  `json:"grid_count,omitempty"`
+	GridProfit string `json:"grid_profit,omitempty"`
+
+	FloatingPnl string `json:"floating_pnl,omitempty"`
+
+	ArbitrageCount int64 `json:"arbitrage_count,omitempty"`
+
+	PriceRange string `json:"price_range,omitempty"`
+
+	GridCount int64 `json:"grid_count,omitempty"`
+
 	EstimatedLiquidationPrice string `json:"estimated_liquidation_price,omitempty"`
-	PriceFloor                string `json:"price_floor,omitempty"`
-	GridProfitRate            string `json:"grid_profit_rate,omitempty"`
-	RealizedPnl               string `json:"realized_pnl,omitempty"`
-	FinishedRounds            int64  `json:"finished_rounds,omitempty"`
-	AvgCost                   string `json:"avg_cost,omitempty"`
-	TakeProfitPrice           string `json:"take_profit_price,omitempty"`
-	MaintenanceMarginRatio    string `json:"maintenance_margin_ratio,omitempty"`
+
+	PriceFloor string `json:"price_floor,omitempty"`
+
+	GridProfitRate string `json:"grid_profit_rate,omitempty"`
+
+	RealizedPnl string `json:"realized_pnl,omitempty"`
+
+	FinishedRounds int64 `json:"finished_rounds,omitempty"`
+
+	AvgCost string `json:"avg_cost,omitempty"`
+
+	TakeProfitPrice string `json:"take_profit_price,omitempty"`
+
+	MaintenanceMarginRatio string `json:"maintenance_margin_ratio,omitempty"`
 }

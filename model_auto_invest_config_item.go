@@ -11,8 +11,10 @@ package gateapi
 
 // Investment currency configuration item
 type AutoInvestConfigItem struct {
+
 	// Currency
 	Coin string `json:"coin"`
+
 	// InvestmentLimit
 	MaxLimit string `json:"max_limit"`
 }

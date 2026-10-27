@@ -11,8 +11,11 @@ package gateapi
 
 // The response body when the termination strategy is successful.
 type AiHubPortfolioStopSuccessResponse struct {
-	Code    int32                  `json:"code"`
-	Message string                 `json:"message"`
-	Data    AiHubPortfolioStopData `json:"data"`
-	TraceId string                 `json:"trace_id"`
+	Code int32 `json:"code"`
+
+	Message string `json:"message"`
+
+	Data AiHubPortfolioStopData `json:"data"`
+
+	TraceId string `json:"trace_id"`
 }

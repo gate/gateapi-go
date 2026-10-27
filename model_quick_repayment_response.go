@@ -11,10 +11,13 @@ package gateapi
 
 // Quick repayment result
 type QuickRepaymentResponse struct {
+
 	// Order ID
 	OrderId string `json:"order_id"`
+
 	// Repaid currency details
 	RepaidInfos []UnifiedQuickRepayRepaidInfo `json:"repaid_infos"`
+
 	// Currencies used for repayment
 	UsedInfos []UnifiedQuickRepayUsedInfo `json:"used_infos"`
 }

@@ -10,14 +10,19 @@
 package gateapi
 
 type UnifiedDiscountTiers struct {
+
 	// Tier
 	Tier string `json:"tier,omitempty"`
+
 	// Discount
 	Discount string `json:"discount,omitempty"`
+
 	// Lower limit
 	LowerLimit string `json:"lower_limit,omitempty"`
+
 	// Upper limit, + indicates positive infinity
 	UpperLimit string `json:"upper_limit,omitempty"`
+
 	// Leverage multiplier
 	Leverage string `json:"leverage,omitempty"`
 }

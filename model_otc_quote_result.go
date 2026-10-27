@@ -10,32 +10,46 @@
 package gateapi
 
 type OtcQuoteResult struct {
+
 	// BUY (on-ramp) or SELL (off-ramp)
 	Type string `json:"type"`
+
 	// Payment currency
 	PayCoin string `json:"pay_coin"`
+
 	// Currency
 	GetCoin string `json:"get_coin"`
+
 	// Payment amount
 	PayAmount string `json:"pay_amount"`
+
 	// Redemption Amount
 	GetAmount string `json:"get_amount"`
+
 	// Exchange rate
 	Rate string `json:"rate"`
+
 	// Reciprocal of the exchange rate
 	RateReci string `json:"rate_reci"`
+
 	// Promotion code
 	PromotionCode string `json:"promotion_code"`
+
 	// Quote method
 	Side string `json:"side"`
+
 	// Order type: FIAT (fiat) / STABLE (stablecoin)
 	OrderType string `json:"order_type"`
+
 	// Quote token required when placing an order
 	QuoteToken string `json:"quote_token"`
+
 	// Quote validity period (seconds)
 	ValidityPeriod string `json:"validity_period,omitempty"`
+
 	// Quote refresh limit
 	RefreshLimit int32 `json:"refresh_limit,omitempty"`
+
 	// Quote refresh limit message
 	RefreshLimitMsg string `json:"refresh_limit_msg,omitempty"`
 }

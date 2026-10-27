@@ -10,65 +10,96 @@
 package gateapi
 
 type P2pMerchantUserInfo struct {
+
 	// Whether self
 	IsSelf bool `json:"is_self,omitempty"`
+
 	// User registration time (formatted string)
 	UserTimest string `json:"user_timest,omitempty"`
+
 	// Number of counterparties
 	CounterpartiesNum int32 `json:"counterparties_num,omitempty"`
+
 	// Whether email is verified. `1`: yes; `0`: no.
 	EmailVerified string `json:"email_verified,omitempty"`
+
 	// Whether KYC is completed. `1`: yes; `0`: no.
 	Verified string `json:"verified,omitempty"`
+
 	// Whether a phone number is bound. `1`: yes; `0`: no.
 	HasPhone string `json:"has_phone,omitempty"`
+
 	// Username
 	UserName string `json:"user_name,omitempty"`
+
 	// User note information
 	UserNote string `json:"user_note,omitempty"`
+
 	// Total completed orders
 	CompleteTransactions string `json:"complete_transactions,omitempty"`
+
 	// Number of completed buy orders
 	PaidTransactions string `json:"paid_transactions,omitempty"`
+
 	// Number of completed sell orders
 	AcceptedTransactions string `json:"accepted_transactions,omitempty"`
+
 	// Average time to confirm receipt
 	TransactionsUsedTime string `json:"transactions_used_time,omitempty"`
+
 	// Cancellation time in last 30 days
 	CancelledUsedTimeMonth string `json:"cancelled_used_time_month,omitempty"`
+
 	// Number of completed orders in last 30 days
 	CompleteTransactionsMonth string `json:"complete_transactions_month,omitempty"`
+
 	// Completion rate in last 30 days
 	CompleteRateMonth float32 `json:"complete_rate_month,omitempty"`
+
 	// Buy order ratio in last 30 days
 	OrdersBuyRateMonth float32 `json:"orders_buy_rate_month,omitempty"`
+
 	// Whether the user is blocked. `1`: yes; `0`: no.
 	IsBlack int32 `json:"is_black,omitempty"`
+
 	// Whether you follow this user. `1`: yes; `0`: no.
 	IsFollow int32 `json:"is_follow,omitempty"`
+
 	// Whether you have traded with this user before. `1`: yes; `0`: no.
 	HaveTraded int32 `json:"have_traded,omitempty"`
+
 	// Encrypted UID
 	BizUid string `json:"biz_uid,omitempty"`
+
 	// Blue V Crown Shield
 	BlueVip int32 `json:"blue_vip,omitempty"`
+
 	// Merchant work status
 	WorkStatus int32 `json:"work_status,omitempty"`
+
 	// Registration days
 	RegistrationDays int32 `json:"registration_days,omitempty"`
+
 	// Days since first trade
 	FirstTradeDays int32 `json:"first_trade_days,omitempty"`
+
 	// Whether additional margin is required. `1`: yes; `0`: no.
-	NeedReplenish int32                 `json:"need_replenish,omitempty"`
-	MerchantInfo  P2pMerchantMarketInfo `json:"merchant_info,omitempty"`
+	NeedReplenish int32 `json:"need_replenish,omitempty"`
+
+	MerchantInfo P2pMerchantMarketInfo `json:"merchant_info,omitempty"`
+
 	// Merchant online status: `1` online; `0` offline.
 	OnlineStatus int32 `json:"online_status,omitempty"`
+
 	// Merchant online status details
 	WorkHours *map[string]interface{} `json:"work_hours,omitempty"`
+
 	// 30-day transaction volume
 	TransactionsMonth float32 `json:"transactions_month,omitempty"`
+
 	// Total transaction volume
 	TransactionsAll float32 `json:"transactions_all,omitempty"`
+
 	// Single user or composite user
 	TradeVersatile bool `json:"trade_versatile,omitempty"`
 }

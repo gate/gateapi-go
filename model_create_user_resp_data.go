@@ -10,8 +10,10 @@
 package gateapi
 
 type CreateUserRespData struct {
+
 	// Status (1=not opened, 2=pending review, 3=opened)
 	Status int32 `json:"status,omitempty"`
+
 	// Leverage
 	Leverage int32 `json:"leverage,omitempty"`
 }

@@ -10,16 +10,22 @@
 package gateapi
 
 type OptionsSettlement struct {
+
 	// Last configuration update time
 	Time float64 `json:"time,omitempty"`
+
 	// Options contract name
 	Contract string `json:"contract,omitempty"`
+
 	// Settlement profit per contract (quote currency)
 	Profit string `json:"profit,omitempty"`
+
 	// Settlement fee per contract (quote currency)
 	Fee string `json:"fee,omitempty"`
+
 	// Strike price (quote currency)
 	StrikePrice string `json:"strike_price,omitempty"`
+
 	// Settlement price (quote currency)
 	SettlePrice string `json:"settle_price,omitempty"`
 }

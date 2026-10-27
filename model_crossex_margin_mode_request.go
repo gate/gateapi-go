@@ -11,8 +11,10 @@ package gateapi
 
 // Request body for updating the futures position margin mode
 type CrossexMarginModeRequest struct {
+
 	// Hyperliquid futures trading pair
 	Symbol string `json:"symbol"`
+
 	// Margin mode (CROSS/ISOLATED)
 	MarginMode string `json:"margin_mode"`
 }

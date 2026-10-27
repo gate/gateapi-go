@@ -11,8 +11,11 @@ package gateapi
 
 // The response body when querying the running policy list is successful.
 type AiHubPortfolioRunningSuccessResponse struct {
-	Code    int32                     `json:"code"`
-	Message string                    `json:"message"`
-	Data    AiHubPortfolioRunningData `json:"data"`
-	TraceId string                    `json:"trace_id"`
+	Code int32 `json:"code"`
+
+	Message string `json:"message"`
+
+	Data AiHubPortfolioRunningData `json:"data"`
+
+	TraceId string `json:"trace_id"`
 }

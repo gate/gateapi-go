@@ -10,9 +10,12 @@
 package gateapi
 
 type SymbolDetailData struct {
+
 	// Total quantity
 	Total int64 `json:"total,omitempty"`
+
 	// Total pages
-	TotalPage int32              `json:"total_page,omitempty"`
-	List      []SymbolDetailItem `json:"list,omitempty"`
+	TotalPage int32 `json:"total_page,omitempty"`
+
+	List []SymbolDetailItem `json:"list,omitempty"`
 }

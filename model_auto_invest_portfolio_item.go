@@ -11,20 +11,28 @@ package gateapi
 
 // Auto invest plan portfolio item
 type AutoInvestPortfolioItem struct {
+
 	// Currency
 	Asset string `json:"asset"`
+
 	// Ratio
 	Ratio string `json:"ratio"`
+
 	// Accumulated investment
 	CumInvest string `json:"cum_invest"`
+
 	// AccumulatedPosition
 	CumHold string `json:"cum_hold"`
+
 	// Accumulated redemption
 	CumRedeem string `json:"cum_redeem"`
+
 	// Average Cost Price
 	AvgPrice string `json:"avg_price"`
+
 	// Redemption status
 	RedeemStatus int64 `json:"redeem_status"`
+
 	// LendingQuantity
 	LendAmount string `json:"lend_amount"`
 }

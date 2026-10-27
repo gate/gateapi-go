@@ -11,8 +11,10 @@ package gateapi
 
 // Add position immediatelyRequest
 type AutoInvestPlanAddPosition struct {
+
 	// Plan ID
 	PlanId int64 `json:"plan_id"`
+
 	// Amount
 	Amount string `json:"amount"`
 }

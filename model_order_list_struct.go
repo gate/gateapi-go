@@ -10,13 +10,18 @@
 package gateapi
 
 type OrderListStruct struct {
+
 	// Page
 	Page int32 `json:"page"`
+
 	// Items per page
 	PageSize int32 `json:"pageSize"`
+
 	// Total pages
 	PageCount int32 `json:"pageCount"`
+
 	// Total entries
-	TotalCount int32                 `json:"totalCount"`
-	List       []OrderListStructList `json:"list"`
+	TotalCount int32 `json:"totalCount"`
+
+	List []OrderListStructList `json:"list"`
 }

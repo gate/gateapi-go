@@ -11,8 +11,10 @@ package gateapi
 
 // Announcement articles and total count
 type AnnouncementArticleListData struct {
+
 	// Announcement article list
 	List []AnnouncementArticle `json:"list"`
+
 	// Total number of announcement articles.
 	Total int32 `json:"total"`
 }

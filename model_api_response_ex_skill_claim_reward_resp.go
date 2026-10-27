@@ -11,13 +11,18 @@ package gateapi
 
 // Receive mission reward response
 type ApiResponseExSkillClaimRewardResp struct {
+
 	// Business error code, 0 means success
 	Code int32 `json:"code,omitempty"`
+
 	// Error identifier code. Empty string on success, machine-readable error label on error
 	Label string `json:"label,omitempty"`
+
 	// Error description
-	Message string                                `json:"message,omitempty"`
-	Data    ApiResponseExSkillClaimRewardRespData `json:"data,omitempty"`
+	Message string `json:"message,omitempty"`
+
+	Data ApiResponseExSkillClaimRewardRespData `json:"data,omitempty"`
+
 	// Server timestamp (milliseconds)
 	Timestamp int64 `json:"timestamp,omitempty"`
 }

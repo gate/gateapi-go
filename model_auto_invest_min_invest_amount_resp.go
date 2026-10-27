@@ -11,6 +11,7 @@ package gateapi
 
 // AvailableInvestmentMinimumAmountResponse
 type AutoInvestMinInvestAmountResp struct {
+
 	// MinimumAmount
 	MinAmount string `json:"min_amount"`
 }

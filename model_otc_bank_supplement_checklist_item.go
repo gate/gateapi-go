@@ -11,6 +11,7 @@ package gateapi
 
 // Supplementary document item
 type OtcBankSupplementChecklistItem struct {
+
 	// Supplementary document submission description
 	Description string `json:"description"`
 }

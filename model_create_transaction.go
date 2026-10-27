@@ -10,7 +10,9 @@
 package gateapi
 
 type CreateTransaction struct {
+
 	// Server timestamp (milliseconds)
-	Timestamp int64                  `json:"timestamp,omitempty"`
-	Data      map[string]interface{} `json:"data,omitempty"`
+	Timestamp int64 `json:"timestamp,omitempty"`
+
+	Data map[string]interface{} `json:"data,omitempty"`
 }

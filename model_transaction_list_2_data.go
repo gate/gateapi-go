@@ -10,8 +10,10 @@
 package gateapi
 
 type TransactionList2Data struct {
-	Total     int64 `json:"total,omitempty"`
+	Total int64 `json:"total,omitempty"`
+
 	TotalPage int64 `json:"total_page,omitempty"`
+
 	// Transaction record list
 	List []TransactionItem `json:"list,omitempty"`
 }

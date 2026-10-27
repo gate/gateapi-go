@@ -10,6 +10,7 @@
 package gateapi
 
 type CrossexRiskLimit struct {
-	Symbol string                 `json:"symbol,omitempty"`
-	Tiers  []CrossexRiskLimitTier `json:"tiers,omitempty"`
+	Symbol string `json:"symbol,omitempty"`
+
+	Tiers []CrossexRiskLimitTier `json:"tiers,omitempty"`
 }

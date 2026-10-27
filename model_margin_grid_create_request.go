@@ -11,7 +11,9 @@ package gateapi
 
 // Create the request body for the Leverage Grid strategy.
 type MarginGridCreateRequest struct {
-	StrategyType string                 `json:"strategy_type"`
-	Market       string                 `json:"market"`
+	StrategyType string `json:"strategy_type"`
+
+	Market string `json:"market"`
+
 	CreateParams MarginGridCreateParams `json:"create_params"`
 }

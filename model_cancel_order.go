@@ -11,10 +11,13 @@ package gateapi
 
 // Cancel order request
 type CancelOrder struct {
+
 	// Order ID
 	Txid string `json:"txid"`
+
 	// Cancel reason ID. `1` no longer want to buy; `2` cannot reach seller; `3` will not pay; `4` seller account not real; `5` payout account issue; `6` price mismatch; `7` mutually agreed cancel; `8` poor communication; `9` other; `10` seller cannot release with refund; `11` terms not met; `12` seller payout risk-controlled.
 	ReasonId string `json:"reason_id,omitempty"`
+
 	// Extra cancel notes when `reason_id` is `9` or explanation is required.
 	ReasonMemo string `json:"reason_memo,omitempty"`
 }

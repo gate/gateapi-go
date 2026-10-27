@@ -10,16 +10,22 @@
 package gateapi
 
 type CrossexCoinDiscountRate struct {
+
 	// Currency
 	Coin string `json:"coin"`
+
 	// Exchange
 	ExchangeType string `json:"exchange_type"`
+
 	// Tier
 	Tier string `json:"tier"`
+
 	// Minimum value
 	MinValue string `json:"min_value"`
+
 	// Maximum value
 	MaxValue string `json:"max_value"`
+
 	// Discount rate
 	DiscountRate string `json:"discount_rate"`
 }

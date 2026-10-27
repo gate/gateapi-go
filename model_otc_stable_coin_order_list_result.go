@@ -10,9 +10,13 @@
 package gateapi
 
 type OtcStableCoinOrderListResult struct {
-	Total      int32                        `json:"total"`
-	PageSize   int32                        `json:"page_size"`
-	PageNumber int32                        `json:"page_number"`
-	TotalPage  int32                        `json:"total_page"`
-	Lists      []OtcStableCoinOrderListItem `json:"lists"`
+	Total int32 `json:"total"`
+
+	PageSize int32 `json:"page_size"`
+
+	PageNumber int32 `json:"page_number"`
+
+	TotalPage int32 `json:"total_page"`
+
+	Lists []OtcStableCoinOrderListItem `json:"lists"`
 }

@@ -10,12 +10,16 @@
 package gateapi
 
 type CollateralCurrencyInfo struct {
+
 	// Currency
 	Currency string `json:"currency,omitempty"`
+
 	// Currency Index Price
 	IndexPrice string `json:"index_price,omitempty"`
+
 	// Remaining collateral amount
 	LeftCollateral string `json:"left_collateral,omitempty"`
+
 	// Remaining collateral value converted to USDT
 	LeftCollateralUsdt string `json:"left_collateral_usdt,omitempty"`
 }

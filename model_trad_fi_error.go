@@ -10,10 +10,13 @@
 package gateapi
 
 type TradFiError struct {
+
 	// Business status code, non-empty indicates request exception, please refer to TradFi error enumeration in documentation
 	Label string `json:"label,omitempty"`
+
 	// Return message, returned when request error occurs
 	Message string `json:"message,omitempty"`
+
 	// Server timestamp (milliseconds)
 	Timestamp int64 `json:"timestamp,omitempty"`
 }

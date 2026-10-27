@@ -11,11 +11,15 @@ package gateapi
 
 // Announcement article list response
 type AnnouncementArticleListResponse struct {
+
 	// Business status code
-	Code int32                       `json:"code"`
+	Code int32 `json:"code"`
+
 	Data AnnouncementArticleListData `json:"data"`
+
 	// Response message
 	Message string `json:"message"`
+
 	// Response version
 	Version string `json:"version"`
 }

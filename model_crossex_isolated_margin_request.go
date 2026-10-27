@@ -11,10 +11,13 @@ package gateapi
 
 // Request body for increasing or decreasing isolated margin
 type CrossexIsolatedMarginRequest struct {
+
 	// Hyperliquid futures trading pair
 	Symbol string `json:"symbol"`
+
 	// Margin adjustment amount. Positive values increase margin, while negative values decrease margin. Values with more than two decimal places are truncated to two decimal places
 	Margin string `json:"margin"`
+
 	// Position side (NONE/LONG/SHORT). Defaults to NONE for one-way positions if omitted
 	PositionSide string `json:"position_side,omitempty"`
 }

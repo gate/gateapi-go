@@ -11,14 +11,19 @@ package gateapi
 
 // Batch order cancellation request results
 type CrossexBatchCancelOrderResponse struct {
+
 	// Order ID
 	OrderId string `json:"order_id"`
+
 	// Custom ID specified by the user when creating the order
 	Text string `json:"text"`
+
 	// Whether the request was accepted, as the string true or false
 	Accepted string `json:"accepted"`
+
 	// Error label when the request is not accepted; empty on success
 	Label string `json:"label"`
+
 	// Error message when the request is not accepted; empty on success
 	Message string `json:"message"`
 }

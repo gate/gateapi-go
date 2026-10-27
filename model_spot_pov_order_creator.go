@@ -11,20 +11,28 @@ package gateapi
 
 // Spot POV order creation request
 type SpotPovOrderCreator struct {
+
 	// Currency pair
 	CurrencyPair string `json:"currency_pair"`
+
 	// Buy or sell order
 	Side string `json:"side"`
+
 	// Trade amount
 	Amount string `json:"amount"`
+
 	// Target participation rate as a percentage. Valid values: 5, 10, 20, and 40
 	ParticipationRate int32 `json:"participation_rate"`
+
 	// Time to live. Valid values: 1h, 6h, 12h, 1d, 2d, 3d, 4d, 5d, 6d, and 7d
 	Ttl string `json:"ttl"`
+
 	// Limit price. If omitted, the market price is used
 	LimitPrice string `json:"limit_price,omitempty"`
+
 	// Trigger price. If omitted, the order is triggered immediately
 	TriggerPrice string `json:"trigger_price,omitempty"`
+
 	// Order custom information. Users can set custom ID with this field. Custom fields must meet the following conditions:  1. Must start with `t-` 2. Excluding `t-`, length cannot exceed 28 bytes 3. Can only contain numbers, letters, underscore(_), hyphen(-) or dot(.)
 	Text string `json:"text,omitempty"`
 }

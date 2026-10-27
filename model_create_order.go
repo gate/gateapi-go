@@ -10,13 +10,21 @@
 package gateapi
 
 type CreateOrder struct {
-	Id          int64               `json:"id"`
-	UserId      int32               `json:"user_id"`
-	From        []CreateOrderDetail `json:"from"`
-	To          []CreateOrderDetail `json:"to"`
-	Source      string              `json:"source"`
-	AppId       string              `json:"app_id"`
-	ClientReqId string              `json:"client_req_id"`
-	Status      int32               `json:"status"`
-	CreateTime  int64               `json:"create_time"`
+	Id int64 `json:"id"`
+
+	UserId int32 `json:"user_id"`
+
+	From []CreateOrderDetail `json:"from"`
+
+	To []CreateOrderDetail `json:"to"`
+
+	Source string `json:"source"`
+
+	AppId string `json:"app_id"`
+
+	ClientReqId string `json:"client_req_id"`
+
+	Status int32 `json:"status"`
+
+	CreateTime int64 `json:"create_time"`
 }

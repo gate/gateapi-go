@@ -11,10 +11,13 @@ package gateapi
 
 // Profit and loss range
 type ProfitLossRange struct {
+
 	// Percentage change in price
 	PricePercentage string `json:"price_percentage,omitempty"`
+
 	// Percentage change in implied volatility
 	ImpliedVolatilityPercentage string `json:"implied_volatility_percentage,omitempty"`
+
 	// PnL
 	ProfitLoss string `json:"profit_loss,omitempty"`
 }

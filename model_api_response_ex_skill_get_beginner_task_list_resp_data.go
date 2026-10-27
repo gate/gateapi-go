@@ -11,6 +11,7 @@ package gateapi
 
 // Task list object on success, null on failure
 type ApiResponseExSkillGetBeginnerTaskListRespData struct {
+
 	// Getting started task list (registration tasks come first, guidance tasks follow; when conditions are met, an additional download task to be collected will be returned)
 	Tasks []ApiResponseExSkillGetBeginnerTaskListRespDataTasks `json:"tasks,omitempty"`
 }

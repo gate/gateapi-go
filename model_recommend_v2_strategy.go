@@ -10,7 +10,9 @@
 package gateapi
 
 type RecommendV2Strategy struct {
-	Name     string              `json:"name"`
-	Priority int32               `json:"priority"`
-	Schemes  []RecommendV2Scheme `json:"schemes"`
+	Name string `json:"name"`
+
+	Priority int32 `json:"priority"`
+
+	Schemes []RecommendV2Scheme `json:"schemes"`
 }

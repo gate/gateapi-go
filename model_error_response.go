@@ -10,12 +10,16 @@
 package gateapi
 
 type ErrorResponse struct {
+
 	// Error code
 	Code int32 `json:"code"`
+
 	// Error message
 	Message string `json:"message"`
+
 	// Empty object
 	Data map[string]interface{} `json:"data"`
+
 	// Unix timestamp
 	Timestamp int64 `json:"timestamp"`
 }

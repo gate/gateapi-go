@@ -11,24 +11,34 @@ package gateapi
 
 // Place Order Request Body
 type CrossexOrderRequest struct {
+
 	// Client-defined Order ID, supports letters (a-z), numbers (0-9), symbols (-, _) only
 	Text string `json:"text,omitempty"`
+
 	// Unique identifier Exchange_Business_Base_Counter Examples: To place a spot order for ADA/USDT on BINANCE, use `BINANCE_SPOT_ADA_USDT`; To place a USDT-margined perpetual futures order for ADA/USDT on OKX, use `OKX_FUTURE_ADA_USDT`; To place a spot margin order for ADA/USDT on GATE, use `GATE_MARGIN_ADA_USDT`; To place a spot order for ADA/USDT on BYBIT, use `BYBIT_SPOT_ADA_USDT`; To place a futures order for ADA/USD on KRAKEN, use `KRAKEN_FUTURE_ADA_USD`; To place a futures order for ADA/USDC on HYPERLIQUID, use `HYPERLIQUID_FUTURE_ADA_USDC`; To place a futures order for ADA/USDC on DERIBIT, use `DERIBIT_FUTURE_ADA_USDC`; To place a futures order for ADA/USDC on LIGHTER, use `LIGHTER_FUTURE_ADA_USDC`; To trade US stock AAPL, use `US_STOCK_AAPL_USDT`; To trade Hong Kong stock 00700, use `HK_STOCK_00700_USDT`; To trade US ETF SPY, use `US_ETF_SPY_USDT`; Spot, USDT-margined perpetual futures, spot margin, stock, and ETF orders are supported. BYBIT/DERIBIT do not currently support spot margin orders. KRAKEN, HYPERLIQUID, and LIGHTER do not currently support spot or margin orders. Stocks and ETFs support only cross-exchange account mode
 	Symbol string `json:"symbol"`
+
 	// BUY, SELL
 	Side string `json:"side"`
+
 	// Order type (default: `LIMIT`; supported types: `LIMIT`, `MARKET`)
 	Type string `json:"type,omitempty"`
+
 	// Defaults to GTC. Supported values: `GTC`, `IOC`, `FOK`, `POC`, `RPI` `GTC`: GoodTillCancelled `IOC`: ImmediateOrCancelled `FOK`: FillOrKill `POC`: PendingOrCancelled or PostOnly `RPI`: RPI Stocks and ETFs support only `GTC`
 	TimeInForce string `json:"time_in_force,omitempty"`
+
 	// Order quantity (required except for spot and margin market buys; qty is required for stocks and ETFs)
 	Qty string `json:"qty,omitempty"`
+
 	// Limit order price (required for limit orders). Stocks and ETFs use the listing market currency (USD/HKD/KRW/JPY)
 	Price string `json:"price,omitempty"`
+
 	// Order quote quantity, required for spot and margin market buys. Stock and ETF orders do not support quote_qty
 	QuoteQty string `json:"quote_qty,omitempty"`
+
 	// Reduce-only: `true` or `false`
 	ReduceOnly string `json:"reduce_only,omitempty"`
+
 	// Position side: `NONE`, `LONG`, `SHORT` Defaults to `NONE` (single position mode) if not specified
 	PositionSide string `json:"position_side,omitempty"`
 }

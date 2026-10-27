@@ -10,6 +10,7 @@
 package gateapi
 
 type BatchFundingRatesRequest struct {
+
 	// Array of Contract Names
 	Contracts []string `json:"contracts"`
 }

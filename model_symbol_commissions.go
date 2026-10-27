@@ -10,7 +10,9 @@
 package gateapi
 
 type SymbolCommissions struct {
+
 	// Server timestamp (milliseconds)
-	Timestamp int64                 `json:"timestamp,omitempty"`
-	Data      SymbolCommissionsData `json:"data,omitempty"`
+	Timestamp int64 `json:"timestamp,omitempty"`
+
+	Data SymbolCommissionsData `json:"data,omitempty"`
 }

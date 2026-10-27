@@ -10,6 +10,7 @@
 package gateapi
 
 type OrderList2Data struct {
+
 	// Query active order list
 	List []OrderListItem `json:"list,omitempty"`
 }

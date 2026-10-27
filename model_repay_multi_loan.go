@@ -11,8 +11,10 @@ package gateapi
 
 // Multi-currency collateral repayment
 type RepayMultiLoan struct {
+
 	// Order ID
 	OrderId int64 `json:"order_id"`
+
 	// Repay Currency Item
 	RepayItems []MultiLoanRepayItem `json:"repay_items"`
 }

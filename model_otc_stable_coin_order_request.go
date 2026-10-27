@@ -11,18 +11,25 @@ package gateapi
 
 // Stablecoin Order Request Body
 type OtcStableCoinOrderRequest struct {
+
 	// Currency paid by the user. Supported currencies can be queried from the OTC web stablecoin quote page.
 	PayCoin string `json:"pay_coin"`
+
 	// Currency to be received by the user. Supported currencies can be queried from the OTC web stablecoin quote page.
 	GetCoin string `json:"get_coin"`
+
 	// User payment currency amount
 	PayAmount string `json:"pay_amount"`
+
 	// Amount of currency received by the user
 	GetAmount string `json:"get_amount"`
+
 	// The side returned by the quote endpoint (used for order validation). For backward compatibility, `PAY`/`GET` are accepted; new integrations should use the value returned by the quote response.
 	Side string `json:"side"`
+
 	// Promotion code (optional)
 	PromotionCode string `json:"promotion_code,omitempty"`
+
 	// Parameter returned by the quote API
 	QuoteToken string `json:"quote_token"`
 }

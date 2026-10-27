@@ -11,26 +11,37 @@ package gateapi
 
 // Fixed-term earn product (compact)
 type FixedTermProductSimple struct {
+
 	// Product ID
 	Id int32 `json:"id,omitempty"`
+
 	// Currency
 	Asset string `json:"asset,omitempty"`
+
 	// Lock-up period (in days)
 	LockUpPeriod int32 `json:"lock_up_period,omitempty"`
+
 	// Annual interest rate
 	YearRate string `json:"year_rate,omitempty"`
+
 	// Product type: 1 for regular, 2 for VIP
 	Type int32 `json:"type,omitempty"`
+
 	// Whether early redemption is supported: 0 for not supported, 1 for supported
 	PreRedeem int32 `json:"pre_redeem,omitempty"`
+
 	// Whether auto-renewal is supported: 0 for not supported, 1 for supported
 	Reinvest int32 `json:"reinvest,omitempty"`
+
 	// Whether fixed-to-flexible conversion is supported: 0 for not supported, 1 for supported
 	SimpleEarn int32 `json:"simple_earn,omitempty"`
+
 	// Minimum VIP level requirement, 0 means no restriction
 	MinVip int32 `json:"min_vip,omitempty"`
+
 	// Maximum VIP level requirement, 0 means no restriction
 	MaxVip int32 `json:"max_vip,omitempty"`
+
 	// Sale status: 1 for on sale, 2 for sold out
 	SaleStatus int32 `json:"sale_status,omitempty"`
 }

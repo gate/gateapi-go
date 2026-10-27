@@ -11,8 +11,10 @@ package gateapi
 
 // Dual-currency order early redemption request
 type DualOrderRefundParams struct {
+
 	// Order ID
 	OrderId string `json:"order_id"`
+
 	// Request ID returned by order-refund-preview
 	ReqId string `json:"req_id"`
 }

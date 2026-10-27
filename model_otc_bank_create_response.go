@@ -11,8 +11,11 @@ package gateapi
 
 // Bank card created successfully (Inner returns bank_id and status).
 type OtcBankCreateResponse struct {
-	Code      int32                     `json:"code"`
-	Message   string                    `json:"message"`
-	Data      OtcBankCreateResponseData `json:"data"`
-	Timestamp int32                     `json:"timestamp,omitempty"`
+	Code int32 `json:"code"`
+
+	Message string `json:"message"`
+
+	Data OtcBankCreateResponseData `json:"data"`
+
+	Timestamp int32 `json:"timestamp,omitempty"`
 }

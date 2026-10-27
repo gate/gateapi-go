@@ -10,54 +10,79 @@
 package gateapi
 
 type OrderListItem struct {
+
 	// Order ID
 	OrderId string `json:"order_id,omitempty"`
+
 	// Symbol
 	Symbol string `json:"symbol,omitempty"`
+
 	// Exchange. - us: US stocks. - hk: Hong Kong stocks. - kr: Korean stocks. - jp: Japanese stocks.
 	Exchange string `json:"exchange,omitempty"`
+
 	// Quote currency
 	QuoteCurrency string `json:"quote_currency,omitempty"`
+
 	// Quote currency to USD exchange rate
 	FxRate string `json:"fx_rate,omitempty"`
+
 	// Symbol description
 	SymbolDesc string `json:"symbol_desc,omitempty"`
+
 	// Trading status. - pre_market: Pre-market. - open: Regular trading session. - post_market: Post-market.
 	TradeStatus string `json:"trade_status,omitempty"`
+
 	// Current session trading mode. - 0: Trading disabled. - 1: Buy only. - 2: Sell only. - 4: Buy and sell supported. - 5: Trading suspended. - 6: Trading suspended. - 7: Trading suspended. - 8: Trading suspended.
 	TradeMode int32 `json:"trade_mode,omitempty"`
+
 	// Price type (market = market order, limit = limit order)
 	PriceType string `json:"price_type,omitempty"`
+
 	// Side (1=sell, 2=buy)
 	Side int32 `json:"side,omitempty"`
+
 	// Order status. - 0: Unknown. - 1: New order; the order has been validated and is waiting to be processed. - 2: Partially filled. - 3: Filled. - 4: Canceled. - 5: Order rejected. - 6: Cancellation rejected. - 7: Order update succeeded. - 8: Order update rejected.
 	Status int32 `json:"status,omitempty"`
+
 	// Order quantity
 	Volume string `json:"volume,omitempty"`
+
 	// Trading size
 	FillVolume string `json:"fill_volume,omitempty"`
+
 	// Order price
 	Price string `json:"price,omitempty"`
+
 	// Order creation time (Unix timestamp, seconds)
 	TimeSetup int64 `json:"time_setup,omitempty"`
+
 	// Order update time (Unix timestamp, seconds)
 	TimeUpdate int64 `json:"time_update,omitempty"`
+
 	// Maximum order quantity
 	MaxOrderVolume string `json:"max_order_volume,omitempty"`
+
 	// Order step size
 	StepOrderVolume string `json:"step_order_volume,omitempty"`
+
 	// Minimum order quantity
 	MinOrderVolume string `json:"min_order_volume,omitempty"`
+
 	// Price precision
 	PricePrecision int32 `json:"price_precision,omitempty"`
+
 	// Price protection range
 	PriceProtection string `json:"price_protection,omitempty"`
+
 	// Sell price protection rate
 	SellPriceProtection string `json:"sell_price_protection,omitempty"`
+
 	// Buy price protection rate
 	BuyPriceProtection string `json:"buy_price_protection,omitempty"`
+
 	// Fee Rate
 	CommissionRate string `json:"commission_rate,omitempty"`
+
 	// Slippage
 	SlippageRate string `json:"slippage_rate,omitempty"`
 }

@@ -11,14 +11,19 @@ package gateapi
 
 // Asset allocation optimization - configure unified response
 type ApiResponseAssetSwapConfig struct {
+
 	// Business error code, 0 means success
 	Code int32 `json:"code"`
+
 	// Error identification code, empty string on success
 	Label string `json:"label,omitempty"`
+
 	// Description information
 	Message string `json:"message"`
+
 	// Front-end configuration on success, null on failure
-	Data *interface{} `json:"data"`
+	Data *AssetSwapFrontend `json:"data"`
+
 	// Server timestamp (milliseconds)
 	Timestamp int64 `json:"timestamp"`
 }

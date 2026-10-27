@@ -11,8 +11,10 @@ package gateapi
 
 // Stop loss for limit orders. Pass {} to cancel stop loss; pass null to leave stop loss unchanged.
 type PatchSpotOrderStopLoss struct {
+
 	// Stop loss trigger price When `side == \"buy\"`, `trigger_price` must be less than `price` When `side == \"sell\"`, `trigger_price` must be greater than `price`
 	TriggerPrice string `json:"trigger_price,omitempty"`
+
 	// Stop-loss order price
 	OrderPrice string `json:"order_price,omitempty"`
 }

@@ -11,10 +11,13 @@ package gateapi
 
 // Redirect Link
 type ListUserCouponsResponseDataJumpUrl struct {
+
 	// Web Redirect Link
 	Web string `json:"web,omitempty"`
+
 	// App Redirect Link
 	App string `json:"app,omitempty"`
+
 	// Mini Program Redirect Link (empty string for most types)
 	MiniApp string `json:"mini_app,omitempty"`
 }

@@ -10,10 +10,13 @@
 package gateapi
 
 type OrderBook2Data struct {
+
 	// Symbol
 	Symbol string `json:"symbol,omitempty"`
+
 	// Bid orders
 	Bids []OrderBookPrice `json:"bids,omitempty"`
+
 	// Ask orders
 	Asks []OrderBookPrice `json:"asks,omitempty"`
 }

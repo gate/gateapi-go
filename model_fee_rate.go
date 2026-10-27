@@ -10,6 +10,7 @@
 package gateapi
 
 type FeeRate struct {
-	Data      FeeRateData `json:"data,omitempty"`
-	Timestamp int64       `json:"timestamp,omitempty"`
+	Data FeeRateData `json:"data,omitempty"`
+
+	Timestamp int64 `json:"timestamp,omitempty"`
 }

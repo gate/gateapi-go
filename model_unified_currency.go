@@ -10,16 +10,22 @@
 package gateapi
 
 type UnifiedCurrency struct {
+
 	// Currency name
 	Name string `json:"name,omitempty"`
+
 	// Currency precision
 	Prec string `json:"prec,omitempty"`
+
 	// Minimum borrowable limit, in currency units
 	MinBorrowAmount string `json:"min_borrow_amount,omitempty"`
+
 	// User's maximum borrowable limit, in USDT
 	UserMaxBorrowAmount string `json:"user_max_borrow_amount,omitempty"`
+
 	// Platform's maximum borrowable limit, in USDT
 	TotalMaxBorrowAmount string `json:"total_max_borrow_amount,omitempty"`
+
 	// Lending status  - `disable` : Lending prohibited  - `enable` : Lending supported
 	LoanStatus string `json:"loan_status,omitempty"`
 }

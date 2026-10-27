@@ -11,12 +11,16 @@ package gateapi
 
 // Sub-broker information
 type BrokerCommissionSubBrokerInfo struct {
+
 	// Sub-broker user ID
 	UserId int64 `json:"user_id,omitempty"`
+
 	// Sub-broker original commission rate
 	OriginalCommissionRate string `json:"original_commission_rate,omitempty"`
+
 	// Sub-broker relative commission rate
 	RelativeCommissionRate string `json:"relative_commission_rate,omitempty"`
+
 	// Sub-broker actual commission rate
 	CommissionRate string `json:"commission_rate,omitempty"`
 }

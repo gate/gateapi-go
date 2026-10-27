@@ -11,13 +11,18 @@ package gateapi
 
 // Get beginner task list response
 type ApiResponseExSkillGetBeginnerTaskListResp struct {
+
 	// Business error code: 0 = success, 1007 = no task data, 1008 = not logged in
 	Code int32 `json:"code"`
+
 	// Error identifier code. Empty string on success, machine-readable error label on error
 	Label string `json:"label,omitempty"`
+
 	// Error description
-	Message string                                        `json:"message,omitempty"`
-	Data    ApiResponseExSkillGetBeginnerTaskListRespData `json:"data,omitempty"`
+	Message string `json:"message,omitempty"`
+
+	Data ApiResponseExSkillGetBeginnerTaskListRespData `json:"data,omitempty"`
+
 	// Server timestamp (milliseconds)
 	Timestamp int64 `json:"timestamp"`
 }

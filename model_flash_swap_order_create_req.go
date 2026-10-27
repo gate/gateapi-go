@@ -10,20 +10,28 @@
 package gateapi
 
 type FlashSwapOrderCreateReq struct {
+
 	// Quote ID returned by the preview endpoint
 	QuoteId string `json:"quote_id,omitempty"`
+
 	// Hedge type
 	HedgeType int32 `json:"hedge_type,omitempty"`
+
 	// Currency to sell
 	SellAsset string `json:"sell_asset"`
+
 	// Sell amount
 	SellAmount string `json:"sell_amount"`
+
 	// Currency to buy
 	BuyAsset string `json:"buy_asset"`
+
 	// Buy amount
 	BuyAmount string `json:"buy_amount"`
+
 	// Client request ID for idempotency check
 	ClientReqId string `json:"client_req_id,omitempty"`
+
 	// Request timestamp (in milliseconds)
 	RequestTimeMs int64 `json:"request_time_ms,omitempty"`
 }

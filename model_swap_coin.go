@@ -11,12 +11,16 @@ package gateapi
 
 // Blockchain Mining
 type SwapCoin struct {
+
 	// Currency
 	Coin string `json:"coin"`
+
 	// 0 - Stake 1 - Redeem
 	Side int32 `json:"side"`
+
 	// Size
 	Amount string `json:"amount"`
+
 	// DeFi-type Mining Protocol Identifier
 	Pid int32 `json:"pid,omitempty"`
 }

@@ -10,14 +10,19 @@
 package gateapi
 
 type UnifiedQuickRepayDebtItem struct {
+
 	// Currency name
 	Currency string `json:"currency,omitempty"`
+
 	// Debt Quantity
 	DebtAmount string `json:"debt_amount,omitempty"`
+
 	// Estimated USD value
 	EstimatedUsd string `json:"estimated_usd,omitempty"`
+
 	// Borrowed amount
 	Borrowed string `json:"borrowed,omitempty"`
+
 	// Negative balance
 	NegBalance string `json:"neg_balance,omitempty"`
 }

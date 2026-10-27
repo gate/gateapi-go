@@ -11,8 +11,10 @@ package gateapi
 
 // Change Leverage Request Body (for futures/margin)
 type CrossexLeverageRequest struct {
+
 	// Currency pair
 	Symbol string `json:"symbol"`
+
 	// Leverage
 	Leverage string `json:"leverage"`
 }

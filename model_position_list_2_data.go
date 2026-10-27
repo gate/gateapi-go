@@ -10,6 +10,7 @@
 package gateapi
 
 type PositionList2Data struct {
+
 	// Query active position list
 	List []PositionListItem `json:"list,omitempty"`
 }

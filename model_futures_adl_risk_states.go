@@ -10,8 +10,10 @@
 package gateapi
 
 type FuturesAdlRiskStates struct {
+
 	// Settle currency
 	Settle string `json:"settle"`
+
 	// Mapping of futures markets to ADL risk states
 	States map[string]FuturesAdlRiskState `json:"states"`
 }

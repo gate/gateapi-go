@@ -11,7 +11,9 @@ package gateapi
 
 // Empty object when the advertisement is published or edited successfully; returns risk details when the advertisement content hits risk control
 type P2pMerchantBooksPlaceBizPushOrderResponseData struct {
+
 	// Risk control sub-code; 0 for advertisement content traffic diversion risk control
-	RiskCode  int32                                                  `json:"risk_code,omitempty"`
+	RiskCode int32 `json:"risk_code,omitempty"`
+
 	RiskEvent P2pMerchantBooksPlaceBizPushOrderResponseDataRiskEvent `json:"risk_event,omitempty"`
 }

@@ -10,8 +10,10 @@
 package gateapi
 
 type CrossexConvertOrderResponse struct {
+
 	// Order ID
 	OrderId string `json:"order_id"`
+
 	// Order ID (cannot be customized)
 	Text string `json:"text"`
 }

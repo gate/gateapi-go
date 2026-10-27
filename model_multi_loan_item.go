@@ -10,8 +10,10 @@
 package gateapi
 
 type MultiLoanItem struct {
+
 	// Currency
 	Currency string `json:"currency,omitempty"`
+
 	// Latest price of the currency
 	Price string `json:"price,omitempty"`
 }

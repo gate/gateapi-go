@@ -10,10 +10,13 @@
 package gateapi
 
 type CrossexIsolatedMarginResponse struct {
+
 	// Futures trading pair
 	Symbol string `json:"symbol"`
+
 	// Amount of isolated margin increased or decreased in this request
 	Margin string `json:"margin"`
+
 	// Position side (NONE/LONG/SHORT). Defaults to NONE for one-way positions if omitted
 	PositionSide string `json:"position_side,omitempty"`
 }

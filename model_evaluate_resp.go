@@ -10,9 +10,13 @@
 package gateapi
 
 type EvaluateResp struct {
-	List               []EvaluateItem `json:"list"`
-	Total              int32          `json:"total"`
-	Cursor             string         `json:"cursor"`
-	TotalAvailable     string         `json:"total_available"`
-	TotalAvailableShow string         `json:"total_available_show"`
+	List []EvaluateItem `json:"list"`
+
+	Total int32 `json:"total"`
+
+	Cursor string `json:"cursor"`
+
+	TotalAvailable string `json:"total_available"`
+
+	TotalAvailableShow string `json:"total_available_show"`
 }

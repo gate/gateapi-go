@@ -11,34 +11,49 @@ package gateapi
 
 // Plan execution record item
 type AutoInvestPlanRecordItem struct {
+
 	// Record ID
 	Id int64 `json:"id"`
+
 	// Type
 	Type string `json:"type"`
+
 	// SourceCurrency
 	Money string `json:"money"`
+
 	// User ID
 	UserId int64 `json:"user_id"`
+
 	// Plan ID
 	PlanId int64 `json:"plan_id"`
+
 	// PlanVersion
 	PlanVersion int64 `json:"plan_version"`
+
 	// Investment amount
 	Amount string `json:"amount"`
+
 	// Investment time
 	CreateTime int64 `json:"create_time"`
+
 	// Update time
 	UpdateTime int64 `json:"update_time"`
+
 	// Status
 	Status string `json:"status"`
+
 	// Status enum
 	StatusType int64 `json:"status_type"`
+
 	// 2 = Buy, Other = Sell
 	Side int64 `json:"side"`
+
 	// Status description
 	StatusMessage string `json:"status_message"`
+
 	// Details
 	Detail string `json:"detail,omitempty"`
+
 	// Currency
 	Asset string `json:"asset,omitempty"`
 }

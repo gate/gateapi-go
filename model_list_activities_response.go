@@ -10,11 +10,15 @@
 package gateapi
 
 type ListActivitiesResponse struct {
+
 	// Response status code, 0 means success
 	Code int32 `json:"code"`
+
 	// 响应消息，成功时为 \"success\"
-	Message string                     `json:"message"`
-	Data    ListActivitiesResponseData `json:"data"`
+	Message string `json:"message"`
+
+	Data ListActivitiesResponseData `json:"data"`
+
 	// Server timestamp (milliseconds)
 	Timestamp int64 `json:"timestamp"`
 }

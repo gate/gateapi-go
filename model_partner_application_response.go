@@ -10,11 +10,15 @@
 package gateapi
 
 type PartnerApplicationResponse struct {
+
 	// Error Code, 0 Indicates Success
 	Code int32 `json:"code"`
+
 	// Error message description
-	Message string             `json:"message"`
-	Data    PartnerApplication `json:"data"`
+	Message string `json:"message"`
+
+	Data PartnerApplication `json:"data"`
+
 	// Unix timestamp
 	Timestamp int64 `json:"timestamp"`
 }

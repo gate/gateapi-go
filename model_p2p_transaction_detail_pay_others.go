@@ -10,18 +10,25 @@
 package gateapi
 
 type P2pTransactionDetailPayOthers struct {
+
 	// Payment method record ID.
 	Id string `json:"id,omitempty"`
+
 	// Payment method description
 	AccountDes string `json:"account_des,omitempty"`
+
 	// Payment method type
 	PayType string `json:"pay_type,omitempty"`
+
 	// Payment account or masked account.
 	Account string `json:"account,omitempty"`
+
 	// Payment note or memo.
 	Memo string `json:"memo,omitempty"`
+
 	// Payment instructions or tips.
 	TradeTips string `json:"trade_tips,omitempty"`
+
 	// Display name of the payment method.
 	PayName string `json:"pay_name,omitempty"`
 }

@@ -11,14 +11,19 @@ package gateapi
 
 // Fund Transfer Request Body
 type CrossexTransferRequest struct {
+
 	// Currency
 	Coin string `json:"coin"`
+
 	// Transfer amount
 	Amount string `json:"amount"`
+
 	// `from` debit account (funds withdrawn from): `CROSSEX_BINANCE`, `CROSSEX_OKX`, `CROSSEX_GATE`, `CROSSEX_BYBIT`, `CROSSEX_KRAKEN`, `CROSSEX_HYPERLIQUID`, `CROSSEX_DERIBIT`, `CROSSEX_LIGHTER`, `CROSSEX`, `SPOT`
 	From string `json:"from"`
+
 	// `to` receiving account (`CROSSEX_BINANCE`, `CROSSEX_OKX`, `CROSSEX_GATE`, `CROSSEX_BYBIT`, `CROSSEX_KRAKEN`, `CROSSEX_HYPERLIQUID`, `CROSSEX_DERIBIT`, `CROSSEX_LIGHTER`, `CROSSEX`, `SPOT`).
 	To string `json:"to"`
+
 	// User-defined ID
 	Text string `json:"text,omitempty"`
 }

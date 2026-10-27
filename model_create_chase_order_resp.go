@@ -10,6 +10,7 @@
 package gateapi
 
 type CreateChaseOrderResp struct {
+
 	// ID of the newly created order
 	Id string `json:"id,omitempty"`
 }

@@ -10,10 +10,13 @@
 package gateapi
 
 type MultiCollateralItem struct {
+
 	// Currency
 	Currency string `json:"currency,omitempty"`
+
 	// Currency Index Price
 	IndexPrice string `json:"index_price,omitempty"`
+
 	// Discount
 	Discount string `json:"discount,omitempty"`
 }

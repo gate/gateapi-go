@@ -10,8 +10,10 @@
 package gateapi
 
 type ListSquareAiSearchResponseData struct {
+
 	// Total number of results
 	Total int32 `json:"total,omitempty"`
+
 	// Search result list
 	Items []ListSquareAiSearchResponseDataItems `json:"items,omitempty"`
 }

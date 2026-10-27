@@ -11,10 +11,13 @@ package gateapi
 
 // Repayment details
 type UnifiedQuickRepayRepaidInfo struct {
+
 	// Currency name
 	Currency string `json:"currency"`
+
 	// Repaid amount
 	Repaid string `json:"repaid"`
+
 	// Remaining liability amount
 	Left string `json:"left"`
 }

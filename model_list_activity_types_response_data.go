@@ -11,6 +11,7 @@ package gateapi
 
 // Activity type data
 type ListActivityTypesResponseData struct {
+
 	// Activity type list
 	List []ListActivityTypesResponseDataList `json:"list"`
 }

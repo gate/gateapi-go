@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **RefId** | **string** | Business idempotent ID | [optional] 
 **Time** | **int64** | Unix timestamp (seconds) | [optional] 
 **UnitText** | **string** | Unit display text | [optional] 
-**Detail** | **map[string]map[string]interface{}** | Business details | [optional] 
+**Detail** | **map[string]interface{}** | Business details | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

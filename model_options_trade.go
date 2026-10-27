@@ -10,14 +10,19 @@
 package gateapi
 
 type OptionsTrade struct {
+
 	// Fill ID
 	Id int64 `json:"id,omitempty"`
+
 	// Fill Time
 	CreateTime int64 `json:"create_time,omitempty"`
+
 	// Options contract name
 	Contract string `json:"contract,omitempty"`
+
 	// Trading size
 	Size int64 `json:"size,omitempty"`
+
 	// Transaction Price (Quoted Currency, Unit: Underlying Option Price)
 	Price string `json:"price,omitempty"`
 }

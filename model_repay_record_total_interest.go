@@ -10,12 +10,16 @@
 package gateapi
 
 type RepayRecordTotalInterest struct {
+
 	// Currency
 	Currency string `json:"currency,omitempty"`
+
 	// Currency Index Price
 	IndexPrice string `json:"index_price,omitempty"`
+
 	// Interest Amount
 	Amount string `json:"amount,omitempty"`
+
 	// Interest amount converted to USDT
 	AmountUsdt string `json:"amount_usdt,omitempty"`
 }

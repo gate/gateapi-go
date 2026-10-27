@@ -77,6 +77,8 @@ type APIClient struct {
 
 	FuturesApi *FuturesApiService
 
+	LaunchApi *LaunchApiService
+
 	MarginApi *MarginApiService
 
 	MarginUniApi *MarginUniApiService
@@ -138,6 +140,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.EarnUniApi = (*EarnUniApiService)(&c.common)
 	c.FlashSwapApi = (*FlashSwapApiService)(&c.common)
 	c.FuturesApi = (*FuturesApiService)(&c.common)
+	c.LaunchApi = (*LaunchApiService)(&c.common)
 	c.MarginApi = (*MarginApiService)(&c.common)
 	c.MarginUniApi = (*MarginUniApiService)(&c.common)
 	c.MultiCollateralLoanApi = (*MultiCollateralLoanApiService)(&c.common)
@@ -469,7 +472,12 @@ func (c *APIClient) decode(v interface{}, b []byte, contentType string) (err err
 	if len(b) == 0 {
 		return nil
 	}
-	if s, ok := v.(*string); ok {
+	if contentType == "" {
+		contentType = "application/json"
+	}
+	// JSON string responses need JSON unquoting; raw text/file responses retain
+	// their original bytes. Never return a quoted JSON token as a business value.
+	if s, ok := v.(*string); ok && !jsonCheck.MatchString(contentType) {
 		*s = string(b)
 		return nil
 	}

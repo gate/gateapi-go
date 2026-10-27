@@ -11,10 +11,13 @@ package gateapi
 
 // Fund Transfer Request Body
 type TradFiTransactionRequest struct {
+
 	// Asset type, e.g., USDT, currently only USDT is supported
 	Asset string `json:"asset"`
+
 	// Change Quantity, supports up to two decimal places
 	Change string `json:"change"`
+
 	// Transaction Type (deposit - transfer in, withdraw - transfer out)
 	Type string `json:"type"`
 }

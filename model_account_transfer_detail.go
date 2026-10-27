@@ -11,20 +11,28 @@ package gateapi
 
 // Trading account transfer details
 type AccountTransferDetail struct {
+
 	// Transfer transaction ID
 	TxId string `json:"tx_id"`
+
 	// Transfer status:  - `pending`: Processing - `success`: Successful - `fail`: Failed
 	Status string `json:"status"`
+
 	// Transfer currency
 	Currency string `json:"currency"`
+
 	// Transfer amount
 	Amount string `json:"amount"`
+
 	// Source account type:  - `spot`: Spot account - `margin`: Margin account - `futures`: Perpetual futures account - `delivery`: Delivery futures account - `options`: Options account - `unknown`: Unrecognized account type
 	FromAccount string `json:"from_account"`
+
 	// Destination account type:  - `spot`: Spot account - `margin`: Margin account - `futures`: Perpetual futures account - `delivery`: Delivery futures account - `options`: Options account - `unknown`: Unrecognized account type
 	ToAccount string `json:"to_account"`
+
 	// Settlement currency for futures, delivery, and options transfers; otherwise, null
 	Settle *string `json:"settle"`
+
 	// Currency pair for margin transfers; otherwise, null
 	CurrencyPair *string `json:"currency_pair"`
 }

@@ -10,8 +10,11 @@
 package gateapi
 
 type PreviewOrder struct {
-	From                   []PreviewOrderDetail `json:"from"`
-	To                     []PreviewOrderDetail `json:"to"`
-	UsdtEvaluatedValue     string               `json:"usdt_evaluated_value"`
-	UsdtEvaluatedValueShow string               `json:"usdt_evaluated_value_show"`
+	From []PreviewOrderDetail `json:"from"`
+
+	To []PreviewOrderDetail `json:"to"`
+
+	UsdtEvaluatedValue string `json:"usdt_evaluated_value"`
+
+	UsdtEvaluatedValueShow string `json:"usdt_evaluated_value_show"`
 }

@@ -12,11 +12,16 @@ package gateapi
 // Strategy detail base info.
 type AiHubPortfolioBaseInfo struct {
 	StrategyName string `json:"strategy_name"`
+
 	// Created time
 	CreatedAt string `json:"created_at"`
+
 	// Runtime duration in seconds.
-	RunningDuration int64  `json:"running_duration"`
-	InvestAmount    string `json:"invest_amount"`
-	TotalProfit     string `json:"total_profit"`
-	ProfitRate      string `json:"profit_rate"`
+	RunningDuration int64 `json:"running_duration"`
+
+	InvestAmount string `json:"invest_amount"`
+
+	TotalProfit string `json:"total_profit"`
+
+	ProfitRate string `json:"profit_rate"`
 }

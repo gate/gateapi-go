@@ -10,12 +10,16 @@
 package gateapi
 
 type Recommend struct {
+
 	// Mapping of string keys to string values, corresponding to Go's map[string]string.
 	Balance map[string]string `json:"balance"`
+
 	// Mapping of string keys to string values, corresponding to Go's map[string]string.
 	BtcFaith map[string]string `json:"btc_faith"`
+
 	// Mapping of string keys to string values, corresponding to Go's map[string]string.
 	Conservative map[string]string `json:"conservative"`
+
 	// Mapping of string keys to string values, corresponding to Go's map[string]string.
 	GtFaith map[string]string `json:"gt_faith"`
 }

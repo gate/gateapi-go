@@ -10,24 +10,34 @@
 package gateapi
 
 type UserAssetResp2Data struct {
+
 	// Account equity
 	Equity string `json:"equity,omitempty"`
+
 	// Account Balance
 	Balance string `json:"balance,omitempty"`
+
 	// Available Balance
 	Available string `json:"available,omitempty"`
+
 	// Position market value
 	PositionMarketValue string `json:"position_market_value,omitempty"`
+
 	// Position P&L
 	PositionPnl string `json:"position_pnl,omitempty"`
+
 	// Today's P&L
 	TodayPnl string `json:"today_pnl,omitempty"`
+
 	// Option position market value
 	OptionPositionMarketValue string `json:"option_position_market_value,omitempty"`
+
 	// Option position PnL
 	OptionPositionPnl string `json:"option_position_pnl,omitempty"`
+
 	// Option today's PnL
 	OptionTodayPnl string `json:"option_today_pnl,omitempty"`
+
 	// Whether the user has activated the service
 	UserExists bool `json:"user_exists,omitempty"`
 }

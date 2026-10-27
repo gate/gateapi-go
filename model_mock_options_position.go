@@ -11,8 +11,10 @@ package gateapi
 
 // Options positions
 type MockOptionsPosition struct {
+
 	// Options contract name. Currently supports all options contract markets.
 	OptionsName string `json:"options_name"`
+
 	// Position size, measured in contract quantity
 	Size string `json:"size"`
 }

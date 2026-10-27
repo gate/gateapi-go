@@ -10,10 +10,13 @@
 package gateapi
 
 type OtcStableCoinOrderCreateResponse struct {
+
 	// Business code; 0 indicates success
 	Code int32 `json:"code"`
+
 	// Message
 	Message string `json:"message"`
+
 	// Server Unix timestamp in seconds
 	Timestamp int32 `json:"timestamp"`
 }

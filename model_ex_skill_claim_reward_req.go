@@ -10,6 +10,7 @@
 package gateapi
 
 type ExSkillClaimRewardReq struct {
+
 	// Rewards Center task ID
 	WelfareTaskId int64 `json:"welfare_task_id"`
 }

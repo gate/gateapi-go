@@ -11,7 +11,9 @@ package gateapi
 
 // Create the request body for the infinite grid policy.
 type InfiniteGridCreateRequest struct {
-	StrategyType string                   `json:"strategy_type"`
-	Market       string                   `json:"market"`
+	StrategyType string `json:"strategy_type"`
+
+	Market string `json:"market"`
+
 	CreateParams InfiniteGridCreateParams `json:"create_params"`
 }

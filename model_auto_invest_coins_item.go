@@ -11,12 +11,16 @@ package gateapi
 
 // Currency item supporting auto invest
 type AutoInvestCoinsItem struct {
+
 	// Currency code
 	Key string `json:"key"`
+
 	// Currency name
 	Value string `json:"value"`
+
 	// Currency icon URL
 	AssetIconUrl string `json:"asset_icon_url"`
+
 	// Sort
 	Sort int64 `json:"sort,omitempty"`
 }

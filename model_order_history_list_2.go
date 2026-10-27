@@ -10,6 +10,7 @@
 package gateapi
 
 type OrderHistoryList2 struct {
-	Data      OrderHistoryList2Data `json:"data,omitempty"`
-	Timestamp int64                 `json:"timestamp,omitempty"`
+	Data OrderHistoryList2Data `json:"data,omitempty"`
+
+	Timestamp int64 `json:"timestamp,omitempty"`
 }

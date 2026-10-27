@@ -11,4 +11,17 @@ package gateapi
 
 // Personal supplement `multipart/form-data`. File field names are fixed: `id_document_front`, `id_document_back`, `address_proof` (aligned with the checklist `code`); the optional string field `relationship_proof` (JSON text) is merged with the upload result.
 type OtcBankPersonalSupplementMultipartRequest struct {
+	BankId string `json:"bank_id"`
+
+	// ID document front-side file content (multipart file field, binary/Base64)
+	IdDocumentFront string `json:"id_document_front,omitempty"`
+
+	// ID document back-side file content (multipart file field, binary/Base64)
+	IdDocumentBack string `json:"id_document_back,omitempty"`
+
+	// Proof-of-address file content (multipart file field, binary/Base64)
+	AddressProof string `json:"address_proof,omitempty"`
+
+	// Optional. JSON string of relationship_proof.
+	RelationshipProof string `json:"relationship_proof,omitempty"`
 }

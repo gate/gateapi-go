@@ -11,8 +11,10 @@ package gateapi
 
 // Market leverage settings
 type MarginMarketLeverage struct {
+
 	// Market
 	CurrencyPair string `json:"currency_pair,omitempty"`
+
 	// Leverage multiplier
 	Leverage string `json:"leverage"`
 }

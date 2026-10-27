@@ -11,8 +11,11 @@ package gateapi
 
 // The response body when querying policy details is successful.
 type AiHubPortfolioDetailSuccessResponse struct {
-	Code    int32                    `json:"code"`
-	Message string                   `json:"message"`
-	Data    AiHubPortfolioDetailData `json:"data"`
-	TraceId string                   `json:"trace_id"`
+	Code int32 `json:"code"`
+
+	Message string `json:"message"`
+
+	Data AiHubPortfolioDetailData `json:"data"`
+
+	TraceId string `json:"trace_id"`
 }

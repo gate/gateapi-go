@@ -10,42 +10,61 @@
 package gateapi
 
 type OptionsAccount struct {
+
 	// User ID
 	User int64 `json:"user,omitempty"`
+
 	// Account balance, invalid for unified account
 	Total string `json:"total,omitempty"`
+
 	// Position value, long position value is positive, short position value is negative
 	PositionValue string `json:"position_value,omitempty"`
+
 	// Account equity = balance + option position value, invalid for unified account
 	Equity string `json:"equity,omitempty"`
+
 	// If the account is allowed to short
 	ShortEnabled bool `json:"short_enabled,omitempty"`
+
 	// Whether to enable MMP
 	MmpEnabled bool `json:"mmp_enabled,omitempty"`
+
 	// Whether the account is in a liquidation state
 	LiqTriggered bool `json:"liq_triggered,omitempty"`
+
 	// This field indicates the margin mode used by the unified account:  - 0: Classic Spot Margin Mode - 1: Cross-Currency Margin Mode - 2: Portfolio Margin Mode - 3: Single-Currency Margin Mode
 	MarginMode int32 `json:"margin_mode,omitempty"`
+
 	// Unrealised PnL = (mark price - entry price) * position size. For long postion, size is positive; for short positon, size is negative.This value is for reference only.
 	UnrealisedPnl string `json:"unrealised_pnl,omitempty"`
+
 	// Initial position margin
 	InitMargin string `json:"init_margin,omitempty"`
+
 	// Position maintenance margin
 	MaintMargin string `json:"maint_margin,omitempty"`
+
 	// Order margin of unfinished orders
 	OrderMargin string `json:"order_margin,omitempty"`
+
 	// Margin for outstanding sell orders
 	AskOrderMargin string `json:"ask_order_margin,omitempty"`
+
 	// Margin for outstanding buy orders
 	BidOrderMargin string `json:"bid_order_margin,omitempty"`
+
 	// Available balance to transfer out or trade
 	Available string `json:"available,omitempty"`
+
 	// Point card amount
 	Point string `json:"point,omitempty"`
+
 	// Settlement currency
 	Currency string `json:"currency,omitempty"`
+
 	// Maximum number of outstanding orders
 	OrdersLimit int32 `json:"orders_limit,omitempty"`
+
 	// Notional value upper limit, including the nominal value of positions and outstanding orders
 	PositionNotionalLimit int64 `json:"position_notional_limit,omitempty"`
 }

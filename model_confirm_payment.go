@@ -11,8 +11,10 @@ package gateapi
 
 // Confirm payment request
 type ConfirmPayment struct {
+
 	// Order ID
 	Txid string `json:"txid"`
+
 	// Payment type used for this payment; optional but must be among order-supported types. Use `supported_pay_types` on the order or `pay_type` list, e.g. `bank`, `alipay`, `wechat`, `paypal`, `swift`, `wu`.
 	PaymentMethod string `json:"payment_method,omitempty"`
 }

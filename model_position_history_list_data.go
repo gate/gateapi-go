@@ -11,10 +11,13 @@ package gateapi
 
 // Response data
 type PositionHistoryListData struct {
+
 	// Total amount
 	Total int32 `json:"total,omitempty"`
+
 	// Total pages
 	TotalPage int32 `json:"total_page,omitempty"`
+
 	// Query historical position list
 	List []PositionHistoryListDataList `json:"list,omitempty"`
 }

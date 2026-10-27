@@ -11,8 +11,10 @@ package gateapi
 
 // Multi-collateral current interest rate
 type CollateralCurrentRate struct {
+
 	// Currency
 	Currency string `json:"currency,omitempty"`
+
 	// Currency current interest rate
 	CurrentRate string `json:"current_rate,omitempty"`
 }

@@ -11,18 +11,25 @@ package gateapi
 
 // Fiat and Stablecoin Quote Request Body
 type OtcQuoteRequest struct {
+
 	// PAY: specify the payment amount (`pay_amount` is required); GET: specify the receive amount (`get_amount` is required).
 	Side string `json:"side"`
+
 	// Payment currency. Supported currencies are available on the OTC web quote page.
 	PayCoin string `json:"pay_coin"`
+
 	// Receive currency. Supported currencies are available on the OTC web quote page.
 	GetCoin string `json:"get_coin"`
+
 	// User payment currency amount
 	PayAmount string `json:"pay_amount,omitempty"`
+
 	// Amount of currency received by the user
 	GetAmount string `json:"get_amount,omitempty"`
+
 	// Create quote token: 0: quote preview only; 1: generate quote token for order placement.
 	CreateQuoteToken string `json:"create_quote_token,omitempty"`
+
 	// Promotion code
 	PromotionCode string `json:"promotion_code,omitempty"`
 }

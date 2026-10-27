@@ -11,16 +11,22 @@ package gateapi
 
 // Order request
 type PlaceOrderRequest struct {
+
 	// Trading symbol
 	Currency string `json:"currency"`
+
 	// Buy or sell orders - buy - sell
 	Side string `json:"side"`
+
 	// Trade Quantity - `side` : `buy` refers to the quote currency, i.e., `USDT` - `side` : `sell` refers to the base currency
 	Amount string `json:"amount"`
+
 	// Trading mode affects slippage selection - `speed` : Smart mode - `custom` : Custom mode, uses `slippage` parameter
 	GasMode string `json:"gas_mode"`
+
 	// Slippage tolerance (10 means 10% tolerance)
 	Slippage string `json:"slippage,omitempty"`
+
 	// Quote ID returned from quotation API
 	QuoteId string `json:"quote_id"`
 }

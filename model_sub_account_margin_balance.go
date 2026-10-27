@@ -10,8 +10,10 @@
 package gateapi
 
 type SubAccountMarginBalance struct {
+
 	// User ID
 	Uid string `json:"uid,omitempty"`
+
 	// Margin account balances
 	Available []MarginAccount `json:"available,omitempty"`
 }

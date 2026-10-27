@@ -10,8 +10,10 @@
 package gateapi
 
 type CrossexLeverageResponse struct {
+
 	// Currency pair
 	Symbol string `json:"symbol"`
+
 	// Requested Modified Leverage
 	Leverage string `json:"leverage"`
 }

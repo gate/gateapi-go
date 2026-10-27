@@ -10,8 +10,10 @@
 package gateapi
 
 type UnifiedTransferable struct {
+
 	// Currency detail
 	Currency string `json:"currency,omitempty"`
+
 	// Maximum transferable amount
 	Amount string `json:"amount,omitempty"`
 }

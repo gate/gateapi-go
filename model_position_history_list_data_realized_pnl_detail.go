@@ -11,10 +11,13 @@ package gateapi
 
 // Realized P&L details
 type PositionHistoryListDataRealizedPnlDetail struct {
+
 	// Close Position P&L
 	ClosedPnl string `json:"closed_pnl,omitempty"`
+
 	// Swap fee
 	Swap string `json:"swap,omitempty"`
+
 	// fee
 	Fee string `json:"fee,omitempty"`
 }

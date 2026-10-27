@@ -10,20 +10,28 @@
 package gateapi
 
 type FuturesAccountBook struct {
+
 	// Change time
 	Time float64 `json:"time,omitempty"`
+
 	// Change amount
 	Change string `json:"change,omitempty"`
+
 	// Balance after change
 	Balance string `json:"balance,omitempty"`
+
 	// Change types:  - dnw: Deposit and withdrawal - pnl: Profit and loss from position reduction - fee: Trading fees - refr: Referrer rebates - fund: Funding fees - point_dnw: Point card deposit and withdrawal - point_fee: Point card trading fees - point_refr: Point card referrer rebates - bonus_offset: Trial fund deduction - dividend: Dividend payout
 	Type string `json:"type,omitempty"`
+
 	// Comment
 	Text string `json:"text,omitempty"`
+
 	// Futures contract, the field is only available for data after 2023-10-30
 	Contract string `json:"contract,omitempty"`
+
 	// trade id
 	TradeId string `json:"trade_id,omitempty"`
+
 	// Account change record ID
 	Id string `json:"id,omitempty"`
 }

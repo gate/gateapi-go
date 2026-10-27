@@ -11,8 +11,10 @@ package gateapi
 
 // Get transaction details request
 type GetTransactionDetailsRequest struct {
+
 	// Order ID
 	Txid int32 `json:"txid"`
+
 	// Channel tag: omit or empty for normal P2P; use `web3` for Web3 orders.
 	Channel string `json:"channel,omitempty"`
 }

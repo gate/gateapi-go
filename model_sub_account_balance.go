@@ -10,10 +10,13 @@
 package gateapi
 
 type SubAccountBalance struct {
+
 	// User ID
 	Uid string `json:"uid,omitempty"`
+
 	// Available balances of currencies
 	Available map[string]string `json:"available,omitempty"`
+
 	// Locked amount by currency
 	Locking map[string]string `json:"locking,omitempty"`
 }

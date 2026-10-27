@@ -10,22 +10,31 @@
 package gateapi
 
 type AwardListStructList struct {
+
 	// Product ID
 	Pid int32 `json:"pid"`
+
 	// Collateral currency
 	MortgageCoin string `json:"mortgage_coin"`
+
 	// Amount
 	Amount string `json:"amount"`
+
 	// Reward currency
 	RewardCoin string `json:"reward_coin"`
+
 	// Interest amount
 	Interest string `json:"interest"`
+
 	// fee
 	Fee string `json:"fee"`
+
 	// Status. 4 - success
 	Status int32 `json:"status"`
+
 	// Date
 	BonusDate string `json:"bonus_date"`
+
 	// Scheduled distribution timestamp
 	ShouldBonusStamp int32 `json:"should_bonus_stamp"`
 }

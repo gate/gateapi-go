@@ -11,10 +11,13 @@ package gateapi
 
 // Category information
 type CategoriesDataList struct {
+
 	// Category ID
 	CategoryId int32 `json:"category_id,omitempty"`
+
 	// Whether it is a custom category, generally no need to pay attention
 	IsFavorite bool `json:"is_favorite,omitempty"`
+
 	// Category name
 	CategoryName string `json:"category_name,omitempty"`
 }

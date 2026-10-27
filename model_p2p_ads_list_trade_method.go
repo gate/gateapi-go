@@ -10,14 +10,19 @@
 package gateapi
 
 type P2pAdsListTradeMethod struct {
+
 	// Payment method color icon URL
 	IconUrlColor string `json:"icon_url_color,omitempty"`
+
 	// Payment method identifier
 	Identifier string `json:"identifier,omitempty"`
+
 	// Payment method ID
 	PayId string `json:"pay_id,omitempty"`
+
 	// Payment method type
 	PayType string `json:"pay_type,omitempty"`
+
 	// Payment method name
 	TradeMethodName string `json:"trade_method_name,omitempty"`
 }

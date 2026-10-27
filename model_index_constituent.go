@@ -10,8 +10,10 @@
 package gateapi
 
 type IndexConstituent struct {
+
 	// Exchange
 	Exchange string `json:"exchange,omitempty"`
+
 	// Symbol list
 	Symbols []string `json:"symbols,omitempty"`
 }

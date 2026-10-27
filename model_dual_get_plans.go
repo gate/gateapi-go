@@ -10,28 +10,40 @@
 package gateapi
 
 type DualGetPlans struct {
+
 	// Product ID
 	Id int32 `json:"id,omitempty"`
+
 	// Product Name
 	InstrumentName string `json:"instrument_name,omitempty"`
+
 	// `call`: sell high; `put`: buy low
 	Type string `json:"type,omitempty"`
+
 	// Investment Token
 	InvestCurrency string `json:"invest_currency,omitempty"`
+
 	// Strike Token
 	ExerciseCurrency string `json:"exercise_currency,omitempty"`
+
 	// Strike price
 	ExercisePrice float64 `json:"exercise_price,omitempty"`
+
 	// Settlement time
 	DeliveryTime int32 `json:"delivery_time,omitempty"`
+
 	// Annual Yield
 	ApyDisplay string `json:"apy_display,omitempty"`
+
 	// Minimum investment amount
 	MinAmount string `json:"min_amount,omitempty"`
+
 	// Start Time
 	StartTime int32 `json:"start_time,omitempty"`
+
 	// End time
 	EndTime int32 `json:"end_time,omitempty"`
+
 	// Status:  `NOTSTARTED` - Not started `ONGOING` - In progress `ENDED` - Ended
 	Status string `json:"status,omitempty"`
 }

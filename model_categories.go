@@ -10,7 +10,9 @@
 package gateapi
 
 type Categories struct {
+
 	// Server timestamp (milliseconds)
-	Timestamp int64          `json:"timestamp,omitempty"`
-	Data      CategoriesData `json:"data,omitempty"`
+	Timestamp int64 `json:"timestamp,omitempty"`
+
+	Data CategoriesData `json:"data,omitempty"`
 }

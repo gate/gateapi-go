@@ -10,10 +10,13 @@
 package gateapi
 
 type OrderHistoryList2Data struct {
+
 	// Total quantity
 	Total int64 `json:"total,omitempty"`
+
 	// Total pages
 	TotalPage int32 `json:"total_page,omitempty"`
+
 	// Query historical order list
 	List []OrderHistoryListItem `json:"list,omitempty"`
 }

@@ -11,8 +11,10 @@ package gateapi
 
 // Unified account borrowing margin tiers
 type UnifiedMarginTiers struct {
+
 	// Currency name
 	Currency string `json:"currency,omitempty"`
+
 	// Tiered margin
 	MarginTiers []MarginTiers `json:"margin_tiers,omitempty"`
 }

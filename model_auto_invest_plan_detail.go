@@ -11,36 +11,52 @@ package gateapi
 
 // Auto invest planDetails
 type AutoInvestPlanDetail struct {
+
 	// Plan ID
 	Id int64 `json:"id"`
+
 	// PlanVersion
 	Version int64 `json:"version,omitempty"`
+
 	// Plan name
 	Name string `json:"name"`
+
 	// Creation time (Unix timestamp)
 	CreateTime int64 `json:"create_time"`
+
 	// Update time (Unix timestamp)
 	UpdateTime int64 `json:"update_time"`
+
 	// User ID
 	UserId int64 `json:"user_id"`
+
 	// Quote Currency
 	Money string `json:"money"`
+
 	// Per PeriodInvestment amount
 	Amount string `json:"amount"`
+
 	// Cycle type（e.g., monthly）
 	PeriodType string `json:"period_type"`
+
 	// Cycle day
 	PeriodDay int64 `json:"period_day"`
+
 	// CycleHours
 	PeriodHour int64 `json:"period_hour"`
+
 	// Portfolio
 	Portfolio []AutoInvestPortfolioItem `json:"portfolio"`
+
 	// Next execution time (Unix timestamp)
 	NextTime int64 `json:"next_time"`
+
 	// Executed periods
 	Period int64 `json:"period"`
+
 	// Fund source（spot/earn）
 	FundSource string `json:"fund_source"`
+
 	// Fund flow direction (auto_invest/earn)
 	FundFlow string `json:"fund_flow"`
 }

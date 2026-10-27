@@ -10,26 +10,37 @@
 package gateapi
 
 type CreateTrailOrder struct {
+
 	// Contract name
 	Contract string `json:"contract"`
+
 	// Trading quantity in contracts, positive for buy, negative for sell
 	Amount string `json:"amount"`
+
 	// Activation price, 0 means trigger immediately
 	ActivationPrice string `json:"activation_price,omitempty"`
+
 	// true: activate when market price >= activation price, false: <= activation price
 	IsGte bool `json:"is_gte,omitempty"`
+
 	// Activation price type: 1-latest price, 2-index price, 3-mark price
 	PriceType int32 `json:"price_type,omitempty"`
+
 	// Callback ratio or price distance, e.g., `0.1` or `0.1%`
 	PriceOffset string `json:"price_offset,omitempty"`
+
 	// Whether reduce only
 	ReduceOnly bool `json:"reduce_only,omitempty"`
+
 	// Whether bound to a position (if position_related = true (position-related), then reduce_only must also be true)
 	PositionRelated bool `json:"position_related,omitempty"`
+
 	// Order custom information, optional field. Used to identify the order source or set a user-defined ID.  If non-empty, it must meet one of the following rules:  1. Internal Reserved Fields (identifying order source): - `apiv4`: API call 2. User-defined Fields (setting custom ID): - Must start with `t-` - The content after `t-` must not exceed 28 bytes in length - Can only contain: numbers, letters, underscores (_), hyphens (-), or dots (.) - Examples: `t-my-order-001`, `t-trail_2024.01`  Note: User-defined fields must not conflict with internal reserved fields.
 	Text string `json:"text,omitempty"`
+
 	// Position margin mode: isolated/cross
 	PosMarginMode string `json:"pos_margin_mode,omitempty"`
+
 	// Position mode: single, dual, and dual_plus
 	PositionMode string `json:"position_mode,omitempty"`
 }

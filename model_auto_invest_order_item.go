@@ -11,36 +11,52 @@ package gateapi
 
 // Auto invest order item
 type AutoInvestOrderItem struct {
+
 	// Order ID
 	Id int64 `json:"id"`
+
 	// Type
 	Type string `json:"type"`
+
 	// Size
 	Amount string `json:"amount"`
+
 	// Plan ID
 	PlanId int64 `json:"plan_id"`
+
 	// direction
 	Side int64 `json:"side"`
+
 	// Currency
 	Asset string `json:"asset"`
+
 	// Record ID
 	RecordId int64 `json:"record_id"`
+
 	// TotalAmount
 	TotalMoney string `json:"total_money"`
+
 	// Currency pair
 	Market string `json:"market"`
+
 	// Price
 	Price string `json:"price"`
+
 	// Creation time (Unix timestamp)
 	CreateTime int64 `json:"create_time"`
+
 	// Total
 	Total string `json:"total"`
+
 	// Fund Flow Direction
 	FundFlow string `json:"fund_flow"`
+
 	// Error code
 	ErrorCode int64 `json:"error_code"`
+
 	// Error message
 	ErrorMsg string `json:"error_msg"`
+
 	// Status
 	Status int64 `json:"status"`
 }

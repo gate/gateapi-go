@@ -11,24 +11,34 @@ package gateapi
 
 // Quote Response
 type QuoteResponse struct {
+
 	// Quote ID for order placement, valid for 1 minute
 	QuoteId string `json:"quote_id,omitempty"`
+
 	// Minimum order size
 	MinAmount string `json:"min_amount,omitempty"`
+
 	// Maximum order size
 	MaxAmount string `json:"max_amount,omitempty"`
+
 	// Token Price (USDT-based)
 	Price string `json:"price,omitempty"`
+
 	// Slippage
 	Slippage string `json:"slippage,omitempty"`
+
 	// Estimated Gas Fee (USDT-based)
 	EstimateGasFeeAmountUsdt string `json:"estimate_gas_fee_amount_usdt,omitempty"`
+
 	// Trading fee
 	OrderFee string `json:"order_fee,omitempty"`
+
 	// Minimum received amount
 	TargetTokenMinAmount string `json:"target_token_min_amount,omitempty"`
+
 	// Maximum received amount
 	TargetTokenMaxAmount string `json:"target_token_max_amount,omitempty"`
+
 	// Failure Type - `0` : Success - `1` : Exceeds maximum value - `2` : Below minimum value
 	ErrorType int32 `json:"error_type,omitempty"`
 }

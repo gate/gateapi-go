@@ -10,11 +10,15 @@
 package gateapi
 
 type DepositAddress struct {
+
 	// Currency detail
 	Currency string `json:"currency"`
+
 	// Deposit address
 	Address string `json:"address"`
+
 	// Minimum Deposit Amount
-	MinDepositAmount    string                  `json:"min_deposit_amount,omitempty"`
+	MinDepositAmount string `json:"min_deposit_amount,omitempty"`
+
 	MultichainAddresses []MultiChainAddressItem `json:"multichain_addresses,omitempty"`
 }

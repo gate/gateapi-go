@@ -10,10 +10,13 @@
 package gateapi
 
 type FeeRateDataList struct {
+
 	// VIP level
 	VipLevel int32 `json:"vip_level,omitempty"`
+
 	// Maker fee rate for Japanese and Korean stocks
 	MakerFee string `json:"maker_fee,omitempty"`
+
 	// Taker fee rate for Japanese and Korean stocks
 	TakerFee string `json:"taker_fee,omitempty"`
 }

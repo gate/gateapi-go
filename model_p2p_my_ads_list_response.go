@@ -10,11 +10,16 @@
 package gateapi
 
 type P2pMyAdsListResponse struct {
-	Timestamp float32            `json:"timestamp,omitempty"`
-	Method    string             `json:"method,omitempty"`
-	Code      int32              `json:"code,omitempty"`
-	Message   string             `json:"message,omitempty"`
-	Data      P2pMyAdsListResult `json:"data,omitempty"`
+	Timestamp float32 `json:"timestamp,omitempty"`
+
+	Method string `json:"method,omitempty"`
+
+	Code int32 `json:"code,omitempty"`
+
+	Message string `json:"message,omitempty"`
+
+	Data P2pMyAdsListResult `json:"data,omitempty"`
+
 	// Version number
 	Version string `json:"version,omitempty"`
 }

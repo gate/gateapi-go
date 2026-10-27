@@ -11,6 +11,7 @@ package gateapi
 
 // Product list data
 type ListEarnFixedTermProductsByAssetResponseData struct {
+
 	// Product list
 	List []FixedTermProductSimple `json:"list"`
 }

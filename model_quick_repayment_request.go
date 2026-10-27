@@ -10,8 +10,10 @@
 package gateapi
 
 type QuickRepaymentRequest struct {
+
 	// Liability currencies
 	DebtCurrencies []string `json:"debt_currencies"`
+
 	// Currencies to repay with
 	AvailableCurrencies []string `json:"available_currencies"`
 }

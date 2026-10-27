@@ -10,7 +10,9 @@
 package gateapi
 
 type CreateUserResp struct {
+
 	// Server timestamp (milliseconds)
-	Timestamp int64              `json:"timestamp,omitempty"`
-	Data      CreateUserRespData `json:"data,omitempty"`
+	Timestamp int64 `json:"timestamp,omitempty"`
+
+	Data CreateUserRespData `json:"data,omitempty"`
 }

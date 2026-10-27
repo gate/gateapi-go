@@ -11,10 +11,13 @@ package gateapi
 
 // Current close order information, or `null` if no close order
 type OptionsPositionCloseOrder struct {
+
 	// Order ID
 	Id int64 `json:"id,omitempty"`
+
 	// Order price (quote currency)
 	Price string `json:"price,omitempty"`
+
 	// Whether the close order is from liquidation
 	IsLiq bool `json:"is_liq,omitempty"`
 }

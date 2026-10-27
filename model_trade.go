@@ -10,40 +10,58 @@
 package gateapi
 
 type Trade struct {
+
 	// Fill ID
 	Id string `json:"id,omitempty"`
+
 	// Fill Time
 	CreateTime string `json:"create_time,omitempty"`
+
 	// Trading time, with millisecond precision
 	CreateTimeMs string `json:"create_time_ms,omitempty"`
+
 	// Currency pair
 	CurrencyPair string `json:"currency_pair,omitempty"`
+
 	// Buy or sell order
 	Side string `json:"side,omitempty"`
+
 	// Trade role, not returned in public endpoints
 	Role string `json:"role,omitempty"`
+
 	// Trade amount
 	Amount string `json:"amount,omitempty"`
+
 	// Order price
 	Price string `json:"price,omitempty"`
+
 	// Related order ID, not returned in public endpoints
 	OrderId string `json:"order_id,omitempty"`
+
 	// Fee deducted, not returned in public endpoints
 	Fee string `json:"fee,omitempty"`
+
 	// Fee currency unit, not returned in public endpoints
 	FeeCurrency string `json:"fee_currency,omitempty"`
+
 	// Points used to deduct fee, not returned in public endpoints
 	PointFee string `json:"point_fee,omitempty"`
+
 	// GT used to deduct fee, not returned in public endpoints
 	GtFee string `json:"gt_fee,omitempty"`
+
 	// The custom data that the user remarked when amending the order
 	AmendText string `json:"amend_text,omitempty"`
+
 	// Consecutive trade ID within a single market. Used to track and identify trades in the specific market
 	SequenceId string `json:"sequence_id,omitempty"`
+
 	// Order's Custom Information. This field is not returned by public interfaces. The scenarios pm_liquidate, comb_margin_liquidate, and scm_liquidate represent full-account forced liquidation orders. liquidate represents isolated-account forced liquidation orders.
 	Text string `json:"text,omitempty"`
+
 	// Total Executed Value
 	Deal string `json:"deal,omitempty"`
+
 	// Actual quote currency used for the trade
 	TradeQuote string `json:"trade_quote,omitempty"`
 }

@@ -11,16 +11,22 @@ package gateapi
 
 // Borrowing
 type UniLoan struct {
+
 	// Currency
 	Currency string `json:"currency,omitempty"`
+
 	// Currency pair
 	CurrencyPair string `json:"currency_pair,omitempty"`
+
 	// Amount to Repay
 	Amount string `json:"amount,omitempty"`
+
 	// Loan type: platform borrowing - platform, margin borrowing - margin
 	Type string `json:"type,omitempty"`
+
 	// Created time
 	CreateTime int64 `json:"create_time,omitempty"`
+
 	// Last Update Time
 	UpdateTime int64 `json:"update_time,omitempty"`
 }

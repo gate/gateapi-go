@@ -11,6 +11,7 @@ package gateapi
 
 // The request body to terminate a running policy.
 type AiHubPortfolioStopRequest struct {
-	StrategyId   string       `json:"strategy_id"`
+	StrategyId string `json:"strategy_id"`
+
 	StrategyType StrategyType `json:"strategy_type"`
 }

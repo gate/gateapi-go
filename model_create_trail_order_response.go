@@ -10,11 +10,15 @@
 package gateapi
 
 type CreateTrailOrderResponse struct {
+
 	// Status code, 0 means success
 	Code int32 `json:"code,omitempty"`
+
 	// Response message
-	Message string                 `json:"message,omitempty"`
-	Data    CreateTrailOrderResult `json:"data,omitempty"`
+	Message string `json:"message,omitempty"`
+
+	Data CreateTrailOrderResult `json:"data,omitempty"`
+
 	// Response timestamp (milliseconds)
 	Timestamp int64 `json:"timestamp,omitempty"`
 }

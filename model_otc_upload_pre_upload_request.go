@@ -11,8 +11,10 @@ package gateapi
 
 // File pre-upload request body
 type OtcUploadPreUploadRequest struct {
+
 	// **Base64** of the file MIME type, required. Only image/png, image/jpeg, image/jpg, and application/pdf are supported.
 	ContentType string `json:"content_type"`
+
 	// Business scene, optional, defaults to general; determines temporary path and production directory after relocation
 	Scene string `json:"scene,omitempty"`
 }

@@ -11,10 +11,14 @@ package gateapi
 
 // Policy information returned after the policy is successfully created.
 type AiHubCreateData struct {
-	StrategyId   string       `json:"strategy_id"`
+	StrategyId string `json:"strategy_id"`
+
 	StrategyType StrategyType `json:"strategy_type"`
-	Market       string       `json:"market"`
+
+	Market string `json:"market"`
+
 	// The initial state after successful creation, usually `running`
-	Status  string `json:"status"`
+	Status string `json:"status"`
+
 	JumpUrl string `json:"jump_url,omitempty"`
 }

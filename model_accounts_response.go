@@ -11,14 +11,19 @@ package gateapi
 
 // Query Position Return
 type AccountsResponse struct {
+
 	// Currency name
 	Currency string `json:"currency,omitempty"`
+
 	// Available Balance
 	Available string `json:"available,omitempty"`
+
 	// Locked balance
 	Locked string `json:"locked,omitempty"`
+
 	// Token address
 	TokenAddress string `json:"token_address,omitempty"`
+
 	// Blockchain name
 	Chain string `json:"chain,omitempty"`
 }

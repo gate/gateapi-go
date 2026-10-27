@@ -11,6 +11,7 @@ package gateapi
 
 // Confirm receipt request
 type ConfirmReceipt struct {
+
 	// Order ID
 	Txid string `json:"txid"`
 }

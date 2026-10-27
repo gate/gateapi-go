@@ -10,8 +10,10 @@
 package gateapi
 
 type ListActivityTypesResponseDataList struct {
+
 	// Activity type ID
 	Id int32 `json:"id"`
+
 	// Activity type name
 	Name string `json:"name"`
 }

@@ -10,59 +10,87 @@
 package gateapi
 
 type FuturesAccount struct {
+
 	// Balance, only applicable to classic contract account.The balance is the sum of all historical fund flows, including historical transfers in and out, closing settlements, and transaction fee expenses, but does not include upl of positions.total = SUM(history_dnw, history_pnl, history_fee, history_refr, history_fund)
 	Total string `json:"total,omitempty"`
+
 	// Unrealized PNL
 	UnrealisedPnl string `json:"unrealised_pnl,omitempty"`
+
 	// Deprecated
 	PositionMargin string `json:"position_margin,omitempty"`
+
 	// initial margin of all open orders
 	OrderMargin string `json:"order_margin,omitempty"`
+
 	// Refers to the available withdrawal or trading amount in per-position, specifically the per-position available balance under the unified account that includes the credit line (which incorporates trial funds; since trial funds cannot be withdrawn, the actual withdrawal amount needs to deduct the trial fund portion when processing withdrawals)
 	Available string `json:"available,omitempty"`
+
 	// Point card amount
 	Point string `json:"point,omitempty"`
+
 	// Settlement currency
 	Currency string `json:"currency,omitempty"`
+
 	// Whether Hedge Mode is enabled
 	InDualMode bool `json:"in_dual_mode,omitempty"`
+
 	// Whether portfolio margin account mode is enabled
 	EnableCredit bool `json:"enable_credit,omitempty"`
+
 	// Initial margin occupied by positions, applicable to unified account mode
 	PositionInitialMargin string `json:"position_initial_margin,omitempty"`
+
 	// Maintenance margin occupied by positions, applicable to new classic account margin mode and unified account mode
 	MaintenanceMargin string `json:"maintenance_margin,omitempty"`
+
 	// Bonus
 	Bonus string `json:"bonus,omitempty"`
+
 	// Deprecated
 	EnableEvolvedClassic bool `json:"enable_evolved_classic,omitempty"`
+
 	// Cross margin order margin, applicable to new classic account margin mode
 	CrossOrderMargin string `json:"cross_order_margin,omitempty"`
+
 	// Cross margin initial margin, applicable to new classic account margin mode
 	CrossInitialMargin string `json:"cross_initial_margin,omitempty"`
+
 	// Cross margin maintenance margin, applicable to new classic account margin mode
 	CrossMaintenanceMargin string `json:"cross_maintenance_margin,omitempty"`
+
 	// Cross margin unrealized P&L, applicable to new classic account margin mode
 	CrossUnrealisedPnl string `json:"cross_unrealised_pnl,omitempty"`
+
 	// Cross margin available balance, applicable to new classic account margin mode
 	CrossAvailable string `json:"cross_available,omitempty"`
+
 	// Cross margin balance, applicable to new classic account margin mode
 	CrossMarginBalance string `json:"cross_margin_balance,omitempty"`
+
 	// Cross margin maintenance margin rate, applicable to new classic account margin mode
 	CrossMmr string `json:"cross_mmr,omitempty"`
+
 	// Cross margin initial margin rate, applicable to new classic account margin mode
 	CrossImr string `json:"cross_imr,omitempty"`
+
 	// Isolated position margin, applicable to new classic account margin mode
 	IsolatedPositionMargin string `json:"isolated_position_margin,omitempty"`
+
 	// Deprecated
 	EnableNewDualMode bool `json:"enable_new_dual_mode,omitempty"`
+
 	// Margin mode of the account 0: classic future account or Classic Spot Margin Mode of unified account; 1:  Multi-Currency Margin Mode; 2:  Portoforlio Margin Mode; 3:  Single-Currency Margin Mode
 	MarginMode int32 `json:"margin_mode,omitempty"`
+
 	// Whether to enable tiered maintenance margin calculation
 	EnableTieredMm bool `json:"enable_tiered_mm,omitempty"`
+
 	// Whether to Support Split Position Mode
 	EnableDualPlus bool `json:"enable_dual_plus,omitempty"`
+
 	// Position Holding Mode single - Single Direction Position, dual - Dual Direction Position, dual_plus - Split Position
-	PositionMode string                `json:"position_mode,omitempty"`
-	History      FuturesAccountHistory `json:"history,omitempty"`
+	PositionMode string `json:"position_mode,omitempty"`
+
+	History FuturesAccountHistory `json:"history,omitempty"`
 }

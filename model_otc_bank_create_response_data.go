@@ -10,8 +10,10 @@
 package gateapi
 
 type OtcBankCreateResponseData struct {
+
 	// Bank card primary key in otc_rds.
 	BankId int32 `json:"bank_id"`
+
 	// Review status (e.g., pending review).
 	Status int32 `json:"status"`
 }

@@ -10,8 +10,10 @@
 package gateapi
 
 type FuturesIndexConstituents struct {
+
 	// Index name
 	Index string `json:"index,omitempty"`
+
 	// Constituents
 	Constituents []IndexConstituent `json:"constituents,omitempty"`
 }

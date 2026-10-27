@@ -10,6 +10,7 @@
 package gateapi
 
 type PositionList2 struct {
-	Data      PositionList2Data `json:"data,omitempty"`
-	Timestamp int64             `json:"timestamp,omitempty"`
+	Data PositionList2Data `json:"data,omitempty"`
+
+	Timestamp int64 `json:"timestamp,omitempty"`
 }

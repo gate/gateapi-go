@@ -10,24 +10,34 @@
 package gateapi
 
 type CrossexAccountBookRecord struct {
+
 	// Account Change Record ID
 	Id string `json:"id"`
+
 	// User ID
 	UserId string `json:"user_id"`
+
 	// Business ID. Its meaning varies by `statement_type`. TRANSACTION: order ID TRADING_FEE: order ID LIQUIDATION_FEE: liquidation order ID FUNDING_FEE: position ID and funding fee settlement time For other types, it is a system-generated processing ID with no business meaning
 	BusinessId string `json:"business_id"`
+
 	// Account book transaction type `TRANSACTION`: Trade `TRADING_FEE`: Trading fee `FUNDING_FEE`: Futures funding fee `LIQUIDATION_FEE`: Liquidation fee `TRANSFER_IN`: Incoming transfer `TRANSFER_OUT`: Outgoing transfer `BANKRUPT_COMPENSATION`: Bankruptcy compensation `AUTO_REPAY`: Automatic margin liability repayment `INTEREST_ISOLATED`: Interest transaction `ACCOUNT_MODE_CHANGE`: Funds movement on account mode change `KRAKEN_CONVERSION`: Conversion of other collateral currencies to cover a negative KRAKEN_USD balance `SECURITY_DIVIDEND`: Stock or ETF dividend payout `SECURITY_CORPORATE_ACTION`: Stock or ETF split or reverse split `OTHER`: Other
 	StatementType string `json:"statement_type"`
+
 	// Exchange
 	ExchangeType string `json:"exchange_type"`
+
 	// Currency
 	Coin string `json:"coin"`
+
 	// Trading Pair
 	Symbol string `json:"symbol,omitempty"`
+
 	// Change amount (positive values indicate an increase; negative values indicate a decrease)
 	Change string `json:"change"`
+
 	// Balance after change
 	Balance string `json:"balance"`
+
 	// Created time
 	CreateTime string `json:"create_time"`
 }

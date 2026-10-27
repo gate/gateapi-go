@@ -11,10 +11,13 @@ package gateapi
 
 // Dual Investment Order
 type PlaceDualInvestmentOrderParams struct {
+
 	// Product ID
 	PlanId string `json:"plan_id"`
+
 	// Subscription amount
 	Amount string `json:"amount"`
+
 	// Order custom information. Users can set custom ID with this field. Custom fields must meet the following conditions:  1. Must start with `t-` 2. Excluding `t-`, length cannot exceed 28 bytes 3. Can only contain numbers, letters, underscore(_), hyphen(-) or dot(.)
 	Text string `json:"text,omitempty"`
 }

@@ -10,11 +10,15 @@
 package gateapi
 
 type Mt5Account struct {
+
 	// Business Status Code; Non-zero Indicates Business Exception, Please Check Message
 	Code int32 `json:"code,omitempty"`
+
 	// Response message
 	Message string `json:"message,omitempty"`
+
 	// Server timestamp (milliseconds)
-	Timestamp int64          `json:"timestamp,omitempty"`
-	Data      Mt5AccountData `json:"data,omitempty"`
+	Timestamp int64 `json:"timestamp,omitempty"`
+
+	Data Mt5AccountData `json:"data,omitempty"`
 }

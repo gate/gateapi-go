@@ -10,10 +10,13 @@
 package gateapi
 
 type UnifiedQuickRepayAvailableItem struct {
+
 	// Currency name
 	Currency string `json:"currency,omitempty"`
+
 	// Available Balance
 	Available string `json:"available,omitempty"`
+
 	// Estimated USD value
 	EstimatedUsd string `json:"estimated_usd,omitempty"`
 }

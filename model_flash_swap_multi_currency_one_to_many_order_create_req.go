@@ -10,6 +10,7 @@
 package gateapi
 
 type FlashSwapMultiCurrencyOneToManyOrderCreateReq struct {
+
 	// Multi-currency exchange parameter list
 	Params []FlashSwapMultiCurrencyCreateParam `json:"params"`
 }

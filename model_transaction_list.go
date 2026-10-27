@@ -11,6 +11,7 @@ package gateapi
 
 type TransactionList struct {
 	Data TransactionListData `json:"data,omitempty"`
+
 	// Server timestamp (milliseconds)
 	Timestamp int64 `json:"timestamp,omitempty"`
 }

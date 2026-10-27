@@ -11,20 +11,28 @@ package gateapi
 
 // Get pending transaction list request
 type GetPendingTransactionListRequest struct {
+
 	// Cryptocurrency symbol.
 	CryptoCurrency string `json:"crypto_currency"`
+
 	// Fiat currency
 	FiatCurrency string `json:"fiat_currency"`
+
 	// Order tab: `pending` in progress (`OPEN`, `PAID`, `LOCKED`, `TEMP`); `dispute` in dispute; default `pending`.
 	OrderTab string `json:"order_tab,omitempty"`
+
 	// Order side filter: `buy` buy orders; `sell` sell orders; empty: all.
 	SelectType string `json:"select_type,omitempty"`
+
 	// Order status filter. `open` unpaid (`OPEN`); `paid` paid (`PAID`); `locked` locked (`LOCKED`); `dispute` in dispute; empty or omitted uses the default range for `order_tab`.
 	Status string `json:"status,omitempty"`
+
 	// Order ID
 	Txid int32 `json:"txid,omitempty"`
+
 	// Start timestamp, default is 00:00 89 days ago
 	StartTime int32 `json:"start_time,omitempty"`
+
 	// End timestamp, default is 23:59:59 today
 	EndTime int32 `json:"end_time,omitempty"`
 }

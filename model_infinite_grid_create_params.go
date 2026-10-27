@@ -12,17 +12,26 @@ package gateapi
 // Infinite grid creation parameters. Aligned with the app: **`money`**, **`price_floor`**, and **`profit_per_grid`** are required; `grid_num` and `price_type` are optional (defaults applied server-side when omitted).
 type InfiniteGridCreateParams struct {
 	Money string `json:"money"`
+
 	// price floor
 	PriceFloor string `json:"price_floor"`
+
 	// Profit per square
 	ProfitPerGrid string `json:"profit_per_grid"`
+
 	// Optional; may be omitted like in the app.
 	GridNum int32 `json:"grid_num,omitempty"`
+
 	// Optional. `0` arithmetic grid; `1` geometric; omit for server defaults.
-	PriceType          int32  `json:"price_type,omitempty"`
-	TriggerPrice       string `json:"trigger_price,omitempty"`
-	StopProfit         string `json:"stop_profit,omitempty"`
-	StopLoss           string `json:"stop_loss,omitempty"`
+	PriceType int32 `json:"price_type,omitempty"`
+
+	TriggerPrice string `json:"trigger_price,omitempty"`
+
+	StopProfit string `json:"stop_profit,omitempty"`
+
+	StopLoss string `json:"stop_loss,omitempty"`
+
 	ProfitSharingRatio string `json:"profit_sharing_ratio,omitempty"`
-	IsUseBase          bool   `json:"is_use_base,omitempty"`
+
+	IsUseBase bool `json:"is_use_base,omitempty"`
 }

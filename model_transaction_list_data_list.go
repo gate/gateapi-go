@@ -10,16 +10,22 @@
 package gateapi
 
 type TransactionListDataList struct {
+
 	// Asset Type
 	Asset string `json:"asset,omitempty"`
+
 	// Trading Type
 	Type string `json:"type,omitempty"`
+
 	// Transaction Type Description
 	TypeDesc string `json:"type_desc,omitempty"`
+
 	// Change amount
 	Change string `json:"change,omitempty"`
+
 	// Current Balance
 	Balance string `json:"balance,omitempty"`
+
 	// Occurrence Time (Second-level Timestamp)
 	Time int64 `json:"time,omitempty"`
 }

@@ -10,18 +10,25 @@
 package gateapi
 
 type SubAccountToSubAccount struct {
+
 	// Transfer currency name
 	Currency string `json:"currency"`
+
 	// Transfer from account (deprecated, use `sub_account_from_type` and `sub_account_to_type` instead)
 	SubAccountType string `json:"sub_account_type,omitempty"`
+
 	// Transfer from the user id of the sub-account
 	SubAccountFrom string `json:"sub_account_from"`
+
 	// Source sub-account trading account: spot - spot account, futures - perpetual contract account, delivery - delivery contract account
 	SubAccountFromType string `json:"sub_account_from_type"`
+
 	// Transfer to the user id of the sub-account
 	SubAccountTo string `json:"sub_account_to"`
+
 	// Target sub-account trading account: spot - spot account, futures - perpetual contract account, delivery - delivery contract account
 	SubAccountToType string `json:"sub_account_to_type"`
+
 	// Transfer Amount, supports up to 8 decimal places, must be greater than 0
 	Amount string `json:"amount"`
 }

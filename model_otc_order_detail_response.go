@@ -10,7 +10,9 @@
 package gateapi
 
 type OtcOrderDetailResponse struct {
-	Message string         `json:"message"`
-	Code    int32          `json:"code"`
-	Data    OtcOrderDetail `json:"data"`
+	Message string `json:"message"`
+
+	Code int32 `json:"code"`
+
+	Data OtcOrderDetail `json:"data"`
 }

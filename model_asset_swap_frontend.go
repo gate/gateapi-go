@@ -10,16 +10,25 @@
 package gateapi
 
 type AssetSwapFrontend struct {
-	AssetEvaluateRange          []int32                   `json:"asset_evaluate_range"`
-	BannerReappearIntervalHours int32                     `json:"banner_reappear_interval_hours"`
-	ConvertCurrencies           []string                  `json:"convert_currencies"`
-	ConvertCurrenciesV2         []ConvertCurrenciesV2Item `json:"convert_currencies_v2"`
+	AssetEvaluateRange []int32 `json:"asset_evaluate_range"`
+
+	BannerReappearIntervalHours int32 `json:"banner_reappear_interval_hours"`
+
+	ConvertCurrencies []string `json:"convert_currencies"`
+
+	ConvertCurrenciesV2 []ConvertCurrenciesV2Item `json:"convert_currencies_v2"`
+
 	// Mapping of string keys to string values, corresponding to Go's map[string]string.
-	Default             map[string]string `json:"default"`
-	MaxSelectCurrencies int32             `json:"max_select_currencies"`
-	MinEvaluateValue    string            `json:"min_evaluate_value"`
-	Recommend           Recommend         `json:"recommend"`
+	Default map[string]string `json:"default"`
+
+	MaxSelectCurrencies int32 `json:"max_select_currencies"`
+
+	MinEvaluateValue string `json:"min_evaluate_value"`
+
+	Recommend Recommend `json:"recommend"`
+
 	// Mapping of strategy grouping keys to RecommendV2Strategy lists.
 	RecommendV2 map[string][]RecommendV2Strategy `json:"recommend_v2"`
-	TitleTips   string                           `json:"title_tips"`
+
+	TitleTips string `json:"title_tips"`
 }

@@ -11,5 +11,6 @@ package gateapi
 
 type OrderListV1Resp struct {
 	Orders []CreateOrder `json:"orders"`
-	Total  int32         `json:"total"`
+
+	Total int32 `json:"total"`
 }

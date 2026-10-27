@@ -11,24 +11,34 @@ package gateapi
 
 // Get completed/historical transaction list request
 type GetCompletedTransactionListRequest struct {
+
 	// Cryptocurrency symbol.
 	CryptoCurrency string `json:"crypto_currency"`
+
 	// Fiat currency
 	FiatCurrency string `json:"fiat_currency"`
+
 	// Order side filter: `buy` buy orders; `sell` sell orders; empty: all.
 	SelectType string `json:"select_type,omitempty"`
+
 	// Order status filter. `closed`: filled (`ACCEPT`, `BCLOSED`); `cancel`: canceled (`CANCEL`, `BECANCEL`, `SCLOSED`, `SCANCEL`); `locked`: locked (`LOCKED`); `open`: unpaid (`OPEN`); `paid`: paid (`PAID`); `completed`: finished or canceled (`CANCEL`, `BECANCEL`, `SCLOSED`, `SCANCEL`, `ACCEPT`, `BCLOSED`); Empty or omitted uses the endpoint default range.
 	Status string `json:"status,omitempty"`
+
 	// Order ID
 	Txid int32 `json:"txid,omitempty"`
+
 	// Start timestamp, default is 00:00 89 days ago
 	StartTime int32 `json:"start_time,omitempty"`
+
 	// End timestamp, default is 23:59:59 today
 	EndTime int32 `json:"end_time,omitempty"`
+
 	// Whether to flag dispute status in the response. `1`: yes; `0`: no.
 	QueryDispute int32 `json:"query_dispute,omitempty"`
+
 	// Page number starting at 1; values below 1 are treated as 1.
 	Page int32 `json:"page,omitempty"`
+
 	// Orders per page; default 10, max 200.
 	PerPage int32 `json:"per_page,omitempty"`
 }

@@ -11,22 +11,31 @@ package gateapi
 
 // Getting started mission information. `task_center_id` and `status` are included in required: both are allowed to be 0 (registration tasks, download tasks to be received), And avoid Go SDK using omitempty for integer zero values, which will cause fields to be lost during client serialization.
 type ApiResponseExSkillGetBeginnerTaskListRespDataTasks struct {
+
 	// Rewards Center task ID
 	WelfareTaskId int64 `json:"welfare_task_id,omitempty"`
+
 	// Task center task ID (fixed at 0 for registration tasks)
 	TaskCenterId int64 `json:"task_center_id"`
+
 	// Task type: 1=KYC secondary certification 2=Spot 3=Contract 4=Invitation 5=Quantification 6=Yu Bibao 7=startup 8=First deposit 10=Registration task 11=Guide task 23=Download task
 	TaskType int32 `json:"task_type,omitempty"`
+
 	// Task name
 	TaskName string `json:"task_name,omitempty"`
+
 	// Task description, may contain <span> highlight tags
 	TaskDesc string `json:"task_desc,omitempty"`
+
 	// Reward value
 	RewardNum string `json:"reward_num,omitempty"`
+
 	// Reward unit (e.g., USDT, BTC)
 	RewardUnit string `json:"reward_unit,omitempty"`
+
 	// Reward type: 1 = points, 2 = regular coupon, 3 = VIP coupon
 	PrizeType int32 `json:"prize_type,omitempty"`
+
 	// Task status: 0=Not claimed (typically a download task waiting to be claimed) 1=Received/in progress 2=Completed and waiting to be claimed 3=Rewards in progress 4=Completed/settled 5=Expired
 	Status int32 `json:"status"`
 }

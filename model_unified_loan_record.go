@@ -11,20 +11,28 @@ package gateapi
 
 // Borrowing Records
 type UnifiedLoanRecord struct {
+
 	// ID
 	Id int64 `json:"id,omitempty"`
+
 	// Type: `borrow` - borrow, `repay` - repay
 	Type string `json:"type,omitempty"`
+
 	// Repayment type: none - No repayment type, manual_repay - Manual repayment, auto_repay - Automatic repayment, cancel_auto_repay - Automatic repayment after order cancellation, different_currencies_repayment - Cross-currency repayment
 	RepaymentType string `json:"repayment_type,omitempty"`
+
 	// Borrowing type, returned when querying loan records: manual_borrow - Manual borrowing, auto_borrow - Automatic borrowing
 	BorrowType string `json:"borrow_type,omitempty"`
+
 	// Currency pair
 	CurrencyPair string `json:"currency_pair,omitempty"`
+
 	// Currency
 	Currency string `json:"currency,omitempty"`
+
 	// Borrow or repayment amount
 	Amount string `json:"amount,omitempty"`
+
 	// Created time
 	CreateTime int64 `json:"create_time,omitempty"`
 }

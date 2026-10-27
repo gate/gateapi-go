@@ -10,8 +10,10 @@
 package gateapi
 
 type P2pTransactionListResultPayOthers struct {
+
 	// Payment method type
 	PayType string `json:"pay_type,omitempty"`
+
 	// Payment method name
 	PayName string `json:"pay_name,omitempty"`
 }

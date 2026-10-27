@@ -11,10 +11,13 @@ package gateapi
 
 // Futures order
 type MockFuturesOrder struct {
+
 	// Perpetual contract name. Only USDT perpetual contracts for underlying currencies with active options trading are supported.
 	Contract string `json:"contract"`
+
 	// Contract quantity, representing the initial order quantity, not involved in actual settlement
 	Size string `json:"size"`
+
 	// Unfilled contract quantity, involved in actual calculation
 	Left string `json:"left"`
 }

@@ -11,20 +11,28 @@ package gateapi
 
 // Place order request parameters
 type TradFiSpotOrderRequest struct {
+
 	// Order quantity
 	Volume string `json:"volume"`
+
 	// Symbol
 	Symbol string `json:"symbol"`
+
 	// Side (1=sell, 2=buy)
 	Side int32 `json:"side"`
+
 	// Price type (market = market order, limit = limit order)
 	PriceType string `json:"price_type"`
+
 	// Trading session. Limit orders support only all, while market orders support only regular.
 	TradingSession string `json:"trading_session"`
+
 	// Time in force. - day: Day order.
 	TimeInForce string `json:"time_in_force"`
+
 	// Order price, used for limit orders
 	Price string `json:"price,omitempty"`
+
 	// Client-defined order ID
 	ClientOrderId string `json:"client_order_id,omitempty"`
 }
