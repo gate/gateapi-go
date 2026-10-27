@@ -15,7 +15,10 @@ type AiHubPortfolioStopSuccessResponse struct {
 
 	Message string `json:"message"`
 
-	Data AiHubPortfolioStopData `json:"data"`
+	Data AiHubPortfolioStopData `json:"data,omitempty"`
 
-	TraceId string `json:"trace_id"`
+	TraceId string `json:"trace_id,omitempty"`
+
+	// Stable business error label when present. HTTP 200 can contain a non-200 business code; data may retain a real identity on failure.
+	Label string `json:"label,omitempty"`
 }

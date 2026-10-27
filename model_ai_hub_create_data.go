@@ -11,14 +11,19 @@ package gateapi
 
 // Policy information returned after the policy is successfully created.
 type AiHubCreateData struct {
-	StrategyId string `json:"strategy_id"`
+	StrategyId string `json:"strategy_id,omitempty"`
 
-	StrategyType StrategyType `json:"strategy_type"`
+	StrategyType StrategyType `json:"strategy_type,omitempty"`
 
-	Market string `json:"market"`
+	Market string `json:"market,omitempty"`
 
-	// The initial state after successful creation, usually `running`
-	Status string `json:"status"`
+	// Observed product lifecycle state, or unknown. Creation acceptance/starting is not running; stopping/finished alone does not prove funds settled.
+	Status string `json:"status,omitempty"`
 
 	JumpUrl string `json:"jump_url,omitempty"`
+
+	// pending when the write result requires verification; rejected for a proven pre-effect refusal.
+	OperationStatus string `json:"operation_status,omitempty"`
+
+	RecoveryRequired *bool `json:"recovery_required,omitempty"`
 }

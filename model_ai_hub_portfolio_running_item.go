@@ -17,6 +17,7 @@ type AiHubPortfolioRunningItem struct {
 
 	StrategyName string `json:"strategy_name"`
 
+	// Single market, or empty string for a portfolio; use assets/markets for the latter.
 	Market string `json:"market"`
 
 	Status string `json:"status"`
@@ -29,4 +30,8 @@ type AiHubPortfolioRunningItem struct {
 
 	// Created time
 	CreatedAt string `json:"created_at,omitempty"`
+
+	Assets []string `json:"assets,omitempty"`
+
+	Markets []string `json:"markets,omitempty"`
 }

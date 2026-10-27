@@ -12,11 +12,12 @@ package gateapi
 // The creation parameters of the contract Martin strategy.
 type ContractMartingaleCreateParams struct {
 
-	// Margin allocated; the server converts it to initial contract size using live contract price, contract multiplier, and minimum lot size.
+	// Total strategy budget, not first-order margin. The server uses the complete existing ladder formula, owner fee and live contract facts, quantizes quantity down and rechecks before allocation. Minimum infeasible budget is rejected.
 	InvestAmount string `json:"invest_amount"`
 
 	PriceDeviation string `json:"price_deviation"`
 
+	// Maximum additional entries, excluding the first; preserve this legacy meaning.
 	MaxOrders int32 `json:"max_orders"`
 
 	TakeProfitRatio string `json:"take_profit_ratio"`
@@ -25,8 +26,10 @@ type ContractMartingaleCreateParams struct {
 
 	Leverage string `json:"leverage"`
 
-	// Legacy field name. The AIHub `contract_martingale` creation path does not map this field today; follow contract martingale rules from the underlying API. MCP tooling must match bot-service behavior.
+	// Positive fixed stop price; requires explicit stop_loss_price_type. Missing both leaves the old no-fixed-stop request unchanged.
 	StopLossPrice string `json:"stop_loss_price,omitempty"`
 
 	ProfitSharingRatio string `json:"profit_sharing_ratio,omitempty"`
+
+	StopLossPriceType string `json:"stop_loss_price_type,omitempty"`
 }

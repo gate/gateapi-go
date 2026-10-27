@@ -4,10 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**StrategyId** | **string** |  | 
-**StrategyType** | [**StrategyType**](StrategyType.md) |  | 
-**Status** | **string** | The current implementation returns &#x60;stopping&#x60; | 
-**ResultMessage** | **string** |  | 
+**StrategyId** | **string** |  | [optional] 
+**StrategyType** | [**StrategyType**](StrategyType.md) |  | [optional] 
+**Status** | **string** | Observed product lifecycle state, or unknown. Creation acceptance/starting is not running; stopping/finished alone does not prove funds settled. | [optional] 
+**ResultMessage** | **string** |  | [optional] 
+**OperationStatus** | **string** | pending when the write result requires verification; rejected for a proven pre-effect refusal. | [optional] 
+**RecoveryRequired** | **bool** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

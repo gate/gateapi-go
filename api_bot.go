@@ -40,26 +40,28 @@ type GetAIHubStrategyRecommendOpts struct {
 	XGateAppLang            optional.String
 	XRequestId              optional.String
 	XTraceId                optional.String
+	ExcludeRecommendationId optional.String
 }
 
 /*
 GetAIHubStrategyRecommend Get AIHub strategy recommendations
-The only formal interface for the discover domain. Support scenarios: - &#x60;top1&#x60; - &#x60;bundle&#x60; - &#x60;filter&#x60; - &#x60;refresh&#x60; Constraints: - The active recommendation pool only contains &#x60;spot_grid&#x60;, &#x60;futures_grid&#x60;, &#x60;spot_martingale&#x60; - Can return but do not actively recommend &#x60;infinite_grid&#x60;, &#x60;margin_grid&#x60; - &#x60;contract_martingale&#x60;, &#x60;smart-position&#x60;, &#x60;spot-future-arbitrage&#x60; must not be returned - When &#x60;scene&#x3D;filter&#x60; is used, only filtering by &#x60;market&#x60;, &#x60;backtest_apr_gte&#x60;, &#x60;max_drawdown_lte&#x60; is allowed - &#x60;scene&#x3D;refresh&#x60; inherits the refresh context through &#x60;refresh_recommendation_id&#x60;; the official minimum format only requires &#x60;strategy_type|market&#x60; - If the upstream directly transmits the previous recommendation &#x60;recommendation_id&#x60;, the third paragraph &#x60;backtest_id&#x60; will currently be ignored.
+Six real official source types. Exact rebalance asset membership is filtered before ranking. contract_martingale and futures_combo are manual-only. Legacy APR/drawdown and ordinary two-segment refresh remain compatible. Exclusion binds one prior logical candidate before ranking; no alternative returns an empty list without relaxing constraints.
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param optional nil or *GetAIHubStrategyRecommendOpts - Optional Parameters:
   - @param "Market" (optional.String) -  Trading pair, such as `BTC_USDT`
   - @param "StrategyType" (optional.String) -  Recommended target policy type; `contract_martingale` not allowed
   - @param "Direction" (optional.String) -  Market direction
-  - @param "InvestAmount" (optional.String) -  Investment amount, string transparent transmission
+  - @param "InvestAmount" (optional.String) -  Context only. No budget eligibility filter; reported unsupported when not consumed.
   - @param "Scene" (optional.String) -  Recommended scenario; when empty, bot-service can automatically infer according to the implementation logic.
   - @param "RefreshRecommendationId" (optional.String) -  It is recommended to refresh the context. Used when `scene=refresh` is used; when `scene` is empty but the field exists, bot-service will also automatically determine as `refresh`. The official minimum format is `strategy_type|market`; if the `recommendation_id` of the previous recommendation is directly passed through, the third paragraph `backtest_id` will be ignored.
-  - @param "Limit" (optional.Int32) -  Return quantity; when `scene=filter` is used, the actual results are up to 10
+  - @param "Limit" (optional.Int32) -  Actual maximum result count, 1–10; defaults to 10.
   - @param "MaxDrawdownLte" (optional.String) -  Maximum drawdown limit
   - @param "BacktestAprGte" (optional.String) -  Backtest annualized lower limit
   - @param "XGateServiceId" (optional.String) -  Call source identifier; injected by APIv4 if necessary
   - @param "XGateAppLang" (optional.String) -  Language context, such as `zh-CN` / `en-US`
   - @param "XRequestId" (optional.String) -  Request link ID; caller can transmit transparently
   - @param "XTraceId" (optional.String) -  trace header; can be generated uniformly by APIv4
+  - @param "ExcludeRecommendationId" (optional.String) -  Refresh-only previous returned identity: type|market|backtest_id, with an optional stable parameter discriminator for colliding source IDs. Ambiguous old identities are rejected; metric-only changes do not produce a new plan.
 
 @return AiHubDiscoverSuccessResponse
 */
@@ -105,6 +107,9 @@ func (a *BotApiService) GetAIHubStrategyRecommend(ctx context.Context, localVarO
 	}
 	if localVarOptionals != nil && localVarOptionals.BacktestAprGte.IsSet() {
 		localVarQueryParams.Add("backtest_apr_gte", parameterToString(localVarOptionals.BacktestAprGte.Value(), ""))
+	}
+	if localVarOptionals != nil && localVarOptionals.ExcludeRecommendationId.IsSet() {
+		localVarQueryParams.Add("exclude_recommendation_id", parameterToString(localVarOptionals.ExcludeRecommendationId.Value(), ""))
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1224,6 +1229,244 @@ func (a *BotApiService) PostAIHubPortfolioStop(ctx context.Context, aiHubPortfol
 	}
 	// body params
 	localVarPostBody = &aiHubPortfolioStopRequest
+	if ctx == nil {
+		ctx = context.Background()
+	}
+	if ctx.Value(ContextGateAPIV4) == nil {
+		// for compatibility, set configuration key and secret to context if ContextGateAPIV4 value is not present
+		ctx = context.WithValue(ctx, ContextGateAPIV4, GateAPIV4{
+			Key:    a.client.cfg.Key,
+			Secret: a.client.cfg.Secret,
+		})
+	}
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(r)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status + ", " + string(localVarBody),
+		}
+		var gateErr GateAPIError
+		if e := a.client.decode(&gateErr, localVarBody, localVarHTTPResponse.Header.Get("Content-Type")); e == nil && gateErr.Label != "" {
+			gateErr.APIError = newErr
+			return localVarReturnValue, localVarHTTPResponse, gateErr
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+// PostAIHubSmartPositionCreateOpts Optional parameters for the method 'PostAIHubSmartPositionCreate'
+type PostAIHubSmartPositionCreateOpts struct {
+	XGateServiceId optional.String
+	XGateAppLang   optional.String
+	XRequestId     optional.String
+	XTraceId       optional.String
+}
+
+/*
+PostAIHubSmartPositionCreate Create rebalance bot
+Typed AIHub adapter; authenticated owner comes only from trusted gateway context.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param aiHubRebalanceCreateRequest
+  - @param optional nil or *PostAIHubSmartPositionCreateOpts - Optional Parameters:
+  - @param "XGateServiceId" (optional.String) -  Call source identifier; injected by APIv4 if necessary
+  - @param "XGateAppLang" (optional.String) -  Language context, such as `zh-CN` / `en-US`
+  - @param "XRequestId" (optional.String) -  Request link ID; caller can transmit transparently
+  - @param "XTraceId" (optional.String) -  trace header; can be generated uniformly by APIv4
+
+@return AiHubCreateSuccessResponse
+*/
+func (a *BotApiService) PostAIHubSmartPositionCreate(ctx context.Context, aiHubRebalanceCreateRequest AiHubRebalanceCreateRequest, localVarOptionals *PostAIHubSmartPositionCreateOpts) (AiHubCreateSuccessResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  AiHubCreateSuccessResponse
+	)
+
+	// create path and map variables
+	localVarPath := a.client.cfg.BasePath + "/bot/smart-position/create"
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if localVarOptionals != nil && localVarOptionals.XGateServiceId.IsSet() {
+		localVarHeaderParams["X-Gate-Service-Id"] = parameterToString(localVarOptionals.XGateServiceId.Value(), "")
+	}
+	if localVarOptionals != nil && localVarOptionals.XGateAppLang.IsSet() {
+		localVarHeaderParams["X-Gate-AppLang"] = parameterToString(localVarOptionals.XGateAppLang.Value(), "")
+	}
+	if localVarOptionals != nil && localVarOptionals.XRequestId.IsSet() {
+		localVarHeaderParams["X-Request-Id"] = parameterToString(localVarOptionals.XRequestId.Value(), "")
+	}
+	if localVarOptionals != nil && localVarOptionals.XTraceId.IsSet() {
+		localVarHeaderParams["X-Trace-Id"] = parameterToString(localVarOptionals.XTraceId.Value(), "")
+	}
+	// body params
+	localVarPostBody = &aiHubRebalanceCreateRequest
+	if ctx == nil {
+		ctx = context.Background()
+	}
+	if ctx.Value(ContextGateAPIV4) == nil {
+		// for compatibility, set configuration key and secret to context if ContextGateAPIV4 value is not present
+		ctx = context.WithValue(ctx, ContextGateAPIV4, GateAPIV4{
+			Key:    a.client.cfg.Key,
+			Secret: a.client.cfg.Secret,
+		})
+	}
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(r)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status + ", " + string(localVarBody),
+		}
+		var gateErr GateAPIError
+		if e := a.client.decode(&gateErr, localVarBody, localVarHTTPResponse.Header.Get("Content-Type")); e == nil && gateErr.Label != "" {
+			gateErr.APIError = newErr
+			return localVarReturnValue, localVarHTTPResponse, gateErr
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+// PostAIHubFuturesComboCreateOpts Optional parameters for the method 'PostAIHubFuturesComboCreate'
+type PostAIHubFuturesComboCreateOpts struct {
+	XGateServiceId optional.String
+	XGateAppLang   optional.String
+	XRequestId     optional.String
+	XTraceId       optional.String
+}
+
+/*
+PostAIHubFuturesComboCreate Create futures-combo bot
+Typed AIHub adapter; authenticated owner comes only from trusted gateway context.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param aiHubFuturesComboCreateRequest
+  - @param optional nil or *PostAIHubFuturesComboCreateOpts - Optional Parameters:
+  - @param "XGateServiceId" (optional.String) -  Call source identifier; injected by APIv4 if necessary
+  - @param "XGateAppLang" (optional.String) -  Language context, such as `zh-CN` / `en-US`
+  - @param "XRequestId" (optional.String) -  Request link ID; caller can transmit transparently
+  - @param "XTraceId" (optional.String) -  trace header; can be generated uniformly by APIv4
+
+@return AiHubCreateSuccessResponse
+*/
+func (a *BotApiService) PostAIHubFuturesComboCreate(ctx context.Context, aiHubFuturesComboCreateRequest AiHubFuturesComboCreateRequest, localVarOptionals *PostAIHubFuturesComboCreateOpts) (AiHubCreateSuccessResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  AiHubCreateSuccessResponse
+	)
+
+	// create path and map variables
+	localVarPath := a.client.cfg.BasePath + "/bot/futures-combo/create"
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if localVarOptionals != nil && localVarOptionals.XGateServiceId.IsSet() {
+		localVarHeaderParams["X-Gate-Service-Id"] = parameterToString(localVarOptionals.XGateServiceId.Value(), "")
+	}
+	if localVarOptionals != nil && localVarOptionals.XGateAppLang.IsSet() {
+		localVarHeaderParams["X-Gate-AppLang"] = parameterToString(localVarOptionals.XGateAppLang.Value(), "")
+	}
+	if localVarOptionals != nil && localVarOptionals.XRequestId.IsSet() {
+		localVarHeaderParams["X-Request-Id"] = parameterToString(localVarOptionals.XRequestId.Value(), "")
+	}
+	if localVarOptionals != nil && localVarOptionals.XTraceId.IsSet() {
+		localVarHeaderParams["X-Trace-Id"] = parameterToString(localVarOptionals.XTraceId.Value(), "")
+	}
+	// body params
+	localVarPostBody = &aiHubFuturesComboCreateRequest
 	if ctx == nil {
 		ctx = context.Background()
 	}

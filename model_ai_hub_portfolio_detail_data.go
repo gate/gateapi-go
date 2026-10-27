@@ -15,6 +15,7 @@ type AiHubPortfolioDetailData struct {
 
 	StrategyType StrategyType `json:"strategy_type"`
 
+	// Single market, or empty string for a portfolio; use assets/markets for the latter.
 	Market string `json:"market"`
 
 	Status string `json:"status"`
@@ -26,4 +27,17 @@ type AiHubPortfolioDetailData struct {
 	Position *AiHubPortfolioPosition `json:"position,omitempty"`
 
 	StopSupported bool `json:"stop_supported"`
+
+	Assets []string `json:"assets,omitempty"`
+
+	Markets []string `json:"markets,omitempty"`
+
+	Positions []AiHubPortfolioAssetPosition `json:"positions,omitempty"`
+
+	PositionsStatus string `json:"positions_status,omitempty"`
+
+	// Product-specific saved configuration. spot_martingale exposes AIHubSpotMartingaleConfiguration; absence is unverified. Runtime recovery internals are excluded.
+	Configuration map[string]interface{} `json:"configuration,omitempty"`
+
+	StopProgress *AiHubStopProgress `json:"stop_progress,omitempty"`
 }

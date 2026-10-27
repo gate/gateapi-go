@@ -11,12 +11,17 @@ package gateapi
 
 // The result information returned after the termination strategy is successful.
 type AiHubPortfolioStopData struct {
-	StrategyId string `json:"strategy_id"`
+	StrategyId string `json:"strategy_id,omitempty"`
 
-	StrategyType StrategyType `json:"strategy_type"`
+	StrategyType StrategyType `json:"strategy_type,omitempty"`
 
-	// The current implementation returns `stopping`
-	Status string `json:"status"`
+	// Observed product lifecycle state, or unknown. Creation acceptance/starting is not running; stopping/finished alone does not prove funds settled.
+	Status string `json:"status,omitempty"`
 
-	ResultMessage string `json:"result_message"`
+	ResultMessage string `json:"result_message,omitempty"`
+
+	// pending when the write result requires verification; rejected for a proven pre-effect refusal.
+	OperationStatus string `json:"operation_status,omitempty"`
+
+	RecoveryRequired *bool `json:"recovery_required,omitempty"`
 }

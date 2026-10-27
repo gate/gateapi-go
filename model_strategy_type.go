@@ -20,4 +20,6 @@ const (
 	FUTURES_GRID        StrategyType = "futures_grid"
 	SPOT_MARTINGALE     StrategyType = "spot_martingale"
 	CONTRACT_MARTINGALE StrategyType = "contract_martingale"
+	SMART_POSITION      StrategyType = "smart_position"
+	FUTURES_COMBO       StrategyType = "futures_combo"
 )

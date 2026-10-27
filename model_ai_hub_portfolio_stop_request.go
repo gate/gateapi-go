@@ -9,9 +9,14 @@
 
 package gateapi
 
-// The request body to terminate a running policy.
+// Single owner-scoped stop. Existing six-type ID/type requests retain default exits. smart_position requires explicit mode, limit requires options; futures_combo uses fixed whole-portfolio close/settlement.
 type AiHubPortfolioStopRequest struct {
 	StrategyId string `json:"strategy_id"`
 
 	StrategyType StrategyType `json:"strategy_type"`
+
+	// Required only for smart_position. Other types reject custom exit options.
+	StopMode string `json:"stop_mode,omitempty"`
+
+	StopOptions *AiHubRebalanceStopOptions `json:"stop_options,omitempty"`
 }

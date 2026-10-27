@@ -14,6 +14,8 @@ Method | HTTP request | Description
 [**GetAIHubPortfolioRunning**](BotApi.md#GetAIHubPortfolioRunning) | **Get** /bot/portfolio/running | Query the list of running policies
 [**GetAIHubPortfolioDetail**](BotApi.md#GetAIHubPortfolioDetail) | **Get** /bot/portfolio/detail | Query order policy details
 [**PostAIHubPortfolioStop**](BotApi.md#PostAIHubPortfolioStop) | **Post** /bot/portfolio/stop | Terminate a single running policy
+[**PostAIHubSmartPositionCreate**](BotApi.md#PostAIHubSmartPositionCreate) | **Post** /bot/smart-position/create | Create rebalance bot
+[**PostAIHubFuturesComboCreate**](BotApi.md#PostAIHubFuturesComboCreate) | **Post** /bot/futures-combo/create | Create futures-combo bot
 
 
 ## GetAIHubStrategyRecommend
@@ -22,7 +24,7 @@ Method | HTTP request | Description
 
 Get AIHub strategy recommendations
 
-The only formal interface for the discover domain. Support scenarios: - `top1` - `bundle` - `filter` - `refresh` Constraints: - The active recommendation pool only contains `spot_grid`, `futures_grid`, `spot_martingale` - Can return but do not actively recommend `infinite_grid`, `margin_grid` - `contract_martingale`, `smart-position`, `spot-future-arbitrage` must not be returned - When `scene=filter` is used, only filtering by `market`, `backtest_apr_gte`, `max_drawdown_lte` is allowed - `scene=refresh` inherits the refresh context through `refresh_recommendation_id`; the official minimum format only requires `strategy_type|market` - If the upstream directly transmits the previous recommendation `recommendation_id`, the third paragraph `backtest_id` will currently be ignored.
+Six real official source types. Exact rebalance asset membership is filtered before ranking. contract_martingale and futures_combo are manual-only. Legacy APR/drawdown and ordinary two-segment refresh remain compatible. Exclusion binds one prior logical candidate before ranking; no alternative returns an empty list without relaxing constraints.
 
 ### Required Parameters
 
@@ -40,16 +42,17 @@ Name | Type | Description  | Notes
 **market** | **optional.String**| Trading pair, such as &#x60;BTC_USDT&#x60; | 
 **strategyType** | **optional.String**| Recommended target policy type; &#x60;contract_martingale&#x60; not allowed | 
 **direction** | **optional.String**| Market direction | 
-**investAmount** | **optional.String**| Investment amount, string transparent transmission | 
+**investAmount** | **optional.String**| Context only. No budget eligibility filter; reported unsupported when not consumed. | 
 **scene** | **optional.String**| Recommended scenario; when empty, bot-service can automatically infer according to the implementation logic. | 
 **refreshRecommendationId** | **optional.String**| It is recommended to refresh the context. Used when &#x60;scene&#x3D;refresh&#x60; is used; when &#x60;scene&#x60; is empty but the field exists, bot-service will also automatically determine as &#x60;refresh&#x60;. The official minimum format is &#x60;strategy_type|market&#x60;; if the &#x60;recommendation_id&#x60; of the previous recommendation is directly passed through, the third paragraph &#x60;backtest_id&#x60; will be ignored. | 
-**limit** | **optional.Int32**| Return quantity; when &#x60;scene&#x3D;filter&#x60; is used, the actual results are up to 10 | 
+**limit** | **optional.Int32**| Actual maximum result count, 1–10; defaults to 10. | 
 **maxDrawdownLte** | **optional.String**| Maximum drawdown limit | 
 **backtestAprGte** | **optional.String**| Backtest annualized lower limit | 
 **xGateServiceId** | **optional.String**| Call source identifier; injected by APIv4 if necessary | 
 **xGateAppLang** | **optional.String**| Language context, such as &#x60;zh-CN&#x60; / &#x60;en-US&#x60; | 
 **xRequestId** | **optional.String**| Request link ID; caller can transmit transparently | 
 **xTraceId** | **optional.String**| trace header; can be generated uniformly by APIv4 | 
+**excludeRecommendationId** | **optional.String**| Refresh-only previous returned identity: type|market|backtest_id, with an optional stable parameter discriminator for colliding source IDs. Ambiguous old identities are rejected; metric-only changes do not produce a new plan. | 
 
 ### Example
 
@@ -843,6 +846,172 @@ func main() {
 ### Return type
 
 [**AiHubPortfolioStopSuccessResponse**](AIHubPortfolioStopSuccessResponse.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+## PostAIHubSmartPositionCreate
+
+> AiHubCreateSuccessResponse PostAIHubSmartPositionCreate(ctx, aiHubRebalanceCreateRequest, optional)
+
+Create rebalance bot
+
+Typed AIHub adapter; authenticated owner comes only from trusted gateway context.
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**aiHubRebalanceCreateRequest** | [**AiHubRebalanceCreateRequest**](AiHubRebalanceCreateRequest.md)|  | 
+**optional** | **PostAIHubSmartPositionCreateOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+
+Optional parameters are passed through a pointer to a PostAIHubSmartPositionCreateOpts struct
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**xGateServiceId** | **optional.String**| Call source identifier; injected by APIv4 if necessary | 
+**xGateAppLang** | **optional.String**| Language context, such as &#x60;zh-CN&#x60; / &#x60;en-US&#x60; | 
+**xRequestId** | **optional.String**| Request link ID; caller can transmit transparently | 
+**xTraceId** | **optional.String**| trace header; can be generated uniformly by APIv4 | 
+
+### Example
+
+```golang
+package main
+
+import (
+    "context"
+    "fmt"
+
+    "github.com/gate/gateapi-go/v7"
+)
+
+func main() {
+    client := gateapi.NewAPIClient(gateapi.NewConfiguration())
+    // uncomment the next line if your are testing against testnet
+    // client.ChangeBasePath("https://fx-api-testnet.gateio.ws/api/v4")
+    ctx := context.WithValue(context.Background(),
+                             gateapi.ContextGateAPIV4,
+                             gateapi.GateAPIV4{
+                                 Key:    "YOUR_API_KEY",
+                                 Secret: "YOUR_API_SECRET",
+                             }
+                            )
+    aiHubRebalanceCreateRequest := gateapi.AiHubRebalanceCreateRequest{} // AiHubRebalanceCreateRequest - 
+    
+    result, _, err := client.BotApi.PostAIHubSmartPositionCreate(ctx, aiHubRebalanceCreateRequest, nil)
+    if err != nil {
+        if e, ok := err.(gateapi.GateAPIError); ok {
+            fmt.Printf("gate api error: %s\n", e.Error())
+        } else {
+            fmt.Printf("generic error: %s\n", err.Error())
+        }
+    } else {
+        fmt.Println(result)
+    }
+}
+```
+
+
+### Return type
+
+[**AiHubCreateSuccessResponse**](AIHubCreateSuccessResponse.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+## PostAIHubFuturesComboCreate
+
+> AiHubCreateSuccessResponse PostAIHubFuturesComboCreate(ctx, aiHubFuturesComboCreateRequest, optional)
+
+Create futures-combo bot
+
+Typed AIHub adapter; authenticated owner comes only from trusted gateway context.
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**aiHubFuturesComboCreateRequest** | [**AiHubFuturesComboCreateRequest**](AiHubFuturesComboCreateRequest.md)|  | 
+**optional** | **PostAIHubFuturesComboCreateOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+
+Optional parameters are passed through a pointer to a PostAIHubFuturesComboCreateOpts struct
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**xGateServiceId** | **optional.String**| Call source identifier; injected by APIv4 if necessary | 
+**xGateAppLang** | **optional.String**| Language context, such as &#x60;zh-CN&#x60; / &#x60;en-US&#x60; | 
+**xRequestId** | **optional.String**| Request link ID; caller can transmit transparently | 
+**xTraceId** | **optional.String**| trace header; can be generated uniformly by APIv4 | 
+
+### Example
+
+```golang
+package main
+
+import (
+    "context"
+    "fmt"
+
+    "github.com/gate/gateapi-go/v7"
+)
+
+func main() {
+    client := gateapi.NewAPIClient(gateapi.NewConfiguration())
+    // uncomment the next line if your are testing against testnet
+    // client.ChangeBasePath("https://fx-api-testnet.gateio.ws/api/v4")
+    ctx := context.WithValue(context.Background(),
+                             gateapi.ContextGateAPIV4,
+                             gateapi.GateAPIV4{
+                                 Key:    "YOUR_API_KEY",
+                                 Secret: "YOUR_API_SECRET",
+                             }
+                            )
+    aiHubFuturesComboCreateRequest := gateapi.AiHubFuturesComboCreateRequest{} // AiHubFuturesComboCreateRequest - 
+    
+    result, _, err := client.BotApi.PostAIHubFuturesComboCreate(ctx, aiHubFuturesComboCreateRequest, nil)
+    if err != nil {
+        if e, ok := err.(gateapi.GateAPIError); ok {
+            fmt.Printf("gate api error: %s\n", e.Error())
+        } else {
+            fmt.Printf("generic error: %s\n", err.Error())
+        }
+    } else {
+        fmt.Println(result)
+    }
+}
+```
+
+
+### Return type
+
+[**AiHubCreateSuccessResponse**](AIHubCreateSuccessResponse.md)
 
 ### Authorization
 
