@@ -21,7 +21,7 @@ type OptionsMyTrade struct {
 	Contract string `json:"contract,omitempty"`
 
 	// Related order ID
-	OrderId int32 `json:"order_id,omitempty"`
+	OrderId int64 `json:"order_id,omitempty"`
 
 	// Trading size
 	Size int64 `json:"size,omitempty"`

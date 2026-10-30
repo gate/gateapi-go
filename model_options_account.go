@@ -66,5 +66,5 @@ type OptionsAccount struct {
 	OrdersLimit int32 `json:"orders_limit,omitempty"`
 
 	// Notional value upper limit, including the nominal value of positions and outstanding orders
-	PositionNotionalLimit int64 `json:"position_notional_limit,omitempty"`
+	PositionNotionalLimit string `json:"position_notional_limit,omitempty"`
 }
