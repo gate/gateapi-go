@@ -2381,6 +2381,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **asset** | **optional.String**| Currency | 
 **type_** | **optional.Int32**| Product type: 1 for regular, 2 for VIP | 
+**status** | **optional.Int32**| Product status filter. Pass 2 for products available for subscription. | 
+**showStatus** | **optional.String**| Visibility status filter. Pass \&quot;2\&quot; for visible products. | 
 
 ### Example
 

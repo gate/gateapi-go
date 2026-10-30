@@ -44,6 +44,7 @@ Name | Type | Description | Notes
 **Slippage** | **string** | Maximum supported slippage ratio for Spot Market Order Placement, calculated based on the latest market price at the time of order placement as the benchmark (Example: 0.03 means 3%) | [optional] 
 **StopProfit** | Pointer to [**SpotOrderStopProfit**](SpotOrderStopProfit.md) |  | [optional] 
 **StopLoss** | Pointer to [**SpotOrderStopLoss**](SpotOrderStopLoss.md) |  | [optional] 
+**UseEarn** | Pointer to **bool** | Redeem Simple Earn funds when placing an order | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

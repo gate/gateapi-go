@@ -131,4 +131,8 @@ type Order struct {
 
 	// Preserve nil as JSON null; an explicit empty object has a different meaning.
 	StopLoss *SpotOrderStopLoss `json:"stop_loss"`
+
+	// Redeem Simple Earn funds when placing an order
+	// Preserve nil as JSON null; an explicit empty object has a different meaning.
+	UseEarn *bool `json:"use_earn"`
 }

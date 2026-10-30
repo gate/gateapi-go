@@ -15,5 +15,8 @@ type AutoInvestMinInvestAmount struct {
 	// Currency, optional: USDT or BTC
 	Money string `json:"money"`
 
+	// Asset type: 1 for cryptocurrency, 2 for TradFi stocks; must be provided explicitly
+	AssetType int32 `json:"asset_type"`
+
 	Items []AutoInvestMinInvestAmountItems `json:"items"`
 }

@@ -3177,8 +3177,10 @@ func (a *EarnApiService) ListAutoInvestPlans(ctx context.Context, status string,
 
 // ListEarnFixedTermProductsOpts Optional parameters for the method 'ListEarnFixedTermProducts'
 type ListEarnFixedTermProductsOpts struct {
-	Asset optional.String
-	Type_ optional.Int32
+	Asset      optional.String
+	Type_      optional.Int32
+	Status     optional.Int32
+	ShowStatus optional.String
 }
 
 /*
@@ -3190,6 +3192,8 @@ Query fixed-term earn product list. Supports filtering by currency, product type
   - @param optional nil or *ListEarnFixedTermProductsOpts - Optional Parameters:
   - @param "Asset" (optional.String) -  Currency
   - @param "Type_" (optional.Int32) -  Product type: 1 for regular, 2 for VIP
+  - @param "Status" (optional.Int32) -  Product status filter. Pass 2 for products available for subscription.
+  - @param "ShowStatus" (optional.String) -  Visibility status filter. Pass \"2\" for visible products.
 
 @return ListEarnFixedTermProductsResponse
 */
@@ -3214,6 +3218,12 @@ func (a *EarnApiService) ListEarnFixedTermProducts(ctx context.Context, page int
 	}
 	if localVarOptionals != nil && localVarOptionals.Type_.IsSet() {
 		localVarQueryParams.Add("type", parameterToString(localVarOptionals.Type_.Value(), ""))
+	}
+	if localVarOptionals != nil && localVarOptionals.Status.IsSet() {
+		localVarQueryParams.Add("status", parameterToString(localVarOptionals.Status.Value(), ""))
+	}
+	if localVarOptionals != nil && localVarOptionals.ShowStatus.IsSet() {
+		localVarQueryParams.Add("show_status", parameterToString(localVarOptionals.ShowStatus.Value(), ""))
 	}
 	localVarQueryParams.Add("page", parameterToString(page, ""))
 	localVarQueryParams.Add("limit", parameterToString(limit, ""))
