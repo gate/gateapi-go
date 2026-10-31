@@ -338,7 +338,7 @@ type ListAlphaOrderOpts struct {
 ListAlphaOrder Alpha Order List API
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param optional nil or *ListAlphaOrderOpts - Optional Parameters:
-  - @param "Currency" (optional.String) -  Trading symbol
+  - @param "Currency" (optional.String) -  Alpha currency ID, for example USDS02b5a8dd2f59a098, not the display symbol USDS. First call GET /alpha/currencies without currency, match the token by name, chain and address, and use the returned currency field. Paginate with page and limit.
   - @param "Side" (optional.String) -  Buy or sell orders - buy - sell
   - @param "Status" (optional.Int32) -  Order Status - `0` : All - `1` : Processing - `2` : Successful - `3` : Failed - `4` : Cancelled - `5` : Buy order placed but transfer not completed - `6` : Order cancelled but transfer not completed
   - @param "From" (optional.Int64) -  Start time for order query
@@ -651,7 +651,7 @@ ListAlphaCurrencies Query currency information
 When currency is provided, query and return specified currency information; when currency is not provided, return paginated currency list
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param optional nil or *ListAlphaCurrenciesOpts - Optional Parameters:
-  - @param "Currency" (optional.String) -  Query currency information by currency symbol
+  - @param "Currency" (optional.String) -  Alpha currency ID, for example USDS02b5a8dd2f59a098, not the display symbol USDS. First call GET /alpha/currencies without currency, match the token by name, chain and address, and use the returned currency field. Paginate with page and limit.
   - @param "Limit" (optional.Int32) -  Maximum number of records returned in a single list
   - @param "Page" (optional.Int32) -  Page number
 
@@ -756,7 +756,7 @@ ListAlphaTickers Query currency ticker
 When currency is provided, returns ticker information for the specified currency. When currency is not provided, returns paginated ticker list
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param optional nil or *ListAlphaTickersOpts - Optional Parameters:
-  - @param "Currency" (optional.String) -  Query by specified currency name
+  - @param "Currency" (optional.String) -  Alpha currency ID, for example USDS02b5a8dd2f59a098, not the display symbol USDS. First call GET /alpha/currencies without currency, match the token by name, chain and address, and use the returned currency field. Paginate with page and limit.
   - @param "Limit" (optional.Int32) -  Maximum number of records returned in a single list
   - @param "Page" (optional.Int32) -  Page number
 

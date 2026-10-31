@@ -12,7 +12,7 @@ package gateapi
 // Order request
 type PlaceOrderRequest struct {
 
-	// Trading symbol
+	// Alpha currency ID, for example USDS02b5a8dd2f59a098, not the display symbol USDS. First call GET /alpha/currencies without currency, match the token by name, chain and address, and use the returned currency field. Paginate with page and limit.
 	Currency string `json:"currency"`
 
 	// Buy or sell orders - buy - sell

@@ -253,7 +253,7 @@ Optional parameters are passed through a pointer to a ListAlphaOrderOpts struct
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**currency** | **optional.String**| Trading symbol | 
+**currency** | **optional.String**| Alpha currency ID, for example USDS02b5a8dd2f59a098, not the display symbol USDS. First call GET /alpha/currencies without currency, match the token by name, chain and address, and use the returned currency field. Paginate with page and limit. | 
 **side** | **optional.String**| Buy or sell orders - buy - sell | 
 **status** | **optional.Int32**| Order Status - &#x60;0&#x60; : All - &#x60;1&#x60; : Processing - &#x60;2&#x60; : Successful - &#x60;3&#x60; : Failed - &#x60;4&#x60; : Cancelled - &#x60;5&#x60; : Buy order placed but transfer not completed - &#x60;6&#x60; : Order cancelled but transfer not completed | 
 **from** | **optional.Int64**| Start time for order query | 
@@ -477,7 +477,7 @@ Optional parameters are passed through a pointer to a ListAlphaCurrenciesOpts st
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**currency** | **optional.String**| Query currency information by currency symbol | 
+**currency** | **optional.String**| Alpha currency ID, for example USDS02b5a8dd2f59a098, not the display symbol USDS. First call GET /alpha/currencies without currency, match the token by name, chain and address, and use the returned currency field. Paginate with page and limit. | 
 **limit** | **optional.Int32**| Maximum number of records returned in a single list | [default to 100]
 **page** | **optional.Int32**| Page number | [default to 1]
 
@@ -551,7 +551,7 @@ Optional parameters are passed through a pointer to a ListAlphaTickersOpts struc
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**currency** | **optional.String**| Query by specified currency name | 
+**currency** | **optional.String**| Alpha currency ID, for example USDS02b5a8dd2f59a098, not the display symbol USDS. First call GET /alpha/currencies without currency, match the token by name, chain and address, and use the returned currency field. Paginate with page and limit. | 
 **limit** | **optional.Int32**| Maximum number of records returned in a single list | [default to 100]
 **page** | **optional.Int32**| Page number | [default to 1]
 

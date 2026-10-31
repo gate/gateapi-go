@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Currency** | **string** | Currency symbol | [optional] 
+**Currency** | **string** | Alpha currency ID, for example USDS02b5a8dd2f59a098; use it as the currency parameter in Alpha APIs, not the display symbol USDS. | [optional] 
 **Last** | **string** | Last trading price | [optional] 
 **Change** | **string** | 24h price change percentage (negative for decrease, e.g., -7.45) | [optional] 
 **Volume** | **string** | 24h Trading Volume (USDT) | [optional] 
