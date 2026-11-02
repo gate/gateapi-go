@@ -23,8 +23,8 @@ type CreateTrailOrder struct {
 	// true: activate when market price >= activation price, false: <= activation price
 	IsGte bool `json:"is_gte,omitempty"`
 
-	// Activation price type: 1-latest price, 2-index price, 3-mark price
-	PriceType int32 `json:"price_type,omitempty"`
+	// Activation price type, required: 1-latest price, 2-index price, 3-mark price. The caller must specify it explicitly.
+	PriceType int32 `json:"price_type"`
 
 	// Callback ratio or price distance, e.g., `0.1` or `0.1%`
 	PriceOffset string `json:"price_offset,omitempty"`

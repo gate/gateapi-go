@@ -13,13 +13,13 @@ package gateapi
 type TrailOrder struct {
 
 	// Order ID
-	Id int64 `json:"id,omitempty"`
+	Id string `json:"id,omitempty"`
 
 	// User ID
-	UserId int64 `json:"user_id,omitempty"`
+	UserId string `json:"user_id,omitempty"`
 
 	// User ID
-	User int64 `json:"user,omitempty"`
+	User string `json:"user,omitempty"`
 
 	// Contract name
 	Contract string `json:"contract,omitempty"`
@@ -52,22 +52,22 @@ type TrailOrder struct {
 	PositionRelated bool `json:"position_related,omitempty"`
 
 	// Created time
-	CreatedAt int64 `json:"created_at,omitempty"`
+	CreatedAt string `json:"created_at,omitempty"`
 
 	// Activation time
-	ActivatedAt int64 `json:"activated_at,omitempty"`
+	ActivatedAt string `json:"activated_at,omitempty"`
 
 	// End time
-	FinishedAt int64 `json:"finished_at,omitempty"`
+	FinishedAt string `json:"finished_at,omitempty"`
 
 	// Created time
-	CreateTime int64 `json:"create_time,omitempty"`
+	CreateTime string `json:"create_time,omitempty"`
 
 	// Activation time
-	ActiveTime int64 `json:"active_time,omitempty"`
+	ActiveTime string `json:"active_time,omitempty"`
 
 	// End time
-	FinishTime int64 `json:"finish_time,omitempty"`
+	FinishTime string `json:"finish_time,omitempty"`
 
 	// End reason
 	Reason string `json:"reason,omitempty"`
@@ -82,7 +82,7 @@ type TrailOrder struct {
 	TriggerPrice string `json:"trigger_price,omitempty"`
 
 	// Child order ID.
-	SuborderId int64 `json:"suborder_id,omitempty"`
+	SuborderId string `json:"suborder_id,omitempty"`
 
 	// Order direction label: long/short/open long/open short/close long/close short
 	SideLabel string `json:"side_label,omitempty"`
@@ -97,7 +97,7 @@ type TrailOrder struct {
 	PositionSideOutput string `json:"position_side_output,omitempty"`
 
 	// Update time
-	UpdatedAt int64 `json:"updated_at,omitempty"`
+	UpdatedAt string `json:"updated_at,omitempty"`
 
 	// Extremum price
 	ExtremumPrice string `json:"extremum_price,omitempty"`
