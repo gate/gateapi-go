@@ -7475,7 +7475,7 @@ func (a *FuturesApiService) GetPriceTriggeredOrder(ctx context.Context, settle s
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	if localVarHTTPResponse.StatusCode >= 300 {
+	if localVarHTTPResponse.StatusCode >= 300 || localVarHTTPResponse.StatusCode == 205 {
 		newErr := GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status + ", " + string(localVarBody),
