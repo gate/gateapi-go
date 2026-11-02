@@ -5917,16 +5917,16 @@ StopTrailOrder Terminate trail order
   - @param settle Perpetual futures settlement currency
   - @param stopTrailOrder
 
-@return TrailOrderResponse
+@return TrailOrderDetailResponse
 */
-func (a *FuturesApiService) StopTrailOrder(ctx context.Context, settle string, stopTrailOrder StopTrailOrder) (TrailOrderResponse, *http.Response, error) {
+func (a *FuturesApiService) StopTrailOrder(ctx context.Context, settle string, stopTrailOrder StopTrailOrder) (TrailOrderDetailResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  TrailOrderResponse
+		localVarReturnValue  TrailOrderDetailResponse
 	)
 
 	// create path and map variables
@@ -6362,16 +6362,16 @@ UpdateTrailOrder Update trail order
   - @param settle Perpetual futures settlement currency
   - @param updateTrailOrder
 
-@return TrailOrderResponse
+@return TrailOrderDetailResponse
 */
-func (a *FuturesApiService) UpdateTrailOrder(ctx context.Context, settle string, updateTrailOrder UpdateTrailOrder) (TrailOrderResponse, *http.Response, error) {
+func (a *FuturesApiService) UpdateTrailOrder(ctx context.Context, settle string, updateTrailOrder UpdateTrailOrder) (TrailOrderDetailResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  TrailOrderResponse
+		localVarReturnValue  TrailOrderDetailResponse
 	)
 
 	// create path and map variables

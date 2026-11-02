@@ -4313,7 +4313,7 @@ func main() {
 
 ## StopTrailOrder
 
-> TrailOrderResponse StopTrailOrder(ctx, settle, stopTrailOrder)
+> TrailOrderDetailResponse StopTrailOrder(ctx, settle, stopTrailOrder)
 
 Terminate trail order
 
@@ -4367,7 +4367,7 @@ func main() {
 
 ### Return type
 
-[**TrailOrderResponse**](TrailOrderResponse.md)
+[**TrailOrderDetailResponse**](TrailOrderDetailResponse.md)
 
 ### Authorization
 
@@ -4615,7 +4615,7 @@ func main() {
 
 ## UpdateTrailOrder
 
-> TrailOrderResponse UpdateTrailOrder(ctx, settle, updateTrailOrder)
+> TrailOrderDetailResponse UpdateTrailOrder(ctx, settle, updateTrailOrder)
 
 Update trail order
 
@@ -4669,7 +4669,7 @@ func main() {
 
 ### Return type
 
-[**TrailOrderResponse**](TrailOrderResponse.md)
+[**TrailOrderDetailResponse**](TrailOrderDetailResponse.md)
 
 ### Authorization
 

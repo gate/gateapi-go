@@ -13,7 +13,7 @@ package gateapi
 type TrailChangeLog struct {
 
 	// Update time
-	UpdatedAt int64 `json:"updated_at,omitempty"`
+	UpdatedAt string `json:"updated_at,omitempty"`
 
 	// Trading quantity in contracts, positive for buy, negative for sell
 	Amount string `json:"amount,omitempty"`
