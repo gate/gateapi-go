@@ -32,7 +32,7 @@ Method | HTTP request | Description
 [**ListMyOptionsTrades**](OptionsApi.md#ListMyOptionsTrades) | **Get** /options/my_trades | Query personal trading records
 [**GetOptionsMMP**](OptionsApi.md#GetOptionsMMP) | **Get** /options/mmp | MMP Query.
 [**SetOptionsMMP**](OptionsApi.md#SetOptionsMMP) | **Post** /options/mmp | MMP Settings
-[**ResetOptionsMMP**](OptionsApi.md#ResetOptionsMMP) | **Post** /options/mmp/reset | MMP Reset
+[**ResetOptionsMMP**](OptionsApi.md#ResetOptionsMMP) | **Post** /options/mmp/reset | Reset MMP for the specified underlying.
 
 
 ## ListOptionsUnderlyings
@@ -2054,7 +2054,7 @@ func main() {
 
 > OptionsMmp ResetOptionsMMP(ctx, optionsMmpReset)
 
-MMP Reset
+Reset MMP for the specified underlying.
 
 ### Required Parameters
 

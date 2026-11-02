@@ -14,6 +14,6 @@ type PatchUniLend struct {
 	// Currency name
 	Currency string `json:"currency,omitempty"`
 
-	// Minimum interest rate
+	// Minimum hourly interest rate.
 	MinRate string `json:"min_rate,omitempty"`
 }

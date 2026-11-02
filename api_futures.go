@@ -3669,7 +3669,7 @@ type ListFuturesOrdersOpts struct {
 
 /*
 ListFuturesOrders Query futures order list
-- Zero-fill order cannot be retrieved for 10 minutes after cancellation - Historical orders, by default, only data within the past 6 months is supported.  If you need to query data for a longer period, please use &#x60;GET /futures/{settle}/orders_timerange&#x60;.
+- Cancelled orders with no fills are no longer retrievable through this endpoint 10 minutes after cancellation. - Historical orders, by default, only data within the past 6 months is supported.  If you need to query data for a longer period, please use &#x60;GET /futures/{settle}/orders_timerange&#x60;.
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param settle Perpetual futures settlement currency
   - @param status Query order list based on status
@@ -3787,7 +3787,7 @@ type CreateFuturesOrderOpts struct {
 
 /*
 CreateFuturesOrder Place futures order
-- When placing an order, the number of contracts is specified &#x60;size&#x60;, not the number of coins. The number of coins corresponding to each contract is returned in the contract details interface &#x60;quanto_multiplier&#x60; - 0 The order that was completed cannot be obtained after 10 minutes of withdrawal, and the order will be mentioned that the order does not exist - Setting &#x60;reduce_only&#x60; to &#x60;true&#x60; can prevent the position from being penetrated when reducing the position - In single-position mode, if you need to close the position, you need to set &#x60;size&#x60; to 0 and &#x60;close&#x60; to &#x60;true&#x60; - In dual warehouse mode,   - Reduce position: reduce_only&#x3D;true, size is a positive number that indicates short position, negative number that indicates long position  - Add number that indicates adding long positions, and negative numbers indicate adding short positions  - Close position: size&#x3D;0, set the direction of closing position according to auto_size, and set &#x60;reduce_only&#x60; to true  at the same time - reduce_only: Make sure to only perform position reduction operations to prevent increased positions - Set &#x60;stp_act&#x60; to determine the use of a strategy that restricts user transactions. For detailed usage, refer to the body parameter &#x60;stp_act&#x60;
+- When placing an order, the number of contracts is specified &#x60;size&#x60;, not the number of coins. The number of coins corresponding to each contract is returned in the contract details interface &#x60;quanto_multiplier&#x60; - 0 The order that was completed cannot be obtained after 10 minutes of withdrawal, and the order will be mentioned that the order does not exist - Setting &#x60;reduce_only&#x60; to &#x60;true&#x60; can prevent the position from being penetrated when reducing the position - In single-position mode, if you need to close the position, you need to set &#x60;size&#x60; to 0 and &#x60;close&#x60; to &#x60;true&#x60; - In hedge mode:   - Reduce a position: with &#x60;reduce_only&#x3D;true&#x60;, a positive &#x60;size&#x60; reduces the short position and a negative &#x60;size&#x60; reduces the long position.   - Increase a position: with &#x60;reduce_only&#x3D;false&#x60;, a positive &#x60;size&#x60; increases the long position and a negative &#x60;size&#x60; increases the short position.   - Close a position: set &#x60;size&#x3D;0&#x60;, select the closing side with &#x60;auto_size&#x60;, and set &#x60;reduce_only&#x3D;true&#x60;.   - &#x60;reduce_only&#x60; ensures position reduction only and prevents increasing the position. - Set &#x60;stp_act&#x60; to determine the use of a strategy that restricts user transactions. For detailed usage, refer to the body parameter &#x60;stp_act&#x60;
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param settle Perpetual futures settlement currency
   - @param futuresOrder
@@ -4248,7 +4248,7 @@ func (a *FuturesApiService) CreateBatchFuturesOrder(ctx context.Context, settle 
 
 /*
 GetFuturesOrder Query single order details
-- Zero-fill order cannot be retrieved for 10 minutes after cancellation - Historical orders, by default, only data within the past 6 months is supported.
+- Cancelled orders with no fills are no longer retrievable through this endpoint 10 minutes after cancellation. - Historical orders, by default, only data within the past 6 months is supported.
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param settle Perpetual futures settlement currency
   - @param orderId The order ID returned when the order is created successfully, or the custom ID specified by the user when creating the order (i.e. the `text` field). When using the custom `text` field: 1. If the order was not filled and has been cancelled, after 60 seconds you cannot query the order by `text`; continuing to use `text` returns error ORDER_NOT_FOUND. 2. If the order was fully or partially filled, you can query the order by `text` indefinitely.
@@ -4836,7 +4836,7 @@ ListPositionClose Query position close history
   - @param "Offset" (optional.Int32) -  List offset, starting from 0
   - @param "From" (optional.Int64) -  Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit)
   - @param "To" (optional.Int64) -  Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp
-  - @param "Side" (optional.String) -  Query side. long or shot
+  - @param "Side" (optional.String) -  Direction filter: long or short.
   - @param "Pnl" (optional.String) -  Query profit or loss
 
 @return []PositionClose
@@ -6137,16 +6137,16 @@ GetTrailOrders Get trail order list
   - @param "ReduceOnly" (optional.Int32) -  Whether reduce only, 1-yes, 2-no
   - @param "Side" (optional.Int32) -  Direction, 1-long position, 2-short position
 
-@return TrailOrderListResponse
+@return TrailOrderListResponseEnvelope
 */
-func (a *FuturesApiService) GetTrailOrders(ctx context.Context, settle string, localVarOptionals *GetTrailOrdersOpts) (TrailOrderListResponse, *http.Response, error) {
+func (a *FuturesApiService) GetTrailOrders(ctx context.Context, settle string, localVarOptionals *GetTrailOrdersOpts) (TrailOrderListResponseEnvelope, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  TrailOrderListResponse
+		localVarReturnValue  TrailOrderListResponseEnvelope
 	)
 
 	// create path and map variables
@@ -6867,7 +6867,7 @@ type GetChaseOrdersOpts struct {
 GetChaseOrders List chase orders
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param settle Perpetual futures settlement currency
-  - @param sortBy Sort field: 1 ORDER_SORT_CREATED_AT, 2 ORDER_SORT_FINISHED_AT; cannot be 0
+  - @param sortBy Sort field: 1 for creation time; 2 for finish time. 0 is not accepted.
   - @param optional nil or *GetChaseOrdersOpts - Optional Parameters:
   - @param "Contract" (optional.String) -  Optional. When non-empty, must be a valid contract (validated against the market cache for the path settle); server-side converted to uppercase
   - @param "IsFinished" (optional.Bool) -  true to query finished orders, false to query in-progress orders

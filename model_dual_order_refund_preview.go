@@ -32,7 +32,7 @@ type DualOrderRefundPreview struct {
 	// Order ID
 	OrderId int64 `json:"order_id,omitempty"`
 
-	// Request ID used for actual redemption
+	// Request ID used for redemption, returned by GET /earn/dual/order-refund-preview. The request to POST /earn/dual/order-refund requires order_id and req_id.
 	ReqId string `json:"req_id,omitempty"`
 
 	// Refund fee

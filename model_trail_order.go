@@ -72,7 +72,7 @@ type TrailOrder struct {
 	// End reason
 	Reason string `json:"reason,omitempty"`
 
-	// Sub-order text field
+	// The child order's text field.
 	SuborderText string `json:"suborder_text,omitempty"`
 
 	// Whether dual position mode when creating order
@@ -81,7 +81,7 @@ type TrailOrder struct {
 	// Trigger price
 	TriggerPrice string `json:"trigger_price,omitempty"`
 
-	// Sub-order ID
+	// Child order ID.
 	SuborderId int64 `json:"suborder_id,omitempty"`
 
 	// Order direction label: long/short/open long/open short/close long/close short

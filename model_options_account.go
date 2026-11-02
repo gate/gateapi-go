@@ -35,7 +35,7 @@ type OptionsAccount struct {
 	// This field indicates the margin mode used by the unified account:  - 0: Classic Spot Margin Mode - 1: Cross-Currency Margin Mode - 2: Portfolio Margin Mode - 3: Single-Currency Margin Mode
 	MarginMode int32 `json:"margin_mode,omitempty"`
 
-	// Unrealised PnL = (mark price - entry price) * position size. For long postion, size is positive; for short positon, size is negative.This value is for reference only.
+	// Unrealized PnL, for reference only. Position unrealized PnL = (mark price - average entry price) × position quantity. Position quantity is measured in currency units, negative for shorts and positive for longs.
 	UnrealisedPnl string `json:"unrealised_pnl,omitempty"`
 
 	// Initial position margin

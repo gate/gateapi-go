@@ -113,7 +113,7 @@ func (a *WalletApiService) ListCurrencyChains(ctx context.Context, currency stri
 }
 
 /*
-GetDepositAddress Generate currency deposit address
+GetDepositAddress Get a currency deposit address
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param currency Currency name
 
@@ -1069,7 +1069,7 @@ type ListWithdrawStatusOpts struct {
 }
 
 /*
-ListWithdrawStatus Query withdrawal status
+ListWithdrawStatus Get currency withdrawal fees and limits, optionally filtered by currency.
 API operations are not supported for tokens with low liquidity or extremely low value. Please use the Web or App interface to query and process.
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param optional nil or *ListWithdrawStatusOpts - Optional Parameters:
@@ -2084,10 +2084,10 @@ type ListSmallBalanceHistoryOpts struct {
 }
 
 /*
-ListSmallBalanceHistory Get convertible small balance currency history
+ListSmallBalanceHistory Get small-balance conversion history
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param optional nil or *ListSmallBalanceHistoryOpts - Optional Parameters:
-  - @param "Currency" (optional.String) -  Currency to convert
+  - @param "Currency" (optional.String) -  Filter by conversion currency.
   - @param "Page" (optional.Int32) -  Page number
   - @param "Limit" (optional.Int32) -  Maximum number of items returned. Default: 100, minimum: 1, maximum: 100
 

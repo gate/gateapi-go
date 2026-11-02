@@ -17,13 +17,13 @@ type MultiChainAddressItem struct {
 	// Deposit address
 	Address string `json:"address,omitempty"`
 
-	// Notes that some currencies required(e.g., Tag, Memo) when depositing
+	// A memo required when depositing certain currencies, such as a Tag or Memo.
 	PaymentId string `json:"payment_id,omitempty"`
 
 	// Note type, `Tag` or `Memo`
 	PaymentName string `json:"payment_name,omitempty"`
 
-	// The obtain failed status- 0: address successfully obtained- 1: failed to obtain address
+	// Whether address retrieval failed: 0 means success; 1 means failure and retrieval may need to be retried.
 	ObtainFailed int32 `json:"obtain_failed,omitempty"`
 
 	// Minimum Confirmation Count

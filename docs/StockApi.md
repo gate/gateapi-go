@@ -123,7 +123,7 @@ Optional parameters are passed through a pointer to a QueryStockSymbolsOpts stru
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **symbols** | **optional.String**| Symbol list, multiple separated by commas | 
-**exchange** | **optional.String**| Exchange. - us: US stocks. - hk: Hong Kong stocks. - kr: Korean stocks. - jp: Japanese stocks. | 
+**exchange** | **optional.String**| Trading market code. - us: US stocks. - hk: Hong Kong stocks. - kr: South Korean stocks. - jp: Japanese stocks. | 
 **withDescI18n** | **optional.Bool**| Whether to return multilingual symbol description | 
 **page** | **optional.Int32**| Page number, defaults to 1 | 
 **pageSize** | **optional.Int32**| Page size, defaults to 10, max 500; server caps at 500 | 

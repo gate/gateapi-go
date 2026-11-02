@@ -2853,7 +2853,7 @@ func (a *OptionsApiService) SetOptionsMMP(ctx context.Context, optionsMmp Option
 }
 
 /*
-ResetOptionsMMP MMP Reset
+ResetOptionsMMP Reset MMP for the specified underlying.
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param optionsMmpReset
 

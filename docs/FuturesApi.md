@@ -2713,7 +2713,7 @@ func main() {
 
 Query futures order list
 
-- Zero-fill order cannot be retrieved for 10 minutes after cancellation - Historical orders, by default, only data within the past 6 months is supported.  If you need to query data for a longer period, please use `GET /futures/{settle}/orders_timerange`.
+- Cancelled orders with no fills are no longer retrievable through this endpoint 10 minutes after cancellation. - Historical orders, by default, only data within the past 6 months is supported.  If you need to query data for a longer period, please use `GET /futures/{settle}/orders_timerange`.
 
 ### Required Parameters
 
@@ -2798,7 +2798,7 @@ func main() {
 
 Place futures order
 
-- When placing an order, the number of contracts is specified `size`, not the number of coins. The number of coins corresponding to each contract is returned in the contract details interface `quanto_multiplier` - 0 The order that was completed cannot be obtained after 10 minutes of withdrawal, and the order will be mentioned that the order does not exist - Setting `reduce_only` to `true` can prevent the position from being penetrated when reducing the position - In single-position mode, if you need to close the position, you need to set `size` to 0 and `close` to `true` - In dual warehouse mode,   - Reduce position: reduce_only=true, size is a positive number that indicates short position, negative number that indicates long position  - Add number that indicates adding long positions, and negative numbers indicate adding short positions  - Close position: size=0, set the direction of closing position according to auto_size, and set `reduce_only` to true  at the same time - reduce_only: Make sure to only perform position reduction operations to prevent increased positions - Set `stp_act` to determine the use of a strategy that restricts user transactions. For detailed usage, refer to the body parameter `stp_act`
+- When placing an order, the number of contracts is specified `size`, not the number of coins. The number of coins corresponding to each contract is returned in the contract details interface `quanto_multiplier` - 0 The order that was completed cannot be obtained after 10 minutes of withdrawal, and the order will be mentioned that the order does not exist - Setting `reduce_only` to `true` can prevent the position from being penetrated when reducing the position - In single-position mode, if you need to close the position, you need to set `size` to 0 and `close` to `true` - In hedge mode:   - Reduce a position: with `reduce_only=true`, a positive `size` reduces the short position and a negative `size` reduces the long position.   - Increase a position: with `reduce_only=false`, a positive `size` increases the long position and a negative `size` increases the short position.   - Close a position: set `size=0`, select the closing side with `auto_size`, and set `reduce_only=true`.   - `reduce_only` ensures position reduction only and prevents increasing the position. - Set `stp_act` to determine the use of a strategy that restricts user transactions. For detailed usage, refer to the body parameter `stp_act`
 
 ### Required Parameters
 
@@ -3129,7 +3129,7 @@ func main() {
 
 Query single order details
 
-- Zero-fill order cannot be retrieved for 10 minutes after cancellation - Historical orders, by default, only data within the past 6 months is supported.  
+- Cancelled orders with no fills are no longer retrievable through this endpoint 10 minutes after cancellation. - Historical orders, by default, only data within the past 6 months is supported. 
 
 ### Required Parameters
 
@@ -3551,7 +3551,7 @@ Name | Type | Description  | Notes
 **offset** | **optional.Int32**| List offset, starting from 0 | [default to 0]
 **from** | **optional.Int64**| Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit) | 
 **to** | **optional.Int64**| Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp | 
-**side** | **optional.String**| Query side. long or shot | 
+**side** | **optional.String**| Direction filter: long or short. | 
 **pnl** | **optional.String**| Query profit or loss | 
 
 ### Example
@@ -4455,7 +4455,7 @@ func main() {
 
 ## GetTrailOrders
 
-> TrailOrderListResponse GetTrailOrders(ctx, settle, optional)
+> TrailOrderListResponseEnvelope GetTrailOrders(ctx, settle, optional)
 
 Get trail order list
 
@@ -4527,7 +4527,7 @@ func main() {
 
 ### Return type
 
-[**TrailOrderListResponse**](TrailOrderListResponse.md)
+[**TrailOrderListResponseEnvelope**](TrailOrderListResponseEnvelope.md)
 
 ### Authorization
 
@@ -4990,7 +4990,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **settle** | **string**| Perpetual futures settlement currency | 
-**sortBy** | **int32**| Sort field: 1 ORDER_SORT_CREATED_AT, 2 ORDER_SORT_FINISHED_AT; cannot be 0 | 
+**sortBy** | **int32**| Sort field: 1 for creation time; 2 for finish time. 0 is not accepted. | 
 **optional** | **GetChaseOrdersOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
@@ -5033,7 +5033,7 @@ func main() {
                              }
                             )
     settle := "usdt" // string - Perpetual futures settlement currency
-    sortBy := 56 // int32 - Sort field: 1 ORDER_SORT_CREATED_AT, 2 ORDER_SORT_FINISHED_AT; cannot be 0
+    sortBy := 56 // int32 - Sort field: 1 for creation time; 2 for finish time. 0 is not accepted.
     
     result, _, err := client.FuturesApi.GetChaseOrders(ctx, settle, sortBy, nil)
     if err != nil {

@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **MmpEnabled** | **bool** | Whether to enable MMP | [optional] 
 **LiqTriggered** | **bool** | Whether the account is in a liquidation state | [optional] 
 **MarginMode** | **int32** | This field indicates the margin mode used by the unified account:  - 0: Classic Spot Margin Mode - 1: Cross-Currency Margin Mode - 2: Portfolio Margin Mode - 3: Single-Currency Margin Mode | [optional] 
-**UnrealisedPnl** | **string** | Unrealised PnL &#x3D; (mark price - entry price) * position size. For long postion, size is positive; for short positon, size is negative.This value is for reference only. | [optional] 
+**UnrealisedPnl** | **string** | Unrealized PnL, for reference only. Position unrealized PnL &#x3D; (mark price - average entry price) × position quantity. Position quantity is measured in currency units, negative for shorts and positive for longs. | [optional] 
 **InitMargin** | **string** | Initial position margin | [optional] 
 **MaintMargin** | **string** | Position maintenance margin | [optional] 
 **OrderMargin** | **string** | Order margin of unfinished orders | [optional] 

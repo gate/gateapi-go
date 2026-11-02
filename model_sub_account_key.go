@@ -14,7 +14,7 @@ type SubAccountKey struct {
 	// User ID
 	UserId int64 `json:"user_id,omitempty"`
 
-	// Mode: 1 - classic 2 - portfolio account
+	// Account mode: 1 for a classic account; 2 for a unified account.
 	Mode int32 `json:"mode,omitempty"`
 
 	// API Key Name

@@ -11,7 +11,7 @@ Method | HTTP request | Description
 [**PostAIHubFuturesGridCreate**](BotApi.md#PostAIHubFuturesGridCreate) | **Post** /bot/futures-grid/create | Create a contract grid
 [**PostAIHubSpotMartingaleCreate**](BotApi.md#PostAIHubSpotMartingaleCreate) | **Post** /bot/spot-martingale/create | Create Spot Martin
 [**PostAIHubContractMartingaleCreate**](BotApi.md#PostAIHubContractMartingaleCreate) | **Post** /bot/contract-martingale/create | Create contract martin
-[**GetAIHubPortfolioRunning**](BotApi.md#GetAIHubPortfolioRunning) | **Get** /bot/portfolio/running | Query the list of running policies
+[**GetAIHubPortfolioRunning**](BotApi.md#GetAIHubPortfolioRunning) | **Get** /bot/portfolio/running | List running strategies.
 [**GetAIHubPortfolioDetail**](BotApi.md#GetAIHubPortfolioDetail) | **Get** /bot/portfolio/detail | Query order policy details
 [**PostAIHubPortfolioStop**](BotApi.md#PostAIHubPortfolioStop) | **Post** /bot/portfolio/stop | Terminate a single running policy
 [**PostAIHubSmartPositionCreate**](BotApi.md#PostAIHubSmartPositionCreate) | **Post** /bot/smart-position/create | Create rebalance bot
@@ -611,7 +611,7 @@ func main() {
 
 > AiHubPortfolioRunningSuccessResponse GetAIHubPortfolioRunning(ctx, optional)
 
-Query the list of running policies
+List running strategies.
 
 Query the list of AIHub strategies currently running by the user, and support filtering by strategy type, trading pair and paging conditions.
 

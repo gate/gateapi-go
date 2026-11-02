@@ -30,13 +30,13 @@ type FuturesOrder struct {
 	// How the order was finished:  - filled: all filled - cancelled: manually cancelled - liquidated: cancelled because of liquidation - ioc: time in force is `IOC`, finish immediately - auto_deleveraged: finished by ADL - reduce_only: cancelled because of increasing position while `reduce-only` set - position_closed: cancelled because the position was closed - reduce_out: only reduce positions by excluding hard-to-fill orders - stp: cancelled because self trade prevention
 	FinishAs string `json:"finish_as,omitempty"`
 
-	// Order status  - `open`: Pending - `finished`: Completed
+	// Order status:  - `open`: pending - `finished`: the order has ended
 	Status string `json:"status,omitempty"`
 
 	// Futures contract
 	Contract string `json:"contract"`
 
-	// Required. Trading quantity. Positive for buy, negative for sell. Set to 0 for close position orders.
+	// Required. Order size in contracts: positive to buy and negative to sell. Set to 0 for a closing order.
 	Size string `json:"size"`
 
 	// Display size for iceberg orders. 0 for non-iceberg orders. Note that hidden portions are charged taker fees.
@@ -72,10 +72,10 @@ type FuturesOrder struct {
 	// Custom order information. If not empty, must follow the rules below:  1. Prefixed with `t-` 2. No longer than 28 bytes without `t-` prefix 3. Can only include 0-9, A-Z, a-z, underscore(_), hyphen(-) or dot(.)  In addition to user-defined information, the following are internal reserved fields that identify the order source:  - web: Web - api: API call - app: Mobile app - auto_deleveraging: Automatic deleveraging - liquidation: Forced liquidation of positions under the old classic mode - liq-xxx: a. Forced liquidation of positions under the new classic mode, including isolated margin, one-way cross margin, and non-hedged positions under two-way cross margin. b. Forced liquidation of isolated positions under the unified account single-currency margin mode - hedge-liq-xxx: Forced liquidation of hedged positions under the new classic mode two-way cross margin, i.e., simultaneously closing long and short positions - pm_liquidate: Forced liquidation under unified account multi-currency margin mode - comb_margin_liquidate: Forced liquidation under unified account portfolio margin mode - scm_liquidate: Forced liquidation of positions under unified account single-currency margin mode - insurance: Insurance - clear: Contract delisting withdrawal
 	Text string `json:"text,omitempty"`
 
-	// Taker fee
+	// Taker fee rate.
 	Tkfr string `json:"tkfr,omitempty"`
 
-	// Maker fee
+	// Maker fee rate.
 	Mkfr string `json:"mkfr,omitempty"`
 
 	// Referrer user ID

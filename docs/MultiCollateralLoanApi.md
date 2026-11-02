@@ -40,7 +40,7 @@ Name | Type | Description  | Notes
 **page** | **optional.Int32**| Page number | [default to 1]
 **limit** | **optional.Int32**| Maximum number of records returned in a single list | [default to 10]
 **sort** | **optional.String**| Sort type: time_desc - Default descending by creation time, ltv_asc - Ascending by LTV ratio, ltv_desc - Descending by LTV ratio | 
-**orderType** | **optional.String**| Order type: current - Query current orders, fixed - Query fixed orders, defaults to current orders if not specified | 
+**orderType** | **optional.String**| Order type: current for flexible-term orders; fixed for fixed-term orders. If omitted, current is used. | 
 
 ### Example
 

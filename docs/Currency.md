@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **TradeDisabled** | **bool** | Whether currency&#39;s trading is disabled | [optional] 
 **FixedRate** | **string** | Fixed fee rate. Only for fixed rate currencies, not valid for normal currencies | [optional] 
 **Chain** | **string** | The main chain corresponding to the coin | [optional] 
-**Chains** | [**[]SpotCurrencyChain**](SpotCurrencyChain.md) | All links corresponding to coins | [optional] 
+**Chains** | [**[]SpotCurrencyChain**](SpotCurrencyChain.md) | All blockchains associated with this currency. | [optional] 
 **TotalSupply** | **string** | Total supply | [optional] 
 **MarketCap** | **string** | Market cap | [optional] 
 **Category** | **[]string** | Currency categories - stocks: Stocks - metals: Metals - indices: Indices - forex: Forex - commodities: Commodities | [optional] 

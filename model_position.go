@@ -119,7 +119,7 @@ type Position struct {
 	// Average maintenance margin rate
 	AverageMaintenanceRate string `json:"average_maintenance_rate,omitempty"`
 
-	// Sub-account position ID
+	// Split-position ID.
 	Pid int64 `json:"pid,omitempty"`
 
 	// Position Margin Mode isolated - Isolated Margin, cross - Cross Margin

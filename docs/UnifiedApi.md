@@ -7,7 +7,7 @@ Method | HTTP request | Description
 [**ListUnifiedAccounts**](UnifiedApi.md#ListUnifiedAccounts) | **Get** /unified/accounts | Get unified account information
 [**GetUnifiedBorrowable**](UnifiedApi.md#GetUnifiedBorrowable) | **Get** /unified/borrowable | Query maximum borrowable amount for unified account
 [**GetUnifiedTransferable**](UnifiedApi.md#GetUnifiedTransferable) | **Get** /unified/transferable | Query maximum transferable amount for unified account
-[**GetUnifiedTransferables**](UnifiedApi.md#GetUnifiedTransferables) | **Get** /unified/transferables | Batch query maximum transferable amount for unified accounts. Each currency shows the maximum value. After user withdrawal, the transferable amount for all currencies will change
+[**GetUnifiedTransferables**](UnifiedApi.md#GetUnifiedTransferables) | **Get** /unified/transferables | Get maximum transferable amounts for multiple unified-account currencies
 [**GetUnifiedBorrowableList**](UnifiedApi.md#GetUnifiedBorrowableList) | **Get** /unified/batch_borrowable | Batch query unified account maximum borrowable amount
 [**ListUnifiedLoans**](UnifiedApi.md#ListUnifiedLoans) | **Get** /unified/loans | Query loans
 [**CreateUnifiedLoan**](UnifiedApi.md#CreateUnifiedLoan) | **Post** /unified/loans | Borrow or repay
@@ -17,7 +17,7 @@ Method | HTTP request | Description
 [**GetUnifiedMode**](UnifiedApi.md#GetUnifiedMode) | **Get** /unified/unified_mode | Query mode of the unified account
 [**SetUnifiedMode**](UnifiedApi.md#SetUnifiedMode) | **Put** /unified/unified_mode | Set unified account mode
 [**GetUnifiedEstimateRate**](UnifiedApi.md#GetUnifiedEstimateRate) | **Get** /unified/estimate_rate | Query unified account estimated interest rate
-[**ListCurrencyDiscountTiers**](UnifiedApi.md#ListCurrencyDiscountTiers) | **Get** /unified/currency_discount_tiers | Query unified account tiered
+[**ListCurrencyDiscountTiers**](UnifiedApi.md#ListCurrencyDiscountTiers) | **Get** /unified/currency_discount_tiers | Get currency margin discount tiers for unified accounts
 [**ListLoanMarginTiers**](UnifiedApi.md#ListLoanMarginTiers) | **Get** /unified/loan_margin_tiers | Query unified account tiered loan margin
 [**CalculatePortfolioMargin**](UnifiedApi.md#CalculatePortfolioMargin) | **Post** /unified/portfolio_calculator | Portfolio margin calculator
 [**SetUserLeverage**](UnifiedApi.md#SetUserLeverage) | **Post** /unified/leverage/user_setting | Set leverage for all of the user&#39;s borrowed currencies
@@ -254,7 +254,9 @@ func main() {
 
 > []TransferablesResult GetUnifiedTransferables(ctx, currencies)
 
-Batch query maximum transferable amount for unified accounts. Each currency shows the maximum value. After user withdrawal, the transferable amount for all currencies will change
+Get maximum transferable amounts for multiple unified-account currencies
+
+Each currency’s value is its maximum transferable amount. After a user withdrawal, the transferable amounts for all currencies will change.
 
 ### Required Parameters
 
@@ -836,7 +838,7 @@ func main() {
 
 Set unified account mode
 
-Each account mode switch only requires passing the corresponding account mode parameter, and also supports turning on or off the configuration switches under the corresponding account mode during the switch. - When enabling the classic account mode, mode=classic ```  PUT /unified/unified_mode  {  \"mode\": \"classic\"  } ``` - When enabling the cross-currency margin \"multi_currency\",  \"settings\": {  \"usdt_futures\": true  }  } ``` - When enabling the portfolio margin mode, mode=portfolio ```  PUT /unified/unified_mode  {  \"mode\": \"portfolio\",  \"settings\": {  \"spot_hedge\": true  }  } ``` - When enabling the single-currency margin mode, mode=single_currency ```  PUT /unified/unified_mode  {  \"mode\": \"single_currency\"  } ```
+Each account mode switch only requires passing the corresponding account mode parameter, and also supports turning on or off the configuration switches under the corresponding account mode during the switch. - When enabling the classic account mode, mode=classic ```  PUT /unified/unified_mode  {  \"mode\": \"classic\"  } ``` - When enabling the cross-currency margin mode, mode=multi_currency ```  PUT /unified/unified_mode  {  \"mode\": \"multi_currency\",  \"settings\": {  \"usdt_futures\": true  }  } ``` - When enabling the portfolio margin mode, mode=portfolio ```  PUT /unified/unified_mode  {  \"mode\": \"portfolio\",  \"settings\": {  \"spot_hedge\": true  }  } ``` - When enabling the single-currency margin mode, mode=single_currency ```  PUT /unified/unified_mode  {  \"mode\": \"single_currency\"  } ```
 
 ### Required Parameters
 
@@ -976,7 +978,7 @@ func main() {
 
 > []UnifiedDiscount ListCurrencyDiscountTiers(ctx, )
 
-Query unified account tiered
+Get currency margin discount tiers for unified accounts
 
 ### Required Parameters
 

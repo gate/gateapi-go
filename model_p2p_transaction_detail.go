@@ -14,10 +14,10 @@ type P2pTransactionDetail struct {
 	// Whether the current user is the seller. `1`: yes; `0`: no.
 	IsSell int32 `json:"is_sell,omitempty"`
 
-	// Order ID
+	// Order ID (txid).
 	Txid int32 `json:"txid,omitempty"`
 
-	// Order ID
+	// ID of the posted order (orderid).
 	Orderid int32 `json:"orderid,omitempty"`
 
 	// Order creation timestamp

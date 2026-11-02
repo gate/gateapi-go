@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Mode** | **string** | Unified account mode: - classic: Classic account mode - multi_currency: Multi-currency margin mode - portfolio: Portfolio margin mode - single_currency: Single-currency margin mode | [optional] 
 **UserId** | **int64** | User ID | [optional] 
 **RefreshTime** | **int64** | Last refresh time | [optional] 
-**Locked** | **bool** | Whether the account is locked, valid in cross-currency margin/combined margin mode, false in other modes such as single-currency margin mode | [optional] 
+**Locked** | **bool** | Whether the account is locked. Applicable in multi-currency margin and portfolio margin modes; false in other modes, such as single-currency margin mode. | [optional] 
 **Balances** | [**map[string]UnifiedBalance**](UnifiedBalance.md) |  | [optional] 
 **Total** | **string** | Total account assets converted to USD, i.e. the sum of &#x60;(available + freeze) * price&#x60; in all currencies (deprecated, to be removed, replaced by unified_account_total) | [optional] 
 **Borrowed** | **string** | Total borrowed amount converted to USD, i.e. the sum of &#x60;borrowed * price&#x60; of all currencies (excluding point cards), valid in cross-currency margin/combined margin mode, 0 in other modes such as single-currency margin mode | [optional] 

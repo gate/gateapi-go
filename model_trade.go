@@ -32,7 +32,7 @@ type Trade struct {
 	// Trade amount
 	Amount string `json:"amount,omitempty"`
 
-	// Order price
+	// Trade price.
 	Price string `json:"price,omitempty"`
 
 	// Related order ID, not returned in public endpoints

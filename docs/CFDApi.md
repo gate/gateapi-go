@@ -168,7 +168,7 @@ Optional parameters are passed through a pointer to a QuerySymbolCommissionsOpts
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**symbols** | **optional.String**| List of symbol codes (multiple codes separated by commas). At least one of symbol and category_code is required | 
+**symbols** | **optional.String**| Comma-separated instrument symbols. Provide at least one of symbols and category_code. | 
 **categoryCode** | **optional.String**| List of category codes (multiple codes separated by commas). When provided together with symbols, filters symbols by category. At least one of symbol and category_code is required | 
 
 ### Example
@@ -1419,7 +1419,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **page** | **optional.Int64**| Page number; defaults to 1 if omitted. | 
 **pageSize** | **optional.Int64**| Page size; defaults to 10 if omitted. Maximum 100. | 
-**beginTime** | **optional.Int64**| Start Time (Unix Timestamp, seconds). The earliest queryable time is one month ago | 
+**beginTime** | **optional.Int64**| Start time as a Unix timestamp in seconds. The earliest supported start time is one month ago. | 
 **endTime** | **optional.Int64**| End time (timestamp in seconds) | 
 **symbol** | **optional.String**| Trading symbol (e.g., EURUSD) | 
 **positionDir** | **optional.String**| Position direction (Long&#x3D;long position, Short&#x3D;short position) | 

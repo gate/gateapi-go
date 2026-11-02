@@ -60,7 +60,7 @@ type CurrencyPair struct {
 	// Buy start unix timestamp in seconds
 	BuyStart int64 `json:"buy_start,omitempty"`
 
-	// Expected time to remove the shelves, Unix timestamp in seconds
+	// Expected delisting time as a Unix timestamp in seconds.
 	DelistingTime int64 `json:"delisting_time,omitempty"`
 
 	// Trading pair type, normal: normal, premarket: pre-market

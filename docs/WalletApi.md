@@ -5,7 +5,7 @@ All URIs are relative to *https://api.gateio.ws/api/v4*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**ListCurrencyChains**](WalletApi.md#ListCurrencyChains) | **Get** /wallet/currency_chains | Query chains supported for specified currency
-[**GetDepositAddress**](WalletApi.md#GetDepositAddress) | **Get** /wallet/deposit_address | Generate currency deposit address
+[**GetDepositAddress**](WalletApi.md#GetDepositAddress) | **Get** /wallet/deposit_address | Get a currency deposit address
 [**ListWithdrawals**](WalletApi.md#ListWithdrawals) | **Get** /wallet/withdrawals | Get withdrawal records
 [**ListDeposits**](WalletApi.md#ListDeposits) | **Get** /wallet/deposits | Get deposit records
 [**GetTransfer**](WalletApi.md#GetTransfer) | **Get** /wallet/transfers | Get trading account transfer
@@ -14,7 +14,7 @@ Method | HTTP request | Description
 [**TransferWithSubAccount**](WalletApi.md#TransferWithSubAccount) | **Post** /wallet/sub_account_transfers | Transfer between main and sub accounts
 [**SubAccountToSubAccount**](WalletApi.md#SubAccountToSubAccount) | **Post** /wallet/sub_account_to_sub_account | Transfer between sub-accounts
 [**GetTransferOrderStatus**](WalletApi.md#GetTransferOrderStatus) | **Get** /wallet/order_status | Main-Sub Account Transfer Status Query
-[**ListWithdrawStatus**](WalletApi.md#ListWithdrawStatus) | **Get** /wallet/withdraw_status | Query withdrawal status
+[**ListWithdrawStatus**](WalletApi.md#ListWithdrawStatus) | **Get** /wallet/withdraw_status | Get currency withdrawal fees and limits, optionally filtered by currency.
 [**ListSubAccountBalances**](WalletApi.md#ListSubAccountBalances) | **Get** /wallet/sub_account_balances | Query sub-account balance information
 [**ListSubAccountMarginBalances**](WalletApi.md#ListSubAccountMarginBalances) | **Get** /wallet/sub_account_margin_balances | Query sub-account isolated margin account balance information
 [**ListSubAccountFuturesBalances**](WalletApi.md#ListSubAccountFuturesBalances) | **Get** /wallet/sub_account_futures_balances | Query sub-account perpetual futures account balance information
@@ -24,7 +24,7 @@ Method | HTTP request | Description
 [**GetTotalBalance**](WalletApi.md#GetTotalBalance) | **Get** /wallet/total_balance | Query personal account totals
 [**ListSmallBalance**](WalletApi.md#ListSmallBalance) | **Get** /wallet/small_balance | Get list of convertible small balance currencies
 [**ConvertSmallBalance**](WalletApi.md#ConvertSmallBalance) | **Post** /wallet/small_balance | Convert small balance currency
-[**ListSmallBalanceHistory**](WalletApi.md#ListSmallBalanceHistory) | **Get** /wallet/small_balance_history | Get convertible small balance currency history
+[**ListSmallBalanceHistory**](WalletApi.md#ListSmallBalanceHistory) | **Get** /wallet/small_balance_history | Get small-balance conversion history
 [**ListPushOrders**](WalletApi.md#ListPushOrders) | **Get** /wallet/push | Get UID transfer history
 [**GetLowCapExchangeList**](WalletApi.md#GetLowCapExchangeList) | **Get** /wallet/getLowCapExchangeList | Retrieve the list of low-liquidity or low-cap tokens
 
@@ -98,7 +98,7 @@ No authorization required
 
 > DepositAddress GetDepositAddress(ctx, currency)
 
-Generate currency deposit address
+Get a currency deposit address
 
 ### Required Parameters
 
@@ -779,7 +779,7 @@ func main() {
 
 > []WithdrawStatus ListWithdrawStatus(ctx, optional)
 
-Query withdrawal status
+Get currency withdrawal fees and limits, optionally filtered by currency.
 
 API operations are not supported for tokens with low liquidity or extremely low value. Please use the Web or App interface to query and process.
 
@@ -1532,7 +1532,7 @@ func main() {
 
 > []SmallBalanceHistory ListSmallBalanceHistory(ctx, optional)
 
-Get convertible small balance currency history
+Get small-balance conversion history
 
 ### Required Parameters
 
@@ -1547,7 +1547,7 @@ Optional parameters are passed through a pointer to a ListSmallBalanceHistoryOpt
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**currency** | **optional.String**| Currency to convert | 
+**currency** | **optional.String**| Filter by conversion currency. | 
 **page** | **optional.Int32**| Page number | [default to 1]
 **limit** | **optional.Int32**| Maximum number of items returned. Default: 100, minimum: 1, maximum: 100 | [default to 100]
 

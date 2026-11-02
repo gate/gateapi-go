@@ -117,7 +117,7 @@ type Contract struct {
 	// Whether bonus is enabled
 	EnableBonus bool `json:"enable_bonus,omitempty"`
 
-	// Whether portfolio margin account is enabled
+	// Whether this contract supports unified accounts.
 	EnableCredit bool `json:"enable_credit,omitempty"`
 
 	// Created time of the contract
@@ -129,7 +129,7 @@ type Contract struct {
 	// Contract status types include: prelaunch (pre-launch), trading (active), delisting (delisting), delisted (delisted), circuit_breaker (circuit breaker)
 	Status string `json:"status,omitempty"`
 
-	// Contract expiry timestamp
+	// Contract trading start time.
 	LaunchTime int64 `json:"launch_time,omitempty"`
 
 	// Timestamp when contract enters reduce-only state

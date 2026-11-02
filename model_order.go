@@ -33,7 +33,7 @@ type Order struct {
 	// Last modification time of order (in milliseconds)
 	UpdateTimeMs int64 `json:"update_time_ms,omitempty"`
 
-	// Order status  - `open`: to be filled - `closed`: closed order - `cancelled`: cancelled
+	// Order status:  - `open`: pending - `closed`: ended - `cancelled`: cancelled
 	Status string `json:"status,omitempty"`
 
 	// Currency pair
@@ -51,16 +51,16 @@ type Order struct {
 	// Buy or sell order
 	Side string `json:"side"`
 
-	// Trade amount When `type` is `limit`, this is the base currency to trade (the currency being bought or sold), e.g. `BTC` in `BTC_USDT`. When `type` is `market`, the meaning depends on the side: - `side`: `buy` refers to the quote currency, e.g. `USDT` in `BTC_USDT` - `side`: `sell` refers to the base currency, e.g. `BTC` in `BTC_USDT`
+	// Order amount.  - `type=limit`: measured in the base currency. - `type=market`: `side=buy` uses the quote currency; `side=sell` uses the base currency.  For `BTC_USDT`, the base currency is `BTC` and the quote currency is `USDT`.
 	Amount string `json:"amount"`
 
 	// Trading price, required when `type`=`limit`
 	Price string `json:"price,omitempty"`
 
-	// Time in force  - gtc: GoodTillCancelled - ioc: ImmediateOrCancelled, taker only - poc: PendingOrCancelled, makes a post-only order that always enjoys a maker fee - fok: FillOrKill, fill either completely or none Only `ioc` and `fok` are supported when `type`=`market`
+	// Time in force:  - gtc: GoodTillCancelled - ioc: ImmediateOrCancelled, immediate execution or cancellation, taker-only - poc: PendingOrCancelled, post-only, maker-only - fok: FillOrKill, fill in full or cancel in full  For `type=market`, only `ioc` and `fok` are supported.
 	TimeInForce string `json:"time_in_force,omitempty"`
 
-	// Amount to display for the iceberg order. Null or 0 for normal orders. Hiding all amount is not supported
+	// Displayed amount of an iceberg order. Omit this field or pass \"0\" for a regular order. Fully hidden orders are not supported.
 	Iceberg string `json:"iceberg,omitempty"`
 
 	// Used in margin or cross margin trading to allow automatic loan of insufficient amount if balance is not enough

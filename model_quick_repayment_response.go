@@ -15,9 +15,9 @@ type QuickRepaymentResponse struct {
 	// Order ID
 	OrderId string `json:"order_id"`
 
-	// Repaid currency details
+	// Repayment currency details: currency is the currency name, repaid is the amount repaid, and left is the remaining liability amount.
 	RepaidInfos []UnifiedQuickRepayRepaidInfo `json:"repaid_infos"`
 
-	// Currencies used for repayment
+	// Details of currencies used for repayment: currency is the currency name, and used is the amount exchanged.
 	UsedInfos []UnifiedQuickRepayUsedInfo `json:"used_infos"`
 }

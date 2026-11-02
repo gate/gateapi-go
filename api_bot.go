@@ -918,7 +918,7 @@ type GetAIHubPortfolioRunningOpts struct {
 }
 
 /*
-GetAIHubPortfolioRunning Query the list of running policies
+GetAIHubPortfolioRunning List running strategies.
 Query the list of AIHub strategies currently running by the user, and support filtering by strategy type, trading pair and paging conditions.
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param optional nil or *GetAIHubPortfolioRunningOpts - Optional Parameters:

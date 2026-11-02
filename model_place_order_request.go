@@ -24,7 +24,7 @@ type PlaceOrderRequest struct {
 	// Trading mode affects slippage selection - `speed` : Smart mode - `custom` : Custom mode, uses `slippage` parameter
 	GasMode string `json:"gas_mode"`
 
-	// Slippage tolerance (10 means 10% tolerance)
+	// Slippage percentage: \"10\" means 10%.
 	Slippage string `json:"slippage,omitempty"`
 
 	// Quote ID returned from quotation API

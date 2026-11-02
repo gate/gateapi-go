@@ -20,7 +20,7 @@ type UnifiedAccount struct {
 	// Last refresh time
 	RefreshTime int64 `json:"refresh_time,omitempty"`
 
-	// Whether the account is locked, valid in cross-currency margin/combined margin mode, false in other modes such as single-currency margin mode
+	// Whether the account is locked. Applicable in multi-currency margin and portfolio margin modes; false in other modes, such as single-currency margin mode.
 	Locked bool `json:"locked,omitempty"`
 
 	Balances map[string]UnifiedBalance `json:"balances,omitempty"`

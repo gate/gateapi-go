@@ -38,7 +38,7 @@ type Currency struct {
 	// The main chain corresponding to the coin
 	Chain string `json:"chain,omitempty"`
 
-	// All links corresponding to coins
+	// All blockchains associated with this currency.
 	Chains []SpotCurrencyChain `json:"chains,omitempty"`
 
 	// Total supply

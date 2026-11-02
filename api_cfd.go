@@ -210,7 +210,7 @@ type QuerySymbolCommissionsOpts struct {
 QuerySymbolCommissions Query symbol commission rates
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param optional nil or *QuerySymbolCommissionsOpts - Optional Parameters:
-  - @param "Symbols" (optional.String) -  List of symbol codes (multiple codes separated by commas). At least one of symbol and category_code is required
+  - @param "Symbols" (optional.String) -  Comma-separated instrument symbols. Provide at least one of symbols and category_code.
   - @param "CategoryCode" (optional.String) -  List of category codes (multiple codes separated by commas). When provided together with symbols, filters symbols by category. At least one of symbol and category_code is required
 
 @return SymbolCommissions
@@ -1949,7 +1949,7 @@ QueryPositionHistoryList Query historical position list
   - @param optional nil or *QueryPositionHistoryListOpts - Optional Parameters:
   - @param "Page" (optional.Int64) -  Page number; defaults to 1 if omitted.
   - @param "PageSize" (optional.Int64) -  Page size; defaults to 10 if omitted. Maximum 100.
-  - @param "BeginTime" (optional.Int64) -  Start Time (Unix Timestamp, seconds). The earliest queryable time is one month ago
+  - @param "BeginTime" (optional.Int64) -  Start time as a Unix timestamp in seconds. The earliest supported start time is one month ago.
   - @param "EndTime" (optional.Int64) -  End time (timestamp in seconds)
   - @param "Symbol" (optional.String) -  Trading symbol (e.g., EURUSD)
   - @param "PositionDir" (optional.String) -  Position direction (Long=long position, Short=short position)

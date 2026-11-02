@@ -41,7 +41,7 @@ ListMultiCollateralOrders Query multi-currency collateral order list
   - @param "Page" (optional.Int32) -  Page number
   - @param "Limit" (optional.Int32) -  Maximum number of records returned in a single list
   - @param "Sort" (optional.String) -  Sort type: time_desc - Default descending by creation time, ltv_asc - Ascending by LTV ratio, ltv_desc - Descending by LTV ratio
-  - @param "OrderType" (optional.String) -  Order type: current - Query current orders, fixed - Query fixed orders, defaults to current orders if not specified
+  - @param "OrderType" (optional.String) -  Order type: current for flexible-term orders; fixed for fixed-term orders. If omitted, current is used.
 
 @return []MultiCollateralOrder
 */

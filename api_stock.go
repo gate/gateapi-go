@@ -147,7 +147,7 @@ Rate limit: 5 qps.
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param optional nil or *QueryStockSymbolsOpts - Optional Parameters:
   - @param "Symbols" (optional.String) -  Symbol list, multiple separated by commas
-  - @param "Exchange" (optional.String) -  Exchange. - us: US stocks. - hk: Hong Kong stocks. - kr: Korean stocks. - jp: Japanese stocks.
+  - @param "Exchange" (optional.String) -  Trading market code. - us: US stocks. - hk: Hong Kong stocks. - kr: South Korean stocks. - jp: Japanese stocks.
   - @param "WithDescI18n" (optional.Bool) -  Whether to return multilingual symbol description
   - @param "Page" (optional.Int32) -  Page number, defaults to 1
   - @param "PageSize" (optional.Int32) -  Page size, defaults to 10, max 500; server caps at 500
