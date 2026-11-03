@@ -20,6 +20,6 @@ type TrailOrderListResponseEnvelope struct {
 
 	Data TrailOrderListResponse `json:"data,omitempty"`
 
-	// Response timestamp in microseconds.
+	// Response timestamp (milliseconds)
 	Timestamp int64 `json:"timestamp,omitempty"`
 }

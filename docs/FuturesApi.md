@@ -4384,7 +4384,7 @@ func main() {
 
 ## StopAllTrailOrders
 
-> TrailOrderListResponse StopAllTrailOrders(ctx, settle, stopAllTrailOrders)
+> TrailOrderListResponseEnvelope StopAllTrailOrders(ctx, settle, stopAllTrailOrders)
 
 Batch terminate trail orders
 
@@ -4438,7 +4438,7 @@ func main() {
 
 ### Return type
 
-[**TrailOrderListResponse**](TrailOrderListResponse.md)
+[**TrailOrderListResponseEnvelope**](TrailOrderListResponseEnvelope.md)
 
 ### Authorization
 

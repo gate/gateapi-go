@@ -6013,16 +6013,16 @@ StopAllTrailOrders Batch terminate trail orders
   - @param settle Perpetual futures settlement currency
   - @param stopAllTrailOrders
 
-@return TrailOrderListResponse
+@return TrailOrderListResponseEnvelope
 */
-func (a *FuturesApiService) StopAllTrailOrders(ctx context.Context, settle string, stopAllTrailOrders StopAllTrailOrders) (TrailOrderListResponse, *http.Response, error) {
+func (a *FuturesApiService) StopAllTrailOrders(ctx context.Context, settle string, stopAllTrailOrders StopAllTrailOrders) (TrailOrderListResponseEnvelope, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  TrailOrderListResponse
+		localVarReturnValue  TrailOrderListResponseEnvelope
 	)
 
 	// create path and map variables
