@@ -91,4 +91,25 @@ type SymbolDetailItem struct {
 
 	// Icon URL
 	IconLink string `json:"icon_link,omitempty"`
+
+	// Margin trading mode. - 0: Neither margin financing nor securities borrowing is supported. - 1: Margin financing is supported. - 2: Securities borrowing is supported. - 3: Both margin financing and securities borrowing are supported.
+	MarginMode int32 `json:"margin_mode,omitempty"`
+
+	// Initial margin ratio for long positions
+	LongIm string `json:"long_im,omitempty"`
+
+	// Maintenance margin ratio for long positions
+	LongMm string `json:"long_mm,omitempty"`
+
+	// Initial margin ratio for short positions
+	ShortIm string `json:"short_im,omitempty"`
+
+	// Maintenance margin ratio for short positions
+	ShortMm string `json:"short_mm,omitempty"`
+
+	// Annual margin financing interest rate. An empty string indicates that no valid rate is currently available.
+	LongBorrowingRate string `json:"long_borrowing_rate,omitempty"`
+
+	// Annual securities borrowing interest rate. An empty string indicates that no valid rate is currently available.
+	ShortBorrowingRate string `json:"short_borrowing_rate,omitempty"`
 }

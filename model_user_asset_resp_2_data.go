@@ -20,6 +20,27 @@ type UserAssetResp2Data struct {
 	// Available Balance
 	Available string `json:"available,omitempty"`
 
+	// Loan amount. Non-negative: the absolute value of the original available balance when it is negative, otherwise 0.
+	LoanAmount string `json:"loan_amount,omitempty"`
+
+	// Buying power
+	BuyPower string `json:"buy_power,omitempty"`
+
+	// Leverage
+	Leverage string `json:"leverage,omitempty"`
+
+	// Excess liquidity
+	LeaveLiquidity string `json:"leave_liquidity,omitempty"`
+
+	// Excess liquidity ratio
+	LeaveLiquidityRate string `json:"leave_liquidity_rate,omitempty"`
+
+	// Available Excess Equity (AEE)
+	Aee string `json:"aee,omitempty"`
+
+	// Options margin
+	OptionsMargin string `json:"options_margin,omitempty"`
+
 	// Position market value
 	PositionMarketValue string `json:"position_market_value,omitempty"`
 
@@ -40,4 +61,10 @@ type UserAssetResp2Data struct {
 
 	// Whether the user has activated the service
 	UserExists bool `json:"user_exists,omitempty"`
+
+	// Whether margin financing is enabled
+	MarginEnabled bool `json:"margin_enabled,omitempty"`
+
+	// Annual margin financing interest rate. An empty string indicates that no valid rate is currently available.
+	LongBorrowingRate string `json:"long_borrowing_rate,omitempty"`
 }

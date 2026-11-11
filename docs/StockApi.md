@@ -5,6 +5,7 @@ All URIs are relative to *https://api.gateio.ws/api/v4*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**QueryStockUserAssets**](StockApi.md#QueryStockUserAssets) | **Get** /stock/users/assets | Query user assets
+[**SetStockMarginFeature**](StockApi.md#SetStockMarginFeature) | **Put** /stock/users/margin-feature | Set margin financing availability
 [**QueryStockSymbols**](StockApi.md#QueryStockSymbols) | **Get** /stock/symbols | Query symbol list
 [**QueryStockSymbolDetail**](StockApi.md#QueryStockSymbolDetail) | **Get** /stock/symbols/detail | Query symbol details
 [**QueryStockOrderBook**](StockApi.md#QueryStockOrderBook) | **Get** /stock/market/{symbol}/orderbook | Query market order book
@@ -12,12 +13,14 @@ Method | HTTP request | Description
 [**CreateStockOrder**](StockApi.md#CreateStockOrder) | **Post** /stock/orders | Create order
 [**DeleteAllStockOrders**](StockApi.md#DeleteAllStockOrders) | **Delete** /stock/orders | Cancel all open orders
 [**QueryStockOrderHistory**](StockApi.md#QueryStockOrderHistory) | **Get** /stock/orders/history | Query historical order list
+[**QueryStockOrderDeals**](StockApi.md#QueryStockOrderDeals) | **Get** /stock/orders/deals | Query order trade records
 [**UpdateStockOrder**](StockApi.md#UpdateStockOrder) | **Put** /stock/orders/{order_id} | Modify order
 [**DeleteStockOrder**](StockApi.md#DeleteStockOrder) | **Delete** /stock/orders/{order_id} | Cancel order
 [**QueryStockPositions**](StockApi.md#QueryStockPositions) | **Get** /stock/positions | Query current position list
 [**CloseStockPosition**](StockApi.md#CloseStockPosition) | **Post** /stock/positions/close | Close position
 [**QueryStockTransactions**](StockApi.md#QueryStockTransactions) | **Get** /stock/transactions | Query transaction records
 [**CreateStockTransaction**](StockApi.md#CreateStockTransaction) | **Post** /stock/transactions | Fund transfer
+[**QueryStockBalanceRecords**](StockApi.md#QueryStockBalanceRecords) | **Get** /stock/users/balance-records | Query user balance records
 [**QueryStockExchanges**](StockApi.md#QueryStockExchanges) | **Get** /stock/exchanges | Query supported exchanges
 [**QueryStockFeeRate**](StockApi.md#QueryStockFeeRate) | **Get** /stock/fee-rate | Query fee rates for Japanese and Korean stocks
 
@@ -95,6 +98,77 @@ func main() {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+## SetStockMarginFeature
+
+> SetMarginFeature SetStockMarginFeature(ctx, tradFiSpotSetMarginFeatureRequest)
+
+Set margin financing availability
+
+Rate limit: 5 requests per second. Enable or disable margin financing for the user.
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**tradFiSpotSetMarginFeatureRequest** | [**TradFiSpotSetMarginFeatureRequest**](TradFiSpotSetMarginFeatureRequest.md)|  | 
+
+### Example
+
+```golang
+package main
+
+import (
+    "context"
+    "fmt"
+
+    "github.com/gate/gateapi-go/v7"
+)
+
+func main() {
+    client := gateapi.NewAPIClient(gateapi.NewConfiguration())
+    // uncomment the next line if your are testing against testnet
+    // client.ChangeBasePath("https://fx-api-testnet.gateio.ws/api/v4")
+    ctx := context.WithValue(context.Background(),
+                             gateapi.ContextGateAPIV4,
+                             gateapi.GateAPIV4{
+                                 Key:    "YOUR_API_KEY",
+                                 Secret: "YOUR_API_SECRET",
+                             }
+                            )
+    tradFiSpotSetMarginFeatureRequest := gateapi.TradFiSpotSetMarginFeatureRequest{} // TradFiSpotSetMarginFeatureRequest - 
+    
+    result, _, err := client.StockApi.SetStockMarginFeature(ctx, tradFiSpotSetMarginFeatureRequest)
+    if err != nil {
+        if e, ok := err.(gateapi.GateAPIError); ok {
+            fmt.Printf("gate api error: %s\n", e.Error())
+        } else {
+            fmt.Printf("generic error: %s\n", err.Error())
+        }
+    } else {
+        fmt.Println(result)
+    }
+}
+```
+
+
+### Return type
+
+[**SetMarginFeature**](SetMarginFeature.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -616,6 +690,87 @@ func main() {
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
+## QueryStockOrderDeals
+
+> OrderDealList QueryStockOrderDeals(ctx, orderId, optional)
+
+Query order trade records
+
+Rate limit: 5 requests per second. Query the current user's trade records by order ID. `price`, `value`, and `fee` are denominated in the instrument trading currency (for example, USD for US stocks, HKD for Hong Kong stocks, JPY for Japanese stocks, and KRW for Korean stocks). `role` returns `maker` or `taker`.
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**orderId** | **int64**| Order ID | 
+**optional** | **QueryStockOrderDealsOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+
+Optional parameters are passed through a pointer to a QueryStockOrderDealsOpts struct
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**page** | **optional.Int32**| Page number, defaults to 1 | 
+**pageSize** | **optional.Int32**| Records per page. Defaults to 10, maximum 100. The server caps values greater than 100 at 100. | 
+
+### Example
+
+```golang
+package main
+
+import (
+    "context"
+    "fmt"
+
+    "github.com/gate/gateapi-go/v7"
+)
+
+func main() {
+    client := gateapi.NewAPIClient(gateapi.NewConfiguration())
+    // uncomment the next line if your are testing against testnet
+    // client.ChangeBasePath("https://fx-api-testnet.gateio.ws/api/v4")
+    ctx := context.WithValue(context.Background(),
+                             gateapi.ContextGateAPIV4,
+                             gateapi.GateAPIV4{
+                                 Key:    "YOUR_API_KEY",
+                                 Secret: "YOUR_API_SECRET",
+                             }
+                            )
+    orderId := 123456 // int64 - Order ID
+    
+    result, _, err := client.StockApi.QueryStockOrderDeals(ctx, orderId, nil)
+    if err != nil {
+        if e, ok := err.(gateapi.GateAPIError); ok {
+            fmt.Printf("gate api error: %s\n", e.Error())
+        } else {
+            fmt.Printf("generic error: %s\n", err.Error())
+        }
+    } else {
+        fmt.Println(result)
+    }
+}
+```
+
+
+### Return type
+
+[**OrderDealList**](OrderDealList.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
 ## UpdateStockOrder
 
 > UpdateOrder2 UpdateStockOrder(ctx, orderId, tradFiSpotOrderUpdateRequest)
@@ -1060,6 +1215,93 @@ func main() {
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+## QueryStockBalanceRecords
+
+> BalanceRecordList QueryStockBalanceRecords(ctx, optional)
+
+Query user balance records
+
+Rate limit: 5 requests per second. Query the current user's raw balance records. User scope is derived from the request headers; a query parameter `user_id` is not supported. - `type` and `business` support multiple comma-separated values. - `begin_time` and `end_time` filter record creation time in seconds. When both are provided, `end_time` must be greater than `begin_time`. - Results are always sorted by primary key `id`; `sort_direction` accepts `asc` or `desc`. The default is `id desc`. With `start_id` and no `sort_direction`, the order is `id asc`, and only records with `id > start_id` are returned for incremental retrieval. - `detail` is omitted by default and returned only when `include_detail=true`. - `stock_change` is parsed from `detail.amount` for stock quantity records; `balance` is a cash balance snapshot, not a stock position balance.
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**optional** | **QueryStockBalanceRecordsOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+
+Optional parameters are passed through a pointer to a QueryStockBalanceRecordsOpts struct
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**type_** | **optional.String**| Record types, separated by commas | 
+**business** | **optional.String**| Business identifiers, separated by commas | 
+**symbol** | **optional.String**| Symbol | 
+**beginTime** | **optional.Int64**| Start time (Unix timestamp in seconds). When both begin_time and end_time are provided, end_time must be greater than begin_time. | 
+**endTime** | **optional.Int64**| End time (Unix timestamp in seconds). When both begin_time and end_time are provided, end_time must be greater than begin_time. | 
+**startId** | **optional.Int64**| Starting primary key ID for incremental queries. Only records with a greater id are returned. | 
+**sortDirection** | **optional.String**| Sort direction by primary key id. - asc: Ascending. - desc: Descending. When omitted, defaults to desc without start_id, or asc with start_id. | 
+**includeDetail** | **optional.Bool**| Whether to return the raw detail field; defaults to false when omitted | 
+**page** | **optional.Int32**| Page number, defaults to 1 | 
+**pageSize** | **optional.Int32**| Records per page. Defaults to 10, maximum 100. The server caps values greater than 100 at 100. | 
+
+### Example
+
+```golang
+package main
+
+import (
+    "context"
+    "fmt"
+
+    "github.com/gate/gateapi-go/v7"
+)
+
+func main() {
+    client := gateapi.NewAPIClient(gateapi.NewConfiguration())
+    // uncomment the next line if your are testing against testnet
+    // client.ChangeBasePath("https://fx-api-testnet.gateio.ws/api/v4")
+    ctx := context.WithValue(context.Background(),
+                             gateapi.ContextGateAPIV4,
+                             gateapi.GateAPIV4{
+                                 Key:    "YOUR_API_KEY",
+                                 Secret: "YOUR_API_SECRET",
+                             }
+                            )
+    
+    result, _, err := client.StockApi.QueryStockBalanceRecords(ctx, nil)
+    if err != nil {
+        if e, ok := err.(gateapi.GateAPIError); ok {
+            fmt.Printf("gate api error: %s\n", e.Error())
+        } else {
+            fmt.Printf("generic error: %s\n", err.Error())
+        }
+    } else {
+        fmt.Println(result)
+    }
+}
+```
+
+
+### Return type
+
+[**BalanceRecordList**](BalanceRecordList.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

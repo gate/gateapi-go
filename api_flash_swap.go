@@ -536,6 +536,111 @@ func (a *FlashSwapApiService) PreviewFlashSwapOrder(ctx context.Context, flashSw
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+// ListFlashSwapCurrencyPairV1Opts Optional parameters for the method 'ListFlashSwapCurrencyPairV1'
+type ListFlashSwapCurrencyPairV1Opts struct {
+	XGateRegion optional.String
+}
+
+/*
+ListFlashSwapCurrencyPairV1 List Flash Swap currency pairs
+List available Flash Swap currency pairs and buy/sell amount limits for the specified currency and trading side
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param assetName Currency name
+  - @param side Trading side - `1`: Sell - `2`: Buy
+  - @param optional nil or *ListFlashSwapCurrencyPairV1Opts - Optional Parameters:
+  - @param "XGateRegion" (optional.String) -  User region
+
+@return FlashSwapV1CurrencyPairListResp
+*/
+func (a *FlashSwapApiService) ListFlashSwapCurrencyPairV1(ctx context.Context, assetName string, side int32, localVarOptionals *ListFlashSwapCurrencyPairV1Opts) (FlashSwapV1CurrencyPairListResp, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  FlashSwapV1CurrencyPairListResp
+	)
+
+	// create path and map variables
+	localVarPath := a.client.cfg.BasePath + "/flash-swap/v1/currency-pair"
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	localVarQueryParams.Add("asset_name", parameterToString(assetName, ""))
+	localVarQueryParams.Add("side", parameterToString(side, ""))
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if localVarOptionals != nil && localVarOptionals.XGateRegion.IsSet() {
+		localVarHeaderParams["X-Gate-Region"] = parameterToString(localVarOptionals.XGateRegion.Value(), "")
+	}
+	if ctx == nil {
+		ctx = context.Background()
+	}
+	if ctx.Value(ContextGateAPIV4) == nil {
+		// for compatibility, set configuration key and secret to context if ContextGateAPIV4 value is not present
+		ctx = context.WithValue(ctx, ContextGateAPIV4, GateAPIV4{
+			Key:    a.client.cfg.Key,
+			Secret: a.client.cfg.Secret,
+		})
+	}
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(r)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status + ", " + string(localVarBody),
+		}
+		var gateErr GateAPIError
+		if e := a.client.decode(&gateErr, localVarBody, localVarHTTPResponse.Header.Get("Content-Type")); e == nil && gateErr.Label != "" {
+			gateErr.APIError = newErr
+			return localVarReturnValue, localVarHTTPResponse, gateErr
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 /*
 CreateFlashSwapMultiCurrencyManyToOneOrder Flash Swap - Multi-currency exchange - Place order (many-to-one)
 Create a multi-currency to single target currency exchange order

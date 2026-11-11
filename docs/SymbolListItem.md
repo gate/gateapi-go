@@ -25,6 +25,13 @@ Name | Type | Description | Notes
 **SellPriceProtection** | **string** | Sell price protection rate | [optional] 
 **BuyPriceProtection** | **string** | Buy price protection rate | [optional] 
 **SymbolDescs** | [**[]I18nTxt**](I18nTxt.md) | Multilingual symbol description | [optional] 
+**MarginMode** | **int32** | Margin trading mode. - 0: Neither margin financing nor securities borrowing is supported. - 1: Margin financing is supported. - 2: Securities borrowing is supported. - 3: Both margin financing and securities borrowing are supported. | [optional] 
+**LongIm** | **string** | Initial margin ratio for long positions | [optional] 
+**LongMm** | **string** | Maintenance margin ratio for long positions | [optional] 
+**ShortIm** | **string** | Initial margin ratio for short positions | [optional] 
+**ShortMm** | **string** | Maintenance margin ratio for short positions | [optional] 
+**LongBorrowingRate** | **string** | Annual margin financing interest rate. An empty string indicates that no valid rate is currently available. | [optional] 
+**ShortBorrowingRate** | **string** | Annual securities borrowing interest rate. An empty string indicates that no valid rate is currently available. | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

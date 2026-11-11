@@ -132,6 +132,100 @@ func (a *StockApiService) QueryStockUserAssets(ctx context.Context, localVarOpti
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+/*
+SetStockMarginFeature Set margin financing availability
+Rate limit: 5 requests per second. Enable or disable margin financing for the user.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param tradFiSpotSetMarginFeatureRequest
+
+@return SetMarginFeature
+*/
+func (a *StockApiService) SetStockMarginFeature(ctx context.Context, tradFiSpotSetMarginFeatureRequest TradFiSpotSetMarginFeatureRequest) (SetMarginFeature, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPut
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  SetMarginFeature
+	)
+
+	// create path and map variables
+	localVarPath := a.client.cfg.BasePath + "/stock/users/margin-feature"
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = &tradFiSpotSetMarginFeatureRequest
+	if ctx == nil {
+		ctx = context.Background()
+	}
+	if ctx.Value(ContextGateAPIV4) == nil {
+		// for compatibility, set configuration key and secret to context if ContextGateAPIV4 value is not present
+		ctx = context.WithValue(ctx, ContextGateAPIV4, GateAPIV4{
+			Key:    a.client.cfg.Key,
+			Secret: a.client.cfg.Secret,
+		})
+	}
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(r)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status + ", " + string(localVarBody),
+		}
+		var gateErr GateAPIError
+		if e := a.client.decode(&gateErr, localVarBody, localVarHTTPResponse.Header.Get("Content-Type")); e == nil && gateErr.Label != "" {
+			gateErr.APIError = newErr
+			return localVarReturnValue, localVarHTTPResponse, gateErr
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 // QueryStockSymbolsOpts Optional parameters for the method 'QueryStockSymbols'
 type QueryStockSymbolsOpts struct {
 	Symbols      optional.String
@@ -862,6 +956,114 @@ func (a *StockApiService) QueryStockOrderHistory(ctx context.Context, localVarOp
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+// QueryStockOrderDealsOpts Optional parameters for the method 'QueryStockOrderDeals'
+type QueryStockOrderDealsOpts struct {
+	Page     optional.Int32
+	PageSize optional.Int32
+}
+
+/*
+QueryStockOrderDeals Query order trade records
+Rate limit: 5 requests per second. Query the current user&#39;s trade records by order ID. &#x60;price&#x60;, &#x60;value&#x60;, and &#x60;fee&#x60; are denominated in the instrument trading currency (for example, USD for US stocks, HKD for Hong Kong stocks, JPY for Japanese stocks, and KRW for Korean stocks). &#x60;role&#x60; returns &#x60;maker&#x60; or &#x60;taker&#x60;.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param orderId Order ID
+  - @param optional nil or *QueryStockOrderDealsOpts - Optional Parameters:
+  - @param "Page" (optional.Int32) -  Page number, defaults to 1
+  - @param "PageSize" (optional.Int32) -  Records per page. Defaults to 10, maximum 100. The server caps values greater than 100 at 100.
+
+@return OrderDealList
+*/
+func (a *StockApiService) QueryStockOrderDeals(ctx context.Context, orderId int64, localVarOptionals *QueryStockOrderDealsOpts) (OrderDealList, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  OrderDealList
+	)
+
+	// create path and map variables
+	localVarPath := a.client.cfg.BasePath + "/stock/orders/deals"
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	localVarQueryParams.Add("order_id", parameterToString(orderId, ""))
+	if localVarOptionals != nil && localVarOptionals.Page.IsSet() {
+		localVarQueryParams.Add("page", parameterToString(localVarOptionals.Page.Value(), ""))
+	}
+	if localVarOptionals != nil && localVarOptionals.PageSize.IsSet() {
+		localVarQueryParams.Add("page_size", parameterToString(localVarOptionals.PageSize.Value(), ""))
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if ctx == nil {
+		ctx = context.Background()
+	}
+	if ctx.Value(ContextGateAPIV4) == nil {
+		// for compatibility, set configuration key and secret to context if ContextGateAPIV4 value is not present
+		ctx = context.WithValue(ctx, ContextGateAPIV4, GateAPIV4{
+			Key:    a.client.cfg.Key,
+			Secret: a.client.cfg.Secret,
+		})
+	}
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(r)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status + ", " + string(localVarBody),
+		}
+		var gateErr GateAPIError
+		if e := a.client.decode(&gateErr, localVarBody, localVarHTTPResponse.Header.Get("Content-Type")); e == nil && gateErr.Label != "" {
+			gateErr.APIError = newErr
+			return localVarReturnValue, localVarHTTPResponse, gateErr
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 /*
 UpdateStockOrder Modify order
 Rate limit: 5 qps.
@@ -1432,6 +1634,152 @@ func (a *StockApiService) CreateStockTransaction(ctx context.Context, tradFiSpot
 	}
 	// body params
 	localVarPostBody = &tradFiSpotTransactionRequest
+	if ctx == nil {
+		ctx = context.Background()
+	}
+	if ctx.Value(ContextGateAPIV4) == nil {
+		// for compatibility, set configuration key and secret to context if ContextGateAPIV4 value is not present
+		ctx = context.WithValue(ctx, ContextGateAPIV4, GateAPIV4{
+			Key:    a.client.cfg.Key,
+			Secret: a.client.cfg.Secret,
+		})
+	}
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(r)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status + ", " + string(localVarBody),
+		}
+		var gateErr GateAPIError
+		if e := a.client.decode(&gateErr, localVarBody, localVarHTTPResponse.Header.Get("Content-Type")); e == nil && gateErr.Label != "" {
+			gateErr.APIError = newErr
+			return localVarReturnValue, localVarHTTPResponse, gateErr
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+// QueryStockBalanceRecordsOpts Optional parameters for the method 'QueryStockBalanceRecords'
+type QueryStockBalanceRecordsOpts struct {
+	Type_         optional.String
+	Business      optional.String
+	Symbol        optional.String
+	BeginTime     optional.Int64
+	EndTime       optional.Int64
+	StartId       optional.Int64
+	SortDirection optional.String
+	IncludeDetail optional.Bool
+	Page          optional.Int32
+	PageSize      optional.Int32
+}
+
+/*
+QueryStockBalanceRecords Query user balance records
+Rate limit: 5 requests per second. Query the current user&#39;s raw balance records. User scope is derived from the request headers; a query parameter &#x60;user_id&#x60; is not supported. - &#x60;type&#x60; and &#x60;business&#x60; support multiple comma-separated values. - &#x60;begin_time&#x60; and &#x60;end_time&#x60; filter record creation time in seconds. When both are provided, &#x60;end_time&#x60; must be greater than &#x60;begin_time&#x60;. - Results are always sorted by primary key &#x60;id&#x60;; &#x60;sort_direction&#x60; accepts &#x60;asc&#x60; or &#x60;desc&#x60;. The default is &#x60;id desc&#x60;. With &#x60;start_id&#x60; and no &#x60;sort_direction&#x60;, the order is &#x60;id asc&#x60;, and only records with &#x60;id &gt; start_id&#x60; are returned for incremental retrieval. - &#x60;detail&#x60; is omitted by default and returned only when &#x60;include_detail&#x3D;true&#x60;. - &#x60;stock_change&#x60; is parsed from &#x60;detail.amount&#x60; for stock quantity records; &#x60;balance&#x60; is a cash balance snapshot, not a stock position balance.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param optional nil or *QueryStockBalanceRecordsOpts - Optional Parameters:
+  - @param "Type_" (optional.String) -  Record types, separated by commas
+  - @param "Business" (optional.String) -  Business identifiers, separated by commas
+  - @param "Symbol" (optional.String) -  Symbol
+  - @param "BeginTime" (optional.Int64) -  Start time (Unix timestamp in seconds). When both begin_time and end_time are provided, end_time must be greater than begin_time.
+  - @param "EndTime" (optional.Int64) -  End time (Unix timestamp in seconds). When both begin_time and end_time are provided, end_time must be greater than begin_time.
+  - @param "StartId" (optional.Int64) -  Starting primary key ID for incremental queries. Only records with a greater id are returned.
+  - @param "SortDirection" (optional.String) -  Sort direction by primary key id. - asc: Ascending. - desc: Descending. When omitted, defaults to desc without start_id, or asc with start_id.
+  - @param "IncludeDetail" (optional.Bool) -  Whether to return the raw detail field; defaults to false when omitted
+  - @param "Page" (optional.Int32) -  Page number, defaults to 1
+  - @param "PageSize" (optional.Int32) -  Records per page. Defaults to 10, maximum 100. The server caps values greater than 100 at 100.
+
+@return BalanceRecordList
+*/
+func (a *StockApiService) QueryStockBalanceRecords(ctx context.Context, localVarOptionals *QueryStockBalanceRecordsOpts) (BalanceRecordList, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  BalanceRecordList
+	)
+
+	// create path and map variables
+	localVarPath := a.client.cfg.BasePath + "/stock/users/balance-records"
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if localVarOptionals != nil && localVarOptionals.Type_.IsSet() {
+		localVarQueryParams.Add("type", parameterToString(localVarOptionals.Type_.Value(), ""))
+	}
+	if localVarOptionals != nil && localVarOptionals.Business.IsSet() {
+		localVarQueryParams.Add("business", parameterToString(localVarOptionals.Business.Value(), ""))
+	}
+	if localVarOptionals != nil && localVarOptionals.Symbol.IsSet() {
+		localVarQueryParams.Add("symbol", parameterToString(localVarOptionals.Symbol.Value(), ""))
+	}
+	if localVarOptionals != nil && localVarOptionals.BeginTime.IsSet() {
+		localVarQueryParams.Add("begin_time", parameterToString(localVarOptionals.BeginTime.Value(), ""))
+	}
+	if localVarOptionals != nil && localVarOptionals.EndTime.IsSet() {
+		localVarQueryParams.Add("end_time", parameterToString(localVarOptionals.EndTime.Value(), ""))
+	}
+	if localVarOptionals != nil && localVarOptionals.StartId.IsSet() {
+		localVarQueryParams.Add("start_id", parameterToString(localVarOptionals.StartId.Value(), ""))
+	}
+	if localVarOptionals != nil && localVarOptionals.SortDirection.IsSet() {
+		localVarQueryParams.Add("sort_direction", parameterToString(localVarOptionals.SortDirection.Value(), ""))
+	}
+	if localVarOptionals != nil && localVarOptionals.IncludeDetail.IsSet() {
+		localVarQueryParams.Add("include_detail", parameterToString(localVarOptionals.IncludeDetail.Value(), ""))
+	}
+	if localVarOptionals != nil && localVarOptionals.Page.IsSet() {
+		localVarQueryParams.Add("page", parameterToString(localVarOptionals.Page.Value(), ""))
+	}
+	if localVarOptionals != nil && localVarOptionals.PageSize.IsSet() {
+		localVarQueryParams.Add("page_size", parameterToString(localVarOptionals.PageSize.Value(), ""))
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
 	if ctx == nil {
 		ctx = context.Background()
 	}

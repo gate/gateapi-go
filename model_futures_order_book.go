@@ -17,8 +17,14 @@ type FuturesOrderBook struct {
 	// Response data generation timestamp
 	Current float64 `json:"current,omitempty"`
 
+	// Response data timestamp in microseconds; omitted when unavailable
+	CurrentUs int64 `json:"current_us,omitempty"`
+
 	// Order book changed timestamp
 	Update float64 `json:"update,omitempty"`
+
+	// Order book update timestamp in microseconds; omitted when unavailable
+	UpdateUs int64 `json:"update_us,omitempty"`
 
 	// Ask Depth
 	Asks []FuturesOrderBookItem `json:"asks"`

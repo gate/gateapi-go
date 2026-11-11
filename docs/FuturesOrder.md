@@ -7,8 +7,11 @@ Name | Type | Description | Notes
 **Id** | **int64** | Futures order ID | [optional] [readonly] 
 **User** | **int32** | User ID | [optional] [readonly] 
 **CreateTime** | **float64** | Creation time of order | [optional] [readonly] 
+**CreateTimeUs** | **int64** | Order creation time as a Unix timestamp in microseconds; omitted when unavailable | [optional] [readonly] 
 **UpdateTime** | **float64** | OrderUpdateTime | [optional] [readonly] 
+**UpdateTimeUs** | **int64** | Order update time as a Unix timestamp in microseconds; omitted when unavailable | [optional] [readonly] 
 **FinishTime** | **float64** | Order finished time. Not returned if order is open | [optional] [readonly] 
+**FinishTimeUs** | **int64** | Order finish time as a Unix timestamp in microseconds; omitted if the order has not finished or the timestamp is unavailable | [optional] [readonly] 
 **FinishAs** | **string** | How the order was finished:  - filled: all filled - cancelled: manually cancelled - liquidated: cancelled because of liquidation - ioc: time in force is &#x60;IOC&#x60;, finish immediately - auto_deleveraged: finished by ADL - reduce_only: cancelled because of increasing position while &#x60;reduce-only&#x60; set - position_closed: cancelled because the position was closed - reduce_out: only reduce positions by excluding hard-to-fill orders - stp: cancelled because self trade prevention | [optional] [readonly] 
 **Status** | **string** | Order status:  - &#x60;open&#x60;: pending - &#x60;finished&#x60;: the order has ended | [optional] [readonly] 
 **Contract** | **string** | Futures contract | 
