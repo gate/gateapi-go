@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **FxRate** | **string** | Quote currency to USD exchange rate | [optional] 
 **SymbolDesc** | **string** | Symbol description | [optional] 
 **TradeStatus** | **string** | Trading status. - pre_market: Pre-market. - open: Regular trading session. - post_market: Post-market. | [optional] 
-**TradeMode** | **int32** | Current session trading mode. - 0: Trading disabled. - 1: Buy only. - 2: Sell only. - 4: Buy and sell supported. - 5: Trading suspended. - 6: Trading suspended. - 7: Trading suspended. - 8: Trading suspended. | [optional] 
+**TradeMode** | **int32** | Current session trading mode. - 0: Trading disabled. - 1: Buy only. - 2: Sell only. - 4: Buy and sell supported. - 5: Trading suspended. | [optional] 
 **PriceType** | **string** | Price type (market &#x3D; market order, limit &#x3D; limit order) | [optional] 
 **Side** | **int32** | Side (1&#x3D;sell, 2&#x3D;buy) | [optional] 
 **Status** | **int32** | Order status. - 0: Unknown. - 1: New order; the order has been validated and is waiting to be processed. - 2: Partially filled. - 3: Filled. - 4: Canceled. - 5: Order rejected. - 6: Cancellation rejected. - 7: Order update succeeded. - 8: Order update rejected. | [optional] 

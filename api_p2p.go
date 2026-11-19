@@ -27,7 +27,7 @@ type P2pApiService service
 
 /*
 P2pMerchantAccountGetUserInfo Get account information
-To query the spot account balance, use the Spot API [&#x60;GET /spot/accounts&#x60;](/docs/developers/apiv4/en/spot/#list-spot-trading-accounts).
+To query the spot account balance, use the Spot API [&#x60;GET /spot/accounts&#x60;](/apiv4/en/spot/#list-spot-trading-accounts).
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 
 @return P2pMerchantUserInfoResponse
@@ -1635,6 +1635,7 @@ func (a *P2pApiService) P2pMerchantChatSendChatMessage(ctx context.Context, send
 
 /*
 P2pMerchantChatUploadChatFile Upload chat file
+This endpoint is deprecated. Use [Pre-upload chat file](#pre-upload-chat-file) to obtain credentials for direct S3 uploads.
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param uploadChatFile
 
@@ -1675,6 +1676,100 @@ func (a *P2pApiService) P2pMerchantChatUploadChatFile(ctx context.Context, uploa
 	}
 	// body params
 	localVarPostBody = &uploadChatFile
+	if ctx == nil {
+		ctx = context.Background()
+	}
+	if ctx.Value(ContextGateAPIV4) == nil {
+		// for compatibility, set configuration key and secret to context if ContextGateAPIV4 value is not present
+		ctx = context.WithValue(ctx, ContextGateAPIV4, GateAPIV4{
+			Key:    a.client.cfg.Key,
+			Secret: a.client.cfg.Secret,
+		})
+	}
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(r)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status + ", " + string(localVarBody),
+		}
+		var gateErr GateAPIError
+		if e := a.client.decode(&gateErr, localVarBody, localVarHTTPResponse.Header.Get("Content-Type")); e == nil && gateErr.Label != "" {
+			gateErr.APIError = newErr
+			return localVarReturnValue, localVarHTTPResponse, gateErr
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+/*
+P2pMerchantChatPreUploadChatFile Pre-upload chat file
+Get credentials for a direct S3 upload of a chat file. Credentials expire after 45 minutes. The maximum file size is 100 MiB.  Upload the file using the returned url and fields, placing the file field last in the form. After S3 returns HTTP 204, call [send_chat_message](#send-text-message) with type&#x3D;1 and the returned file_key as message.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param preUploadChatFileRequest
+
+@return P2pPreUploadChatFileResponse
+*/
+func (a *P2pApiService) P2pMerchantChatPreUploadChatFile(ctx context.Context, preUploadChatFileRequest PreUploadChatFileRequest) (P2pPreUploadChatFileResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  P2pPreUploadChatFileResponse
+	)
+
+	// create path and map variables
+	localVarPath := a.client.cfg.BasePath + "/p2p/merchant/chat/pre_upload_chat_file"
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = &preUploadChatFileRequest
 	if ctx == nil {
 		ctx = context.Background()
 	}

@@ -22,6 +22,7 @@ Method | HTTP request | Description
 [**P2pMerchantChatGetChatsList**](P2pApi.md#P2pMerchantChatGetChatsList) | **Post** /p2p/merchant/chat/get_chats_list | Get chat history
 [**P2pMerchantChatSendChatMessage**](P2pApi.md#P2pMerchantChatSendChatMessage) | **Post** /p2p/merchant/chat/send_chat_message | Send text message
 [**P2pMerchantChatUploadChatFile**](P2pApi.md#P2pMerchantChatUploadChatFile) | **Post** /p2p/merchant/chat/upload_chat_file | Upload chat file
+[**P2pMerchantChatPreUploadChatFile**](P2pApi.md#P2pMerchantChatPreUploadChatFile) | **Post** /p2p/merchant/chat/pre_upload_chat_file | Pre-upload chat file
 
 
 ## P2pMerchantAccountGetUserInfo
@@ -30,7 +31,7 @@ Method | HTTP request | Description
 
 Get account information
 
-To query the spot account balance, use the Spot API [`GET /spot/accounts`](/docs/developers/apiv4/en/spot/#list-spot-trading-accounts).
+To query the spot account balance, use the Spot API [`GET /spot/accounts`](/apiv4/en/spot/#list-spot-trading-accounts).
 
 ### Required Parameters
 
@@ -1220,6 +1221,8 @@ func main() {
 
 Upload chat file
 
+This endpoint is deprecated. Use [Pre-upload chat file](#pre-upload-chat-file) to obtain credentials for direct S3 uploads.
+
 ### Required Parameters
 
 Name | Type | Description  | Notes
@@ -1269,6 +1272,77 @@ func main() {
 ### Return type
 
 [**P2pUploadChatFileResponse**](P2pUploadChatFileResponse.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+## P2pMerchantChatPreUploadChatFile
+
+> P2pPreUploadChatFileResponse P2pMerchantChatPreUploadChatFile(ctx, preUploadChatFileRequest)
+
+Pre-upload chat file
+
+Get credentials for a direct S3 upload of a chat file. Credentials expire after 45 minutes. The maximum file size is 100 MiB.  Upload the file using the returned url and fields, placing the file field last in the form. After S3 returns HTTP 204, call [send_chat_message](#send-text-message) with type=1 and the returned file_key as message.
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**preUploadChatFileRequest** | [**PreUploadChatFileRequest**](PreUploadChatFileRequest.md)|  | 
+
+### Example
+
+```golang
+package main
+
+import (
+    "context"
+    "fmt"
+
+    "github.com/gate/gateapi-go/v7"
+)
+
+func main() {
+    client := gateapi.NewAPIClient(gateapi.NewConfiguration())
+    // uncomment the next line if your are testing against testnet
+    // client.ChangeBasePath("https://fx-api-testnet.gateio.ws/api/v4")
+    ctx := context.WithValue(context.Background(),
+                             gateapi.ContextGateAPIV4,
+                             gateapi.GateAPIV4{
+                                 Key:    "YOUR_API_KEY",
+                                 Secret: "YOUR_API_SECRET",
+                             }
+                            )
+    preUploadChatFileRequest := gateapi.PreUploadChatFileRequest{} // PreUploadChatFileRequest - 
+    
+    result, _, err := client.P2pApi.P2pMerchantChatPreUploadChatFile(ctx, preUploadChatFileRequest)
+    if err != nil {
+        if e, ok := err.(gateapi.GateAPIError); ok {
+            fmt.Printf("gate api error: %s\n", e.Error())
+        } else {
+            fmt.Printf("generic error: %s\n", err.Error())
+        }
+    } else {
+        fmt.Println(result)
+    }
+}
+```
+
+
+### Return type
+
+[**P2pPreUploadChatFileResponse**](P2pPreUploadChatFileResponse.md)
 
 ### Authorization
 

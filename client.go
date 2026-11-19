@@ -99,6 +99,8 @@ type APIClient struct {
 
 	StockApi *StockApiService
 
+	StockOptionsApi *StockOptionsApiService
+
 	SubAccountApi *SubAccountApiService
 
 	UnifiedApi *UnifiedApiService
@@ -151,6 +153,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.SpotApi = (*SpotApiService)(&c.common)
 	c.SquareApi = (*SquareApiService)(&c.common)
 	c.StockApi = (*StockApiService)(&c.common)
+	c.StockOptionsApi = (*StockOptionsApiService)(&c.common)
 	c.SubAccountApi = (*SubAccountApiService)(&c.common)
 	c.UnifiedApi = (*UnifiedApiService)(&c.common)
 	c.WalletApi = (*WalletApiService)(&c.common)

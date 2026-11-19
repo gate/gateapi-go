@@ -15,9 +15,9 @@ type SendChatMessageRequest struct {
 	// Order ID
 	Txid int32 `json:"txid"`
 
-	// Message type: `0` text; `1` file (image or video); defaults to `0`.
+	// Message type: 0 for text, 1 for files. Defaults to 0 when omitted.
 	Type int32 `json:"type,omitempty"`
 
-	// Message content. When type=0, pass text up to 500 characters, which goes through off-platform traffic diversion risk control; when hit, the response contains risk_type=1 and toast_msg. When type=1, pass the file_key returned by upload_chat_file
+	// Message content. For type=0, provide text up to 500 characters. Off-platform solicitation risk checks may return risk_type=1 and toast_msg. For type=1, after a successful S3 upload, provide the file_key returned by pre_upload_chat_file.
 	Message string `json:"message"`
 }

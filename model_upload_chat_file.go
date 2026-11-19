@@ -15,6 +15,6 @@ type UploadChatFile struct {
 	// File MIME type: supports `image/jpeg`, `image/jpg`, `image/png`, `video/mp4`.
 	ImageContentType string `json:"image_content_type"`
 
-	// Base64 file content; max 20 MB.
+	// Base64-encoded file content.
 	Base64Img string `json:"base64_img"`
 }

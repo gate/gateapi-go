@@ -84,6 +84,8 @@ Method | HTTP request | Description
 
 Query all futures contracts
 
+Send `X-Gate-Size-Decimal: 1` to read the actual order size limits for contracts that support fractional sizes. Check `enable_decimal` for each contract.  For example, `ETH_USDT` returns its `order_size_min` as the string `\"0.1\"` with `X-Gate-Size-Decimal: 1`. Omitting the header or setting it to `0` returns the integer `0` after discarding the fractional part. The actual minimum order size remains `0.1` contracts.
+
 ### Required Parameters
 
 Name | Type | Description  | Notes
@@ -230,6 +232,8 @@ No authorization required
 
 Query single contract information
 
+Send `X-Gate-Size-Decimal: 1` to read the actual order size limits. For `ETH_USDT`, `order_size_min` is the string `\"0.1\"`. Omitting the header or setting it to `0` returns the integer `0`. The actual minimum order size remains `0.1` contracts.  Check the target contract's `enable_decimal` value for fractional size support. See the [API contract size compatibility rules](https://www.gate.com/announcements/article/48788) and the [market size precision adjustment announcement](https://www.gate.com/announcements/article/50325).
+
 ### Required Parameters
 
 Name | Type | Description  | Notes
@@ -256,7 +260,7 @@ func main() {
     // client.ChangeBasePath("https://fx-api-testnet.gateio.ws/api/v4")
     ctx := context.Background()
     settle := "usdt" // string - Perpetual futures settlement currency
-    contract := "BTC_USDT" // string - Futures contract
+    contract := "ETH_USDT" // string - Futures contract
     
     result, _, err := client.FuturesApi.GetFuturesContract(ctx, settle, contract)
     if err != nil {
@@ -2798,7 +2802,7 @@ func main() {
 
 Place futures order
 
-- When placing an order, the number of contracts is specified `size`, not the number of coins. The number of coins corresponding to each contract is returned in the contract details interface `quanto_multiplier` - 0 The order that was completed cannot be obtained after 10 minutes of withdrawal, and the order will be mentioned that the order does not exist - Setting `reduce_only` to `true` can prevent the position from being penetrated when reducing the position - In single-position mode, if you need to close the position, you need to set `size` to 0 and `close` to `true` - In hedge mode:   - Reduce a position: with `reduce_only=true`, a positive `size` reduces the short position and a negative `size` reduces the long position.   - Increase a position: with `reduce_only=false`, a positive `size` increases the long position and a negative `size` increases the short position.   - Close a position: set `size=0`, select the closing side with `auto_size`, and set `reduce_only=true`.   - `reduce_only` ensures position reduction only and prevents increasing the position. - Set `stp_act` to determine the use of a strategy that restricts user transactions. For detailed usage, refer to the body parameter `stp_act`
+- When placing an order, the number of contracts is specified `size`, not the number of coins. The number of coins corresponding to each contract is returned in the contract details interface `quanto_multiplier` - To place an order with a fractional contract size, query the contract with `X-Gate-Size-Decimal: 1`, check that `enable_decimal` is `true`, and read `order_size_min` and `order_size_max`. Send the same header when placing the order and pass fractional `size` or fractional displayed iceberg size `iceberg` as a decimal string. - 0 The order that was completed cannot be obtained after 10 minutes of withdrawal, and the order will be mentioned that the order does not exist - Setting `reduce_only` to `true` can prevent the position from being penetrated when reducing the position - In single-position mode, if you need to close the position, you need to set `size` to 0 and `close` to `true` - In hedge mode:   - Reduce a position: with `reduce_only=true`, a positive `size` reduces the short position and a negative `size` reduces the long position.   - Increase a position: with `reduce_only=false`, a positive `size` increases the long position and a negative `size` increases the short position.   - Close a position: set `size=0`, select the closing side with `auto_size`, and set `reduce_only=true`.   - `reduce_only` ensures position reduction only and prevents increasing the position. - Set `stp_act` to determine the use of a strategy that restricts user transactions. For detailed usage, refer to the body parameter `stp_act`
 
 ### Required Parameters
 
@@ -3201,6 +3205,8 @@ func main() {
 > FuturesOrder AmendFuturesOrder(ctx, settle, orderId, futuresOrderAmendment, optional)
 
 Amend single order
+
+To amend an order to a fractional size, query the original order contract with `X-Gate-Size-Decimal: 1`, check that `enable_decimal` is `true`, and read `order_size_min` and `order_size_max`. Send the same header when amending the order and pass the new `size` as a decimal string.
 
 ### Required Parameters
 

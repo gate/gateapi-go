@@ -21,20 +21,11 @@ type FuturesOrder struct {
 	// Creation time of order
 	CreateTime float64 `json:"create_time,omitempty"`
 
-	// Order creation time as a Unix timestamp in microseconds; omitted when unavailable
-	CreateTimeUs int64 `json:"create_time_us,omitempty"`
-
 	// OrderUpdateTime
 	UpdateTime float64 `json:"update_time,omitempty"`
 
-	// Order update time as a Unix timestamp in microseconds; omitted when unavailable
-	UpdateTimeUs int64 `json:"update_time_us,omitempty"`
-
 	// Order finished time. Not returned if order is open
 	FinishTime float64 `json:"finish_time,omitempty"`
-
-	// Order finish time as a Unix timestamp in microseconds; omitted if the order has not finished or the timestamp is unavailable
-	FinishTimeUs int64 `json:"finish_time_us,omitempty"`
 
 	// How the order was finished:  - filled: all filled - cancelled: manually cancelled - liquidated: cancelled because of liquidation - ioc: time in force is `IOC`, finish immediately - auto_deleveraged: finished by ADL - reduce_only: cancelled because of increasing position while `reduce-only` set - position_closed: cancelled because the position was closed - reduce_out: only reduce positions by excluding hard-to-fill orders - stp: cancelled because self trade prevention
 	FinishAs string `json:"finish_as,omitempty"`
@@ -72,7 +63,7 @@ type FuturesOrder struct {
 	// Time in force  - gtc: GoodTillCancelled - ioc: ImmediateOrCancelled, taker only - poc: PendingOrCancelled, makes a post-only order that always enjoys a maker fee - fok: FillOrKill, fill either completely or none
 	Tif string `json:"tif,omitempty"`
 
-	// Unfilled quantity
+	// Unfilled size in contracts. With `X-Gate-Size-Decimal: 1`, this field is a string that preserves the fractional part. With the header set to `0` or omitted, it is an integer with the fractional part discarded.
 	Left string `json:"left,omitempty"`
 
 	// Fill price

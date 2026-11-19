@@ -41,7 +41,7 @@ type SymbolListItem struct {
 	// Trading status. - pre_market: Pre-market. - open: Regular trading session. - post_market: Post-market.
 	TradeStatus string `json:"trade_status,omitempty"`
 
-	// Current session trading mode. - 0: Trading disabled. - 1: Buy only. - 2: Sell only. - 4: Buy and sell supported. - 5: Trading suspended. - 6: Trading suspended. - 7: Trading suspended. - 8: Trading suspended.
+	// Current session trading mode. - 0: Trading disabled. - 1: Buy only. - 2: Sell only. - 4: Buy and sell supported. - 5: Trading suspended.
 	TradeMode int32 `json:"trade_mode,omitempty"`
 
 	// Order fill timing (1=immediate, 2=after pre-market opens, 3=after regular session opens)

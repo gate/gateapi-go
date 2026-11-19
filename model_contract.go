@@ -75,13 +75,13 @@ type Contract struct {
 	// Maximum risk limit allowed by the contract (deprecated). It is recommended to use /futures/{settle}/risk_limit_tiers to query risk limits
 	RiskLimitMax string `json:"risk_limit_max,omitempty"`
 
-	// Minimum order quantity
+	// Minimum order size in contracts. With `X-Gate-Size-Decimal: 1`, this field is a string that preserves the fractional part. With the header set to `0` or omitted, it is an integer with the fractional part discarded. A minimum below 1 is returned as 0 in this mode.
 	OrderSizeMin string `json:"order_size_min,omitempty"`
 
-	// Whether decimal string type is supported for contract lot size. When this field is set to `true`, it indicates that the contract supports decimal lot sizes (i.e., the `size` field can use a decimal string type); when set to `false`, it indicates that the contract does not support decimal lot sizes (i.e., the `size` field can only use an integer type).
+	// Whether the contract supports fractional contract sizes. If `true`, use `X-Gate-Size-Decimal: 1` to submit a fractional size. If `false`, the contract supports whole contract sizes only.
 	EnableDecimal bool `json:"enable_decimal,omitempty"`
 
-	// Maximum order quantity
+	// Maximum order size in contracts. With `X-Gate-Size-Decimal: 1`, this field is a string that preserves the fractional part. With the header set to `0` or omitted, it is an integer with the fractional part discarded.
 	OrderSizeMax string `json:"order_size_max,omitempty"`
 
 	// Maximum allowed deviation between order price and current mark price. The order price `order_price` must satisfy the following condition:      abs(order_price - mark_price) <= mark_price * order_price_deviate
